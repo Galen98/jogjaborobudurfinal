@@ -1,0 +1,1 @@
+.grid-wrapper{display:grid;gap:24px;grid-template-columns:repeat(4,1fr);margin-bottom:24px}.grid-wrapper--list{display:flex;flex-direction:column}@media(max-width:1024px){.grid-wrapper{grid-template-columns:repeat(2,1fr)}}@media(max-width:768px){.grid-wrapper{grid-template-columns:1fr}}
