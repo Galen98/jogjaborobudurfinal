@@ -23,10 +23,10 @@
   <link rel="stylesheet" href="{{asset('traveler')}}/css/grids.css">
   <link rel="stylesheet" href="{{asset('traveler')}}/css/activity.css">
   <link rel="stylesheet" href="{{asset('traveler')}}/css/location.css">
-
   <link rel="shortcut icon" href="{{asset('spica')}}/images/favicon.png" />
   <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5.6/tinymce.min.js" referrerpolicy="origin"></script>
 
+<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.11.4/themes/ui-lightness/jquery-ui.css">
   <script>
 	tinymce.init({
   selector: 'textarea#mytextarea',
@@ -206,7 +206,8 @@
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
    
 @yield('scripts')
 </body>

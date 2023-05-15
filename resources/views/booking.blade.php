@@ -8,13 +8,12 @@
                             <h5 class="card-title">Search :</h5>
                             <tbody>
                             <tr class="control-group">
-                              <td><form action="/detailpenghasilan/cari" method="GET" >
-                            <input class="form-control" style="height: 34pt; width:240px;border-color:grey;"  type="text" name="cari" placeholder="Search by name.." value="{{ old('cari') }}"> 
-                            <td><button class="btn btn-primary" type="submit" ><i class="mdi mdi-account-search"></i></button>
-                            </td>
-                            </form>
-                            <td><form action="/detailpenghasilan/filterharian" method="GET">
-                            <input type="date" class="form-control" style="height: 34pt; width:240px;border-color:grey;;margin-left:30px;" name="filterharian">
+                              <td>
+                            <td><form action="/data-booking/filter" method="GET">
+                            <div class="wrapper">
+                            <td><input type="text" id="from" name="from" class="form-control" placeholder="From"></td>
+                            <td><input type="text" id="to" name="to" class="form-control" placeholder="To"></td>
+                          </div>
                             <td><button class="btn btn-primary" type="submit">Filter</button></td>
                         </form>
                    			 </td>
@@ -289,5 +288,27 @@
         });
        });
             
+        </script>
+        <script>
+          $(function() {
+    $( "#from" ).datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      dateFormat: 'dd/mm/y',
+      numberOfMonths: 1,
+      onClose: function( selectedDate ) {
+        $( "#to" ).datepicker( "option", "minDate", selectedDate );
+      }
+    });
+    $( "#to" ).datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      dateFormat: 'dd/mm/y',
+      numberOfMonths: 1,
+      onClose: function( selectedDate ) {
+        $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+      }
+    });
+  });
         </script>
 @endsection

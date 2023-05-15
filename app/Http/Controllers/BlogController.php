@@ -24,6 +24,7 @@ use App\Models\season;
 use App\Models\rating;
 use App\Models\booking;
 use App\Models\destination;
+use App\Models\affiliate;
 // use Request;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -159,6 +160,13 @@ class BlogController extends Controller
     public function hapustravelagent(Request $request,$idtravelagent){
         $idtravelagent=Request('idtravelagent');
         DB::table('travelagent')->where('id',$idtravelagent)->delete();
+        Alert::error('Berhasil Dihapus');
+        return redirect()->back();
+    }
+
+    public function hapusaffiliate(Request $request,$idaffiliate){
+        $idaffiliate=Request('idaffiliate');
+        DB::table('affiliate')->where('id',$idaffiliate)->delete();
         Alert::error('Berhasil Dihapus');
         return redirect()->back();
     }
@@ -490,6 +498,14 @@ class BlogController extends Controller
         return response()->json([
         'status'=>200,
         'Travel'=>$Travel
+        ]);
+    }
+
+    public function showdetailaffiliate($AffiliateID){
+        $Affiliate=DB::table('affiliate')->where('id',$AffiliateID)->first();
+        return response()->json([
+        'status'=>200,
+        'Affiliate'=>$Affiliate
         ]);
     }
 
@@ -942,5 +958,17 @@ class BlogController extends Controller
         Alert::success('Berhasil Ditambahkan');
        return redirect()->to('/season');
     }
+
+public function datefilter(Request $request)
+{
+    $from = $request->from;
+    $to = $request->to;
+    $booking = DB::table('booking')
+        ->join('wisata', 'wisata.wisata_id', '=', 'booking.wisata_id')
+        ->select('wisata.image', 'booking.id', 'booking.paketwisata', 'booking.total','booking.traveldate','booking.namawisata','booking.name','booking.surname','booking.created_at','booking.phone','booking.code','booking.email','booking.country','booking.adult','booking.totalgroup','booking.child','booking.time','booking.request','booking.pickup')
+        ->whereBetween('booking.traveldate', [$from, $to])
+        ->paginate(10);
+    return view('booking',compact('booking'));
+}
 
 }

@@ -64,10 +64,13 @@
           </a>
           <div class="collapse" id="ui-basic">
             <ul class="nav flex-column sub-menu">
-              <li class="nav-item"> <a class="nav-link" href="/message/message">Message</a></li>
-              <li class="nav-item"> <a class="nav-link" href="/message/corporate">Corporate discount</a></li>
-              <li class="nav-item"> <a class="nav-link" href="/message/influencer">Influencer</a></li>
-              <li class="nav-item"> <a class="nav-link" href="/message/travelagent">Travel Agent</a></li>
+              <li> <a class="nav-link" href="/message/message">Message</a></li>
+              <li> <a class="nav-link" href="/message/corporate">Corporate discount</a></li>
+              <li> <a class="nav-link" href="/message/influencer">Influencer</a></li>
+              <li> <a class="nav-link" href="/message/travelagent">Travel Agent</a></li>
+              <li> <a class="nav-link" href="/message/affiliate">Affiliate Program</a></li>
+              <li> <a class="nav-link" href="/message/platform">Booking Platform</a></li>
+              <li> <a class="nav-link" href="/message/selltours">Sell Your Tours</a></li>
             </ul>
           </div>
         </li>
