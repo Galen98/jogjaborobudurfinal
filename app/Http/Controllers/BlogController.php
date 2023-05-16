@@ -784,6 +784,69 @@ class BlogController extends Controller
         return redirect()->back();
     }
 
+    public function insertbackground(Request $request){
+        $altimage=$request->altimage;
+        $teks=$request->teks;
+        $gambar=$request->image;
+        $nama_file = time()."_".$gambar->getClientOriginalName();
+		$tujuan_upload = 'public/img';
+        $gambar->move($tujuan_upload,$nama_file);
+        $data=[
+            'header'=>$teks,
+            'subheader'=>$request->tekssmall,
+            'altimage'=>$altimage,
+            'image'=>$nama_file,
+            'place'=>'contact'
+        ];
+        background::create($data);
+        return redirect()->back();
+    }
+
+    public function editimagelanding(Request $request,$idimage){
+        $gambar=$request->image;
+        if($gambar == null){
+            $nama_file=$request->namagambar;
+        }
+        else{
+        $nama_file = time()."_".$gambar->getClientOriginalName();
+		$tujuan_upload = 'public/img';
+        $gambar->move($tujuan_upload,$nama_file);
+        }
+        DB::table('background')->where('id',$idimage)
+        ->update([
+            'altimage'=>$request->altimage,
+            'header'=>$request->teks,
+            'image'=>$nama_file,
+            'place'=>'landingpage'
+        ]);
+        Alert::success('Berhasil','Berhasil Diupdate');
+        return redirect()->to('/background/change');
+    }
+
+    public function editimagecontact(Request $request,$idimage){
+        $gambar=$request->image;
+        if($gambar == null){
+            $nama_file=$request->namagambar;
+        }
+        else{
+        $nama_file = time()."_".$gambar->getClientOriginalName();
+		$tujuan_upload = 'public/img';
+        $gambar->move($tujuan_upload,$nama_file);
+        }
+        DB::table('background')->where('id',$idimage)
+        ->update([
+            'altimage'=>$request->altimage,
+            'header'=>$request->teks,
+            'image'=>$nama_file,
+            'subheader'=>$request->tekssmall,
+            'place'=>'contact'
+        ]);
+        Alert::success('Berhasil','Berhasil Diupdate');
+        return redirect()->to('/background/change');
+    }
+
+    
+
     public function allblog(){
         $all=blog::paginate(5);
         $popular=DB::table('blog')->paginate(6);
