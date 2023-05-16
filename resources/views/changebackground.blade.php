@@ -31,7 +31,7 @@
                          Background Landing Page
                           </td>
                           <td>
-                          <a href="">Change!</a>
+                          <a href="/background/change/landingpage">Change!</a>
                           </td>
                         </tr>
 
@@ -43,7 +43,7 @@
                          Background Contact Us
                           </td>
                           <td>
-                          <a href="">Change!</a>
+                          <a href="/background/change/contact">Change!</a>
                           </td>
                         </tr>
                         

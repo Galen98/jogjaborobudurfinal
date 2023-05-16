@@ -23,6 +23,7 @@ use App\Models\bahasa;
 use App\Models\hargachild;
 use App\Models\highlight;
 use App\Models\season;
+use App\Models\background;
 use App\Models\tambahseason;
 use Illuminate\Support\Str;
 
@@ -50,6 +51,7 @@ Route::get("/change-bahasa/{bahasa}", function ($bahasa) {
 
 Route::get('/', function (Request $request) {
     $lang=Request::server('HTTP_ACCEPT_LANGUAGE');
+    $background=background::where('place','landingpage')->get();
     $langs=Str::substr($lang, 0,2);
     
     if ($langs == 'id') {
@@ -84,7 +86,7 @@ Route::get('/', function (Request $request) {
     //$traveltop=travel::paginate(8);
     $other=travel::where('label','Likely to sell out')->where('bahasa', $sessions)->paginate(4);
     $blog=blog::orderBy('created_at','DESC')->where('bahasa', $sessions)->paginate(3);
-    return view('frontend.index', compact('sessions','traveltop','other','blog',"rateIDR", "rateSGD", "rateMYR", "session","rateEUR","destination",'destinate','season','bahasa'));
+    return view('frontend.index', compact('sessions','traveltop','other','blog',"rateIDR", "rateSGD", "rateMYR", "session","rateEUR","destination",'destinate','season','bahasa','background'));
 });
 
 
@@ -249,6 +251,10 @@ Route::get('/blogadmin/viewblog/{idblog}', [App\Http\Controllers\BlogController:
 Route::get('/data-booking/filter', [App\Http\Controllers\BlogController::class,'datefilter']);
 Route::get('/blogadmin/editblog/{idblog}', [App\Http\Controllers\BlogController::class,'editblog']);
 Route::patch('editblog/{idblog}', [App\Http\Controllers\BlogController::class,'editblogproses']);
+//edit background
+Route::patch('editimagelanding/{idimage}', [App\Http\Controllers\BlogController::class,'editimagelanding']);
+Route::patch('editimagecontact/{idimage}', [App\Http\Controllers\BlogController::class,'editimagecontact']);
+
 Route::patch('editwisata/{idwisata}', [App\Http\Controllers\BlogController::class,'editproseswisata']);
 Route::patch('diskonpost/{travelid}', [App\Http\Controllers\BlogController::class,'diskonpost']);
 Route::get('/home/viewblog/{idblog}', [App\Http\Controllers\BlogController::class,'viewblog']);
@@ -342,7 +348,8 @@ Route::get('/travelagent/travelagent',function(){
 });
 Route::get('/contact/contacts-us',function(){
     $bahasa=bahasa::get();
-    return view('frontend.contact',compact('bahasa'));
+    $background=background::where('place','contact')->get();
+    return view('frontend.contact',compact('bahasa','background'));
 });
 Route::get('/currency/currency',function(){
     $rate=Rate::get();
@@ -351,6 +358,16 @@ Route::get('/currency/currency',function(){
     $ratesgd=Rate::where('currency','SGD')->get();
     $rateeur=Rate::where('currency','EUR')->get();
     return view('currency',compact('rateidr','ratemyr','ratesgd','rateeur'));
+});
+//display background change
+Route::get('/background/change/landingpage',function(){
+    $background=background::where('place', 'landingpage')->get();
+    return view('formbackground',compact('background'));
+});
+
+Route::get('/background/change/contact',function(){
+    $background=background::where('place', 'contact')->get();
+    return view('backgroundcontact',compact('background'));
 });
 Route::patch('/updatecurrency/{idrate}',[BlogController::class,'updatecurrency']);
 Route::patch('/updatetheme/{idtheme}',[BlogController::class,'updatetheme']);
@@ -364,6 +381,7 @@ Route::patch('/updatetime/{idtime}',[BlogController::class,'updatetime']);
 Route::patch('/updateexclude/{idexclude}',[BlogController::class,'updateexclude']);
 Route::post('addinclude', [BlogController::class, 'addinclude']);
 Route::post('addtime', [BlogController::class, 'addtime']);
+Route::post('insertbackgroundlanding', [BlogController::class, 'insertbackground']);
 Route::post('addexclude', [BlogController::class, 'addexclude']);
 Route::post('addhighlight', [BlogController::class, 'addhighlight']);
 Route::patch('/updatehighlight/{idhighlight}',[BlogController::class,'updatehighlight']);

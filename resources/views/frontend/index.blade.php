@@ -1,16 +1,17 @@
 @extends('frontend.forindex')
 
 @section('header')
-	<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image:linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) ,url({{asset('traveler')}}/images/logins.jpg);height: 643px;overflow: hidden;">
+@foreach($background as $item)
+	<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image:linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) ,url({{ url('public/img/'.$item->image) }});height: 643px;overflow: hidden;">
     <!-- <div class="overlay"></div> -->
+   
     <div>
       <div>
+        @endforeach
     <div class="page-header__content" data-v-3a2bcacc >
   <a href="/" data-test-id="page-header-logo" class="page-header__logo-link" data-v-3a2bcacc style="margin-top: 10px;">
   <!-- <img src="{{asset('spica')}}/images/logomini.png" alt="logo" height="50" width="100" /> -->
   </a> 
-  
-  
   <nav data-test-id="page-header-nav" class="navigation page-header__navigation light" data-v-3a2bcacc >
   <ul class="navigation__list">
   <li data-test-id="header-navigation-search" class="navigation__list-item-parent item__search">
@@ -86,10 +87,7 @@
               <a class="dropdown-item" href="/change-session/SGD">SGD</a>
               <a class="dropdown-item" href="/change-session/EUR">EUR</a>
             </div>
-
           </div>
-
-
   </li> 
 
     <li tabindex="0" data-test-id="header-navigation-pickers" class="item__dropdown item__dropdown--language js-navigation-language-dropdown hide-language" style="margin-left:-36px; ">
@@ -119,12 +117,12 @@
     </div>
   </div>
   </div>
-		
+		@foreach($background as $item)
 		<div class="gtco-container">
 			<div class="row">
 				<div class="row-mt-15em" style="margin-top:100px; ">
 						<div class="col-md-7 mt-text" style="margin-top:-10px;margin-left:-5px;">
-							<h1>Explore Borobudur, Prambanan, Yogyakarta, and many more.</h1><br>
+							<h1>{{$item->header}}</h1><br>
               <form action="/alltours" method="GET">
               <button type="submit" class="js-check-availability gtm-trigger__adp-check-availability-btn avoid-close-dropdown-on-click c-button c-button--medium filbtn" data-test-id="checkout-submit-btn" id="tess">Learn More</button></form>
 						</div>
@@ -133,7 +131,7 @@
 					</div>
 				</div>
 			</div>
-      
+      @endforeach
 		
 	</header>
 	@endsection
