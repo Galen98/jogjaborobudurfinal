@@ -1,0 +1,3 @@
+[submodule "public/spica"]
+	path = public/spica
+	url = https://github.com/Galen98/jogjaborobudurfinal.git
