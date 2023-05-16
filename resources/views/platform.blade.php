@@ -5,7 +5,7 @@
 <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Travel Agent</h4>
+                  <h4 class="card-title">Online Booking Platform</h4>
                   <div class="table-responsive pt-3">
                     <table class="table table-bordered">
                       <thead>
@@ -14,13 +14,13 @@
                             No.
                           </th>
                           <th style="font-weight: bold;">
-                            Official Website
+                            Name
                           </th>
                           <th style="font-weight: bold;">
-                            Company Address
+                          Official Website
                           </th>
                           <th style="font-weight: bold;">
-                            Message
+                          Company Address
                           </th>
                           <th style="font-weight: bold;">
                             Detail
@@ -32,24 +32,24 @@
                       </thead>
                       <tbody>
 
-                      @if(count($travelagent) === 0)
+                      @if(count($platform) === 0)
                       <tr>
                       <th colspan="6" class="text-center">No data</th>
                       </tr>
                       @else
-                      @foreach($travelagent as $item)
+                      @foreach($platform as $item)
                         <tr>
                           <td>
                           {{ $loop->iteration }}
                           </td>
                           <td>
-                         {{$item->website ?? ''}}
+                         {{$item->name ?? ''}}
+                          </td>
+                          <td>
+                          {{$item->website ?? ''}}
                           </td>
                           <td>
                           {{$item->address ?? ''}}
-                          </td>
-                          <td>
-                          {{$item->message ?? ''}}
                           </td>
                           <td><button type="button" class="editbtn btn btn-sm btn-info btn-rounded btn-fw" value="{{$item->id}}"><i class="mdi mdi-eye "></i> Detail</button></td>
      
@@ -67,7 +67,7 @@
               </div>
             </div>
             <div class="col-lg-12">
-            {{ $travelagent->links() }}
+            {{ $platform->links() }}
             </div>
 
             <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -82,37 +82,37 @@
       <div class="form-group">
       <div class="form-group">
         <label>Official Website</label>
-        <input type="text" name="hargapaket" class="form-control" id="website" readonly>
+        <input type="text" class="form-control" id="website" readonly>
         </div>
         <br>
         <div class="form-group">
         <label>Corporate Address</label>
-        <input type="text" name="hargapaket" class="form-control" id="address" readonly>
+        <input type="text" class="form-control" id="address" readonly>
         </div>
             <br>
             <div class="form-group">
         <label>Name</label>
-        <input type="text" name="hargapaket" class="form-control" id="name" readonly>
+        <input type="text"  class="form-control" id="name" readonly>
         </div>
             <br>
             <div class="form-group">
         <label>Job Title</label>
-        <input type="text" name="hargapaket" class="form-control" id="job" readonly>
+        <input type="text"  class="form-control" id="job" readonly>
         </div>
             <br>
             <div class="form-group">
         <label>Contact</label>
-        <input type="text" name="hargapaket" class="form-control" id="contact" readonly>
+        <input type="text"  class="form-control" id="contact" readonly>
         </div>
             <br>
             <div class="form-group">
         <label>Email</label>
-        <input type="text" name="hargapaket" class="form-control" id="email" readonly>
+        <input type="text"  class="form-control" id="email" readonly>
         </div>
         <br>
         <div class="form-group">
         	<label>Message</label>
-        <textarea type="textarea" class="form-control" style="height:100px;" id="message" name=""></textarea>
+        <textarea type="textarea" class="form-control" style="height:100px;" id="message" readonly></textarea>
         </div>
             </div>
             </div>
@@ -130,12 +130,12 @@
         </button>
       </div>
       <div class="modal-body">
-      @foreach($travelagent as $item)<form action="{{url('hapustravelagent/'.$item->id)}}" method="POST" enctype="multipart/form-data" id="formhapus">
+      @foreach($platform as $item)<form action="{{url('hapusplatform/'.$item->id)}}" method="POST" enctype="multipart/form-data" id="formhapus">
           @endforeach
           @method('delete')
       @csrf
         <p>Apakah anda yakin ingin menghapus?</p> 
-        <input type="hidden" name="idtravelagent" id="idtravelagent">
+        <input type="hidden" name="idplatform" id="idplatform">
       <div class="modal-footer">
       <button type="button" class="batal btn btn-secondary">Tidak</button>
         <button type="submit" class="btn btn-danger btnhapus">Ya</button>
@@ -151,23 +151,23 @@
 <script>
     $(document).ready(function(){
         $(document).on('click', '.editbtn', function(){
-            var travelagentid=$(this).val();
+            var platformid=$(this).val();
             $('#editModal').modal('show');
-            const dateFormat="dddd, MMMM Do YYYY, h:mm";
+         
             $.ajax({
                 
                 type: "GET",
-                url:"/detailtravelagent/"+travelagentid,
+                url:"/detailplatform/"+platformid,
                 success:function(response){
                     //console.log(response.Progres.Nama);
                      //$('#orderid').val(response.Order.OrderID);
-                    $('#website').val(response.Travel.website);
-                    $('#address').val(response.Travel.address);
-                    $('#name').val(response.Travel.name);
-                    $('#job').val(response.Travel.job);
-                    $('#contact').val(response.Travel.phone);
-                    $('#email').val(response.Travel.email);
-                    $('#message').val(response.Travel.message);
+                    $('#website').val(response.Platform.website);
+                    $('#address').val(response.Platform.address);
+                    $('#name').val(response.Platform.name);
+                    $('#job').val(response.Platform.job);
+                    $('#contact').val(response.Platform.phone);
+                    $('#email').val(response.Platform.email);
+                    $('#message').val(response.Platform.message);
                    
                 }
             });
@@ -182,13 +182,13 @@
         <script>
        $(document).ready(function(){ 
         $(document).on('click', '.hapusbtn', function(){
-            var idtravelagent=$(this).val();
+            var idplatform=$(this).val();
             $('#hapus').modal('show');
             $.ajax({
                 type: "GET",
-                url:"/detailtravelagent/"+idtravelagent,
+                url:"/detailplatform/"+idplatform,
                 success:function(response){
-                    $('#idtravelagent').val(response.Travel.id);
+                    $('#idplatform').val(response.Platform.id);
                 }
             });
           
@@ -201,12 +201,12 @@
             console.log(formData)
 
             $.ajax({
-                url:'/hapustravelagent/${idtravelagent}',
+                url:'/hapusplatform/${idplatform}',
                 method:"DELETE",
                 data:formData,
                 success:function(data){
                     $('#hapus').modal('hide')
-                    window.location.assign('message/travelagent');
+                    window.location.assign('message/platform');
                 }
             });
         });

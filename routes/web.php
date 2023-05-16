@@ -14,6 +14,8 @@ use App\Models\travelagent;
 use App\Models\influencer;
 use App\Models\message;
 use App\Models\affiliate;
+use App\Models\selltours;
+use App\Models\platform;
 use App\Models\destination;
 use App\Models\Rate;
 use App\Models\harga;
@@ -88,7 +90,7 @@ Route::get('/', function (Request $request) {
 
 
 Route::get('/paketwisata', function () {
-    $travel=travel::paginate(9);
+    $travel=travel::orderBy('created_at','DESC')->paginate(9);
     return view('wisata',compact('travel'));
 });
 
@@ -164,6 +166,16 @@ Route::get('/message/affiliate', function () {
     return view('affiliate', compact('affiliate'));
 });
 
+Route::get('/message/selltours', function () {
+    $selltours=selltours::orderBy('created_at','DESC')->paginate(10);
+    return view('selltours', compact('selltours'));
+});
+
+Route::get('/message/platform', function () {
+    $platform=platform::orderBy('created_at','DESC')->paginate(10);
+    return view('platform', compact('platform'));
+});
+
 Route::get('/blogadmin/formblog', function () {
     $tags=DB::table('tags')->get();
     $bahasa=bahasa::get();
@@ -216,6 +228,8 @@ Route::get('/showmessage/{MessageID}', [App\Http\Controllers\BlogController::cla
 Route::get('/detailcorporate/{CorporateID}', [App\Http\Controllers\BlogController::class,'showhapuscorporate']);
 Route::get('/detailtravelagent/{TravelagentID}', [App\Http\Controllers\BlogController::class,'showhapustravelagent']);
 Route::get('/detailaffiliate/{AffiliateID}', [App\Http\Controllers\BlogController::class,'showdetailaffiliate']);
+Route::get('/detailselltours/{SelltoursID}', [App\Http\Controllers\BlogController::class,'showdetailselltours']);
+Route::get('/detailplatform/{PlatformID}', [App\Http\Controllers\BlogController::class,'showdetailplatform']);
 Route::get('/detailinfluencer/{InfluencerID}', [App\Http\Controllers\BlogController::class,'showhapusinfluencer']);
 Route::delete('/hapusblog/{idblog}', [App\Http\Controllers\BlogController::class,'hapusblog']);
 Route::delete('/hapusbooking/{bookingid}', [App\Http\Controllers\BlogController::class,'hapusbooking']);
@@ -225,6 +239,8 @@ Route::delete('/hapusinfluencer/{idinfluencer}', [App\Http\Controllers\BlogContr
 Route::delete('/hapuscorporate/{idcorporate}', [App\Http\Controllers\BlogController::class,'hapusdiscount']);
 Route::delete('/hapustravelagent/{idtravelagent}', [App\Http\Controllers\BlogController::class,'hapustravelagent']);
 Route::delete('/hapusaffiliate/{idaffiliate}', [App\Http\Controllers\BlogController::class,'hapusaffiliate']);
+Route::delete('/hapusselltours/{idselltours}', [App\Http\Controllers\BlogController::class,'hapusselltours']);
+Route::delete('/hapusplatform/{idplatform}', [App\Http\Controllers\BlogController::class,'hapusplatform']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/viewblog', function(){
 //     return view('viewblog');

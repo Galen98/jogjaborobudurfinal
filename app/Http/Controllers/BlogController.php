@@ -25,6 +25,7 @@ use App\Models\rating;
 use App\Models\booking;
 use App\Models\destination;
 use App\Models\affiliate;
+use App\Models\platform;
 // use Request;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -167,6 +168,20 @@ class BlogController extends Controller
     public function hapusaffiliate(Request $request,$idaffiliate){
         $idaffiliate=Request('idaffiliate');
         DB::table('affiliate')->where('id',$idaffiliate)->delete();
+        Alert::error('Berhasil Dihapus');
+        return redirect()->back();
+    }
+
+    public function hapusselltours(Request $request,$idselltours){
+        $idselltours=Request('idselltours');
+        DB::table('selltour')->where('id',$idselltours)->delete();
+        Alert::error('Berhasil Dihapus');
+        return redirect()->back();
+    }
+
+    public function hapusplatform(Request $request,$idplatform){
+        $idplatform=Request('idplatform');
+        DB::table('platform')->where('id',$idplatform)->delete();
         Alert::error('Berhasil Dihapus');
         return redirect()->back();
     }
@@ -506,6 +521,22 @@ class BlogController extends Controller
         return response()->json([
         'status'=>200,
         'Affiliate'=>$Affiliate
+        ]);
+    }
+
+    public function showdetailselltours($SelltoursID){
+        $Selltours=DB::table('selltour')->where('id',$SelltoursID)->first();
+        return response()->json([
+        'status'=>200,
+        'Selltours'=>$Selltours
+        ]);
+    }
+
+    public function showdetailplatform($PlatformID){
+        $Platform=DB::table('platform')->where('id',$PlatformID)->first();
+        return response()->json([
+        'status'=>200,
+        'Platform'=>$Platform
         ]);
     }
 
