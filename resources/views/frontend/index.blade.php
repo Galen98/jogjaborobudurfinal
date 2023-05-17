@@ -106,7 +106,7 @@
   <li tabindex="0" data-test-id="header-navigation-pickers" class="item__dropdown item__dropdown--language js-navigation-language-dropdown hide-language" style="margin-left:-36px; ">
      <div>
       <form action="/contact/contacts-us" method="GET">
-            <button class="btn btn-secondary" type="submit" data-toggle="dropdown" aria-expanded="false" style="background-color:transparent !important;color: white;border-color:transparent !important;">
+            <button class="btn btn-secondary" type="submit" style="background-color:transparent !important;color: white;border-color:transparent !important;">
             Contact
             </button>
            </form>
