@@ -121,7 +121,7 @@
 		<div class="gtco-container">
 			<div class="row">
 				<div class="row-mt-15em" style="margin-top:100px; ">
-						<div class="col-md-7 mt-text" style="margin-top:-10px;margin-left:-5px;">
+						<div class="col-md-7 mt-text" style="margin-top:-10px;margin-left:0px;">
 							<h1>{{$item->header}}</h1><br>
               <form action="/alltours" method="GET">
               <button type="submit" class="js-check-availability gtm-trigger__adp-check-availability-btn avoid-close-dropdown-on-click c-button c-button--medium filbtn" data-test-id="checkout-submit-btn" id="tess">Learn More</button></form>
