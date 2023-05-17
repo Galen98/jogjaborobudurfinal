@@ -533,7 +533,7 @@
       
 		</div>
     <div role="navigation" aria-label="List" class="w-pagination-wrapper pagination-wrap" style="margin-top: 40px;">
-  <a href="/jogjaborobudurblog" data-a-button="border-grey" fs-cmsload-mode="load-under" href="?e8c9590c_page=2" aria-label="Next Page" class="w-pagination-next button is-border-grey">
+  <a href="/blog" data-a-button="border-grey" fs-cmsload-mode="load-under" href="?e8c9590c_page=2" aria-label="Next Page" class="w-pagination-next button is-border-grey">
   <div class="w-inline-block">Show more</div>
   </a>
   </div>

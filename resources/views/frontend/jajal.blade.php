@@ -189,7 +189,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   <li tabindex="0" data-test-id="header-navigation-pickers" class="item__dropdown item__dropdown--language js-navigation-language-dropdown hide-language" style="margin-left:-36px; ">
      <div>
       <form action="/contact/contacts-us" method="GET">
-            <button class="btn btn-secondary" type="submit" data-toggle="dropdown" aria-expanded="false" style="background-color:transparent !important;color: white;border-color:transparent !important;">
+            <button class="btn btn-secondary" type="submit" style="background-color:transparent !important;color: white;border-color:transparent !important;">
             Contact
             </button>
            </form>
@@ -529,15 +529,13 @@ font-family: 'GT Eesti Text Trial', sans-serif;
     <p></p>
     @endif
     
-  </section> <!---->
+  </section>
 </section>
 </div>
- <!----> 
+
           <section class="activity-swap-columns" data-v-c4be1764 style="border-top: solid;border-top-color: #e6e8eb;border-top-width: 1pt;">
-          <div class="overlay" data-v-c4be1764><!----> 
+          <div class="overlay" data-v-c4be1764>
           <div id="activity-experience" class="activity-experience js-section-content" data-v-d21396c2 data-v-c4be1764 style="">
-         <!--  <h2 class="activity-experience__header" data-v-d21396c2>The Original experience</h2> --> <!----> 
-            <!----> <!----> <!---->
             <p style="font-size: 20px;font-weight: bolder;margin-top: 15px;">Full Description </p>
             <br>
             <p style="font-size: 16px;">{!! $item->deskripsi_english !!}</p>
@@ -906,8 +904,11 @@ font-family: 'GT Eesti Text Trial', sans-serif;
         <div class="container" >
                                  <div class="row">
                                        <div class="col mt-4">
-                                             <h2 class="activity-experience__header" data-v-d21396c2>Review From Our Travelers</h2> 
-                                             <br>
+                                       <span data-test-id="collection-title" class="collection-header_title" style="font-size:25px;font-weight:bolder;">
+                                            Review from our travelers
+                                          </span> 
+                                             <br/>
+                                             <br/>
                                              </div>
                                          </div>
                                      </div>
@@ -918,22 +919,23 @@ font-family: 'GT Eesti Text Trial', sans-serif;
                                              <div class="form-group row">
                                                @foreach($travel as $item) <input type="hidden" name="wisata_id" value="{{ $item->wisata_id }}">@endforeach
                                                 <div class="col">
-                                                   <div class="rated">
+                                                   <div class="rated" style="margin-left:-15px;margin-bottom:-25px;">
                                                     @for($i=1; $i<=$values->star_rating; $i++)
-                                                      {{-- <input type="radio" id="star{{$i}}" class="rate" name="rating" value=""/> --}}
-                                                      <label class="star-rating-complete" title="text">{{$i}} stars</label>
+                                                      {{-- <input type="radio" id="star{{$i}}" class="rate" name="rating" value="" /> --}}
+                                                      <label class="star-rating-complete" title="text" >{{$i}} stars</label>
                                                     @endfor
                                                     </div>
                                                 </div>
                                              </div>
-                                             <div class="form-group row mt-2">
+                                             <div class="form-group row mt-0">
                                                 <div class="col">
-                                                    <p style="color: black;">"{{ $values->comments }}"</p>
+                                                <div id="activity-experience" class="activity-experience js-section-content" data-v-d21396c2 data-v-c4be1764 style="">
+                                                    <p style="font-size: 16px;">"{{ $values->comments }}"</p>
+                                                    </div>
                                                 </div>
                                              </div>
                                        </div>
                                     </div>
-
                                  </div>
                                 @endforeach
                                 @endif
@@ -944,7 +946,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
                             </div>
                         </div>
                         <br>
-                                <div class="container">
+                                <div class="container" style="margin-bottom:100px;">
                                     <div class="row">
                                        <div class="col mt-4">
                                           <form class="py-2 px-4" action="{{url('insertrating')}}" style="box-shadow: 0 0 10px 0 #ddd;border:solid;border-color: #e6e8eb;border-width: 1pt;" method="POST" autocomplete="off">
@@ -953,14 +955,16 @@ font-family: 'GT Eesti Text Trial', sans-serif;
                                               <div class="col">
                                                 <div class="rate">
                                                   <br>
-                                             <p class="font-weight-bold " style="color: black;font-size: 19px;">Insert Review</p>
+                                            <span data-test-id="collection-title" class="collection-header_title" style="font-size:18px;font-weight:bolder;">
+                                            Insert Review
+                                          </span> 
                                          </div>
                                          </div>
                                      </div>
                                              <div class="form-group row">
                                                 @foreach($travel as $item)<input type="hidden" name="wisata_id" value="{{ $item->wisata_id }}">@endforeach
                                                 <div class="col">
-                                                   <div class="rate">
+                                                   <div class="rate" >
                                                       <input type="radio" id="star5" class="rate" name="rating" value="5"/>
                                                       <label for="star5" title="text">5 stars</label>
                                                       <input type="radio" id="star4" class="rate" name="rating" value="4"/>
@@ -988,16 +992,16 @@ font-family: 'GT Eesti Text Trial', sans-serif;
                                     </div>
                                  </div>             
   
-<div id="gtco-subscribe" style="background-color: white;margin-bottom: 40px;" >
+<!-- <div id="gtco-subscribe" style="background-color: white;margin-bottom:0px;" >
 <div class="gtco-container">
   <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-          <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0>
+          <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0 style="margin-top:10px;">
         You might also like other destination
       </span>
           <p style="font-size: 17px;">Other travellers also book these tours</p>
         </div>
     @foreach($destination as $item)
-    <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:60px;">
+    <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:20px;">
     <a href="{{'/category-destination/' .$item->id}}">
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto" style="margin-bottom:40px;">
          <article class="text-left">
@@ -1008,7 +1012,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
       </div>
       </a>
       </div>
-      @endforeach
+      @endforeach -->
 </div>
 </div>
 
