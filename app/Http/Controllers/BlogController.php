@@ -813,7 +813,6 @@ class BlogController extends Controller
         }
         DB::table('background')->where('id',$idimage)
         ->update([
-            'altimage'=>$request->altimage,
             'header'=>$request->teks,
             'image'=>$nama_file,
             'place'=>'landingpage'
@@ -834,7 +833,6 @@ class BlogController extends Controller
         }
         DB::table('background')->where('id',$idimage)
         ->update([
-            'altimage'=>$request->altimage,
             'header'=>$request->teks,
             'image'=>$nama_file,
             'subheader'=>$request->tekssmall,
@@ -1059,8 +1057,9 @@ public function datefilter(Request $request)
     $booking = DB::table('booking')
         ->join('wisata', 'wisata.wisata_id', '=', 'booking.wisata_id')
         ->select('wisata.image', 'booking.id', 'booking.paketwisata', 'booking.total','booking.traveldate','booking.namawisata','booking.name','booking.surname','booking.created_at','booking.phone','booking.code','booking.email','booking.country','booking.adult','booking.totalgroup','booking.child','booking.time','booking.request','booking.pickup')
-        ->whereBetween('booking.traveldate', [$from, $to])
-        ->paginate(10);
+         ->whereBetween('booking.traveldate', [$from , $to])
+        // ->whereBetween(str_to_date('booking.traveldate', '%d/%m/%Y'), array($from, $to))
+            ->paginate(10);
     return view('booking',compact('booking'));
 }
 

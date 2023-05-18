@@ -5,7 +5,7 @@
 <div class="card-body">
 <table>
                             <div>
-                            <h5 class="card-title">Search :</h5>
+                            <h5 class="card-title">Filter Travel Date :</h5>
                             <tbody>
                             <tr class="control-group">
                               <td>
@@ -25,7 +25,10 @@
 </div>
 
 
-            <div id="gyg" data-server-rendered="true">
+  <div id="gyg" data-server-rendered="true">
+   @if(count($booking) === 0)
+   <h1 style="text-align: center;margin-top: 100px;">Data is empty!</h1>
+   @else
   <div class="main-wrapper  partner-left-layout" data-v-5120f7ad>
   <a href="#main-content" class="skip-link">Skip to content</a> 
   <main id="main-content">
@@ -111,6 +114,7 @@
   </section>
 </main>
 </div>
+@endif
 </div>
             <div class="col-lg-12">
             {{ $booking->links() }}
@@ -292,18 +296,16 @@
         <script>
           $(function() {
     $( "#from" ).datepicker({
-      defaultDate: "+1w",
       changeMonth: true,
-      dateFormat: 'dd/mm/y',
+      dateFormat: 'dd/mm/yy',
       numberOfMonths: 1,
       onClose: function( selectedDate ) {
         $( "#to" ).datepicker( "option", "minDate", selectedDate );
       }
     });
     $( "#to" ).datepicker({
-      defaultDate: "+1w",
       changeMonth: true,
-      dateFormat: 'dd/mm/y',
+      dateFormat: 'dd/mm/yy',
       numberOfMonths: 1,
       onClose: function( selectedDate ) {
         $( "#from" ).datepicker( "option", "maxDate", selectedDate );

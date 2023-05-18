@@ -10,5 +10,5 @@ class background extends Model
     use HasFactory;
     public $timestamps = false;
     protected $table = "background";
-    protected $fillable = ['header','subheader','image','altimage','place'];
+    protected $fillable = ['header','subheader','image','place'];
 }

@@ -27,12 +27,6 @@
 <meta name="viewport"content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
         />
     <title>Form Travel</title>
-<meta name="description">
-<meta property="og:description" >
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="jogja borobudur">
-<meta property="og:title" content="">
-    <meta name="generator" content="tfe" />
     <meta name="release-tag" content="v68842.06fb56d" />
     <link rel="stylesheet" href="{{asset('traveler')}}/css/style.css">
     <meta name="service-name" content="traveler-frontend-checkout" />
@@ -67,8 +61,10 @@
 	<header class="page-header light" data-test-id="page-header" data-v-36cff088 style="background-color:  #182c4c;">
 	<div class="page-header__content" data-v-36cff088><!--[-->
 	<div class="page-header__logo-image" role="img" aria-label="GetYourGuide logo">
+	<a href="/paketwisata">
 	<img src="{{asset('spica')}}/images/logomini.png" class="logs" alt="logo"/>
-	</div><!--]--><!----><!---->
+	</a>
+	</div>
 	</div>
 	</header>
 	<a href="#main-content" class="skip-link">Skip to content</a>

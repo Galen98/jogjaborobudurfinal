@@ -14,12 +14,6 @@
                   <br/>
                   <br/>
                     <div class="form-group">
-                      <label for="exampleInputName1">alt image</label>
-                      <input type="text" class="form-control" id="exampleInputName1" name="altimage" placeholder="Masukan alt Image" value="{{$item->altimage}}">
-                    </div>
-
-
-                    <div class="form-group">
                       <label for="exampleInputName1">Image Text Header</label>
                       <input type="text" class="form-control" id="exampleInputName1" name="teks" placeholder="Masukan Kategori" value="{{$item->header}}">
                     </div>
