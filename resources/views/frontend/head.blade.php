@@ -36,14 +36,16 @@
 <meta name="viewport"content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
         />
     <title>Jogja Borobudur Tour & Travel</title>
-<meta name="description" content="Find, compare, and book sightseeing tours, attractions, excursions, things to do and fun activities from around the world. Save money and book directly from local suppliers." data-h-1e37826="">
-<meta property="og:description" content="Find, compare, and book sightseeing tours, attractions, excursions, things to do and fun activities from around the world. Save money and book directly from local suppliers." data-h-da974de="">
-<meta property="og:type" content="website">
 
-<meta property="og:site_name" content="jogja borobudur">
-<meta property="og:title" content="jogja borobudur">
-    <meta name="generator" content="tfe" />
-    <meta name="release-tag" content="v68842.06fb56d" />
+    <meta name="title" content="jogja Borobudur | Tour & Travel" />
+  <meta name="description" content="JogjaBorobudur Tour and Travel. Explore borobudur, prambanan, and many more."/>
+  <!-- facebook tag -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="www.jogjaborobudur.com" />
+  <meta property="og:title" content="jogja borobudur tour & travel" />
+  <meta property="og:description"
+    content="Jogja Borobudur tour & travel Explore borobudur, prambanan, and many more free cancellation." />
+  <meta property="og:image" content="{{asset('spica')}}/images/logomini.png" />
     <link rel="stylesheet" href="{{asset('traveler')}}/css/style.css">
     <link rel="stylesheet" href="{{asset('traveler')}}/css/booking10.css">
     <link rel="stylesheet" href="{{asset('traveler')}}/css/booking11.css">
@@ -51,20 +53,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   </head>
   <body>
-    
-        <!-- <noscript>
-          <iframe src="https://en.rageagainstthesoap.com/ns/d1335a553efd512f4a5d7a32df3ea3c4.html?ch=default-cheq4ppc" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-        </noscript> -->
-    
-    
     <div id="gyg">
     <div>
-	<div class="main-wrapper  partner-left-layout customer-information customer-information--gyg-symbol-on-mobile"><!----><!----><!---->
+	<div class="main-wrapper  partner-left-layout customer-information customer-information--gyg-symbol-on-mobile">
 	<header class="page-header light" data-test-id="page-header" data-v-36cff088 style="background-color: #fc2c04;margin-top: 0px;">
-	<div class="page-header__content" data-v-36cff088><!--[-->
+	<div class="page-header__content" data-v-36cff088>
 	<div class="page-header__logo-image" role="img" aria-label="GetYourGuide logo">
+  <a href="/">
 	<img style="margin-top: 10px;" class="logs" src="{{asset('spica')}}/images/logomini.png" alt="logo"/>
-	</div><!--]--><!----><!---->
+</a>
+	</div>
 	</div>
 	</header>
 	@yield('content')

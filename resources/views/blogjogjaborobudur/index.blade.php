@@ -96,8 +96,8 @@ font-family: 'GT Eesti Text Trial';
             </div>
 
 
-            <div class="lg:ml-5 ml-auto">
-               <div class="dropdown inline-block relative">
+    <div class="lg:ml-5 ml-auto">
+    <div class="dropdown inline-block relative">
     <button class="flex items-center  text-sm  transition hover:text-blue-500">
       <span class="mr-1">Language</span>
       <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/> </svg>
@@ -110,6 +110,7 @@ font-family: 'GT Eesti Text Trial';
     </ul>
   </div>
             </div>
+            
             <div class="text-xl text-gray-700 cursor-pointer ml-4 xl:hidden block hover:text-blue-500 transition" id="open_sidebar">
                 <i class="fas fa-bars" style="color:white;"></i>
             </div>
@@ -132,19 +133,11 @@ font-family: 'GT Eesti Text Trial';
             <!-- search and menu -->
             <div class="lg:hidden">
                 <!-- searchbar -->
-                <div class="relative mx-3 mt-3 shadow-sm">
-                    <span class="absolute left-3 top-2 text-sm text-gray-500">
-                        <i class="fas fa-search"></i>
-                    </span>
-                    <input type="text"
-                        class="block w-full shadow-sm border-none rounded-3xl  pl-11 pr-2 py-2 focus:outline-none bg-gray-50 text-sm text-gray-700 placeholder-gray-500"
-                        placeholder="Search">
-                </div>
         
                 <!-- navlink -->
                 <h3 class="text-xl font-semibold text-gray-700 mb-1  pl-3 pt-3">Menu</h3>
                 <div class="">
-                    <a href="/jogjaborobudurblog"
+                    <a href="/blog"
                         class="flex px-4 py-1 uppercase items-center font-semibold text-sm  transition hover:text-blue-500">
                         <span class="w-6">
                         </span>

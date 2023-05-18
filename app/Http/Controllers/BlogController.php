@@ -219,10 +219,9 @@ class BlogController extends Controller
         DB::table('waktu')->where('wisata_id',$idwisata)->delete();
         DB::table('subwisata')->where('wisata_id',$idwisata)->delete();
         DB::table('hargabaru')->where('wisata_id',$idwisata)->delete();
-        DB::table('hargachild')->where('wisata_id',$idwisata)->delete();
+        DB::table('harga_child')->where('wisata_id',$idwisata)->delete();
         DB::table('tambahseason')->where('wisata_id',$idwisata)->delete();
-
-        //DB::table('highlight')->where('wisata_id',$idwisata)->delete();
+        DB::table('highlight')->where('wisata_id',$idwisata)->delete();
         Alert::error('Berhasil Dihapus');
         return redirect()->back();
     }
@@ -1026,7 +1025,7 @@ class BlogController extends Controller
                 // isi dengan nama folder tempat kemana file diupload
         $gambar = Image::make($img);
         $gambar->resize(600,600);
-        $tujuan_upload = 'public/img/';
+        $tujuan_upload = public_path('public/img/');
         $gambar->save($tujuan_upload .$nama_file); 
 
         $data = [

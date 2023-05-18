@@ -1,5 +1,6 @@
 @extends('blogjogjaborobudur.index')
 @section('content')
+@include('sweetalert::alert')
 <div class="container mx-auto px-4 flex flex-wrap lg:flex-nowrap">
             <!-- left sidebar -->
             <div class="w-3/12 hidden xl:block">
@@ -191,11 +192,14 @@
             </h1>
 
             <div class="md:flex flex-row">
+            <form method="POST" action="{{url('insertmessage')}}" enctype="multipart/form-data">
+                @csrf
               <input
-                type="text"
+                type="text" name="email"
                 class="form-control block w-full px-4 py-2 mb-2 md:mb-0 md:mr-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                 placeholder="Enter your email"
               />
+              <br>
               <button
                 type="submit"
                 class="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
@@ -204,6 +208,7 @@
               >
                 Subscribe
               </button>
+          </form>
             </div>
           </div>
           <div class="mb-12 lg:mb-0">
