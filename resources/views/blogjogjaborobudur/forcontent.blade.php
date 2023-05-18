@@ -48,7 +48,7 @@ font-family: 'GT Eesti Text Trial';
 <body class="text-gray-600">
     <!-- navbar -->
     <nav class="" style="background-color:#fc2c04;color:white;">
-        <div class="container px-4 mx-auto flex items-center py-3 shadow-sm">
+        <div class="container px-4 mx-auto flex items-center py-3">
             <!-- logo -->
             <div class="lg:w-14 w-16">
                 <a href="/blog">

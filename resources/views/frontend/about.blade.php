@@ -1,19 +1,18 @@
 @extends('frontend.form')
 @section('header')
-<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url({{asset('traveler')}}/images/about.jpg);height: 657px;">
+@foreach($background as $item)
+<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url({{ url('public/img/'.$item->image) }});height: 657px;">
     <div class="overlay"></div>
 		<div class="gtco-container">
 			<div class="row">
 				<div class="col-md-12 col-md-offset-0 text-left">
 					<div class="row row-mt-15em">
-
-						<div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
-							<h3 style="color: white;font-size:70px;">About Us</h3>
-							<h2>“Jogja Borobudur Tours & Travel is a registered business based in Yogyakarta, Indonesia.”
-								<br>
-							Our vision is to deliver high quality travel services in order to give the best travel experience to our customers. </h2>	
-						</div>
 						
+						<div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
+							<h3 style="color: white;font-size:70px;">{{$item->header}}</h3>
+							<h2>{{$item->subheader}}</h2>	
+						</div>
+						@endforeach
 					</div>
 					
 				</div>

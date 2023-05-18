@@ -784,7 +784,6 @@ class BlogController extends Controller
     }
 
     public function insertbackground(Request $request){
-        $altimage=$request->altimage;
         $teks=$request->teks;
         $gambar=$request->image;
         $nama_file = time()."_".$gambar->getClientOriginalName();
@@ -793,9 +792,8 @@ class BlogController extends Controller
         $data=[
             'header'=>$teks,
             'subheader'=>$request->tekssmall,
-            'altimage'=>$altimage,
             'image'=>$nama_file,
-            'place'=>'contact'
+            'place'=>'about'
         ];
         background::create($data);
         return redirect()->back();
@@ -821,6 +819,126 @@ class BlogController extends Controller
         return redirect()->to('/background/change');
     }
 
+    public function editimageagent(Request $request,$idimage){
+        $gambar=$request->image;
+        if($gambar == null){
+            $nama_file=$request->namagambar;
+        }
+        else{
+        $nama_file = time()."_".$gambar->getClientOriginalName();
+		$tujuan_upload = 'public/img';
+        $gambar->move($tujuan_upload,$nama_file);
+        }
+        DB::table('background')->where('id',$idimage)
+        ->update([
+            'header'=>$request->teks,
+            'image'=>$nama_file,
+            'place'=>'agent'
+        ]);
+        Alert::success('Berhasil','Berhasil Diupdate');
+        return redirect()->to('/background/change');
+    }
+
+    public function editimageaffiliate(Request $request,$idimage){
+        $gambar=$request->image;
+        if($gambar == null){
+            $nama_file=$request->namagambar;
+        }
+        else{
+        $nama_file = time()."_".$gambar->getClientOriginalName();
+		$tujuan_upload = 'public/img';
+        $gambar->move($tujuan_upload,$nama_file);
+        }
+        DB::table('background')->where('id',$idimage)
+        ->update([
+            'header'=>$request->teks,
+            'image'=>$nama_file,
+            'place'=>'affiliate'
+        ]);
+        Alert::success('Berhasil','Berhasil Diupdate');
+        return redirect()->to('/background/change');
+    }
+
+    public function editimageselltours(Request $request,$idimage){
+        $gambar=$request->image;
+        if($gambar == null){
+            $nama_file=$request->namagambar;
+        }
+        else{
+        $nama_file = time()."_".$gambar->getClientOriginalName();
+		$tujuan_upload = 'public/img';
+        $gambar->move($tujuan_upload,$nama_file);
+        }
+        DB::table('background')->where('id',$idimage)
+        ->update([
+            'header'=>$request->teks,
+            'image'=>$nama_file,
+            'place'=>'selltours'
+        ]);
+        Alert::success('Berhasil','Berhasil Diupdate');
+        return redirect()->to('/background/change');
+    }
+
+    public function editimageabout(Request $request,$idimage){
+        $gambar=$request->image;
+        if($gambar == null){
+            $nama_file=$request->namagambar;
+        }
+        else{
+        $nama_file = time()."_".$gambar->getClientOriginalName();
+		$tujuan_upload = 'public/img';
+        $gambar->move($tujuan_upload,$nama_file);
+        }
+        DB::table('background')->where('id',$idimage)
+        ->update([
+            'header'=>$request->teks,
+            'image'=>$nama_file,
+            'place'=>'about'
+        ]);
+        Alert::success('Berhasil','Berhasil Diupdate');
+        return redirect()->to('/background/change');
+    }
+
+    public function editimageplatform(Request $request,$idimage){
+        $gambar=$request->image;
+        if($gambar == null){
+            $nama_file=$request->namagambar;
+        }
+        else{
+        $nama_file = time()."_".$gambar->getClientOriginalName();
+		$tujuan_upload = 'public/img';
+        $gambar->move($tujuan_upload,$nama_file);
+        }
+        DB::table('background')->where('id',$idimage)
+        ->update([
+            'header'=>$request->teks,
+            'image'=>$nama_file,
+            'place'=>'platform'
+        ]);
+        Alert::success('Berhasil','Berhasil Diupdate');
+        return redirect()->to('/background/change');
+    }
+
+    public function editimagecorporate(Request $request,$idimage){
+        $gambar=$request->image;
+        if($gambar == null){
+            $nama_file=$request->namagambar;
+        }
+        else{
+        $nama_file = time()."_".$gambar->getClientOriginalName();
+		$tujuan_upload = 'public/img';
+        $gambar->move($tujuan_upload,$nama_file);
+        }
+        DB::table('background')->where('id',$idimage)
+        ->update([
+            'header'=>$request->teks,
+            'image'=>$nama_file,
+            'place'=>'corporate'
+        ]);
+        Alert::success('Berhasil','Berhasil Diupdate');
+        return redirect()->to('/background/change');
+    }
+
     public function editimagecontact(Request $request,$idimage){
         $gambar=$request->image;
         if($gambar == null){
@@ -837,6 +955,27 @@ class BlogController extends Controller
             'image'=>$nama_file,
             'subheader'=>$request->tekssmall,
             'place'=>'contact'
+        ]);
+        Alert::success('Berhasil','Berhasil Diupdate');
+        return redirect()->to('/background/change');
+    }
+
+    public function editimageinfluencer(Request $request,$idimage){
+        $gambar=$request->image;
+        if($gambar == null){
+            $nama_file=$request->namagambar;
+        }
+        else{
+        $nama_file = time()."_".$gambar->getClientOriginalName();
+		$tujuan_upload = 'public/img';
+        $gambar->move($tujuan_upload,$nama_file);
+        }
+        DB::table('background')->where('id',$idimage)
+        ->update([
+            'header'=>$request->teks,
+            'image'=>$nama_file,
+            'subheader'=>$request->tekssmall,
+            'place'=>'influencer'
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
         return redirect()->to('/background/change');

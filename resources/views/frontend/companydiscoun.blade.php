@@ -1,6 +1,7 @@
 @extends('frontend.form')
 @section('header')
-<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url({{asset('traveler')}}/images/logins.jpg);height: 657px;">
+@foreach($background as $item)
+<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url({{ url('public/img/'.$item->image) }});height: 657px;">
     <div class="overlay"></div>
 		<div class="gtco-container">
 			<div class="row">
@@ -8,10 +9,10 @@
 					<div class="row row-mt-15em">
 
 						<div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
-							<h3 style="color: white;font-size:70px;">Corporate Event</h3>
-							<h2>Get our exclusive deals for your organization!</h2>	
+							<h3 style="color: white;font-size:70px;">{{$item->header}}</h3>
+							<h2>{{$item->subheader}}</h2>	
 						</div>
-						
+						@endforeach
 					</div>
 					
 				</div>

@@ -55,7 +55,7 @@
                          Background Influencer
                           </td>
                           <td>
-                          <a href="">Change!</a>
+                          <a href="/background/change/influencer">Change!</a>
                           </td>
                         </tr>
                         
@@ -67,7 +67,7 @@
                          Background Booking Platform
                           </td>
                           <td>
-                          <a href="">Change!</a>
+                          <a href="/background/change/platform">Change!</a>
                           </td>
                         </tr>
 
@@ -79,7 +79,7 @@
                          Background Corporate Event
                           </td>
                           <td>
-                          <a href="">Change!</a>
+                          <a href="/background/change/corporate">Change!</a>
                           </td>
                         </tr>
 
@@ -91,7 +91,7 @@
                          Background Travel Agent
                           </td>
                           <td>
-                          <a href="">Change!</a>
+                          <a href="/background/change/agent">Change!</a>
                           </td>
                         </tr>
 
@@ -103,7 +103,7 @@
                          Background Affiliate Program
                           </td>
                           <td>
-                          <a href="">Change!</a>
+                          <a href="/background/change/affiliate">Change!</a>
                           </td>
                         </tr>
 
@@ -115,7 +115,7 @@
                          Background Sell Your Tours
                           </td>
                           <td>
-                          <a href="">Change!</a>
+                          <a href="/background/change/selltours">Change!</a>
                           </td>
                         </tr>
 
@@ -127,7 +127,7 @@
                          Background About Us
                           </td>
                           <td>
-                          <a href="">Change!</a>
+                          <a href="/background/change/about">Change!</a>
                           </td>
                         </tr>
                       </tbody>

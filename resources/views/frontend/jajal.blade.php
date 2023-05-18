@@ -912,7 +912,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
                                              </div>
                                          </div>
                                      </div>
-@foreach($value as $values)
+                      @foreach($value as $values)
                                 <div class="container">
                                     <div class="row">
                                        <div class="col mt-0">     
@@ -1036,7 +1036,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
               <li><a href="/about-us" style="color: white;">About Us</a></li>
               <li><a href="/blog" style="color: white;">Blog</a></li>
               <li><a href="/contact/contacts-us" style="color: white;">Contact</a></li>
-              <li><a href="#" style="color: white;">Terms & Condition</a></li>
+              <li><a href="/terms-condition" style="color: white;">Terms & Condition</a></li>
               <li><a href="/privacy-policy" style="color: white;">Privacy Policy</a></li>
             </ul>
           </div>

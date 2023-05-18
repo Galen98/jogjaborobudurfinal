@@ -1,6 +1,7 @@
 @extends('frontend.form')
 @section('header')
-<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url({{asset('traveler')}}/images/merapi.webp);height: 657px;">
+@foreach($background as $item)
+<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url({{ url('public/img/'.$item->image) }});height: 657px;">
     <div class="overlay"></div>
     <div class="gtco-container">
       <div class="row">
@@ -8,16 +9,11 @@
           <div class="row row-mt-15em">
 
             <div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
-            <h3 style="color: white;font-size:70px;">Online Booking Platform</h3>
-              <h2>Are you an online booking platform?
-              Interested in our tours? Want to 
-              offer us to become your suppllier
-              or local partner? Fill out the following
-              form, we will get back to you
-              ASAP!</h2> 
+            <h3 style="color: white;font-size:70px;">{{$item->header}}</h3>
+              <h2>{{$item->subheader}}</h2> 
             </div>
           </div>
-          
+          @endforeach
         </div>
       </div>
     </div>

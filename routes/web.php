@@ -105,6 +105,10 @@ Route::get('/privacy-policy', function () {
     return view('frontend.privacypolicy');
 });
 
+Route::get('/terms-condition', function () {
+    return view('frontend.termscondition');
+});
+
 Route::get('/journey', function () {
     return view('frontend.journey');
 });
@@ -127,7 +131,8 @@ return view('formcategory');
 
 Route::get('/about-us', function(){
 $bahasa=bahasa::get();
-return view('frontend.about',compact('bahasa'));
+$background=background::where('place', 'about')->get();
+return view('frontend.about',compact('bahasa','background'));
 });
 
 Route::get('/paketwisata/diskon/{travelid}', [App\Http\Controllers\BlogController::class,'diskon']);
@@ -254,6 +259,13 @@ Route::patch('editblog/{idblog}', [App\Http\Controllers\BlogController::class,'e
 //edit background
 Route::patch('editimagelanding/{idimage}', [App\Http\Controllers\BlogController::class,'editimagelanding']);
 Route::patch('editimagecontact/{idimage}', [App\Http\Controllers\BlogController::class,'editimagecontact']);
+Route::patch('editimageinfluencer/{idimage}', [App\Http\Controllers\BlogController::class,'editimageinfluencer']);
+Route::patch('editimageplatform/{idimage}', [App\Http\Controllers\BlogController::class,'editimageplatform']);
+Route::patch('editimagecorporate/{idimage}', [App\Http\Controllers\BlogController::class,'editimagecorporate']);
+Route::patch('editimageagent/{idimage}', [App\Http\Controllers\BlogController::class,'editimageagent']);
+Route::patch('editimageaffiliate/{idimage}', [App\Http\Controllers\BlogController::class,'editimageaffiliate']);
+Route::patch('editimageselltours/{idimage}', [App\Http\Controllers\BlogController::class,'editimageselltours']);
+Route::patch('editimageabout/{idimage}', [App\Http\Controllers\BlogController::class,'editimageabout']);
 
 Route::patch('editwisata/{idwisata}', [App\Http\Controllers\BlogController::class,'editproseswisata']);
 Route::patch('diskonpost/{travelid}', [App\Http\Controllers\BlogController::class,'diskonpost']);
@@ -319,32 +331,38 @@ Route::get('/formseason',function(){
 
 //customer
 Route::get('/corporate/corporatediscount',function(){
+    $background=background::where('place', 'corporate')->get();
     $bahasa=bahasa::get();
-    return view('frontend.companydiscoun',compact('bahasa'));
+    return view('frontend.companydiscoun',compact('bahasa','background'));
 });
 
 Route::get('/influencer/influencer',function(){
     $bahasa=bahasa::get();
-    return view('frontend.influencer',compact('bahasa'));
+    $background=background::where('place', 'influencer')->get();
+    return view('frontend.influencer',compact('bahasa','background'));
 });
 Route::get('/onlinebooking/platform',function(){
+    $background=background::where('place', 'platform')->get();
     $bahasa=bahasa::get();
-    return view('frontend.bookingplatform',compact('bahasa'));
+    return view('frontend.bookingplatform',compact('bahasa','background'));
 });
 Route::get('/affiliate/affiliateprogram',function(){
     $bahasa=bahasa::get();
-    return view('frontend.affiliateprogram',compact('bahasa'));
+    $background=background::where('place', 'affiliate')->get();
+    return view('frontend.affiliateprogram',compact('bahasa','background'));
 });
 Route::get('/sellyourtours/sellyourtours',function(){
     $bahasa=bahasa::get();
-    return view('frontend.sellyourtour',compact('bahasa'));
+    $background=background::where('place', 'selltours')->get();
+    return view('frontend.sellyourtour',compact('bahasa','background'));
 });
 Route::get('/jajal',function(){
     return view('frontend.jajal');
 });
 Route::get('/travelagent/travelagent',function(){
     $bahasa=bahasa::get();
-    return view('frontend.travelagent',compact('bahasa'));
+    $background=background::where('place', 'agent')->get();
+    return view('frontend.travelagent',compact('bahasa','background'));
 });
 Route::get('/contact/contacts-us',function(){
     $bahasa=bahasa::get();
@@ -365,9 +383,44 @@ Route::get('/background/change/landingpage',function(){
     return view('formbackground',compact('background'));
 });
 
+Route::get('/background/change/agent',function(){
+    $background=background::where('place', 'agent')->get();
+    return view('backgroundagent',compact('background'));
+});
+
+Route::get('/background/change/affiliate',function(){
+    $background=background::where('place', 'affiliate')->get();
+    return view('backgroundaffiliate',compact('background'));
+});
+
+Route::get('/background/change/selltours',function(){
+    $background=background::where('place', 'selltours')->get();
+    return view('backgroundselltours',compact('background'));
+});
+
+Route::get('/background/change/about',function(){
+    $background=background::where('place', 'about')->get();
+    return view('backgroundabout',compact('background'));
+});
+
+Route::get('/background/change/corporate',function(){
+    $background=background::where('place', 'corporate')->get();
+    return view('backgroundcorporate',compact('background'));
+});
+
 Route::get('/background/change/contact',function(){
     $background=background::where('place', 'contact')->get();
     return view('backgroundcontact',compact('background'));
+});
+
+Route::get('/background/change/influencer',function(){
+    $background=background::where('place', 'influencer')->get();
+    return view('backgroundinfluencer',compact('background'));
+});
+
+Route::get('/background/change/platform',function(){
+    $background=background::where('place', 'platform')->get();
+    return view('backgroundplatform',compact('background'));
 });
 Route::patch('/updatecurrency/{idrate}',[BlogController::class,'updatecurrency']);
 Route::patch('/updatetheme/{idtheme}',[BlogController::class,'updatetheme']);
