@@ -17,9 +17,9 @@
 				<div class="col-md-6">
 					 <label>Discount</label>
 					 @if($item->discount == 'yes')
-                        <div class="form-group row">
+                        <div class="form-group row diskoncek1">
                           <div class="col-sm-4">
-                            <div class="form-check">
+                            <div class="form-check ">
                               <label class="form-check-label">
                                 <input type="radio" class="form-check-input" name="discount" id="membershipRadios1" value="yes" checked>
                                 Yes
@@ -36,9 +36,9 @@
                           </div>
                         </div>
                         @elseif($item->discount == 'no')
-                        <div class="form-group row">
+                        <div class="form-group row diskoncek2">
                           <div class="col-sm-4">
-                            <div class="form-check">
+                            <div class="form-check ">
                               <label class="form-check-label">
                                 <input type="radio" class="form-check-input" name="discount" id="membershipRadios1" value="yes">
                                 Yes
@@ -55,9 +55,9 @@
                           </div>
                         </div>
                         @else
-                        <div class="form-group row">
+                        <div class="form-group row diskoncek3">
                           <div class="col-sm-4">
-                            <div class="form-check">
+                            <div class="form-check ">
                               <label class="form-check-label">
                                 <input type="radio" class="form-check-input" name="discount" id="membershipRadios1" value="yes">
                                 Yes
@@ -79,14 +79,18 @@
                     <div class="form-group">
                     <label for="exampleInputPassword4">Harga Sekarang</label>
                     <p>in IDR</p>
-                    <input type="text" class="form-control" id="exampleInputEmail3" id="idr" name="idr" placeholder="@currency($item->IDR)" value="{{$item->IDR}}" readonly=""> 
+                    <input type="text" class="form-control" id="exampleInputEmail3" id="idr" placeholder="@currency($item->IDR)" value="{{$item->IDR}}" readonly=""> 
                     </div>
-
-                    <div class="form-group">
-                    <label for="exampleInputPassword4">Harga Diubah</label>
+                    <div class="form-group sebelum">
+                    <label for="exampleInputPassword4">Harga Sebelum Diupdate</label>
                     <p>in IDR</p>
-                    <input type="text" class="form-control" id="exampleInputEmail3" name="idrdiscount" placeholder="Masukan harga diskon">
+                    <input type="text" class="form-control" id="exampleInputEmail3" id="idr" placeholder="@currency($item->IDR_awal)" value="{{$item->IDR_awal}}" readonly=""> 
                     </div>
+                    <br/>
+                    
+                    <button type="button" class="btn btn-info mr-2 btneditharga" value="{{$item->wisata_id}}">Ubah Harga</button>
+
+                   
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
 				</form>
 				
@@ -209,7 +213,6 @@
             <div class="modal-content">
             <div class="modal-header">
             <button type="button" class="btn-close" data-dismiss="modal">
-            <span aria-hidden="true">&times;</span>
             </button>
       </div>
       <div class="modal-body">
@@ -240,7 +243,6 @@
             <div class="modal-content">
             <div class="modal-header">
             <button type="button" class="btn-close" data-dismiss="modal">
-            <span aria-hidden="true">&times;</span>
             </button>
       </div>
       <div class="modal-body">
@@ -248,7 +250,7 @@
       <form action="{{url('updatehargachild')}}" action="POST" enctype="multipart/form-data" id="formeditchild">
         @csrf
       <div class="form-group">
-        <input type="hidden" name="idtravel" id="idtravel" readonly="">
+        <input type="text" name="idtravel" id="idtravels" readonly="">
         <input type="hidden" name="idhargachild" id="idhargachild" readonly="">
         Person 
         <input type="text" name="personchild" class="form-control" id="personchild">
@@ -258,6 +260,32 @@
         <input type="text" name="hargachild" class="form-control" id="hargachild">
         </div>
         <button type="button" class="btn btn-primary btnupdatechild">Update</button>
+        </form>
+        <br>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="editModaldiskon" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="btn-close" data-dismiss="modal">
+            </button>
+      </div>
+      <div class="modal-body">
+      <div class="form-group">
+      <form action="{{url('updatediskon')}}" action="POST" enctype="multipart/form-data" id="formeditdiskon">
+        @csrf
+      <div class="form-group">
+        <input type="text" name="idtravell" id="idtravell" readonly="">
+        <input type="text" name="idr" id="idr" readonly="">
+        Ubah Harga 
+        <input type="text" name="idrdiscoun" class="form-control" id="idrdiscoun">
+        </div>
+        <button type="button" class="btn btn-primary btnupdatediskon">Update</button>
         </form>
         <br>
         </div>
@@ -328,6 +356,30 @@
 
 @section('scripts')
 <script>
+  $(".sebelum").css("display","none");
+  $(".diskoncek1").click(function(){ 
+if ($("input[name='discount']:checked").val() == "yes" ) { 
+$(".sebelum").slideDown("fast");
+} else {
+$(".sebelum").slideUp("fast"); 
+}
+}); 
+$(".diskoncek2").click(function(){ 
+if ($("input[name='discount']:checked").val() == "yes" ) { 
+$(".sebelum").slideDown("fast");
+} else {
+$(".sebelum").slideUp("fast"); 
+}
+});
+$(".diskoncek3").click(function(){ 
+if ($("input[name='discount']:checked").val() == "yes" ) { 
+$(".sebelum").slideDown("fast");
+} else {
+$(".sebelum").slideUp("fast"); 
+}
+});  
+</script>
+<script>
     $(document).ready(function(){
         $(document).on('click', '.btnedit', function(){
             var idharga=$(this).val();
@@ -391,7 +443,7 @@
                     $('#personchild').val(response.Child.min);
                     $('#rangechild').val(response.Child.maks);
                     $('#hargachild').val(response.Child.harga); 
-                     $('#idtravel').val(response.Child.wisata_id);  
+                     $('#idtravels').val(response.Child.wisata_id);  
                 }
             });
         });
@@ -402,7 +454,7 @@
     });
 
     $(document).on('click', '.btnupdatechild', function(){
-            var idtravel=$('#formeditchild').find('#idtravel').val()
+            var idtravels=$('#formeditchild').find('#idtravels').val()
             var orid=$('#formeditchild').find('#idhargachild').val()
             let formData=$('#formeditchild').serialize()
             //console.log(progid);
@@ -414,7 +466,50 @@
                 data:formData,
                 success:function(data){
                     $('#editModalchild').modal('hide')
-                    window.location.assign('/paketwisata/diskon/'+idtravel);
+                    window.location.assign('/paketwisata/diskon/'+idtravels);
+                }
+            })
+        });
+        </script>
+
+<script>
+    $(document).ready(function(){
+        $(document).on('click', '.btneditharga', function(){
+            var idtravell=$(this).val();
+            $('#editModaldiskon').modal('show');
+            // const dateFormat="dddd, MMMM Do YYYY, h:mm";
+            $.ajax({
+                
+                type: "GET",
+                url:"/showeditdiskon/"+idtravell,
+                success:function(response){
+                    //console.log(response.Rate.id);
+                     //$('#orderid').val(response.Order.OrderID);
+                     $('#idtravell').val(response.Diskon.wisata_id); 
+                     $('#idr').val(response.Diskon.IDR); 
+                     $('#idrdiscoun').val(response.Diskon.IDR);  
+                }
+            });
+        });
+
+        $(".btn-close").click(function(){
+            $("#editModaldiskon").modal('hide');
+        });
+    });
+
+    $(document).on('click', '.btnupdatediskon', function(){
+            var idtravell=$('#formeditdiskon').find('#idtravell').val()
+            let formData=$('#formeditdiskon').serialize()
+            //console.log(progid);
+            console.log(formData)
+
+            $.ajax({
+                url:'/updatediskon/${idtravell}',
+                method:"PATCH",
+                data:formData,
+                success:function(data){
+                    $('#editModaldiskon').modal('hide')
+                    window.location.assign('/paketwisata/diskon/'+idtravell);
                 }
             })
         });

@@ -10,7 +10,7 @@ class hargachild extends Model
     use HasFactory;
     public $timestamps = false;
     protected $table = "harga_child";
-    protected $fillable = ['wisata_id','subwisata_id','froms','tos','harga'];
+    protected $fillable = ['wisata_id','subwisata_id','min','maks','harga'];
      public function subwisata(){
     	return $this->belongsTo('App\Models\subwisata');
     }

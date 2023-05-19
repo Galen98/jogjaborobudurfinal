@@ -324,6 +324,15 @@ class BlogController extends Controller
        ]);       
     }
 
+    public function updatediskon(Request $request,$idtravell){
+       $idtravell = Request('idtravell');
+       $Diskon = travel::where('wisata_id', $idtravell)
+       ->update([
+        'IDR' => $request->idrdiscoun,
+        'IDR_awal' => $request->idr,
+       ]);       
+    }
+
     public function updatecategory(Request $request,$iddestination){
         $iddestination = Request('iddestination');
        $Destination = destination::where('id', $iddestination)
@@ -361,6 +370,14 @@ class BlogController extends Controller
         return response()->json([
         'status'=>200,
         'Child'=>$Child
+        ]);
+    }
+
+    public function showeditdiskon($WisataID){
+        $Diskon = DB::table('wisata')->where('wisata_id',$WisataID)->first();
+        return response()->json([
+        'status'=>200,
+        'Diskon'=>$Diskon
         ]);
     }
 
@@ -1017,12 +1034,15 @@ class BlogController extends Controller
         $namaoption = Request('namaoption');
         $personoption = Request('personoption');
         $time = request('time');
+        //person
         $personrange = request('singlepersonrange');
         $pricerange= request('hargarange');
         $range= request('to');
+        //child
         $childoption=Request('childoption');
-        $childrange= request('singlechildrange');
-        $childrange= request('singlechildrange');
+        $childsinglerange= request('singlechildrange');
+        $childrange= request('tochild');
+        $pricechildrange=request('hargachildrange');
 
         $data = [
                 'wisata_id' => $travelid,
@@ -1051,14 +1071,14 @@ class BlogController extends Controller
                 $data = [
                 'wisata_id'=> $travelid,
                 'subwisata_id' => $option->id,
-                'min'=>$childrange,
-                'maks'=>$rangechild,
+                'min'=>$childsinglerange,
+                'maks'=>$childrange,
                 'harga'=>$pricechildrange,
                 ];
         
                 foreach($childrange as $index => $row){
                 $data['min'] = $row;
-                $data['maks'] = $rangechild[$index];
+                $data['maks'] = $childrange[$index];
                 $data['harga'] = $pricechildrange[$index];
 
                 hargachild::create($data);
@@ -1085,20 +1105,16 @@ class BlogController extends Controller
                 }
 
                 Alert::success('Berhasil');
-                return redirect()->back();
+                return redirect('/paketwisata/diskon/'.$option->wisata_id);
     }
 
     public function diskonpost(Request $request,$travelid){
         $discount=Request('discount');
-        $idr=Request('idr');
-        $idrdiscount=Request('idrdiscount');
         $idtravel=travel::where('wisata_id',$travelid)->get();
 
         DB::table('wisata')->where('wisata_id',$travelid)
         ->update([
             'discount'=>$discount,
-            'IDR_awal'=>$idr,
-            'IDR'=>$idrdiscount
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
         return redirect()->back();

@@ -60,13 +60,13 @@
                   </tbody>
                   </div>
                     </table>
-                                        <div class="col-md-6 childes">
+                      <div class="col-md-6 childprice">
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">For Children</label>
                           <div class="col-sm-4">
                             <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="childoption" id="membershipRadios1" value="Yes">
+                                <input type="radio" class="form-check-input" name="childoption" id="membershipRadios1" value="yes">
                                 Yes
                               </label>
                             </div>
@@ -74,7 +74,7 @@
                           <div class="col-sm-5">
                             <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="childoption" id="membershipRadios2" value="No">
+                                <input type="radio" class="form-check-input" name="childoption" id="membershipRadios2" value="no">
                                 No
                               </label>
                             </div>
@@ -135,6 +135,16 @@
 
 @endsection
 @section('scripts')
+<script type="text/javascript">
+  $(".rangechild").css("display","none"); 
+  $(".childprice").click(function(){ 
+if ($("input[name='childoption']:checked").val() == "yes" ) { 
+$(".rangechild").slideDown("fast");
+} else {
+$(".rangechild").slideUp("fast"); 
+}
+});
+</script>
  <script type="text/javascript">
 $('.addRowrangeperson').on('click', function(){
     addRowrangeperson();

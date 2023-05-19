@@ -647,7 +647,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
       <input type="hidden" name="dewasa" id="dewasa{{$p->id}}">
       <h3 style="font-size:18px;font-weight: bolder;color:#182c4c;" id="jumlahgroup{{$p->id}}"></h3>
       <input type="hidden" name="groupe" id="groupe{{$p->id}}">
-      <h3 style="font-size:18px;font-weight: bolder;color:#182c4c;" id="jumlahchild"></h3>
+      <h3 style="font-size:18px;font-weight: bolder;color:#182c4c;" id="jumlahchild{{$p->id}}"></h3>
       <input type="hidden" name="anak" id="anak{{$p->id}}">
     </section>
     <section data-test-id="activity-filters-primary-people-picker" class="ba-dropdown people-picker" data-v-0605f8ac data-v-7e630b00 data-v-dd428772>

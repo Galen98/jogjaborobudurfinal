@@ -142,7 +142,6 @@ class TravelController extends Controller
             'kitas'=>$kitas,
             'pickup'=>$airport,
             // 'highlight'=>$highlight,
-            'kategories'=>'person',
             'child'=>$child,
             'city'=>$city,
             'image'=>$nama_file,
@@ -155,6 +154,7 @@ class TravelController extends Controller
             'kategories'=>$kategories,
             'capacity'=>$capacity,
             'bahasa'=>$bahasa,
+            'discount'=>'no',
             'slug'=>\Str::slug($request->namawisata)
         ];
         

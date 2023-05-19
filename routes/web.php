@@ -324,6 +324,7 @@ Route::get('/showeditdestinasi/{DestinasiID}', [App\Http\Controllers\BlogControl
 Route::get('/showeditseason/{SeasonID}', [App\Http\Controllers\BlogController::class,'showeditseason']);
 Route::get('/showeditoption/{OptionID}', [App\Http\Controllers\BlogController::class,'showeditoption']);
 Route::get('/showedithargachild/{ChildID}', [App\Http\Controllers\BlogController::class,'showedithargachild']);
+Route::get('/showeditdiskon/{WisataID}', [App\Http\Controllers\BlogController::class,'showeditdiskon']);
 Route::delete('/hapuswisata/{idwisata}', [App\Http\Controllers\BlogController::class,'hapuswisata']);
 Route::get('/formseason',function(){
     return view('formseason');
@@ -439,6 +440,7 @@ Route::post('addexclude', [BlogController::class, 'addexclude']);
 Route::post('addhighlight', [BlogController::class, 'addhighlight']);
 Route::patch('/updatehighlight/{idhighlight}',[BlogController::class,'updatehighlight']);
 Route::patch('/updatehargachild/{idhargachild}',[BlogController::class,'updatehargachild']);
+Route::patch('/updatediskon/{idtravell}',[BlogController::class,'updatediskon']);
 Route::post('generatepdf',[App\Http\Controllers\emailController::class, 'sendPDF']);
 
 
