@@ -280,8 +280,8 @@
       <form action="{{url('updatediskon')}}" action="POST" enctype="multipart/form-data" id="formeditdiskon">
         @csrf
       <div class="form-group">
-        <input type="text" name="idtravell" id="idtravell" readonly="">
-        <input type="text" name="idr" id="idr" readonly="">
+        <input type="hidden" name="idtravell" id="idtravell" readonly="">
+        <input type="hidden" name="idr" id="idr" readonly="">
         Ubah Harga 
         <input type="text" name="idrdiscoun" class="form-control" id="idrdiscoun">
         </div>
