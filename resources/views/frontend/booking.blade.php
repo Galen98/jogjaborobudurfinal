@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.css" integrity="sha512-FA9cIbtlP61W0PRtX36P6CGRy0vZs0C2Uw26Q1cMmj3xwhftftymr0sj8/YeezDnRwL9wtWw8ZwtCiTDXlXGjQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/fontawesome.css" integrity="sha512-/Jsoj+nRoCkEHw4HnymLk48dWblqtN+0rW+UMAanfbHZjzgphJipQOEuuOEdZ0IzSEYgK0NXCNda8r+4juGbPg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/fontawesome.min.css" integrity="sha512-giQeaPns4lQTBMRpOOHsYnGw1tGVzbAIHUyHRgn7+6FmiEgGGjaG0T2LZJmAPMzRCl+Cug0ItQ2xDZpTmEc+CQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-         <script nonce="3ff963a468dd8f0dfa31d8f1c27dc9ac">window.OptanonWrapper = function() {}</script>
     <link rel="stylesheet" href="{{asset('traveler')}}/css/booking1.css">
 	<link rel="stylesheet" href="{{asset('traveler')}}/css/booking2.css">
 	<link rel="stylesheet" href="{{asset('traveler')}}/css/booking3.css">
@@ -17,13 +16,12 @@
 	<link rel="stylesheet" href="{{asset('traveler')}}/css/booking7.css">
 	<link rel="stylesheet" href="{{asset('traveler')}}/css/booking8.css">
 	<link rel="stylesheet" href="{{asset('traveler')}}/css/booking9.css">
-	<link data-vue-meta="ssr" rel="preload" href="https://cdn.getyourguide.com/design-system/GT-Eesti/GT-Eesti-Pro-Display-Regular.woff2" as="font" type="font/woff2" crossorigin="true">
-  <link data-vue-meta="ssr" rel="preload" href="https://cdn.getyourguide.com/design-system/GT-Eesti/GT-Eesti-Pro-Display-Medium.woff2" as="font" type="font/woff2" crossorigin="true">
-  <link data-vue-meta="ssr" rel="preload" href="https://cdn.getyourguide.com/design-system/GT-Eesti/GT-Eesti-Pro-Display-Bold.woff2" as="font" type="font/woff2" crossorigin="true">
+	<link data-vue-meta="ssr" rel="preload" href="{{asset('font')}}/GT-Eesti-Pro-Display-Regular.woff2" as="font" type="font/woff2" crossorigin="true">
+  <link data-vue-meta="ssr" rel="preload" href="{{asset('font')}}/GT-Eesti-Pro-Display-Medium.woff2" as="font" type="font/woff2" crossorigin="true">
+  <link data-vue-meta="ssr" rel="preload" href="{{asset('font')}}/GT-Eesti-Pro-Display-Bold.woff2" crossorigin="true">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" type="image/png" sizes="32x32" href="{{asset('spica')}}/images/favicon.png">
 <link rel="icon" type="image/png" sizes="16x16" href="{{asset('spica')}}/images/favicon.png">
-<link rel="manifest" href="https://cdn.getyourguide.com/tf/assets/static/manifest.json">
 <link rel="shortcut icon" href="favicon.png">
 <meta name="viewport"content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
         />
@@ -39,7 +37,6 @@
     <link rel="stylesheet" href="{{asset('traveler')}}/css/booking11.css">
     <script src="{{asset('traveler')}}/js/modernizr-2.6.2.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-
   </head>
   <body>
     
@@ -48,17 +45,17 @@
     <div id="gyg"><div>
 	<div class="main-wrapper  partner-left-layout customer-information customer-information--gyg-symbol-on-mobile">
 	<header class="page-header light" data-test-id="page-header" data-v-36cff088 style="background-color:  #fc2c04;">
-	<div class="page-header__content" data-v-36cff088><!--[-->
+	<div class="page-header__content" data-v-36cff088>
 	<div class="page-header__logo-image" role="img" aria-label="GetYourGuide logo">
 	<img src="{{asset('spica')}}/images/logomini.png" class="logs" alt="logo"/>
-	</div><!--]--><!----><!---->
+	</div>
 	</div>
 	</header>
 	<a href="#main-content" class="skip-link">Skip to content</a>
 	<main id="main-content" class="">
 	<aside style="display:none;" role="cart-expiration-notification" class="cart-expiration-notification">
 	<span></span>
-	</aside><!----><!----><!----><!----><!----><!--[--><!----><!---->
+	</aside>
 	<div class="customer-information__container customer-information__order-summary--mweb customer-information--mweb-only">
 	<div class="order-summary-collapsible" data-test-id="order-summary" style=""><!---->
 	<div class="order-summary-collapsible__container">
@@ -98,12 +95,9 @@
 
 	</div>
 	
-	<!-- <div class="order-summary-collapsible__controllers--price"> -->
-	<!-- Rp 1,570,449.00 -->
-	<!-- </div> -->
 	
-	</div><!---->
-	</div><!---->
+	</div>
+	</div>
 	</div>
 	</div>
 	<div class="customer-information__container">
@@ -184,15 +178,15 @@
 	<section class="billing-form__country-phone-picker">
 	<span class="select-label">Phone</span>
 	<span class="select-mobile-label" id="countrymobile"></span>
-	<div class="gyg-select"><!---->
-	<select value="" class="gyg-select-field" id="negara" modelvalue="" name="country" data-test-id="country-form-select" autocomplete="country">
-	<option class="option">Select Phone Number Code</option><!--[--><!--[-->
+	<div class="gyg-select">
+	<select value="" class="gyg-select-field" id="countryphone" modelvalue="" name="country" data-test-id="country-form-select" autocomplete="country">
+	<option class="option" value="Enter code">Select Phone Number Code</option>
 	@foreach($country as $item)
-	<option value="{{$item->phonecode}}" id="countrys" class="option" value="+{{$item->phonecode}}">{{$item->nicename}} (+{{$item->phonecode}})</option>
+	<option value="{{$item->phonecode}}"  class="option" value="+{{$item->phonecode}}">{{$item->nicename}} (+{{$item->phonecode}})</option>
 	@endforeach
 	</select>
-	<span class="gyg-select-icon gyg-select-icon-posticon"><!--[-->
-	<span class="gyg-select-caret"></span><!--]-->
+	<span class="gyg-select-icon gyg-select-icon-posticon">
+	<span class="gyg-select-caret"></span>
 	</span>
 	</div>
 	<div class="c-input c-input--with-label"><!---->
@@ -418,6 +412,20 @@
 //   });
 // });
 </script>
- 
+<script type="text/javascript">
+  $(document).ready(function(){
+	const country = {!! $country !!}
+	
+
+	$('#countryphone').on('change', function() {
+	let countrymobile=$("#countrymobile").val()
+	let countryphone=$("#countryphone").val()
+	if (countryphone != null){
+		$("#countrymobile").text("+"+countryphone)
+	}
+	});
+  });
+  </script>
+
 </body>
 </html>

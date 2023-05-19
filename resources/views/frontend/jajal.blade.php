@@ -239,7 +239,6 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   <div class="rating-star">
   <div class="" style="margin-top: 4px;">
               <div class="small-ratings">
-                <!-- <p class="review-stat" style="color: black;font-weight: bolder;">{{$jumlahreview ?? ''}} Reviews</p> -->
                 <i class="fa fa-star rating-color"></i>
                 <i class="fa fa-star rating-color"></i>
                 <i class="fa fa-star rating-color"></i>
@@ -429,26 +428,12 @@ font-family: 'GT Eesti Text Trial', sans-serif;
       @endif   
     @foreach($travel as $item)<span class="price-block__explanation">{{$item->kategories}}
     @if($item->kategories == 'Per Group') up to {{$item->capacity}} @endif</span>@endforeach<br>
-    
     </p> 
-    <!-- <div class="price-block__button" data-v-46d2d245> -->
-    <!-- <p>tes</p> -->
-    <!-- </div> -->
-    
-    </div> <!----> <!----></div>
+    </div>
+  </div>
   </section>
 </section>
-    <!-- @foreach($travel as $item)
-    <section class="activity__persuasion-badge-container" data-v-c4be1764>
-      @if($item->label == 'Bestseller')
-    <span class="activity__persuasion-badge c-marketplace-badge c-marketplace-badge--primary persuasion-badge--LTSO persuasion-badge--size-R" data-v-c4be1764 style="background-color: green;">
-        Bestseller
-      </span>
-      @elseif($item->label == 'Likely to sell out')
-      <span class="activity__persuasion-badge c-marketplace-badge c-marketplace-badge--primary persuasion-badge--LTSO persuasion-badge--size-R" data-v-c4be1764>
-        Likely to sell out
-      </span>
-      @else<span></span>@endif </section> -->
+    
     <br>  
     <section class="activity__row activity__content" data-v-c4be1764>
     <div class="activity__container-columns" data-v-c4be1764>
@@ -459,7 +444,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
         {{$item->shortdescription}}
       </p>
     </section>
-    @endforeach
+    
   </div> <!----> <!----> 
     <div data-track="key-details" data-v-c4be1764>
     <section id="key-details" data-component="key-details" data-test-id="activity-key-details" class="activity-key-details js-section-content" data-v-4a3743c6 data-v-c4be1764>
@@ -474,39 +459,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
      <br>
      <br>
     <section class="activity-key-details__container" data-v-4a3743c6>
-   <!--  <dl class="activity-key-details__list" data-v-4a3743c6>
-    <div data-v-4a3743c6>
-    <dt class="activity-key-details__term" data-v-4a3743c6><span class="activity-key-details__term-icon" data-v-4a3743c6>
-    <span aria-label="Free cancellation" class="c-icon activity-key-details__icon" data-v-4a3743c6>
-    <span data-v-4a3743c6>
-    <img src="{{asset('traveler')}}/images/freecancel.png" width="27" height="27">
-    </span> 
-    </span>
-    </span> 
-    <span data-v-4a3743c6 style="font-size: 20px;">Free cancellation</span>
-    </dt> 
-    <dd class="activity-key-details__description" data-v-4a3743c6 style="
-    font-size: 17px;">
-        Cancel up to 24 hours in advance for a full refund
-        </dd></div>
-    </dl> -->
-
-    <!-- dl class="activity-key-details__list" data-v-4a3743c6>
-    <div data-v-4a3743c6>
-    <dt class="activity-key-details__term" data-v-4a3743c6><span class="activity-key-details__term-icon" data-v-4a3743c6>
-    <span aria-label="Free cancellation" class="c-icon activity-key-details__icon" data-v-4a3743c6>
-    <span data-v-4a3743c6>
-    <img src="{{asset('traveler')}}/images/paylater.png" width="27" height="27">
-    </span> 
-    </span>
-    </span> 
-    <span data-v-4a3743c6 style="font-size: 20px;">Reserve now & pay later</span>
-    </dt> 
-    <dd class="activity-key-details__description" data-v-4a3743c6 style="
-    font-size: 17px;">
-        Keep your travel plans flexible — book your spot and pay nothing today.
-        </dd></div>
-    </dl> -->
+  
     @foreach($travel as $item)
     @if($item->pickup == 'yes')
     <dl class="activity-key-details__list" data-v-4a3743c6><!----> 
@@ -549,9 +502,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
     <div is-date-selected="" class="booking-assistant-configurator booking-assistant" data-v-dd428772 data-v-a17e5250 style="background-color: #de1709;">
     <h2 class="booking-assistant-configurator__header" data-v-dd428772><i class="ti-user" style="font-size: 24px;color: white;"></i> Select participants and date</h2> 
     <section data-test-id="activity-filters-primary-people-picker" class="ba-dropdown people-picker" data-v-0605f8ac data-v-7e630b00 data-v-dd428772>
-     <!--  <input type="hidden" name="review" value="{!! $jumlahreview !!}"> 
-      <input type="hidden" name="idtravel" value="{{$item->wisata_id}}">
-      <input type="hidden" name="namawisata" value="{{$item->namawisata}}"> -->
+    
       @if($item->kategories == 'Per Person')
       <input type="number" id="adult" class="form-control" placeholder="Select participant (Adult)" style="background-color: white;" min="0" name="adultquantity">
       @else
@@ -562,8 +513,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
       <input type="number" id="child" class="form-control" placeholder="Select participant (Children)" style="background-color: white;" min="0" name="childquantity">
       @else<p></p>
       @endif
-    <!-- <section class="ba-input" data-v-1cc21acc data-v-0605f8ac>
-    </section>  -->
+  
   </section>
 
   <section data-test-id="activity-filters-primary-date-picker" class="ba-dropdown ba-date-picker ba-date-picker--multiple-months ba-date-picker--experimental-theme" data-v-0605f8ac data-v-dd428772>
@@ -576,49 +526,10 @@ font-family: 'GT Eesti Text Trial', sans-serif;
 </div>
 
 </section>
-<!-- <div><p id="jumlahdewasa">jumlahdewasa:0</p></div> -->
-<!-- <div><p id="hargadewasa">hargadewasa:0</p></div> -->
-<!-- <div><p id="jumlahchild">jumlahchild:0</p></div>
-<div><p id="hargachild">hargachild:0</p></div> -->
-<!-- <div><p id="harga">Total Harga:0</p></div> -->
+
 <div><p id="alerts"></p></div>
 
-<!--  <section id="booking-assistant" data-test-id="booking-assistant" data-v-a17e5250 data-v-c4be1764 >
-    <div is-date-selected="" class="booking-assistant-configurator booking-assistant" data-v-dd428772 data-v-a17e5250 style="background-color: white;border-width: 1px;border-style: solid;border-color: #b80404;border-radius: 10px 10px 10px 10px;" id="totals">
-    <h2 class="booking-assistant-configurator__header" data-v-dd428772 style="color: #182c4c;"> Your Order Details</h2>
-    <h3 style="font-size:18px;font-weight: bolder;color:#182c4c;margin-right: 10px;">Starting time:</h3>
-      @if(count($jam) > 0)<select name="waktu" style="width: 200px;border-radius: 10px 10px 10px 10px;" required="">
-        <option>Select a starting time</option>
-        @foreach($jam as $item)<option value="{{ Carbon\Carbon::parse($item->time)->format('g:i A') }}" >{{ Carbon\Carbon::parse($item->time)->format('g:i A') }}</option>@endforeach
-      </select>@endif
-    <h5 class="booking-assistant-configurator__header" data-v-dd428772 style="color: #182c4c;font-size:18px;" id="tanggal"></h5>
-    <input type="hidden" name="tanggaltravel" id="tanggaltravel">
-    <section data-test-id="activity-filters-primary-people-picker" class="ba-dropdown people-picker" data-v-0605f8ac data-v-7e630b00 data-v-dd428772>
-      <h3 style="font-size:18px;font-weight: bolder;color:#182c4c;" id="jumlahdewasa"></h3>
-      <input type="hidden" name="dewasa" id="dewasa">
-      <h3 style="font-size:18px;font-weight: bolder;color:#182c4c;" id="jumlahgroup"></h3>
-      <input type="hidden" name="groupe" id="groupe">
-      <h3 style="font-size:18px;font-weight: bolder;color:#182c4c;" id="jumlahchild"></h3>
-      <input type="hidden" name="anak" id="anak">
-    </section>
-    <section data-test-id="activity-filters-primary-people-picker" class="ba-dropdown people-picker" data-v-0605f8ac data-v-7e630b00 data-v-dd428772>
-      <h3 style="font-size:18px;font-weight: bolder;color:#182c4c;" id="hargadewasa"></h3>
-      <h3 style="font-size:18px;font-weight: bolder;color:#182c4c;" id="hargagroup"></h3>
-      <h3 style="font-size:18px;font-weight: bolder;color:#182c4c;" id="hargachild"></h3>
-    </section>
-    <section data-test-id="activity-filters-primary-date-picker" class="ba-dropdown ba-date-picker ba-date-picker--multiple-months ba-date-picker--experimental-theme" data-v-0605f8ac data-v-dd428772>
-      <h3 style="font-size:20px;font-weight: bolder;color:#182c4c;" id="harga"></h3>
-      <h3 style="font-size:20px;font-weight: bolder;color:#182c4c;" id="totalgroup"></h3>
-      <input type="hidden" name="totharga" id="totharga">
-      <input type="hidden" name="tothargagroup" id="tothargagroup">
-    </section>
-     
-  <button type="submit" id="cekharga" class="cekharga js-check-availability gtm-trigger__adp-check-availability-btn avoid-close-dropdown-on-click c-button c-button--medium filbtn" data-v-dd428772>  
-    Book now
-  </button> 
-  </form>
-    </div>
-  </section> -->
+
 
   @foreach($pilihan as $p)
   <section id="booking-assistant" data-test-id="booking-assistant" data-v-a17e5250 data-v-c4be1764 >
@@ -992,27 +903,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
                                     </div>
                                  </div>             
   
-<!-- <div id="gtco-subscribe" style="background-color: white;margin-bottom:0px;" >
-<div class="gtco-container">
-  <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-          <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0 style="margin-top:10px;">
-        You might also like other destination
-      </span>
-          <p style="font-size: 17px;">Other travellers also book these tours</p>
-        </div>
-    @foreach($destination as $item)
-    <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:20px;">
-    <a href="{{'/category-destination/' .$item->id}}">
-      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto" style="margin-bottom:40px;">
-         <article class="text-left">
-            <h2>{{$item->destination}}</h2>
-            <h4>{!! $item->shortdescription !!}</h4>
-         </article>
-         <img src="{{ url('public/img/'.$item->image) }}" alt="{{$item->destination}}">
-      </div>
-      </a>
-      </div>
-      @endforeach -->
+
 </div>
 </div>
 
@@ -1244,29 +1135,6 @@ font-family: 'GT Eesti Text Trial', sans-serif;
       }
       @endforeach
 
-      //     if (group > 0){
-      //   harga.forEach(function(item){
-      //     if (group >= item.min && group <= item.maks){
-      //       hargagroup = item.harga 
-      //       $("#jumlahgroup").text("Participants: " + group)
-      //       $("#groupe").val(group)
-      //       $("#hargagroup").text("Price: " + convertrate(item.harga))
-           
-      //     }
-
-      //   })
-      // }else{
-      //       $("#groupe").val("")
-      //       $("#jumlahgroup").text("")
-      //       $("#hargagroup").text("")
-      //     }
-      //     if (hargagroup > 0) {
-      //     $("#totalgroup").text("Total Price: "+convertrate(hargagroup))
-      //     $("#tothargagroup").val(convertrate(hargagroup))
-      //   }else{
-      //     $("#totalgroup").text("")
-      //     $("#tothargagroup").val("")
-      //   }
 
 
       @foreach($pilihan as $p)
