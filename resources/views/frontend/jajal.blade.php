@@ -361,9 +361,9 @@ font-family: 'GT Eesti Text Trial', sans-serif;
     </span></section>
      <!----> 
      @foreach($travel as $item)
-  <h1 data-track="activity-title" class="activity__title activity__title--mobile js-title" data-v-c4be1764>
-     {{$item->namawisata}}
-    </h1> <!----> 
+     <p data-test-id="collection-title" class="collection-header_title" data-v-76e871e0 style="font-size:22px;">
+      {{$item->namawisata}}
+</p> 
     <section class="activity__mobile-header" data-v-c4be1764>
   <section data-v-c4be1764>
   <div data-test-id="activity-provider" class="supplier-name" data-v-5db601b6 data-v-c4be1764>
@@ -721,9 +721,9 @@ font-family: 'GT Eesti Text Trial', sans-serif;
     <header class="vertical-activity-card__header">
     <div class="vertical-activity-card__activity-type-wrapper">
       </div> 
-      <p data-test-id="activity-card-title" class="vertical-activity-card__title">
+      <h1 data-test-id="activity-card-title" class="vertical-activity-card__title">
             {{$item->namawisata}}
-          </p> <!----></header> 
+</h1> <!----></header> 
       <div class="vertical-activity-card__body">
       <ul class="activity-attributes__container" data-v-33ad6115>
       <li class="activity-attributes__attribute" data-v-33ad6115>

@@ -81,10 +81,10 @@ Route::get('/', function (Request $request) {
     $season = season::get();
     // get session user
     $session = session()->get("rate") ?? "USD";
-    $traveltop=travel::where('bahasa',$sessions)->paginate(8);
+    $traveltop=travel::orderBy('created_at','DESC')->where('bahasa',$sessions)->paginate(8);
     
     //$traveltop=travel::paginate(8);
-    $other=travel::where('label','Likely to sell out')->where('bahasa', $sessions)->paginate(4);
+    $other=travel::orderBy('created_at','DESC')->where('label','Likely to sell out')->where('bahasa', $sessions)->paginate(4);
     $blog=blog::orderBy('created_at','DESC')->where('bahasa', $sessions)->paginate(3);
     return view('frontend.index', compact('sessions','traveltop','other','blog',"rateIDR", "rateSGD", "rateMYR", "session","rateEUR","destination",'destinate','season','bahasa','background'));
 });

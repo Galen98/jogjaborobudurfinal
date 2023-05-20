@@ -28,7 +28,7 @@
                                 class="w-full h-60 object-cover transform hover:scale-110 transition duration-500">
                         </a>
                         <div class="mt-3">
-                            <a href="#">
+                            <a href="{{'/blog/'.$item->slug}}">
                                 <h2
                                     class="block text-xl font-semibold text-gray-700 hover:text-blue-500 transition font-roboto">
                                     {{$item->judulblog}}

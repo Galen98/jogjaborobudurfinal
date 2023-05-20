@@ -311,7 +311,7 @@
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
 					<form action="/alltours" method="get">
-					<button class="btn btn-info" style="font-size: 20px;">Discover all tours</button>
+					<button class="btn btn-light" style="font-size: 20px;border-color:#f0f0f0;border-radius:20px;">Discover all tours</button>
 					</form>
 				</div>
 			</div>
@@ -532,11 +532,12 @@
 			</div>
       
 		</div>
-    <div role="navigation" aria-label="List" class="w-pagination-wrapper pagination-wrap" style="margin-top: 40px;">
-  <a href="/blog" data-a-button="border-grey" fs-cmsload-mode="load-under" href="?e8c9590c_page=2" aria-label="Next Page" class="w-pagination-next button is-border-grey">
-  <div class="w-inline-block">Show more</div>
-  </a>
-  </div>
+    <br/>
+    <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+					<form action="/blog" method="get">
+					<button class="btn btn-light" style="font-size: 20px;border-color:#f0f0f0;border-radius:20px;">Show more</button>
+					</form>
+				</div>
 	</div>
 	
 
