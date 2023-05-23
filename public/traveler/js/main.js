@@ -295,7 +295,6 @@
 		goToTop();
 		loaderPage();
 		counterWayPoint();
-		dateForm();
 		parallax();
 	});
 

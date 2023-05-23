@@ -1282,7 +1282,6 @@ jQuery(function ($) {
   var dateForm = function() {
 		$('#date-start').datepicker({
 			format: 'dd/mm/yyyy',
-			startDate: new Date(),
 			todayHighlight: true,
             autoclose: true,
             orientation: 'bottom'
