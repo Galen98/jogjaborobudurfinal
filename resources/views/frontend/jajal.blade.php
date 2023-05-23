@@ -503,7 +503,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
     <h2 class="booking-assistant-configurator__header" data-v-dd428772><i class="ti-user" style="font-size: 24px;color: white;"></i> Select participants and date</h2> 
     <section data-test-id="activity-filters-primary-people-picker" class="ba-dropdown people-picker" data-v-0605f8ac data-v-7e630b00 data-v-dd428772>
     
-      @if($item->kategories == 'Per Person')
+      <!-- @if($item->kategories == 'Per Person')
       <input type="number" id="adult" class="form-control" placeholder="Select participant (Adult)" style="background-color: white;" min="0" name="adultquantity">
       @else
 
@@ -512,7 +512,41 @@ font-family: 'GT Eesti Text Trial', sans-serif;
       @if($item->child == 'yes')
       <input type="number" id="child" class="form-control" placeholder="Select participant (Children)" style="background-color: white;" min="0" name="childquantity">
       @else<p></p>
-      @endif
+      @endif -->
+      <div class="form-control form-control-participants" >
+<div class="text d-flex align-items-center participants-control" style="margin-top:5px;;">
+<i class="fas fa-user-friends flex-shrink-0 mr-2"></i>
+<div class="participant-label-span text-truncate"></div>
+</div>
+<div class="participants-input-container  bg-light" style="display: none; z-index: 1;padding:10px;">
+<div class="border-top mb-2"></div>
+@if($item->kategories == 'Per Person')
+<div class="d-flex justify-content-between align-items-center my-1">
+<div>
+<h6>Adults</h6>
+</div>
+<input type="text" id="adult" value="0" name="adultquantity" data-min="0" data-code="adults" />
+</div>
+@else
+<div class="d-flex justify-content-between align-items-center my-1">
+<div>
+<h6>Group</h6>
+</div>
+<input type="text" id="group" value="0" name="groupquantity" data-min="0" data-code="participants" />
+</div>
+@endif
+@if($item->child == 'yes')
+<div class="d-flex justify-content-between align-items-center my-1">
+<div>
+<h6>Children</h6>
+</div>
+<input type="text" id="child" value="0" name="childquantity" data-min="0" data-code="children" />
+</div>
+</div>
+</div>
+@else
+<p></p>
+@endif
   
   </section>
 
@@ -1194,6 +1228,54 @@ font-family: 'GT Eesti Text Trial', sans-serif;
     
   })
 
+</script>
+<script src="{{asset('traveler')}}/js/number.js"></script>
+<script src="{{asset('traveler')}}/js/picker.js"></script>
+
+<script>
+jQuery(function ($) {
+    function makeLabel($control) {
+        var $inputs = $control.next();
+        var $container = $control.find('.participant-label-span');
+        $container.empty();
+        $inputs.find('input[data-code]')
+        .each(function () {
+            var label = $(this).data('code');
+            var value = $(this).val();
+            if (value > 0) {
+                $('<span>' + label + ' ×' + value + ' ' + '<span>').appendTo($container);
+            }
+            
+        });
+    }
+
+    $('.participants-control').each(function () {
+        var self = $(this);
+        makeLabel(self);
+
+        self.siblings('.participants-input-container')
+        .find('input[data-code]')
+        .numberInput()
+        .change(function () {
+            makeLabel(self);
+        });
+
+        return self;
+    });
+
+
+    $(document).mouseup(function (ev) {
+        var $control = $('.participants-control');
+        var $container = $('.participants-input-container');
+
+        if ($control.is(ev.target) || $control.has(ev.target).length) {
+            $control.next().toggle();
+        }
+        else if (! $container.is(ev.target) && $container.has(ev.target).length === 0) {
+            $container.hide();
+        }
+    });
+});
 </script>
   
                     </body>

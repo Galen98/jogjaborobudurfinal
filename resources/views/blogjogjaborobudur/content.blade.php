@@ -187,7 +187,8 @@
         <div class="grid lg:grid-cols-2 gap-12 flex items-center">
           <div class="mt-12 lg:mt-0">
             <h1 class="text-4xl md:text-5xl xl:text-6xl font-bold tracking-tight mb-12">
-              Are you ready <br /><span class="text-blue-600">for your journey?</span>
+              Are you ready <br />
+            <span class="text-blue-600">for your journey?</span>
 
             </h1>
 
@@ -202,7 +203,7 @@
               <br>
               <button
                 type="submit"
-                class="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                class="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out rounded-full"
                 data-mdb-ripple="true"
                 data-mdb-ripple-color="light"
               >
@@ -218,7 +219,7 @@
             >
               <iframe
                 class="embed-responsive-item absolute top-0 right-0 bottom-0 left-0 w-full h-full"
-                src="https://www.youtube.com/embed/vlDzYIIOYmM?enablejsapi=1&amp;origin=https%3A%2F%2Fmdbootstrap.com"
+                src="https://www.youtube.com/embed/24-gX9tKUsY"
                 allowfullscreen=""
                 data-gtm-yt-inspected-2340190_699="true"
                 id="240632615"

@@ -321,15 +321,15 @@
 	
 
     <div id="gyg" data-server-rendered="true">
-  <div class="main-wrapper  partner-left-layout" data-v-5120f7ad><!----> <!----> <!----> <!----> 
+  <div class="main-wrapper  partner-left-layout" data-v-5120f7ad>
   <a href="#main-content" class="skip-link">Skip to content</a> 
   <main id="main-content">
     <section layout="vertical" class="grid-wrapper container grid-wrapper--list">
       <div class="collection-header" data-v-76e871e0><div class="collection-header--title-container" data-v-76e871e0>
     <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0>
         Other Popular Tours
-      </span> <!---->
-    </div> <!---->
+      </span> 
+    </div> 
     </div>
 @foreach($other as $item)
   <div class="activity-card-block--grid" style="margin-bottom: 0px;">
@@ -395,8 +395,8 @@
         @endif
       </div> <p class="baseline-pricing__category" data-v-24caa43d>
         {{$item->kategories}}
-      </p></div></div></div> <!---->
-    </div> <!---->
+      </p></div></div></div> 
+    </div> 
     </div>
     </div>
     </a>
@@ -465,30 +465,6 @@
 		</div>
 	</div>
 
-
-
-	
-
-
-
-	
-	<!-- <div id="gtco-subscribe" style="background-color: white;" >
-		<div class="gtco-container">
-			<div class="row">
-				<div class="row gx-1 ">
-
-    <div class="col-md-6" style="padding-left: 20px;">
-    	<h1 class="" style="font-weight: bold;color: black;font-size: 28px;">Unforgettable Travel Experiences</h1>
-    	<p class="" style="font-weight: 30px;">Go beyond the surface of the world’s must-see travel destinations. Discover our authentic, unforgettable experiences and explore the world for real.</p>
-    </div>
-
-    <div class="col-md-6">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/24-gX9tKUsY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    </div>
-  </div>
-			</div>
-		</div>
-	</div> -->
 	<div id="gtco-section border-bottom" style="background-color: white;margin-bottom: 80px;" >
 		<div class="gtco-container">
 			<div class="row">
