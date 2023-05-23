@@ -1283,7 +1283,9 @@ jQuery(function ($) {
 		$('#date-start').datepicker({
 			format: 'dd/mm/yyyy',
 			startDate: new Date(),
-			orientation: 'bottom',
+			todayHighlight: true,
+            autoclose: true,
+            orientation: 'bottom'
 			
 		});
 	};
