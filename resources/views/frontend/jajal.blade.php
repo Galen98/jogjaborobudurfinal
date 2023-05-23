@@ -1278,6 +1278,18 @@ jQuery(function ($) {
 });
 
 </script>
-  
+<script>
+  var dateForm = function() {
+		$('#date-start').datepicker({
+			format: 'dd/mm/yyyy',
+			startDate: new Date(),
+			orientation: 'bottom',
+			
+		});
+	};
+  $(function(){
+    dateForm();
+  });
+</script>  
                     </body>
                     </html>

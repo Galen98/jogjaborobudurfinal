@@ -271,14 +271,7 @@
 	};
 
 
-	var dateForm = function() {
-		$('#date-start').datepicker({
-			format: 'dd/mm/yyyy',
-			startDate: new Date(),
-			orientation: 'bottom',
-			
-		});
-	};
+	
 
 	var parallax = function() {
 		$(window).stellar({
