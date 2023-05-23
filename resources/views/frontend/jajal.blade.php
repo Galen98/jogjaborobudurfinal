@@ -501,6 +501,11 @@ font-family: 'GT Eesti Text Trial', sans-serif;
     <section id="booking-assistant" data-test-id="booking-assistant" data-v-a17e5250 data-v-c4be1764 >
     <div is-date-selected="" class="booking-assistant-configurator booking-assistant" data-v-dd428772 data-v-a17e5250 style="background-color: #de1709;">
     <h2 class="booking-assistant-configurator__header" data-v-dd428772><i class="ti-user" style="font-size: 24px;color: white;"></i> Select participants and date</h2> 
+    
+
+  <section data-test-id="activity-filters-primary-date-picker" class="ba-dropdown ba-date-picker ba-date-picker--multiple-months ba-date-picker--experimental-theme" data-v-0605f8ac data-v-dd428772>
+<input type="text" name="traveldate" id="date-start" class="form-control" style="background-color: white;" placeholder="Select date" required="">
+    </section>
     <section data-test-id="activity-filters-primary-people-picker" class="ba-dropdown people-picker" data-v-0605f8ac data-v-7e630b00 data-v-dd428772>
     
       <!-- @if($item->kategories == 'Per Person')
@@ -547,12 +552,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
 @else
 <p></p>
 @endif
-  
   </section>
-
-  <section data-test-id="activity-filters-primary-date-picker" class="ba-dropdown ba-date-picker ba-date-picker--multiple-months ba-date-picker--experimental-theme" data-v-0605f8ac data-v-dd428772>
-<input type="text" name="traveldate" id="date-start" class="form-control" style="background-color: white;" placeholder="Select date" required="">
-    </section>
 
     <button type="button" id="cekharga" class="cekharga js-check-availability gtm-trigger__adp-check-availability-btn avoid-close-dropdown-on-click c-button c-button--medium filbtn" data-v-dd428772><!---->
     Check availability
@@ -1276,6 +1276,7 @@ jQuery(function ($) {
         }
     });
 });
+
 </script>
   
                     </body>

@@ -274,7 +274,9 @@
 	var dateForm = function() {
 		$('#date-start').datepicker({
 			format: 'dd/mm/yyyy',
-			startDate: new Date()
+			startDate: new Date(),
+			orientation: 'bottom'
+			
 		});
 	};
 
