@@ -1051,6 +1051,21 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
   <!-- Main -->
+  <script> 
+  var dateForm = function() {
+		$('#date-start').datepicker({
+			format: 'dd/mm/yyyy',
+			startDate: new Date(),
+			todayHighlight: true,
+            autoclose: true,
+            orientation: 'bottom'
+			
+		});
+	};
+  $(function(){
+    dateForm();
+  });
+</script>  
   <script src="{{asset('traveler')}}/js/main.js"></script>
   <script>
   var swiper = new Swiper(".slide-container", {
@@ -1278,20 +1293,6 @@ jQuery(function ($) {
 });
 
 </script>
-<script>
-  var dateForm = function() {
-		$('#date-start').datepicker({
-			format: 'dd/mm/yyyy',
-			startDate: new Date(),
-			todayHighlight: true,
-            autoclose: true,
-            orientation: 'bottom'
-			
-		});
-	};
-  $(function(){
-    dateForm();
-  });
-</script>  
+
                     </body>
                     </html>

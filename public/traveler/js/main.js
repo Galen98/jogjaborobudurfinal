@@ -282,6 +282,12 @@
 		});
 	};
 
+	var dateForm = function() {
+		$('#date-start').datepicker({
+			format: 'dd/mm/yyyy',
+			startDate: new Date()
+		});
+	};
 
 	
 	$(function(){
@@ -293,6 +299,7 @@
 		dropdown();
 		owlCarousel();
 		goToTop();
+		dateForm();
 		loaderPage();
 		counterWayPoint();
 		parallax();
