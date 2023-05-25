@@ -580,7 +580,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
     <h3 class="booking-assistant-configurator__header" data-v-dd428772  style="font-size:14px;font-weight: bolder;color:grey;margin-right: 10px;text-align:left;">{{$p->short}}</h3>
     <br>
     <h3 class="booking-assistant-configurator__header" data-v-dd428772 style="font-size:18px;font-weight: bolder;color:#182c4c;text-align:left;">Starting time:
-     <select name="waktu" style="width: 200px;border-radius: 10px 10px 10px 10px;" required="">
+     <select name="waktu" style="width: 230px;border-radius: 10px 10px 10px 10px;" required="">
         <option>Select a starting time</option>
         @foreach($p->waktu as $w)<option value="{{ Carbon\Carbon::parse($w->time)->format('g:i A') }}">{{ Carbon\Carbon::parse($w->time)->format('g:i A') }}</option>@endforeach
       </select></h3>
@@ -597,9 +597,9 @@ font-family: 'GT Eesti Text Trial', sans-serif;
       <input type="hidden" name="anak" id="anak{{$p->id}}">
     </section>
     <section data-test-id="activity-filters-primary-people-picker" class="ba-dropdown people-picker" data-v-0605f8ac data-v-7e630b00 data-v-dd428772>
-      <h3 style="font-size:16px;font-weight: bolder;color:#182c4c;text-align:left;margin-left:15px;" id="hargadewasa{{$p->id}}"></h3>
-      <h3 style="font-size:16px;font-weight: bolder;color:#182c4c;margin-left:15px;" id="hargagroup{{$p->id}}"></h3>
-      <h3 style="font-size:16px;font-weight: bolder;color:#182c4c;margin-left:15px;" id="hargachild{{$p->id}}"></h3>
+      <!-- <h3 style="font-size:16px;font-weight: bolder;color:#182c4c;text-align:left;margin-left:15px;" id="hargadewasa{{$p->id}}"></h3> -->
+      <!-- <h3 style="font-size:16px;font-weight: bolder;color:#182c4c;margin-left:15px;" id="hargagroup{{$p->id}}"></h3> -->
+      <!-- <h3 style="font-size:16px;font-weight: bolder;color:#182c4c;margin-left:15px;" id="hargachild{{$p->id}}"></h3> -->
     </section>
     <section data-test-id="activity-filters-primary-date-picker" class="ba-dropdown ba-date-picker ba-date-picker--multiple-months ba-date-picker--experimental-theme" data-v-0605f8ac data-v-dd428772>
       <h3 style="font-size:17px;font-weight: bolder;color:#182c4c;text-align:left;margin-left:15px;" id="harga{{$p->id}}"></h3>
@@ -627,8 +627,6 @@ font-family: 'GT Eesti Text Trial', sans-serif;
           <section class="activity-swap-columns" data-v-c4be1764 style="border-top: solid;border-top-color: #e6e8eb;border-top-width: 1pt;">
           <div class="overlay" data-v-c4be1764><!----> 
           <div id="activity-experience" class="activity-experience js-section-content" data-v-d21396c2 data-v-c4be1764 style="">
-         <!--  <h2 class="activity-experience__header" data-v-d21396c2>The Original experience</h2> --> <!----> 
-            <!----> <!----> <!---->
             <p style="font-size: 20px;font-weight: bolder;margin-top: 15px;">Include </p>
             <br>
             <ul style="font-size: 17px;">
@@ -642,8 +640,6 @@ font-family: 'GT Eesti Text Trial', sans-serif;
           <section class="activity-swap-columns" data-v-c4be1764 style="border-top: solid;border-top-color: #e6e8eb;border-top-width: 1pt;">
                       <div class="overlay" data-v-c4be1764><!----> 
           <div id="activity-experience" class="activity-experience js-section-content" data-v-d21396c2 data-v-c4be1764 style="">
-         <!--  <h2 class="activity-experience__header" data-v-d21396c2>The Original experience</h2> --> <!----> 
-            <!----> <!----> <!---->
             <p style="font-size: 20px;font-weight: bolder;margin-top: 15px;">Exclude </p>
             <br>
             <ul style="font-size: 17px;">
@@ -780,7 +776,6 @@ font-family: 'GT Eesti Text Trial', sans-serif;
       <div class="rating-star rating-overall__rating-stars">
         <div class="" style="margin-bottom: 10px;">
               <div class="small-ratings">
-                <!-- <p class="review-stat" style="color: black;font-weight: bolder;">{{$jumlahreview ?? ''}} Reviews</p> -->
                 <i class="fa fa-star rating-color"></i>
                 <i class="fa fa-star rating-color"></i>
                 <i class="fa fa-star rating-color"></i>
@@ -1146,7 +1141,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
           if (item.kategories == 'Per Person' && person >= item.min && person <= item.maks && item.subwisata_id == subid{{$p->id}}){
             hargadewasa{{$p->id}} = item.harga * person 
             // const hargs = item.harga.toFixed(2)
-            $("#jumlahdewasa{{$p->id}}").text("Adult: " + person + " x")
+            $("#jumlahdewasa{{$p->id}}").text("Adult: " + person + " x" + '\xa0\xa0\xa0\xa0\xa0\xa0' + convertrate(item.harga)) 
             $("#hargadewasa{{$p->id}}").text("Price: " + convertrate(item.harga))
             $("#dewasa{{$p->id}}").val(person)
           }
@@ -1154,7 +1149,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
           else if (item.kategories == 'Per Group' && person >= item.min && person <= item.maks && item.subwisata_id == subid{{$p->id}}){
             hargadewasa{{$p->id}} = item.harga 
             // const hargs = item.harga.toFixed(2)
-            $("#jumlahdewasa{{$p->id}}").text("Participants (in group): " + person)
+            $("#jumlahdewasa{{$p->id}}").text("Participants (in group): " + person+ '\xa0\xa0\xa0\xa0\xa0\xa0' + convertrate(item.harga))
             $("#hargadewasa{{$p->id}}").text("Price: " + convertrate(item.harga))
             $("#dewasa{{$p->id}}").val(person)
           }
@@ -1173,7 +1168,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
           if (personchild >= item.min && personchild <= item.maks && item.subwisata_id == subid{{$p->id}}) {
             hargaanak{{$p->id}} = item.harga * personchild 
             $("#anak{{$p->id}}").val(personchild)
-            $("#jumlahchild{{$p->id}}").text("Child: "+personchild + " x")
+            $("#jumlahchild{{$p->id}}").text("Child: "+personchild + " x" + '\xa0\xa0\xa0\xa0\xa0\xa0' +convertrate(item.harga))
             $("#hargachild{{$p->id}}").text("Price (Child): "+convertrate(item.harga))
             
           }
