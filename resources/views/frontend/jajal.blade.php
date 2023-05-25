@@ -589,11 +589,11 @@ font-family: 'GT Eesti Text Trial', sans-serif;
       
     <input type="hidden" name="tanggaltravel" id="tanggaltravel{{$p->id}}">
     <section data-test-id="activity-filters-primary-people-picker" class="ba-dropdown people-picker" data-v-0605f8ac data-v-7e630b00 data-v-dd428772>
-      <h3 style="font-size:16px;font-weight: bolder;color:#182c4c;text-align:left;margin-left:15px;" id="jumlahdewasa{{$p->id}}"></h3>
+      <h3 class="booking-assistant-configurator__header" data-v-dd428772 style="font-size:16px;font-weight: bolder;color:#182c4c;text-align:left;" id="jumlahdewasa{{$p->id}}"></h3>
       <input type="hidden" name="dewasa" id="dewasa{{$p->id}}">
-      <h3 style="font-size:16px;font-weight: bolder;color:#182c4c;margin-left:15px;" id="jumlahgroup{{$p->id}}"></h3>
+      <h3 class="booking-assistant-configurator__header" data-v-dd428772 style="font-size:16px;font-weight: bolder;color:#182c4c;margin-left:15px;" id="jumlahgroup{{$p->id}}"></h3>
       <input type="hidden" name="groupe" id="groupe{{$p->id}}">
-      <h3 style="font-size:16px;font-weight: bolder;color:#182c4c;margin-left:15px;" id="jumlahchild{{$p->id}}"></h3>
+      <h3 class="booking-assistant-configurator__header" data-v-dd428772 style="font-size:16px;font-weight: bolder;color:#182c4c;margin-left:15px;" id="jumlahchild{{$p->id}}"></h3>
       <input type="hidden" name="anak" id="anak{{$p->id}}">
     </section>
     <section data-test-id="activity-filters-primary-people-picker" class="ba-dropdown people-picker" data-v-0605f8ac data-v-7e630b00 data-v-dd428772>
@@ -602,8 +602,8 @@ font-family: 'GT Eesti Text Trial', sans-serif;
       <!-- <h3 style="font-size:16px;font-weight: bolder;color:#182c4c;margin-left:15px;" id="hargachild{{$p->id}}"></h3> -->
     </section>
     <section data-test-id="activity-filters-primary-date-picker" class="ba-dropdown ba-date-picker ba-date-picker--multiple-months ba-date-picker--experimental-theme" data-v-0605f8ac data-v-dd428772>
-      <h3 style="font-size:17px;font-weight: bolder;color:#182c4c;text-align:left;margin-left:15px;" id="harga{{$p->id}}"></h3>
-      <h3 style="font-size:17px;font-weight: bolder;color:#182c4c;margin-left:15px;" id="totalgroup{{$p->id}}"></h3>
+      <h3 class="booking-assistant-configurator__header" data-v-dd428772 style="font-size:17px;font-weight: bolder;color:#182c4c;text-align:left;" id="harga{{$p->id}}"></h3>
+      <h3 class="booking-assistant-configurator__header" data-v-dd428772 style="font-size:17px;font-weight: bolder;color:#182c4c;text-align:left;" id="totalgroup{{$p->id}}"></h3>
       <input type="hidden" name="totharga" id="totharga{{$p->id}}">
       <input type="hidden" name="tothargagroup" id="tothargagroup{{$p->id}}">
     </section>
