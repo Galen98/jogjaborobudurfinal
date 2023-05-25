@@ -33,7 +33,6 @@ Create Travel
       <div class="modal-body">
       @foreach($travel as $item)<form action="{{url('hapuswisata/'.$item->wisata_id)}}" method="POST" enctype="multipart/form-data" id="formhapus">
           @endforeach
-          @method('delete')
       @csrf
         <p>Apakah anda yakin ingin menghapus?</p> 
         <input type="hidden" name="idwisata" id="idwisata">

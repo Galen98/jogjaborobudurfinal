@@ -576,33 +576,34 @@ font-family: 'GT Eesti Text Trial', sans-serif;
       <input type="hidden" name="namawisata" value="{{$p->judulsub}}">
     <div is-date-selected="" class="booking-assistant-configurator booking-assistant" data-v-dd428772 data-v-a17e5250 style="background-color: white;border-width: 1px;border-style: solid;border-color: #b80404;border-radius: 10px 10px 10px 10px;" id="totals{{$p->id}}">
       <input type="hidden" name="subid" id="subid{{$p->id}}" value="{{$p->id}}">
-    <h2 class="booking-assistant-configurator__header" data-v-dd428772 style="color: #182c4c;"> {{$p->judulsub}}</h2>
-    <h3 class="booking-assistant-configurator__header" style="font-size:14px;font-weight: bolder;color:grey;margin-right: 10px;">{{$p->short}}</h3>
+    <h2 class="booking-assistant-configurator__header" data-v-dd428772 style="font-weight: bolder;color:#182c4c;text-align:left;"> {{$p->judulsub}}</h2>
+    <h3 class="booking-assistant-configurator__header" data-v-dd428772  style="font-size:14px;font-weight: bolder;color:grey;margin-right: 10px;text-align:left;">{{$p->short}}</h3>
     <br>
-    <h3 class="booking-assistant-configurator__header" data-v-dd428772 style="font-size:18px;font-weight: bolder;color:#182c4c;margin-right: 10px;">Starting time:
+    <h3 class="booking-assistant-configurator__header" data-v-dd428772 style="font-size:18px;font-weight: bolder;color:#182c4c;text-align:left;">Starting time:
      <select name="waktu" style="width: 200px;border-radius: 10px 10px 10px 10px;" required="">
         <option>Select a starting time</option>
         @foreach($p->waktu as $w)<option value="{{ Carbon\Carbon::parse($w->time)->format('g:i A') }}">{{ Carbon\Carbon::parse($w->time)->format('g:i A') }}</option>@endforeach
       </select></h3>
-    <h5 class="booking-assistant-configurator__header" data-v-dd428772 style="color: #182c4c;font-size:18px;" id="tanggal{{$p->id}}"></h5>
+      <h2 class="booking-assistant-configurator__header" data-v-dd428772 style="color: #182c4c;font-size:15px;text-align:left;" id="tanggal{{$p->id}}"></h2>
+      
+      
     <input type="hidden" name="tanggaltravel" id="tanggaltravel{{$p->id}}">
     <section data-test-id="activity-filters-primary-people-picker" class="ba-dropdown people-picker" data-v-0605f8ac data-v-7e630b00 data-v-dd428772>
-      <h3 style="font-size:18px;font-weight: bolder;color:#182c4c;" id="jumlahdewasa{{$p->id}}"></h3>
-      
+      <h3 style="font-size:16px;font-weight: bolder;color:#182c4c;text-align:left;margin-left:15px;" id="jumlahdewasa{{$p->id}}"></h3>
       <input type="hidden" name="dewasa" id="dewasa{{$p->id}}">
-      <h3 style="font-size:18px;font-weight: bolder;color:#182c4c;" id="jumlahgroup{{$p->id}}"></h3>
+      <h3 style="font-size:16px;font-weight: bolder;color:#182c4c;margin-left:15px;" id="jumlahgroup{{$p->id}}"></h3>
       <input type="hidden" name="groupe" id="groupe{{$p->id}}">
-      <h3 style="font-size:18px;font-weight: bolder;color:#182c4c;" id="jumlahchild{{$p->id}}"></h3>
+      <h3 style="font-size:16px;font-weight: bolder;color:#182c4c;margin-left:15px;" id="jumlahchild{{$p->id}}"></h3>
       <input type="hidden" name="anak" id="anak{{$p->id}}">
     </section>
     <section data-test-id="activity-filters-primary-people-picker" class="ba-dropdown people-picker" data-v-0605f8ac data-v-7e630b00 data-v-dd428772>
-      <h3 style="font-size:18px;font-weight: bolder;color:#182c4c;" id="hargadewasa{{$p->id}}"></h3>
-      <h3 style="font-size:18px;font-weight: bolder;color:#182c4c;" id="hargagroup{{$p->id}}"></h3>
-      <h3 style="font-size:18px;font-weight: bolder;color:#182c4c;" id="hargachild{{$p->id}}"></h3>
+      <h3 style="font-size:16px;font-weight: bolder;color:#182c4c;text-align:left;margin-left:15px;" id="hargadewasa{{$p->id}}"></h3>
+      <h3 style="font-size:16px;font-weight: bolder;color:#182c4c;margin-left:15px;" id="hargagroup{{$p->id}}"></h3>
+      <h3 style="font-size:16px;font-weight: bolder;color:#182c4c;margin-left:15px;" id="hargachild{{$p->id}}"></h3>
     </section>
     <section data-test-id="activity-filters-primary-date-picker" class="ba-dropdown ba-date-picker ba-date-picker--multiple-months ba-date-picker--experimental-theme" data-v-0605f8ac data-v-dd428772>
-      <h3 style="font-size:20px;font-weight: bolder;color:#182c4c;" id="harga{{$p->id}}"></h3>
-      <h3 style="font-size:20px;font-weight: bolder;color:#182c4c;" id="totalgroup{{$p->id}}"></h3>
+      <h3 style="font-size:17px;font-weight: bolder;color:#182c4c;text-align:left;margin-left:15px;" id="harga{{$p->id}}"></h3>
+      <h3 style="font-size:17px;font-weight: bolder;color:#182c4c;margin-left:15px;" id="totalgroup{{$p->id}}"></h3>
       <input type="hidden" name="totharga" id="totharga{{$p->id}}">
       <input type="hidden" name="tothargagroup" id="tothargagroup{{$p->id}}">
     </section>

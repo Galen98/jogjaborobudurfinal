@@ -93,7 +93,6 @@ Posting Blog
       <div class="modal-body">
       @foreach($blog as $item)<form action="{{url('hapusblog/'.$item->id)}}" method="POST" enctype="multipart/form-data" id="formhapus">
           @endforeach
-          @method('delete')
       @csrf
         Apakah anda yakin ingin menghapus?
         <input type="hidden" name="idblog" id="idblog">

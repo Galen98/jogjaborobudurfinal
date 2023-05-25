@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 use Cviebrock\EloquentSluggable\Sluggable;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\blog;
+use Illuminate\Support\Facades\Storage;
 use App\Models\travel;
 use App\Models\tags;
+use Illuminate\Support\Facades\File; 
 use App\Models\tambahtags;
 use App\Models\coment;
 use App\Models\includes;
@@ -91,7 +93,10 @@ class BlogController extends Controller
     
     public function hapusblog(Request $request,$idblog){
         $idblog=Request('idblog');
-        DB::table('blog')->where('id',$idblog)->delete();
+        $images=blog::where('id',$idblog)->first();
+        File::delete('public/img/'.$images->image);
+        blog::where('id',$idblog)->delete();
+        // DB::table('blog')->where('id',$idblog)->delete();   
         DB::table('tambahtags')->where('idblog',$idblog)->delete();
         Alert::error('Blog Telah Dihapus');
         return redirect()->to('/blogadmin');
@@ -212,6 +217,12 @@ class BlogController extends Controller
 
     public function hapuswisata(Request $request,$idwisata){
         $idwisata=Request('idwisata');
+        $images=travel::where('wisata_id', $idwisata)->first();
+        File::delete('public/img/'.$images->image);
+        File::delete('public/img/'.$images->image2);
+        File::delete('public/img/'.$images->image3);
+        File::delete('public/img/'.$images->image4);
+        File::delete('public/img/'.$images->image5);
         DB::table('wisata')->where('wisata_id',$idwisata)->delete();
         DB::table('include')->where('wisata_id',$idwisata)->delete();
         DB::table('exclude')->where('wisata_id',$idwisata)->delete();
@@ -817,14 +828,19 @@ class BlogController extends Controller
     }
 
     public function editimagelanding(Request $request,$idimage){
-        $gambar=$request->image;
-        if($gambar == null){
+        $img= request('image');
+        
+        if($img == null){
             $nama_file=$request->namagambar;
         }
         else{
-        $nama_file = time()."_".$gambar->getClientOriginalName();
-		$tujuan_upload = 'public/img';
-        $gambar->move($tujuan_upload,$nama_file);
+            $images = background::where('id', $idimage)->first();
+            File::delete('public/img/'.$images->image);
+            $nama_file = time()."_".$img->getClientOriginalName();
+            $gambar = Image::make($img);
+            $gambar->resize(1000,700);
+            $tujuan_upload = 'public/img/';
+            $gambar->save($tujuan_upload .$nama_file);
         }
         DB::table('background')->where('id',$idimage)
         ->update([
@@ -842,9 +858,13 @@ class BlogController extends Controller
             $nama_file=$request->namagambar;
         }
         else{
-        $nama_file = time()."_".$gambar->getClientOriginalName();
-		$tujuan_upload = 'public/img';
-        $gambar->move($tujuan_upload,$nama_file);
+            $images = background::where('id', $idimage)->first();
+            File::delete('public/img/'.$images->image);
+            $nama_file = time()."_".$img->getClientOriginalName();
+            $gambar = Image::make($img);
+            $gambar->resize(1000,700);
+            $tujuan_upload = 'public/img/';
+            $gambar->save($tujuan_upload .$nama_file);
         }
         DB::table('background')->where('id',$idimage)
         ->update([
@@ -862,9 +882,13 @@ class BlogController extends Controller
             $nama_file=$request->namagambar;
         }
         else{
-        $nama_file = time()."_".$gambar->getClientOriginalName();
-		$tujuan_upload = 'public/img';
-        $gambar->move($tujuan_upload,$nama_file);
+            $images = background::where('id', $idimage)->first();
+            File::delete('public/img/'.$images->image);
+            $nama_file = time()."_".$img->getClientOriginalName();
+            $gambar = Image::make($img);
+            $gambar->resize(1000,700);
+            $tujuan_upload = 'public/img/';
+            $gambar->save($tujuan_upload .$nama_file);
         }
         DB::table('background')->where('id',$idimage)
         ->update([
@@ -882,9 +906,13 @@ class BlogController extends Controller
             $nama_file=$request->namagambar;
         }
         else{
-        $nama_file = time()."_".$gambar->getClientOriginalName();
-		$tujuan_upload = 'public/img';
-        $gambar->move($tujuan_upload,$nama_file);
+            $images = background::where('id', $idimage)->first();
+            File::delete('public/img/'.$images->image);
+            $nama_file = time()."_".$img->getClientOriginalName();
+            $gambar = Image::make($img);
+            $gambar->resize(1000,700);
+            $tujuan_upload = 'public/img/';
+            $gambar->save($tujuan_upload .$nama_file);
         }
         DB::table('background')->where('id',$idimage)
         ->update([
@@ -902,9 +930,13 @@ class BlogController extends Controller
             $nama_file=$request->namagambar;
         }
         else{
-        $nama_file = time()."_".$gambar->getClientOriginalName();
-		$tujuan_upload = 'public/img';
-        $gambar->move($tujuan_upload,$nama_file);
+            $images = background::where('id', $idimage)->first();
+            File::delete('public/img/'.$images->image);
+            $nama_file = time()."_".$img->getClientOriginalName();
+            $gambar = Image::make($img);
+            $gambar->resize(1000,700);
+            $tujuan_upload = 'public/img/';
+            $gambar->save($tujuan_upload .$nama_file);
         }
         DB::table('background')->where('id',$idimage)
         ->update([
@@ -922,9 +954,13 @@ class BlogController extends Controller
             $nama_file=$request->namagambar;
         }
         else{
-        $nama_file = time()."_".$gambar->getClientOriginalName();
-		$tujuan_upload = 'public/img';
-        $gambar->move($tujuan_upload,$nama_file);
+            $images = background::where('id', $idimage)->first();
+            File::delete('public/img/'.$images->image);
+            $nama_file = time()."_".$img->getClientOriginalName();
+            $gambar = Image::make($img);
+            $gambar->resize(1000,700);
+            $tujuan_upload = 'public/img/';
+            $gambar->save($tujuan_upload .$nama_file);
         }
         DB::table('background')->where('id',$idimage)
         ->update([
@@ -942,9 +978,13 @@ class BlogController extends Controller
             $nama_file=$request->namagambar;
         }
         else{
-        $nama_file = time()."_".$gambar->getClientOriginalName();
-		$tujuan_upload = 'public/img';
-        $gambar->move($tujuan_upload,$nama_file);
+            $images = background::where('id', $idimage)->first();
+            File::delete('public/img/'.$images->image);
+            $nama_file = time()."_".$img->getClientOriginalName();
+            $gambar = Image::make($img);
+            $gambar->resize(1000,700);
+            $tujuan_upload = 'public/img/';
+            $gambar->save($tujuan_upload .$nama_file);
         }
         DB::table('background')->where('id',$idimage)
         ->update([
@@ -962,9 +1002,13 @@ class BlogController extends Controller
             $nama_file=$request->namagambar;
         }
         else{
-        $nama_file = time()."_".$gambar->getClientOriginalName();
-		$tujuan_upload = 'public/img';
-        $gambar->move($tujuan_upload,$nama_file);
+            $images = background::where('id', $idimage)->first();
+            File::delete('public/img/'.$images->image);
+            $nama_file = time()."_".$img->getClientOriginalName();
+            $gambar = Image::make($img);
+            $gambar->resize(1000,700);
+            $tujuan_upload = 'public/img/';
+            $gambar->save($tujuan_upload .$nama_file);
         }
         DB::table('background')->where('id',$idimage)
         ->update([
@@ -983,9 +1027,13 @@ class BlogController extends Controller
             $nama_file=$request->namagambar;
         }
         else{
-        $nama_file = time()."_".$gambar->getClientOriginalName();
-		$tujuan_upload = 'public/img';
-        $gambar->move($tujuan_upload,$nama_file);
+            $images = background::where('id', $idimage)->first();
+            File::delete('public/img/'.$images->image);
+            $nama_file = time()."_".$img->getClientOriginalName();
+            $gambar = Image::make($img);
+            $gambar->resize(1000,700);
+            $tujuan_upload = 'public/img/';
+            $gambar->save($tujuan_upload .$nama_file);
         }
         DB::table('background')->where('id',$idimage)
         ->update([
@@ -1144,6 +1192,8 @@ class BlogController extends Controller
     }
 
     public function deletedestination($iddestination){
+        $images=destination::where('id',$iddestination)->first();
+        File::delete('public/img/'.$images->image);
         $destination=destination::where('id',$iddestination)->delete();
         Alert::error('Berhasil Dihapus');
         return redirect()->back();

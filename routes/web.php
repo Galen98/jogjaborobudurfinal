@@ -238,7 +238,7 @@ Route::get('/detailaffiliate/{AffiliateID}', [App\Http\Controllers\BlogControlle
 Route::get('/detailselltours/{SelltoursID}', [App\Http\Controllers\BlogController::class,'showdetailselltours']);
 Route::get('/detailplatform/{PlatformID}', [App\Http\Controllers\BlogController::class,'showdetailplatform']);
 Route::get('/detailinfluencer/{InfluencerID}', [App\Http\Controllers\BlogController::class,'showhapusinfluencer']);
-Route::delete('/hapusblog/{idblog}', [App\Http\Controllers\BlogController::class,'hapusblog']);
+Route::post('/hapusblog/{idblog}', [App\Http\Controllers\BlogController::class,'hapusblog']);
 Route::delete('/hapusbooking/{bookingid}', [App\Http\Controllers\BlogController::class,'hapusbooking']);
 Route::delete('/hapusbahasa/{idlanguage}', [App\Http\Controllers\BlogController::class,'hapusbahasa']);
 Route::delete('/hapusmessage/{idmessage}', [App\Http\Controllers\BlogController::class,'hapusmessage']);
@@ -325,7 +325,7 @@ Route::get('/showeditseason/{SeasonID}', [App\Http\Controllers\BlogController::c
 Route::get('/showeditoption/{OptionID}', [App\Http\Controllers\BlogController::class,'showeditoption']);
 Route::get('/showedithargachild/{ChildID}', [App\Http\Controllers\BlogController::class,'showedithargachild']);
 Route::get('/showeditdiskon/{WisataID}', [App\Http\Controllers\BlogController::class,'showeditdiskon']);
-Route::delete('/hapuswisata/{idwisata}', [App\Http\Controllers\BlogController::class,'hapuswisata']);
+Route::post('/hapuswisata/{idwisata}', [App\Http\Controllers\BlogController::class,'hapuswisata']);
 Route::get('/formseason',function(){
     return view('formseason');
 });
