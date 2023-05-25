@@ -1141,7 +1141,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
           if (item.kategories == 'Per Person' && person >= item.min && person <= item.maks && item.subwisata_id == subid{{$p->id}}){
             hargadewasa{{$p->id}} = item.harga * person 
             // const hargs = item.harga.toFixed(2)
-            $("#jumlahdewasa{{$p->id}}").text("Adult: " + person + " x" + '\xa0\xa0\xa0\xa0\xa0\xa0' + convertrate(item.harga)) 
+            $("#jumlahdewasa{{$p->id}}").text("Adult: " + person + " x" + ' ' + convertrate(item.harga)) 
             $("#hargadewasa{{$p->id}}").text("Price: " + convertrate(item.harga))
             $("#dewasa{{$p->id}}").val(person)
           }
@@ -1149,7 +1149,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
           else if (item.kategories == 'Per Group' && person >= item.min && person <= item.maks && item.subwisata_id == subid{{$p->id}}){
             hargadewasa{{$p->id}} = item.harga 
             // const hargs = item.harga.toFixed(2)
-            $("#jumlahdewasa{{$p->id}}").text("Participants (in group): " + person+ '\xa0\xa0\xa0\xa0\xa0\xa0' + convertrate(item.harga))
+            $("#jumlahdewasa{{$p->id}}").text("Participants (in group): " + person+ ' ' + convertrate(item.harga))
             $("#hargadewasa{{$p->id}}").text("Price: " + convertrate(item.harga))
             $("#dewasa{{$p->id}}").val(person)
           }
@@ -1168,7 +1168,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
           if (personchild >= item.min && personchild <= item.maks && item.subwisata_id == subid{{$p->id}}) {
             hargaanak{{$p->id}} = item.harga * personchild 
             $("#anak{{$p->id}}").val(personchild)
-            $("#jumlahchild{{$p->id}}").text("Child: "+personchild + " x" + '\xa0\xa0\xa0\xa0\xa0\xa0' +convertrate(item.harga))
+            $("#jumlahchild{{$p->id}}").text("Child: "+personchild + " x" + ' ' +convertrate(item.harga))
             $("#hargachild{{$p->id}}").text("Price (Child): "+convertrate(item.harga))
             
           }
