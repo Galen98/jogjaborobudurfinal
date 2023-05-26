@@ -185,7 +185,7 @@
                     <h3 class="text-md font-semibold text-gray-700 mb-3 font-roboto">Tags</h3>
                     <div class="flex items-center flex-wrap gap-2">
                         @foreach($tags as $item)
-                        <a href="{{'/blog/'.$item->tags}}"
+                        <a href="{{'/blog/tag/'.$item->tags}}"
                             class="px-3 py-1  text-sm border border-gray-200 rounded-sm transition hover:bg-blue-500 hover:text-white">{{$item->tags}}</a>
                             @endforeach
                     </div>

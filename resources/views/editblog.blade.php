@@ -23,7 +23,7 @@
 </div>
 <div class="form-group">
 <label for="exampleTextarea1">Isi Artikel</label>
-<textarea id="mytextarea" class="form-control" style="height:150px" name="isi" placeholder="Content">{!! $item->deskripsi !!}</textarea>
+<textarea id="mytextarea" class="form-control" style="height:700px" name="isi" placeholder="Content">{!! $item->deskripsi !!}</textarea>
 </div>
 <button type="submit" class="btn btn-primary mr-2">Submit</button>
 <a href="/blog">Cancel</a>

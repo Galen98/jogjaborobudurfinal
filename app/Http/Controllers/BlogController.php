@@ -38,6 +38,7 @@ use Illuminate\Support\Str;
 class BlogController extends Controller
 {
     public function insertblog(Request $request){
+        $tags=request('tags');
         $judul = request('judulartikel');
         $bahasa=request('bahasa');
         $isi = request('isi');
@@ -47,7 +48,7 @@ class BlogController extends Controller
         $author= request('author');
         $short=request('short');
         $nama_file = time()."_".$gambar->getClientOriginalName();
-      	        // isi dengan nama folder tempat kemana file diupload
+      	        
 		$tujuan_upload = 'public/img';
         $gambar->move($tujuan_upload,$nama_file);
         
@@ -63,32 +64,24 @@ class BlogController extends Controller
 
         $blog=blog::create($data);
 
-        //tags baru
-        if ($kategori == null) {
-            $data = [
-            'idblog'=>$blog->id,
-            'tags'=>$tagx
-            ];
-            foreach($tagx as $index){
+        $data = [
+            'idblog'=> $blog->id,
+            'tags'=>$tags,
+        ];
+        foreach($tags as $index){
             $data['tags']=$index;
             tambahtags::create($data);
             }
-            
-        } else{
-           $data=[
-            'tags'=>$kategori
-        ];
-        $tags=tags::create($data);
         
-        $data=[
-            'idblog'=>$blog->id,
-            'tags'=>$tags->tags,
-        ];
-        $tambahtags=tambahtags::create($data); 
-        }
+        // $data=[
+        //     'idblog'=>$blog->id,
+        //     'tags'=>$tags->tags,
+        // ];
+        // $tambahtags=tambahtags::create($data); 
+        // }
     
         Alert::success('Blog Berhasil Ditambahkan');
-        return redirect()->to('/blog');
+        return redirect()->to('/blogadmin');
     }
     
     public function hapusblog(Request $request,$idblog){
@@ -783,15 +776,16 @@ class BlogController extends Controller
             Carbon::now()->format('m')
         )->where('bahasa', $sessions)->get();
 
-        $similar=DB::table('tambahtags')->where('idblog',$idblog)->pluck('tags');
-        //$similarity=tambahtags::whereIn('tags',$similar)->get();
+        $similar=DB::table('tambahtags')->where('idblog',$idblog)->paginate(1);
+        $similare=$similar->pluck('tags');
+        $similarity=tambahtags::whereIn('tags',$similare)->get();
 
         $similarblog=DB::table('blog')->select(['blog.id','blog.judulblog','blog.image','blog.created_at','blog.author','blog.slug'])
         ->join('tambahtags', 'tambahtags.idblog', '=', 'blog.id')
-        ->where('tambahtags.tags',$similar)->where('bahasa', $sessions)
+        ->where('tambahtags.tags',$similare)->where('bahasa', $sessions)
         ->get();
 
-        return view('blogjogjaborobudur.view',compact('shareButtons1','blog','popular','tagblog','tags','today','popular','similarblog','language'));
+        return view('blogjogjaborobudur.view',compact('shareButtons1','blog','popular','similarblog','tagblog','tags','today','popular','language'));
     }
 
     public function tagsview(Request $request,$tagsid){
