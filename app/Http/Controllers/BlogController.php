@@ -102,6 +102,13 @@ class BlogController extends Controller
         return redirect()->to('/blogadmin');
     }
 
+    public function hapustag(Request $request,$idtags){
+        $idtags=Request('idtags');
+        tags::where('id',$idtags)->delete();
+        Alert::error('Tag Telah Dihapus');
+        return redirect()->to('/tag-blog');
+    }
+
     public function hapusinfluencer(Request $request,$idinfluencer){
         $idinfluencer=Request('idinfluencer');
         DB::table('influencer')->where('id',$idinfluencer)->delete();
@@ -431,6 +438,15 @@ class BlogController extends Controller
                
     }
 
+    public function updatetag(Request $request, $idtag){
+        $idtag = Request('idtag');
+       $Tag = tags::where('id', $idtag)
+       ->update([
+        'tags' => $request->tags
+       ]);
+               
+    }
+
     public function updatetime(Request $request,$idtime){
         
         $idtime = Request('idtime');
@@ -515,6 +531,14 @@ class BlogController extends Controller
         return response()->json([
         'status'=>200,
         'Theme'=>$Theme
+        ]);
+    }
+
+    public function showedittag($TagID){
+        $Tag=DB::table('tags')->where('id',$TagID)->first();
+        return response()->json([
+        'status'=>200,
+        'Tag'=>$Tag
         ]);
     }
 
@@ -838,7 +862,7 @@ class BlogController extends Controller
             File::delete('public/img/'.$images->image);
             $nama_file = time()."_".$img->getClientOriginalName();
             $gambar = Image::make($img);
-            $gambar->resize(1000,700);
+            $gambar->resize(1080,608);
             $tujuan_upload = 'public/img/';
             $gambar->save($tujuan_upload .$nama_file);
         }
@@ -853,8 +877,9 @@ class BlogController extends Controller
     }
 
     public function editimageagent(Request $request,$idimage){
-        $gambar=$request->image;
-        if($gambar == null){
+        $img= request('image');
+        
+        if($img == null){
             $nama_file=$request->namagambar;
         }
         else{
@@ -862,7 +887,7 @@ class BlogController extends Controller
             File::delete('public/img/'.$images->image);
             $nama_file = time()."_".$img->getClientOriginalName();
             $gambar = Image::make($img);
-            $gambar->resize(1000,700);
+            $gambar->resize(1080,608);
             $tujuan_upload = 'public/img/';
             $gambar->save($tujuan_upload .$nama_file);
         }
@@ -870,15 +895,16 @@ class BlogController extends Controller
         ->update([
             'header'=>$request->teks,
             'image'=>$nama_file,
-            'place'=>'agent'
+            'place'=>'landingpage'
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
         return redirect()->to('/background/change');
     }
 
     public function editimageaffiliate(Request $request,$idimage){
-        $gambar=$request->image;
-        if($gambar == null){
+        $img= request('image');
+        
+        if($img == null){
             $nama_file=$request->namagambar;
         }
         else{
@@ -886,7 +912,7 @@ class BlogController extends Controller
             File::delete('public/img/'.$images->image);
             $nama_file = time()."_".$img->getClientOriginalName();
             $gambar = Image::make($img);
-            $gambar->resize(1000,700);
+            $gambar->resize(1080,608);
             $tujuan_upload = 'public/img/';
             $gambar->save($tujuan_upload .$nama_file);
         }
@@ -894,15 +920,16 @@ class BlogController extends Controller
         ->update([
             'header'=>$request->teks,
             'image'=>$nama_file,
-            'place'=>'affiliate'
+            'place'=>'landingpage'
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
         return redirect()->to('/background/change');
     }
 
     public function editimageselltours(Request $request,$idimage){
-        $gambar=$request->image;
-        if($gambar == null){
+        $img= request('image');
+        
+        if($img == null){
             $nama_file=$request->namagambar;
         }
         else{
@@ -910,7 +937,7 @@ class BlogController extends Controller
             File::delete('public/img/'.$images->image);
             $nama_file = time()."_".$img->getClientOriginalName();
             $gambar = Image::make($img);
-            $gambar->resize(1000,700);
+            $gambar->resize(1080,608);
             $tujuan_upload = 'public/img/';
             $gambar->save($tujuan_upload .$nama_file);
         }
@@ -918,15 +945,16 @@ class BlogController extends Controller
         ->update([
             'header'=>$request->teks,
             'image'=>$nama_file,
-            'place'=>'selltours'
+            'place'=>'landingpage'
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
         return redirect()->to('/background/change');
     }
 
     public function editimageabout(Request $request,$idimage){
-        $gambar=$request->image;
-        if($gambar == null){
+        $img= request('image');
+        
+        if($img == null){
             $nama_file=$request->namagambar;
         }
         else{
@@ -934,7 +962,7 @@ class BlogController extends Controller
             File::delete('public/img/'.$images->image);
             $nama_file = time()."_".$img->getClientOriginalName();
             $gambar = Image::make($img);
-            $gambar->resize(1000,700);
+            $gambar->resize(1080,608);
             $tujuan_upload = 'public/img/';
             $gambar->save($tujuan_upload .$nama_file);
         }
@@ -942,15 +970,16 @@ class BlogController extends Controller
         ->update([
             'header'=>$request->teks,
             'image'=>$nama_file,
-            'place'=>'about'
+            'place'=>'landingpage'
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
         return redirect()->to('/background/change');
     }
 
     public function editimageplatform(Request $request,$idimage){
-        $gambar=$request->image;
-        if($gambar == null){
+        $img= request('image');
+        
+        if($img == null){
             $nama_file=$request->namagambar;
         }
         else{
@@ -958,7 +987,7 @@ class BlogController extends Controller
             File::delete('public/img/'.$images->image);
             $nama_file = time()."_".$img->getClientOriginalName();
             $gambar = Image::make($img);
-            $gambar->resize(1000,700);
+            $gambar->resize(1080,608);
             $tujuan_upload = 'public/img/';
             $gambar->save($tujuan_upload .$nama_file);
         }
@@ -966,15 +995,16 @@ class BlogController extends Controller
         ->update([
             'header'=>$request->teks,
             'image'=>$nama_file,
-            'place'=>'platform'
+            'place'=>'landingpage'
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
         return redirect()->to('/background/change');
     }
 
     public function editimagecorporate(Request $request,$idimage){
-        $gambar=$request->image;
-        if($gambar == null){
+        $img= request('image');
+        
+        if($img == null){
             $nama_file=$request->namagambar;
         }
         else{
@@ -982,7 +1012,7 @@ class BlogController extends Controller
             File::delete('public/img/'.$images->image);
             $nama_file = time()."_".$img->getClientOriginalName();
             $gambar = Image::make($img);
-            $gambar->resize(1000,700);
+            $gambar->resize(1080,608);
             $tujuan_upload = 'public/img/';
             $gambar->save($tujuan_upload .$nama_file);
         }
@@ -990,15 +1020,16 @@ class BlogController extends Controller
         ->update([
             'header'=>$request->teks,
             'image'=>$nama_file,
-            'place'=>'corporate'
+            'place'=>'landingpage'
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
         return redirect()->to('/background/change');
     }
 
     public function editimagecontact(Request $request,$idimage){
-        $gambar=$request->image;
-        if($gambar == null){
+        $img= request('image');
+        
+        if($img == null){
             $nama_file=$request->namagambar;
         }
         else{
@@ -1006,7 +1037,7 @@ class BlogController extends Controller
             File::delete('public/img/'.$images->image);
             $nama_file = time()."_".$img->getClientOriginalName();
             $gambar = Image::make($img);
-            $gambar->resize(1000,700);
+            $gambar->resize(1080,608);
             $tujuan_upload = 'public/img/';
             $gambar->save($tujuan_upload .$nama_file);
         }
@@ -1014,16 +1045,16 @@ class BlogController extends Controller
         ->update([
             'header'=>$request->teks,
             'image'=>$nama_file,
-            'subheader'=>$request->tekssmall,
-            'place'=>'contact'
+            'place'=>'landingpage'
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
         return redirect()->to('/background/change');
     }
 
     public function editimageinfluencer(Request $request,$idimage){
-        $gambar=$request->image;
-        if($gambar == null){
+        $img= request('image');
+        
+        if($img == null){
             $nama_file=$request->namagambar;
         }
         else{
@@ -1031,7 +1062,7 @@ class BlogController extends Controller
             File::delete('public/img/'.$images->image);
             $nama_file = time()."_".$img->getClientOriginalName();
             $gambar = Image::make($img);
-            $gambar->resize(1000,700);
+            $gambar->resize(1080,608);
             $tujuan_upload = 'public/img/';
             $gambar->save($tujuan_upload .$nama_file);
         }
@@ -1039,8 +1070,7 @@ class BlogController extends Controller
         ->update([
             'header'=>$request->teks,
             'image'=>$nama_file,
-            'subheader'=>$request->tekssmall,
-            'place'=>'influencer'
+            'place'=>'landingpage'
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
         return redirect()->to('/background/change');
@@ -1056,6 +1086,16 @@ class BlogController extends Controller
         $blogs=blog::whereMonth('created_at',$today)->paginate(6);
         return view('blogs.allblog',compact('all','popular','blogs'));
 
+    }
+
+    public function addtag(Request $request){
+        $tag = Request('tag');
+        $data = [
+            'tags' => $tag
+        ];
+        tags::create($data);
+        Alert::success('Berhasil','Berhasil Ditambah');
+        return redirect()->back();
     }
 
     public function diskon($travelid){

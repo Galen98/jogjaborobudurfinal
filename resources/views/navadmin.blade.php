@@ -13,6 +13,12 @@
           </a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="/tag-blog">
+            <i class="mdi mdi-tag-multiple menu-icon"></i>
+            <span class="menu-title">Tag Blog</span>
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="/data-booking">
             <i class="mdi mdi-wallet-travel menu-icon"></i>
             <span class="menu-title">Data Booking</span>

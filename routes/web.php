@@ -8,6 +8,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\TravelController;
 use App\Http\Controllers\emailController;
 use App\Models\blog;
+use App\Models\tags;
 use App\Models\travel;
 use App\Models\corporate;
 use App\Models\travelagent;
@@ -225,6 +226,7 @@ Route::get('/showdetailbooking/{BookingID}', [App\Http\Controllers\BlogControlle
 Route::get('/showhapuslanguage/{LanguageID}', [App\Http\Controllers\BlogController::class,'showhapuslanguage']);
 Route::get('/showeditcurrency/{RateID}', [App\Http\Controllers\BlogController::class,'showeditcurrency']);
 Route::get('/showedittheme/{ThemeID}', [App\Http\Controllers\BlogController::class,'showedittheme']);
+Route::get('/showedittag/{TagID}', [App\Http\Controllers\BlogController::class,'showedittag']);
 Route::get('/showeditdestination/{DestinationID}', [App\Http\Controllers\BlogController::class,'showeditdestination']);
 Route::get('/showeditinclude/{IncludeID}', [App\Http\Controllers\BlogController::class,'showeditinclude']);
 Route::get('/showeditjam/{JamID}', [App\Http\Controllers\BlogController::class,'showeditjam']);
@@ -239,6 +241,7 @@ Route::get('/detailselltours/{SelltoursID}', [App\Http\Controllers\BlogControlle
 Route::get('/detailplatform/{PlatformID}', [App\Http\Controllers\BlogController::class,'showdetailplatform']);
 Route::get('/detailinfluencer/{InfluencerID}', [App\Http\Controllers\BlogController::class,'showhapusinfluencer']);
 Route::post('/hapusblog/{idblog}', [App\Http\Controllers\BlogController::class,'hapusblog']);
+Route::post('/hapustag/{idtags}', [App\Http\Controllers\BlogController::class,'hapustag']);
 Route::delete('/hapusbooking/{bookingid}', [App\Http\Controllers\BlogController::class,'hapusbooking']);
 Route::delete('/hapusbahasa/{idlanguage}', [App\Http\Controllers\BlogController::class,'hapusbahasa']);
 Route::delete('/hapusmessage/{idmessage}', [App\Http\Controllers\BlogController::class,'hapusmessage']);
@@ -296,6 +299,12 @@ Route::get('/season', function(){
     $season=season::get();
     return view('season',compact('season'));
 });
+
+Route::get('/tag-blog', function(){
+    $tag=tags::get();
+    return view('formtags',compact('tag'));
+});
+Route::post('addtag', [App\Http\Controllers\BlogController::class,'addtag']);
 
 Route::post('insertcoment', [App\Http\Controllers\BlogController::class,'insertcomment']);
 Route::get('/facebookshare', [App\Http\Controllers\BlogController::class,'sharefacebookblog']);
@@ -431,6 +440,7 @@ Route::patch('/updateoption/{idoption}',[BlogController::class,'updateoption']);
 Route::patch('/updateinclude/{idinclude}',[BlogController::class,'updateinclude']);
 Route::patch('/updatedestinasi/{iddestination}',[BlogController::class,'updatedestinasi']);
 Route::patch('/updateseason/{idseason}',[BlogController::class,'updateseason']);
+Route::patch('/updatetag/{idtag}',[BlogController::class,'updatetag']);
 Route::patch('/updatetime/{idtime}',[BlogController::class,'updatetime']);
 Route::patch('/updateexclude/{idexclude}',[BlogController::class,'updateexclude']);
 Route::post('addinclude', [BlogController::class, 'addinclude']);

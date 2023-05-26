@@ -579,8 +579,8 @@ font-family: 'GT Eesti Text Trial', sans-serif;
     <h2 class="booking-assistant-configurator__header" data-v-dd428772 style="font-weight: bolder;color:#182c4c;text-align:left;"> {{$p->judulsub}}</h2>
     <h3 class="booking-assistant-configurator__header" data-v-dd428772  style="font-size:14px;font-weight: bolder;color:grey;margin-right: 10px;text-align:left;">{{$p->short}}</h3>
     <br>
-    <h3 class="booking-assistant-configurator__header" data-v-dd428772 style="font-size:18px;font-weight: bolder;color:#182c4c;text-align:left;">Starting time:
-     <select name="waktu" style="font-size:16px;width: 180px;border-radius: 10px 10px 10px 10px;" required="">
+    <h3 class="booking-assistant-configurator__header" data-v-dd428772 style="font-size:15px;font-weight: bolder;color:#182c4c;text-align:left;">Starting time:
+     <select name="waktu" style="font-size:15px;width: 180px;border-radius: 10px 10px 10px 10px;" required="">
         <option >Select a starting time</option>
         @foreach($p->waktu as $w)<option value="{{ Carbon\Carbon::parse($w->time)->format('g:i A') }}">{{ Carbon\Carbon::parse($w->time)->format('g:i A') }}</option>@endforeach
       </select></h3>
