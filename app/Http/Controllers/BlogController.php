@@ -920,7 +920,7 @@ class BlogController extends Controller
         ->update([
             'header'=>$request->teks,
             'image'=>$nama_file,
-            'place'=>'landingpage'
+            'place'=>'affiliate'
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
         return redirect()->to('/background/change');
@@ -945,7 +945,7 @@ class BlogController extends Controller
         ->update([
             'header'=>$request->teks,
             'image'=>$nama_file,
-            'place'=>'landingpage'
+            'place'=>'selltours'
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
         return redirect()->to('/background/change');
@@ -970,7 +970,7 @@ class BlogController extends Controller
         ->update([
             'header'=>$request->teks,
             'image'=>$nama_file,
-            'place'=>'landingpage'
+            'place'=>'about'
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
         return redirect()->to('/background/change');
@@ -995,7 +995,7 @@ class BlogController extends Controller
         ->update([
             'header'=>$request->teks,
             'image'=>$nama_file,
-            'place'=>'landingpage'
+            'place'=>'platform'
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
         return redirect()->to('/background/change');
@@ -1020,7 +1020,7 @@ class BlogController extends Controller
         ->update([
             'header'=>$request->teks,
             'image'=>$nama_file,
-            'place'=>'landingpage'
+            'place'=>'corporate'
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
         return redirect()->to('/background/change');
@@ -1045,7 +1045,7 @@ class BlogController extends Controller
         ->update([
             'header'=>$request->teks,
             'image'=>$nama_file,
-            'place'=>'landingpage'
+            'place'=>'contact'
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
         return redirect()->to('/background/change');
@@ -1070,7 +1070,7 @@ class BlogController extends Controller
         ->update([
             'header'=>$request->teks,
             'image'=>$nama_file,
-            'place'=>'landingpage'
+            'place'=>'influencer'
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
         return redirect()->to('/background/change');
