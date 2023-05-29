@@ -153,7 +153,7 @@
             
 
             $.ajax({
-                url:'/addtag/',
+                url:'{{url('addtag')}}',
                 method:"POST",
                 data:formData,
                 success:function(data){
