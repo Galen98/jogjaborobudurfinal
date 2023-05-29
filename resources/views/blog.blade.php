@@ -57,9 +57,9 @@ Posting Blog
                           {{\Carbon\Carbon::parse($item->created_at)->format('d/m/Y') ?? ''}}
                           </td>
                           <td>
-                          <form action="{{'/blog/'.$item->slug}}" method="get">
+                            <a href="{{'/blog/'.$item->slug}}" target="_blank">
                           <button type="submit" class="btn btn-sm btn-info btn-rounded btn-fw"><i class="mdi mdi-eye "></i> Lihat</button>
-                          </form>
+                          </a>
                           </td>
                           <td>
                           <form action="{{'blogadmin/editblog/'.$item->id}}" method="get">
@@ -92,7 +92,7 @@ Posting Blog
       </div>
       <div class="modal-body">
       @foreach($blog as $item)<form action="{{url('hapusblog/'.$item->id)}}" method="POST" enctype="multipart/form-data" id="formhapus">
-          @endforeach
+      @endforeach
       @csrf
         Apakah anda yakin ingin menghapus?
         <input type="hidden" name="idblog" id="idblog">

@@ -36,7 +36,10 @@ body{
 font-family: 'GT Eesti Display Trial';
 font-family: 'GT Eesti Text Trial';    
 }
-
+.fonts{
+font-family: 'GT Eesti Display Trial';
+font-family: 'GT Eesti Text Trial';  
+}
     </style>
 
 

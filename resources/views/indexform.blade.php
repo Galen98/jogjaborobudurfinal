@@ -18,11 +18,6 @@
   
   <!-- endinject -->
   <link rel="stylesheet" href="{{asset('spica')}}/css/style.css">
-   <link rel="preload" href="{{asset('traveler')}}/css/new.css" as="style">
-  <link rel="stylesheet" href="{{asset('traveler')}}/css/new2.css">
-  <link rel="stylesheet" href="{{asset('traveler')}}/css/grids.css">
-  <link rel="stylesheet" href="{{asset('traveler')}}/css/activity.css">
-  <link rel="stylesheet" href="{{asset('traveler')}}/css/location.css">
   <link rel="shortcut icon" href="{{asset('spica')}}/images/favicon.png" />
 
 <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.11.4/themes/ui-lightness/jquery-ui.css">

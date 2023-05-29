@@ -97,6 +97,8 @@ class BlogController extends Controller
 
     public function hapustag(Request $request,$idtags){
         $idtags=Request('idtags');
+        $tagblog=tags::where('id',$idtags)->pluck('tags');
+        tambahtags::where('tags', $tagblog)->delete();
         tags::where('id',$idtags)->delete();
         Alert::error('Tag Telah Dihapus');
         return redirect()->to('/tag-blog');
@@ -775,17 +777,22 @@ class BlogController extends Controller
             'created_at',
             Carbon::now()->format('m')
         )->where('bahasa', $sessions)->get();
-
         $similar=DB::table('tambahtags')->where('idblog',$idblog)->paginate(1);
+        $similarex=DB::table('tambahtags')->where('idblog',$idblog)->count();
         $similare=$similar->pluck('tags');
         $similarity=tambahtags::whereIn('tags',$similare)->get();
+        $str="<p>This is my text</p>";
+        if ($similarex > 0){
+            $similarblog=DB::table('blog')->select(['blog.id','blog.judulblog','blog.image','blog.created_at','blog.author','blog.slug'])
+            ->join('tambahtags', 'tambahtags.idblog', '=', 'blog.id')
+            ->where('tambahtags.tags',$similare)->where('bahasa', $sessions)
+            ->get();
+        }
+        else{
+            $similarblog = "<p>No Data</p>";   
+        }
 
-        $similarblog=DB::table('blog')->select(['blog.id','blog.judulblog','blog.image','blog.created_at','blog.author','blog.slug'])
-        ->join('tambahtags', 'tambahtags.idblog', '=', 'blog.id')
-        ->where('tambahtags.tags',$similare)->where('bahasa', $sessions)
-        ->get();
-
-        return view('blogjogjaborobudur.view',compact('shareButtons1','blog','popular','similarblog','tagblog','tags','today','popular','language'));
+        return view('blogjogjaborobudur.view',compact('similarex','shareButtons1','blog','popular','similarblog','tagblog','tags','today','popular','language'));
     }
 
     public function tagsview(Request $request,$tagsid){

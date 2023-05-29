@@ -71,14 +71,14 @@
                         <h2 class="block text-xl font-semibold text-gray-700 font-roboto mt-5">
                             Overview
                         </h2>
-                        <p class="text-gray-500 text-sm mt-5">
-                            {{$item->shortdescription}}
+                        <p class="text-sm mt-5 fonts">
+                            {!! $item->shortdescription !!}
                         </p>
 
                         <h2 class="block text-xl font-semibold text-gray-700 font-roboto mt-5">
                             Description
                         </h2>
-                        <p class="text-gray-500 text-sm mt-8">
+                        <p class="text-gray-500 text-sm mt-8 fonts">
                             {!! $item->deskripsi !!}
                         </p>
 
@@ -103,6 +103,11 @@
                 </div>
 
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-2 mt-4">
+                @if($similarex === 0)
+                <center>
+                {!! $similarblog !!}
+                </center>
+                @else
                     @foreach($similarblog as $item)
                     <div class="rounded-sm bg-white p-3 pb-5 shadow-sm">
                         <a href="{{'/blog/'.$item->slug}}" class="block rounded-md overflow-hidden">
@@ -110,7 +115,7 @@
                                 class="w-full h-40 object-cover transform hover:scale-110 transition duration-500">
                         </a>
                         <div class="mt-3">
-                            <a href="#">
+                            <a href="{{'/blog/'.$item->slug}}">
                                 <h2
                                     class="block text-base font-semibold text-gray-700 hover:text-blue-500 transition font-roboto">
                                     {{$item->judulblog}}
@@ -127,6 +132,7 @@
                         </div>
                     </div>
                     @endforeach
+                    @endif
                 </div>
 
                 

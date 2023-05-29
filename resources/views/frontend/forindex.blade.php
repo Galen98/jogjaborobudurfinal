@@ -40,9 +40,9 @@
   <link rel="stylesheet" href="{{asset('traveler')}}/css/new5.css">
   <link rel="stylesheet" href="{{asset('traveler')}}/css/new6.css">
   <link rel="stylesheet" href="{{asset('traveler')}}/css/new7.css">    
-  <link rel="icon" type="image/png" sizes="32x32" href="{{asset('spica')}}/images/favicon.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{asset('spica')}}/images/favicon.png">
-  <link rel="shortcut icon" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{asset('spica')}}/images/logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{asset('spica')}}/images/logo.png">
+  <link rel="shortcut icon" href="logo.png">
   <meta name="viewport"content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
   
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

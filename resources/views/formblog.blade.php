@@ -1,4 +1,4 @@
-@extends('index')
+@extends('indexform')
 @extends('navadmin')
 @section('content')
 <div class="card">
@@ -69,7 +69,7 @@
                     </div>
                     <div class="form-group">
                       <label for="exampleTextarea1">Short Description</label>
-                      <textarea class="form-control" style="height:200px" name="short" placeholder="Content"></textarea>
+                      <textarea id="mytextarea2" class="form-control" style="height:200px" name="short" placeholder="Content"></textarea>
                     </div>
                     <div class="form-group">
                       <label for="exampleTextarea1">Isi Artikel</label>
@@ -77,7 +77,7 @@
                     </div>
                     <div class="form-group">
                       <label>Upload Thumbnail</label>
-                        <input type="file" name="image" class="form-control" placeholder="Upload Gambar">
+                        <input type="file" name="image" class="form-control" placeholder="Upload Gambar" require>
                     </div>
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
                     <a href="/blog">Cancel</a>
