@@ -83,7 +83,7 @@ Create Travel
   <div class="activity-card__details-right" data-v-a1084d9e>
   <div class="rating-overall__container" data-v-a1084d9e>
   <div class="rating-overall__rating">
-  <form action="{{'/item/'.$item->slug}}" method="get">
+  <form action="{{'/item/'.$item->slug}}" method="get" target="_blank">
   <button type="submit" class="btn-sm btn btn-outline-info" style="margin-right: 10px;">Check it!</button>
   </form>
   <form action="{{'paketwisata/diskon/'.$item->wisata_id}}" method="get">
