@@ -47,8 +47,21 @@ class BlogController extends Controller
         $tagx=request('tags');
         $author= request('author');
         $short=request('short');
+        if($gambar == null){
+            $data=[
+                'judulblog'=>$judul,
+                'deskripsi'=>$isi,
+                'image'=>"null",
+                'author'=>$author,
+                'shortdescription'=>$short,
+                'bahasa'=>$bahasa,
+                'slug'=>\Str::slug($request->judulartikel)
+            ];
+    
+            $blog=blog::create($data);
+        }
+        else{
         $nama_file = time()."_".$gambar->getClientOriginalName();
-      	        
 		$tujuan_upload = 'public/img';
         $gambar->move($tujuan_upload,$nama_file);
         
@@ -63,6 +76,8 @@ class BlogController extends Controller
         ];
 
         $blog=blog::create($data);
+        }
+        
 
         $data = [
             'idblog'=> $blog->id,

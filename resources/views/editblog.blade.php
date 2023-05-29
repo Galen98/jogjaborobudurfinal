@@ -26,7 +26,7 @@
 <textarea id="mytextarea" class="form-control" style="height:700px" name="isi" placeholder="Content">{!! $item->deskripsi !!}</textarea>
 </div>
 <button type="submit" class="btn btn-primary mr-2">Submit</button>
-<a href="/blog">Cancel</a>
+<a href="/blogadmin">Cancel</a>
 </form>
 @endforeach
 </div>

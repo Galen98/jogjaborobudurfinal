@@ -80,7 +80,7 @@
                         <input type="file" name="image" class="form-control" placeholder="Upload Gambar" require>
                     </div>
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                    <a href="/blog">Cancel</a>
+                    <a href="/blogadmin">Cancel</a>
                   </form>
                 </div>
               </div>

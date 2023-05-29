@@ -71,14 +71,14 @@
                         <h2 class="block text-xl font-semibold text-gray-700 font-roboto mt-5">
                             Overview
                         </h2>
-                        <p class="text-sm mt-5 fonts">
+                        <p class="text-sm mt-5">
                             {!! $item->shortdescription !!}
                         </p>
 
                         <h2 class="block text-xl font-semibold text-gray-700 font-roboto mt-5">
                             Description
                         </h2>
-                        <p class="text-gray-500 text-sm mt-8 fonts">
+                        <p class="text-gray-500 text-sm mt-8">
                             {!! $item->deskripsi !!}
                         </p>
 
