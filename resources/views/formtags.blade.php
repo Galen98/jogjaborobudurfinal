@@ -91,8 +91,8 @@
           <div class="modal-body">
           <div class="form-group">
       <form action="{{url('addtag')}}" action="POST" enctype="multipart/form-data" id="formadd">
+        @method('post')
         @csrf
-       
       <div class="form-group">
         <label>Tag name</label> 
         <input type="text" name="tag" class="form-control" id="tag">
