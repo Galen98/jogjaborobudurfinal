@@ -672,7 +672,7 @@ class BlogController extends Controller
             // 'image'=>$$nama_file
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
-        return redirect()->to('/blog');
+        return redirect()->to('/blogadmin');
     }
 
     public function editproseswisata(Request $request,$idwisata){
