@@ -302,7 +302,7 @@
 	</div>
 	<div class="cart-item__description--details--entry" data-v-039efa20>
 	
-	<div data-v-039efa20><i class="fa-regular fa-clock"></i> Travel date: {!!$tanggaltravel!!}</div>
+	<div data-v-039efa20><i class="fa-regular fa-calendar"></i> Travel date: {!!$tanggaltravel!!}</div>
 	
 	<div data-v-039efa20><i class="fa-regular fa-clock"></i> Pickup time: {!! $waktu !!}</div>
 	

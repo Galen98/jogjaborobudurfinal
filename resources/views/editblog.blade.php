@@ -9,6 +9,11 @@
 @method('patch')
 @csrf
 <center> <img src="{{ url('public/img/'.$item->image) }}" class="img-fluid" alt="Responsive image" style="padding-bottom: 20px; width:700px;"></center>
+<div class="form-group">
+<input type="hidden" name="namagambar" value="{{$item->image}}">
+                      <label>Edit Thumbnail</label>
+                        <input type="file" name="image" class="form-control" placeholder="Upload Gambar" require>
+                    </div>
 <!-- <div class="form-group">
 <label>Ganti Gambar</label>
 <input type="file" name="image" class="form-control" placeholder="Upload Gambar">

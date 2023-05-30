@@ -658,18 +658,27 @@ class BlogController extends Controller
     }
 
     public function editblogproses(Request $request,$idblog){
-        // $gambar= request('image');
-        // $nama_file = time()."_".$gambar->getClientOriginalName();
-      	//         // isi dengan nama folder tempat kemana file diupload
-		// $tujuan_upload = 'public/img';
-        // $gambar->move($tujuan_upload,$nama_file);
+        $img= request('image');
+        
+        if($img == null){
+            $nama_file=$request->namagambar;
+        }
+        else{
+            $images = blog::where('id', $idblog)->first();
+            File::delete('public/img/'.$images->image);
+            $nama_file = time()."_".$img->getClientOriginalName();
+            $tujuan_upload = 'public/img';
+            $img->move($tujuan_upload,$nama_file);
+        }
+
+
         DB::table('blog')->where('id',$idblog)
         ->update([
             'judulblog'=>$request->judulartikel,
             'deskripsi'=>$request->isi,
             'shortdescription'=>$request->short,
-            'slug'=>\Str::slug($request->judulartikel)
-            // 'image'=>$$nama_file
+            'slug'=>\Str::slug($request->judulartikel),
+            'image'=>$nama_file
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
         return redirect()->to('/blogadmin');

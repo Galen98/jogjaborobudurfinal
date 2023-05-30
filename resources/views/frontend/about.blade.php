@@ -76,7 +76,7 @@
 						</div>
 
 					<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-						<img src="{{asset('traveler')}}/images/logoabout.jpg" alt="" /><br>	
+						<img src="{{asset('traveler')}}/images/logoabout.JPG" alt="" /><br>	
 						<span style="font-size: 20px;" data-test-id="collection-title" class="collection-header_title" data-v-76e871e0>
 				       Are you traveling for leisure or business ?
 						Are you traveling alone or even with a big number of people?

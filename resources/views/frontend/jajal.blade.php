@@ -925,8 +925,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
                                                 </div>
                                              </div>
                                              <div class="mt-3 text-right">
-                                                <button type="submit" class="btn btn-sm py-2 px-3 btn-info">Submit
-                                                </button>
+                                                <button type="submit" class="c-button c-button--medium c-button--filled-standard billing-form__validate-billing-details-and-sri__button" type="button" data-test-id="checkout-submit-btn">Submit</button>
                                              </div>
                                           </form>
                                        </div>

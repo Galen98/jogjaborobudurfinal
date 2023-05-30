@@ -61,7 +61,7 @@ class emailController extends Controller
         booking::create($data);
 
         $data['email'] = $email; //email penerima
-        $data['email2'] = 'galen.riandito@ti.ukdw.ac.id';
+        $data['email2'] = 'herucod@gmail.com';
         $data['subject'] = 'Booking Order Jogja Borobudur Tours & Travel'; // subject email
     
         $booking['body'] = booking::latest()->paginate(1); //Ambil data postingan dari table di database
