@@ -54,7 +54,7 @@ font-family: 'GT Eesti Text Trial';
         <div class="container px-4 mx-auto flex items-center py-3">
             <!-- logo -->
             <div class="lg:w-14 w-16">
-                <a href="/blog">
+                <a href="/">
                     <img src="{{asset('tailblog')}}/src/images/logomini.png" alt="logo" class="w-full">
                 </a>
             </div>
@@ -169,7 +169,7 @@ font-family: 'GT Eesti Text Trial';
 
     <!-- footer -->
     <footer class="border-t py-4 shadow-md" style="background-color:white;color:#182c4c;">
-        <p class=" text-sm text-center">Copyright © 2023 <span class="font-semibold">Jogjaborobudur Tour & Travel</span>
+        <p class=" text-sm text-center">Copyright © 2023 <span class="font-semibold">Jogja Borobudur Tour & Travel</span>
             All Rights Reserved</p>
     </footer>
 

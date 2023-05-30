@@ -24,7 +24,7 @@
 </div>
 <div class="form-group">
 <label for="exampleTextarea1">Short Description</label>
-<textarea class="form-control" id="mytextarea2" style="height:150px" name="short" placeholder="Content">{{$item->shortdescription}}</textarea>
+<textarea class="form-control" style="height:150px" name="short" placeholder="Content">{{$item->shortdescription}}</textarea>
 </div>
 <div class="form-group">
 <label for="exampleTextarea1">Isi Artikel</label>

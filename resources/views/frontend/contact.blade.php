@@ -194,14 +194,14 @@
         </div>
         <div class="col-md-3 col-md-push-1"  style="margin-top:50px;">
           <div class="gtco-widget">
-            <h1 style="font-weight:bold;color: white;margin-bottom: 15px;font-size: 20px;">About Us</h1>
-           <ul class="gtco-footer-links">
+            <h1 style="font-weight:bold;color: white;margin-bottom: 15px;font-size: 20px;">Partnership</h1>
+            <ul class="gtco-footer-links">
               <li ><a style="color: white;" href="/travelagent/travelagent">Travel Agent</a></li>
-              <li><a href="/bookingplatform" style="color: white;">Booking Platform</a></li>
+              <li><a href="/onlinebooking/platform" style="color: white;">Booking Platform</a></li>
               <li><a href="/corporate/corporatediscount" style="color: white;">Corporate Event</a></li>
               <li><a href="/influencer/influencer" style="color: white;">Influencer</a></li>
-              <li><a href="/influencer" style="color: white;">Affiliate Program</a></li>
-              <li><a href="/influencer" style="color: white;">Sell Your Tours</a></li>
+              <li><a href="/affiliate/affiliateprogram" style="color: white;">Affiliate Program</a></li>
+              <li><a href="/sellyourtours/sellyourtours" style="color: white;">Sell Your Tours</a></li>
             </ul>
           </div>
         </div>
@@ -237,11 +237,10 @@
         </div>
         <div class="col-md-12">
           <p class="text-center">
-            <small class="block" style="color: white;">&copy; 2010 - 2023 JogjaBorobudur Tour. All Rights Reserved.</small> 
+            <small class="block" style="color: white;">&copy; 2010 - 2023 Jogja Borobudur Tour. All Rights Reserved.</small> 
           </p>
         </div>
       </div>
-     
     </div>
   </footer>
 </div>

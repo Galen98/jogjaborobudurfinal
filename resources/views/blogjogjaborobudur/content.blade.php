@@ -57,7 +57,7 @@
                         </a>
 
                         <p class="text-gray-500 text-sm mt-2">
-                            {{ Str::limit($item->shortdescription, 120) }}
+                            {{Str::limit($item->shortdescription, 120)}}
                         </p>
                         <div class="mt-3 flex space-x-4">
                             
@@ -81,7 +81,7 @@
                                 </h2>
                             </a>
                             <p class="text-gray-500 text-sm mt-2">
-                           {{ Str::limit($item->shortdescription, 120) }}
+                           {{Str::limit($item->shortdescription, 120)}}
                         </p>
                             <div class="mt-2 flex space-x-3">
                                 <div class="flex text-gray-400 text-sm items-center">

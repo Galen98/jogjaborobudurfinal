@@ -69,7 +69,7 @@
                     </div>
                     <div class="form-group">
                       <label for="exampleTextarea1">Short Description</label>
-                      <textarea id="mytextarea2" class="form-control" style="height:200px" name="short" placeholder="Content"></textarea>
+                      <textarea class="form-control" style="height:200px" name="short" placeholder="Content"></textarea>
                     </div>
                     <div class="form-group">
                       <label for="exampleTextarea1">Isi Artikel</label>

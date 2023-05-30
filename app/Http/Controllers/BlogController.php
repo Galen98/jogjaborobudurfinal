@@ -843,6 +843,7 @@ class BlogController extends Controller
         $similarblog=DB::table('blog')->select(['blog.id','blog.judulblog','blog.image','blog.created_at','blog.author','blog.shortdescription','blog.slug'])
         ->join('tambahtags', 'tambahtags.idblog', '=', 'blog.id')
         ->where('tambahtags.tags',$tagsid)->where('bahasa', $sessions)
+        ->orderBy('created_at','DESC')
         ->paginate(8);
         return view('blogjogjaborobudur.tags',compact('tags','similarblog','tagx','language'));
     }

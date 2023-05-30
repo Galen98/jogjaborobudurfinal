@@ -12,6 +12,7 @@
                             <td><form action="/data-booking/filter" method="GET">
                             <div class="wrapper">
                             <td><input type="text" id="from" name="from" class="form-control" placeholder="From"></td>
+                            <td>&nbsp;&nbsp;&nbsp;</td>
                             <td><input type="text" id="to" name="to" class="form-control" placeholder="To"></td>
                           </div>
                             <td><button class="btn btn-primary" type="submit">Filter</button></td>
@@ -126,7 +127,6 @@
             <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Booking Date</h5>
             <button type="button" class="btn-close" data-dismiss="modal">
-            <span aria-hidden="true">&times;</span>
             </button>
       </div>
       <div class="modal-body">

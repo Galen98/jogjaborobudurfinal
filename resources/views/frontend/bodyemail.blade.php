@@ -133,7 +133,7 @@
       </div>
       <ul class="list">
       </ul>
-      <p class="copyright" style="color: white;">Jogjaborobudur Tour & Travel</p>
+      <p class="copyright" style="color: white;">Jogja Borobudur Tour & Travel</p>
     </section>
 </body>
 </html>

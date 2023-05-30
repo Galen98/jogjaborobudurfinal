@@ -496,7 +496,6 @@
             <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Edit Include</h5>
             <button type="button" class="btn-close" data-dismiss="modal">
-            <span aria-hidden="true">&times;</span>
             </button>
       </div>
       <div class="modal-body">
@@ -524,7 +523,6 @@
             <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Edit Exclude</h5>
             <button type="button" class="btn-close" data-dismiss="modal">
-            <span aria-hidden="true">&times;</span>
             </button>
       </div>
       <div class="modal-body">
@@ -552,7 +550,6 @@
             <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Edit Highlight</h5>
             <button type="button" class="btn-close" data-dismiss="modal">
-            <span aria-hidden="true">&times;</span>
             </button>
       </div>
       <div class="modal-body">
@@ -580,7 +577,6 @@
             <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Edit Destination</h5>
             <button type="button" class="btn-close" data-dismiss="modal">
-            <span aria-hidden="true">&times;</span>
             </button>
       </div>
       <div class="modal-body">
@@ -608,7 +604,6 @@
             <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Edit Season</h5>
             <button type="button" class="btn-close" data-dismiss="modal">
-            <span aria-hidden="true">&times;</span>
             </button>
       </div>
       <div class="modal-body">
@@ -636,7 +631,6 @@
             <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Edit Waktu</h5>
             <button type="button" class="btn-close" data-dismiss="modal">
-            <span aria-hidden="true">&times;</span>
             </button>
       </div>
       <div class="modal-body">
@@ -664,7 +658,6 @@
             <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Add Include</h5>
             <button type="button" class="btn-close" data-dismiss="modal">
-            <span aria-hidden="true">&times;</span>
             </button>
       </div>
       <div class="modal-body">
@@ -692,7 +685,6 @@
             <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Add Exclude</h5>
             <button type="button" class="btn-close" data-dismiss="modal">
-            <span aria-hidden="true">&times;</span>
             </button>
       </div>
       <div class="modal-body">
@@ -719,7 +711,6 @@
             <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Add Exclude</h5>
             <button type="button" class="btn-close" data-dismiss="modal">
-            <span aria-hidden="true">&times;</span>
             </button>
       </div>
       <div class="modal-body">
@@ -746,7 +737,6 @@
             <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Add Highlight</h5>
             <button type="button" class="btn-close" data-dismiss="modal">
-            <span aria-hidden="true">&times;</span>
             </button>
       </div>
       <div class="modal-body">

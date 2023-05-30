@@ -71,8 +71,8 @@
                         <h2 class="block text-xl font-semibold text-gray-700 font-roboto mt-5">
                             Overview
                         </h2>
-                        <p class="text-sm mt-5">
-                            {!! $item->shortdescription !!}
+                        <p class="mt-5" style="font-size:16px;">
+                           {{$item->shortdescription}}
                         </p>
 
                         <h2 class="block text-xl font-semibold text-gray-700 font-roboto mt-5">
