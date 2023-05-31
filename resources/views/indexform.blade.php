@@ -119,9 +119,9 @@
             <span class="mdi mdi-menu"></span>
           </button>
           <div class="navbar-brand-wrapper">
-            <a class="navbar-brand brand-logo" href="index.html">
+            <a class="navbar-brand brand-logo" href="/home">
               <img src="{{asset('spica')}}/images/logomini.png" alt="logo"/></a>
-            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{asset('spica')}}/images/logomini.png" alt="logo"/></a>
+            <a class="navbar-brand brand-logo-mini" href="/home"><img src="{{asset('spica')}}/images/logomini.png" alt="logo"/></a>
           </div>
         </div>
         <div class="navbar-menu-wrapper navbar-search-wrapper d-none d-lg-flex align-items-center">

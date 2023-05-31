@@ -1039,7 +1039,7 @@
             console.log(formData)
 
             $.ajax({
-                url:'/addinclude/',
+                url:'{{url('addinclude')}}',
                 method:"POST",
                 data:formData,
                 success:function(data){
@@ -1069,7 +1069,7 @@
             console.log(formData)
 
             $.ajax({
-                url:'/addtime/',
+                url:'{{url('addtime')}}',
                 method:"POST",
                 data:formData,
                 success:function(data){
@@ -1100,7 +1100,7 @@
             console.log(formData)
 
             $.ajax({
-                url:'/addexclude/',
+                url:'{{url('addexclude')}}',
                 method:"POST",
                 data:formData,
                 success:function(data){
@@ -1130,7 +1130,7 @@
             console.log(formData)
 
             $.ajax({
-                url:'/addhighlight/',
+                url:'{{url('addhighlight')}}',
                 method:"POST",
                 data:formData,
                 success:function(data){

@@ -412,7 +412,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
       @endif 
 
       @if($session == 'IDR') 
-      <strong class="price-block__price-actual "> <span>@currency($item->IDR)</span> </strong>
+      <strong class="price-block__price-actual "> <span style="font-size:22px;">@currency($item->IDR)</span> </strong>
       @endif 
 
       @if($session == 'MYR') 
@@ -602,6 +602,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
       <!-- <h3 style="font-size:16px;font-weight: bolder;color:#182c4c;margin-left:15px;" id="hargachild{{$p->id}}"></h3> -->
     </section>
     <section data-test-id="activity-filters-primary-date-picker" class="ba-dropdown ba-date-picker ba-date-picker--multiple-months ba-date-picker--experimental-theme" data-v-0605f8ac data-v-dd428772>
+    <!-- <h3 class="booking-assistant-configurator__header" data-v-dd428772 style="font-size:17px;font-weight: bolder;color:#182c4c;text-align:left;">Total:</h3> -->
       <h3 class="booking-assistant-configurator__header" data-v-dd428772 style="font-size:17px;font-weight: bolder;color:#182c4c;text-align:left;" id="harga{{$p->id}}"></h3>
       <h3 class="booking-assistant-configurator__header" data-v-dd428772 style="font-size:17px;font-weight: bolder;color:#182c4c;text-align:left;" id="totalgroup{{$p->id}}"></h3>
       <input type="hidden" name="totharga" id="totharga{{$p->id}}">
@@ -1119,12 +1120,13 @@ font-family: 'GT Eesti Text Trial', sans-serif;
      let subid{{$p->id}}=$("#subid{{$p->id}}").val()
      let hargaanak{{$p->id}}=0
      let hargadewasa{{$p->id}}=0
+     let hargagroup{{$p->id}}=0
      @endforeach
       let date=$("#date-start").val()
       let group=$("#group").val()
       let person=$("#adult").val()
       let personchild=$("#child").val()      
-      let hargagroup=0
+      
      
 
       @foreach($pilihan as $p)
@@ -1162,6 +1164,26 @@ font-family: 'GT Eesti Text Trial', sans-serif;
           @endforeach
 
           @foreach($pilihan as $p)
+      if (group > 0){
+        harganew.forEach(function(item){
+          if (item.kategories == 'Per Group' && group >= item.min && group <= item.maks && item.subwisata_id == subid{{$p->id}}){
+            hargagroup{{$p->id}} = item.harga 
+            // const hargs = item.harga.toFixed(2)
+            $("#jumlahgroup{{$p->id}}").text("Participants Group: " + group + ' Person')
+            $("#totalgroup{{$p->id}}").text("Total: " + convertrate(item.harga))
+            $("#groupe{{$p->id}}").val(group)
+            $("#tothargagroup{{$p->id}}").val(convertrate(hargagroup{{$p->id}}))
+          }
+
+        })
+      }else{
+            $("#group{{$p->id}}").val("")
+            $("#jumlahgroup{{$p->id}}").text("")
+            $("#hargagroup{{$p->id}}").text("")
+          }
+          @endforeach
+
+          @foreach($pilihan as $p)
       if (personchild > 0) {
         hargachildnew.forEach(function(item){
           if (personchild >= item.min && personchild <= item.maks && item.subwisata_id == subid{{$p->id}}) {
@@ -1184,7 +1206,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
       @foreach($pilihan as $p)
 
       if (hargadewasa{{$p->id}} + hargaanak{{$p->id}} > 0) {
-        $("#harga{{$p->id}}").text("Total Price : " + convertrate(hargadewasa{{$p->id}} + hargaanak{{$p->id}} ))
+        $("#harga{{$p->id}}").text("Total: " + convertrate(hargadewasa{{$p->id}} + hargaanak{{$p->id}} ))
          $("#totharga{{$p->id}}").val(convertrate(hargadewasa{{$p->id}}  + hargaanak{{$p->id}} ))
       }
       else{

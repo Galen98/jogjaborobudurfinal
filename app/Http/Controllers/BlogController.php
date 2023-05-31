@@ -135,7 +135,7 @@ class BlogController extends Controller
 
         $booking = DB::table('booking')
         ->join('wisata', 'wisata.wisata_id', '=', 'booking.wisata_id')
-        ->select('wisata.image', 'booking.id', 'booking.paketwisata', 'booking.total','booking.traveldate','booking.namawisata','booking.name','booking.surname','booking.created_at','booking.phone','booking.code','booking.email','booking.country','booking.adult','booking.totalgroup','booking.child','booking.time','booking.request','booking.pickup')
+        ->select('wisata.image', 'booking.id', 'booking.paketwisata', 'booking.participants','booking.total','booking.traveldate','booking.namawisata','booking.name','booking.surname','booking.created_at','booking.phone','booking.code','booking.email','booking.country','booking.adult','booking.totalgroup','booking.child','booking.time','booking.request','booking.pickup')
         ->orderBy('created_at','DESC')
         ->paginate(10);
         return view('booking', compact('booking'));
@@ -887,10 +887,8 @@ class BlogController extends Controller
             $images = background::where('id', $idimage)->first();
             File::delete('public/img/'.$images->image);
             $nama_file = time()."_".$img->getClientOriginalName();
-            $gambar = Image::make($img);
-            $gambar->resize(1080,608);
-            $tujuan_upload = 'public/img/';
-            $gambar->save($tujuan_upload .$nama_file);
+            $tujuan_upload = 'public/img';
+            $img->move($tujuan_upload,$nama_file);
         }
         DB::table('background')->where('id',$idimage)
         ->update([
@@ -912,10 +910,8 @@ class BlogController extends Controller
             $images = background::where('id', $idimage)->first();
             File::delete('public/img/'.$images->image);
             $nama_file = time()."_".$img->getClientOriginalName();
-            $gambar = Image::make($img);
-            $gambar->resize(1080,608);
-            $tujuan_upload = 'public/img/';
-            $gambar->save($tujuan_upload .$nama_file);
+            $tujuan_upload = 'public/img';
+            $img->move($tujuan_upload,$nama_file);
         }
         DB::table('background')->where('id',$idimage)
         ->update([
@@ -937,10 +933,8 @@ class BlogController extends Controller
             $images = background::where('id', $idimage)->first();
             File::delete('public/img/'.$images->image);
             $nama_file = time()."_".$img->getClientOriginalName();
-            $gambar = Image::make($img);
-            $gambar->resize(1080,608);
-            $tujuan_upload = 'public/img/';
-            $gambar->save($tujuan_upload .$nama_file);
+            $tujuan_upload = 'public/img';
+            $img->move($tujuan_upload,$nama_file);
         }
         DB::table('background')->where('id',$idimage)
         ->update([
@@ -962,10 +956,8 @@ class BlogController extends Controller
             $images = background::where('id', $idimage)->first();
             File::delete('public/img/'.$images->image);
             $nama_file = time()."_".$img->getClientOriginalName();
-            $gambar = Image::make($img);
-            $gambar->resize(1080,608);
-            $tujuan_upload = 'public/img/';
-            $gambar->save($tujuan_upload .$nama_file);
+            $tujuan_upload = 'public/img';
+            $img->move($tujuan_upload,$nama_file);
         }
         DB::table('background')->where('id',$idimage)
         ->update([
@@ -987,10 +979,8 @@ class BlogController extends Controller
             $images = background::where('id', $idimage)->first();
             File::delete('public/img/'.$images->image);
             $nama_file = time()."_".$img->getClientOriginalName();
-            $gambar = Image::make($img);
-            $gambar->resize(1080,608);
-            $tujuan_upload = 'public/img/';
-            $gambar->save($tujuan_upload .$nama_file);
+            $tujuan_upload = 'public/img';
+            $img->move($tujuan_upload,$nama_file);
         }
         DB::table('background')->where('id',$idimage)
         ->update([
@@ -1012,10 +1002,8 @@ class BlogController extends Controller
             $images = background::where('id', $idimage)->first();
             File::delete('public/img/'.$images->image);
             $nama_file = time()."_".$img->getClientOriginalName();
-            $gambar = Image::make($img);
-            $gambar->resize(1080,608);
-            $tujuan_upload = 'public/img/';
-            $gambar->save($tujuan_upload .$nama_file);
+            $tujuan_upload = 'public/img';
+            $img->move($tujuan_upload,$nama_file);
         }
         DB::table('background')->where('id',$idimage)
         ->update([
@@ -1037,10 +1025,8 @@ class BlogController extends Controller
             $images = background::where('id', $idimage)->first();
             File::delete('public/img/'.$images->image);
             $nama_file = time()."_".$img->getClientOriginalName();
-            $gambar = Image::make($img);
-            $gambar->resize(1080,608);
-            $tujuan_upload = 'public/img/';
-            $gambar->save($tujuan_upload .$nama_file);
+            $tujuan_upload = 'public/img';
+            $img->move($tujuan_upload,$nama_file);
         }
         DB::table('background')->where('id',$idimage)
         ->update([
@@ -1062,10 +1048,8 @@ class BlogController extends Controller
             $images = background::where('id', $idimage)->first();
             File::delete('public/img/'.$images->image);
             $nama_file = time()."_".$img->getClientOriginalName();
-            $gambar = Image::make($img);
-            $gambar->resize(1080,608);
-            $tujuan_upload = 'public/img/';
-            $gambar->save($tujuan_upload .$nama_file);
+            $tujuan_upload = 'public/img';
+            $img->move($tujuan_upload,$nama_file);
         }
         DB::table('background')->where('id',$idimage)
         ->update([
@@ -1087,10 +1071,8 @@ class BlogController extends Controller
             $images = background::where('id', $idimage)->first();
             File::delete('public/img/'.$images->image);
             $nama_file = time()."_".$img->getClientOriginalName();
-            $gambar = Image::make($img);
-            $gambar->resize(1080,608);
-            $tujuan_upload = 'public/img/';
-            $gambar->save($tujuan_upload .$nama_file);
+            $tujuan_upload = 'public/img';
+            $img->move($tujuan_upload,$nama_file);
         }
         DB::table('background')->where('id',$idimage)
         ->update([
@@ -1327,7 +1309,7 @@ public function datefilter(Request $request)
     $to = $request->to;
     $booking = DB::table('booking')
         ->join('wisata', 'wisata.wisata_id', '=', 'booking.wisata_id')
-        ->select('wisata.image', 'booking.id', 'booking.paketwisata', 'booking.total','booking.traveldate','booking.namawisata','booking.name','booking.surname','booking.created_at','booking.phone','booking.code','booking.email','booking.country','booking.adult','booking.totalgroup','booking.child','booking.time','booking.request','booking.pickup')
+        ->select('wisata.image', 'booking.id', 'booking.paketwisata', 'booking.total','booking.traveldate','booking.namawisata','booking.name','booking.surname','booking.created_at','booking.phone','booking.code','booking.email','booking.country','booking.adult','booking.totalgroup','booking.child','booking.time','booking.request','booking.pickup','booking.participants')
         ->whereBetween('booking.traveldate', [$from , $to])
             ->paginate(10);
            

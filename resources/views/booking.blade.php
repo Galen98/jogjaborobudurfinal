@@ -74,9 +74,10 @@
 
   <button type="button" class="hapusbtn btn-sm btn btn-outline-danger" value="{{$item->id}}"><i class="mdi mdi-delete btn-icon-prepend"></i> Delete</button>
 </div> 
-</div> 
+</div>
+ 
 <div class="activity-card__pricing" data-v-a1084d9e><div class="baseline-pricing" data-v-24caa43d data-v-a1084d9e><div class="baseline-pricing__container" data-v-24caa43d><div class="baseline-pricing__value" data-v-24caa43d><p class="baseline-pricing__from" data-v-24caa43d>Total</p>
-        {{$item->total}}
+        {{$item->total}} {{$item->totalgroup}}
       </div> 
       <p class="baseline-pricing__category" data-v-24caa43d>
         
@@ -103,8 +104,8 @@
      @endif
      @if(($item->totalgroup) == 0)
      <p></p>
-     @elseif(($item->totalgroup) > 0)
-     <span data-v-67560657>Group Participants: {{$item->totalgroup}} Person</span>
+     @elseif(($item->participants) > 0)
+     <span data-v-67560657>Group Participants: {{$item->participants}} Person</span>
      @endif
      <span data-v-67560657>Pickup Location: {{$item->pickup}}</span>
      <span data-v-67560657>Special Request: {{$item->request}}</span>
