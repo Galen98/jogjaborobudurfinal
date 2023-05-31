@@ -1150,7 +1150,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
           else if (item.kategories == 'Per Group' && person >= item.min && person <= item.maks && item.subwisata_id == subid{{$p->id}}){
             hargadewasa{{$p->id}} = item.harga 
             // const hargs = item.harga.toFixed(2)
-            $("#jumlahdewasa{{$p->id}}").text("Participants (in group): " + person+ ' ' + convertrate(item.harga))
+            $("#jumlahdewasa{{$p->id}}").text("Participants: " + person+ ' ' + convertrate(item.harga))
             $("#hargadewasa{{$p->id}}").text("Price: " + convertrate(item.harga))
             $("#dewasa{{$p->id}}").val(person)
           }
@@ -1169,7 +1169,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
           if (item.kategories == 'Per Group' && group >= item.min && group <= item.maks && item.subwisata_id == subid{{$p->id}}){
             hargagroup{{$p->id}} = item.harga 
             // const hargs = item.harga.toFixed(2)
-            $("#jumlahgroup{{$p->id}}").text("Participants Group: " + group + ' Person')
+            $("#jumlahgroup{{$p->id}}").text("Participants: " + group + ' Person')
             $("#totalgroup{{$p->id}}").text("Total: " + convertrate(item.harga))
             $("#groupe{{$p->id}}").val(group)
             $("#tothargagroup{{$p->id}}").val(convertrate(hargagroup{{$p->id}}))
