@@ -121,6 +121,7 @@
       <div class="form-group">
         <label>Tag</label>
         <input type="hidden" name="idtag" id="idtag" readonly=""> 
+        <input type="hidden" name="namatag" class="form-control" id="namatag">
         <input type="text" name="tags" class="form-control" id="tags">
         </div>
         <button type="button" class="btn btn-primary btnupdate">Update</button>
@@ -176,7 +177,8 @@
                 url:"/showedittag/"+idtag,
                 success:function(response){
                      //$('#orderid').val(response.Order.OrderID);
-                     $('#idtag').val(response.Tag.id); 
+                     $('#idtag').val(response.Tag.id);
+                     $('#namatag').val(response.Tag.tags); 
                      $('#tags').val(response.Tag.tags);   
                 }
             });

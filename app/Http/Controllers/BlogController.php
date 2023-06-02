@@ -449,8 +449,14 @@ class BlogController extends Controller
     }
 
     public function updatetag(Request $request, $idtag){
-        $idtag = Request('idtag');
+       $idtag = Request('idtag');
+       $namatag = Request('namatag');
        $Tag = tags::where('id', $idtag)
+       ->update([
+        'tags' => $request->tags
+       ]);
+
+       $Tagblog=tambahtags::where('tags', $namatag)
        ->update([
         'tags' => $request->tags
        ]);

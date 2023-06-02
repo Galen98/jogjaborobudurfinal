@@ -247,7 +247,7 @@ h1, h2, h3, h4, h5, h6, figure {
 #gtco-header {
   background: #4d4d4d;
 }
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 3000px) {
   #gtco-header.gtco-cover {
     height: inherit !important;
     padding: 3em 0 !important;
