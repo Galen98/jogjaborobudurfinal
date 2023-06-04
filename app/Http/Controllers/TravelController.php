@@ -80,7 +80,7 @@ class TravelController extends Controller
         // ]);
         $img= request('image');
         $nama_file = time()."_".$img->getClientOriginalName();
-		$tujuan_upload = 'public/img/';
+		$tujuan_upload = 'public/img';
         $img->move($tujuan_upload,$nama_file);
 		 
         //  $request->validate([
@@ -89,8 +89,8 @@ class TravelController extends Controller
         $img2= request('image2');
         $nama_file2 = time()."_".$img2->getClientOriginalName();
                 // isi dengan nama folder tempat kemana file diupload
-        $tujuan_upload2 = 'public/img/';
-        $img2->move($tujuan_upload2 .$nama_file2);
+        $tujuan_upload = 'public/img';
+        $img2->move($tujuan_upload .$nama_file2);
 
         //  $request->validate([
         //  'image3' => 'required|mimes:jpeg,png,jpg'
@@ -98,8 +98,8 @@ class TravelController extends Controller
         $img3= request('image3');
         $nama_file3 = time()."_".$img3->getClientOriginalName();
                 // isi dengan nama folder tempat kemana file diupload
-        $tujuan_upload3 = 'public/img/';
-        $img3->move($tujuan_upload3 .$nama_file3); 
+        $tujuan_upload = 'public/img';
+        $img3->move($tujuan_upload .$nama_file3); 
 
         //  $request->validate([
         //  'image4' => 'required|mimes:jpeg,png,jpg'
@@ -107,8 +107,8 @@ class TravelController extends Controller
         $img4= request('image4');
         $nama_file4 = time()."_".$img4->getClientOriginalName();
                 // isi dengan nama folder tempat kemana file diupload
-        $tujuan_upload4 = 'public/img/';
-        $img4->move($tujuan_upload4 .$nama_file4); 
+        $tujuan_upload = 'public/img';
+        $img4->move($tujuan_upload .$nama_file4); 
          
         //   $request->validate([
         //  'image5' => 'required|mimes:jpeg,png,jpg'
@@ -116,8 +116,8 @@ class TravelController extends Controller
         $img5= request('image5');
         $nama_file5 = time()."_".$img5->getClientOriginalName();
                 // isi dengan nama folder tempat kemana file diupload
-        $tujuan_upload5 = 'public/img/';
-        $img5->move($tujuan_upload5 .$nama_file5);
+        $tujuan_upload = 'public/img';
+        $img5->move($tujuan_upload .$nama_file5);
 
 
         $data = [
