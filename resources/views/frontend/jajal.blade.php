@@ -1024,11 +1024,11 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   
 
 <div id="dialog" title="invalid value">
-  <p>Please insert your date travel</p>
+  <p>Please fill out all the required fields</p>
 </div>
 
 <div id="dialogs" title="invalid value">
-  <p>Please insert participants</p>
+  <p>Please fill out all the required fields</p>
 </div>   
   <!-- jQuery -->
   <script src="{{asset('traveler')}}/js/lightbox-plus-jquery.min.js"></script>

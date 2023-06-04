@@ -80,8 +80,8 @@ class TravelController extends Controller
         // ]);
         $img= request('image');
         $nama_file = time()."_".$img->getClientOriginalName();
-            $tujuan_upload = 'public/img';
-            $img->move($tujuan_upload,$nama_file); 
+		$tujuan_upload = 'public/img';
+        $img->move($tujuan_upload,$nama_file);
 		 
         //  $request->validate([
         //  'image2' => 'required|mimes:jpeg,png,jpg'
