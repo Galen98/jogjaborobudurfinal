@@ -75,60 +75,49 @@ class TravelController extends Controller
         $childoption=Request('childoption');
         $subdescription=Request('shortoption');
         $personoption=Request('personoption');
-        $request->validate([
-         'image' => 'required|mimes:jpeg,png,jpg'
-        ]);
+        // $request->validate([
+        //  'image' => 'required|mimes:jpeg,png,jpg'
+        // ]);
         $img= request('image');
         $nama_file = time()."_".$img->getClientOriginalName();
-      	        // isi dengan nama folder tempat kemana file diupload
-        $gambar = Image::make($img);
-        $gambar->resize(1185,616);
-        $tujuan_upload = 'public/img/';
-        $gambar->save($tujuan_upload .$nama_file);  
+            $tujuan_upload = 'public/img';
+            $img->move($tujuan_upload,$nama_file); 
 		 
-         $request->validate([
-         'image2' => 'required|mimes:jpeg,png,jpg'
-        ]);
+        //  $request->validate([
+        //  'image2' => 'required|mimes:jpeg,png,jpg'
+        // ]);
         $img2= request('image2');
         $nama_file2 = time()."_".$img2->getClientOriginalName();
                 // isi dengan nama folder tempat kemana file diupload
-        $gambar2 = Image::make($img2);
-        $gambar2->resize(960,640);
-        $tujuan_upload = 'public/img/';
-        $gambar2->save($tujuan_upload .$nama_file2);
+        $tujuan_upload2 = 'public/img';
+        $img2->move($tujuan_upload2 .$nama_file2);
 
-         $request->validate([
-         'image3' => 'required|mimes:jpeg,png,jpg'
-        ]);
+        //  $request->validate([
+        //  'image3' => 'required|mimes:jpeg,png,jpg'
+        // ]);
         $img3= request('image3');
         $nama_file3 = time()."_".$img3->getClientOriginalName();
                 // isi dengan nama folder tempat kemana file diupload
-        $gambar3 = Image::make($img3);
-        $gambar3->resize(960,640);
-        $tujuan_upload = 'public/img/';
-        $gambar3->save($tujuan_upload .$nama_file3); 
+        $tujuan_upload3 = 'public/img';
+        $img3->move($tujuan_upload3 .$nama_file3); 
 
-         $request->validate([
-         'image4' => 'required|mimes:jpeg,png,jpg'
-        ]);
+        //  $request->validate([
+        //  'image4' => 'required|mimes:jpeg,png,jpg'
+        // ]);
         $img4= request('image4');
         $nama_file4 = time()."_".$img4->getClientOriginalName();
                 // isi dengan nama folder tempat kemana file diupload
-        $gambar4 = Image::make($img4);
-        $gambar4->resize(960,640);
-        $tujuan_upload = 'public/img/';
-        $gambar4->save($tujuan_upload .$nama_file4); 
+        $tujuan_upload4 = 'public/img';
+        $img4->move($tujuan_upload4 .$nama_file4); 
          
-          $request->validate([
-         'image5' => 'required|mimes:jpeg,png,jpg'
-        ]);
+        //   $request->validate([
+        //  'image5' => 'required|mimes:jpeg,png,jpg'
+        // ]);
         $img5= request('image5');
         $nama_file5 = time()."_".$img5->getClientOriginalName();
                 // isi dengan nama folder tempat kemana file diupload
-        $gambar5 = Image::make($img5);
-        $gambar5->resize(960,640);
-        $tujuan_upload = 'public/img/';
-        $gambar5->save($tujuan_upload .$nama_file5);
+        $tujuan_upload5 = 'public/img';
+        $img5->move($tujuan_upload5 .$nama_file5);
 
 
         $data = [

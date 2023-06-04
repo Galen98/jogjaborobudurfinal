@@ -77,22 +77,17 @@
 	@if($group > 0)
 	<li>Participant : {!! $group !!} (Person)</li>
 	@else<p></p>@endif
-	</ul>
-	
-	<!-- <br> -->
-	
-	<!-- <br> -->
-	<!--  -->
-	<br>
-	<br>
 	@if($total > 0)
-	Total: {!! $total !!}
+	<li>Total: {!! $total !!}</li>
 	@else<p></p>@endif
 
 	@if($totalgroup > 0)
-	Total: {!! $totalgroup !!}
+	<li>Total: {!! $totalgroup !!}</li>
 	@else<p></p>@endif
+	</ul>
 
+	<br>
+	<br>
 	</div>
 	
 	

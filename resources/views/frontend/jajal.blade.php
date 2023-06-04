@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="{{asset('traveler')}}/css/icomoon.css">
   <!-- Themify Icons-->
   <link rel="stylesheet" href="{{asset('traveler')}}/css/themify-icons.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/blitzer/jquery-ui.min.css" integrity="sha512-ibBo2Ns078qm7xZNTPbIrg5XP4pZ+Aujfmz0QFsce2f4LYpCnF1Esy6FkIRFBgXC9cY30XiS7Ui9+RpN8K7ICg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Bootstrap  -->
   <link rel="stylesheet" href="{{asset('traveler')}}/css/bootstrap.css">
   <link
@@ -50,6 +51,7 @@
 <link rel="shortcut icon" href="favicon.png">
 <meta name="viewport"content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
         />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <style type="text/css">
@@ -412,7 +414,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
       @endif 
 
       @if($session == 'IDR') 
-      <strong class="price-block__price-actual "> <span style="font-size:22px;">@currency($item->IDR)</span> </strong>
+      <strong class="price-block__price-actual "> <span style="font-size:18px;">@currency($item->IDR)</span> </strong>
       @endif 
 
       @if($session == 'MYR') 
@@ -498,13 +500,13 @@ font-family: 'GT Eesti Text Trial', sans-serif;
          
 
     <div data-track="booking-assistant" id="books" data-v-c4be1764>
-    <section id="booking-assistant" data-test-id="booking-assistant" data-v-a17e5250 data-v-c4be1764 >
+    <section id="booking-assistant" data-test-id="booking-assistant" data-v-a17e5250 data-v-c4be1764>
     <div is-date-selected="" class="booking-assistant-configurator booking-assistant" data-v-dd428772 data-v-a17e5250 style="background-color: #de1709;">
     <h2 class="booking-assistant-configurator__header" data-v-dd428772><i class="ti-user" style="font-size: 24px;color: white;"></i> Select participants and date</h2> 
     
 
   <section data-test-id="activity-filters-primary-date-picker" class="ba-dropdown ba-date-picker ba-date-picker--multiple-months ba-date-picker--experimental-theme" data-v-0605f8ac data-v-dd428772>
-<input type="text" name="traveldate" id="date-start" class="form-control" style="background-color: white;" placeholder="Select date" required="">
+<input type="text" name="traveldate" id="date-start" class="form-control" style="background-color: white;" placeholder="Select date" required>
     </section>
     <section data-test-id="activity-filters-primary-people-picker" class="ba-dropdown people-picker" data-v-0605f8ac data-v-7e630b00 data-v-dd428772>
     
@@ -530,7 +532,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
 <div>
 <h6>Adults</h6>
 </div>
-<input type="text" id="adult" value="0" name="adultquantity" data-min="0" data-code="adults" />
+<input type="text" id="adult" value="0" name="adultquantity" data-min="0" data-code="adults" required/>
 </div>
 @else
 <div class="d-flex justify-content-between align-items-center my-1">
@@ -579,15 +581,14 @@ font-family: 'GT Eesti Text Trial', sans-serif;
     <h2 class="booking-assistant-configurator__header" data-v-dd428772 style="font-weight: bolder;color:#182c4c;text-align:left;"> {{$p->judulsub}}</h2>
     <h3 class="booking-assistant-configurator__header" data-v-dd428772  style="font-size:14px;font-weight: bolder;color:grey;margin-right: 10px;text-align:left;">{{$p->short}}</h3>
     <br>
-    <h3 class="booking-assistant-configurator__header" data-v-dd428772 style="font-size:15px;font-weight: bolder;color:#182c4c;text-align:left;">Starting time:
-     <select name="waktu" style="font-size:15px;width: 180px;border-radius: 10px 10px 10px 10px;" required="">
-        <option >Select a starting time</option>
-        @foreach($p->waktu as $w)<option value="{{ Carbon\Carbon::parse($w->time)->format('g:i A') }}">{{ Carbon\Carbon::parse($w->time)->format('g:i A') }}</option>@endforeach
+    <h3 class="booking-assistant-configurator__header" data-v-dd428772 style="font-size:15px;font-weight: bolder;color:#182c4c;text-align:left;">Select a starting time:
+     <select name="waktu" style="font-size:15px;width: 180px;border-radius: 10px 10px 10px 10px;" required>
+        @foreach($p->waktu as $w)<option value="{{ Carbon\Carbon::parse($w->time)->format('g:i A') }}" required>{{ Carbon\Carbon::parse($w->time)->format('g:i A') }}</option>@endforeach
       </select></h3>
       <h2 class="booking-assistant-configurator__header" data-v-dd428772 style="color: #182c4c;font-size:15px;text-align:left;" id="tanggal{{$p->id}}"></h2>
       
       
-    <input type="hidden" name="tanggaltravel" id="tanggaltravel{{$p->id}}">
+    <input type="hidden" name="tanggaltravel" class="tanggalx" id="tanggaltravel{{$p->id}}">
     <section data-test-id="activity-filters-primary-people-picker" class="ba-dropdown people-picker" data-v-0605f8ac data-v-7e630b00 data-v-dd428772>
       <h3 class="booking-assistant-configurator__header" data-v-dd428772 style="font-size:16px;font-weight: bolder;color:#182c4c;text-align:left;" id="jumlahdewasa{{$p->id}}"></h3>
       <input type="hidden" name="dewasa" id="dewasa{{$p->id}}">
@@ -609,7 +610,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
       <input type="hidden" name="tothargagroup" id="tothargagroup{{$p->id}}">
     </section>
      
-  <button type="submit" id="cekharga" class="cekharga js-check-availability gtm-trigger__adp-check-availability-btn avoid-close-dropdown-on-click c-button c-button--medium filbtn" data-v-dd428772>  
+  <button type="submit" id="bookx" class="js-check-availability gtm-trigger__adp-check-availability-btn avoid-close-dropdown-on-click c-button c-button--medium filbtn" data-v-dd428772>  
     Book now
   </button> 
   </form>
@@ -1021,6 +1022,14 @@ font-family: 'GT Eesti Text Trial', sans-serif;
         <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
         </div>
   
+
+<div id="dialog" title="invalid value">
+  <p>Please insert your date travel</p>
+</div>
+
+<div id="dialogs" title="invalid value">
+  <p>Please insert participants</p>
+</div>   
   <!-- jQuery -->
   <script src="{{asset('traveler')}}/js/lightbox-plus-jquery.min.js"></script>
   <script src="{{asset('traveler')}}/js/jquery.min.js"></script>
@@ -1041,11 +1050,11 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   <!-- Magnific Popup -->
   <script src="{{asset('traveler')}}/js/jquery.magnific-popup.min.js"></script>
   <script src="{{asset('traveler')}}/js/magnific-popup-options.js"></script>
-  
+  <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
   <!-- Datepicker -->
   <script src="{{asset('traveler')}}/js/bootstrap-datepicker.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-
+  
   <!-- Main -->
   <script> 
   var dateForm = function() {
@@ -1101,7 +1110,8 @@ font-family: 'GT Eesti Text Trial', sans-serif;
 
 <!-- script total harga/ -->
 <script type="text/javascript">
-
+$("#dialog").css("display","none");
+$("#dialogs").css("display","none");
 
   @foreach($pilihan as $p) $("#totals{{$p->id}}").css("display","none"); @endforeach
   $(document).ready(function(){
@@ -1116,16 +1126,32 @@ font-family: 'GT Eesti Text Trial', sans-serif;
      // })
 
     $("#cekharga").click(function(){
-     @foreach($pilihan as $p) $("#totals{{$p->id}}").slideDown("fast"); 
+      let date=$("#date-start").val()
+      let group=$("#group").val()
+      let person=$("#adult").val()
+      let personchild=$("#child").val()      
+      let dates= $("#tanggal{{$p->id}}").val()
+      @foreach($travel as $item)
+      @if($item->kategories == 'Per Person')
+      if($("#adult").val() === "0" ){
+        $( "#dialogs" ).dialog();
+    }
+    @else
+    if($("#group").val() === "0" ){
+        $( "#dialogs" ).dialog();
+    }
+    @endif
+    @endforeach
+    else if($("#date-start").val().length === 0 ){
+        $( "#dialog" ).dialog();
+    }
+    else{
+      @foreach($pilihan as $p) $("#totals{{$p->id}}").slideDown("fast"); 
      let subid{{$p->id}}=$("#subid{{$p->id}}").val()
      let hargaanak{{$p->id}}=0
      let hargadewasa{{$p->id}}=0
      let hargagroup{{$p->id}}=0
      @endforeach
-      let date=$("#date-start").val()
-      let group=$("#group").val()
-      let person=$("#adult").val()
-      let personchild=$("#child").val()      
       
      
 
@@ -1134,6 +1160,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
         $("#tanggal{{$p->id}}").text("Travel Date: " + date)
         $("#tanggaltravel{{$p->id}}").val(date)
       }
+      
       @endforeach
 
       @foreach($pilihan as $p)
@@ -1215,6 +1242,8 @@ font-family: 'GT Eesti Text Trial', sans-serif;
       }
 
       @endforeach 
+    }
+     
 
     })
 
