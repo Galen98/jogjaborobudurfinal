@@ -77,8 +77,9 @@
                     </div>
                     <div class="form-group">
                       <label>Upload Thumbnail</label>
-                        <input type="file" name="image" class="form-control" placeholder="Upload Gambar" require>
+                        <input id="file" type="file" name="image" class="form-control" placeholder="Upload Gambar" required>
                     </div>
+                   
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
                     <a href="/blogadmin">Cancel</a>
                   </form>
@@ -113,5 +114,14 @@ $('.tbodytag').append(tag);
 $('.tbodytag').on('click', '.remove', function(){
 $(this).parent().parent().remove();
 });
+</script>
+<script>
+  var uploadField = document.getElementById("file");
+uploadField.onchange = function() {
+    if(this.files[0].size > 1999999){
+       alert("File terlalu besar!");
+       this.value = "";
+    };
+};
 </script>
 @endsection

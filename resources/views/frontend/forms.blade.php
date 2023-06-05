@@ -35,6 +35,7 @@
     <script src="{{asset('traveler')}}/js/modernizr-2.6.2.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" ></script>
   <script>
 		tinymce.init({
 			selector: '#mytextarea'
@@ -89,7 +90,7 @@
 	</section>
 	</div>
 	
-	<form  class="forms-sample" method="POST" action="{{url('inserttravel')}}" enctype="multipart/form-data">
+	<form id="forms" class="forms-sample" method="POST" action="{{url('inserttravel')}}" enctype="multipart/form-data">
 	@csrf
 	<div class="customer-information__container" data-test-id="checkout-section">
 	<section class="customer-information__content">
@@ -103,7 +104,7 @@
 	<div class="c-input c-input--with-label billing-form__field"><!---->
 	<div class="c-input__container">
 	<label class="c-input__label" for="c-input-3241">Nama Wisata</label>
-	<input id="c-input-3241" class="c-input__field" value data-test-id="billing-fullname" type="text" name="namawisata" autocomplete="namawisata" modelvalue>
+	<input id="c-input-3241" class="c-input__field namatravels" value data-test-id="billing-fullname" type="text" name="namawisata" autocomplete="namawisata" modelvalue required>
 	</div>
 	<span class="c-input__icon c-input__icon--posticon"></span>
 	</div><!--]--><!----><!---->
@@ -116,7 +117,7 @@
 	<div class="c-form-field__container"><!--[-->
 	<div class="c-input c-input--with-label billing-form__field"><!---->
 	<div class="c-input__container"><label class="c-input__label" for="c-input-3246">Durasi</label>
-	<input id="c-input-3246" class="c-input__field" value data-test-id="billing-email" type="text" name="durasi" placeholder="Contoh: 10 Hours" modelvalue>
+	<input id="c-input-3246" class="c-input__field durations" value data-test-id="billing-email" type="text" name="durasi" placeholder="Contoh: 10 Hours" modelvalue>
 	</div>
 	<span class="c-input__icon c-input__icon--posticon"><!--[--><!--]--></span></div><!--]--><!----><!---->
 	</div>
@@ -127,7 +128,7 @@
 	<div class="c-input c-input--with-label billing-form__field">
 	<div class="c-input__container">
 	<label class="c-input__label" for="c-input-3241">Harga</label>
-	<input id="c-input-3241" class="c-input__field" value data-test-id="billing-fullname" type="text" name="idr" autocomplete="idr" modelvalue >
+	<input id="c-input-3241" class="c-input__field hargas" value data-test-id="billing-fullname" type="text" name="idr" autocomplete="idr" modelvalue >
 	</div>
 	<span class="c-input__icon c-input__icon--posticon"></span>
 	</div>
@@ -164,8 +165,7 @@
                       <td><a  class="btn btn-info addRowdestination" style="float: right;">+</a></td>
                       </tr>
                       <td>
-                      	<select class="form-control" name="category[]">
-                      	<option class="form-control">Pilih Kategori...</option>
+                      	<select class="form-control" name="category[]" required>
                       	@foreach($destination as $item)<option class="form-control" value="{{$item->id}}">{{$item->destination}}</option>@endforeach
                       	</select>
                     <td style="text-align:right"><button class="btn btn-danger remove">Delete</button> </td>
@@ -194,7 +194,6 @@
                       </tr>
                       <td>
                       	<select class="form-control" name="season[]">
-                      	<option class="form-control">Pilih Theme...</option>
                       	@foreach($season as $item)<option class="form-control" value="{{$item->id}}">{{$item->namaseason}}</option>@endforeach
                       	</select>
                     <td style="text-align:right"><button class="btn btn-danger remove">Delete</button> </td>
@@ -214,7 +213,6 @@
 	<div class="c-input__container">
 	<label class="c-input__label" for="c-input-3241">Bahasa</label>
 	<select name="bahasa" class="c-input__field">
-		<option class="c-input__field" value="">Silahkan pilih...</option>
 		@foreach($bahasa as $item)
 		<option class="c-input__field" value="{{$item->bahasa}}">{{$item->bahasa}}</option>
 		@endforeach
@@ -230,8 +228,8 @@
 	<div class="c-form-field c-form-field--vertical kategori">
 		<label class="c-input__label" for="c-input-3241">Per Person/Per Group</label>
 	<div class="c-form-field__container"><!--[-->	
-	<input type="radio" class="form-check-input" name="person" id="membershipRadios1" value="Per Person">Per Person
-	<input type="radio" class="form-check-input" name="person" id="membershipRadios1" value="Per Group">Per Group
+	<input type="radio" class="form-check-input" name="person" id="membershipRadios1 persons" value="Per Person">Per Person
+	<input type="radio" class="form-check-input" name="person" id="membershipRadios1 persons" value="Per Group">Per Group
 	<span class="c-input__icon c-input__icon--posticon"></span>
 	</div>
 	</div>
@@ -317,7 +315,7 @@
                       <td><a  class="btn btn-info addRow" style="float: right;">+</a></td>
                       </tr>
                       <td>
-                  <input class="form-control" type="text" name="include[]" placeholder="include">
+                  <input class="form-control" id="includee" type="text" name="include[]" placeholder="include" required>
                     <td style="text-align:right"><button class="btn btn-danger remove">Delete</button> </td>
                     </td>
                     </tr>
@@ -344,7 +342,7 @@
                       </tr>
                     <tr>
                       <td>
-                  <input class="form-control" type="text" name="highlight[]" placeholder="highlight">
+                  <input class="form-control highlightt" type="text" name="highlight[]" placeholder="highlight" required>
                     <td style="text-align:right"><button class="btn btn-danger remove">Delete</button> </td>
                     </td>
                     </tr>
@@ -363,7 +361,7 @@
 	<div class="c-input c-input--with-label billing-form__field"><!---->
 	<div class="c-input__container">
 	<label class="c-input__label" for="c-input-3241">Nama Option</label>
-	<input id="c-input-3241" class="c-input__field" value data-test-id="billing-fullname" type="text" name="namaoption" autocomplete="namaoption" modelvalue>
+	<input id="c-input-3241" class="c-input__field" value data-test-id="billing-fullname" type="text" name="namaoption" autocomplete="namaoption" modelvalue required>
 	</div>
 	<span class="c-input__icon c-input__icon--posticon"></span>
 	</div>
@@ -373,7 +371,7 @@
 	<div class="c-form-field c-form-field--vertical">
 	<label class="c-input__label" for="c-input-3241">Short Description</label>
 	<div class="c-form-field__container"><!--[-->	
-	<textarea class="form-control" style="height:200px;width: 577px;" name="shortoption" placeholder="Short Description"></textarea>
+	<textarea class="form-control" style="height:200px;width: 577px;" name="shortoption" placeholder="Short Description" required></textarea>
 	<span class="c-input__icon c-input__icon--posticon"></span>
 	</div>
 	</div>
@@ -403,10 +401,10 @@
                     </tr>
                     <tr>
                       <td>
-                  <input class="form-control" type="number" name="singlepersonrange[]" placeholder="Jumlah person" style="width: 100px;" min="0">
+                  <input class="form-control" type="number" name="singlepersonrange[]" placeholder="Jumlah person" style="width: 100px;" min="0" required>
                   <td>-</td>
-                  <td><input class="form-control" type="number" name="to[]" placeholder="Jumlah person" style="width: 100px;" min="0"></td>
-                  <td><input class="form-control" id="hargaperson" type="text" name="hargarange[]" placeholder="Harga (in IDR)"style="width: 200px;"></td>
+                  <td><input class="form-control" type="number" name="to[]" placeholder="Jumlah person" style="width: 100px;" min="0" required></td>
+                  <td><input class="form-control" id="hargaperson" type="text" name="hargarange[]" placeholder="Harga (in IDR)"style="width: 200px;" required></td>
                     <td style="text-align:right"><button class="btn btn-danger remove">Delete</button> </td>
                     </td>
                     </tr>
@@ -513,7 +511,7 @@
                       </tr>
                     <tr>
                       <td>
-                  <input class="form-control" type="text" name="exclude[]" placeholder="exclude">
+                  <input class="form-control excludee" type="text"  name="exclude[]" placeholder="exclude" requred>
                     <td style="text-align:right"><button class="btn btn-danger remove">Delete</button> </td>
                     </td>
                     </tr>
@@ -530,15 +528,15 @@
 	<div class="c-form-field__container"><!--[-->
 	<div class="input-group col-xs-12">	
 	Gambar 1
-	<input type="file" name="image" class="form-control" placeholder="Upload Gambar">
+	<input id="file" type="file" name="image" class="form-control" placeholder="Upload Gambar" required>
 	Gambar 2
-    <input type="file" name="image2" class="form-control" placeholder="Upload Gambar">
+    <input id="file2" type="file" name="image2" class="form-control" placeholder="Upload Gambar" required>
     Gambar 3
-    <input type="file" name="image3" class="form-control" placeholder="Upload Gambar">
+    <input id="file3" type="file" name="image3" class="form-control" placeholder="Upload Gambar" required>
     Gambar 4
-    <input type="file" name="image4" class="form-control" placeholder="Upload Gambar">
+    <input id="file4" type="file" name="image4" class="form-control" placeholder="Upload Gambar" required>
     Gambar 5
-    <input type="file" name="image5" class="form-control" placeholder="Upload Gambar">
+    <input id="file5" type="file" name="image5" class="form-control" placeholder="Upload Gambar" required>
 </div>
 	<span class="c-input__icon c-input__icon--posticon"></span>
 	</div>
@@ -560,7 +558,7 @@
                       <td><a  class="btn btn-info addRowtime" style="float: right;">+</a></td>
                       </tr>
                       <td>
-                  <input class="form-control" type="time" name="time[]" placeholder="time"  style="width: 200px;">
+                  <input class="form-control" type="time" name="time[]" placeholder="time"  style="width: 200px;" required>
                     <td style="text-align:right"><button class="btn btn-danger remove">Delete</button> </td>
                     </td>
                     </tr>
@@ -572,7 +570,7 @@
 	</div>
 	</div>
 	<div id="price4">
-	<button class="c-button c-button--medium c-button--filled-standard billing-form__validate-billing-details-and-sri__button" type="submit" data-test-id="checkout-submit-btn" id="tess">Confirm</button>
+	<button class="c-button c-button--medium c-button--filled-standard billing-form__validate-billing-details-and-sri__button" type="submit" data-test-id="checkout-submit-btn" id="tesconfirm">Confirm</button>
 	</div>
 	</section>
 	
@@ -640,6 +638,7 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="{{asset('traveler')}}/js/jquery.min.js"></script>
   
+  
   <script type="text/javascript">
 $(document).ready(function(){
 $(".rangegroup").css("display","none"); 
@@ -660,6 +659,29 @@ $(".rangechild").slideUp("fast");
 }
 });
 
+$("#tesconfirm").click(function(){ 
+	if($(".namatravels").val().length === 0 ){
+        swal("Ulangi!", "Nama paket travel masih kosong", "error");
+    }
+	if($(".durations").val().length === 0 ){
+         swal("Ulangi!", "Durasi masih kosong", "error");
+    }
+	
+	if($(".hargas").val() === 0 ){
+         swal("Ulangi!", "Harga masih kosong", "error");
+    }
+
+	if($("#includee").val().length === 0 ){
+         swal("Ulangi!", "Include kosong", "error");
+    }
+	if($(".excludee").val().length === 0 ){
+         swal("Ulangi!", "Exclude masih kosong", "error");
+    }
+	if($(".highlightt").val().length === 0 ){
+         swal("Ulangi!", "Highlight masih kosong", "error");
+    }	
+});
+
 $("#form-input").css("display","none");
 $(".pickup").click(function(){ 
 if ($("input[name='airport']:checked").val() == "yes" ) { 
@@ -675,14 +697,16 @@ $("#price2").css("display","none");
 $("#price3").css("display","none");
 $("#price4").css("display","none");
 $(".sub").click(function(){
-if ($("input[name='pilihan']:checked").val() == "detail" ) { 
-$("#inform2").slideDown("fast");
+if ($("input[name='pilihan']:checked").val() == "detail" ) {
+	$("#inform2").slideDown("fast");
 $("#price2").slideDown("fast");
 $("#inform3").slideUp("fast");
 $("#inform").slideUp("fast");
 $("#price").slideUp("fast");
 $("#price3").slideUp("fast");
 $("#price4").slideUp("fast");
+ 
+
 } 
 
 if ($("input[name='pilihan']:checked").val() == "tour" ) { 
@@ -743,7 +767,6 @@ function addRowdestination(){
   '<tr>' +
           '<td>'+
           '<select class="form-control" name="category[]">'+
-          '<option class="form-control">Pilih Kategori...</option>'+
           '@foreach($destination as $item)<option class="form-control" value="{{$item->id}}">{{$item->destination}}</option>@endforeach'+
           '</select>'+
           '<td style="text-align:right"><button class="btn btn-danger remove">Delete</button> </td>'+
@@ -770,7 +793,6 @@ function addRowseason(){
   '<tr>' +
           '<td>'+
           '<select class="form-control" name="season[]">'+
-          '<option class="form-control">Pilih Theme...</option>'+
           '@foreach($season as $item)<option class="form-control" value="{{$item->id}}">{{$item->namaseason}}</option>@endforeach'+
           '</select>'+
           '<td style="text-align:right"><button class="btn btn-danger remove">Delete</button> </td>'+
@@ -912,6 +934,51 @@ $('.tbodytime').append(time);
 $('.tbodytime').on('click', '.remove', function(){
 $(this).parent().parent().remove();
 });
+</script>
+<script>
+  var uploadField = document.getElementById("file");
+uploadField.onchange = function() {
+    if(this.files[0].size > 1999999){
+		swal("Ulangi!", "File terlalu besar", "error");
+       this.value = "";
+    };
+};
+</script>
+<script>
+  var uploadField2 = document.getElementById("file2");
+uploadField2.onchange = function() {
+    if(this.files[0].size > 1999999){
+		swal("Ulangi!", "File terlalu besar", "error");
+       this.value = "";
+    };
+};
+</script>
+<script>
+  var uploadField3 = document.getElementById("file3");
+uploadField3.onchange = function() {
+    if(this.files[0].size > 1999999){
+		swal("Ulangi!", "File terlalu besar", "error");
+       this.value = "";
+    };
+};
+</script>
+<script>
+  var uploadField4 = document.getElementById("file4");
+uploadField4.onchange = function() {
+    if(this.files[0].size > 1999999){
+		swal("Ulangi!", "File terlalu besar", "error");
+       this.value = "";
+    };
+};
+</script>
+<script>
+  var uploadField5 = document.getElementById("file5");
+uploadField5.onchange = function() {
+    if(this.files[0].size > 1999999){
+		swal("Ulangi!", "File terlalu besar", "error");
+       this.value = "";
+    };
+};
 </script>
 </body>
 </html>

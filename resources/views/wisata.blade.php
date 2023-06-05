@@ -16,6 +16,39 @@ Create Travel
 </div>
 </div>
 
+<div class="container">
+<div class="row">
+<div class="card-body">
+<table>
+                            <div>
+                            <h5 class="card-title">Filter By Language:</h5>
+                            <tbody>
+                            <tr class="control-group">
+                              <td>
+                            <td><form action="/paketwisata/filter" method="GET">
+                            <div class="wrapper">
+                            <td><div class="form-group">
+                            <select name="bahasa" class="form-control" required="">
+                          <option value=" ">Pilih salah satu</option>
+                          @foreach($bahasa as $item)
+                          <option value="{{$item->bahasa}}">{{$item->bahasa}}</option>
+                          @endforeach
+                          </select>
+                          </div></td>
+                            <td>&nbsp;&nbsp;&nbsp;</td>
+                          </div>
+                            <td><button class="btn btn-primary" type="submit">Filter</button></td>
+                        </form>
+                   			 </td>
+                            </td>  
+                            </tr>    
+                            </tbody>
+                            </div>
+                        </table>
+</div>
+</div>
+</div>
+
 
 
 <div class="container">
@@ -48,6 +81,9 @@ Create Travel
 </div>
 </div>
 
+@if(count($travel) === 0)
+   <h1 style="text-align: center;margin-top: 100px;">Data is empty!</h1>
+   @else
 <div id="gyg" data-server-rendered="true">
   <div class="main-wrapper  partner-left-layout" data-v-5120f7ad>
   <a href="#main-content" class="skip-link">Skip to content</a> 
@@ -109,6 +145,7 @@ Create Travel
     </div>
     @endforeach
   </section>
+  @endif
 </main>
 </div>
 </div>

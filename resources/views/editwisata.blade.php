@@ -5,7 +5,8 @@
 <div class="">
 <div class="card-body">
 @foreach($travel as $item)
-<h3>{{$item->namawisata}}</h3>
+<h2>{{$item->namawisata}}</h2>
+<br>
 <form method="post" action="{{url('editwisata/' .$item->wisata_id)}}" enctype="multipart/form-data">
 @method('patch')
 @csrf
@@ -192,6 +193,15 @@
                         </div>
                         @endif
                       </div> 
+                      <div class="form-group">
+                      <label for="exampleInputPassword4">Bahasa</label>
+                      <select name="bahasa" class="form-control" required="">
+                    <option value="{{$item->bahasa}}">{{$item->bahasa}}</option>
+                    @foreach($bahasa as $item)
+                    <option value="{{$item->bahasa}}">{{$item->bahasa}}</option>
+                    @endforeach
+                    </select>
+                    </div>
                       <div class="form-group">
 <label for="exampleInputName1">Pickup Location</label>
 <input type="text" class="form-control" id="exampleInputName1" name="wherepickup" placeholder="Masukan Lokasi Pickup" value="{{$item->wherepickup}}">
@@ -434,7 +444,7 @@
             </div>
             <br>
 <br>
-<!-- <div class="col-lg-12 grid-margin stretch-card">
+<div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Starting Time</h4>
@@ -482,7 +492,9 @@
                   </div>
                 </div>
               </div>
-            </div> -->
+            </div>
+            <br>
+            
 </div>
 
 <a href="/paketwisata">Cancel</a>

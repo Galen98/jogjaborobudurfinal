@@ -94,7 +94,15 @@ Route::get('/', function (Request $request) {
 
 Route::get('/paketwisata', function () {
     $travel=travel::orderBy('created_at','DESC')->paginate(9);
-    return view('wisata',compact('travel'));
+    $bahasa=bahasa::get();
+    return view('wisata',compact('travel','bahasa'));
+});
+
+Route::get('/paketwisata/filter', function (Request $request) {
+    $bahasa=Request('bahasa');
+    $travel=travel::where('bahasa',$bahasa)->orderBy('created_at','DESC')->paginate(9);
+    $bahasa=bahasa::get();
+    return view('wisata',compact('travel','bahasa'));
 });
 
 Route::get('/formss', function () {

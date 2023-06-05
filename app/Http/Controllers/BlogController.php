@@ -34,7 +34,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Str;
-
+use Illuminate\Support\Facades\Validator;
 class BlogController extends Controller
 {
     public function insertblog(Request $request){
@@ -47,6 +47,7 @@ class BlogController extends Controller
         $tagx=request('tags');
         $author= request('author');
         $short=request('short');
+       
         if($gambar == null){
             $data=[
                 'judulblog'=>$judul,
@@ -654,13 +655,14 @@ class BlogController extends Controller
             ->leftJoin('season', 'tambahseason.season_id', '=', 'season.id')
             ->select('season.namaseason','tambahseason.id')->get();
         $travel=DB::table('wisata')->where('wisata_id',$idwisata)->get();
+        $bahasa=bahasa::get();
         $include=DB::table('include')->where('wisata_id',$idwisata)->get();
         $exclude=DB::table('exclude')->where('wisata_id',$idwisata)->get();
         $highlight=DB::table('highlight')->where('wisata_id',$idwisata)->get();
         $jam=DB::table('waktu')->where('wisata_id',$idwisata)->get();
         $tambahseason=tambahseason::where('wisata_id',$idwisata)->get();
 
-        return view('editwisata',compact('travel','include','exclude','destination','highlight','jam','destinasi','season','seasonadd'));
+        return view('editwisata',compact('travel','include','exclude','destination','highlight','jam','destinasi','season','seasonadd','bahasa'));
     }
 
     public function editblogproses(Request $request,$idblog){
@@ -697,6 +699,7 @@ class BlogController extends Controller
             'namawisata'=>$request->namawisata,
             'durasi'=>$request->duration,
             'label'=>$request->label,
+            'bahasa'=>$request->bahasa,
             'shortdescription'=>$request->shortdescription,
             'deskripsi_english'=>$request->isieng,
             'pickup'=>$request->airport,
