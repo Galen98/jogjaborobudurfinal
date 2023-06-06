@@ -133,6 +133,8 @@ class TravelController extends Controller
             // 'highlight'=>$highlight,
             'child'=>$child,
             'city'=>$city,
+            'student'=>'yes',
+            'kitas'=>'yes',
             'image'=>$nama_file,
             'image2'=>$nama_file2,
             'image3'=>$nama_file3,

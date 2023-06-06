@@ -222,8 +222,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   <!-- Datepicker -->
   <script src="{{asset('traveler')}}/js/bootstrap-datepicker.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-  <script src="https://lovelyborobudurtours.com/plugins/empu/tour/assets/js/numberInput.js"></script>
-<script src="https://lovelyborobudurtours.com/plugins/empu/tour/assets/js/packagePicker.js"></script>
+
   <!-- Main -->
   <script src="{{asset('traveler')}}/js/main.js"></script>
 	<script>

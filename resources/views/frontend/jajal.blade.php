@@ -1134,16 +1134,19 @@ $("#dialogs").css("display","none");
       @foreach($travel as $item)
       @if($item->kategories == 'Per Person')
       if($("#adult").val() === "0" ){
-        $( "#dialogs" ).dialog();
+        // $( "#dialogs" ).dialog();
+        $('.participants-control').next().toggle();
     }
     @else
     if($("#group").val() === "0" ){
-        $( "#dialogs" ).dialog();
+        // $( "#dialogs" ).dialog();
+        $('.participants-control').next().toggle();
     }
     @endif
     @endforeach
     else if($("#date-start").val().length === 0 ){
-        $( "#dialog" ).dialog();
+        // $( "#dialog" ).dialog();
+        $("#date-start").focus();
     }
     else{
       @foreach($pilihan as $p) $("#totals{{$p->id}}").slideDown("fast"); 

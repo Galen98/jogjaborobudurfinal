@@ -117,7 +117,7 @@
 	<div class="c-form-field__container"><!--[-->
 	<div class="c-input c-input--with-label billing-form__field"><!---->
 	<div class="c-input__container"><label class="c-input__label" for="c-input-3246">Durasi</label>
-	<input id="c-input-3246" class="c-input__field durations" value data-test-id="billing-email" type="text" name="durasi" placeholder="Contoh: 10 Hours" modelvalue>
+	<input id="c-input-3246" class="c-input__field durations" value data-test-id="billing-email" type="text" name="durasi" placeholder="Contoh: 10 Hours" modelvalue required>
 	</div>
 	<span class="c-input__icon c-input__icon--posticon"><!--[--><!--]--></span></div><!--]--><!----><!---->
 	</div>
@@ -128,7 +128,7 @@
 	<div class="c-input c-input--with-label billing-form__field">
 	<div class="c-input__container">
 	<label class="c-input__label" for="c-input-3241">Harga</label>
-	<input id="c-input-3241" class="c-input__field hargas" value data-test-id="billing-fullname" type="text" name="idr" autocomplete="idr" modelvalue >
+	<input id="c-input-3241" class="c-input__field hargas" value data-test-id="billing-fullname" type="text" name="idr" autocomplete="idr" modelvalue required>
 	</div>
 	<span class="c-input__icon c-input__icon--posticon"></span>
 	</div>
@@ -247,16 +247,16 @@
 	</div>
 
 	<br>
-	<div class="c-form-field c-form-field--vertical">
+	<!-- <div class="c-form-field c-form-field--vertical">
 		<label class="c-input__label" for="c-input-3241">KITAS</label>
-	<div class="c-form-field__container"><!--[-->	
+	<div class="c-form-field__container">
 	<input type="radio" class="form-check-input" name="kitas" id="membershipRadios1" value="yes">Yes
 	<input type="radio" class="form-check-input" name="kitas" id="membershipRadios1" value="no">No
 	<span class="c-input__icon c-input__icon--posticon"></span>
 	</div>
 	</div>
 
-	<br>
+	<br> -->
 	<div class="c-form-field c-form-field--vertical">
 		<label class="c-input__label" for="c-input-3241">For Child</label>
 	<div class="c-form-field__container"><!--[-->	
@@ -267,16 +267,15 @@
 	</div>
 
 	<br>
-	<div class="c-form-field c-form-field--vertical">
+	<!-- <div class="c-form-field c-form-field--vertical">
 		<label class="c-input__label" for="c-input-3241">Student Card</label>
-	<div class="c-form-field__container"><!--[-->	
+	<div class="c-form-field__container">	
 	<input type="radio" class="form-check-input" name="student" id="membershipRadios1" value="yes">Yes
 	<input type="radio" class="form-check-input" name="student" id="membershipRadios1" value="no">No
 	<span class="c-input__icon c-input__icon--posticon"></span>
 	</div>
-	</div>
+	</div> -->
 
-	<br>
 	<div class="c-form-field c-form-field--vertical pickup">
 		<label class="c-input__label" for="c-input-3241">Include Pickup</label>
 	<div class="c-form-field__container"><!--[-->	
@@ -371,7 +370,7 @@
 	<div class="c-form-field c-form-field--vertical">
 	<label class="c-input__label" for="c-input-3241">Short Description</label>
 	<div class="c-form-field__container"><!--[-->	
-	<textarea class="form-control" style="height:200px;width: 577px;" name="shortoption" placeholder="Short Description" required></textarea>
+	<textarea class="form-control shorts" style="height:200px;width: 577px;" name="shortoption" placeholder="Short Description" required></textarea>
 	<span class="c-input__icon c-input__icon--posticon"></span>
 	</div>
 	</div>
@@ -489,7 +488,7 @@
 	<div class="c-form-field c-form-field--vertical pickup">
 		<label class="c-input__label" for="c-input-3241">Full Description</label>
 	<div class="c-form-field__container"><!--[-->	
-	<textarea id="mytextarea" class="form-control" style="height:400px;width: 500px;" name="isieng" placeholder="Content"></textarea>
+	<textarea id="mytextarea" class="form-control fulls" style="height:400px;width: 500px;" name="isieng" placeholder="Content" required></textarea>
 	<span class="c-input__icon c-input__icon--posticon"></span>
 	</div>
 	</div>
@@ -666,7 +665,7 @@ $("#tesconfirm").click(function(){
 	if($(".durations").val().length === 0 ){
          swal("Ulangi!", "Durasi masih kosong", "error");
     }
-	
+ 
 	if($(".hargas").val() === 0 ){
          swal("Ulangi!", "Harga masih kosong", "error");
     }
