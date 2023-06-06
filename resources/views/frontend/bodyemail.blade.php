@@ -125,11 +125,11 @@
     </p>
     <section class="footer" style="background-color: #fc2c04;color: white;">
       <div class="social">
-        <a href="#"><img src="https://www.freepnglogos.com/uploads/whatsapp-png-image-9.png" height="40" width="40"></a>
-        <a href="#"><img src="https://www.freepnglogos.com/uploads/tripadvisor-logo-png/file-tripadvisor-logo-svg-wikipedia-3.png" height="40" width="40"></a>
-        <a href="#"><img src="https://www.freepnglogos.com/uploads/facebook-logo-icon/facebook-logo-icon-facebook-icon-png-images-icons-and-png-backgrounds-1.png" height="40" width="40"></a>
-        <a href="#"><img src="https://www.freepnglogos.com/uploads/instagram-icon-png/wait-considerations-make-before-switching-instagram-logo-icon-4.png" height="40" width="40"></a>
-        <a href="#"><img src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/x20bsi73vu9bwkyeo3jq" height="40" width="40"></a>
+        <a href="https://wa.me/628562862504"><img src="https://www.freepnglogos.com/uploads/whatsapp-png-image-9.png" height="40" width="40"></a>
+        <a href="https://www.tripadvisor.com/Attraction_Review-g14782503-d25132575-Reviews-Jogja_Borobudur_Tour_Travel-Yogyakarta_Yogyakarta_Region_Java.html"><img src="https://www.freepnglogos.com/uploads/tripadvisor-logo-png/file-tripadvisor-logo-svg-wikipedia-3.png" height="40" width="40"></a>
+        <a href="https://www.facebook.com/jogjaborobudur"><img src="https://www.freepnglogos.com/uploads/facebook-logo-icon/facebook-logo-icon-facebook-icon-png-images-icons-and-png-backgrounds-1.png" height="40" width="40"></a>
+        <a href="https://www.instagram.com/masheru__/"><img src="https://www.freepnglogos.com/uploads/instagram-icon-png/wait-considerations-make-before-switching-instagram-logo-icon-4.png" height="40" width="40"></a>
+        <a href="https://www.getyourguide.com/jogja-borobudur-tour-travel-s27125/"><img src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/x20bsi73vu9bwkyeo3jq" height="40" width="40"></a>
       </div>
       <ul class="list">
       </ul>
