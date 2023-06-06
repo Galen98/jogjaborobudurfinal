@@ -327,6 +327,33 @@ class BlogController extends Controller
         ]);
     }
 
+    public function showaddjam($SubID){
+        $Sub=DB::table('subwisata')->where('id',$SubID)->first();
+        return response()->json([
+        'status'=>200,
+        'Sub'=>$Sub
+        ]);
+    }
+
+
+    public function deletetime($idjam){
+        waktu::where('id',$idjam)->delete();
+        Alert::error('Berhasil Dihapus');
+        return redirect()->back();
+    }
+
+    public function deletehargaperson($idperson){
+        harga::where('id', $idperson)->delete();
+        Alert::error('Berhasil Dihapus');
+        return redirect()->back();
+    }
+
+    public function deletehargachild($idchild){
+        hargachild::where('id', $idchild)->delete();
+        Alert::error('Berhasil Dihapus');
+        return redirect()->back();
+    }
+
     public function showeditexclude($ExcludeID){
         $Exclude=DB::table('exclude')->where('id',$ExcludeID)->first();
         return response()->json([
@@ -469,7 +496,7 @@ class BlogController extends Controller
         $idtime = Request('idtime');
        $Time = waktu::where('id', $idtime)
        ->update([
-        'time' => $request->time
+        'time' => $request->jam
        ]);
                
     }
@@ -505,13 +532,51 @@ class BlogController extends Controller
     }
 
     public function addtime(Request $request){
-        $idtravel=Request('idtravel');
+        $idtraveljam=Request('idtraveljam');
+        $idsubs=Request('idsubs');
         $time=Request('time');
         $data=[
-            'wisata_id'=>$idtravel,
+            'wisata_id'=>$idtraveljam,
+            'subwisata_id'=>$idsubs,
             'time'=>$time
         ];
         waktu::create($data);
+    }
+
+    public function addhargaperson(Request $request){
+        $idtravelperson=Request('idtravelperson');
+        $idsubperson=Request('idsubperson');
+        $min=Request('singlepersonrange');
+        $to=Request('to');
+        $harga=Request('hargaperson');
+        $kategories=subwisata::where('id', $idsubperson)->first();
+        $data=[
+            'wisata_id'=>$idtravelperson,
+            'subwisata_id'=>$idsubperson,
+            'min'=>$min,
+            'maks'=>$to,
+            'harga'=>$harga,
+            'kategories'=>$kategories->kategories
+        ];
+        harga::create($data);
+    }
+
+    public function addhargachild(Request $request){
+        $idtravelchild=Request('idtravelchild');
+        $idsubchild=Request('idsubchild');
+        $min=Request('singlechildrange');
+        $to=Request('tochild');
+        $harga=Request('hargachild');
+
+        $data=[
+            'wisata_id'=>$idtravelchild,
+            'subwisata_id'=>$idsubchild,
+            'min'=>$min,
+            'maks'=>$to,
+            'harga'=>$harga,
+
+        ];
+        hargachild::create($data);
     }
 
 
@@ -705,6 +770,7 @@ class BlogController extends Controller
             'pickup'=>$request->airport,
             'wherepickup'=>$request->wherepickup,
             'capacity'=>$request->capacity,
+            'kategories'=>$request->kategories,
             'slug'=>\Str::slug($request->namawisata)
 
         ]);
@@ -1122,10 +1188,11 @@ class BlogController extends Controller
         $pilihan = subwisata::whereIN('id', $options)->get();
         $harganew = harga::whereIN('subwisata_id', $options)->get();
         $hargachildnew = hargachild::whereIN('subwisata_id', $options)->get();
+        $jam = waktu::whereIN('subwisata_id', $options)->get();
         $travel=travel::where('wisata_id',$travelid)->get();
         $harga=harga::where('wisata_id',$travelid)->get();
         $hargachild=hargachild::where('wisata_id',$travelid)->get();
-        return view('diskon', compact('travel','harga','hargachild','pilihan','harganew','hargachildnew'));
+        return view('diskon', compact('travel','harga','hargachild','pilihan','harganew','hargachildnew','jam'));
     }
 
     public function buatoption($travelid){

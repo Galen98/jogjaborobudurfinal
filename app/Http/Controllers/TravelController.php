@@ -131,7 +131,7 @@ class TravelController extends Controller
             'kitas'=>$kitas,
             'pickup'=>$airport,
             // 'highlight'=>$highlight,
-            'child'=>$child,
+            'child'=>'yes',
             'city'=>$city,
             'student'=>'yes',
             'kitas'=>'yes',
@@ -444,6 +444,7 @@ class TravelController extends Controller
             ->select('season.namaseason','season.id')->paginate(1);
         $rangeharga = harga::where('wisata_id', $idtravel)->get();
         $hargachild  = hargachild::where('wisata_id', $idtravel)->get();
+        $childoption = hargachild::where('wisata_id', $idtravel)->get();
         $rateIDR = Rate::where("currency", "IDR")->first()->rate;
         $rateSGD = Rate::where("currency", "SGD")->first()->rate;
         $rateMYR = Rate::where("currency", "MYR")->first()->rate;
@@ -463,7 +464,7 @@ class TravelController extends Controller
         $value=rating::where('wisata_id',$idtravel)->paginate(8);
         $jumlahreview=rating::where('wisata_id',$idtravel)->count();
         $other=travel::where('label','Likely to sell out')->where('bahasa',$sessions)->paginate(4);
-        return view('frontend.jajal', compact('travel','includes','excludes','other','value','jumlahreview',"rateIDR","rateMYR","rateSGD","session","rateEUR",'highlight','harga','destination','rangeharga','hargachild','jam','destinate','option','pilihan','harganew','options','hargachildnew','destinasi','season','bahasa','session','sessions')); 
+        return view('frontend.jajal', compact('travel','childoption','includes','excludes','other','value','jumlahreview',"rateIDR","rateMYR","rateSGD","session","rateEUR",'highlight','harga','destination','rangeharga','hargachild','jam','destinate','option','pilihan','harganew','options','hargachildnew','destinasi','season','bahasa','session','sessions')); 
     }
 
     public function insertcorporatediscount(Request $request){

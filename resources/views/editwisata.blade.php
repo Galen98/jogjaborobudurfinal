@@ -20,7 +20,7 @@
 <input type="text" class="form-control" id="exampleInputName1" name="duration" placeholder="duration" value="{{$item->durasi}}">
 </div>
 
-<div class="col-md-6">
+<!-- <div class="col-md-6">
            <label>For Child</label>
            @if($item->child == 'yes')
                         <div class="form-group row">
@@ -61,7 +61,7 @@
                           </div>
                         </div>
                         @endif
-                      </div>
+                      </div> -->
 
                       <div class="col-md-6">
            <label>Per Person / Per Group</label>
@@ -84,7 +84,7 @@
                             </div>
                           </div>
                         </div>
-                        @elseif($item->discount == 'no')
+                        @elseif($item->kategories == 'Per Group')
                         <div class="form-group row">
                           <div class="col-sm-4">
                             <div class="form-check">
@@ -107,6 +107,12 @@
                       </div>
 
 <div class="form-group">
+<label for="exampleTextarea1">Capacity (Group)</label>
+<input type="number" name="capacity" class="form-control" value="{{$item->capacity}}" min="0">
+</div>
+
+
+<div class="form-group">
 <label for="exampleInputPassword4">Label</label>
 <select name="label" class="form-control">
 <option value="{{$item->label}} ">{{$item->label}}</option>
@@ -125,12 +131,7 @@
 <textarea id="mytextarea"  class="form-control" style="height:300px" name="isieng" placeholder="Content">{{$item->deskripsi_english}}</textarea>
 </div>
 
-@if($item->kategories == 'Per Group')
-<div class="form-group">
-<label for="exampleTextarea1">Capacity</label>
-<input type="number" name="capacity" class="form-control" value="{{$item->capacity}}">
-</div>
-@endif
+
 
 <div class="col-md-6">
 					 <label>Pickup</label>
@@ -444,7 +445,7 @@
             </div>
             <br>
 <br>
-<div class="col-lg-12 grid-margin stretch-card">
+<!-- <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Starting Time</h4>
@@ -492,8 +493,7 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <br>
+            </div> -->
             
 </div>
 

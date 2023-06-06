@@ -8,7 +8,7 @@
         @endforeach
     <div class="page-header__content" data-v-3a2bcacc >
   <a href="/" data-test-id="page-header-logo" class="page-header__logo-link" data-v-3a2bcacc style="margin-top: 10px;">
-  <!-- <img src="{{asset('spica')}}/images/logomini.png" alt="logo" height="50" width="100" /> -->
+  <img src="{{asset('spica')}}/images/logomini.png" alt="logo" height="50" width="100" style="margin-left:5px;"/>
   </a> 
   <nav data-test-id="page-header-nav" class="navigation page-header__navigation light" data-v-3a2bcacc >
   <ul class="navigation__list">

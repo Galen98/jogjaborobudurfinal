@@ -78,13 +78,14 @@
 
                     <div class="form-group">
                     <label for="exampleInputPassword4">Harga Sekarang</label>
-                    <p>in IDR</p>
-                    <input type="text" class="form-control" id="exampleInputEmail3" id="idr" placeholder="@currency($item->IDR)" value="{{$item->IDR}}" readonly=""> 
+                    <br>
+                    <h1 style="font-size:22px;">@currency($item->IDR)</h1>
+                    <input type="hidden" class="form-control" id="exampleInputEmail3" id="idr" placeholder="@currency($item->IDR)" value="{{$item->IDR}}" readonly=""> 
                     </div>
                     <div class="form-group sebelum">
                     <label for="exampleInputPassword4">Harga Sebelum Diupdate</label>
-                    <p>in IDR</p>
-                    <input type="text" class="form-control" id="exampleInputEmail3" id="idr" placeholder="@currency($item->IDR_awal)" value="{{$item->IDR_awal}}" readonly=""> 
+                    <h1 style="font-size:20px;">@currency($item->IDR_awal)</h1>
+                    <input type="hidden" class="form-control" id="exampleInputEmail3" id="idr" placeholder="@currency($item->IDR_awal)" value="{{$item->IDR_awal}}" readonly=""> 
                     </div>
                     <br/>
                     
@@ -97,27 +98,36 @@
 <br>
 <br>
 <form action="{{'/paketwisata/diskon/buatoption/' .$item->wisata_id}}" method="GET"> 
-<button type="submit" class="btn btn-danger mr-2">Add new option</button>
+<button type="submit" class="btn btn-danger mr-2"><i class="mdi mdi-plus"></i> Add new option</button>
 </form>
 @endforeach
 <br>
 <br>
-<div class="col-lg-12 grid-margin stretch-card">
-
-              <div class="card" >
+<div class="col-lg-12 grid-margin stretch-card" >
+              <div class="card">
                   @foreach($pilihan as $item) 
-                <div class="card-body" style="border-bottom: 1px solid #e0e0de;">
-                 <h4 class="card-title">{{$item->judulsub}}</h4>
+                <div class="card-body" style="border-bottom: 5px solid #e0e0de;margin-top:40px;">
+                 <h4 class="card-title" style="font-size:18px;">{{$item->judulsub}}</h4>
                  <p>{{$item->short}}</p>
-                <i class="mdi mdi-account-multiple"></i> <h5 class="card-title">{{$item->kategories}}</h5>
-                 <button type="button" class="btneditoption btn btn-sm btn-info btn-rounded btn-fw" style="color: white;" value="{{$item->id}}"><i class="mdi mdi-pencil-box" style="color: white;"></i> Edit</button>
-
-                 <form action="{{url('deleteoption/'.$item->id)}}" method="POST" enctype="multipart/form-data">
-          @method('delete')
-          @csrf
-          <br>
+                <h5 class="card-title" style="font-size:14px;margin-top:10px;margin-bottom:20px;"><i class="mdi mdi-account-multiple"></i> {{$item->kategories}}</h5>
+                <table>
+              <tbody>
+              <tr>
+              <td><button type="button" class="btneditoption btn btn-sm btn-info btn-rounded btn-fw" style="color: white;" value="{{$item->id}}"><i class="mdi mdi-pencil-box" style="color: white;"></i> Edit</button></td>
+              <td>&nbsp;&nbsp;</td>
+              <td><form action="{{url('deleteoption/'.$item->id)}}" method="POST" enctype="multipart/form-data">
+                @method('delete')
+                @csrf
                  <button type="submit" class="hapusbtn btn btn-sm btn-danger btn-rounded btn-fw" style="color: white;"><i class="mdi mdi-delete" style="color: white;"></i> Delete</button>
-                 </form>
+                 </form></td>
+              </tr>
+              </tbody>
+              </table>
+                 <br>
+                 <br>
+                 <br>
+                 <h4 class="card-title">Harga Person</h4>
+                  <button type="button" class="tambahhargaperson btn btn-sm btn-primary btn-rounded btn-fw" value="{{$item->id}}"><i class="mdi mdi-plus"></i> Tambah</button>
                   <div class="table-responsive pt-3">
                     <table class="table table-bordered">
                       <thead>
@@ -132,6 +142,7 @@
                             Harga
                           </th>
                           <th>Edit</th>
+                          <th>Delete</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -144,13 +155,18 @@
                           {{$h->maks ?? ''}}
                           </td>
                           <td>
-                          {{$h->harga ?? ''}}
+                            @currency($h->harga)
                           </td>
                           <td>
-                          
                           <button type="button" class="btnedit btn btn-sm btn-info btn-rounded btn-fw" style="color: white;" value="{{$h->id}}"><i class="mdi mdi-pencil-box" style="color: white;"></i></button>
-                          
                           </td>
+                          <td>
+                          <form action="{{url('deletehargaperson/'.$h->id)}}" method="POST" enctype="multipart/form-data">
+                          @method('delete')
+                          @csrf  
+                          <button type="submit" class="btn btn-sm btn-danger btn-rounded btn-fw"><i class="mdi mdi-delete"></i></button>
+                          </form>
+                        </td>
                         </tr>
                         @endforeach
                       </tbody>
@@ -158,6 +174,7 @@
                   </div>
                   <br>
                   <h4 class="card-title">Harga Child</h4>
+                  <button type="button" class="tambahhargachild btn btn-sm btn-primary btn-rounded btn-fw" value="{{$item->id}}"><i class="mdi mdi-plus"></i> Tambah</button>
                   <div class="table-responsive pt-3">
                     <table class="table table-bordered">
                       <thead>
@@ -172,6 +189,7 @@
                             Harga
                           </th>
                           <th>Edit</th>
+                          <th>Delete</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -184,12 +202,52 @@
                           {{$hc->maks ?? ''}}
                           </td>
                           <td>
-                          {{$hc->harga ?? ''}}
+                          @currency($hc->harga)
                           </td>
                           <td>
-                          
                           <button type="button" class="btn btneditchild btn-sm btn-info btn-rounded btn-fw" style="color: white;" value="{{$hc->id}}"><i class="mdi mdi-pencil-box" style="color: white;"></i></button>
-                          
+                          </td>
+                          <td>
+                          <form action="{{url('deletehargachild/'.$hc->id)}}" method="POST" enctype="multipart/form-data">
+                          @method('delete')
+                          @csrf  
+                          <button type="submit" class="btn btn-sm btn-danger btn-rounded btn-fw"><i class="mdi mdi-delete"></i></button>
+                          </form>
+                        </td>
+                        </tr>
+                        @endforeach
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <br>
+                  <h4 class="card-title">Starting Time</h4>
+                  <button type="button" class="tambahtime btn btn-sm btn-primary btn-rounded btn-fw" value="{{$item->id}}"><i class="mdi mdi-plus"></i> Tambah</button>
+                  <div class="table-responsive pt-3">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>
+                            Time
+                          </th>
+                          <th>Edit</th>
+                          <th>Delete</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      @foreach($item->waktu as $j)
+                        <tr style="color: black;">
+                          <td >
+                          {{$j->time ?? ''}}
+                          </td>
+                          <td><button type="button" class="btn btnedittime btn-sm btn-info btn-rounded btn-fw" style="color: white;" value="{{$j->id}}"><i class="mdi mdi-pencil-box" style="color: white;"></i></button></td>
+                          <td>
+                          <form action="{{url('deletetime/'.$j->id)}}" method="POST" enctype="multipart/form-data">
+                          @method('delete')
+                          @csrf  
+                          <button type="submit" class="hapusbtntime btn btn-sm btn-danger btn-rounded btn-fw"><i class="mdi mdi-delete"></i></button>
+                          </form>
+                        </td>
                           </td>
                         </tr>
                         @endforeach
@@ -199,7 +257,7 @@
                 </div>
                  @endforeach
               </div>
-             
+              
             </div>
             <br>
 <br>
@@ -231,6 +289,136 @@
         </div>
         <button type="button" class="btn btn-primary btnupdate">Update</button>
         </form>
+        <br>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="Modaltime" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add Time</h5>
+            <button type="button" class="btn-close" data-dismiss="modal">
+            </button>
+      </div>
+      <div class="modal-body">
+      <div class="form-group">
+      <form action="{{url('addtime')}}" action="POST" enctype="multipart/form-data" id="formtime">
+        @csrf
+      <div class="form-group">
+        <label>Waktu</label>
+        <input type="hidden" id="idtraveljam" name="idtraveljam">
+        <input type="hidden" name="idsubs" class="form-control" id="idsubs">
+        <input type="time" name="time" class="form-control" id="time"> 
+        </div>
+        <button type="button" class="btn btn-primary btntime">Post</button>
+        </form> 
+        <br>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+
+
+<div class="modal fade" id="editModaltime" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edit Time</h5>
+            <button type="button" class="btn-close" data-dismiss="modal">
+            </button>
+      </div>
+      <div class="modal-body">
+      <div class="form-group">
+      <form action="{{url('updatetime')}}" action="POST" enctype="multipart/form-data" id="formedittime">
+        @csrf
+      <div class="form-group">
+        <label>Waktu</label>
+        @foreach($travel as $item)<input type="hidden" id="idtravel" name="idtravel" value="{{$item->wisata_id}}">@endforeach
+        <input type="hidden" name="idtime" id="idtime" readonly=""> 
+        <input type="time" name="jam" class="form-control" id="jam">
+        </div>
+        <button type="button" class="btn btn-primary btnupdatetime">Update</button>
+        </form> 
+        <br>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="Modalperson" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add Harga</h5>
+            <button type="button" class="btn-close" data-dismiss="modal">
+            </button>
+      </div>
+      <div class="modal-body">
+      <div class="form-group">
+      <form action="{{url('addhargaperson')}}" action="POST" enctype="multipart/form-data" id="formperson">
+        @csrf
+      <div class="form-group">
+        <label>Harga</label>
+        <input type="hidden" id="idtravelperson" name="idtravelperson">
+        <input type="hidden" name="idsubperson" class="form-control" id="idsubperson">
+        <table>
+      <tbody>
+      <tr>
+      <td><input class="form-control" type="number" name="singlepersonrange" placeholder="Jumlah person" min="0"></td>
+      <td>-</td>
+      <td><input class="form-control" type="number" name="to" placeholder="Jumlah person" min="0"></td>
+      <td>&nbsp;&nbsp;</td>
+      <td><input class="form-control"  type="number" name="hargaperson" placeholder="Harga (in IDR)" min="0"></td>
+      </tr>
+      </tbody>
+      </table>
+        </div>
+        <button type="button" class="btn btn-primary btnaddperson">Post</button>
+        </form> 
+        <br>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="Modalchild" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add Harga Child</h5>
+            <button type="button" class="btn-close" data-dismiss="modal">
+            </button>
+      </div>
+      <div class="modal-body">
+      <div class="form-group">
+      <form action="{{url('addhargachild')}}" action="POST" enctype="multipart/form-data" id="formchild">
+        @csrf
+      <div class="form-group">
+        <label>Harga</label>
+        <input type="hidden" id="idtravelchild" name="idtravelchild">
+        <input type="hidden" name="idsubchild" class="form-control" id="idsubchild">
+        <table>
+      <tbody>
+      <tr>
+      <td><input class="form-control" type="number" name="singlechildrange" placeholder="Jumlah child" min="0"></td>
+      <td>-</td>
+      <td><input class="form-control" type="number" name="tochild" placeholder="Jumlah child" min="0"></td>
+      <td>&nbsp;&nbsp;</td>
+      <td><input class="form-control"  type="number" name="hargachild" placeholder="Harga (in IDR)" min="0"></td>
+      </tr>
+      </tbody>
+      </table>
+        </div>
+        <button type="button" class="btn btn-primary btnaddchild">Post</button>
+        </form> 
         <br>
         </div>
     </div>
@@ -419,6 +607,168 @@ $(".sebelum").slideUp("fast");
                 data:formData,
                 success:function(data){
                     $('#editModal').modal('hide')
+                    window.location.assign('/paketwisata/diskon/'+idtravel);
+                }
+            })
+        });
+        </script>
+
+<script>
+    $(document).ready(function(){
+        $(document).on('click', '.tambahtime', function(){
+            var idsubs=$(this).val();
+            $('#Modaltime').modal('show');
+            $.ajax({
+                
+                type: "GET",
+                url:"/showaddjam/"+idsubs,
+                success:function(response){
+                     $('#idsubs').val(response.Sub.id); 
+                    $('#idtraveljam').val(response.Sub.wisata_id);  
+
+                }
+            });
+        });
+
+        $(".btn-close").click(function(){
+            $("#Modaltime").modal('hide');
+        });
+    });
+
+    $(document).on('click', '.btntime', function(){
+            var idtraveljam=$('#formtime').find('#idtraveljam').val()
+            let formData=$('#formtime').serialize()
+            //console.log(progid);
+            console.log(formData)
+
+            $.ajax({
+                url:'{{url('addtime')}}',
+                method:"POST",
+                data:formData,
+                success:function(data){
+                    $('#Modaltime').modal('hide')
+                    window.location.assign('/paketwisata/diskon/'+idtraveljam);
+                }
+            })
+        });
+        </script>
+
+<script>
+    $(document).ready(function(){
+        $(document).on('click', '.tambahhargaperson', function(){
+            var idsubperson=$(this).val();
+            $('#Modalperson').modal('show');
+            $.ajax({
+                
+                type: "GET",
+                url:"/showaddjam/"+idsubperson,
+                success:function(response){
+                     $('#idsubperson').val(response.Sub.id); 
+                    $('#idtravelperson').val(response.Sub.wisata_id);  
+
+                }
+            });
+        });
+
+        $(".btn-close").click(function(){
+            $("#Modalperson").modal('hide');
+        });
+    });
+
+    $(document).on('click', '.btnaddperson', function(){
+            var idtravelperson=$('#formperson').find('#idtravelperson').val()
+            let formData=$('#formperson').serialize()
+            console.log(formData);
+
+            $.ajax({
+                url:'{{url('addhargaperson')}}',
+                method:"POST",
+                data:formData,
+                success:function(data){
+                    $('#Modalperson').modal('hide')
+                    window.location.assign('/paketwisata/diskon/'+idtravelperson);
+                }
+            })
+        });
+        </script>
+
+<script>
+    $(document).ready(function(){
+        $(document).on('click', '.tambahhargachild', function(){
+            var idsubchild=$(this).val();
+            $('#Modalchild').modal('show');
+            $.ajax({
+                
+                type: "GET",
+                url:"/showaddjam/"+idsubchild,
+                success:function(response){
+                     $('#idsubchild').val(response.Sub.id); 
+                    $('#idtravelchild').val(response.Sub.wisata_id);  
+
+                }
+            });
+        });
+
+        $(".btn-close").click(function(){
+            $("#Modalchild").modal('hide');
+        });
+    });
+
+    $(document).on('click', '.btnaddchild', function(){
+            var idtravelchild=$('#formchild').find('#idtravelchild').val()
+            let formData=$('#formchild').serialize()
+            // console.log(formData);
+
+            $.ajax({
+                url:'{{url('addhargachild')}}',
+                method:"POST",
+                data:formData,
+                success:function(data){
+                    $('#Modalchild').modal('hide')
+                    window.location.assign('/paketwisata/diskon/'+idtravelchild);
+                }
+            })
+        });
+        </script>
+
+<script>
+    $(document).ready(function(){
+        $(document).on('click', '.btnedittime', function(){
+            var idtime=$(this).val();
+            $('#editModaltime').modal('show');
+           
+            $.ajax({
+                
+                type: "GET",
+                url:"/showeditjam/"+idtime,
+                success:function(response){
+                    //onsole.log(response.Rate.id);
+                     //$('#orderid').val(response.Order.OrderID);
+                     $('#idtime').val(response.Jam.id); 
+                    $('#jam').val(response.Jam.time);  
+                }
+            });
+        });
+
+        $(".btn-close").click(function(){
+            $("#editModaltime").modal('hide');
+        });
+    });
+
+    $(document).on('click', '.btnupdatetime', function(){
+            var idtravel=$('#formedittime').find('#idtravel').val()
+            var idtime=$('#formedittime').find('#idtime').val()
+            
+            let formData=$('#formedittime').serialize()
+            //console.log(progid);
+            console.log(formData)
+
+            $.ajax({
+                url:'/updatetime/${idtime}',
+                method:"PATCH",
+                data:formData,
+                success:function(data){
+                    $('#editModaltime').modal('hide')
                     window.location.assign('/paketwisata/diskon/'+idtravel);
                 }
             })

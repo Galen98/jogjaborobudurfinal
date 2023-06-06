@@ -542,7 +542,20 @@ font-family: 'GT Eesti Text Trial', sans-serif;
 <input type="text" id="group" value="0" name="groupquantity" data-min="0" data-code="participants" />
 </div>
 @endif
-@if($item->child == 'yes')
+<!-- @if($item->child == 'yes')
+<div class="d-flex justify-content-between align-items-center my-1">
+<div>
+<h6>Children</h6>
+</div>
+<input type="text" id="child" value="0" name="childquantity" data-min="0" data-code="children" />
+</div>
+</div>
+</div>
+@else
+<p></p>
+@endif -->
+
+@if(count($childoption) > 0)
 <div class="d-flex justify-content-between align-items-center my-1">
 <div>
 <h6>Children</h6>
@@ -554,6 +567,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
 @else
 <p></p>
 @endif
+
   </section>
 
     <button type="button" id="cekharga" class="cekharga js-check-availability gtm-trigger__adp-check-availability-btn avoid-close-dropdown-on-click c-button c-button--medium filbtn" data-v-dd428772><!---->

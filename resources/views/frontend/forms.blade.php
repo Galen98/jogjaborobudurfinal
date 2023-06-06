@@ -257,16 +257,16 @@
 	</div>
 
 	<br> -->
-	<div class="c-form-field c-form-field--vertical">
+	<!-- <div class="c-form-field c-form-field--vertical">
 		<label class="c-input__label" for="c-input-3241">For Child</label>
-	<div class="c-form-field__container"><!--[-->	
+	<div class="c-form-field__container">
 	<input type="radio" class="form-check-input" name="child" id="membershipRadios1" value="yes">Yes
 	<input type="radio" class="form-check-input" name="child" id="membershipRadios1" value="no">No
 	<span class="c-input__icon c-input__icon--posticon"></span>
 	</div>
 	</div>
 
-	<br>
+	<br> -->
 	<!-- <div class="c-form-field c-form-field--vertical">
 		<label class="c-input__label" for="c-input-3241">Student Card</label>
 	<div class="c-form-field__container">	
@@ -278,7 +278,7 @@
 
 	<div class="c-form-field c-form-field--vertical pickup">
 		<label class="c-input__label" for="c-input-3241">Include Pickup</label>
-	<div class="c-form-field__container"><!--[-->	
+	<div class="c-form-field__container">
 	<input type="radio" class="form-check-input" name="airport" id="membershipRadios1" value="yes">Yes
 	<input type="radio" class="form-check-input" name="airport" id="membershipRadios1" value="no">No
 	<span class="c-input__icon c-input__icon--posticon"></span>
@@ -286,7 +286,7 @@
 	</div>
 
 	<div class="c-form-field c-form-field--vertical" id="form-input">
-	<div class="c-form-field__container"><!--[-->
+	<div class="c-form-field__container">
 	<div class="c-input c-input--with-label billing-form__field">
 	<div class="c-input__container">
 	<label class="c-input__label" for="c-input-3241">Pickup Location</label>
@@ -370,7 +370,7 @@
 	<div class="c-form-field c-form-field--vertical">
 	<label class="c-input__label" for="c-input-3241">Short Description</label>
 	<div class="c-form-field__container"><!--[-->	
-	<textarea class="form-control shorts" style="height:200px;width: 577px;" name="shortoption" placeholder="Short Description" required></textarea>
+	<textarea class="form-control" style="height:200px;width: 577px;" name="shortoption" placeholder="Short Description"></textarea>
 	<span class="c-input__icon c-input__icon--posticon"></span>
 	</div>
 	</div>
@@ -488,7 +488,7 @@
 	<div class="c-form-field c-form-field--vertical pickup">
 		<label class="c-input__label" for="c-input-3241">Full Description</label>
 	<div class="c-form-field__container"><!--[-->	
-	<textarea id="mytextarea" class="form-control fulls" style="height:400px;width: 500px;" name="isieng" placeholder="Content" required></textarea>
+	<textarea id="mytextarea" class="form-control fulls" style="height:400px;width: 500px;" name="isieng" placeholder="Content"></textarea>
 	<span class="c-input__icon c-input__icon--posticon"></span>
 	</div>
 	</div>
