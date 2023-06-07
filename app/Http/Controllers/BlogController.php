@@ -412,13 +412,13 @@ class BlogController extends Controller
         ->update([
             'judulsub'=>$request->judulsub,
             'short'=>$request->short,
-            'kategories'=>$request->personoption
+            // 'kategories'=>$request->personoption
         ]);
 
-        harga::where('subwisata_id', $idoption)
-        ->update([
-            'kategories'=>$request->personoption
-        ]);
+        // harga::where('subwisata_id', $idoption)
+        // ->update([
+        //     'kategories'=>$request->personoption
+        // ]);
     }
 
     public function showedithargachild($ChildID){
@@ -758,7 +758,15 @@ class BlogController extends Controller
     }
 
     public function editproseswisata(Request $request,$idwisata){
-
+        $kategoriharga=Request('kategories');
+        $updatesubwisata = subwisata::where('wisata_id',$idwisata)
+        ->update([
+            'kategories'=>$kategoriharga
+        ]);
+        $updateharga = harga::where('wisata_id',$idwisata)
+        ->update([
+            'kategories'=>$kategoriharga
+        ]);
         DB::table('wisata')->where('wisata_id',$idwisata)
         ->update([
             'namawisata'=>$request->namawisata,
@@ -1157,6 +1165,80 @@ class BlogController extends Controller
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
         return redirect()->to('/background/change');
+    }
+
+    public function editimagetravel(Request $request,$idtravel){
+        $img=request('image');
+        $img2=request('image2');
+        $img3=request('image3');
+        $img4=request('image4');
+        $img5=request('image5');
+        
+        if($img == null){
+            $nama_file=$request->img;
+        }
+        else if($img != null){
+            $images = travel::where('wisata_id', $idtravel)->first();
+            File::delete('public/img/'.$images->image);
+            $nama_file = time()."_".$img->getClientOriginalName();
+            $tujuan_upload = 'public/img';
+            $img->move($tujuan_upload,$nama_file);
+        }
+
+        if($img2 == null){
+            $nama_file2=$request->img2;
+        }
+        else if($img2 != null){
+            $images2 = travel::where('wisata_id', $idtravel)->first();
+            File::delete('public/img/'.$images2->image2);
+            $nama_file2 = time()."_".$img2->getClientOriginalName();
+            $tujuan_upload = 'public/img';
+            $img2->move($tujuan_upload,$nama_file2);
+        }
+
+        if($img3 == null){
+            $nama_file3=$request->img3;
+        }
+        else if($img3 != null){
+            $images3 = travel::where('wisata_id', $idtravel)->first();
+            File::delete('public/img/'.$images3->image3);
+            $nama_file3 = time()."_".$img3->getClientOriginalName();
+            $tujuan_upload = 'public/img';
+            $img3->move($tujuan_upload,$nama_file3);
+        }
+
+        if($img4 == null){
+            $nama_file4=$request->img4;
+        }
+        else if($img4 != null){
+            $images4 = travel::where('wisata_id', $idtravel)->first();
+            File::delete('public/img/'.$images4->image4);
+            $nama_file4 = time()."_".$img4->getClientOriginalName();
+            $tujuan_upload = 'public/img';
+            $img4->move($tujuan_upload,$nama_file4);
+        }
+
+        if($img5 == null){
+            $nama_file5=$request->img5;
+        }
+        else if($img5 != null){
+            $images5 = travel::where('wisata_id', $idtravel)->first();
+            File::delete('public/img/'.$images5->image5);
+            $nama_file5 = time()."_".$img5->getClientOriginalName();
+            $tujuan_upload = 'public/img';
+            $img5->move($tujuan_upload,$nama_file5);
+        }
+
+        DB::table('wisata')->where('wisata_id',$idtravel)
+        ->update([
+            'image'=>$nama_file,
+            'image2'=>$nama_file2,
+            'image3'=>$nama_file3,
+            'image4'=>$nama_file4,
+            'image5'=>$nama_file5,
+        ]);
+        Alert::success('Berhasil','Berhasil Diupdate');
+        return redirect()->back();
     }
 
     

@@ -88,10 +88,7 @@
                     <input type="hidden" class="form-control" id="exampleInputEmail3" id="idr" placeholder="@currency($item->IDR_awal)" value="{{$item->IDR_awal}}" readonly=""> 
                     </div>
                     <br/>
-                    
                     <button type="button" class="btn btn-info mr-2 btneditharga" value="{{$item->wisata_id}}">Ubah Harga</button>
-
-                   
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
 				</form>
 				
@@ -501,11 +498,11 @@
         <input type="text" name="judulsub" class="form-control" id="judulsub">
         Short Description
         <textarea class="form-control" name="short" id="short" style="height:150px"></textarea>
-        Per Person / Per Group
+        <!-- Per Person / Per Group
         <select class="form-control" id="personoption" name="personoption">
           <option class="form-control" value="Per Person">Per Person</option>
           <option class="form-control" value="Per Group">Per Group</option>
-        </select>
+        </select> -->
         
         </div>
         <button type="button" class="btn btn-primary btnupdateoption">Update</button>

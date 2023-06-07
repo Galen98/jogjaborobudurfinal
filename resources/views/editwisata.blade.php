@@ -66,7 +66,7 @@
                       <div class="col-md-6">
            <label>Per Person / Per Group</label>
            @if($item->kategories == 'Per Person')
-                        <div class="form-group row">
+                        <div class="form-group row kategoriescek">
                           <div class="col-sm-4">
                             <div class="form-check">
                               <label class="form-check-label">
@@ -85,7 +85,7 @@
                           </div>
                         </div>
                         @elseif($item->kategories == 'Per Group')
-                        <div class="form-group row">
+                        <div class="form-group row kategoriescek2">
                           <div class="col-sm-4">
                             <div class="form-check">
                               <label class="form-check-label">
@@ -106,7 +106,7 @@
                         @endif
                       </div>
 
-<div class="form-group">
+<div class="form-group kategoriescapacity">
 <label for="exampleTextarea1">Capacity (Group)</label>
 <input type="number" name="capacity" class="form-control" value="{{$item->capacity}}" min="0">
 </div>
@@ -770,6 +770,24 @@
 </div>
 @endsection
 @section('scripts')
+<script>
+  $(".kategoriescapacity").css("display","none");
+  $(".kategoriescek").click(function(){ 
+if ($("input[name='kategories']:checked").val() == "Per Group" ) { 
+$(".kategoriescapacity").slideDown("fast");
+} else {
+$(".kategoriescapacity").slideUp("fast"); 
+}
+}); 
+$(".kategoriescek2").click(function(){ 
+  if ($("input[name='kategories']:checked").val() == "Per Group" ) { 
+$(".kategoriescapacity").slideDown("fast");
+} else {
+$(".kategoriescapacity").slideUp("fast"); 
+}
+});
+
+</script>
 <script>
     $(document).ready(function(){
         $(document).on('click', '.btneditinclude', function(){

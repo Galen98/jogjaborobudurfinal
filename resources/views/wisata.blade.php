@@ -94,7 +94,8 @@ Create Travel
   <article data-test-id="horizontal-activity-card" class="activity-card horizontal-activity-card companion-inactive activity-card-block__card--grid activity-card-block--desktop" data-v-a1084d9e>
   <a role="contentinfo" target="_blank" rel="noopener" data-activity-id="412877" class="activity-card__container gtm-trigger__card-interaction" data-v-a1084d9e>
   <div class="activity-card__image" data-v-a1084d9e> 
-  <div class="activity-card__image-info align-end" data-v-a1084d9e><!----></div> 
+  <div class="activity-card__image-info align-end" data-v-a1084d9e>
+  </div> 
   <picture data-v-a1084d9e>
   <source srcset="{{ url('public/img/'.$item->image) }}" type="image/webp"> 
   <img src="{{ url('public/img/'.$item->image) }}" alt="{{$item->namawisata}}">
@@ -102,7 +103,7 @@ Create Travel
   </div> 
   <div class="activity-card__details" data-v-a1084d9e>
   <div class="activity-card__details-main" data-v-a1084d9e>
-  <div class="activity-card__details-left" data-v-a1084d9e><!----> 
+  <div class="activity-card__details-left" data-v-a1084d9e>
   <h2 class="activity-card__title" data-v-a1084d9e>{{$item->namawisata}}</h2> 
   <div class="activity-card__attributes" data-v-a1084d9e>
   <ul class="activity-attributes__container" data-v-67560657 data-v-a1084d9e>
@@ -111,16 +112,19 @@ Create Travel
     <span data-v-67560657>{{$item->durasi}}</span>
   </span>
 </li>
-  </ul> <!---->
-  </div> <!----> 
-  <div class="activity-card__badges__container" data-v-a1084d9e><!----> <!----> <!---->
+  </ul> 
+  </div> 
+  <div class="activity-card__badges__container" data-v-a1084d9e>
   </div>
   </div> 
   <div class="activity-card__details-right" data-v-a1084d9e>
   <div class="rating-overall__container" data-v-a1084d9e>
   <div class="rating-overall__rating">
   <form action="{{'/item/'.$item->slug}}" method="get" target="_blank">
-  <button type="submit" class="btn-sm btn btn-outline-info" style="margin-right: 10px;">Check it!</button>
+  <button type="submit" class="btn-sm btn btn-outline-info" style="margin-right: 10px;"><i class="mdi mdi-eye-outline btn-icon-prepend"></i> Check it!</button>
+  </form>
+  <form action="{{'paketwisata/editimage/'.$item->wisata_id}}" method="get" target="_blank">
+  <button type="submit" class="btn-sm btn btn-outline-dark" style="margin-right: 10px;"><i class="mdi mdi-image-multiple btn-icon-prepend"></i> Image</button>
   </form>
   <form action="{{'paketwisata/diskon/'.$item->wisata_id}}" method="get">
   <button type="submit" class="btn-sm btn btn-outline-primary" style="margin-right: 10px;"><i class="mdi mdi-coin btn-icon-prepend"></i> Edit harga</button>
@@ -135,8 +139,8 @@ Create Travel
         @currency($item->IDR)
       </div> <p class="baseline-pricing__category" data-v-24caa43d>
         {{$item->kategories}}
-      </p></div></div></div> <!---->
-    </div> <!---->
+      </p></div></div></div> 
+    </div> 
     </div>
     </div>
     </a>

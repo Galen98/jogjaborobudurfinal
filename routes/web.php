@@ -441,6 +441,12 @@ Route::get('/background/change/platform',function(){
     $background=background::where('place', 'platform')->get();
     return view('backgroundplatform',compact('background'));
 });
+
+Route::get('/paketwisata/editimage/{idwisata}',function($idwisata){
+    $gambar=travel::where('wisata_id',$idwisata)->get();
+    return view('editimagetravel', compact('gambar'));
+});
+Route::patch('/editimagetravel/{idtravel}',[BlogController::class,'editimagetravel']);
 Route::patch('/updatecurrency/{idrate}',[BlogController::class,'updatecurrency']);
 Route::patch('/updatetheme/{idtheme}',[BlogController::class,'updatetheme']);
 Route::patch('/updatecategory/{iddestination}',[BlogController::class,'updatecategory']);

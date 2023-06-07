@@ -349,6 +349,11 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   <a href="{{ url('public/img/'.$item->image4) }}" data-lightbox="mygallery" data-title=""> 
   <img src="{{ url('public/img/'.$item->image4) }}" loading="lazy" class="photo-collage__image-source">
 </a></picture>
+
+<picture class="photo-collage__image photo-collage__image--3"><source srcset="data:image/gif;base64, R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 767px)">
+  <a href="{{ url('public/img/'.$item->image5) }}" data-lightbox="mygallery" data-title=""> 
+  <img src="{{ url('public/img/'.$item->image5) }}" loading="lazy" class="photo-collage__image-source">
+</a></picture>
   @endforeach 
   <button class="photo-collage__show-all">
       Click to see all images
@@ -555,7 +560,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
 <p></p>
 @endif -->
 
-@if(count($childoption) > 0)
+@if(count($childoption) > 0 && ($item->kategories == 'Per Person'))
 <div class="d-flex justify-content-between align-items-center my-1">
 <div>
 <h6>Children</h6>
