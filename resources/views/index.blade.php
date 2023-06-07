@@ -27,6 +27,8 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/blitzer/jquery-ui.min.css" integrity="sha512-ibBo2Ns078qm7xZNTPbIrg5XP4pZ+Aujfmz0QFsce2f4LYpCnF1Esy6FkIRFBgXC9cY30XiS7Ui9+RpN8K7ICg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script src="https://cdn.tiny.cloud/1/u2xw6yackdc61xx9e7q9zfuoioxbk0b4gxo0rnuc2dl0r5nv/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" ></script>
   <script>
 	tinymce.init({
   selector: 'textarea#mytextarea',

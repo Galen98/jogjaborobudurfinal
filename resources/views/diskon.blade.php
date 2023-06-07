@@ -88,6 +88,54 @@
                     <input type="hidden" class="form-control" id="exampleInputEmail3" id="idr" placeholder="@currency($item->IDR_awal)" value="{{$item->IDR_awal}}" readonly=""> 
                     </div>
                     <br/>
+                    <div class="col-md-6">
+           <label>Per Person / Per Group</label>
+           @if($item->kategories == 'Per Person')
+                        <div class="form-group row kategoriescek">
+                          <div class="col-sm-4">
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="kategories" id="membershipRadios1" value="Per Person" checked>
+                                Per Person
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-sm-5">
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="kategories" id="membershipRadios2" value="Per Group">
+                                Per Group
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                        @elseif($item->kategories == 'Per Group')
+                        <div class="form-group row kategoriescek2">
+                          <div class="col-sm-4">
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="kategories" id="membershipRadios1" value="Per Person">
+                                Per Person
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-sm-5">
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="kategories" id="membershipRadios2" value="Per Group" checked>
+                                Per Group
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                        @endif
+                      </div>
+
+<div class="form-group kategoriescapacity">
+<label for="exampleTextarea1">Capacity (Group)</label>
+<input type="number" name="capacity" class="form-control" value="{{$item->capacity}}" min="0">
+</div>
+<br>
                     <button type="button" class="btn btn-info mr-2 btneditharga" value="{{$item->wisata_id}}">Ubah Harga</button>
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
 				</form>
@@ -540,7 +588,29 @@
 
 @section('scripts')
 <script>
-  $(".sebelum").css("display","none");
+  if ($("input[name='kategories']:checked").val() == "Per Person" ) { 
+    $(".kategoriescapacity").css("display","none");
+}
+  
+  $(".kategoriescek").click(function(){ 
+if ($("input[name='kategories']:checked").val() == "Per Group" ) { 
+$(".kategoriescapacity").slideDown("fast");
+} else {
+$(".kategoriescapacity").slideUp("fast"); 
+}
+}); 
+$(".kategoriescek2").click(function(){ 
+  if ($("input[name='kategories']:checked").val() == "Per Group" ) { 
+$(".kategoriescapacity").slideDown("fast");
+} else {
+$(".kategoriescapacity").slideUp("fast"); 
+}
+});
+</script>
+<script>
+  if ($("input[name='discount']:checked").val() == "no" ) { 
+    $(".sebelum").css("display","none");
+}
   $(".diskoncek1").click(function(){ 
 if ($("input[name='discount']:checked").val() == "yes" ) { 
 $(".sebelum").slideDown("fast");

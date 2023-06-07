@@ -382,10 +382,11 @@ class BlogController extends Controller
 
     public function updatediskon(Request $request,$idtravell){
        $idtravell = Request('idtravell');
+       
        $Diskon = travel::where('wisata_id', $idtravell)
        ->update([
         'IDR' => $request->idrdiscoun,
-        'IDR_awal' => $request->idr,
+        'IDR_awal' => $request->idr
        ]);       
     }
 
@@ -758,15 +759,6 @@ class BlogController extends Controller
     }
 
     public function editproseswisata(Request $request,$idwisata){
-        $kategoriharga=Request('kategories');
-        $updatesubwisata = subwisata::where('wisata_id',$idwisata)
-        ->update([
-            'kategories'=>$kategoriharga
-        ]);
-        $updateharga = harga::where('wisata_id',$idwisata)
-        ->update([
-            'kategories'=>$kategoriharga
-        ]);
         DB::table('wisata')->where('wisata_id',$idwisata)
         ->update([
             'namawisata'=>$request->namawisata,
@@ -778,7 +770,6 @@ class BlogController extends Controller
             'pickup'=>$request->airport,
             'wherepickup'=>$request->wherepickup,
             'capacity'=>$request->capacity,
-            'kategories'=>$request->kategories,
             'slug'=>\Str::slug($request->namawisata)
 
         ]);
@@ -1365,10 +1356,19 @@ class BlogController extends Controller
     public function diskonpost(Request $request,$travelid){
         $discount=Request('discount');
         $idtravel=travel::where('wisata_id',$travelid)->get();
-
+        $kategoriharga=Request('kategories');
+        $updatesubwisata = subwisata::where('wisata_id',$travelid)
+        ->update([
+            'kategories'=>$kategoriharga
+        ]);
+        $updateharga = harga::where('wisata_id',$travelid)
+        ->update([
+            'kategories'=>$kategoriharga
+        ]);
         DB::table('wisata')->where('wisata_id',$travelid)
         ->update([
             'discount'=>$discount,
+            'kategories'=>$request->kategories
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
         return redirect()->back();
