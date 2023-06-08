@@ -368,11 +368,12 @@ font-family: 'GT Eesti Text Trial', sans-serif;
     </span></section>
      <!----> 
      @foreach($travel as $item)
-     <p data-test-id="collection-title" class="collection-header_title" data-v-76e871e0 style="font-size:22px;">
-      {{$item->namawisata}}
-</p> 
+     
     <section class="activity__mobile-header" data-v-c4be1764>
   <section data-v-c4be1764>
+  <p data-test-id="collection-title" class="collection-header_title" data-v-76e871e0 style="font-size:22px;">
+      {{$item->namawisata}}
+</p> 
   <div data-test-id="activity-provider" class="supplier-name" data-v-5db601b6 data-v-c4be1764>
   <span class="visibility-pixel" data-v-c68e7552 data-v-5db601b6><p style="font-size:9pt;">Duration: {{$item->durasi}}</p></span>
   <br>
@@ -689,6 +690,26 @@ font-family: 'GT Eesti Text Trial', sans-serif;
                      <!----></section> 
           <div data-test-id="activity-price-block" class="price-block-display-price-wrapper" data-v-46d2d245>
           <p class="price-block-display-price" data-v-46d2d245><span class="price-block__from">From</span> 
+          @if($item->discount == 'yes' && $session == 'USD')
+          <strong class="price-block__price-actual "> <span style="font-size:16px;text-decoration: line-through;color: red;">US$ {{number_format ($item->IDR_awal/$rateIDR,1)}}</span> </strong>    
+          @endif
+
+          @if($item->discount == 'yes' && $session == 'IDR')
+          <strong class="price-block__price-actual "> <span style="font-size:16px;text-decoration: line-through;color: red;">@currency($item->IDR_awal)</span> </strong>    
+          @endif
+
+          @if($item->discount == 'yes' && $session == 'MYR')
+          <strong class="price-block__price-actual "> <span style="font-size:16px;text-decoration: line-through;color: red;">MYR {{ number_format(($item->IDR_awal / $rateIDR) * $rateMYR, 0, ',', '.') }}</span> </strong>    
+          @endif
+
+          @if($item->discount == 'yes' && $session == 'SGD')
+          <strong class="price-block__price-actual "> <span style="font-size:16px;text-decoration: line-through;color: red;">SGD {{ number_format(($item->IDR_awal / $rateIDR) * $rateSGD, 0, ',', '.') }}</span> </strong>    
+          @endif
+
+          @if($item->discount == 'yes' && $session == 'EUR')
+          <strong class="price-block__price-actual "> <span style="font-size:16px;text-decoration: line-through;color: red;"> € {{ number_format(($item->IDR_awal / $rateIDR) * $rateEUR, 0, ',', '.') }}</span> </strong>    
+          @endif
+          
             @if($session == 'USD') 
       <strong class="price-block__price-actual "> <span>US$ {{number_format ($item->IDR/$rateIDR,1)}} </span> </strong>
       @endif 

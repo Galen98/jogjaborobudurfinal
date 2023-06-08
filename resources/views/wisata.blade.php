@@ -123,7 +123,7 @@ Create Travel
   <form action="{{'/item/'.$item->slug}}" method="get" target="_blank">
   <button type="submit" class="btn-sm btn btn-outline-info" style="margin-right: 10px;"><i class="mdi mdi-eye-outline btn-icon-prepend"></i> Check it!</button>
   </form>
-  <form action="{{'paketwisata/editimage/'.$item->wisata_id}}" method="get" target="_blank">
+  <form action="{{'paketwisata/editimage/'.$item->wisata_id}}" method="get">
   <button type="submit" class="btn-sm btn btn-outline-dark" style="margin-right: 10px;"><i class="mdi mdi-image-multiple btn-icon-prepend"></i> Image</button>
   </form>
   <form action="{{'paketwisata/diskon/'.$item->wisata_id}}" method="get">
