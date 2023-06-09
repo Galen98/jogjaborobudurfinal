@@ -451,8 +451,8 @@ font-family: 'GT Eesti Text Trial', sans-serif;
       @if($session == 'EUR') 
       <strong class="price-block__price-actual "> <span>€ {{ number_format(($item->IDR / $rateIDR) * $rateEUR, 0, ',', '.') }}</span> </strong>
       @endif   
-    @foreach($travel as $item)<span class="price-block__explanation">{{$item->kategories}}
-    @if($item->kategories == 'Per Group') up to {{$item->capacity}} @endif</span>@endforeach<br>
+    @foreach($travel as $item)<span class="price-block__explanation" style="margin-right:38px;">@if($item->kategories == 'Per Person'){{$item->kategories}}@endif</span>@endforeach
+    @foreach($travel as $item)<span class="price-block__explanation">@if($item->kategories == 'Per Group'){{$item->kategories}} up to {{$item->capacity}} @endif</span>@endforeach<br/>
     </p> 
     </div>
   </div>
