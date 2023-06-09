@@ -65,18 +65,21 @@
 	<ul>
 	<li>Your order summary :<br></li>
 	<li><br></li>
-	<li>{!! $namawisata !!}</li>
-	<li>Travel Date: {!!$tanggaltravel!!}</li>
-	<li>Pickup time: {!! $waktu !!}</li>
+	<li>{!! $paketwisata !!}</li>
+	<li><br></li>
+	<li><i class="fas fa-map"></i> {!! $namawisata !!}</li>
+	<li><i class="fa-regular fa-calendar"></i> Travel Date: {!!$tanggaltravel!!}</li>
+	<li><i class="fa-regular fa-clock"></i> Pickup time: {!! $waktu !!}</li>
 	@if($adult > 0)
-	<li>Participant : {!! $adult !!} (Adult)</li>
+	<li><i class="fa-solid fa-user-group"></i> Participant : {!! $adult !!} (Adult)</li>
 	@else<p></p>@endif
 	@if($child > 0)
-	<li>Participant : {!! $child !!} (Child)</li>
+	<li><i class="fa-solid fa-user-group"></i> Participant : {!! $child !!} (Child)</li>
 	@else<p></p>@endif
 	@if($group > 0)
-	<li>Participant : {!! $group !!} (Person)</li>
+	<li><i class="fa-solid fa-user-group"></i>Participant : {!! $group !!} (Person)</li>
 	@else<p></p>@endif
+	<li><p style="margin-bottom:10px;"></p></li>
 	@if($total > 0)
 	<li>Total: {!! $total !!}</li>
 	@else<p></p>@endif
@@ -84,6 +87,7 @@
 	@if($totalgroup > 0)
 	<li>Total: {!! $totalgroup !!}</li>
 	@else<p></p>@endif
+	<li><p style="color:green;font-weight: lighter;font-size:12px;">All taxes and fees included</p></li>
 	</ul>
 
 	<br>
@@ -271,8 +275,8 @@
 	<div class="cart-item" data-test-id="cart-item" data-v-039efa20>
 	<section class="cart-item__activity-container" data-v-039efa20>
 	<div class="cart-item__activity-container--main-info" data-v-039efa20>
-	<div class="cart-item__activity-container--main-info--title" data-v-039efa20>{!! $namawisata !!}</div>
-	
+	<div class="cart-item__activity-container--main-info--title" data-v-039efa20>{!! $paketwisata !!}</div>
+	<br/>
 	<div class="cart-item__description--rating" data-v-039efa20>
 	<div class="rating-overall__container" data-v-039efa20>
 	<div class="rating-overall__rating">

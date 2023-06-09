@@ -83,7 +83,7 @@
                     <input type="hidden" class="form-control" id="exampleInputEmail3" id="idr" placeholder="@currency($item->IDR)" value="{{$item->IDR}}" readonly=""> 
                     </div>
                     <div class="form-group sebelum">
-                    <label for="exampleInputPassword4">Harga Sebelum Diupdate</label>
+                    <label for="exampleInputPassword4">Harga Coret</label>
                     <h1 style="font-size:20px;">@currency($item->IDR_awal)</h1>
                     <input type="hidden" class="form-control" id="exampleInputEmail3" id="idr" placeholder="@currency($item->IDR_awal)" value="{{$item->IDR_awal}}" readonly=""> 
                     </div>

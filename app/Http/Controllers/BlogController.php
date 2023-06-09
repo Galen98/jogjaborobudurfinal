@@ -1368,7 +1368,8 @@ class BlogController extends Controller
         DB::table('wisata')->where('wisata_id',$travelid)
         ->update([
             'discount'=>$discount,
-            'kategories'=>$request->kategories
+            'kategories'=>$request->kategories,
+            'capacity'=>$request->capacity
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
         return redirect()->back();

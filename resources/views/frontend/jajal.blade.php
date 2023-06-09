@@ -414,7 +414,24 @@ font-family: 'GT Eesti Text Trial', sans-serif;
     </span>@else<span></span>@endif</section> @endforeach
   
   <div data-test-id="activity-price-block" class="price-block-display-price-wrapper" data-v-46d2d245>
-  <p class="price-block-display-price" data-v-46d2d245><span class="price-block__from">From</span>
+  <p class="price-block-display-price" data-v-46d2d245><span class="price-block__from">From        
+  </span>
+  @if($item->discount == 'yes' && $session == 'IDR')
+  <strong class="price-block__price-actual "> <span style="font-size:16px;text-decoration: line-through;color: red;font-weight:bolder;">@currency($item->IDR_awal)</span> </strong>
+          @endif
+          @if($item->discount == 'yes' && $session == 'EUR')
+          <strong class="price-block__price-actual "><span style="font-size:18px;text-decoration: line-through;color: red;font-weight:bolder;"> € {{ number_format(($item->IDR_awal / $rateIDR) * $rateEUR, 0, ',', '.') }}</span> </strong>  
+          @endif
+          @if($item->discount == 'yes' && $session == 'USD')
+          <strong class="price-block__price-actual "><span style="font-size:18px;text-decoration: line-through;color: red;font-weight:bolder;">US$ {{number_format ($item->IDR_awal/$rateIDR,1)}}</span></strong>    
+          @endif
+          @if($item->discount == 'yes' && $session == 'MYR')
+          <strong class="price-block__price-actual "><span style="font-size:18px;text-decoration: line-through;color: red;font-weight:bolder;">MYR {{ number_format(($item->IDR_awal / $rateIDR) * $rateMYR, 0, ',', '.') }}</span></strong> 
+          @endif
+          @if($item->discount == 'yes' && $session == 'SGD')
+          <strong class="price-block__price-actual "><span style="font-size:18px;text-decoration: line-through;color: red;font-weight:bolder;">SGD {{ number_format(($item->IDR_awal / $rateIDR) * $rateSGD, 0, ',', '.') }}</span></strong>   
+          @endif
+
       @if($session == 'USD') 
       <strong class="price-block__price-actual "> <span>US$ {{number_format ($item->IDR/$rateIDR,1)}} </span> </strong>
       @endif 
@@ -508,11 +525,11 @@ font-family: 'GT Eesti Text Trial', sans-serif;
     <div data-track="booking-assistant" id="books" data-v-c4be1764>
     <section id="booking-assistant" data-test-id="booking-assistant" data-v-a17e5250 data-v-c4be1764>
     <div is-date-selected="" class="booking-assistant-configurator booking-assistant" data-v-dd428772 data-v-a17e5250 style="background-color: #de1709;">
-    <h2 class="booking-assistant-configurator__header" data-v-dd428772><i class="ti-user" style="font-size: 24px;color: white;"></i> Select participants and date</h2> 
+    <h2 class="booking-assistant-configurator__header" data-v-dd428772 style="font-size:20px;"><i class="ti-user" style="font-size: 20px;color: white;"></i> Select participants and date</h2> 
     
 
   <section data-test-id="activity-filters-primary-date-picker" class="ba-dropdown ba-date-picker ba-date-picker--multiple-months ba-date-picker--experimental-theme" data-v-0605f8ac data-v-dd428772>
-<input type="text" name="traveldate" id="date-start" class="form-control" style="background-color: white;" placeholder="Select date" required>
+<input type="text" name="traveldate" id="date-start" class="form-control" style="background-color: white;" placeholder="Select date" required readonly>
     </section>
     <section data-test-id="activity-filters-primary-people-picker" class="ba-dropdown people-picker" data-v-0605f8ac data-v-7e630b00 data-v-dd428772>
     
@@ -689,26 +706,23 @@ font-family: 'GT Eesti Text Trial', sans-serif;
                     @else<span></span>@endif
                      <!----></section> 
           <div data-test-id="activity-price-block" class="price-block-display-price-wrapper" data-v-46d2d245>
-          <p class="price-block-display-price" data-v-46d2d245><span class="price-block__from">From</span> 
-          @if($item->discount == 'yes' && $session == 'USD')
-          <strong class="price-block__price-actual "> <span style="font-size:16px;text-decoration: line-through;color: red;">US$ {{number_format ($item->IDR_awal/$rateIDR,1)}}</span> </strong>    
+          <p class="price-block-display-price" data-v-46d2d245><span class="price-block__from">From @if($item->discount == 'yes' && $session == 'USD')
+          <span style="font-size:16px;text-decoration: line-through;color: red;font-weight:bolder;">US$ {{number_format ($item->IDR_awal/$rateIDR,1)}}</span>    
           @endif
-
           @if($item->discount == 'yes' && $session == 'IDR')
-          <strong class="price-block__price-actual "> <span style="font-size:16px;text-decoration: line-through;color: red;">@currency($item->IDR_awal)</span> </strong>    
+          <span style="font-size:16px;text-decoration: line-through;color: red;font-weight:bolder;">@currency($item->IDR_awal)</span>  
           @endif
-
           @if($item->discount == 'yes' && $session == 'MYR')
-          <strong class="price-block__price-actual "> <span style="font-size:16px;text-decoration: line-through;color: red;">MYR {{ number_format(($item->IDR_awal / $rateIDR) * $rateMYR, 0, ',', '.') }}</span> </strong>    
+          <span style="font-size:16px;text-decoration: line-through;color: red;font-weight:bolder;">MYR {{ number_format(($item->IDR_awal / $rateIDR) * $rateMYR, 0, ',', '.') }}</span> 
           @endif
-
           @if($item->discount == 'yes' && $session == 'SGD')
-          <strong class="price-block__price-actual "> <span style="font-size:16px;text-decoration: line-through;color: red;">SGD {{ number_format(($item->IDR_awal / $rateIDR) * $rateSGD, 0, ',', '.') }}</span> </strong>    
+          <span style="font-size:16px;text-decoration: line-through;color: red;font-weight:bolder;">SGD {{ number_format(($item->IDR_awal / $rateIDR) * $rateSGD, 0, ',', '.') }}</span>   
           @endif
-
           @if($item->discount == 'yes' && $session == 'EUR')
-          <strong class="price-block__price-actual "> <span style="font-size:16px;text-decoration: line-through;color: red;"> € {{ number_format(($item->IDR_awal / $rateIDR) * $rateEUR, 0, ',', '.') }}</span> </strong>    
+          <span style="font-size:16px;text-decoration: line-through;color: red;font-weight:bolder;"> € {{ number_format(($item->IDR_awal / $rateIDR) * $rateEUR, 0, ',', '.') }}</span>   
           @endif
+          </span> 
+
           
             @if($session == 'USD') 
       <strong class="price-block__price-actual "> <span>US$ {{number_format ($item->IDR/$rateIDR,1)}} </span> </strong>
@@ -1103,7 +1117,8 @@ font-family: 'GT Eesti Text Trial', sans-serif;
 			startDate: new Date(),
 			todayHighlight: true,
             autoclose: true,
-            orientation: 'bottom'
+            orientation: 'bottom',
+            
 			
 		});
 	};
