@@ -451,7 +451,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
       @if($session == 'EUR') 
       <strong class="price-block__price-actual "> <span>€ {{ number_format(($item->IDR / $rateIDR) * $rateEUR, 0, ',', '.') }}</span> </strong>
       @endif   
-    @foreach($travel as $item)<span class="price-block__explanation" style="margin-right:38px;">@if($item->kategories == 'Per Person'){{$item->kategories}}@endif</span>@endforeach
+    @foreach($travel as $item)<span class="price-block__explanation" style="margin-left:38px;">@if($item->kategories == 'Per Person'){{$item->kategories}}@endif</span>@endforeach
     @foreach($travel as $item)<span class="price-block__explanation">@if($item->kategories == 'Per Group'){{$item->kategories}} up to {{$item->capacity}} @endif</span>@endforeach<br/>
     </p> 
     </div>
@@ -544,25 +544,25 @@ font-family: 'GT Eesti Text Trial', sans-serif;
       @else<p></p>
       @endif -->
       <div class="form-control form-control-participants" >
-<div class="text d-flex align-items-center participants-control" style="margin-top:5px;;">
+<div class="text d-flex align-items-center participants-control" style="margin-top:4px;">
 <i class="fas fa-user-friends flex-shrink-0 mr-2"></i>
 <div class="participant-label-span text-truncate"></div>
 </div>
 <div class="participants-input-container  bg-light" style="display: none; z-index: 1;padding:10px;">
-<div class="border-top mb-2"></div>
+<!-- <div class="border-top mb-2"></div> -->
 @if($item->kategories == 'Per Person')
 <div class="d-flex justify-content-between align-items-center my-1">
 <div>
 <h6>Adults</h6>
 </div>
-<input type="text" id="adult" value="0" name="adultquantity" data-min="0" data-code="adults" required/>
+<input type="text" id="adult" value="0" name="adultquantity" data-min="0" data-code="adults" required readonly/>
 </div>
 @else
 <div class="d-flex justify-content-between align-items-center my-1">
 <div>
 <h6>Group</h6>
 </div>
-<input type="text" id="group" value="0" name="groupquantity" data-min="0" data-code="participants" />
+<input type="text" id="group" value="0" name="groupquantity" data-min="0" data-code="participants" readonly/>
 </div>
 @endif
 <!-- @if($item->child == 'yes')
@@ -583,7 +583,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
 <div>
 <h6>Children</h6>
 </div>
-<input type="text" id="child" value="0" name="childquantity" data-min="0" data-code="children" />
+<input type="text" id="child" value="0" name="childquantity" data-min="0" data-code="children" readonly/>
 </div>
 </div>
 </div>
