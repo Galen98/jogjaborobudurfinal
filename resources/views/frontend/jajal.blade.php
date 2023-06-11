@@ -219,7 +219,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   @foreach($destinasi as $item)<span itemprop="name" data-v-2833ce42><a href="{{'/category-destination/' .$item->id}}">{{$item->destination}}</a></span>@endforeach 
   <meta itemprop="position" content="2" data-v-2833ce42>
   </li> 
-  <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42>
+  <!-- <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42>
   @foreach($season as $item)<span itemprop="name" data-v-2833ce42><a href="{{'/season/' .$item->id}}">{{$item->namaseason}}</a></span>@endforeach 
   <meta itemprop="position" content="2" data-v-2833ce42>
   </li> 
@@ -227,7 +227,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   @foreach($travel as $item)
   <span itemprop="name" data-v-2833ce42>{{$item->namawisata}}</span>@endforeach
   <meta itemprop="position" content="3" data-v-2833ce42>
-  </li> 
+  </li>  -->
   </ul></section> 
   
   <section class="activity__today-tomorrow-badge-container" data-v-c4be1764></section> 
