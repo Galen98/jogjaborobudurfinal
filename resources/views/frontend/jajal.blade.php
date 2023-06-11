@@ -531,7 +531,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   <section data-test-id="activity-filters-primary-date-picker" class="ba-dropdown ba-date-picker ba-date-picker--multiple-months ba-date-picker--experimental-theme" data-v-0605f8ac data-v-dd428772>
 <input type="text" name="traveldate" id="date-start" class="form-control" style="background-color: white;" placeholder="Select date" required readonly>
     </section>
-    <section data-test-id="activity-filters-primary-people-picker" class="ba-dropdown people-picker" data-v-0605f8ac data-v-7e630b00 data-v-dd428772>
+    <section data-test-id="activity-filters-primary-people-picker" class="ba-dropdown people-picker " data-v-0605f8ac data-v-7e630b00 data-v-dd428772>
     
       <!-- @if($item->kategories == 'Per Person')
       <input type="number" id="adult" class="form-control" placeholder="Select participant (Adult)" style="background-color: white;" min="0" name="adultquantity">
@@ -543,13 +543,13 @@ font-family: 'GT Eesti Text Trial', sans-serif;
       <input type="number" id="child" class="form-control" placeholder="Select participant (Children)" style="background-color: white;" min="0" name="childquantity">
       @else<p></p>
       @endif -->
-      <div class="form-control form-control-participants" >
-<div class="text d-flex align-items-center participants-control" style="margin-top:4px;">
-<i class="fas fa-user-friends flex-shrink-0 mr-2"></i>
+      <div class="form-control form-control-participants">
+<div class="text d-flex align-items-center participants-control " style="margin-top:5px;height:46px;margin-right:-20px;margin-left:-17px;margin-top:-8px;">
+<i class="fas fa-user-friends flex-shrink-0 mr-2 ml-2"></i>
 <div class="participant-label-span text-truncate"></div>
 </div>
-<div class="participants-input-container  bg-light" style="display: none; z-index: 1;padding:10px;">
-<!-- <div class="border-top mb-2"></div> -->
+<div id="persontoogle" class="participants-input-container  bg-light" style="display: none; z-index: 1;padding:10px;">
+<div class="border-top mb-2"></div>
 @if($item->kategories == 'Per Person')
 <div class="d-flex justify-content-between align-items-center my-1">
 <div>
@@ -1190,6 +1190,7 @@ $("#dialogs").css("display","none");
       @if($item->kategories == 'Per Person')
       if($("#adult").val() === "0" ){
         // $( "#dialogs" ).dialog();
+       
         $('.participants-control').next().toggle();
     }
     @else
@@ -1386,6 +1387,7 @@ jQuery(function ($) {
     $(document).mouseup(function (ev) {
         var $control = $('.participants-control');
         var $container = $('.participants-input-container');
+       
 
         if ($control.is(ev.target) || $control.has(ev.target).length) {
             $control.next().toggle();
