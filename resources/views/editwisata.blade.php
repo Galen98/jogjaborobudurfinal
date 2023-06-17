@@ -399,55 +399,71 @@
             </div>
             <br>
 <br>
-<!-- <div class="col-lg-12 grid-margin stretch-card">
+<div class="col-lg-12 grid-margin stretch-card" >
               <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Starting Time</h4>
-                  <br>
-                    <button type="button" class="tambahtime btn btn-sm btn-primary btn-rounded btn-fw" value=""><i class="mdi mdi-plus"></i> Tambah</button>
+              <div class="card-body">
+              <h4 class="card-title">Location</h4>
+              @foreach($travel as $item)<form action="{{'/paketwisata/edit/buatlocation/' .$item->wisata_id}}" method="GET">@endforeach 
+              <button type="submit" class="btn btn-sm btn-danger mr-2"><i class="mdi mdi-plus"></i> Add new location</button>
+              </form>
+              </div>
+                  @foreach($pilihan as $item) 
+                <div class="card-body" style="border-bottom: 5px solid #e0e0de;margin-top:20px;">
+                 <h4 class="card-title" style="font-size:18px;">{{$item->namaprovince}}</h4>
+                <table>
+              <tbody>
+              <tr>
+              <td><button type="button" class="btneditoption btn btn-sm btn-info btn-rounded btn-fw" style="color: white;" value="{{$item->id}}"><i class="mdi mdi-pencil-box" style="color: white;"></i> Edit</button></td>
+              <td>&nbsp;&nbsp;</td>
+              <td><form action="{{url('deleteoption/'.$item->id)}}" method="POST" enctype="multipart/form-data">
+                @method('delete')
+                @csrf
+                 <button type="submit" class="hapusbtn btn btn-sm btn-danger btn-rounded btn-fw" style="color: white;"><i class="mdi mdi-delete" style="color: white;"></i> Delete</button>
+                 </form></td>
+              </tr>
+              </tbody>
+              </table>
+                 <br>
+                 <br>
+                 <br>
+                 <h4 class="card-title">Region:</h4>
+                  <button type="button" class="tambahhargaperson btn btn-sm btn-primary btn-rounded btn-fw" value="{{$item->id}}"><i class="mdi mdi-plus"></i> Tambah</button>
                   <div class="table-responsive pt-3">
-                    <table class="table table-bordered">
+                  <table class="table table-bordered">
                       <thead>
                         <tr>
                           <th>
-                            No.
+                            Region
                           </th>
-                          <th>
-                            Time
-                          </th>
-                          <th>
-                            Edit
-                          </th>
-                          <th>Hapus</th>
+                          <th>Edit</th>
+                          <th>Delete</th>
                         </tr>
                       </thead>
                       <tbody>
-                      @foreach($jam as $item)
+                      @foreach($item->province as $p)
                         <tr style="color: black;">
                           <td >
-                          {{ $loop->iteration }}
+                          {{$p->namaregion ?? ''}}
                           </td>
                           <td>
-                          {{ Carbon\Carbon::parse($item->time)->format('g:i A') }}
+                          <button type="button" class="btnedit btn btn-sm btn-info btn-rounded btn-fw" style="color: white;" value="{{$p->id}}"><i class="mdi mdi-pencil-box" style="color: white;"></i></button>
                           </td>
                           <td>
-                          <button type="button" class="btnedittime btn btn-sm btn-info btn-rounded btn-fw" style="color: white;" value="{{$item->id}}"><i class="mdi mdi-pencil-box" style="color: white;"></i> Edit</button>
-                          </td>
-                          <td>
-                         <form action="{{url('hapuswaktu/'.$item->id)}}" method="POST">
-                              @csrf
-                              @method('DELETE')
-                         <button type="submit" class="hapusbtntime btn btn-sm btn-danger btn-rounded btn-fw"><i class="mdi mdi-delete"></i> Hapus</button>
-                         </form>
-                          </td>
+                          <form action="{{url('deletehargaperson/'.$p->id)}}" method="POST" enctype="multipart/form-data">
+                          @method('delete')
+                          @csrf  
+                          <button type="submit" class="btn btn-sm btn-danger btn-rounded btn-fw"><i class="mdi mdi-delete"></i></button>
+                          </form>
+                        </td>
                         </tr>
                         @endforeach
                       </tbody>
                     </table>
                   </div>
-                </div>
-              </div>
-            </div> -->
+</div>
+@endforeach
+</div>
+
             
 </div>
 

@@ -83,7 +83,9 @@
 	<div class="step-navigation" data-v-5a727b98>
 	<ul class="step-navigation__list sub" data-v-5a727b98 id="">
 	<li><input type="radio" name="pilihan" id="tour" value="tour"> Tour Form</li>
+	<li>&nbsp;</li>
 	<li><input type="radio" name="pilihan" id="tour" value="detail"> Detail Information</li>
+	<li>&nbsp;</li>
 	<li><input type="radio" name="pilihan" id="tour" value="price"> Pricing</li>
 	</ul>
 	</div>
@@ -301,7 +303,7 @@
 	<div id="inform2">
 	<br>
 	<div class="c-form-field c-form-field--vertical pickup">
-	<div class="c-form-field__container"><!--[-->	
+	<div class="c-form-field__container">
 	<table class="form-group">
                     <div class="form-group">
                   <br>
@@ -328,7 +330,7 @@
 
 	<br>
 	<div class="c-form-field c-form-field--vertical pickup">
-	<div class="c-form-field__container"><!--[-->	
+	<div class="c-form-field__container">
 	<table class="form-group">
                     <div class="form-group">
                   <br>
@@ -352,7 +354,50 @@
 	<span class="c-input__icon c-input__icon--posticon"></span>
 	</div>
 	</div>
+	<br>
+	<div class="c-form-field c-form-field--vertical pickup">
+	<div class="c-form-field__container">	
+	<table class="form-group">
+                    <div class="form-group">
+                  <br>
+                  <tbody class="tbodyregion">
+                    <br>
+					<label for="item"  style="font-weight: bold;">Location:</label>
+                    <tr>
+                      <tr>
+                      <td></td>
+                      </tr>
+					  <tr>
+						<td><select class="form-control" name="province">
+						@foreach($province as $item)
+						<option class="form-control" value="{{$item->namaprovince}}">{{$item->namaprovince}}</option>
+						@endforeach
+					</select></td>
+					  </tr>
+					  <tr><td><p style="margin:10px;"></p></td></tr>
+					  <tr><td><label for="item"  style="font-weight: bold;">Region:</label></td></tr>
+                      <td>
+					  <select class="form-control" name="region[]">
+						@foreach($region as $item)
+						<option class="form-control" value="{{$item->namaregion}}">{{$item->namaregion}}</option>
+						@endforeach
+					</select>
+                    <td style="text-align:left;"><a  class="btn btn-info addRowregion">+</a></td>
+                    </td>
+                    </tr>
+                    <br>
+                  </tbody>
+                  </div>
+                    </table>
+	<span class="c-input__icon c-input__icon--posticon"></span>
 	</div>
+	</div>
+	<br>
+	</div>
+
+	
+	
+	
 
 	<div id="inform3">
 	<div class="c-form-field c-form-field--vertical"><!---->
@@ -465,7 +510,6 @@
 	<div class="reassuring-info__block">
 	
 	<div class="reassuring-info__block__content">
-	<!---->
 	</div>
 	</div>
 	</div>
@@ -478,7 +522,7 @@
 		<br>
 	<div class="c-form-field c-form-field--vertical pickup">
 		<label class="c-input__label" for="c-input-3241">Short Description</label>
-	<div class="c-form-field__container"><!--[-->	
+	<div class="c-form-field__container">	
 	<textarea class="form-control" style="height:200px;width: 500px;" name="shortdescription" placeholder="Content"></textarea>
 	<span class="c-input__icon c-input__icon--posticon"></span>
 	</div>
@@ -487,7 +531,7 @@
 	<br>
 	<div class="c-form-field c-form-field--vertical pickup">
 		<label class="c-input__label" for="c-input-3241">Full Description</label>
-	<div class="c-form-field__container"><!--[-->	
+	<div class="c-form-field__container">
 	<textarea id="mytextarea" class="form-control fulls" style="height:400px;width: 500px;" name="isieng" placeholder="Content"></textarea>
 	<span class="c-input__icon c-input__icon--posticon"></span>
 	</div>
@@ -497,7 +541,7 @@
 	<div id="price2">
 	<br>
 	<div class="c-form-field c-form-field--vertical pickup">
-	<div class="c-form-field__container"><!--[-->	
+	<div class="c-form-field__container">	
 	<table class="form-group">
                     <div class="form-group">
                   <br>
@@ -524,7 +568,7 @@
 
 	<br>
 	<div class="c-form-field c-form-field--vertical pickup">
-	<div class="c-form-field__container"><!--[-->
+	<div class="c-form-field__container">
 	<div class="input-group col-xs-12">	
 	Gambar 1
 	<input id="file" type="file" name="image" class="form-control" placeholder="Upload Gambar" required>
@@ -536,7 +580,7 @@
     <input id="file4" type="file" name="image4" class="form-control" placeholder="Upload Gambar" required>
     Gambar 5
     <input id="file5" type="file" name="image5" class="form-control" placeholder="Upload Gambar" required>
-</div>
+	</div>
 	<span class="c-input__icon c-input__icon--posticon"></span>
 	</div>
 	</div>
@@ -588,7 +632,7 @@
 	</main>
 	<footer class="page-footer" style="background-color:  #182c4c;">
 	<div class="page-footer__content">
-	<nav class="navigation page-footer__navigation"><!---->
+	<nav class="navigation page-footer__navigation">
 	<div class="navigation__directory"><p class="navigation__item navigation__item-section_copyright">
 	<span> © <time>2023</time> Jogja Borobudur Tour &amp; Travel Admin</span></p>
 	
@@ -596,10 +640,10 @@
 	</nav>
 	</div>
 	</footer>
-	<div><!---->
-	<div style="display:contents;"><!--[--><!--]-->
+	<div>
+	<div style="display:contents;">
 	</div>
-	</div><!----><!---->
+	</div>
 	</div>
 	</div>
 	</div>
@@ -690,6 +734,7 @@ $("#form-input").slideUp("fast");
 }
 });
 
+$("#lokasi").css("display","none");
 $("#inform2").css("display","none");
 $("#inform3").css("display","none");
 $("#price2").css("display","none");
@@ -704,8 +749,19 @@ $("#inform").slideUp("fast");
 $("#price").slideUp("fast");
 $("#price3").slideUp("fast");
 $("#price4").slideUp("fast");
- 
+$("#lokasi").slideUp("fast");
+} 
 
+if ($("input[name='pilihan']:checked").val() == "location" ) {
+	$("#inform2").slideDown("fast");
+$("#price2").slideUp("fast");
+$("#inform3").slideUp("fast");
+$("#inform").slideUp("fast");
+$("#inform2").slideUp("fast");
+$("#price").slideUp("fast");
+$("#price3").slideUp("fast");
+$("#price4").slideUp("fast");
+$("#lokasi").slideDown("fast");
 } 
 
 if ($("input[name='pilihan']:checked").val() == "tour" ) { 
@@ -716,6 +772,7 @@ $("#inform3").slideUp("fast");
 $("#price3").slideUp("fast");
 $("#price").slideDown("fast");
 $("#price4").slideUp("fast");
+$("#lokasi").slideUp("fast");
 } 
 
 if ($("input[name='pilihan']:checked").val() == "price" ) { 
@@ -726,6 +783,7 @@ $("#price").slideUp("fast");
 $("#inform3").slideDown("fast");
 $("#price3").slideDown("fast");
 $("#price4").slideDown("fast");
+$("#lokasi").slideUp("fast");
 } 
 
 });
@@ -830,6 +888,37 @@ $('.tbodys').append(trs);
 
 
 $('.tbodys').on('click', '.remove', function(){
+$(this).parent().parent().remove();
+});
+</script>
+
+<script type="text/javascript">
+$('.addRowregion').on('click', function(){
+    addRowregion();
+});
+
+function addRowregion(){
+  var trregion=
+
+'<tr>'+
+'<td>'+
+					  '<select class="form-control" name="region[]">'+
+						'@foreach($region as $item)'+
+						'<option class="form-control" value="{{$item->id}}">{{$item->namaregion}}</option>'+
+						'@endforeach'+
+					'</select>'+
+                    '<td style="text-align:left;"><button class="btn btn-danger remove">Delete</button></td>'+
+                    '</td>'+
+					
+'<br>'+
+'</tr>';
+
+
+$('.tbodyregion').append(trregion);
+};
+
+
+$('.tbodyregion').on('click', '.remove', function(){
 $(this).parent().parent().remove();
 });
 </script>

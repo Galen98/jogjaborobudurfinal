@@ -13,6 +13,18 @@
           </a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="/province">
+            <i class="mdi mdi-google-maps menu-icon"></i>
+            <span class="menu-title">Province</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/region">
+            <i class="mdi mdi-map menu-icon"></i>
+            <span class="menu-title">Region</span>
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="/tag-blog">
             <i class="mdi mdi-tag-multiple menu-icon"></i>
             <span class="menu-title">Tag Blog</span>

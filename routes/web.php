@@ -20,12 +20,16 @@ use App\Models\platform;
 use App\Models\destination;
 use App\Models\Rate;
 use App\Models\harga;
+use App\Models\province;
+use App\Models\region;
 use App\Models\bahasa;
 use App\Models\hargachild;
 use App\Models\highlight;
 use App\Models\season;
 use App\Models\background;
 use App\Models\tambahseason;
+use App\Models\tambahprovince;
+use App\Models\tambahlocation;
 use Illuminate\Support\Str;
 
 /*
@@ -74,6 +78,7 @@ Route::get('/', function (Request $request) {
     //$English = travel::where("bahasa",$sessions)->first()->bahasa;
     $bahasa=bahasa::get();
     $destinate=destination::get();
+    $province=province::get();
     $destination=destination::paginate(3);
     $rateIDR = Rate::where("currency", "IDR")->first()->rate;
     $rateSGD = Rate::where("currency", "SGD")->first()->rate;
@@ -87,7 +92,7 @@ Route::get('/', function (Request $request) {
     //$traveltop=travel::paginate(8);
     $other=travel::orderBy('created_at','DESC')->where('label','Likely to sell out')->where('bahasa', $sessions)->paginate(4);
     $blog=blog::orderBy('created_at','DESC')->where('bahasa', $sessions)->paginate(3);
-    return view('frontend.index', compact('sessions','traveltop','other','blog',"rateIDR", "rateSGD", "rateMYR", "session","rateEUR","destination",'destinate','season','bahasa','background'));
+    return view('frontend.index', compact('province','sessions','traveltop','other','blog',"rateIDR", "rateSGD", "rateMYR", "session","rateEUR","destination",'destinate','season','bahasa','background'));
 });
 
 
@@ -203,7 +208,9 @@ Route::get('/paketwisata/form', function () {
     $destination=destination::get();
     $bahasa=bahasa::get();
     $season=season::get();
-    return view('frontend.forms',compact('destination','season','bahasa'));
+    $province=province::get();
+    $region=region::get();
+    return view('frontend.forms',compact('destination','season','bahasa','province','region'));
 });
 Route::get('/rating', [App\Http\Controllers\BlogController::class,'kelolarating']);
 Route::get('/data-booking', [App\Http\Controllers\BlogController::class,'bookinglist']);
@@ -231,6 +238,7 @@ Route::get('/cekblog', function () {
 Auth::routes();
 Route::get('/showhapusblog/{BlogID}', [App\Http\Controllers\BlogController::class,'showhapusblog']);
 Route::get('/showdetailbooking/{BookingID}', [App\Http\Controllers\BlogController::class,'showdetailbooking']);
+Route::get('/showdeleteprovince/{ProvinceID}', [App\Http\Controllers\BlogController::class,'showdeleteprovince']);
 Route::get('/showhapuslanguage/{LanguageID}', [App\Http\Controllers\BlogController::class,'showhapuslanguage']);
 Route::get('/showeditcurrency/{RateID}', [App\Http\Controllers\BlogController::class,'showeditcurrency']);
 Route::get('/showedittheme/{ThemeID}', [App\Http\Controllers\BlogController::class,'showedittheme']);
@@ -335,6 +343,8 @@ Route::post('insertcorporatediscount', [App\Http\Controllers\TravelController::c
 Route::post('insertinfluencer', [App\Http\Controllers\TravelController::class,'insertinfluencer']);
 Route::get('/home/viewtravel/{idtravel}', [App\Http\Controllers\TravelController::class,'viewtraveladmin']);
 Route::get('/item/{slug}', [App\Http\Controllers\TravelController::class,'itemtravel']);
+Route::get('/{slugprovince}/{slug}', [App\Http\Controllers\TravelController::class,'itemprovince']);
+Route::get('/{slugprovince}{idprovince}', [App\Http\Controllers\TravelController::class,'viewprovince']);
 Route::get('/paketwisata/viewtravel/{idtravel}', [App\Http\Controllers\TravelController::class,'viewtraveladmin']);
 Route::get('/showhapuswisata/{WisataID}', [App\Http\Controllers\BlogController::class,'showhapuswisata']);
 Route::get('/showeditharga/{HargaID}', [App\Http\Controllers\BlogController::class,'showeditharga']);
@@ -346,6 +356,29 @@ Route::get('/showeditdiskon/{WisataID}', [App\Http\Controllers\BlogController::c
 Route::post('/hapuswisata/{idwisata}', [App\Http\Controllers\BlogController::class,'hapuswisata']);
 Route::get('/formseason',function(){
     return view('formseason');
+});
+
+Route::get('/province/form',function(){
+    return view('formprovince');
+});
+Route::post('insertprovince', [BlogController::class, 'insertprovince']);
+
+Route::get('/region/form',function(){
+    return view('formregion');
+});
+Route::post('insertregion', [BlogController::class, 'insertregion']);
+Route::post('/hapusprovince/{idprovince}', [App\Http\Controllers\BlogController::class,'hapusprovince']);
+Route::patch('/updateprovince/{provinceid}',[BlogController::class,'updateprovince']);
+Route::get('/paketwisata/edit/buatlocation/{travelid}', [BlogController::class, 'formlocation']);
+Route::post('insertlocation', [BlogController::class, 'insertlocation']);
+Route::get('/region',function(){
+    $region=region::get();
+    return view('region', compact('region'));
+});
+
+Route::get('/province',function(){
+    $province=province::get();
+    return view('province', compact('province'));
 });
 
 //customer

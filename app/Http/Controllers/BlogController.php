@@ -19,6 +19,8 @@ use App\Models\waktu;
 use App\Models\background;
 use App\Models\hargachild;
 use App\Models\tambahdestinasi;
+use App\Models\tambahprovince;
+use App\Models\tambahlocation;
 use App\Models\Rate;
 use App\Models\bahasa;
 use App\Models\tambahseason;
@@ -28,6 +30,8 @@ use App\Models\booking;
 use App\Models\destination;
 use App\Models\affiliate;
 use App\Models\platform;
+use App\Models\region;
+use App\Models\province;
 // use Request;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -111,6 +115,19 @@ class BlogController extends Controller
         return redirect()->to('/blogadmin');
     }
 
+    public function hapusprovince(Request $request,$idprovince){
+        $idprovince=Request('idprovince');
+        $namaprovince=Request('namaprovince');
+        $images=province::where('id',$idprovince)->first();
+        File::delete('public/img/'.$images->image);
+        province::where('id',$idprovince)->delete();
+        $provinsiid=tambahprovince::where('namaprovince',$namaprovince)->get('id');
+        tambahlocation::where('tambahprovince_id', $provinsiid)->delete();
+        tambahprovince::where('namaprovince',$namaprovince)->delete();
+        Alert::error('Blog Telah Dihapus');
+        return redirect()->to('/province');
+    }
+
     public function hapustag(Request $request,$idtags){
         $idtags=Request('idtags');
         $tagblog=tags::where('id',$idtags)->pluck('tags');
@@ -147,6 +164,14 @@ class BlogController extends Controller
         return response()->json([
         'status'=>200,
         'Booking'=>$Booking
+        ]);
+    }
+
+    public function showdeleteprovince($ProvinceID){
+        $Province=DB::table('province')->where('id',$ProvinceID)->first();
+        return response()->json([
+        'status'=>200,
+        'Province'=>$Province
         ]);
     }
 
@@ -194,6 +219,7 @@ class BlogController extends Controller
         Alert::error('Berhasil Dihapus');
         return redirect()->back();
     }
+
 
     public function hapusselltours(Request $request,$idselltours){
         $idselltours=Request('idselltours');
@@ -396,6 +422,22 @@ class BlogController extends Controller
        ->update([
         'destination' => $request->destination,
         'shortdescription' => $request->short
+       ]);       
+    }
+
+    public function updateprovince(Request $request,$provinceid){
+       $provinceid = Request('provinceid');
+       $namaprovince=$request->namaprovinsi;
+       $Province = province::where('id', $provinceid)
+       ->update([
+        'namaprovince' => $request->namaprovinces,
+        'shortdescription' => $request->shorts,
+        'slugprovince'=>\Str::slug($request->namaprovinces)
+       ]);
+       $addprovince = tambahprovince::where('namaprovince',$namaprovince)
+       ->update([
+        'namaprovince' => $request->namaprovinces,
+        'slugprovince'=>\Str::slug($request->namaprovinces)
        ]);       
     }
 
@@ -714,6 +756,15 @@ class BlogController extends Controller
     public function editwisata($idwisata){
         $destinasi=destination::get();
         $seasonadd=season::get();
+        $provinceadd=province::get();
+        $regionadd=region::get();
+        $province = tambahprovince::where('wisata_id', $idwisata)->get('id');
+        $pilihan = tambahprovince::whereIN('id', $province)->get();
+        // ->leftJoin('province', 'tambahprovince.province_id', '=', 'province.id')
+        // ->select('province.namaprovince','tambahprovince.id')->get();
+        
+        
+
         $destination =DB::table('tambahdestinasi')->where('wisata_id',$idwisata)
             ->leftJoin('destination', 'tambahdestinasi.destinasi_id', '=', 'destination.id')
             ->select('destination.destination','tambahdestinasi.id')->get();
@@ -728,7 +779,7 @@ class BlogController extends Controller
         $jam=DB::table('waktu')->where('wisata_id',$idwisata)->get();
         $tambahseason=tambahseason::where('wisata_id',$idwisata)->get();
 
-        return view('editwisata',compact('travel','include','exclude','destination','highlight','jam','destinasi','season','seasonadd','bahasa'));
+        return view('editwisata',compact('province','pilihan','regionadd','provinceadd','travel','include','exclude','destination','highlight','jam','destinasi','season','seasonadd','bahasa'));
     }
 
     public function editblogproses(Request $request,$idblog){
@@ -1353,6 +1404,33 @@ class BlogController extends Controller
                 return redirect('/paketwisata/diskon/'.$option->wisata_id);
     }
 
+    public function insertlocation(Request $request){
+        $travelid=$request->idtravel;
+        $province=$request->province;
+        $region= $request->region;
+        
+        $data = [
+            'wisata_id' => $travelid,
+            'namaprovince' => $province,
+            'slugprovince'=>\Str::slug($request->province)
+        ];
+        $provinsi = tambahprovince::create($data);
+
+        $data = [
+            'wisata_id' => $travelid,
+            'tambahprovince_id' => $provinsi->id,
+        ];
+
+        foreach($region as $index){
+            $data['namaregion']=$index;
+            $data['slugregion']=Str::slug($data['namaregion'], '-');
+            tambahlocation::create($data);
+        }
+
+        Alert::success('Berhasil');
+        return redirect('/paketwisata/edit/'.$travelid);
+    }
+
     public function diskonpost(Request $request,$travelid){
         $discount=Request('discount');
         $idtravel=travel::where('wisata_id',$travelid)->get();
@@ -1427,12 +1505,8 @@ class BlogController extends Controller
     public function insertdestinationcategory(Request $request){
         $destination=$request->kategori;
         $short=$request->shortdescription;
-        // $request->validate([
-        //  'image' => 'required|mimes:jpeg,png,jpg'
-        // ]);
         $img= request('image');
         $nama_file = time()."_".$img->getClientOriginalName();
-                // isi dengan nama folder tempat kemana file diupload
         $gambar = Image::make($img);
         $gambar->resize(600,600);
         $tujuan_upload = public_path('public/img/');
@@ -1446,8 +1520,55 @@ class BlogController extends Controller
         destination::create($data);
         Alert::success('Berhasil Ditambahkan');
         return redirect()->to('/destination-category');
-        
+    }
 
+    public function insertregion(Request $request){
+        $region=$request->region;
+        $short=$request->shortdescription;
+        $img= request('image');
+        $nama_file = time()."_".$img->getClientOriginalName();
+        $gambar = Image::make($img);
+        $gambar->resize(600,600);
+        $tujuan_upload = public_path('public/img/');
+        $gambar->save($tujuan_upload .$nama_file); 
+
+        $data = [
+            'namaregion'=>$region,
+            'shortdescription'=>$short,
+            'image'=>$nama_file,
+            'slugregion'=>\Str::slug($request->region)
+        ];
+        region::create($data);
+        Alert::success('Berhasil Ditambahkan');
+        return redirect()->to('/region');
+    }
+
+    public function insertprovince(Request $request){
+        $region=$request->province;
+        $short=$request->shortdescription;
+        $img= request('image');
+        $nama_file = time()."_".$img->getClientOriginalName();
+        $gambar = Image::make($img);
+        $gambar->resize(600,600);
+        $tujuan_upload = public_path('public/img/');
+        $gambar->save($tujuan_upload .$nama_file); 
+
+        $data = [
+            'namaprovince'=>$region,
+            'shortdescription'=>$short,
+            'image'=>$nama_file,
+            'slugprovince'=>\Str::slug($request->province)
+        ];
+        province::create($data);
+        Alert::success('Berhasil Ditambahkan');
+        return redirect()->to('/province');
+    }
+
+    public function formlocation($travelid){
+        $idwisata=travel::where('wisata_id', $travelid)->get();
+        $province=province::get();
+        $region=region::get();
+        return view('formlocation',compact('idwisata','province','region'));
     }
 
     public function insertseason(Request $request){

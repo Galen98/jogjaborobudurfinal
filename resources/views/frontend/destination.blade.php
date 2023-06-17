@@ -275,7 +275,7 @@
     </div>
     </div>
     </div>
-    </section> <!---->
+    </section> 
     </div>
     </main>
     </div>
@@ -285,8 +285,8 @@
     <div class="collection-header" data-v-76e871e0><div class="collection-header--title-container" data-v-76e871e0>
     <span data-test-id="collection-title" class="" data-v-76e871e0>
         {{$travel->links()}}
-      </span> <!---->
-    </div> <!---->
+      </span> 
+    </div> 
     </div> 
 </section>
 
@@ -294,8 +294,8 @@
 <div id="gtco-subscribe" style="background-color: white;">
 <div class="gtco-container"  style="margin-top:-70px;">
   <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-          <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0>
-        You might also like other destination
+ <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0>
+           You might also like other category 
       </span>
         </div>
     @foreach($destination as $item)

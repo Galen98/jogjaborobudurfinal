@@ -146,8 +146,7 @@
     </div>
     
 <div id="gyg" data-server-rendered="true" style="margin-top:-25px;margin-bottom: -40px;">
-  <div class="new-homepage-layout main-wrapper  partner-left-layout" data-v-1e9f5217><!----> <!----> <!----> <!----> 
-  <!-- <a href="#main-content" class="skip-link">Skip to content</a>  -->
+  <div class="new-homepage-layout main-wrapper  partner-left-layout" data-v-1e9f5217>
   <main id="main-content" class="home-page">
 <div class="activities" data-v-680034d2 data-v-1e9f5217>
     <section data-test-id="activity-picks" class="collection-container container activities__cards" data-v-76e871e0 data-v-680034d2>
@@ -155,9 +154,9 @@
     <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0>
     @foreach($destinasi as $item){{$item->destination}}@endforeach
       </span>
-      
-    </div> <!---->
     </div> 
+    </div> 
+
     <div class="collection-body" data-v-76e871e0>
     <div class="collection-body--horizontal" data-v-76e871e0>
     <div class="vertical-activity-cards__grid" data-v-76e871e0>
@@ -285,7 +284,7 @@
     </div>
     </div>
     </footer> 
-    <div class="vertical-activity-card__bottom"><!---->
+    <div class="vertical-activity-card__bottom">
     </div>
     </div>
     </a> 
@@ -298,7 +297,7 @@
     </div>
     </div>
     </div>
-    </section> <!---->
+    </section> 
     </div>
     </main>
     </div>
@@ -327,7 +326,7 @@
 </div>
 </div>
 	<div id="gyg" data-server-rendered="true">
-  <div class="main-wrapper  partner-left-layout" data-v-5120f7ad><!----> <!----> <!----> <!----> 
+  <div class="main-wrapper  partner-left-layout" data-v-5120f7ad>
   <a href="#main-content" class="skip-link">Skip to content</a> 
   <main id="main-content">
     <section layout="vertical" class="grid-wrapper container grid-wrapper--list">
@@ -336,14 +335,14 @@
   <article data-test-id="horizontal-activity-card" class="activity-card horizontal-activity-card companion-inactive activity-card-block__card--grid activity-card-block--desktop" data-v-a1084d9e>
   <a href="{{'/items/'.$item->slug}}" role="contentinfo" target="_blank" rel="noopener" data-activity-id="412877" class="activity-card__container gtm-trigger__card-interaction" data-v-a1084d9e>
   <div class="activity-card__image" data-v-a1084d9e> 
-  <div class="activity-card__image-info align-end" data-v-a1084d9e><!----></div> 
+  <div class="activity-card__image-info align-end" data-v-a1084d9e></div> 
   <picture data-v-a1084d9e>
   <source srcset="{{ url('public/img/'.$item->image) }}" type="image/webp"> 
   <img src="{{ url('public/img/'.$item->image) }}" alt="{{$item->namawisata}}"></picture>
   </div> 
   <div class="activity-card__details" data-v-a1084d9e>
   <div class="activity-card__details-main" data-v-a1084d9e>
-  <div class="activity-card__details-left" data-v-a1084d9e><!----> 
+  <div class="activity-card__details-left" data-v-a1084d9e>
   <h2 class="activity-card__title" data-v-a1084d9e>{{$item->namawisata}}</h2> 
   <div class="activity-card__attributes" data-v-a1084d9e>
   <ul class="activity-attributes__container" data-v-67560657 data-v-a1084d9e>
@@ -352,9 +351,9 @@
     <span data-v-67560657>{{$item->durasi}}</span>
   </span>
   </li>
-  </ul> <!---->
-  </div> <!----> 
-  <div class="activity-card__badges__container" data-v-a1084d9e><!----> <!----> <!---->
+  </ul> 
+  </div> 
+  <div class="activity-card__badges__container" data-v-a1084d9e>
   </div>
   </div> 
   <div class="activity-card__details-right" data-v-a1084d9e>
@@ -370,7 +369,7 @@
                 <i class="fa fa-star rating-color"></i>
               </div>
 
-</div> <!----> <!----> 
+</div> 
 </div> 
 </div> 
 <div class="activity-card__pricing" data-v-a1084d9e><div class="baseline-pricing" data-v-24caa43d data-v-a1084d9e><div class="baseline-pricing__container" data-v-24caa43d><div class="baseline-pricing__value" data-v-24caa43d><p class="baseline-pricing__from" data-v-24caa43d>From</p>

@@ -139,9 +139,9 @@ font-family: 'GT Eesti Text Trial', sans-serif;
             </span>
             </button>
             <div class="dropdown-menu">
-              @foreach($destinate as $item)
-              <a class="dropdown-item" href="{{'/category-destination/' .$item->id}}">{{$item->destination}}</a>
-              @endforeach
+            @foreach($province as $item)
+            <a class="dropdown-item" href="{{$item->slugprovince}}{{$item->id}}">{{$item->namaprovince}}</a>
+            @endforeach
             </div>
           </div>
   </li>
@@ -181,9 +181,9 @@ font-family: 'GT Eesti Text Trial', sans-serif;
              <i class="fa fa-compass" aria-hidden="true" style="font-size:20px;"></i> Destinations
             </button>
             <div class="dropdown-menu">
-              @foreach($destinate as $item)
-          <a class="dropdown-item" href="{{'/category-destination/' .$item->id}}">{{$item->destination}}</a>
-              @endforeach
+            @foreach($province as $item)
+            <a class="dropdown-item" href="{{$item->slugprovince}}{{$item->id}}">{{$item->namaprovince}}</a>
+            @endforeach
             </div>
           </div>
   </li>
@@ -204,8 +204,8 @@ font-family: 'GT Eesti Text Trial', sans-serif;
 
 
       <div id="gyg" data-server-rendered="true" style="margin-top:-21px;">
-    <section id="activity-page" data-test-id="activity-page"><!----> 
-    <div class="main-wrapper  partner-left-layout"><!----> <!----> <!----> 
+    <section id="activity-page" data-test-id="activity-page">
+    <div class="main-wrapper  partner-left-layout">
   <main id="main-content">
   <aside role="cart-expiration-notification" class="cart-expiration-notification" style="display:none;"></aside> 
   <section class="activity__container js-activity" data-v-c4be1764>
@@ -213,11 +213,20 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   <section class="activity__breadcrumbs" data-v-c4be1764>
   <ul itemscope="itemscope" itemtype="https://schema.org/BreadcrumbList" class="activity-breadcrumbs" data-v-2833ce42 data-v-c4be1764>
   <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42>
-  <span itemprop="name" data-v-2833ce42><a href="/"> Home</a></span><meta itemprop="position" content="1" data-v-2833ce42>
-  </li>  
+ <span itemprop="name" data-v-2833ce42><a href="/">Home</a></span>
+  </li> 
+  @foreach($province as $item)
+  <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42>
+ <span itemprop="name" data-v-2833ce42><a href="/{{$item->slugprovince}}{{$item->id}}">{{$item->namaprovince}}</a></span>
+  </li> 
+  @endforeach 
+  @foreach($region as $item)
+  <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42>
+ <span itemprop="name" data-v-2833ce42><a href="">{{$item->namaregion}}</a></span>
+  </li> 
+  @endforeach 
   <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42>
   @foreach($destinasi as $item)<span itemprop="name" data-v-2833ce42><a href="{{'/category-destination/' .$item->id}}">{{$item->destination}}</a></span>@endforeach 
-  <meta itemprop="position" content="2" data-v-2833ce42>
   </li> 
   <!-- <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42>
   @foreach($season as $item)<span itemprop="name" data-v-2833ce42><a href="{{'/season/' .$item->id}}">{{$item->namaseason}}</a></span>@endforeach 
