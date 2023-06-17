@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tambahlocation', function (Blueprint $table) {
-            $table->increments('id');
-            $table->bigint('wisata_id');
-            $table->bigint('tambahprovince_id');
+            $table->bigIncrements('id');
+            $table->bigInteger('wisata_id');
+            $table->bigInteger('tambahprovince_id');
             $table->string('namaregion', 255);
             $table->string('slugregion', 255);
         });

@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('region', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('namaregion', 255);
             $table->string('image', 255);
             $table->string('shortdescription', 255);
