@@ -346,7 +346,7 @@ Route::get('/item/{slug}', [App\Http\Controllers\TravelController::class,'itemtr
 Route::get('/{slugprovince}/{slug}', [App\Http\Controllers\TravelController::class,'itemprovince']);
 Route::get('/{slugprovince}{idprovince}', [App\Http\Controllers\TravelController::class,'viewprovince']);
 Route::get('/paketwisata/viewtravel/{idtravel}', [App\Http\Controllers\TravelController::class,'viewtraveladmin']);
-Route::get('/showhapuswisata/{WisataID}', [App\Http\Controllers\BlogController::class,'showhapuswisata']);
+Route::get('/showhapuswisata/hapus/{WisataID}', [App\Http\Controllers\BlogController::class,'showhapuswisata']);
 Route::get('/showeditharga/{HargaID}', [App\Http\Controllers\BlogController::class,'showeditharga']);
 Route::get('/showeditdestinasi/{DestinasiID}', [App\Http\Controllers\BlogController::class,'showeditdestinasi']);
 Route::get('/showeditseason/{SeasonID}', [App\Http\Controllers\BlogController::class,'showeditseason']);
@@ -371,12 +371,12 @@ Route::post('/hapusprovince/{idprovince}', [App\Http\Controllers\BlogController:
 Route::patch('/updateprovince/{provinceid}',[BlogController::class,'updateprovince']);
 Route::get('/paketwisata/edit/buatlocation/{travelid}', [BlogController::class, 'formlocation']);
 Route::post('insertlocation', [BlogController::class, 'insertlocation']);
-Route::get('/region',function(){
+Route::get('/region/page',function(){
     $region=region::get();
     return view('region', compact('region'));
 });
 
-Route::get('/province',function(){
+Route::get('/province/page',function(){
     $province=province::get();
     return view('province', compact('province'));
 });

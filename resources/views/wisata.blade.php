@@ -169,7 +169,7 @@ Create Travel
             $('#hapus').modal('show');
             $.ajax({
                 type: "GET",
-                url:"/showhapuswisata/"+idwisata,
+                url:"/showhapuswisata/hapus/"+idwisata,
                 success:function(response){
                     $('#idwisata').val(response.Travel.wisata_id);
                 }
