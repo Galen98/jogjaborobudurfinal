@@ -243,6 +243,7 @@ Route::get('/showhapuslanguage/{LanguageID}', [App\Http\Controllers\BlogControll
 Route::get('/showeditcurrency/{RateID}', [App\Http\Controllers\BlogController::class,'showeditcurrency']);
 Route::get('/showedittheme/{ThemeID}', [App\Http\Controllers\BlogController::class,'showedittheme']);
 Route::get('/showedittag/{TagID}', [App\Http\Controllers\BlogController::class,'showedittag']);
+Route::get('/showedittambahprovince/{ProvinceID}', [App\Http\Controllers\BlogController::class,'showedittambahprovince']);
 Route::get('/showeditdestination/{DestinationID}', [App\Http\Controllers\BlogController::class,'showeditdestination']);
 Route::get('/showeditinclude/{IncludeID}', [App\Http\Controllers\BlogController::class,'showeditinclude']);
 Route::get('/showeditjam/{JamID}', [App\Http\Controllers\BlogController::class,'showeditjam']);

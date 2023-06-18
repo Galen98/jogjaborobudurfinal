@@ -122,7 +122,9 @@ class BlogController extends Controller
         File::delete('public/img/'.$images->image);
         province::where('id',$idprovince)->delete();
         $provinsiid=tambahprovince::where('namaprovince',$namaprovince)->first();
-        tambahlocation::where('tambahprovince_id', $provinsiid->id)->delete();
+        if($provinsiid > 0){
+            tambahlocation::where('tambahprovince_id', $provinsiid->id)->delete();
+        }
         tambahprovince::where('namaprovince',$namaprovince)->delete();
         Alert::error('Telah Dihapus');
         return redirect()->to('/province/page');
