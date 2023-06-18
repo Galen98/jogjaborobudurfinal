@@ -1150,22 +1150,18 @@
 <script>
     $(document).ready(function(){
         $(document).on('click', '.btneditprovince', function(){
-            var idoption=$(this).val();
+            var idprovince=$(this).val();
             $('#editModalProvince').modal('show');
             // const dateFormat="dddd, MMMM Do YYYY, h:mm";
             $.ajax({
                 
                 type: "GET",
-                url:"/showeditoption/"+idoption,
+                url:"/showedittambahprovince/"+idprovince,
                 success:function(response){
                     //console.log(response.Rate.id);
                      //$('#orderid').val(response.Order.OrderID);
-                     $('#idoption').val(response.Option.id); 
-                    $('#judulsub').val(response.Option.judulsub);
-                    $('#short').val(response.Option.short);
-                    $('#idtravel').val(response.Option.wisata_id); 
-                    
-
+                     $('#idprovince').val(response.Province.id);
+                     $('#idtravels').val(response.Province.wisata_id); 
                   
                   
                 }

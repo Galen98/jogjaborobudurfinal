@@ -1540,7 +1540,7 @@ class BlogController extends Controller
         ];
         region::create($data);
         Alert::success('Berhasil Ditambahkan');
-        return redirect()->to('/region');
+        return redirect()->to('/region/page');
     }
 
     public function insertprovince(Request $request){
@@ -1561,7 +1561,7 @@ class BlogController extends Controller
         ];
         province::create($data);
         Alert::success('Berhasil Ditambahkan');
-        return redirect()->to('/province');
+        return redirect()->to('/province/page');
     }
 
     public function formlocation($travelid){
