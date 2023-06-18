@@ -21,7 +21,7 @@
         <li class="nav-item">
           <a class="nav-link" href="/region/page">
             <i class="mdi mdi-map menu-icon"></i>
-            <span class="menu-title">Region</span>
+            <span class="menu-title">City</span>
           </a>
         </li>
         <li class="nav-item">

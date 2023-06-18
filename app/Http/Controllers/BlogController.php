@@ -121,11 +121,11 @@ class BlogController extends Controller
         $images=province::where('id',$idprovince)->first();
         File::delete('public/img/'.$images->image);
         province::where('id',$idprovince)->delete();
-        $provinsiid=tambahprovince::where('namaprovince',$namaprovince)->get('id');
-        tambahlocation::where('tambahprovince_id', $provinsiid)->delete();
+        $provinsiid=tambahprovince::where('namaprovince',$namaprovince)->first();
+        tambahlocation::where('tambahprovince_id', $provinsiid->id)->delete();
         tambahprovince::where('namaprovince',$namaprovince)->delete();
-        Alert::error('Blog Telah Dihapus');
-        return redirect()->to('/province');
+        Alert::error('Telah Dihapus');
+        return redirect()->to('/province/page');
     }
 
     public function hapustag(Request $request,$idtags){
@@ -302,6 +302,14 @@ class BlogController extends Controller
         return response()->json([
         'status'=>200,
         'Option'=>$Option
+        ]);
+    }
+
+    public function showedittambahprovince($ProvinceID){
+        $Province=DB::table('tambahprovince')->where('id',$ProvinceID)->first();
+        return response()->json([
+        'status'=>200,
+        'Province'=>$Province
         ]);
     }
 

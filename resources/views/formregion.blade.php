@@ -9,7 +9,7 @@
                   <form class="forms-sample" method="POST" action="{{url('insertregion')}}" enctype="multipart/form-data">
                   @csrf
                     <div class="form-group">
-                      <label for="exampleInputName1">Nama Region</label>
+                      <label for="exampleInputName1">Nama City</label>
                       <input type="text" class="form-control" id="exampleInputName1" name="region" placeholder="Masukan Province" required>
                     </div>
 
