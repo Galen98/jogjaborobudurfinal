@@ -10,7 +10,7 @@
                   @csrf
                     <div class="form-group">
                       <label for="exampleInputName1">Nama City</label>
-                      <input type="text" class="form-control" id="exampleInputName1" name="region" placeholder="Masukan Province" required>
+                      <input type="text" class="form-control" id="exampleInputName1" name="region" placeholder="Masukan City" required>
                     </div>
 
                     <div class="form-group">

@@ -52,11 +52,11 @@
                          {{$item->namaregion ?? ''}}
                           </td>
                           <td>
-                          <button type="button" class="editbtn btn btn-sm btn-info btn-rounded btn-fw" style="color: white;" value="{{$item->id}}">
+                          <button type="button" class=" btn btn-sm btn-info btn-rounded btn-fw" style="color: white;" value="{{$item->id}}">
                           <i class="mdi mdi-pencil-box" style="color: white;"></i> Edit</button>
                           </td>
                           <td>
-                            <form action="{{url('deletedestination/'.$item->id)}}" method="POST" enctype="multipart/form-data">
+                            <form action="" method="POST" enctype="multipart/form-data">
                             @method('delete')
                             @csrf
                           <button type="submit" class="hapusbtn btn btn-sm btn-danger btn-rounded btn-fw" style="color: white;"><i class="mdi mdi-delete" style="color: white;"></i> Delete</button>
