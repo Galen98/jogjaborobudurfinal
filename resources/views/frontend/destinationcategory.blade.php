@@ -48,9 +48,9 @@
             </span>
             </button>
             <div class="dropdown-menu">
-              @foreach($destinate as $item)
-              <a class="dropdown-item" href="{{'/category-destination/' .$item->id}}">{{$item->destination}}</a>
-              @endforeach
+            @foreach($province as $item)
+            <a class="dropdown-item" href="/location/{{$item->slugprovince}}{{$item->id}}">{{$item->namaprovince}}</a>
+            @endforeach
             </div>
           </div>
   </li>
@@ -90,9 +90,9 @@
              <i class="fa fa-compass" aria-hidden="true" style="font-size:20px;"></i> Destinations
             </button>
             <div class="dropdown-menu">
-              @foreach($destinate as $item)
-          <a class="dropdown-item" href="{{'/category-destination/' .$item->id}}">{{$item->destination}}</a>
-              @endforeach
+            @foreach($province as $item)
+            <a class="dropdown-item" href="/location/{{$item->slugprovince}}{{$item->id}}">{{$item->namaprovince}}</a>
+            @endforeach
             </div>
           </div>
   </li>

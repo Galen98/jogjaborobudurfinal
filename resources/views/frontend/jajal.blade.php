@@ -140,7 +140,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
             </button>
             <div class="dropdown-menu">
             @foreach($province as $item)
-            <a class="dropdown-item" href="{{$item->slugprovince}}{{$item->id}}">{{$item->namaprovince}}</a>
+            <a class="dropdown-item" href="/location/{{$item->slugprovince}}{{$item->id}}">{{$item->namaprovince}}</a>
             @endforeach
             </div>
           </div>
@@ -182,7 +182,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
             </button>
             <div class="dropdown-menu">
             @foreach($province as $item)
-            <a class="dropdown-item" href="{{$item->slugprovince}}{{$item->id}}">{{$item->namaprovince}}</a>
+            <a class="dropdown-item" href="/location/{{$item->slugprovince}}{{$item->id}}">{{$item->namaprovince}}</a>
             @endforeach
             </div>
           </div>
@@ -217,7 +217,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   </li> 
   @foreach($province as $item)
   <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42>
- <span itemprop="name" data-v-2833ce42><a href="/{{$item->slugprovince}}{{$item->id}}">{{$item->namaprovince}}</a></span>
+ <span itemprop="name" data-v-2833ce42><a href="/location/{{$item->slugprovince}}{{$item->id}}">{{$item->namaprovince}}</a></span>
   </li> 
   @endforeach 
   @foreach($region as $item)

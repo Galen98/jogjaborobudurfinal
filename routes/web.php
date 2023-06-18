@@ -343,8 +343,8 @@ Route::post('insertcorporatediscount', [App\Http\Controllers\TravelController::c
 Route::post('insertinfluencer', [App\Http\Controllers\TravelController::class,'insertinfluencer']);
 Route::get('/home/viewtravel/{idtravel}', [App\Http\Controllers\TravelController::class,'viewtraveladmin']);
 Route::get('/item/{slug}', [App\Http\Controllers\TravelController::class,'itemtravel']);
-Route::get('/{slugprovince}/{slug}', [App\Http\Controllers\TravelController::class,'itemprovince']);
-Route::get('/{slugprovince}{idprovince}', [App\Http\Controllers\TravelController::class,'viewprovince']);
+Route::get('/location/{slugprovince}/{slug}', [App\Http\Controllers\TravelController::class,'itemprovince']);
+Route::get('/location/{slugprovince}{idprovince}', [App\Http\Controllers\TravelController::class,'viewprovince']);
 Route::get('/paketwisata/viewtravel/{idtravel}', [App\Http\Controllers\TravelController::class,'viewtraveladmin']);
 Route::get('/showhapuswisata/hapus/{WisataID}', [App\Http\Controllers\BlogController::class,'showhapuswisata']);
 Route::get('/showeditharga/{HargaID}', [App\Http\Controllers\BlogController::class,'showeditharga']);

@@ -91,7 +91,7 @@
             </button>
             <div class="dropdown-menu">
             @foreach($province as $item)
-            <a class="dropdown-item" href="{{$item->slugprovince}}{{$item->id}}">{{$item->namaprovince}}</a>
+            <a class="dropdown-item" href="location/{{$item->slugprovince}}{{$item->id}}">{{$item->namaprovince}}</a>
             @endforeach
             </div>
           </div>
@@ -165,7 +165,7 @@
       @foreach($travel as $item)
     <article data-test-id="vertical-activity-card" class="vertical-activity-card" data-v-76e871e0>
     <div class="vertical-activity-card__content-wrapper">
-    <a href="{{url($item->slugprovince. '/' .$item->slug)}}" role="contentinfo" data-activity-id="62214" target="_blank" class="vertical-activity-card__container gtm-trigger__card-interaction">
+    <a href="{{url('/location/'.$item->slugprovince. '/' .$item->slug)}}" role="contentinfo" data-activity-id="62214" target="_blank" class="vertical-activity-card__container gtm-trigger__card-interaction">
 
     <div class="vertical-activity-card__top-wrapper">
     <div class="vertical-activity-card__top">

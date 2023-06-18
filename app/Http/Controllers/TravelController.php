@@ -355,13 +355,14 @@ class TravelController extends Controller
         $destinasi  = destination::where('id',$idcategory)->get();
         // get session user
         $session = session()->get("rate") ?? "USD";
+        $province=province::get();
         $category = destination::where('id', $idcategory)->get();
         $count = tambahdestinasi::where('destinasi_id',$idcategory)->get();
         $other = travel::where('bahasa', $sessions)->paginate(4);
         $destination = DB::table('tambahdestinasi')->where('destinasi_id',$idcategory)->where('bahasa',$sessions)
             ->leftJoin('wisata', 'tambahdestinasi.wisata_id', '=', 'wisata.wisata_id')
             ->select('wisata.wisata_id','wisata.namawisata', 'wisata.label','wisata.durasi','wisata.IDR','wisata.image2','wisata.discount','wisata.kategories','wisata.capacity','wisata.IDR_awal','wisata.slug')->get();
-        return view('frontend.destinationcategory', compact('category','count','destination','other','rateEUR','rateIDR','rateSGD','rateMYR','session','destinate','destinasi','season','bahasa','session','sessions'));
+        return view('frontend.destinationcategory', compact('province','category','count','destination','other','rateEUR','rateIDR','rateSGD','rateMYR','session','destinate','destinasi','season','bahasa','session','sessions'));
     }
 
     public function province(Request $request,$idcategory){
@@ -371,6 +372,7 @@ class TravelController extends Controller
     public function seasons(Request $request,$idseason){
         $seasones = season::get();
         $bahasa=bahasa::get();
+        $province=province::get();
          $lang=$request->server('HTTP_ACCEPT_LANGUAGE');
          $langs=Str::substr($lang, 0,2);
     if ($langs == 'id') {
@@ -401,7 +403,7 @@ class TravelController extends Controller
         $seasons = DB::table('tambahseason')->where('season_id',$idseason)->where('bahasa', $sessions)
         ->leftJoin('wisata','tambahseason.wisata_id', '=', 'wisata.wisata_id')
         ->select('wisata.wisata_id','wisata.namawisata', 'wisata.label','wisata.durasi','wisata.IDR','wisata.image2','wisata.discount','wisata.kategories','wisata.capacity','wisata.IDR_awal','wisata.slug')->get();
-        return view('frontend.season', compact('seasones','other','rateEUR','rateIDR','rateSGD','rateMYR','session','destinate','season','seasons','count','bahasa','session','sessions'));
+        return view('frontend.season', compact('province','seasones','other','rateEUR','rateIDR','rateSGD','rateMYR','session','destinate','season','seasons','count','bahasa','session','sessions'));
     }
 
     
@@ -435,10 +437,10 @@ class TravelController extends Controller
     $session = session()->get("rate") ?? "USD";
   
     // $English = travel::where("bahasa",$sessions)->first()->bahasa;
-
+    $province=province::get();
     $travel=travel::orderBy('created_at','DESC')->where('bahasa',$sessions)->paginate(8);
     $destination = destination::all()->take(3);
-    return view('frontend.destination', compact('seasones','travel','rateIDR','rateMYR','rateSGD','session','rateEUR','destination','destinate','bahasa','sessions','session'));
+    return view('frontend.destination', compact('seasones','travel','rateIDR','rateMYR','rateSGD','session','rateEUR','destination','destinate','bahasa','sessions','session','province'));
     }
 
     public function itemtravel(Request $request,$slug){
