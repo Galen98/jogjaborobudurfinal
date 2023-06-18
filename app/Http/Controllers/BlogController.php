@@ -186,6 +186,13 @@ class BlogController extends Controller
         return redirect()->back();
     }
 
+    public function deletetambahprovince($idprovince){
+        tambahprovince::where('id', $idprovince)->delete();
+        tambahlocation::where('tambahprovince_id', $idprovince)->delete();
+        Alert::error('Sukses');
+        return redirect()->back();
+    }
+
     public function hapusmessage(Request $request,$idmessage){
         $idmessage=Request('idmessage');
         DB::table('message')->where('id',$idmessage)->delete();
@@ -312,6 +319,14 @@ class BlogController extends Controller
         return response()->json([
         'status'=>200,
         'Province'=>$Province
+        ]);
+    }
+
+    public function showedittambahlocation($CityID){
+        $City=DB::table('tambahlocation')->where('id',$CityID)->first();
+        return response()->json([
+        'status'=>200,
+        'City'=>$City
         ]);
     }
 
@@ -474,6 +489,33 @@ class BlogController extends Controller
         // ]);
     }
 
+    public function updatetambahprovince(Request $request, $idprovince){
+        $idprovince = Request('idprovince');
+        $idtravels = Request('idtravels');
+        $tambahprovince = Request('tambahprovince');
+        $Province=tambahprovince::where('id', $idprovince)
+        ->update([
+            'namaprovince'=>$tambahprovince,
+            'slugprovince'=>Str::slug($request->tambahprovince),
+        ]);
+    } 
+
+    public function updatetambahlocation(Request $request, $idcity){
+        $idcity = Request('idcity');
+        $tambahlocation = Request('tambahlocation');
+        $City=tambahlocation::where('id', $idcity)
+        ->update([
+            'namaregion'=>$tambahlocation,
+            'slugregion'=>Str::slug($request->tambahlocation),
+        ]);
+    } 
+    
+    public function deletetambahlocation($idcity){
+        tambahlocation::where('id', $idcity)->delete();
+        Alert::error('Berhasil');
+        return redirect()->back();
+    }
+
     public function showedithargachild($ChildID){
         $Child=DB::table('harga_child')->where('id',$ChildID)->first();
         return response()->json([
@@ -594,6 +636,20 @@ class BlogController extends Controller
             'time'=>$time
         ];
         waktu::create($data);
+    }
+
+
+    public function addcity(Request $request){
+        $idtambahprovinces = $request->idtambahprovinces;
+        $idwisatas = $request->idwisatas;
+        $tambahcity = $request->tambahcity;
+        $data=[
+            'wisata_id'=>$idwisatas,
+            'tambahprovince_id'=>$idtambahprovinces,
+            'namaregion'=>$tambahcity,
+            'slugregion'=>\Str::slug($tambahcity),
+        ];
+        tambahlocation::create($data);
     }
 
     public function addhargaperson(Request $request){

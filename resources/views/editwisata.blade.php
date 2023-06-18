@@ -415,7 +415,7 @@
               <tr>
               <td><button type="button" class="btneditprovince btn btn-sm btn-info btn-rounded btn-fw" style="color: white;" value="{{$item->id}}"><i class="mdi mdi-pencil-box" style="color: white;"></i> Edit</button></td>
               <td>&nbsp;&nbsp;</td>
-              <td><form action="{{url('deleteprovince/'.$item->id)}}" method="POST" enctype="multipart/form-data">
+              <td><form action="{{url('deletetambahprovince/'.$item->id)}}" method="POST" enctype="multipart/form-data">
                 @method('delete')
                 @csrf
                  <button type="submit" class="hapusbtn btn btn-sm btn-danger btn-rounded btn-fw" style="color: white;"><i class="mdi mdi-delete" style="color: white;"></i> Delete</button>
@@ -426,14 +426,14 @@
                  <br>
                  <br>
                  <br>
-                 <h4 class="card-title">Region:</h4>
-                  <button type="button" class="tambahhargaperson btn btn-sm btn-primary btn-rounded btn-fw" value="{{$item->id}}"><i class="mdi mdi-plus"></i> Tambah</button>
+                 <h4 class="card-title">City:</h4>
+                  <button type="button" class="tambahcity btn btn-sm btn-primary btn-rounded btn-fw" value="{{$item->id}}"><i class="mdi mdi-plus"></i> Tambah</button>
                   <div class="table-responsive pt-3">
                   <table class="table table-bordered">
                       <thead>
                         <tr>
                           <th>
-                            Region
+                            City
                           </th>
                           <th>Edit</th>
                           <th>Delete</th>
@@ -449,7 +449,7 @@
                           <button type="button" class="btneditregion btn btn-sm btn-info btn-rounded btn-fw" style="color: white;" value="{{$p->id}}"><i class="mdi mdi-pencil-box" style="color: white;"></i></button>
                           </td>
                           <td>
-                          <form action="{{url('deleteregion/'.$p->id)}}" method="POST" enctype="multipart/form-data">
+                          <form action="{{url('deletetambahlocation/'.$p->id)}}" method="POST" enctype="multipart/form-data">
                           @method('delete')
                           @csrf  
                           <button type="submit" class="btn btn-sm btn-danger btn-rounded btn-fw"><i class="mdi mdi-delete"></i></button>
@@ -751,10 +751,79 @@
       <form action="{{url('updatetambahprovince')}}" action="POST" enctype="multipart/form-data" id="formeditprovince">
         @csrf
       <div class="form-group">
-        <input type="text" name="idprovince" id="idprovince" readonly="">
-        <input type="text" name="idtravels" id="idtravels" readonly="">
+        <input type="hidden" name="idprovince" id="idprovince" readonly="">
+        <input type="hidden" name="idtravels" id="idtravels" readonly="">
+        </div>
+        <div class="form-group">
+        <select name="tambahprovince" class="form-control">
+          @foreach($provinceadd as $item)
+          <option value="{{$item->namaprovince}}" class="form-control">{{$item->namaprovince}}</option>
+          @endforeach
+        </select>
         </div>
         <button type="button" class="btn btn-primary btnupdateprovince">Update</button>
+        </form>
+        <br>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="editModalCity" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="btn-close" data-dismiss="modal">
+            </button>
+      </div>
+      <div class="modal-body">
+      <div class="form-group">
+      <form action="{{url('updatetambahlocation')}}" action="POST" enctype="multipart/form-data" id="formeditcity">
+        @csrf
+      <div class="form-group">
+        <input type="hidden" name="idcity" id="idcity" readonly="">
+        <input type="hidden" name="idtravell" id="idtravell" readonly="">
+        </div>
+        <div class="form-group">
+        <select name="tambahlocation" class="form-control">
+          @foreach($regionadd as $item)
+          <option value="{{$item->namaregion}}" class="form-control">{{$item->namaregion}}</option>
+          @endforeach
+        </select>
+        </div>
+        <button type="button" class="btn btn-primary btnupdatecity">Update</button>
+        </form>
+        <br>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="addModalCity" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="btn-close" data-dismiss="modal">
+            </button>
+      </div>
+      <div class="modal-body">
+      <div class="form-group">
+      <form action="{{url('addcity')}}" action="POST" enctype="multipart/form-data" id="formaddcity">
+        @csrf
+      <div class="form-group">
+        <input type="hidden" name="idtambahprovinces" id="idtambahprovinces" readonly="">
+        <input type="hidden" name="idwisatas" id="idwisatas" readonly="">
+        </div>
+        <div class="form-group">
+        <select name="tambahcity" class="form-control">
+          @foreach($regionadd as $item)
+          <option value="{{$item->namaregion}}" class="form-control">{{$item->namaregion}}</option>
+          @endforeach
+        </select>
+        </div>
+        <button type="button" class="btn btn-primary btnaddcity">Add</button>
         </form>
         <br>
         </div>
@@ -1173,18 +1242,102 @@
         });
 
         $(document).on('click', '.btnupdateprovince', function(){
-            var idoption=$('#formeditprovince').find('#iprovince').val()
-            var idtravel=$('#formeditprovince').find('#idtravel').val()
+            var idprovince=$('#formeditprovince').find('#iprovince').val()
+            var idtravels=$('#formeditprovince').find('#idtravels').val()
             let formData=$('#formeditprovince').serialize()
             //console.log(progid);
             console.log(formData)
 
             $.ajax({
-                url:'/updateoption/${idoption}',
+                url:'/updatetambahprovince/${idprovince}',
                 method:"PATCH",
                 data:formData,
                 success:function(data){
                     $('#editModalProvince').modal('hide')
+                    window.location.reload();
+                    
+                }
+            })
+        });
+    });
+    </script>
+
+<script>
+    $(document).ready(function(){
+        $(document).on('click', '.tambahcity', function(){
+            var idtambahprovinces=$(this).val();
+            $('#addModalCity').modal('show');
+            // const dateFormat="dddd, MMMM Do YYYY, h:mm";
+            $.ajax({
+                
+                type: "GET",
+                url:"/showedittambahprovince/"+idtambahprovinces,
+                success:function(response){
+                    //console.log(response.Rate.id);
+                     //$('#orderid').val(response.Order.OrderID);
+                     $('#idtambahprovinces').val(response.Province.id);
+                     $('#idwisatas').val(response.Province.wisata_id); 
+                }
+            });
+        });
+
+        $(".btn-close").click(function(){
+            $("#addModalCity").modal('hide');
+        });
+
+        $(document).on('click', '.btnaddcity', function(){
+            var idwisatas=$('#formaddcity').find('#idwisatas').val()
+            let formData=$('#formaddcity').serialize()
+            // console.log(formData);
+
+            $.ajax({
+                url:'{{url('addcity')}}',
+                method:"POST",
+                data:formData,
+                success:function(data){
+                    $('#Modalchild').modal('hide')
+                    window.location.assign('/paketwisata/edit/'+idwisatas);
+                }
+            })
+        });
+    });
+    </script>
+
+<script>
+    $(document).ready(function(){
+        $(document).on('click', '.btneditregion', function(){
+            var idcity=$(this).val();
+            $('#editModalCity').modal('show');
+            // const dateFormat="dddd, MMMM Do YYYY, h:mm";
+            $.ajax({
+                
+                type: "GET",
+                url:"/showedittambahlocation/"+idcity,
+                success:function(response){
+                    //console.log(response.Rate.id);
+                     //$('#orderid').val(response.Order.OrderID);
+                     $('#idcity').val(response.City.id);
+                     $('#idtravell').val(response.City.wisata_id); 
+                }
+            });
+        });
+
+        $(".btn-close").click(function(){
+            $("#editModalCity").modal('hide');
+        });
+
+        $(document).on('click', '.btnupdatecity', function(){
+            var idcity=$('#formeditcity').find('#idcity').val()
+            let formData=$('#formeditcity').serialize()
+            //console.log(progid);
+            console.log(formData)
+
+            $.ajax({
+                url:'/updatetambahlocation/${idcity}',
+                method:"PATCH",
+                data:formData,
+                success:function(data){
+                    $('#editModalCity').modal('hide')
                     window.location.reload();
                     
                 }

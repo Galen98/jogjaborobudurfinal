@@ -244,6 +244,7 @@ Route::get('/showeditcurrency/{RateID}', [App\Http\Controllers\BlogController::c
 Route::get('/showedittheme/{ThemeID}', [App\Http\Controllers\BlogController::class,'showedittheme']);
 Route::get('/showedittag/{TagID}', [App\Http\Controllers\BlogController::class,'showedittag']);
 Route::get('/showedittambahprovince/{ProvinceID}', [App\Http\Controllers\BlogController::class,'showedittambahprovince']);
+Route::get('/showedittambahlocation/{CityID}', [App\Http\Controllers\BlogController::class,'showedittambahlocation']);
 Route::get('/showeditdestination/{DestinationID}', [App\Http\Controllers\BlogController::class,'showeditdestination']);
 Route::get('/showeditinclude/{IncludeID}', [App\Http\Controllers\BlogController::class,'showeditinclude']);
 Route::get('/showeditjam/{JamID}', [App\Http\Controllers\BlogController::class,'showeditjam']);
@@ -370,6 +371,8 @@ Route::get('/region/form',function(){
 Route::post('insertregion', [BlogController::class, 'insertregion']);
 Route::post('/hapusprovince/{idprovince}', [App\Http\Controllers\BlogController::class,'hapusprovince']);
 Route::patch('/updateprovince/{provinceid}',[BlogController::class,'updateprovince']);
+Route::delete('/deletetambahprovince/{idprovince}',[BlogController::class,'deletetambahprovince']);
+Route::delete('/deletetambahlocation/{idcity}',[BlogController::class,'deletetambahlocation']);
 Route::get('/paketwisata/edit/buatlocation/{travelid}', [BlogController::class, 'formlocation']);
 Route::post('insertlocation', [BlogController::class, 'insertlocation']);
 Route::get('/region/page',function(){
@@ -486,6 +489,8 @@ Route::patch('/updatetheme/{idtheme}',[BlogController::class,'updatetheme']);
 Route::patch('/updatecategory/{iddestination}',[BlogController::class,'updatecategory']);
 Route::patch('/updateharga/{idharga}',[BlogController::class,'updateharga']);
 Route::patch('/updateoption/{idoption}',[BlogController::class,'updateoption']);
+Route::patch('/updatetambahprovince/{idprovince}',[BlogController::class,'updatetambahprovince']);
+Route::patch('/updatetambahlocation/{idcity}',[BlogController::class,'updatetambahlocation']);
 Route::patch('/updateinclude/{idinclude}',[BlogController::class,'updateinclude']);
 Route::patch('/updatedestinasi/{iddestination}',[BlogController::class,'updatedestinasi']);
 Route::patch('/updateseason/{idseason}',[BlogController::class,'updateseason']);
@@ -494,6 +499,7 @@ Route::patch('/updatetime/{idtime}',[BlogController::class,'updatetime']);
 Route::patch('/updateexclude/{idexclude}',[BlogController::class,'updateexclude']);
 Route::post('addinclude', [BlogController::class, 'addinclude']);
 Route::post('addtime', [BlogController::class, 'addtime']);
+Route::post('addcity', [BlogController::class, 'addcity']);
 Route::post('addhargaperson', [BlogController::class, 'addhargaperson']);
 Route::post('addhargachild', [BlogController::class, 'addhargachild']);
 Route::delete('deletetime/{idjam}', [BlogController::class, 'deletetime']);
