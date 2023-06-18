@@ -413,9 +413,9 @@
                 <table>
               <tbody>
               <tr>
-              <td><button type="button" class="btneditoption btn btn-sm btn-info btn-rounded btn-fw" style="color: white;" value="{{$item->id}}"><i class="mdi mdi-pencil-box" style="color: white;"></i> Edit</button></td>
+              <td><button type="button" class="btneditprovince btn btn-sm btn-info btn-rounded btn-fw" style="color: white;" value="{{$item->id}}"><i class="mdi mdi-pencil-box" style="color: white;"></i> Edit</button></td>
               <td>&nbsp;&nbsp;</td>
-              <td><form action="{{url('deleteoption/'.$item->id)}}" method="POST" enctype="multipart/form-data">
+              <td><form action="{{url('deleteprovince/'.$item->id)}}" method="POST" enctype="multipart/form-data">
                 @method('delete')
                 @csrf
                  <button type="submit" class="hapusbtn btn btn-sm btn-danger btn-rounded btn-fw" style="color: white;"><i class="mdi mdi-delete" style="color: white;"></i> Delete</button>
@@ -446,10 +446,10 @@
                           {{$p->namaregion ?? ''}}
                           </td>
                           <td>
-                          <button type="button" class="btnedit btn btn-sm btn-info btn-rounded btn-fw" style="color: white;" value="{{$p->id}}"><i class="mdi mdi-pencil-box" style="color: white;"></i></button>
+                          <button type="button" class="btneditregion btn btn-sm btn-info btn-rounded btn-fw" style="color: white;" value="{{$p->id}}"><i class="mdi mdi-pencil-box" style="color: white;"></i></button>
                           </td>
                           <td>
-                          <form action="{{url('deletehargaperson/'.$p->id)}}" method="POST" enctype="multipart/form-data">
+                          <form action="{{url('deleteregion/'.$p->id)}}" method="POST" enctype="multipart/form-data">
                           @method('delete')
                           @csrf  
                           <button type="submit" class="btn btn-sm btn-danger btn-rounded btn-fw"><i class="mdi mdi-delete"></i></button>
@@ -732,6 +732,30 @@
         </div>
         <button type="button" class="btn btn-primary btnhighlight">Post</button>
         </form> 
+        <br>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="editModalProvince" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="btn-close" data-dismiss="modal">
+            </button>
+      </div>
+      <div class="modal-body">
+      <div class="form-group">
+      <form action="{{url('updatetambahprovince')}}" action="POST" enctype="multipart/form-data" id="formeditprovince">
+        @csrf
+      <div class="form-group">
+        <input type="text" name="idprovince" id="idprovince" readonly="">
+        <input type="text" name="idtravels" id="idtravels" readonly="">
+        </div>
+        <button type="button" class="btn btn-primary btnupdateprovince">Update</button>
+        </form>
         <br>
         </div>
     </div>
@@ -1122,4 +1146,54 @@
             })
         });
         </script>
+
+<script>
+    $(document).ready(function(){
+        $(document).on('click', '.btneditprovince', function(){
+            var idoption=$(this).val();
+            $('#editModalProvince').modal('show');
+            // const dateFormat="dddd, MMMM Do YYYY, h:mm";
+            $.ajax({
+                
+                type: "GET",
+                url:"/showeditoption/"+idoption,
+                success:function(response){
+                    //console.log(response.Rate.id);
+                     //$('#orderid').val(response.Order.OrderID);
+                     $('#idoption').val(response.Option.id); 
+                    $('#judulsub').val(response.Option.judulsub);
+                    $('#short').val(response.Option.short);
+                    $('#idtravel').val(response.Option.wisata_id); 
+                    
+
+                  
+                  
+                }
+            });
+        });
+
+        $(".btn-close").click(function(){
+            $("#editModalProvince").modal('hide');
+        });
+
+        $(document).on('click', '.btnupdateprovince', function(){
+            var idoption=$('#formeditprovince').find('#iprovince').val()
+            var idtravel=$('#formeditprovince').find('#idtravel').val()
+            let formData=$('#formeditprovince').serialize()
+            //console.log(progid);
+            console.log(formData)
+
+            $.ajax({
+                url:'/updateoption/${idoption}',
+                method:"PATCH",
+                data:formData,
+                success:function(data){
+                    $('#editModalProvince').modal('hide')
+                    window.location.reload();
+                    
+                }
+            })
+        });
+    });
+    </script>
 @endsection

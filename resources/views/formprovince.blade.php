@@ -15,11 +15,11 @@
 
                     <div class="form-group">
                       <label for="exampleTextarea1">Short Description</label>
-                      <textarea class="form-control" style="height:400px" name="shortdescription" placeholder="Short Description" id="formcategory"></textarea>
+                      <textarea class="form-control" style="height:400px" name="shortdescription" placeholder="Short Description" id="formprovince"></textarea>
                     </div>
                     <div class="form-group">
                       <label>Upload Thumbnail</label>
-                        <input type="file" name="image" class="form-control formprovince" placeholder="Upload Gambar">
+                        <input type="file" id="files" name="image" class="form-control" placeholder="Upload Gambar">
                     </div>
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
                     <a href="/destination-category">Cancel</a>
@@ -41,5 +41,15 @@
                //alert("Required Min. 500 characters");
            }
        });
+</script>
+
+<script>
+  var uploadField5 = document.getElementById("files");
+uploadField5.onchange = function() {
+    if(this.files[0].size > 1999999){
+		swal("Ulangi!", "File terlalu besar", "error");
+       this.value = "";
+    };
+};
 </script>
 @endsection
