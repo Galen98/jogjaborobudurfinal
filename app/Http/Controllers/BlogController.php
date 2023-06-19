@@ -130,6 +130,17 @@ class BlogController extends Controller
         return redirect()->to('/province/page');
     }
 
+    public function hapusregion(Request $request,$idregions){
+        $idregions=Request('idregions');
+        $namaregiones=Request('namaregiones');
+        $images=region::where('id',$idregions)->first();
+        File::delete('public/img/'.$images->image);
+        region::where('id',$idregions)->delete();
+        tambahlocation::where('namaregion', $namaregiones)->delete();
+        Alert::error('Telah Dihapus');
+        return redirect()->to('/region/page');
+    }
+
     public function hapustag(Request $request,$idtags){
         $idtags=Request('idtags');
         $tagblog=tags::where('id',$idtags)->pluck('tags');
@@ -174,6 +185,14 @@ class BlogController extends Controller
         return response()->json([
         'status'=>200,
         'Province'=>$Province
+        ]);
+    }
+
+    public function showdeleteregion($RegionID){
+        $City=DB::table('region')->where('id',$RegionID)->first();
+        return response()->json([
+        'status'=>200,
+        'City'=>$City
         ]);
     }
 
@@ -465,6 +484,22 @@ class BlogController extends Controller
         'slugprovince'=>\Str::slug($request->namaprovinces)
        ]);       
     }
+
+    public function updateregion(Request $request,$regionid){
+        $regionid = Request('regionid');
+        $namaregion=$request->namaregion;
+        $Region = region::where('id', $regionid)
+        ->update([
+         'namaregion' => $request->namaregions,
+         'shortdescription' => $request->shorts,
+         'slugregion'=>\Str::slug($request->namaregions)
+        ]);
+        $addregion = tambahlocation::where('namaregion',$namaregion)
+        ->update([
+         'namaregion' => $request->namaregions,
+         'slugregion'=>\Str::slug($request->namaregions)
+        ]);       
+     }
 
     public function updatetheme(Request $request,$idtheme){
         $idtheme = Request('idtheme');

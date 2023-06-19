@@ -239,6 +239,7 @@ Auth::routes();
 Route::get('/showhapusblog/{BlogID}', [App\Http\Controllers\BlogController::class,'showhapusblog']);
 Route::get('/showdetailbooking/{BookingID}', [App\Http\Controllers\BlogController::class,'showdetailbooking']);
 Route::get('/showdeleteprovince/{ProvinceID}', [App\Http\Controllers\BlogController::class,'showdeleteprovince']);
+Route::get('/showdeleteregion/{RegionID}', [App\Http\Controllers\BlogController::class,'showdeleteregion']);
 Route::get('/showhapuslanguage/{LanguageID}', [App\Http\Controllers\BlogController::class,'showhapuslanguage']);
 Route::get('/showeditcurrency/{RateID}', [App\Http\Controllers\BlogController::class,'showeditcurrency']);
 Route::get('/showedittheme/{ThemeID}', [App\Http\Controllers\BlogController::class,'showedittheme']);
@@ -370,7 +371,9 @@ Route::get('/region/form',function(){
 });
 Route::post('insertregion', [BlogController::class, 'insertregion']);
 Route::post('/hapusprovince/{idprovince}', [App\Http\Controllers\BlogController::class,'hapusprovince']);
+Route::post('/hapusregion/{idregions}', [App\Http\Controllers\BlogController::class,'hapusregion']);
 Route::patch('/updateprovince/{provinceid}',[BlogController::class,'updateprovince']);
+Route::patch('/updateregion/{regionid}',[BlogController::class,'updateregion']);
 Route::delete('/deletetambahprovince/{idprovince}',[BlogController::class,'deletetambahprovince']);
 Route::delete('/deletetambahlocation/{idcity}',[BlogController::class,'deletetambahlocation']);
 Route::get('/paketwisata/edit/buatlocation/{travelid}', [BlogController::class, 'formlocation']);

@@ -203,6 +203,5 @@
                 }
             })
         });
-        </script>
-        
+        </script>        
 @endsection
