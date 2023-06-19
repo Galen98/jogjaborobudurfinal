@@ -87,11 +87,9 @@ font-family: 'GT Eesti Text Trial', sans-serif;
 	<!-- <div id="page"> -->
     @yield('nav')
 	   @yield('content')
-    
-
-	
-
-	
+     
+     
+     
     <footer id="gtco-footer" role="contentinfo" style="background-color:#fc2c04;padding:0px;">
     <div class="gtco-container">
       <div class="row row-p b-md">

@@ -139,8 +139,8 @@ font-family: 'GT Eesti Text Trial', sans-serif;
             </span>
             </button>
             <div class="dropdown-menu">
-            @foreach($province as $item)
-            <a class="dropdown-item" href="/location/{{$item->slugprovince}}{{$item->id}}">{{$item->namaprovince}}</a>
+            @foreach($provinces as $item)
+            <a class="dropdown-item" href="/location/{{$item->slugprovince}}/{{$item->id}}">{{$item->namaprovince}}</a>
             @endforeach
             </div>
           </div>
@@ -181,8 +181,8 @@ font-family: 'GT Eesti Text Trial', sans-serif;
              <i class="fa fa-compass" aria-hidden="true" style="font-size:20px;"></i> Destinations
             </button>
             <div class="dropdown-menu">
-            @foreach($province as $item)
-            <a class="dropdown-item" href="/location/{{$item->slugprovince}}{{$item->id}}">{{$item->namaprovince}}</a>
+            @foreach($provinces as $item)
+            <a class="dropdown-item" href="/location/{{$item->slugprovince}}/{{$item->id}}">{{$item->namaprovince}}</a>
             @endforeach
             </div>
           </div>
@@ -217,12 +217,12 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   </li> 
   @foreach($province as $item)
   <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42>
- <span itemprop="name" data-v-2833ce42><a href="/location/{{$item->slugprovince}}{{$item->id}}">{{$item->namaprovince}}</a></span>
+ <span itemprop="name" data-v-2833ce42><a href="/location/{{$item->slugprovince}}/{{$item->id}}">{{$item->namaprovince}}</a></span>
   </li> 
   @endforeach 
   @foreach($region as $item)
   <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42>
- <span itemprop="name" data-v-2833ce42><a href="">{{$item->namaregion}}</a></span>
+ <span itemprop="name" data-v-2833ce42><a href="/city/{{$item->slugregion}}">{{$item->namaregion}}</a></span>
   </li> 
   @endforeach 
   <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42>
@@ -244,7 +244,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   <h1 data-test-id="collection-title" class="collection-header_title" data-v-76e871e0>
       {{$item->namawisata}}
     </h1> 
-  <div class="activity__header" data-v-c4be1764><!----> 
+  <div class="activity__header" data-v-c4be1764>
   <div data-track="activity-rating" data-test-id="activity-rating" class="activity__rating--container" data-v-c4be1764>
   <div class="activity__rating">
   <div class="rating-star">

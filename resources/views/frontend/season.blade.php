@@ -49,7 +49,7 @@
             </button>
             <div class="dropdown-menu">
             @foreach($province as $item)
-            <a class="dropdown-item" href="/location/{{$item->slugprovince}}{{$item->id}}">{{$item->namaprovince}}</a>
+            <a class="dropdown-item" href="/location/{{$item->slugprovince}}/{{$item->id}}">{{$item->namaprovince}}</a>
             @endforeach
             </div>
           </div>
@@ -91,7 +91,7 @@
             </button>
             <div class="dropdown-menu">
             @foreach($province as $item)
-            <a class="dropdown-item" href="/location/{{$item->slugprovince}}{{$item->id}}">{{$item->namaprovince}}</a>
+            <a class="dropdown-item" href="/location/{{$item->slugprovince}}/{{$item->id}}">{{$item->namaprovince}}</a>
             @endforeach
             </div>
           </div>
