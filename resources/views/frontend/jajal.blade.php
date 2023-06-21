@@ -213,20 +213,20 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   <section class="activity__breadcrumbs" data-v-c4be1764>
   <ul itemscope="itemscope" itemtype="https://schema.org/BreadcrumbList" class="activity-breadcrumbs" data-v-2833ce42 data-v-c4be1764>
   <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42>
- <span itemprop="name" data-v-2833ce42><a href="/">Home</a></span>
+ <span itemprop="name" data-v-2833ce42><a href="/" style="color:grey;">Home</a></span>
   </li> 
   @foreach($province as $item)
   <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42>
- <span itemprop="name" data-v-2833ce42><a href="/location/{{$item->slugprovince}}/{{$item->id}}">{{$item->namaprovince}}</a></span>
+ <span itemprop="name" data-v-2833ce42><a href="/location/{{$item->slugprovince}}/{{$item->id}}" style="color:grey;">{{$item->namaprovince}}</a></span>
   </li> 
   @endforeach 
   @foreach($region as $item)
   <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42>
- <span itemprop="name" data-v-2833ce42><a href="/city/{{$item->slugregion}}">{{$item->namaregion}}</a></span>
+ <span itemprop="name" data-v-2833ce42><a href="/city/{{$item->slugregion}}" style="color:grey;">{{$item->namaregion}}</a></span>
   </li> 
   @endforeach 
   <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42>
-  @foreach($destinasi as $item)<span itemprop="name" data-v-2833ce42><a href="{{'/category-destination/' .$item->id}}">{{$item->destination}}</a></span>@endforeach 
+  @foreach($destinasi as $item)<span itemprop="name" data-v-2833ce42><a href="{{'/category-destination/' .$item->id}}" style="color:grey;">{{$item->destination}}</a></span>@endforeach 
   </li> 
   <!-- <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42>
   @foreach($season as $item)<span itemprop="name" data-v-2833ce42><a href="{{'/season/' .$item->id}}">{{$item->namaseason}}</a></span>@endforeach 
@@ -237,7 +237,8 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   <span itemprop="name" data-v-2833ce42>{{$item->namawisata}}</span>@endforeach
   <meta itemprop="position" content="3" data-v-2833ce42>
   </li>  -->
-  </ul></section> 
+  </ul>
+</section> 
   
   <section class="activity__today-tomorrow-badge-container" data-v-c4be1764></section> 
   <section class="activity__header" data-v-c4be1764><div class="activity__header--column" data-v-c4be1764>
@@ -266,13 +267,20 @@ font-family: 'GT Eesti Text Trial', sans-serif;
       <img src="{{asset('traveler')}}/images/duration.png" width="20" height="20" style="margin-top:10px;"> <p style="margin-top: 10px;">Duration: {{$item->durasi}}</p>  
       @endforeach
   <span class="gtm-trigger__adp-total-reviews-btn">
-    </span></p></div></div> 
+    </span>
+  </p>
+  </div>
+</div> 
   <section class="activity__supplier-info activity__supplier-info--large" data-v-c4be1764>
   <div data-test-id="activity-provider" class="supplier-name" data-v-5db601b6 data-v-c4be1764>
   <span class="visibility-pixel" data-v-c68e7552 data-v-5db601b6></span> 
   <small class="supplier-name__label" data-v-5db601b6>
    
-    </small></div></section></div></div>
+    </small>
+  </div>
+</section>
+</div>
+</div>
   </section> 
   <section data-track="activity-header" data-test-id="activity-photo-gallery" class="activity__row activity__photo-gallery" data-v-c4be1764>
   <div data-v-e0177802 data-v-c4be1764>
@@ -367,14 +375,46 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   <button class="photo-collage__show-all">
       Click to see all images
     </button></div>
-  <div class="photo-gallery__overlay"> <!----></div> 
-  </div> <!----></div></section> 
-  <section class="activity__broadcast" data-v-c4be1764><!----></section>
+  <div class="photo-gallery__overlay"> 
+  </div> 
+  </div> 
+</div>
+</section> 
+  <section class="activity__broadcast" data-v-c4be1764>
+
+  </section>
 
   <section data-test-id="activity-category" class="activity__category-label activity__category-label--mobile" data-v-c4be1764>
   <span class="c-classifier-badge" data-v-c4be1764>
-     
-    </span></section>
+  <ul itemscope="itemscope" itemtype="https://schema.org/BreadcrumbList" class="activity-breadcrumbs" data-v-2833ce42 data-v-c4be1764 style="font-size:10px;">
+  <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42>
+ <span itemprop="name" data-v-2833ce42><a href="/" style="color:grey;text-transform:capitalize;">Home</a></span>
+  </li> 
+  @foreach($province as $item)
+  <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42>
+ <span itemprop="name" data-v-2833ce42><a href="/location/{{$item->slugprovince}}/{{$item->id}}" style="color:grey;text-transform:capitalize;">{{$item->namaprovince}}</a></span>
+  </li> 
+  @endforeach 
+  @foreach($region as $item)
+  <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42>
+ <span itemprop="name" data-v-2833ce42><a href="/city/{{$item->slugregion}}" style="color:grey;text-transform:capitalize;">{{$item->namaregion}}</a></span>
+  </li> 
+  @endforeach 
+  <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42>
+  @foreach($destinasi as $item)<span itemprop="name" data-v-2833ce42><a href="{{'/category-destination/' .$item->id}}" style="color:grey;text-transform:capitalize;">{{$item->destination}}</a></span>@endforeach 
+  </li> 
+  <!-- <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42>
+  @foreach($season as $item)<span itemprop="name" data-v-2833ce42><a href="{{'/season/' .$item->id}}">{{$item->namaseason}}</a></span>@endforeach 
+  <meta itemprop="position" content="2" data-v-2833ce42>
+  </li> 
+  <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42>
+  @foreach($travel as $item)
+  <span itemprop="name" data-v-2833ce42>{{$item->namawisata}}</span>@endforeach
+  <meta itemprop="position" content="3" data-v-2833ce42>
+  </li>  -->
+  </ul>
+    </span>
+  </section>
      <!----> 
      @foreach($travel as $item)
      
