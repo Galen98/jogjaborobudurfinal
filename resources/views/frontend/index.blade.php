@@ -1,5 +1,4 @@
 @extends('frontend.forindex')
-
 @section('header')
 @foreach($background as $item)
 	<header id="gtco-header" class="gtco-cover" role="banner" style="background-image:linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) ,url({{ url('public/img/'.$item->image) }});height: 643px;overflow: hidden;">
@@ -136,7 +135,6 @@
 				</div>
 			</div>
       @endforeach
-		
 	</header>
 	@endsection
 	@section('content')
@@ -153,7 +151,7 @@
 
 
   <div id="gyg" data-server-rendered="true"> 
-  <div class="new-homepage-layout main-wrapper  partner-left-layout" data-v-1e9f5217><!----> <!----> <!----> <!----> 
+  <div class="new-homepage-layout main-wrapper  partner-left-layout" data-v-1e9f5217>
   <a href="#main-content" class="skip-link">Skip to content</a> 
   <main id="main-content" class="home-page">
 <div class="activities" data-v-680034d2 data-v-1e9f5217>
@@ -161,8 +159,8 @@
     <div class="collection-header" data-v-76e871e0><div class="collection-header--title-container" data-v-76e871e0>
     <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0>
         Our Top Tour
-      </span> <!---->
-    </div> <!---->
+      </span> 
+    </div>
     </div> 
     <div class="collection-body" data-v-76e871e0>
     <div class="collection-body--horizontal" data-v-76e871e0>
@@ -199,13 +197,13 @@
       <span class="vertical-activity-card__badges">
       <span class="vertical-activity-card__ltso-badge c-marketplace-badge c-marketplace-badge--primary">
               Likely to sell out
-            </span> <!----> <!----> <!---->
+            </span> 
       </span>
       @elseif($item->label == 'Bestseller')
       <span class="vertical-activity-card__badges">
       <span class="vertical-activity-card__ltso-badge c-marketplace-badge c-marketplace-badge--primary" style="background-color: green;">
               Bestseller
-            </span> <!----> <!----> <!---->
+            </span> 
       </span>
       @endif
       </div>

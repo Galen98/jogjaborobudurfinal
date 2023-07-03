@@ -386,7 +386,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
 
   <section data-test-id="activity-category" class="activity__category-label activity__category-label--mobile" data-v-c4be1764>
   <span class="c-classifier-badge" data-v-c4be1764>
-  <ul itemscope="itemscope" itemtype="https://schema.org/BreadcrumbList" class="activity-breadcrumbs" data-v-2833ce42 data-v-c4be1764 style="font-size:10px;">
+  <ul itemscope="itemscope" itemtype="https://schema.org/BreadcrumbList" class="activity-breadcrumbs" data-v-2833ce42 data-v-c4be1764 style="font-size:14px;">
   <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42>
  <span itemprop="name" data-v-2833ce42><a href="/" style="color:grey;text-transform:capitalize;">Home</a></span>
   </li> 

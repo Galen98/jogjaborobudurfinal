@@ -380,12 +380,13 @@ Route::delete('/deletetambahprovince/{idprovince}',[BlogController::class,'delet
 Route::delete('/deletetambahlocation/{idcity}',[BlogController::class,'deletetambahlocation']);
 Route::get('/paketwisata/edit/buatlocation/{travelid}', [BlogController::class, 'formlocation']);
 Route::post('insertlocation', [BlogController::class, 'insertlocation']);
-Route::get('/region/page',function(){
+Route::get('/region',function(){
     $region=region::get();
     return view('region', compact('region'));
 });
+Route::get('/region/edit/{regionid}', [BlogController::class,'editregion']);
 
-Route::get('/province/page',function(){
+Route::get('/province',function(){
     $province=province::get();
     return view('province', compact('province'));
 });

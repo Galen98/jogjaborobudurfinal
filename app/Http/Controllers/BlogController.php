@@ -127,7 +127,7 @@ class BlogController extends Controller
         }
         tambahprovince::where('namaprovince',$namaprovince)->delete();
         Alert::error('Telah Dihapus');
-        return redirect()->to('/province/page');
+        return redirect()->to('/province');
     }
 
     public function hapusregion(Request $request,$idregions){
@@ -138,7 +138,7 @@ class BlogController extends Controller
         region::where('id',$idregions)->delete();
         tambahlocation::where('namaregion', $namaregiones)->delete();
         Alert::error('Telah Dihapus');
-        return redirect()->to('/region/page');
+        return redirect()->to('/region');
     }
 
     public function hapustag(Request $request,$idtags){
@@ -486,19 +486,33 @@ class BlogController extends Controller
     }
 
     public function updateregion(Request $request,$regionid){
+        $img= request('image');
         $regionid = Request('regionid');
         $namaregion=$request->namaregion;
+        if($img == null){
+            $nama_file=$request->namagambar;
+        }
+        else{
+            $images = region::where('id', $regionid)->first();
+            File::delete('public/img/'.$images->image);
+            $nama_file = time()."_".$img->getClientOriginalName();
+            $tujuan_upload = 'public/img';
+            $img->move($tujuan_upload,$nama_file);
+        }
         $Region = region::where('id', $regionid)
         ->update([
          'namaregion' => $request->namaregions,
          'shortdescription' => $request->shorts,
-         'slugregion'=>\Str::slug($request->namaregions)
+         'slugregion'=>\Str::slug($request->namaregions),
+         'image'=>$nama_file
         ]);
         $addregion = tambahlocation::where('namaregion',$namaregion)
         ->update([
          'namaregion' => $request->namaregions,
          'slugregion'=>\Str::slug($request->namaregions)
         ]);       
+        Alert::success('Berhasil','Berhasil Diupdate');
+        return redirect()->to('/region');
      }
 
     public function updatetheme(Request $request,$idtheme){
@@ -1628,10 +1642,8 @@ class BlogController extends Controller
         $short=$request->shortdescription;
         $img= request('image');
         $nama_file = time()."_".$img->getClientOriginalName();
-        $gambar = Image::make($img);
-        $gambar->resize(600,600);
-        $tujuan_upload = public_path('public/img/');
-        $gambar->save($tujuan_upload .$nama_file); 
+		$tujuan_upload = 'public/img';
+        $img->move($tujuan_upload,$nama_file);
 
         $data = [
             'namaregion'=>$region,
@@ -1641,7 +1653,12 @@ class BlogController extends Controller
         ];
         region::create($data);
         Alert::success('Berhasil Ditambahkan');
-        return redirect()->to('/region/page');
+        return redirect()->to('/region');
+    }
+
+    public function editregion(Request $request, $regionid){
+        $region=region::where('id', $regionid)->get();
+        return view('formeditregion', compact('region'));
     }
 
     public function insertprovince(Request $request){
@@ -1662,7 +1679,7 @@ class BlogController extends Controller
         ];
         province::create($data);
         Alert::success('Berhasil Ditambahkan');
-        return redirect()->to('/province/page');
+        return redirect()->to('/province');
     }
 
     public function formlocation($travelid){

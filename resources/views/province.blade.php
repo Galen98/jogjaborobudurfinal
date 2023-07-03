@@ -152,7 +152,7 @@
                 data:formData,
                 success:function(data){
                     $('#hapus').modal('hide')
-                    window.location.assign('/province/page');
+                    window.location.assign('/province');
                 }
             });
         });
@@ -199,7 +199,7 @@
                 data:formData,
                 success:function(data){
                     $('#editModal').modal('hide')
-                    window.location.assign('/province/page');
+                    window.location.assign('/province');
                 }
             })
         });

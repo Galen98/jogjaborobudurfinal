@@ -1,11 +1,14 @@
 @extends('frontend.forcity')
-@section('nav')
-<header data-test-id="page-header" class="page-header light" data-v-3a2bcacc style="background-color:#fc2c04;margin-top: 0px;">
-<div class="page-header__content" data-v-3a2bcacc >
+@section('header')
+@foreach($regions as $item)
+	<header id="gtco-header" class="gtco-cover" role="banner" style="background-image:linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) ,url({{ url('public/img/'.$item->image) }});height: 643px;overflow: hidden;">
+    <div>
+      <div>
+        @endforeach
+    <div class="page-header__content" data-v-3a2bcacc >
   <a href="/" data-test-id="page-header-logo" class="page-header__logo-link" data-v-3a2bcacc style="margin-top: 10px;">
-  <img src="{{asset('spica')}}/images/logomini.png" alt="logo" height="50" width="100" />
+  <img src="{{asset('spica')}}/images/logomini.png" alt="logo" height="50" width="100" style="margin-left:5px;"/>
   </a> 
-  
   <nav data-test-id="page-header-nav" class="navigation page-header__navigation light" data-v-3a2bcacc >
   <ul class="navigation__list">
   <li data-test-id="header-navigation-search" class="navigation__list-item-parent item__search">
@@ -109,33 +112,47 @@
     </ul>
     </nav>
     </div>
-    </header>
-  @endsection
-  @section('content')
-@include('sweetalert::alert')
+  </div>
+  </div>
+		@foreach($regions as $item)
+    <div class="gtco-container">
+      <div class="row">
+        <div class="col-md-12 col-md-offset-0 text-left">
+          <div class="row row-mt-15em">
 
+            <div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
+            <h3 style="color: white;font-size:70px;">{{$item->namaregion}}</h3>
+            <h2>{{$item->shortdescription}}</h2>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+</div>
+      @endforeach
+		
+	</header>
+	@endsection
+  @section('content')
+  
+@include('sweetalert::alert')
 @if(count($count) === 0)
 <div class="gtco-section">
-		<div class="container">
-			
+		<div class="container">	
 			<div class="row">
     <div class="col-lg-4 col-md-12">
-
     </div>
-
     <div class="col-lg-4 col-md-6">
     	<img src="{{asset('traveler')}}/images/nodata.jpg">
     </div>
-
     <div class="col-lg-4 col-md-6">
-
     </div>
   </div>
   </div>
 </div>
 @endif
 @if(count($count) > 0)
-<div class="wrapper" style="margin-top:-21px;margin-left: 30px;">
+<div class="wrapper" style="margin-left: 30px;">
       <div class="icon"><i id="left" class="fa-solid fa-angle-left"></i></div>
       <ul class="tabs-box">
         @foreach($season as $item)
@@ -145,7 +162,7 @@
       <div class="icon"><i id="right" class="fa-solid fa-angle-right"></i></div>
     </div>
     
-<div id="gyg" data-server-rendered="true" style="margin-top:-25px;margin-bottom: -40px;">
+<div id="gyg" data-server-rendered="true">
   <div class="new-homepage-layout main-wrapper  partner-left-layout" data-v-1e9f5217>
   <main id="main-content" class="home-page">
 <div class="activities" data-v-680034d2 data-v-1e9f5217>
@@ -314,7 +331,7 @@
       </span> 
     </div> 
     </div> 
-</section>
+  </section>
 
     <div class="gtco-section">
 		<div class="gtco-container">

@@ -13,13 +13,13 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/province/page">
+          <a class="nav-link" href="/province">
             <i class="mdi mdi-google-maps menu-icon"></i>
             <span class="menu-title">Province</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/region/page">
+          <a class="nav-link" href="/region">
             <i class="mdi mdi-map menu-icon"></i>
             <span class="menu-title">City</span>
           </a>

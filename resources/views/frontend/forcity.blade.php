@@ -70,6 +70,16 @@
   'opsz' 48
 }
 </style>
+<style type="text/css">
+  .drops button{
+    background-color: transparent !important;
+    border-color: transparent !important;
+  }
+
+  .dropdown-menu a{
+    color: black;
+  }
+</style>
   <style type="text/css">
   @import url('https://fonts.cdnfonts.com/css/gt-eesti-display-trial');
 .btn{
@@ -84,6 +94,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
 	<body>
 	<!-- <div id="page"> -->
     @yield('nav')
+    @yield('header')
 	   @yield('content')
      
      

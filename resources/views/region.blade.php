@@ -52,8 +52,10 @@
                          {{$item->namaregion ?? ''}}
                           </td>
                           <td>
-                          <button type="button" class="editbtn btn btn-sm btn-info btn-rounded btn-fw" style="color: white;" value="{{$item->id}}">
+                          <form action="{{'region/edit/'.$item->id}}" method="GET">
+                          <button type="submit" class="btn btn-sm btn-info btn-rounded btn-fw" style="color: white;" value="{{$item->id}}">
                           <i class="mdi mdi-pencil-box" style="color: white;"></i> Edit</button>
+                          </form>
                           </td>
                           <td>
                     
@@ -161,7 +163,7 @@
                 data:formData,
                 success:function(data){
                     $('#editModal').modal('hide')
-                    window.location.assign('/region/page');
+                    window.location.assign('/region');
                 }
             })
         });
@@ -195,7 +197,7 @@
                 data:formData,
                 success:function(data){
                     $('#hapus').modal('hide')
-                    window.location.assign('/region/page');
+                    window.location.assign('/region');
                 }
             });
         });
