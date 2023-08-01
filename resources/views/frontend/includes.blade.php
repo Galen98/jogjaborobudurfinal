@@ -95,7 +95,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
      @yield('content')
     
 
-    <footer id="gtco-footer" role="contentinfo" style="background-color:#fc2c04;padding:0px;">
+    <footer id="gtco-footer" role="contentinfo" style="background-color:#fc2c04;padding:0px;" >
     <div class="gtco-container">
       <div class="row row-p b-md">
         <div class="col-md-3"  style="margin-top:50px;">
