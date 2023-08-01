@@ -420,16 +420,24 @@
         </div>
     @foreach($province as $item)
     <div class="col-lg-4 col-md-4 col-sm-6">
-    <a href="/location/{{$item->slugprovince}}/{{$item->id}}">
-      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto ">
+    <!-- <a href="/location/{{$item->slugprovince}}/{{$item->id}}">
+      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto">
          <article class="text-left">
             <h2>{{$item->namaprovince}}</h2>
             <h4>{!! $item->shortdescription !!}</h4>
          </article>
-         <img src="{{ url('public/img/'.$item->image) }}" alt="{{$item->province}}">
+         <img src="https://i0.wp.com/www.mediainfo.id/wp-content/uploads/2022/01/Travel-Pekalongan-Jogja.webp" alt="{{$item->province}}">
+      </div>
+      </a> -->
+      <a href="/location/{{$item->slugprovince}}/{{$item->id}}">
+      <div class="hover hover-2 text-white rounded"><img src="{{ url('public/img/'.$item->image) }}" alt="{{$item->namaprovince}}"/>
+          <div class="hover-overlay"></div>
+          <div class="hover-2-content px-5 py-4">
+            <h4 class="hover-2-title text-capitalize font-weight-bold mb-0" style="font-size:24px;color:white;"> {{$item->namaprovince}}</h4>
+          </div>
+        </div>
       </div>
       </a>
-      </div>
       @endforeach
 </div>
 </div>

@@ -134,7 +134,6 @@
 	</header>
 	@endsection
   @section('content')
-  
 @include('sweetalert::alert')
 @if(count($count) === 0)
 <div class="gtco-section">

@@ -300,7 +300,7 @@
         </div>
     @foreach($destination as $item)
     <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:40px;">
-    <a href="{{'/category-destination/' .$item->id}}">
+    <!-- <a href="{{'/category-destination/' .$item->id}}">
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto " style="margin-bottom:40px;">
          <article class="text-left">
             <h2>{{$item->destination}}</h2>
@@ -308,7 +308,18 @@
          </article>
          <img src="{{ url('public/img/'.$item->image) }}" alt="{{$item->destination}}">
       </div>
-      </a>
+      </a> -->
+      <a href="{{'/category-destination/' .$item->id}}">
+      <div class="hover hover-2 text-white rounded" >
+        <img src="{{ url('public/img/'.$item->image) }}" alt="{{$item->destination}}"  />
+          <div class="hover-overlay"></div>
+          <div class="hover-2-content px-5 py-4">
+            <h4 class="hover-2-title text-capitalize font-weight-bold mb-0" style="font-size:24px;color:white;"> {{$item->destination}}</h4>
+          </div>
+        </div>
+        </a>
+      </div>
+      
       </div>
       @endforeach
 </div>

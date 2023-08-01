@@ -91,6 +91,8 @@ font-family: 'GT Eesti Text Trial', sans-serif;
 .gtco-footer-links li{
   font-size: 18px;
 }
+
+
 </style>
 	</head>
   
