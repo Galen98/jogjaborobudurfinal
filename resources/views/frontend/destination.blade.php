@@ -299,7 +299,7 @@
       </span>
         </div>
     @foreach($destination as $item)
-    <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:40px;">
+    <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:60px;max-height:300px;">
     <!-- <a href="{{'/category-destination/' .$item->id}}">
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto " style="margin-bottom:40px;">
          <article class="text-left">

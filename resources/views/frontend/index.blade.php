@@ -419,7 +419,7 @@
       </span>
         </div>
     @foreach($province as $item)
-    <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:10px;">
+    <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:10px;max-height:300px;">
     <!-- <a href="/location/{{$item->slugprovince}}/{{$item->id}}">
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto">
          <article class="text-left">
