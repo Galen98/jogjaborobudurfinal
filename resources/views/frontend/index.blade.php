@@ -418,7 +418,7 @@
         Choose Your Destination
       </span>
         </div>
-    @foreach($province as $item)
+    @foreach($provinces as $item)
     <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:10px;max-height:300px;">
     <!-- <a href="/location/{{$item->slugprovince}}/{{$item->id}}">
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto">
@@ -436,8 +436,9 @@
             <h4 class="hover-2-title text-capitalize font-weight-bold mb-0" style="font-size:24px;color:white;"> {{$item->namaprovince}}</h4>
           </div>
         </div>
+        </a>
       </div>
-      </a>
+      
       @endforeach
 </div>
 </div>

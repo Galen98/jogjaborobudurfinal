@@ -439,7 +439,7 @@ class TravelController extends Controller
     // $English = travel::where("bahasa",$sessions)->first()->bahasa;
     $province=province::get();
     $travel=travel::orderBy('created_at','DESC')->where('bahasa',$sessions)->paginate(8);
-    $destination = destination::all()->take(3);
+    $destination = province::all()->take(3);
     return view('frontend.destination', compact('seasones','travel','rateIDR','rateMYR','rateSGD','session','rateEUR','destination','destinate','bahasa','sessions','session','province'));
     }
 

@@ -79,6 +79,7 @@ Route::get('/', function (Request $request) {
     $bahasa=bahasa::get();
     $destinate=destination::get();
     $province=province::get();
+    $provinces=province::paginate(3);
     $destination=destination::paginate(3);
     $rateIDR = Rate::where("currency", "IDR")->first()->rate;
     $rateSGD = Rate::where("currency", "SGD")->first()->rate;
@@ -92,7 +93,7 @@ Route::get('/', function (Request $request) {
     //$traveltop=travel::paginate(8);
     $other=travel::orderBy('created_at','DESC')->where('label','Likely to sell out')->where('bahasa', $sessions)->paginate(4);
     $blog=blog::orderBy('created_at','DESC')->where('bahasa', $sessions)->paginate(3);
-    return view('frontend.index', compact('province','sessions','traveltop','other','blog',"rateIDR", "rateSGD", "rateMYR", "session","rateEUR","destination",'destinate','season','bahasa','background'));
+    return view('frontend.index', compact('provinces','province','sessions','traveltop','other','blog',"rateIDR", "rateSGD", "rateMYR", "session","rateEUR","destination",'destinate','season','bahasa','background'));
 });
 
 
