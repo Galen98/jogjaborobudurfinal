@@ -62,7 +62,7 @@
             </span>
             </button>
             <div class="dropdown-menu">
-            @foreach($season as $item)
+            @foreach($seasones as $item)
             <a class="dropdown-item" href="{{'/season/' .$item->id}}">{{$item->namaseason}}</a>
             @endforeach
             </div>
