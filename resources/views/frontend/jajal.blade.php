@@ -131,7 +131,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
           </div>
   </li>
 
-  <li data-test-id="header-navigation-search" class="navigation__list-item-parent item__search" style="margin-left:-35px;margin-right:-15px;" >
+  <li data-test-id="header-navigation-search" class="navigation__list-item-parent item__search" style="margin-left:-35px;" >
   <div class="dropdown drops">
             <button class="btn btn-sm btn-secondary" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color:#fc2c04;color: white;border-color:#fc2c04;" >
             <span class="material-symbols-outlined" style="font-size: 26px;">
@@ -145,7 +145,20 @@ font-family: 'GT Eesti Text Trial', sans-serif;
             </div>
           </div>
   </li>
-
+  <li data-test-id="header-navigation-search" class="navigation__list-item-parent item__search" style="margin-left:-35px;margin-right:-15px;" >
+  <div class="dropdown drops">
+            <button class="btn btn-sm btn-secondary" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color:#fc2c04;color: white;border-color:#fc2c04;" >
+            <span class="material-symbols-outlined">
+            travel_explore
+            </span>
+            </button>
+            <div class="dropdown-menu">
+            @foreach($seasones as $item)
+            <a class="dropdown-item" href="{{'/season/' .$item->id}}">{{$item->namaseason}}</a>
+            @endforeach
+            </div>
+          </div>
+  </li>
   
   <li tabindex="0" data-test-id="header-navigation-pickers" class="item__dropdown item__dropdown--language js-navigation-language-dropdown hide-language">
      <div class="dropdown drops">

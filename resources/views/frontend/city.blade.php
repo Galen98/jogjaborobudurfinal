@@ -43,7 +43,7 @@
           </div>
   </li>
 
-  <li data-test-id="header-navigation-search" class="navigation__list-item-parent item__search" style="margin-left:-35px;margin-right:-15px;" >
+  <li data-test-id="header-navigation-search" class="navigation__list-item-parent item__search" style="margin-left:-35px;" >
   <div class="dropdown drops">
             <button class="btn btn-sm btn-secondary" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color:#fc2c04;color: white;border-color:#fc2c04;" >
             <span class="material-symbols-outlined" style="font-size: 26px;">
@@ -57,6 +57,21 @@
             </div>
           </div>
   </li>
+  <li data-test-id="header-navigation-search" class="navigation__list-item-parent item__search" style="margin-left:-35px;margin-right:-15px;" >
+  <div class="dropdown drops">
+            <button class="btn btn-sm btn-secondary" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color:#fc2c04;color: white;border-color:#fc2c04;" >
+            <span class="material-symbols-outlined">
+            travel_explore
+            </span>
+            </button>
+            <div class="dropdown-menu">
+            @foreach($season as $item)
+            <a class="dropdown-item" href="{{'/season/' .$item->id}}">{{$item->namaseason}}</a>
+            @endforeach
+            </div>
+          </div>
+  </li>
+  
 
   
   <li tabindex="0" data-test-id="header-navigation-pickers" class="item__dropdown item__dropdown--language js-navigation-language-dropdown hide-language">
@@ -151,7 +166,9 @@
 </div>
 @endif
 @if(count($count) > 0)
+
 <div class="wrapper" style="margin-left: 30px;">
+<div class="d-none d-sm-block">
       <div class="icon"><i id="left" class="fa-solid fa-angle-left"></i></div>
       <ul class="tabs-box">
         @foreach($season as $item)
@@ -160,7 +177,8 @@
       </ul>
       <div class="icon"><i id="right" class="fa-solid fa-angle-right"></i></div>
     </div>
-    
+</div>
+
 <div id="gyg" data-server-rendered="true">
   <div class="new-homepage-layout main-wrapper  partner-left-layout" data-v-1e9f5217>
   <main id="main-content" class="home-page">
@@ -356,7 +374,7 @@
   <main id="main-content">
     <section layout="vertical" class="grid-wrapper container grid-wrapper--list">
 @foreach($other as $item)
-  <div class="activity-card-block--grid" style="margin-bottom: 7px;">
+  <div class="activity-card-block--grid border rounded" style="margin-bottom: 7px;">
   <article data-test-id="horizontal-activity-card" class="activity-card horizontal-activity-card companion-inactive activity-card-block__card--grid activity-card-block--desktop" data-v-a1084d9e>
   <a href="{{'/item/'.$item->slug}}" role="contentinfo" target="_blank" rel="noopener" data-activity-id="412877" class="activity-card__container gtm-trigger__card-interaction" data-v-a1084d9e>
   <div class="activity-card__image" data-v-a1084d9e> 

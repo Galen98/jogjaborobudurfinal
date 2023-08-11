@@ -43,7 +43,7 @@
           </div>
   </li>
 
-  <li data-test-id="header-navigation-search" class="navigation__list-item-parent item__search" style="margin-left:-35px;margin-right:-15px;" >
+  <li data-test-id="header-navigation-search" class="navigation__list-item-parent item__search" style="margin-left:-35px;" >
   <div class="dropdown drops">
             <button class="btn btn-sm btn-secondary" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color:#fc2c04;color: white;border-color:#fc2c04;" >
             <span class="material-symbols-outlined" style="font-size: 26px;">
@@ -60,6 +60,21 @@
             </div>
           </div>
   </li>
+  <li data-test-id="header-navigation-search" class="navigation__list-item-parent item__search" style="margin-left:-35px;margin-right:-15px;" >
+  <div class="dropdown drops">
+            <button class="btn btn-sm btn-secondary" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color:#fc2c04;color: white;border-color:#fc2c04;" >
+            <span class="material-symbols-outlined">
+            travel_explore
+            </span>
+            </button>
+            <div class="dropdown-menu">
+            @foreach($season as $item)
+            <a class="dropdown-item" href="{{'/season/' .$item->id}}">{{$item->namaseason}}</a>
+            @endforeach
+            </div>
+          </div>
+  </li>
+  
 
   
   <li tabindex="0" data-test-id="header-navigation-pickers" class="item__dropdown item__dropdown--language js-navigation-language-dropdown hide-language">
@@ -140,13 +155,16 @@
 	@section('content')
 @include('sweetalert::alert')
    <div class="wrapper" style="margin-left: 30px;">
+   <div class="d-none d-sm-block">
       <div class="icon"><i id="left" class="fa-solid fa-angle-left"></i></div>
       <ul class="tabs-box">
         @foreach($season as $item)
         <a href="{{'/season/' .$item->id}}" class="tabhref"><li class="tab">{{$item->namaseason}}</li></a>
         @endforeach
       </ul>
+
       <div class="icon"><i id="right" class="fa-solid fa-angle-right"></i></div>
+      </div>
     </div>
 
 
@@ -327,14 +345,15 @@
   <a href="#main-content" class="skip-link">Skip to content</a> 
   <main id="main-content">
     <section layout="vertical" class="grid-wrapper container grid-wrapper--list">
-      <div class="collection-header" data-v-76e871e0><div class="collection-header--title-container" data-v-76e871e0>
+      <div class="collection-header" data-v-76e871e0 style="margin-bottom:-3px;">
+        <div class="collection-header--title-container" data-v-76e871e0>
     <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0>
         Other Popular Tours
       </span> 
     </div> 
     </div>
 @foreach($other as $item)
-  <div class="activity-card-block--grid" style="margin-bottom: 0px;">
+  <div class="activity-card-block--grid border rounded" style="margin-bottom: 0px;">
   <article data-test-id="horizontal-activity-card" class="activity-card horizontal-activity-card companion-inactive activity-card-block__card--grid activity-card-block--desktop" data-v-a1084d9e>
   <a href="{{'/item/'.$item->slug}}" role="contentinfo" target="_blank" rel="noopener" data-activity-id="412877" class="activity-card__container gtm-trigger__card-interaction" data-v-a1084d9e>
   <div class="activity-card__image" data-v-a1084d9e> 
@@ -411,7 +430,7 @@
 </div>
 
 
-	<div id="gtco-subscribe" style="background-color: white;" >
+	<!-- <div id="gtco-subscribe" style="background-color: white;" >
 <div class="gtco-container"  style="margin-top:-50px; ">
   <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
           <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0>
@@ -419,7 +438,7 @@
       </span>
         </div>
     @foreach($provinces as $item)
-    <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:10px;max-height:300px;">
+    <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:10px;max-height:300px;"> -->
     <!-- <a href="/location/{{$item->slugprovince}}/{{$item->id}}">
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto">
          <article class="text-left">
@@ -429,7 +448,7 @@
          <img src="https://i0.wp.com/www.mediainfo.id/wp-content/uploads/2022/01/Travel-Pekalongan-Jogja.webp" alt="{{$item->province}}">
       </div>
       </a> -->
-      <a href="/location/{{$item->slugprovince}}/{{$item->id}}">
+      <!-- <a href="/location/{{$item->slugprovince}}/{{$item->id}}">
       <div class="hover hover-2 text-white rounded"><img src="{{ url('public/img/'.$item->image) }}" alt="{{$item->namaprovince}}"/>
           <div class="hover-overlay"></div>
           <div class="hover-2-content px-5 py-4">
@@ -441,7 +460,7 @@
       
       @endforeach
 </div>
-</div>
+</div> -->
 
 	
 	<div id="gtco-features" style="background-color:white;">
@@ -486,7 +505,7 @@
 	<div id="gtco-section border-bottom" style="background-color: white;margin-top:-50px; margin-bottom: 30px;" >
 		<div class="gtco-container">
 			<span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0>
-       Read our blog
+       Read Our Blog
       </span>
       <br>
       <br>
