@@ -1,7 +1,7 @@
 @extends('frontend.forcity')
 @section('header')
 @foreach($regions as $item)
-<header id="gtco-header" class="gtco-cover-sm" role="banner" style="background-image:linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) ,url({{ url('public/img/'.$item->image) }});overflow: hidden;">
+<header id="gtco-header" class="gtco-cover" role="banner" style="background-image:linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) ,url({{ url('public/img/'.$item->image) }});overflow: hidden;">
     <div>
       <div>
         @endforeach
@@ -117,7 +117,7 @@
         <div class="col-md-12 col-md-offset-0">
           <div class="row row-mt-15em">
             <div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
-            <h3 style="color: white;font-size:70px;">{{$item->namaregion}}</h3>
+            <h1 class="font-weight-bold">{{$item->namaregion}}</h1>
             <h2>{{$item->shortdescription}}</h2>
             </div>
           </div>
