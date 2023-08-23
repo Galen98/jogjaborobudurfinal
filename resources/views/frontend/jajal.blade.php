@@ -131,20 +131,6 @@ font-family: 'GT Eesti Text Trial', sans-serif;
           </div>
   </li>
 
-  <li data-test-id="header-navigation-search" class="navigation__list-item-parent item__search" style="margin-left:-35px;" >
-  <div class="dropdown drops">
-            <button class="btn btn-sm btn-secondary" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color:#fc2c04;color: white;border-color:#fc2c04;" >
-            <span class="material-symbols-outlined" style="font-size: 26px;">
-            explore
-            </span>
-            </button>
-            <div class="dropdown-menu">
-            @foreach($provinces as $item)
-            <a class="dropdown-item" href="/location/{{$item->slugprovince}}/{{$item->id}}">{{$item->namaprovince}}</a>
-            @endforeach
-            </div>
-          </div>
-  </li>
   <li data-test-id="header-navigation-search" class="navigation__list-item-parent item__search" style="margin-left:-35px;margin-right:-15px;" >
   <div class="dropdown drops">
             <button class="btn btn-sm btn-secondary" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color:#fc2c04;color: white;border-color:#fc2c04;" >
@@ -163,7 +149,15 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   <li tabindex="0" data-test-id="header-navigation-pickers" class="item__dropdown item__dropdown--language js-navigation-language-dropdown hide-language">
      <div class="dropdown drops">
             <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color:#fc2c04;color: white;border-color:#fc2c04;" >
-             <i class="fa fa-language" aria-hidden="true" style="font-size:20px;"></i> Language ({!! $sessions !!})
+            @if($sessions == 'Bahasa')
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3 2" height="20px" style="margin-bottom:5px;"><path fill="#fff" d="M0 0h3v2H0z"/><path fill="red" d="M0 0h3v1H0z"/></svg>
+            @endif
+            @if($sessions == 'English')
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="20px" style="margin-bottom:5px;" viewBox="0 0 7410 3900"><path fill="#b22234" d="M0 0h7410v3900H0z"/><path d="M0 450h7410m0 600H0m0 600h7410m0 600H0m0 600h7410m0 600H0" stroke="#fff" stroke-width="300"/><path fill="#3c3b6e" d="M0 0h2964v2100H0z"/><g fill="#fff"><g id="d"><g id="c"><g id="e"><g id="b"><path id="a" d="M247 90l70.534 217.082-184.66-134.164h228.253L176.466 307.082z"/><use xlink:href="#a" y="420"/><use xlink:href="#a" y="840"/><use xlink:href="#a" y="1260"/></g><use xlink:href="#a" y="1680"/></g><use xlink:href="#b" x="247" y="210"/></g><use xlink:href="#c" x="494"/></g><use xlink:href="#d" x="988"/><use xlink:href="#c" x="1976"/><use xlink:href="#e" x="2470"/></g></svg>
+            @endif
+            @if($sessions == 'Malay')
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13440 6720" height="20px" style="margin-bottom:5px;"><g transform="scale(480)"><path fill="#fff" d="m0 0h28v14H0z"/><path stroke="#c00" d="m1 .5h27m0 2H1m0 2h27m0 2H1"/><path fill="#006" d="m0 0h14v8.5H0z"/><path stroke="#c00" d="m0 8.5h28m0 2H0m0 2h28"/></g><path fill="#fc0" d="m4200 720 107 732 414-613-222 706 639-373-506 540 738-59-690 267 690 267-738-59 506 540-639-373 222 706-414-613-107 732-107-732-414 613 222-706-639 373 506-540-738 59 690-267-690-267 738 59-506-540 639 373-222-706 414 613zm-600 30a1280 1280 0 1 0 0 2340 1440 1440 0 1 1 0-2340z"/></svg>
+            @endif
             </button>
             <div class="dropdown-menu">
               @foreach($bahasa as $item)
@@ -176,7 +170,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   <li tabindex="0" data-test-id="header-navigation-pickers" class="item__dropdown item__dropdown--language js-navigation-language-dropdown hide-language" style="margin-left:-36px; ">
      <div class="dropdown drops" >
             <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color:#fc2c04;color: white;border-color:#fc2c04;">
-              <i class="fa fa-usd" aria-hidden="true" style="font-size: 20px;"></i> Currency ({!! $session !!})
+             {!! $session !!}
             </button>
             <div class="dropdown-menu">
            <a class="dropdown-item" href="/change-session/USD">USD</a>
@@ -187,19 +181,6 @@ font-family: 'GT Eesti Text Trial', sans-serif;
             </div>
           </div>
   </li> 
-
-    <li tabindex="0" data-test-id="header-navigation-pickers" class="item__dropdown item__dropdown--language js-navigation-language-dropdown hide-language" style="margin-left:-36px; ">
-     <div class="dropdown drops">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color:#fc2c04;color: white;border-color:#fc2c04;">
-             <i class="fa fa-compass" aria-hidden="true" style="font-size:20px;"></i> Destinations
-            </button>
-            <div class="dropdown-menu">
-            @foreach($provinces as $item)
-            <a class="dropdown-item" href="/location/{{$item->slugprovince}}/{{$item->id}}">{{$item->namaprovince}}</a>
-            @endforeach
-            </div>
-          </div>
-  </li>
 
   <li tabindex="0" data-test-id="header-navigation-pickers" class="item__dropdown item__dropdown--language js-navigation-language-dropdown hide-language" style="margin-left:-36px; ">
      <div>
@@ -739,7 +720,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
           </section>
 
           <section class="activity-swap-columns" data-v-c4be1764 style="border-top: solid;border-top-color: #e6e8eb;border-top-width: 1pt;">
-                      <div class="overlay" data-v-c4be1764><!----> 
+  <div class="overlay" data-v-c4be1764><!----> 
           <div id="activity-experience" class="activity-experience js-section-content" data-v-d21396c2 data-v-c4be1764 style="">
             <p style="font-size: 20px;font-weight: bolder;margin-top: 15px;">Exclude </p>
             <br>
@@ -759,14 +740,14 @@ font-family: 'GT Eesti Text Trial', sans-serif;
           <section class="price-block__persuation-badge-container" data-v-46d2d245>
             @if($item->label == 'Bestseller')
           <span data-test-id="price-block-is-likely-to-sell-out" class="price-block__persuation-badge c-marketplace-badge c-marketplace-badge--primary persuasion-badge--LTSO persuasion-badge--size-R" data-v-46d2d245 style="background-color: green;">
-                      Bestseller
-                    </span>
-                    @elseif($item->label == 'Likely to sell out')
-                    <span data-test-id="price-block-is-likely-to-sell-out" class="price-block__persuation-badge c-marketplace-badge c-marketplace-badge--primary persuasion-badge--LTSO persuasion-badge--size-R" data-v-46d2d245>
-                      Likely to sell out
-                    </span>
-                    @else<span></span>@endif
-                     <!----></section> 
+  Bestseller
+</span>
+@elseif($item->label == 'Likely to sell out')
+<span data-test-id="price-block-is-likely-to-sell-out" class="price-block__persuation-badge c-marketplace-badge c-marketplace-badge--primary persuasion-badge--LTSO persuasion-badge--size-R" data-v-46d2d245>
+  Likely to sell out
+</span>
+@else<span></span>@endif
+ <!----></section> 
           <div data-test-id="activity-price-block" class="price-block-display-price-wrapper" data-v-46d2d245>
           <p class="price-block-display-price" data-v-46d2d245><span class="price-block__from">From @if($item->discount == 'yes' && $session == 'USD')
           <span style="font-size:16px;text-decoration: line-through;color: red;font-weight:bolder;">US$ {{number_format ($item->IDR_awal/$rateIDR,1)}}</span>    
@@ -809,10 +790,10 @@ font-family: 'GT Eesti Text Trial', sans-serif;
             <div class="price-block__button" data-v-46d2d245>
               <a href="#books">
             <button type="button" id="btn-booking-header" data-test-id="btn-booking-header" class="gtm-trigger__book-now-price-box-btn c-button c-button--medium filbtn" data-v-46d2d245><!----> 
-                        Book now
-                      </button>
-                      </a>
-                    </div></div> 
+    Book now
+  </button>
+  </a>
+</div></div> 
             <!----></div>
             <div> 
             <ul> 
@@ -837,12 +818,13 @@ font-family: 'GT Eesti Text Trial', sans-serif;
 <br>
 
 <div id="gyg" data-server-rendered="true">
-  <div class="new-homepage-layout main-wrapper  partner-left-layout" data-v-1e9f5217><!----> <!----> <!----> <!----> 
+  <div class="new-homepage-layout main-wrapper  partner-left-layout" data-v-1e9f5217>
   <a href="#main-content" class="skip-link">Skip to content</a> 
   <main id="main-content" class="home-page">
 <div class="activities" data-v-680034d2 data-v-1e9f5217>
     <section data-test-id="activity-picks" class="collection-container container activities__cards" data-v-76e871e0 data-v-680034d2>
-    <div class="collection-header" data-v-76e871e0><div class="collection-header--title-container" data-v-76e871e0>
+    <div class="collection-header" data-v-76e871e0>
+    <div class="collection-header--title-container" data-v-76e871e0>
     <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0>
         Other popular tour
       </span> 
@@ -951,111 +933,111 @@ font-family: 'GT Eesti Text Trial', sans-serif;
     </div>
     </div>
     </div>
+    <br>
+    @if(count($value) === 0)
+          <div></div>
+          @else
+        <div>
+<div class="row">
+<div class="col mt-4">
+<span data-test-id="collection-title" class="collection-header_title" style="font-size:25px;font-weight:bolder;">
+     Review from our travelers
+   </span> 
+      <br/>
+      <br/>
+      </div>
+  </div>
+  </div>
+  @foreach($value as $values)
+   <div>
+ <div class="row">
+<div class="col mt-0">     
+      <div class="form-group row">
+        @foreach($travel as $item) <input type="hidden" name="wisata_id" value="{{ $item->wisata_id }}">@endforeach
+         <div class="col">
+            <div class="rated" style="margin-left:-15px;margin-bottom:-25px;">
+             @for($i=1; $i<=$values->star_rating; $i++)
+               {{-- <input type="radio" id="star{{$i}}" class="rate" name="rating" value="" /> --}}
+               <label class="star-rating-complete" title="text" >{{$i}} stars</label>
+             @endfor
+             </div>
+         </div>
+      </div>
+      <div class="form-group row mt-0">
+         <div class="col">
+         <div id="activity-experience" class="activity-experience js-section-content" data-v-d21396c2 data-v-c4be1764 style="">
+             <p style="font-size: 16px;">"{{ $values->comments }}"</p>
+             </div>
+         </div>
+      </div>
+</div>
+                </div>
+             </div>
+            @endforeach
+            @endif
+            <div class="container">
+                <div class="row">
+            {{$value->links()}}
+
+        </div>
+    </div>
     </section> <!---->
     </div>
     </main>
     </div>
     </div> 
 
-            @if(count($value) === 0)
-          <div></div>
-          @else
-        <div class="container" >
-                                 <div class="row">
-                                       <div class="col mt-4">
-                                       <span data-test-id="collection-title" class="collection-header_title" style="font-size:25px;font-weight:bolder;">
-                                            Review from our travelers
-                                          </span> 
-                                             <br/>
-                                             <br/>
-                                             </div>
-                                         </div>
-                                     </div>
-                      @foreach($value as $values)
-                                <div class="container">
-                                    <div class="row">
-                                       <div class="col mt-0">     
-                                             <div class="form-group row">
-                                               @foreach($travel as $item) <input type="hidden" name="wisata_id" value="{{ $item->wisata_id }}">@endforeach
-                                                <div class="col">
-                                                   <div class="rated" style="margin-left:-15px;margin-bottom:-25px;">
-                                                    @for($i=1; $i<=$values->star_rating; $i++)
-                                                      {{-- <input type="radio" id="star{{$i}}" class="rate" name="rating" value="" /> --}}
-                                                      <label class="star-rating-complete" title="text" >{{$i}} stars</label>
-                                                    @endfor
-                                                    </div>
-                                                </div>
-                                             </div>
-                                             <div class="form-group row mt-0">
-                                                <div class="col">
-                                                <div id="activity-experience" class="activity-experience js-section-content" data-v-d21396c2 data-v-c4be1764 style="">
-                                                    <p style="font-size: 16px;">"{{ $values->comments }}"</p>
-                                                    </div>
-                                                </div>
-                                             </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                                @endforeach
-                                @endif
-                                <div class="container">
-                                    <div class="row">
-                                {{$value->links()}}
-
-                            </div>
-                        </div>
-                        <br>
-                                <div class="container" style="margin-bottom:100px;">
-                                    <div class="row">
-                                       <div class="col mt-4">
-                                          <form class="py-2 px-4" action="{{url('insertrating')}}" style="box-shadow: 0 0 10px 0 #ddd;border:solid;border-color: #e6e8eb;border-width: 1pt;" method="POST" autocomplete="off">
-                                             @csrf
-                                             <div class="form-group row">
-                                              <div class="col">
-                                                <div class="rate">
-                                                  <br>
-                                            <span data-test-id="collection-title" class="collection-header_title" style="font-size:18px;font-weight:bolder;">
-                                            Insert Review
-                                          </span> 
-                                         </div>
-                                         </div>
-                                     </div>
-                                             <div class="form-group row">
-                                                @foreach($travel as $item)<input type="hidden" name="wisata_id" value="{{ $item->wisata_id }}">@endforeach
-                                                <div class="col">
-                                                   <div class="rate" >
-                                                      <input type="radio" id="star5" class="rate" name="rating" value="5"/>
-                                                      <label for="star5" title="text">5 stars</label>
-                                                      <input type="radio" id="star4" class="rate" name="rating" value="4"/>
-                                                      <label for="star4" title="text">4 stars</label>
-                                                      <input type="radio" id="star3" class="rate" name="rating" value="3"/>
-                                                      <label for="star3" title="text">3 stars</label>
-                                                      <input type="radio" id="star2" class="rate" name="rating" value="2">
-                                                      <label for="star2" title="text">2 stars</label>
-                                                      <input type="radio" id="star1" class="rate" name="rating" value="1"/>
-                                                      <label for="star1" title="text">1 star</label>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                             <div class="form-group row mt-4">
-                                                <div class="col">
-                                                   <textarea class="form-control" name="comment" rows="6 " placeholder="Comment" maxlength="200"></textarea>
-                                                </div>
-                                             </div>
-                                             <div class="mt-3 text-right">
-                                                <button type="submit" class="c-button c-button--medium c-button--filled-standard billing-form__validate-billing-details-and-sri__button" type="button" data-test-id="checkout-submit-btn">Submit</button>
-                                             </div>
-                                          </form>
-                                       </div>
-                                    </div>
-                                 </div>             
+            
+    <br>
+    <!-- <br>
+            <div class="container" style="margin-bottom:100px;">
+                <div class="row">
+<div class="col mt-4">
+   <form class="py-2 px-4" action="{{url('insertrating')}}" style="box-shadow: 0 0 10px 0 #ddd;border:solid;border-color: #e6e8eb;border-width: 1pt;" method="POST" autocomplete="off">
+      @csrf
+      <div class="form-group row">
+       <div class="col">
+         <div class="rate">
+           <br>
+     <span data-test-id="collection-title" class="collection-header_title" style="font-size:18px;font-weight:bolder;">
+     Insert Review
+   </span> 
+  </div>
+  </div>
+                 </div>
+      <div class="form-group row">
+         @foreach($travel as $item)<input type="hidden" name="wisata_id" value="{{ $item->wisata_id }}">@endforeach
+         <div class="col">
+            <div class="rate" >
+               <input type="radio" id="star5" class="rate" name="rating" value="5"/>
+               <label for="star5" title="text">5 stars</label>
+               <input type="radio" id="star4" class="rate" name="rating" value="4"/>
+               <label for="star4" title="text">4 stars</label>
+               <input type="radio" id="star3" class="rate" name="rating" value="3"/>
+               <label for="star3" title="text">3 stars</label>
+               <input type="radio" id="star2" class="rate" name="rating" value="2">
+               <label for="star2" title="text">2 stars</label>
+               <input type="radio" id="star1" class="rate" name="rating" value="1"/>
+               <label for="star1" title="text">1 star</label>
+            </div>
+         </div>
+      </div>
+      <div class="form-group row mt-4">
+         <div class="col">
+            <textarea class="form-control" name="comment" rows="6 " placeholder="Comment" maxlength="200"></textarea>
+         </div>
+      </div>
+      <div class="mt-3 text-right">
+         <button type="submit" class="c-button c-button--medium c-button--filled-standard billing-form__validate-billing-details-and-sri__button" type="button" data-test-id="checkout-submit-btn">Submit</button>
+      </div>
+   </form>
+</div>
+                </div>
+             </div>              -->
   
 
 </div>
 </div>
-
-
-
     <footer id="gtco-footer" role="contentinfo" style="background-color:#fc2c04;padding:0px;">
     <div class="gtco-container">
       <div class="row row-p b-md">
@@ -1130,7 +1112,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
       </div>
           </div>
   </footer>
-                      
+  
             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -1462,5 +1444,5 @@ jQuery(function ($) {
 
 </script>
 
-                    </body>
-                    </html>
+</body>
+</html>

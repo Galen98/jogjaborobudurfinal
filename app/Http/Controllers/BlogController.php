@@ -1693,7 +1693,6 @@ class BlogController extends Controller
         $season = $request->namaseason;
         $data = [
             'namaseason'=>$season
-
         ];
 
         season::create($data);
