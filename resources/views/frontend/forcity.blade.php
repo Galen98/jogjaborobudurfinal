@@ -92,7 +92,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
 </style>
 	</head>
 	<body>
-	<div id="page">
+	<!-- <div id="page"> -->
     @yield('nav')
     @yield('header')
 	   @yield('content')
