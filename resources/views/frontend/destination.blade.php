@@ -285,11 +285,9 @@
         {{$travel->links()}}
       </span> 
     </div> 
-    </div> 
-</section>
+    </div>
 
-
-<div id="gtco-subscribe" style="background-color: white;">
+    <!-- <div id="gtco-subscribe" style="background-color: white;">
 <div class="gtco-container"  style="margin-top:-70px;">
   <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
  <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0>
@@ -297,16 +295,7 @@
       </span>
         </div>
     @foreach($destination as $item)
-    <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:40px;max-height:300px;">
-    <!-- <a href="/location/{{$item->slugprovince}}/{{$item->id}}">
-      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto">
-         <article class="text-left">
-            <h2>{{$item->namaprovince}}</h2>
-            <h4>{!! $item->shortdescription !!}</h4>
-         </article>
-         <img src="https://i0.wp.com/www.mediainfo.id/wp-content/uploads/2022/01/Travel-Pekalongan-Jogja.webp" alt="{{$item->province}}">
-      </div>
-      </a> -->
+    <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:20px;max-height:300px;">
       <a href="/location/{{$item->slugprovince}}/{{$item->id}}">
       <div class="hover hover-2 text-white rounded"><img src="{{ url('public/img/'.$item->image) }}" alt="{{$item->namaprovince}}"/>
           <div class="hover-overlay"></div>
@@ -318,7 +307,11 @@
       </div>
       @endforeach
       </div>
-      </div>
+      </div>  -->
+</section>
+
+
+
       
 </div>
 
