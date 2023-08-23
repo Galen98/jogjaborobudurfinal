@@ -247,7 +247,7 @@
 	<input type="hidden" name="total" value="{!! $total !!}">
 	<input type="hidden" name="totalgroup" value="{!! $totalgroup !!}">
 
-	<div class="overlay billing-form__loading-overlay"><!----><!--[--><!----><!---->
+	<div class="overlay billing-form__loading-overlay">
 	<div class="billing-form__validate-billing-details-and-sri">
 	<button class="c-button c-button--medium filbtn billing-form__validate-billing-details-and-sri__button" type="submit" data-test-id="checkout-submit-btn" id="tess">Confirm</button>
 	</form>
@@ -257,7 +257,7 @@
 	<div class="reassuring-info__block">
 	<i class="fa-solid fa-check" style="color: #10a24f;"></i>
 	<div class="reassuring-info__block__content">
-	<div class="reassuring-info__block__content__title"><strong>Free cancellation</strong> D-1 Travel activity</div><!---->
+
 	</div>
 	</div>
 	</div>
