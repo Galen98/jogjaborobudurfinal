@@ -1,7 +1,7 @@
 @extends('frontend.forcity')
 @section('header')
 @foreach($regions as $item)
-<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image:linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) ,url({{ url('public/img/'.$item->image) }});overflow: hidden;">
+<header id="gtco-header" class="gtco-cover-sm" role="banner" style="background-image:linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) ,url({{ url('public/img/'.$item->image) }});overflow: hidden;">
     <div>
       <div>
         @endforeach
