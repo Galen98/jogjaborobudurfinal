@@ -110,20 +110,20 @@
     </div>
   </div>
   </div>
+  
 		@foreach($regions as $item)
-    <!-- <div class="gtco-container">
+    <div class="gtco-container">
       <div class="row">
-        <div class="col-md-12 col-md-offset-0 text-left">
+        <div class="col-md-12 col-md-offset-0">
           <div class="row row-mt-15em">
             <div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
             <h3 style="color: white;font-size:70px;">{{$item->namaregion}}</h3>
             <h2>{{$item->shortdescription}}</h2>
             </div>
           </div>
-          
         </div>
       </div>
-</div> -->
+</div>
       @endforeach
 	</header>
 	@endsection
