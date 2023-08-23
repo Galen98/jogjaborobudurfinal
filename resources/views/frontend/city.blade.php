@@ -111,7 +111,7 @@
   </div>
   </div>
 		@foreach($regions as $item)
-    <div class="gtco-container">
+    <!-- <div class="gtco-container">
       <div class="row">
         <div class="col-md-12 col-md-offset-0 text-left">
           <div class="row row-mt-15em">
@@ -123,7 +123,7 @@
           
         </div>
       </div>
-</div>
+</div> -->
       @endforeach
 	</header>
 	@endsection
