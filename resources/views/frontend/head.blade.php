@@ -60,7 +60,7 @@
 	<div class="page-header__logo-image" role="img" aria-label="GetYourGuide logo">
   <a href="/">
 	<img style="margin-top: 10px;" class="logs" src="{{asset('spica')}}/images/logomini.png" alt="logo"/>
-</a>
+  </a>
 	</div>
 	</div>
 	</header>
