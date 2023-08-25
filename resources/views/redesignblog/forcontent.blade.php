@@ -24,7 +24,7 @@
   <meta property="og:title" content="{{$item->judulblog}}" />
   <meta property="og:description"
     content="{{$item->shortdescription}}" />
-  <meta property="og:image" content="{{asset('spica')}}/images/logomini.png" />
+  <meta property="og:image" content="{{ url('public/img/'.$item->image) }}" />
   <!-- end tag -->
   @endforeach
   </head>
