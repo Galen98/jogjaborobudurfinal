@@ -7,6 +7,9 @@
 <div class="hero-title text-center"><h3 id="font500" style="font-weight:700;">Featured articles from JogjaBorobudur</h3><div>
     @endsection
 @section('sectionallblog')
+@if(count($blog) === 0)
+    <img src="{{asset('traveler')}}/images/nodata.png">
+    @else
 @foreach($blog as $item)
 <div class="col-xl-6 col-lg-12 text-center">
 			<a href="{{'/blog/'.$item->slug}}">
@@ -23,6 +26,7 @@
 			</a>
 		</div>
         @endforeach
+        @endif
         
 @endsection
 
