@@ -917,7 +917,6 @@ class BlogController extends Controller
     $image->heighten(750);
     $nama_file = time() . "_" . $img->getClientOriginalName();
     $tujuan_upload = 'public/img';
-    // Konversi dan simpan ke format WebP
     $image->encode('webp', 80)->save(public_path($tujuan_upload . '/' . pathinfo($nama_file, PATHINFO_FILENAME) . '.webp'));
         }
         DB::table('blog')->where('id',$idblog)
@@ -1346,10 +1345,11 @@ class BlogController extends Controller
         }
         else if($img != null){
             $images = travel::where('wisata_id', $idtravel)->first();
-            File::delete('public/img/'.$images->image);
-            $nama_file = time()."_".$img->getClientOriginalName();
+            File::delete('public/img/' . $images->image);
+            $image = Image::make($img->getRealPath());
+            $nama_file = time() . "_" . $img->getClientOriginalName();
             $tujuan_upload = 'public/img';
-            $img->move($tujuan_upload,$nama_file);
+            $image->encode('webp', 80)->save(public_path($tujuan_upload . '/' . pathinfo($nama_file, PATHINFO_FILENAME) . '.webp'));
         }
 
         if($img2 == null){
@@ -1357,10 +1357,11 @@ class BlogController extends Controller
         }
         else if($img2 != null){
             $images2 = travel::where('wisata_id', $idtravel)->first();
-            File::delete('public/img/'.$images2->image2);
-            $nama_file2 = time()."_".$img2->getClientOriginalName();
-            $tujuan_upload = 'public/img';
-            $img2->move($tujuan_upload,$nama_file2);
+            File::delete('public/img/' . $images2->image2);
+            $image2 = Image::make($img2->getRealPath());
+            $nama_file2 = time() . "_" . $img2->getClientOriginalName();
+            $tujuan_upload2 = 'public/img';
+            $image2->encode('webp', 80)->save(public_path($tujuan_upload2 . '/' . pathinfo($nama_file2, PATHINFO_FILENAME) . '.webp'));
         }
 
         if($img3 == null){
@@ -1368,10 +1369,11 @@ class BlogController extends Controller
         }
         else if($img3 != null){
             $images3 = travel::where('wisata_id', $idtravel)->first();
-            File::delete('public/img/'.$images3->image3);
-            $nama_file3 = time()."_".$img3->getClientOriginalName();
-            $tujuan_upload = 'public/img';
-            $img3->move($tujuan_upload,$nama_file3);
+            File::delete('public/img/' . $images3->image3);
+            $image3 = Image::make($img3->getRealPath());
+            $nama_file3 = time() . "_" . $img3->getClientOriginalName();
+            $tujuan_upload3 = 'public/img';
+            $image3->encode('webp', 80)->save(public_path($tujuan_upload3 . '/' . pathinfo($nama_file3, PATHINFO_FILENAME) . '.webp'));
         }
 
         if($img4 == null){
@@ -1379,10 +1381,11 @@ class BlogController extends Controller
         }
         else if($img4 != null){
             $images4 = travel::where('wisata_id', $idtravel)->first();
-            File::delete('public/img/'.$images4->image4);
-            $nama_file4 = time()."_".$img4->getClientOriginalName();
-            $tujuan_upload = 'public/img';
-            $img4->move($tujuan_upload,$nama_file4);
+            File::delete('public/img/' . $images4->image4);
+            $image4 = Image::make($img4->getRealPath());
+            $nama_file4 = time() . "_" . $img4->getClientOriginalName();
+            $tujuan_upload4 = 'public/img';
+            $image4->encode('webp', 80)->save(public_path($tujuan_upload4 . '/' . pathinfo($nama_file4, PATHINFO_FILENAME) . '.webp'));
         }
 
         if($img5 == null){
@@ -1390,19 +1393,20 @@ class BlogController extends Controller
         }
         else if($img5 != null){
             $images5 = travel::where('wisata_id', $idtravel)->first();
-            File::delete('public/img/'.$images5->image5);
-            $nama_file5 = time()."_".$img5->getClientOriginalName();
-            $tujuan_upload = 'public/img';
-            $img5->move($tujuan_upload,$nama_file5);
+            File::delete('public/img/' . $images5->image5);
+            $image5 = Image::make($img5->getRealPath());
+            $nama_file5 = time() . "_" . $img5->getClientOriginalName();
+            $tujuan_upload5 = 'public/img';
+            $image5->encode('webp', 80)->save(public_path($tujuan_upload5 . '/' . pathinfo($nama_file5, PATHINFO_FILENAME) . '.webp'));
         }
 
         DB::table('wisata')->where('wisata_id',$idtravel)
         ->update([
-            'image'=>$nama_file,
-            'image2'=>$nama_file2,
-            'image3'=>$nama_file3,
-            'image4'=>$nama_file4,
-            'image5'=>$nama_file5,
+            'image'=>pathinfo($nama_file, PATHINFO_FILENAME) . '.webp',
+            'image2'=>pathinfo($nama_file2, PATHINFO_FILENAME) . '.webp',
+            'image3'=>pathinfo($nama_file3, PATHINFO_FILENAME) . '.webp',
+            'image4'=>pathinfo($nama_file4, PATHINFO_FILENAME) . '.webp',
+            'image5'=>pathinfo($nama_file5, PATHINFO_FILENAME) . '.webp',
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
         return redirect()->back();
