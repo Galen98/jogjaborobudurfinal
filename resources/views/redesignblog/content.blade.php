@@ -46,7 +46,7 @@
       <h3 id="font500" style="font-weight:700;">Overview</h3>
       @foreach($blog as $item)
       <p class="lead">{{$item->shortdescription}}</p>
-      {!! $item->deskripsi !!}
+     <p> {!! $item->deskripsi !!}  </p>
       @endforeach
       @endsection
       
