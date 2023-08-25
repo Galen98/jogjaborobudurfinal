@@ -79,7 +79,7 @@
 			<div class="row">
 				<div class="col-sm-4 col-xs-12">
 					<a href="/">
-					<div id="gtco-logo"><img class="logs" src="{{asset('spica')}}/images/logomini.png" alt="logo"/></div>
+					<div id="gtco-logo"><img src="{{asset('spica')}}/images/logomini.png" alt="logo" height="80" width="90" style="margin-left:5px;"/></div>
 					</a>
 				</div>
 				<!-- <div class="col-xs-8 text-right menu-1">
