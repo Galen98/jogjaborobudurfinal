@@ -133,7 +133,7 @@
 <div class="wrapper container">
 <div class="d-none d-sm-block"> 
             <div class="search-box-province" id="tess">
-            <input type="text" class="form-control search-input" placeholder="Where are you going?">
+            @foreach($provinces as $item) <input type="text" class="form-control search-input" placeholder="Where are you going in {{$item->namaprovince}}?">@endforeach
             <button class="c-button c-button--medium c-button--filled-standard billing-form__validate-billing-details-and-sri__button" style="margin-right:5px;">
               Search
             </button>
