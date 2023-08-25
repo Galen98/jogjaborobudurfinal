@@ -1678,17 +1678,17 @@ class BlogController extends Controller
     public function insertprovince(Request $request){
         $region=$request->province;
         $short=$request->shortdescription;
-        $img= request('image');
-        $nama_file = time()."_".$img->getClientOriginalName();
-        $gambar = Image::make($img);
-        $gambar->resize(600,600);
-        $tujuan_upload = public_path('public/img/');
-        $gambar->save($tujuan_upload .$nama_file); 
+        // $img= request('image');
+        // $nama_file = time()."_".$img->getClientOriginalName();
+        // $gambar = Image::make($img);
+        // $gambar->resize(600,600);
+        // $tujuan_upload = public_path('public/img/');
+        // $gambar->save($tujuan_upload .$nama_file); 
 
         $data = [
             'namaprovince'=>$region,
             'shortdescription'=>$short,
-            'image'=>$nama_file,
+            'image'=>'tanpa gambar',
             'slugprovince'=>\Str::slug($request->province)
         ];
         province::create($data);

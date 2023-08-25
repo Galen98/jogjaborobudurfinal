@@ -171,7 +171,7 @@
     </div> 
     </div>
 
-<div class="collection-body" data-v-76e871e0>
+    <div class="collection-body" data-v-76e871e0>
     <div class="collection-body--horizontal" data-v-76e871e0>
     <div class="vertical-activity-cards__grid" data-v-76e871e0>
  

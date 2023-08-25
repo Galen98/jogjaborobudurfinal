@@ -130,30 +130,59 @@
 </div>
 @endif
 @if(count($count) > 0)
-<div class="d-none d-sm-block">
-<div class="wrapper" style="margin-top:-21px;margin-left: 30px;">
-      <div class="icon"><i id="left" class="fa-solid fa-angle-left"></i></div>
-      <ul class="tabs-box">
-        @foreach($season as $item)
-        <a href="{{'/season/' .$item->id}}" class="tabhref"><li class="tab">{{$item->namaseason}}</li></a>
-        @endforeach
-      </ul>
-      <div class="icon"><i id="right" class="fa-solid fa-angle-right"></i></div>
+<div class="wrapper container">
+<div class="d-none d-sm-block"> 
+            <div class="search-box-province" id="tess">
+            <input type="text" class="form-control search-input" placeholder="Where are you going?">
+            <button class="c-button c-button--medium c-button--filled-standard billing-form__validate-billing-details-and-sri__button" style="margin-right:5px;">
+              Search
+            </button>
+          </div>
+          </div>
+</div>
+<div class="wrapper container">
+<div class="d-block d-sm-none"> 
+            <div class="search-box-mobile" id="tess">
+            <input type="text" class="form-control search-input" placeholder="Where are you going?">
+            <button class="c-button c-button--medium c-button--filled-standard billing-form__validate-billing-details-and-sri__button" style="margin-right:5px;">
+              Search
+            </button>
+          </div>
+          </div>
+</div>
+<br>
+<div class="container">
+<div class="collection-header d-none d-sm-block" data-v-76e871e0>
+    <div class="collection-header--title-container" data-v-76e871e0>
+    <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0 style="font-size:20px;margin-bottom:10px;">
+    Things to do in
+      </span>
+    <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0 style="font-size:90px;">
+    @foreach($provinces as $item){{$item->namaprovince}}@endforeach
+      </span>
+    </div> 
     </div>
+
+    <div class="collection-header d-block d-sm-none" data-v-76e871e0>
+    <div class="collection-header--title-container" data-v-76e871e0>
+    <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0 style="font-size:20px;margin-bottom:10px;">
+    Things to do in
+      </span>
+    <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0 style="font-size:60px;">
+    @foreach($provinces as $item){{$item->namaprovince}}@endforeach
+      </span>
+    </div> 
+    </div>
+</div>
+<br>
+<div class="container" style="color:grey;">
+{{ count($travel) }} activities found
 </div>
 <div id="gyg" data-server-rendered="true" style="margin-top:-25px;margin-bottom: -40px;">
   <div class="new-homepage-layout main-wrapper  partner-left-layout" data-v-1e9f5217>
   <main id="main-content" class="home-page">
 <div class="activities" data-v-680034d2 data-v-1e9f5217>
     <section data-test-id="activity-picks" class="collection-container container activities__cards" data-v-76e871e0 data-v-680034d2>
-    <div class="collection-header" data-v-76e871e0>
-        <div class="collection-header--title-container" data-v-76e871e0>
-    <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0>
-    @foreach($provinces as $item){{$item->namaprovince}}@endforeach
-      </span>
-    </div> 
-    </div>
-
 <div class="collection-body" data-v-76e871e0>
     <div class="collection-body--horizontal" data-v-76e871e0>
     <div class="vertical-activity-cards__grid" data-v-76e871e0>
