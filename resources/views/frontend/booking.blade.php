@@ -253,14 +253,7 @@
 	</form>
 	</div>
 	</div>
-	<div class="reassuring-info reassuring-info--reduced-size billing-form__reassuring-messages">
-	<div class="reassuring-info__block">
-	<i class="fa-solid fa-check" style="color: #10a24f;"></i>
-	<div class="reassuring-info__block__content">
 
-	</div>
-	</div>
-	</div>
 	
 	</div>
 	</div><!----><!---->
