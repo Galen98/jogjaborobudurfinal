@@ -132,7 +132,7 @@
 @endif
 @if(count($count) > 0)
 <div class="d-none d-sm-block">
-<div class="wrapper" style="margin-top:-21px;margin-left: 30px;">
+<div class="wrapper container" style="overflow:hidden;">
       <div class="icon"><i id="left" class="fa-solid fa-angle-left"></i></div>
       <ul class="tabs-box">
         @foreach($season as $item)
@@ -142,7 +142,7 @@
       <div class="icon"><i id="right" class="fa-solid fa-angle-right"></i></div>
     </div>
 </div>
-    
+   <br> 
 <div id="gyg" data-server-rendered="true" style="margin-top:-25px;margin-bottom: -40px;">
   <div class="new-homepage-layout main-wrapper  partner-left-layout" data-v-1e9f5217>
   <main id="main-content" class="home-page">

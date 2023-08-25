@@ -144,11 +144,12 @@
       @endforeach
 	</header>
 	@endsection
-  
+ 
 	@section('content')
 @include('sweetalert::alert')
-   <div class="wrapper" style="margin-left: 30px;">
-   
+   <div class="wrapper container">
+   <br>
+  <br>
    <div class="d-none d-sm-block">
       <div class="icon"><i id="left" class="fa-solid fa-angle-left"></i></div>
       <ul class="tabs-box">
