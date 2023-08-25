@@ -61,12 +61,13 @@
         @endsection
 
         @section('pagination')
-        <div class="tags mt-2">
+        <div class="tags mt-2 mb-3">
         popular tags: 
         @foreach($tags as $item)
 							<a href="{{'/blog/tag/'.$item->tags}}"><span class="badge badge-pill p-2 badge-light">#{{$item->tags}}</span></a>
                             @endforeach
 	  				</div>
+                    
         <a href="/blog/list" class="btn btn-lg btn-light">More Articles</a>
         @endsection
         
