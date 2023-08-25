@@ -167,7 +167,8 @@
     <section data-test-id="activity-picks" class="collection-container container activities__cards" data-v-76e871e0 data-v-680034d2>
     <div class="collection-header" data-v-76e871e0>
         <div class="collection-header--title-container" data-v-76e871e0>
-    <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0>
+    <span data-test-id="collection-title" class="collection-header_title" style="font-size:30px;" data-v-76e871e0>
+    {{ count($travel) }} Activities in
     @foreach($regions as $item){{$item->namaregion}}@endforeach
       </span>
     </div> 
