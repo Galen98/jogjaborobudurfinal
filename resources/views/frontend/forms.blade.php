@@ -29,7 +29,6 @@
     <title>Form Travel</title>
     
     <link rel="stylesheet" href="{{asset('traveler')}}/css/style.css">
-    <meta name="service-name" content="traveler-frontend-checkout" />
     <link rel="stylesheet" href="{{asset('traveler')}}/css/booking10.css">
     <link rel="stylesheet" href="{{asset('traveler')}}/css/booking11.css">
     <script src="{{asset('traveler')}}/js/modernizr-2.6.2.min.js"></script>

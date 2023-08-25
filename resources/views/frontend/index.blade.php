@@ -117,7 +117,24 @@
 						<div class="col-md-7 mt-text" style="margin-top:-10px;margin-left:0px;">
 							<h1>{{$item->header}}</h1><br>
               <form action="/alltours" method="GET">
-              <button type="submit" class="js-check-availability gtm-trigger__adp-check-availability-btn avoid-close-dropdown-on-click c-button c-button--medium filbtn" data-test-id="checkout-submit-btn" id="tess">Learn More</button></form>
+              <!-- <button type="submit" class="js-check-availability gtm-trigger__adp-check-availability-btn avoid-close-dropdown-on-click c-button c-button--medium filbtn" data-test-id="checkout-submit-btn" id="tess">Learn More</button> -->
+              <div class="d-none d-sm-block"> 
+            <div class="search-box" id="tess">
+            <input type="text" class="form-control search-input" placeholder="Where are you going?">
+            <button class="c-button c-button--medium c-button--filled-standard billing-form__validate-billing-details-and-sri__button" style="margin-right:5px;">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+          </div>
+          <div class="d-block d-sm-none"> 
+            <div class="search-box-mobile" id="tess">
+            <input type="text" class="form-control search-input" placeholder="Where are you going?">
+            <button class="c-button c-button--medium c-button--filled-standard billing-form__validate-billing-details-and-sri__button" style="margin-right:5px;">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+          </div>
+            </form>
 						</div>
 						<div class="col-md-4 col-md-push-1 animate-box" data-animate-effect="fadeInRight" style="margin-top: -180px;">
 						</div>
@@ -131,6 +148,7 @@
 	@section('content')
 @include('sweetalert::alert')
    <div class="wrapper" style="margin-left: 30px;">
+   
    <div class="d-none d-sm-block">
       <div class="icon"><i id="left" class="fa-solid fa-angle-left"></i></div>
       <ul class="tabs-box">

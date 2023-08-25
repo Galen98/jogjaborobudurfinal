@@ -52,12 +52,6 @@
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
   </head>
   <body>
-    
-        <noscript>
-          <iframe src="https://en.rageagainstthesoap.com/ns/d1335a553efd512f4a5d7a32df3ea3c4.html?ch=default-cheq4ppc" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-        </noscript>
-    
-    
     <div id="gyg">
     <div>
 	<div class="main-wrapper  partner-left-layout customer-information customer-information--gyg-symbol-on-mobile"><!----><!----><!---->

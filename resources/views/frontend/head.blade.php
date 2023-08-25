@@ -43,7 +43,7 @@
   <meta property="og:url" content="www.jogjaborobudur.com" />
   <meta property="og:title" content="jogja borobudur tour & travel" />
   <meta property="og:description"
-    content="Jogja Borobudur tour & travel Explore borobudur, prambanan, and many more free cancellation." />
+    content="Jogja Borobudur tour & travel Explore borobudur, prambanan, and many more." />
   <meta property="og:image" content="{{asset('spica')}}/images/logomini.png" />
     <link rel="stylesheet" href="{{asset('traveler')}}/css/style.css">
     <link rel="stylesheet" href="{{asset('traveler')}}/css/booking10.css">

@@ -520,7 +520,9 @@ Route::patch('/updatehargachild/{idhargachild}',[BlogController::class,'updateha
 Route::patch('/updatediskon/{idtravell}',[BlogController::class,'updatediskon']);
 Route::post('generatepdf',[App\Http\Controllers\emailController::class, 'sendPDF']);
 
-
+Route::get('/jaljal', function(){
+return view('redesignblog.landingblog');
+});
 
 
 Route::get('/item', function(){

@@ -51,6 +51,7 @@ class BlogController extends Controller
         $tagx=request('tags');
         $author= request('author');
         $short=request('short');
+        $img= $request->image;
        
         if($gambar == null){
             $data=[
@@ -66,14 +67,20 @@ class BlogController extends Controller
             $blog=blog::create($data);
         }
         else{
-        $nama_file = time()."_".$gambar->getClientOriginalName();
-		$tujuan_upload = 'public/img';
-        $gambar->move($tujuan_upload,$nama_file);
+            $image = Image::make($img->getRealPath());
+            $image->resize(500, 750, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+            $nama_file = time() . "_" . $img->getClientOriginalName();
+            $tujuan_upload = 'public/img';
+            // Konversi dan simpan ke format WebP
+            $image->encode('webp', 80)->save(public_path($tujuan_upload . '/' . pathinfo($nama_file, PATHINFO_FILENAME) . '.webp'));
         
         $data=[
             'judulblog'=>$judul,
             'deskripsi'=>$isi,
-            'image'=>$nama_file,
+            'image'=>pathinfo($nama_file, PATHINFO_FILENAME) . '.webp',
             'author'=>$author,
             'shortdescription'=>$short,
             'bahasa'=>$bahasa,
@@ -904,21 +911,22 @@ class BlogController extends Controller
             $nama_file=$request->namagambar;
         }
         else{
-            $images = blog::where('id', $idblog)->first();
-            File::delete('public/img/'.$images->image);
-            $nama_file = time()."_".$img->getClientOriginalName();
-            $tujuan_upload = 'public/img';
-            $img->move($tujuan_upload,$nama_file);
+    $images = blog::where('id', $idblog)->first();
+    File::delete('public/img/' . $images->image);
+    $image = Image::make($img->getRealPath());
+    $image->heighten(750);
+    $nama_file = time() . "_" . $img->getClientOriginalName();
+    $tujuan_upload = 'public/img';
+    // Konversi dan simpan ke format WebP
+    $image->encode('webp', 80)->save(public_path($tujuan_upload . '/' . pathinfo($nama_file, PATHINFO_FILENAME) . '.webp'));
         }
-
-
         DB::table('blog')->where('id',$idblog)
         ->update([
             'judulblog'=>$request->judulartikel,
             'deskripsi'=>$request->isi,
             'shortdescription'=>$request->short,
             'slug'=>\Str::slug($request->judulartikel),
-            'image'=>$nama_file
+            'image'=>pathinfo($nama_file, PATHINFO_FILENAME) . '.webp',
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
         return redirect()->to('/blogadmin');
@@ -968,7 +976,7 @@ class BlogController extends Controller
         $sessions = session()->get("bahasa") ?? "English";     
     }
         $banner=blog::orderBy('created_at','DESC')->where('bahasa',$sessions)->paginate(1);
-        $blog2=DB::table('blog')->orderBy('created_at','DESC')->where('bahasa', $sessions)->paginate(6);
+        $blog2=DB::table('blog')->orderBy('created_at','DESC')->where('bahasa', $sessions)->paginate(8, ['*'], 'page', 1); 
         $language=bahasa::get();
         $popular=DB::table('blog')->where('bahasa', $sessions)->paginate(4);
         $tags=DB::table('tags')->get();
@@ -976,7 +984,7 @@ class BlogController extends Controller
         'created_at',
         Carbon::now()->format('m')
     )->where('bahasa', $sessions)->get();
-        return view('blogjogjaborobudur.content', compact('blog2','today','popular','tags','language','banner'));
+        return view('redesignblog.landingblog', compact('blog2','today','popular','tags','language','banner'));
     }
 
     public function listblog(Request $request){
@@ -997,10 +1005,10 @@ class BlogController extends Controller
     else{
         $sessions = session()->get("bahasa") ?? "English";     
     }
-        $blog=DB::table('blog')->where('bahasa', $sessions)->paginate(6);
+        $blog=DB::table('blog')->where('bahasa', $sessions)->paginate(8);
         $tagx=DB::table('tags')->get();
         $language=bahasa::get();
-        return view('blogjogjaborobudur.allblog',compact('blog','tagx','language'));
+        return view('redesignblog.allblog',compact('blog','tagx','language'));
     }
 
     public function detailblog(Request $request,$slug){
@@ -1055,8 +1063,10 @@ class BlogController extends Controller
         else{
             $similarblog = "<p>No Data</p>";   
         }
+        $randomArticleIds = blog::inRandomOrder()->pluck('id')->take(2);
+        $randomArticles = blog::whereIn('id', $randomArticleIds)->get();
 
-        return view('blogjogjaborobudur.view',compact('similarex','shareButtons1','blog','popular','similarblog','tagblog','tags','today','popular','language'));
+        return view('redesignblog.content',compact('randomArticles','similarex','shareButtons1','blog','popular','similarblog','tagblog','tags','today','popular','language'));
     }
 
     public function tagsview(Request $request,$tagsid){
@@ -1085,7 +1095,7 @@ class BlogController extends Controller
         ->where('tambahtags.tags',$tagsid)->where('bahasa', $sessions)
         ->orderBy('created_at','DESC')
         ->paginate(8);
-        return view('blogjogjaborobudur.tags',compact('tags','similarblog','tagx','language'));
+        return view('redesignblog.tag',compact('tags','similarblog','tagx','language'));
     }
 
     public function insertcomment(Request $request){
@@ -1406,7 +1416,7 @@ class BlogController extends Controller
         $today=Carbon::now();
         echo $today->month;
         $blogs=blog::whereMonth('created_at',$today)->paginate(6);
-        return view('blogs.allblog',compact('all','popular','blogs'));
+        return view('redesignblog.allblog',compact('all','popular','blogs'));
 
     }
 
