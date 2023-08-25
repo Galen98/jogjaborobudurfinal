@@ -3,13 +3,12 @@
 
 @section('content')
 @include('sweetalert::alert')
-<div id="gyg" data-server-rendered="true">
-  <div class="main-wrapper  partner-left-layout" data-v-5120f7ad>
-  <a href="#main-content" class="skip-link">Skip to content</a> 
+<div id="gyg">
+  <div class="main-wrapper  partner-left-layout">
   <main id="main-content">
     <section layout="vertical" class="grid-wrapper container grid-wrapper--list">
       <div class="collection-header" data-v-76e871e0><div class="collection-header--title-container" data-v-76e871e0>
-    <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0>
+    <span class="collection-header_title" data-v-76e871e0>
         Jogja Borobudur Tour & Travel
       </span> <!---->
     </div> <!---->
@@ -17,7 +16,7 @@
 @foreach($travel as $item)
   <div class="activity-card-block--grid" style="margin-bottom: 0px;">
   <article data-test-id="horizontal-activity-card" class="activity-card horizontal-activity-card companion-inactive activity-card-block__card--grid activity-card-block--desktop" data-v-a1084d9e>
-  <a role="contentinfo" target="_blank" rel="noopener" data-activity-id="412877" class="activity-card__container gtm-trigger__card-interaction" data-v-a1084d9e>
+  <a  target="_blank" class="activity-card__container gtm-trigger__card-interaction" data-v-a1084d9e>
   <div class="activity-card__image" data-v-a1084d9e> 
   <div class="activity-card__image-info align-end" data-v-a1084d9e><!----></div> 
   <picture data-v-a1084d9e>

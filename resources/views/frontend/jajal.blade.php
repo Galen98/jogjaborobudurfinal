@@ -44,7 +44,6 @@
 <link rel="stylesheet" href="{{asset('traveler')}}/css/new3.css">
 <link rel="stylesheet" href="{{asset('traveler')}}/css/new4.css">
 <link rel="stylesheet" href="{{asset('traveler')}}/css/new5.css">
-<link rel="stylesheet" href="{{asset('traveler')}}/css/new6.css">
 <link rel="stylesheet" href="{{asset('traveler')}}/css/new7.css">
 <link rel="icon" type="image/png" sizes="32x32" href="{{asset('spica')}}/images/favicon.png">
 <link rel="icon" type="image/png" sizes="16x16" href="{{asset('spica')}}/images/favicon.png">

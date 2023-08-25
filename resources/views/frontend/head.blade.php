@@ -14,7 +14,6 @@
 	<link rel="stylesheet" href="{{asset('traveler')}}/css/new3.css">
 	<link rel="stylesheet" href="{{asset('traveler')}}/css/new4.css">
 	<link rel="stylesheet" href="{{asset('traveler')}}/css/new5.css">
-	<link rel="stylesheet" href="{{asset('traveler')}}/css/new6.css">
 	<link rel="stylesheet" href="{{asset('traveler')}}/css/new7.css">
     <link rel="stylesheet" href="{{asset('traveler')}}/css/booking1.css">
 	<link rel="stylesheet" href="{{asset('traveler')}}/css/booking2.css">
