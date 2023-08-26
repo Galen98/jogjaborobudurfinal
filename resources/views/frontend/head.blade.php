@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en-US" default-lang="en-US" data-theme="light">
+<html lang="en-US" default-lang="en-US">
   <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="{{asset('traveler')}}/css/bootstrap.css">
@@ -43,7 +43,7 @@
   <meta property="og:title" content="jogja borobudur tour & travel" />
   <meta property="og:description"
     content="Jogja Borobudur tour & travel Explore borobudur, prambanan, and many more." />
-  <meta property="og:image" content="{{asset('spica')}}/images/logomini.png" />
+    <meta property="og:image" content="{{ asset('traveler/images/gambarseo1.jpeg') }}"/>
     <link rel="stylesheet" href="{{asset('traveler')}}/css/style.css">
     <link rel="stylesheet" href="{{asset('traveler')}}/css/booking10.css">
     <link rel="stylesheet" href="{{asset('traveler')}}/css/booking11.css">
@@ -65,10 +65,10 @@
 	</header>
 	@yield('content')
 	
-	<!---->
+	
 	<footer class="page-footer" style="background-color:  #fc2c04;">
 	<div class="page-footer__content">
-	<nav class="navigation page-footer__navigation"><!---->
+	<nav class="navigation page-footer__navigation">
 	<div class="navigation__directory"><p class="navigation__item navigation__item-section_copyright">
 	<span> © <time>2023</time> Jogja Borobudur Tour &amp; Travel</span></p>
 	
@@ -76,10 +76,10 @@
 	</nav>
 	</div>
 	</footer>
-	<div><!---->
-	<div style="display:contents;"><!--[--><!--]-->
+	<div>
+	<div style="display:contents;">
 	</div>
-	</div><!----><!---->
+	</div>
 	</div>
 	</div>
 	</div>

@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en-US" default-lang="en-US">
 	<head>
 	 <meta charset="utf-8" />
    <link data-vue-meta="ssr" rel="preload" href="{{asset('font')}}/GT-Eesti-Pro-Display-Regular.woff2" as="font" type="font/woff2" crossorigin="true">
@@ -57,7 +57,7 @@
   <meta property="og:title" content="The BEST {{$item->namaseason}}| Jogja Borobudur Tour & Travel" />
   <meta property="og:description"
     content="Find Top-rated Things to Do in {{$item->namaseason}}. BEST Tours and Activities." />
-  <meta property="og:image" content="{{asset('spica')}}/images/logomini.png" />
+    <meta property="og:image" content="{{ asset('traveler/images/gambarseo1.jpeg') }}"/>
   @endforeach
   <!-- end tag -->
   <style type="text/css">

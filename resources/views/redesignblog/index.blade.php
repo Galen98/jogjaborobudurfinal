@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-US" default-lang="en-US">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -23,7 +23,7 @@
   <meta property="og:title" content="jogja borobudur tour & travel" />
   <meta property="og:description"
     content="Jogja Borobudur tour & travel Explore borobudur, prambanan, and many more free cancellation." />
-  <meta property="og:image" content="{{asset('spica')}}/images/logomini.png" />
+	<meta property="og:image" content="{{ asset('traveler/images/gambarseo2.jpg') }}"/>
   </head>
   <body>
 <div class="container-fluid" id="header">

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-US" default-lang="en-US">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -24,7 +24,7 @@
   <meta property="og:title" content="{{$item->judulblog}}" />
   <meta property="og:description"
     content="{{$item->shortdescription}}" />
-  <meta property="og:image" content="{{ url('public/img/'.$item->image) }}" />
+    <meta property="og:image" content="{{ asset('traveler/images/gambarseo2.jpg') }}"/>
   <!-- end tag -->
   @endforeach
   </head>

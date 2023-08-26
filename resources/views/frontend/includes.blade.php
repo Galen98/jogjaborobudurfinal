@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en-US" default-lang="en-US">
   <head>
     <meta charset="utf-8" />
     <link data-vue-meta="ssr" rel="preload" href="{{asset('font')}}/GT-Eesti-Pro-Display-Regular.woff2" as="font" type="font/woff2" crossorigin="true">
@@ -53,7 +53,7 @@
   <meta property="og:title" content="jogja borobudur tour & travel" />
   <meta property="og:description"
     content="Find and book best tours, attractions and things to do and fun activities from indonesia. Book directly from Jogja Borobudur Tour & Travel." />
-  <meta property="og:image" content="{{asset('spica')}}/images/logomini.png" />
+    <meta property="og:image" content="{{ asset('traveler/images/gambarseo2.jpg') }}"/>
   <!-- end tag -->
   <style>
     .hover {

@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en-US" default-lang="en-US">
 <head>
   @foreach($travel as $item)
   <meta charset="utf-8" />
@@ -82,7 +82,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   <meta property="og:url" content="www.jogjaborobudur.com" />
   <meta property="og:title" content="{{$item->namawisata}}" />
   <meta property="og:description" content="{{$item->shortdescription}}" />
-  <meta property="og:image" content="{{('public/img/'.$item->image) }}" />
+  <meta property="og:image" content="{{ url('public/img/'.$item->image) }}" />
 
   <title>{{$item->namawisata}}</title>  
 @endforeach

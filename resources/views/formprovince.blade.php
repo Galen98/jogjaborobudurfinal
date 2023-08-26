@@ -17,10 +17,10 @@
                       <label for="exampleTextarea1">Short Description</label>
                       <textarea class="form-control" style="height:400px" name="shortdescription" placeholder="Short Description" id="formprovince"></textarea>
                     </div>
-                    <!-- <div class="form-group">
+                    <div class="form-group">
                       <label>Upload Thumbnail</label>
                         <input type="file" id="files" name="image" class="form-control" placeholder="Upload Gambar">
-                    </div> -->
+                    </div>
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
                     <a href="/destination-category">Cancel</a>
                   </form>

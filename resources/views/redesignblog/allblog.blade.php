@@ -15,7 +15,7 @@
 			<a href="{{'/blog/'.$item->slug}}">
 			<div class="article-card">
 			<div class="article-img">
-				<img src="{{ url('public/img/'.$item->image) }}">
+				<img src="{{ url('public/img/'.$item->image) }}" alt="{{$item->slug}}">
 			</div>
 
 				<div class="article-meta text-left">
