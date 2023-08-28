@@ -638,6 +638,7 @@ class ComposerStaticIniteaa51caf42a905b6550dc1e5f5ce5489
         'App\\Models\\province' => __DIR__ . '/../..' . '/app/Models/province.php',
         'App\\Models\\rating' => __DIR__ . '/../..' . '/app/Models/rating.php',
         'App\\Models\\region' => __DIR__ . '/../..' . '/app/Models/region.php',
+        'App\\Models\\reviews' => __DIR__ . '/../..' . '/app/Models/reviews.php',
         'App\\Models\\season' => __DIR__ . '/../..' . '/app/Models/season.php',
         'App\\Models\\selltours' => __DIR__ . '/../..' . '/app/Models/selltours.php',
         'App\\Models\\subwisata' => __DIR__ . '/../..' . '/app/Models/subwisata.php',

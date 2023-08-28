@@ -71,6 +71,10 @@
   <div class="rating-overall__container" data-v-a1084d9e>
   <div class="rating-overall__rating">
   <button type="button" class="btn-sm btn btn-outline-info" data-bs-toggle="collapse" href="#collapseExample{{$item->id}}" role="button" aria-expanded="false" aria-controls="collapseExample" style="margin-right: 10px;">Details</button>
+  <form action="{{url('/sendlinkreview/'.$item->id)}}" method="POST" enctype="multipart/form-data">
+      @csrf
+  <button type="submit" class="btn-sm btn btn-outline-primary" style="margin-right: 10px;"><i class="mdi mdi-send btn-icon-prepend"></i> Send link review</button>
+</form>
 
   <button type="button" class="hapusbtn btn-sm btn btn-outline-danger" value="{{$item->id}}"><i class="mdi mdi-delete btn-icon-prepend"></i> Delete</button>
 </div> 

@@ -86,14 +86,15 @@ Route::get('/', function (Request $request) {
     $rateMYR = Rate::where("currency", "MYR")->first()->rate;
     $rateEUR = Rate::where("currency", "EUR")->first()->rate;
     $season = season::get();
+    $city = region::get();
     // get session user
     $session = session()->get("rate") ?? "USD";
     $traveltop=travel::orderBy('created_at','DESC')->where('bahasa',$sessions)->paginate(8);
-    
     //$traveltop=travel::paginate(8);
+
     $other=travel::orderBy('created_at','DESC')->where('label','Likely to sell out')->where('bahasa', $sessions)->paginate(4);
     $blog=blog::orderBy('created_at','DESC')->where('bahasa', $sessions)->paginate(3);
-    return view('frontend.index', compact('provinces','province','sessions','traveltop','other','blog',"rateIDR", "rateSGD", "rateMYR", "session","rateEUR","destination",'destinate','season','bahasa','background'));
+    return view('frontend.index', compact('city','provinces','province','sessions','traveltop','other','blog',"rateIDR", "rateSGD", "rateMYR", "session","rateEUR","destination",'destinate','season','bahasa','background'));
 });
 
 
@@ -543,4 +544,7 @@ Route::get("/change-session/{currency}", function ($currency) {
     return back();
 });
 
+
+//post admin kirim link review
+Route::post('/sendlinkreview/{idbooking}', [App\Http\Controllers\Reviewemail::class,'sendReviewLinks']);
 

@@ -50,6 +50,7 @@ return array(
     'App\\Models\\province' => $baseDir . '/app/Models/province.php',
     'App\\Models\\rating' => $baseDir . '/app/Models/rating.php',
     'App\\Models\\region' => $baseDir . '/app/Models/region.php',
+    'App\\Models\\reviews' => $baseDir . '/app/Models/reviews.php',
     'App\\Models\\season' => $baseDir . '/app/Models/season.php',
     'App\\Models\\selltours' => $baseDir . '/app/Models/selltours.php',
     'App\\Models\\subwisata' => $baseDir . '/app/Models/subwisata.php',

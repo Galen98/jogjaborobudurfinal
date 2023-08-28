@@ -100,10 +100,16 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   <ul class="navigation__list">
   <li data-test-id="header-navigation-search" class="navigation__list-item-parent item__search">
   <div class="dropdown drops">
-            <button class="btn btn-secondary" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color:#fc2c04;color: white;border-color:#fc2c04;">
-             <span class="material-symbols-outlined" style="font-size: 26px;">
-            language
-            </span>
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color:#fc2c04;color: white;border-color:#fc2c04;" >
+            @if($sessions == 'Bahasa')
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3 2" height="20px" style="margin-bottom:3px;"><path fill="#fff" d="M0 0h3v2H0z"/><path fill="red" d="M0 0h3v1H0z"/></svg>
+            @endif
+            @if($sessions == 'English')
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="20px" style="margin-bottom:3px;" viewBox="0 0 7410 3900"><path fill="#b22234" d="M0 0h7410v3900H0z"/><path d="M0 450h7410m0 600H0m0 600h7410m0 600H0m0 600h7410m0 600H0" stroke="#fff" stroke-width="300"/><path fill="#3c3b6e" d="M0 0h2964v2100H0z"/><g fill="#fff"><g id="d"><g id="c"><g id="e"><g id="b"><path id="a" d="M247 90l70.534 217.082-184.66-134.164h228.253L176.466 307.082z"/><use xlink:href="#a" y="420"/><use xlink:href="#a" y="840"/><use xlink:href="#a" y="1260"/></g><use xlink:href="#a" y="1680"/></g><use xlink:href="#b" x="247" y="210"/></g><use xlink:href="#c" x="494"/></g><use xlink:href="#d" x="988"/><use xlink:href="#c" x="1976"/><use xlink:href="#e" x="2470"/></g></svg>
+            @endif
+            @if($sessions == 'Malay')
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13440 6720" height="20px" style="margin-bottom:3px;"><g transform="scale(480)"><path fill="#fff" d="m0 0h28v14H0z"/><path stroke="#c00" d="m1 .5h27m0 2H1m0 2h27m0 2H1"/><path fill="#006" d="m0 0h14v8.5H0z"/><path stroke="#c00" d="m0 8.5h28m0 2H0m0 2h28"/></g><path fill="#fc0" d="m4200 720 107 732 414-613-222 706 639-373-506 540 738-59-690 267 690 267-738-59 506 540-639-373 222 706-414-613-107 732-107-732-414 613 222-706-639 373 506-540-738 59 690-267-690-267 738 59-506-540 639 373-222-706 414 613zm-600 30a1280 1280 0 1 0 0 2340 1440 1440 0 1 1 0-2340z"/></svg>
+            @endif
             </button>
             <div class="dropdown-menu">
               @foreach($bahasa as $item)
@@ -113,34 +119,18 @@ font-family: 'GT Eesti Text Trial', sans-serif;
           </div>
   </li> 
 
-  <li data-test-id="header-navigation-search" class="navigation__list-item-parent item__search" style="margin-left:-35px;" >
-  <div class="dropdown drops">
-            <button class="btn btn-sm btn-secondary" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color:#fc2c04;color: white;border-color:#fc2c04;" >
-            <span class="material-symbols-outlined" style="font-size: 26px;">
-            paid
-            </span>
+
+  <li data-test-id="header-navigation-search" class="navigation__list-item-parent item__search" style="margin-left:-35px;margin-right:-15px;" >
+  <div class="dropdown drops" >
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color:#fc2c04;color: white;border-color:#fc2c04;">
+             {!! $session !!}
             </button>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="/change-session/USD">USD</a>
+           <a class="dropdown-item" href="/change-session/USD">USD</a>
               <a class="dropdown-item" href="/change-session/IDR">IDR</a>
               <a class="dropdown-item" href="/change-session/MYR">MYR</a>
               <a class="dropdown-item" href="/change-session/SGD">SGD</a>
               <a class="dropdown-item" href="/change-session/EUR">EUR</a>
-            </div>
-          </div>
-  </li>
-
-  <li data-test-id="header-navigation-search" class="navigation__list-item-parent item__search" style="margin-left:-35px;margin-right:-15px;" >
-  <div class="dropdown drops">
-            <button class="btn btn-sm btn-secondary" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color:#fc2c04;color: white;border-color:#fc2c04;" >
-            <span class="material-symbols-outlined">
-            travel_explore
-            </span>
-            </button>
-            <div class="dropdown-menu">
-            @foreach($seasones as $item)
-            <a class="dropdown-item" href="{{'/season/' .$item->id}}">{{$item->namaseason}}</a>
-            @endforeach
             </div>
           </div>
   </li>
@@ -377,8 +367,8 @@ font-family: 'GT Eesti Text Trial', sans-serif;
 
   </section>
 
-  <section data-test-id="activity-category" class="activity__category-label activity__category-label--mobile" data-v-c4be1764>
-  <span class="c-classifier-badge" data-v-c4be1764>
+  
+  <!-- <span class="c-classifier-badge" data-v-c4be1764>
   <ul itemscope="itemscope" itemtype="https://schema.org/BreadcrumbList" class="activity-breadcrumbs" data-v-2833ce42 data-v-c4be1764 style="font-size:14px;">
   <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42>
  <span itemprop="name" data-v-2833ce42><a href="/" style="color:grey;text-transform:capitalize;">Home</a></span>
@@ -396,19 +386,23 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42>
   @foreach($destinasi as $item)<span itemprop="name" data-v-2833ce42><a href="{{'/category-destination/' .$item->id}}" style="color:grey;text-transform:capitalize;">{{$item->destination}}</a></span>@endforeach 
   </li> 
-  <!-- <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42>
-  @foreach($season as $item)<span itemprop="name" data-v-2833ce42><a href="{{'/season/' .$item->id}}">{{$item->namaseason}}</a></span>@endforeach 
-  <meta itemprop="position" content="2" data-v-2833ce42>
-  </li> 
-  <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42>
-  @foreach($travel as $item)
-  <span itemprop="name" data-v-2833ce42>{{$item->namawisata}}</span>@endforeach
-  <meta itemprop="position" content="3" data-v-2833ce42>
-  </li>  -->
   </ul>
-    </span>
-  </section>
-     <!----> 
+    </span> -->
+    <section class="activity__mobile-header" data-v-c4be1764>
+    <ul class="breadscrumb-custom-horizontal-list">
+  @foreach($province as $item)
+ <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42><a href="/location/{{$item->slugprovince}}/{{$item->id}}" style="color:#233351;">{{$item->namaprovince}}</a></li> 
+  @endforeach
+  @foreach($region as $item)
+  <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42><a href="{{'/city/' .$item->slugregion}}" style="color:#233351;">{{$item->namaregion}}</a></li>
+  @endforeach
+  @foreach($destinasi as $item)
+  <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42><a href="{{'/category-destination/' .$item->id}}" style="color:#233351;">{{$item->destination}}</a></li>
+  @endforeach
+  
+</ul>
+</section>
+
      @foreach($travel as $item)
      
     <section class="activity__mobile-header" data-v-c4be1764>
@@ -933,6 +927,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
     </div>
     </div>
     <br>
+    <hr>
     @if(count($value) === 0)
           <div></div>
           @else
@@ -940,7 +935,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
 <div class="row">
 <div class="col mt-4">
 <span data-test-id="collection-title" class="collection-header_title" style="font-size:25px;font-weight:bolder;">
-     Review from our travelers
+     Customer reviews 
    </span> 
       <br/>
       <br/>
@@ -1037,6 +1032,26 @@ font-family: 'GT Eesti Text Trial', sans-serif;
 
 </div>
 </div>
+<div class="wrapper container" style="overflow:hidden; margin-top:20px;">
+<span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0 style="font-size:28px;">
+        Our top tours & activities
+      </span>
+<ul class="horizontal-list" style="margin-bottom:50px;">
+  @foreach($provinces as $item)
+ <li><a href="/location/{{$item->slugprovince}}/{{$item->id}}" style="color:#233351;">{{$item->namaprovince}}</a></li> 
+  @endforeach
+  @foreach($seasones as $item)
+  <li><a href="{{'/season/' .$item->id}}" style="color:#233351;">{{$item->namaseason}}</a></li>
+  @endforeach
+  @foreach($destination as $item)
+  <li><a href="{{'/category-destination/' .$item->id}}" style="color:#233351;">{{$item->destination}}</a></li>
+  @endforeach
+  @foreach($city as $item)
+  <li><a href="{{'/city/' .$item->slugregion}}" style="color:#233351;">{{$item->namaregion}}</a></li>
+  @endforeach
+</ul>
+</div>
+
     <footer id="gtco-footer" role="contentinfo" style="background-color:#fc2c04;padding:0px;">
     <div class="gtco-container">
       <div class="row row-p b-md">

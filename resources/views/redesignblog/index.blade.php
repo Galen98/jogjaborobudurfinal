@@ -15,7 +15,7 @@
      <!-- primary tag SEO -->
   <meta name="title" content="jogja Borobudur | Tour & Travel" />
   <meta name="robots" content="index, follow">
-    <meta name="keywords" content="blog travel, travel, wisata, borobudur, prambanan, yogyakarta, explore">
+  <meta name="keywords" content="blog travel, travel, wisata, borobudur, prambanan, yogyakarta, explore">
   <meta name="description" content="Start your journey with us, and explore the world. Jogja Borobudur Tour & Travel Blog"/>
   <!-- facebook tag -->
   <meta property="og:type" content="website" />
