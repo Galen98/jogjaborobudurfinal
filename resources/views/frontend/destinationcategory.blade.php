@@ -424,7 +424,7 @@
   <div class="activity-card__details" data-v-a1084d9e>
   <div class="activity-card__details-main" data-v-a1084d9e>
   <div class="activity-card__details-left" data-v-a1084d9e><!----> 
-  <h2 class="activity-card__title text-capitalize" data-v-a1084d9e>{{$item->namawisata}}</h2> 
+  <h3 class="activity-card__title text-capitalize" data-v-a1084d9e style="font-size:14px;">{{Str::limit($item->namawisata, 25)}}</h3>  
   <div class="activity-card__attributes" data-v-a1084d9e>
   <ul class="activity-attributes__container" data-v-67560657 data-v-a1084d9e>
   <li class="activity-attributes__attribute" data-v-67560657>
