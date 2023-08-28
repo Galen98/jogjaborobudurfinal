@@ -191,7 +191,7 @@
       </div>
 
 
-      <div class="d-block d-md-none">
+    <div class="d-block d-md-none">
   <ul class="custom-horizontal-list">
   @foreach($season as $item)
   <li class=""><a href="{{'/season/' .$item->id}}" class="btn btn-outline-dark" style="color:#233351;border-radius:20px;">{{$item->namaseason}}</a></li>
@@ -208,7 +208,6 @@
   <main id="main-content" class="home-page">
   <div class="activities" data-v-680034d2 data-v-1e9f5217>
     <section data-test-id="activity-picks" class="collection-container container activities__cards" data-v-76e871e0 data-v-680034d2>
-    
     <div class="collection-header" data-v-76e871e0>
     <div class="collection-header--title-container" data-v-76e871e0>
     <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0>
@@ -363,13 +362,14 @@
     </div>
     </div>
     </div>
+
     </section> 
     </div>
     </main>
     </div>
     </div>
 	
-	<div class="gtco-section"  style="margin-top:-80px;margin-bottom:-80px;">
+	<!-- <div class="gtco-section"  style="margin-top:-80px;margin-bottom:-80px;">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
@@ -379,7 +379,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
   <div class="wrapper container d-block d-md-none" style="overflow:hidden;margin-bottom:100px;margin-top:50px;">
   <div class="d-block d-md-none">
@@ -552,6 +552,7 @@
     </article>
     </div>
     @endforeach
+
   </section>
 </main>
 </div>
