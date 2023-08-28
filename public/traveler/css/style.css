@@ -2496,6 +2496,7 @@ color: #182c4c;
   list-style: none;
   padding: 0;
   overflow-x: auto; /* Allow horizontal scrolling on smaller screens */
+  flex-wrap: wrap; /* Allow items to wrap onto new lines */
 }
 
 .horizontal-list li {
@@ -2514,7 +2515,6 @@ color: #182c4c;
 /* Responsive Styles */
 @media (max-width: 768px) {
   .horizontal-list {
-    flex-wrap: wrap; /* Allow items to wrap onto new lines */
     justify-content: left; /* Center items horizontally */
     overflow-x: hidden; /* Hide horizontal scrollbar */
   }
@@ -2527,6 +2527,26 @@ color: #182c4c;
     content: none; /* Remove separators on smaller screens */
   }
 }
+
+/* Desktop Styles */
+@media (min-width: 769px) {
+  .horizontal-list {
+    justify-content: flex-start; /* Start items from the left */
+  }
+  
+  .horizontal-list li {
+    margin: 5px; /* Add spacing between items */
+    flex-grow: 1; /* Allow items to grow and fill available space */
+    flex-basis: calc(33.333% - 10px); /* Set width for 3 columns with spacing */
+  }
+  
+  .horizontal-list li::after {
+    content: "|"; /* Separator character (bullet point) */
+    margin: 0 10px; /* Adjust the spacing between items and separators */
+    color: #888; /* Separator color */
+  }
+}
+
 
 
 .custom-horizontal-list {
@@ -2596,3 +2616,5 @@ color: #182c4c;
     content: none; /* Remove separators on larger screens */
   }
 }
+
+
