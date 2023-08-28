@@ -148,7 +148,7 @@
 <br>
 <div id="gyg" data-server-rendered="true" style="margin-top:-25px;margin-bottom: -40px;">
 
-  <div class="new-homepage-layout main-wrapper  partner-left-layout" data-v-1e9f5217><!----> <!----> <!----> <!----> 
+  <div class="new-homepage-layout main-wrapper  partner-left-layout" data-v-1e9f5217>    
   <!-- <a href="#main-content" class="skip-link">Skip to content</a>  -->
   <main id="main-content" class="home-page">
 <div class="activities" data-v-680034d2 data-v-1e9f5217>
@@ -159,7 +159,7 @@
     @foreach($season as $item){{$item->namaseason}}@endforeach
       </span>
       
-    </div> <!---->
+    </div> 
     </div> 
     <div class="collection-body" data-v-76e871e0>
     <div class="collection-body--horizontal" data-v-76e871e0>
@@ -177,7 +177,7 @@
     <img src="{{ url('public/img/'.$item->image2) }}" alt="{{$item->namawisata}}">
     </picture>
     </div> 
-    <div class="vertical-activity-card__badge"><!---->
+    <div class="vertical-activity-card__badge">
     </div>
     </div> 
     <header class="vertical-activity-card__header">
@@ -185,7 +185,7 @@
       </div> 
       <p data-test-id="activity-card-title" class="vertical-activity-card__title">
             {{$item->namawisata}}
-          </p> <!----></header> 
+          </p> </header> 
       <div class="vertical-activity-card__body">
       <ul class="activity-attributes__container" data-v-33ad6115>
       <li class="activity-attributes__attribute" data-v-33ad6115>
@@ -197,13 +197,13 @@
       <span class="vertical-activity-card__badges">
       <span class="vertical-activity-card__ltso-badge c-marketplace-badge c-marketplace-badge--primary">
               Likely to sell out
-            </span> <!----> <!----> <!---->
+            </span>   
       </span>
       @elseif($item->label == 'Bestseller')
       <span class="vertical-activity-card__badges">
       <span class="vertical-activity-card__ltso-badge c-marketplace-badge c-marketplace-badge--primary" style="background-color: green;">
               Bestseller
-            </span> <!----> <!----> <!---->
+            </span>   
       </span>
       @endif
       </div>
@@ -211,7 +211,7 @@
       <div class="vertical-activity-card__details">
       <footer class="vertical-activity-card__footer">
       <div class="rating-overall__container">
-      <div class="rating-overall__rating"><!----> 
+      <div class="rating-overall__rating"> 
       <div class="rating-star rating-overall__rating-stars">
         <div class="" style="margin-bottom: 10px;">
               <div class="small-ratings">
@@ -224,7 +224,7 @@
               </div>
             </div>
       </div> 
-     <!----> 
+      
   </div> 
   <div class="rating-overall__reviews">
   </div>
@@ -288,7 +288,7 @@
     </div>
     </div>
     </footer> 
-    <div class="vertical-activity-card__bottom"><!---->
+    <div class="vertical-activity-card__bottom">
     </div>
     </div>
     </a> 
@@ -301,7 +301,7 @@
     </div>
     </div>
     </div>
-    </section> <!---->
+    </section> 
     </div>
     </main>
     </div>
@@ -310,35 +310,50 @@
     @endif
 
 
-    <div class="container d-none d-sm-block" style="margin-top:-40px;margin-bottom:-40px;">
-      <div class="row" >
-        <div class="col-md-8 col-md-offset-2 text-center gtco-heading" >
-          <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0>
-       Other popular tours
-              </span>
-          <p>Other travellers also book these tours</p>
+    <div class="gtco-section d-none d-sm-block" style="margin-top:-80px;margin-bottom:-80px;">
+		<div class="gtco-container">
+			<div class="col-md-8 col-md-offset-2 text-center gtco-heading" style="margin-bottom:-10px; ">
+        <!-- <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0>
+        You might also like other destination
+      </span>
+          <p style="font-size: 17px;">Other travellers also book these tours</p> -->
         </div>
-      </div>
-    </div>
+			<div class="row">
+				<div class="col-md-12">
+				<div class="col-md-6 ">
+					<div class="container">
+		</div>
+		</div>
+</div>
+	</div>
+</div>
+</div>
 
     <div id="gyg" data-server-rendered="true" class="d-none d-sm-block">
-  <div class="main-wrapper  partner-left-layout" data-v-5120f7ad><!----> <!----> <!----> <!----> 
+  <div class="main-wrapper  partner-left-layout" data-v-5120f7ad>    
   <a href="#main-content" class="skip-link">Skip to content</a> 
   <main id="main-content">
     <section layout="vertical" class="grid-wrapper container grid-wrapper--list">
+    <div class="collection-header" data-v-76e871e0 style="margin-bottom:-3px;">
+        <div class="collection-header--title-container" data-v-76e871e0>
+    <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0>
+    Other popular tours
+      </span> 
+    </div> 
+    </div>
 @foreach($other as $item)
   <div class="activity-card-block--grid border rounded" style="margin-bottom: 7px;">
   <article data-test-id="horizontal-activity-card" class="activity-card horizontal-activity-card companion-inactive activity-card-block__card--grid activity-card-block--desktop" data-v-a1084d9e>
   <a href="{{'/item/'.$item->slug}}" role="contentinfo" target="_blank" rel="noopener" data-activity-id="412877" class="activity-card__container gtm-trigger__card-interaction" data-v-a1084d9e>
   <div class="activity-card__image" data-v-a1084d9e> 
-  <div class="activity-card__image-info align-end" data-v-a1084d9e><!----></div> 
+  <div class="activity-card__image-info align-end" data-v-a1084d9e></div> 
   <picture data-v-a1084d9e>
   <source srcset="{{ url('public/img/'.$item->image) }}" type="image/webp"> 
   <img src="{{ url('public/img/'.$item->image) }}" alt="{{$item->namawisata}}"></picture>
   </div> 
   <div class="activity-card__details" data-v-a1084d9e>
   <div class="activity-card__details-main" data-v-a1084d9e>
-  <div class="activity-card__details-left" data-v-a1084d9e><!----> 
+  <div class="activity-card__details-left" data-v-a1084d9e> 
   <h2 class="activity-card__title" data-v-a1084d9e>{{$item->namawisata}}</h2> 
   <div class="activity-card__attributes" data-v-a1084d9e>
   <ul class="activity-attributes__container" data-v-67560657 data-v-a1084d9e>
@@ -347,9 +362,9 @@
     <span data-v-67560657>{{$item->durasi}}</span>
   </span>
   </li>
-  </ul> <!---->
-  </div> <!----> 
-  <div class="activity-card__badges__container" data-v-a1084d9e><!----> <!----> <!---->
+  </ul> 
+  </div>  
+  <div class="activity-card__badges__container" data-v-a1084d9e>  
   </div>
   </div> 
   <div class="activity-card__details-right" data-v-a1084d9e>
@@ -365,7 +380,7 @@
                 <i class="fa fa-star rating-color"></i>
               </div>
 
-</div> <!----> <!----> 
+</div>   
 </div> 
 </div> 
 <div class="activity-card__pricing" data-v-a1084d9e><div class="baseline-pricing" data-v-24caa43d data-v-a1084d9e><div class="baseline-pricing__container" data-v-24caa43d><div class="baseline-pricing__value" data-v-24caa43d><p class="baseline-pricing__from" data-v-24caa43d>From</p>
@@ -417,14 +432,14 @@
   <article data-test-id="horizontal-activity-card" class="activity-card horizontal-activity-card companion-inactive activity-card-block__card--grid activity-card-block--desktop" data-v-a1084d9e>
   <a href="{{'/item/'.$item->slug}}" role="contentinfo" target="_blank" rel="noopener" data-activity-id="412877" class="activity-card__container gtm-trigger__card-interaction" data-v-a1084d9e>
   <div class="activity-card__image" data-v-a1084d9e> 
-  <div class="activity-card__image-info align-end" data-v-a1084d9e><!----></div> 
+  <div class="activity-card__image-info align-end" data-v-a1084d9e></div> 
   <picture data-v-a1084d9e>
   <source srcset="{{ url('public/img/'.$item->image) }}" type="image/webp"> 
   <img src="{{ url('public/img/'.$item->image) }}" alt="{{$item->namawisata}}"></picture>
   </div> 
   <div class="activity-card__details" data-v-a1084d9e>
   <div class="activity-card__details-main" data-v-a1084d9e>
-  <div class="activity-card__details-left" data-v-a1084d9e><!----> 
+  <div class="activity-card__details-left" data-v-a1084d9e> 
   <h3 class="activity-card__title text-capitalize" data-v-a1084d9e style="font-size:14px;">{{Str::limit($item->namawisata, 25)}}</h3> 
   <div class="activity-card__attributes" data-v-a1084d9e>
   <ul class="activity-attributes__container" data-v-67560657 data-v-a1084d9e>
@@ -433,9 +448,9 @@
     <span data-v-67560657 class="small">{{$item->durasi}}</span>
   </span>
 </li>
-  </ul> <!---->
-  </div> <!----> 
-  <div class="activity-card__badges__container" data-v-a1084d9e><!----> <!----> <!---->
+  </ul> 
+  </div>  
+  <div class="activity-card__badges__container" data-v-a1084d9e>  
   </div>
   </div> 
   <div class="activity-card__details-right" data-v-a1084d9e>
@@ -450,7 +465,7 @@
                 <i class="fa fa-star rating-color"></i>
               </div>
 
-</div> <!----> <!----> 
+</div>   
 </div> 
 </div> 
 <div class="activity-card__pricing" data-v-a1084d9e><div class="baseline-pricing" data-v-24caa43d data-v-a1084d9e><div class="baseline-pricing__container" data-v-24caa43d><div class="baseline-pricing__value" data-v-24caa43d><p class="baseline-pricing__from" data-v-24caa43d>From</p>

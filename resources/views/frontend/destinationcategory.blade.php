@@ -301,13 +301,13 @@
 
 
 
-<div class="gtco-section d-none d-sm-block">
+<div class="gtco-section d-none d-sm-block" style="margin-top:-80px;margin-bottom:-80px;">
 		<div class="gtco-container">
 			<div class="col-md-8 col-md-offset-2 text-center gtco-heading" style="margin-bottom:-10px; ">
-        <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0>
+        <!-- <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0>
         You might also like other destination
       </span>
-          <p style="font-size: 17px;">Other travellers also book these tours</p>
+          <p style="font-size: 17px;">Other travellers also book these tours</p> -->
         </div>
 			<div class="row">
 				<div class="col-md-12">
@@ -325,6 +325,13 @@
   <a href="#main-content" class="skip-link">Skip to content</a> 
   <main id="main-content">
     <section layout="vertical" class="grid-wrapper container grid-wrapper--list">
+    <div class="collection-header" data-v-76e871e0 style="margin-bottom:-3px;">
+        <div class="collection-header--title-container" data-v-76e871e0>
+    <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0>
+    You might also like other destination
+      </span> 
+    </div> 
+    </div>
 @foreach($other as $item)
   <div class="activity-card-block--grid rounded border" style="margin-bottom: 7px;">
   <article data-test-id="horizontal-activity-card" class="activity-card horizontal-activity-card companion-inactive activity-card-block__card--grid activity-card-block--desktop" data-v-a1084d9e>
