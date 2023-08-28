@@ -563,6 +563,7 @@ class TravelController extends Controller
         $seasones = season::get();
         // $English = travel::where("bahasa",$sessions)->first()->bahasa;
         $destinate=destination::get();
+        $city=region::get();
         $highlight=highlight::where('wisata_id',$idtravel)->get();
         $harga = harga::where('wisata_id',$idtravel)->get();
         $destination=destination::paginate(3);
@@ -573,7 +574,7 @@ class TravelController extends Controller
         $value=rating::where('wisata_id',$idtravel)->paginate(8);
         $jumlahreview=rating::where('wisata_id',$idtravel)->count();
         $other=travel::where('label','Likely to sell out')->where('bahasa',$sessions)->paginate(4);
-        return view('frontend.jajal', compact('seasones', 'provinces','travel','childoption','includes','excludes','other','value','jumlahreview',"rateIDR","rateMYR","rateSGD","session","rateEUR",'highlight','harga','destination','rangeharga','hargachild','jam','destinate','option','pilihan','harganew','options','hargachildnew','destinasi','season','bahasa','session','sessions','region','province')); 
+        return view('frontend.jajal', compact('city','seasones', 'provinces','travel','childoption','includes','excludes','other','value','jumlahreview',"rateIDR","rateMYR","rateSGD","session","rateEUR",'highlight','harga','destination','rangeharga','hargachild','jam','destinate','option','pilihan','harganew','options','hargachildnew','destinasi','season','bahasa','session','sessions','region','province')); 
     }
 
     public function itemcity(Request $request,$slugcity,$slug){
@@ -625,6 +626,7 @@ class TravelController extends Controller
         
         // $English = travel::where("bahasa",$sessions)->first()->bahasa;
         $destinate=destination::get();
+        $city=region::get();
         $highlight=highlight::where('wisata_id',$idtravel)->get();
         $harga = harga::where('wisata_id',$idtravel)->get();
         $destination=destination::paginate(3);
@@ -635,7 +637,7 @@ class TravelController extends Controller
         $value=rating::where('wisata_id',$idtravel)->paginate(8);
         $jumlahreview=rating::where('wisata_id',$idtravel)->count();
         $other=travel::where('label','Likely to sell out')->where('bahasa',$sessions)->paginate(4);
-        return view('frontend.jajal', compact('provinces','travel','childoption','includes','excludes','other','value','jumlahreview',"rateIDR","rateMYR","rateSGD","session","rateEUR",'highlight','harga','destination','rangeharga','hargachild','jam','destinate','option','pilihan','harganew','options','hargachildnew','destinasi','season','bahasa','session','sessions','region','province')); 
+        return view('frontend.jajal', compact('city','provinces','travel','childoption','includes','excludes','other','value','jumlahreview',"rateIDR","rateMYR","rateSGD","session","rateEUR",'highlight','harga','destination','rangeharga','hargachild','jam','destinate','option','pilihan','harganew','options','hargachildnew','destinasi','season','bahasa','session','sessions','region','province')); 
     }
 
     public function viewprovince(Request $request,$slugprovince,$idprovince){

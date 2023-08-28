@@ -200,14 +200,17 @@
   </div>
     </div>
 
+    
 
   <div id="gyg" data-server-rendered="true"> 
   <div class="new-homepage-layout main-wrapper  partner-left-layout" data-v-1e9f5217>
   <a href="#main-content" class="skip-link">Skip to content</a> 
   <main id="main-content" class="home-page">
-<div class="activities" data-v-680034d2 data-v-1e9f5217>
+  <div class="activities" data-v-680034d2 data-v-1e9f5217>
     <section data-test-id="activity-picks" class="collection-container container activities__cards" data-v-76e871e0 data-v-680034d2>
-    <div class="collection-header" data-v-76e871e0><div class="collection-header--title-container" data-v-76e871e0>
+    
+    <div class="collection-header" data-v-76e871e0>
+    <div class="collection-header--title-container" data-v-76e871e0>
     <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0>
         Our Top Tour 
       </span> 
@@ -371,7 +374,7 @@
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
 					<form action="/alltours" method="get">
-					<button class="btn btn-light" style="font-size: 20px;border-color:#f0f0f0;border-radius:20px;">Discover all tours</button>
+				<center>	<button class="btn btn-light" style="font-size: 20px;border-color:#f0f0f0;border-radius:20px;">Discover all tours</button> </center>
 					</form>
 				</div>
 			</div>
