@@ -90,7 +90,7 @@
   </li>
   
 
-  <li tabindex="0" data-test-id="header-navigation-pickers" class="item__dropdown item__dropdown--language js-navigation-language-dropdown">
+  <li tabindex="0" data-test-id="header-navigation-pickers" class="item__dropdown item__dropdown--language js-navigation-language-dropdown d-none d-sm-block">
      <div class="dropdown drops">
             <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color:#fc2c04;color: white;border-color:#fc2c04;" >
             @if($sessions == 'Bahasa')
@@ -111,7 +111,7 @@
           </div>
   </li> 
 
-  <li tabindex="0" data-test-id="header-navigation-pickers" class="item__dropdown item__dropdown--language js-navigation-language-dropdown" style="margin-left:-36px; ">
+  <li tabindex="0" data-test-id="header-navigation-pickers" class="item__dropdown item__dropdown--language js-navigation-language-dropdown d-none d-sm-block" style="margin-left:-36px; ">
      <div class="dropdown drops" >
             <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color:#fc2c04;color: white;border-color:#fc2c04;">
              {!! $session !!}
@@ -126,7 +126,7 @@
           </div>
   </li> 
 
-  <li tabindex="0" data-test-id="header-navigation-pickers" class="item__dropdown item__dropdown--language js-navigation-language-dropdown" style="margin-left:-36px; ">
+  <li tabindex="0" data-test-id="header-navigation-pickers" class="item__dropdown item__dropdown--language js-navigation-language-dropdown d-none d-sm-block" style="margin-left:-36px; ">
      <div>
       <form action="/contact/contacts-us" method="GET">
             <button class="btn btn-secondary" type="submit" style="background-color:transparent !important;color: white;border-color:transparent !important;">
