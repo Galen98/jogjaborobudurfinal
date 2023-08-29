@@ -85,9 +85,9 @@
   <div class="baseline-pricing" data-v-24caa43d data-v-a1084d9e>
     <div class="baseline-pricing__container" data-v-24caa43d>
     @if($item->travelStatus == 'active')
-      <span class="badge badge-pill badge-success">Active</span>
+      <span class="badge badge-pill badge-success">ACTIVE</span>
       @else
-      <span class="badge badge-pill badge-secondary">Done</span>
+      <span class="badge badge-pill badge-secondary">DONE</span>
       @endif
       <div class="baseline-pricing__value" data-v-24caa43d>
         <p class="baseline-pricing__from" data-v-24caa43d>Total</p>
