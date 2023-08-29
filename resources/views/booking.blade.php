@@ -59,12 +59,7 @@
       <span data-v-67560657>Travel date: {{$item->traveldate}}</span>
       <br>
       <span data-v-67560657>Name: {{$item->name}} {{$item->surname}}</span>
-      <br>
-      @if($item->travelStatus == 'active')
-      <span class="badge badge-pill badge-success">Active</span>
-      @else
-      <span class="badge badge-pill badge-secondary">Done</span>
-      @endif
+     
     </span>
   </span>
 </li>
@@ -86,7 +81,16 @@
 </div> 
 </div>
  
-<div class="activity-card__pricing" data-v-a1084d9e><div class="baseline-pricing" data-v-24caa43d data-v-a1084d9e><div class="baseline-pricing__container" data-v-24caa43d><div class="baseline-pricing__value" data-v-24caa43d><p class="baseline-pricing__from" data-v-24caa43d>Total</p>
+<div class="activity-card__pricing" data-v-a1084d9e>
+  <div class="baseline-pricing" data-v-24caa43d data-v-a1084d9e>
+    <div class="baseline-pricing__container" data-v-24caa43d>
+    @if($item->travelStatus == 'active')
+      <span class="badge badge-pill badge-success">Active</span>
+      @else
+      <span class="badge badge-pill badge-secondary">Done</span>
+      @endif
+      <div class="baseline-pricing__value" data-v-24caa43d>
+        <p class="baseline-pricing__from" data-v-24caa43d>Total</p>
         {{$item->total}} {{$item->totalgroup}}
       </div> 
       <p class="baseline-pricing__category" data-v-24caa43d>
