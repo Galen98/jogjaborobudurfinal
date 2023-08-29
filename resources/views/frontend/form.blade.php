@@ -162,7 +162,7 @@
           <div class="gtco-widget">
             <h1 style="font-weight:bold;color: white;margin-bottom: 15px;font-size: 20px;">Language</h1>
             <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color: white;color: black;">
+            <button class="btn btn-secondary dropdown-toggle dropdown-menu-wide" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color: white;color: black;">
               Select Language
             </button>
             <div class="dropdown-menu">
@@ -173,7 +173,7 @@
           </div>
             <h1 style="font-weight:bold;color: white;margin-top: 10px;margin-bottom: 15px;font-size: 20px;">Currency</h1>
             <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color: white;color: black;">
+            <button class="btn btn-secondary dropdown-toggle dropdown-menu-wide" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color: white;color: black;">
               Select Currency
             </button>
             <div class="dropdown-menu">

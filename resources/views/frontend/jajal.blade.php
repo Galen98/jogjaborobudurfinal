@@ -135,7 +135,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
           </div>
   </li>
   
-  <li tabindex="0" data-test-id="header-navigation-pickers" class="item__dropdown item__dropdown--language js-navigation-language-dropdown">
+  <li tabindex="0" data-test-id="header-navigation-pickers" class="item__dropdown item__dropdown--language js-navigation-language-dropdown d-none d-sm-block">
      <div class="dropdown drops">
             <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color:#fc2c04;color: white;border-color:#fc2c04;" >
             @if($sessions == 'Bahasa')
@@ -156,7 +156,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
           </div>
   </li> 
 
-  <li tabindex="0" data-test-id="header-navigation-pickers" class="item__dropdown item__dropdown--language js-navigation-language-dropdown" style="margin-left:-36px; ">
+  <li tabindex="0" data-test-id="header-navigation-pickers" class="item__dropdown item__dropdown--language js-navigation-language-dropdown d-none d-sm-block" style="margin-left:-36px; ">
      <div class="dropdown drops" >
             <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color:#fc2c04;color: white;border-color:#fc2c04;">
              {!! $session !!}
@@ -171,7 +171,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
           </div>
   </li> 
 
-  <li tabindex="0" data-test-id="header-navigation-pickers" class="item__dropdown item__dropdown--language js-navigation-language-dropdown" style="margin-left:-36px; ">
+  <li tabindex="0" data-test-id="header-navigation-pickers" class="item__dropdown item__dropdown--language js-navigation-language-dropdown d-none d-sm-block" style="margin-left:-36px; ">
      <div>
       <form action="/contact/contacts-us" method="GET">
             <button class="btn btn-secondary" type="submit" style="background-color:transparent !important;color: white;border-color:transparent !important;">
@@ -388,7 +388,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   </li> 
   </ul>
     </span> -->
-    <section class="activity__mobile-header" data-v-c4be1764>
+    <section class="activity__mobile-header" data-v-c4be1764 style="margin-top:10px;margin-bottom:10px;">
     <ul class="breadscrumb-custom-horizontal-list">
   @foreach($province as $item)
  <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42><a href="/location/{{$item->slugprovince}}/{{$item->id}}" style="color:#233351;">{{$item->namaprovince}}</a></li> 
@@ -399,7 +399,6 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   @foreach($destinasi as $item)
   <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42><a href="{{'/category-destination/' .$item->id}}" style="color:#233351;">{{$item->destination}}</a></li>
   @endforeach
-  
 </ul>
 </section>
 
@@ -811,7 +810,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
 <br>
 
 <div id="gyg" data-server-rendered="true">
-  <div class="new-homepage-layout main-wrapper  partner-left-layout" data-v-1e9f5217>
+  <div class="new-homepage-layout partner-left-layout" data-v-1e9f5217>
   <a href="#main-content" class="skip-link">Skip to content</a> 
   <main id="main-content" class="home-page">
 <div class="activities" data-v-680034d2 data-v-1e9f5217>
@@ -1092,7 +1091,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
           <div class="gtco-widget">
             <h1 style="font-weight:bold;color: white;margin-bottom: 15px;font-size: 20px;">Language</h1>
             <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color: white;color: black;">
+            <button class="btn btn-secondary dropdown-toggle dropdown-menu-wide" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color: white;color: black;">
               Select Language
             </button>
             <div class="dropdown-menu">
@@ -1103,7 +1102,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
           </div>
             <h1 style="font-weight:bold;color: white;margin-top: 10px;margin-bottom: 15px;font-size: 20px;">Currency</h1>
             <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color: white;color: black;">
+            <button class="btn btn-secondary dropdown-toggle dropdown-menu-wide" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color: white;color: black;">
               Select Currency
             </button>
             <div class="dropdown-menu">

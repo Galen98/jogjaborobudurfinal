@@ -175,10 +175,9 @@
     <div class="vertical-activity-cards__grid" data-v-76e871e0>
  
       @foreach($travel as $item)
-    <article data-test-id="vertical-activity-card" class="vertical-activity-card" data-v-76e871e0>
+      <article data-test-id="vertical-activity-card" class="vertical-activity-card d-none d-sm-block" data-v-76e871e0>
     <div class="vertical-activity-card__content-wrapper">
-    <a href="{{url('/location/'.$item->slugprovince. '/item/' .$item->slug)}}" role="contentinfo" data-activity-id="62214" target="_blank" class="vertical-activity-card__container gtm-trigger__card-interaction">
-
+    <a href="{{'/item/'.$item->slug}}" role="contentinfo" data-activity-id="62214" target="_blank" class="vertical-activity-card__container gtm-trigger__card-interaction">
     <div class="vertical-activity-card__top-wrapper">
     <div class="vertical-activity-card__top">
     <div class="vertical-activity-card__photo">
@@ -187,33 +186,33 @@
     <img src="{{ url('public/img/'.$item->image2) }}" alt="{{$item->namawisata}}">
     </picture>
     </div> 
-    <div class="vertical-activity-card__badge"><!---->
+    <div class="vertical-activity-card__badge">
     </div>
     </div> 
     <header class="vertical-activity-card__header">
     <div class="vertical-activity-card__activity-type-wrapper">
       </div> 
       <p data-test-id="activity-card-title" class="vertical-activity-card__title">
-            {{$item->namawisata}}
-          </p> <!----></header> 
+            {{$item->namawisata}} 
+          </p> </header> 
       <div class="vertical-activity-card__body">
       <ul class="activity-attributes__container" data-v-33ad6115>
       <li class="activity-attributes__attribute" data-v-33ad6115>
-      <span data-v-33ad6115>Duration: {{$item->durasi}}
+      <span data-v-33ad6115>Duration: {{$item->durasi}} 
       </span>
       </li>
-      </ul> 
+      </ul>
       @if($item->label == 'Likely to sell out') 
       <span class="vertical-activity-card__badges">
       <span class="vertical-activity-card__ltso-badge c-marketplace-badge c-marketplace-badge--primary">
               Likely to sell out
-            </span> <!----> <!----> <!---->
+            </span> 
       </span>
       @elseif($item->label == 'Bestseller')
       <span class="vertical-activity-card__badges">
       <span class="vertical-activity-card__ltso-badge c-marketplace-badge c-marketplace-badge--primary" style="background-color: green;">
               Bestseller
-            </span> <!----> <!----> <!---->
+            </span> 
       </span>
       @endif
       </div>
@@ -221,11 +220,10 @@
       <div class="vertical-activity-card__details">
       <footer class="vertical-activity-card__footer">
       <div class="rating-overall__container">
-      <div class="rating-overall__rating"><!----> 
+      <div class="rating-overall__rating"> 
       <div class="rating-star rating-overall__rating-stars">
         <div class="" style="margin-bottom: 10px;">
               <div class="small-ratings">
-                <!-- <p class="review-stat" style="color: black;font-weight: bolder;">{{$jumlahreview ?? ''}} Reviews</p> -->
                 <i class="fa fa-star rating-color"></i>
                 <i class="fa fa-star rating-color"></i>
                 <i class="fa fa-star rating-color"></i>
@@ -234,7 +232,6 @@
               </div>
             </div>
       </div> 
-     <!----> 
   </div> 
   <div class="rating-overall__reviews">
   </div>
@@ -272,6 +269,7 @@
       @endif
   <div class="baseline-pricing__value" data-v-23fc334c>
   <p class="baseline-pricing__from" data-v-23fc334c>From</p>
+      
         @if($session == 'USD') 
       US$ {{number_format ($item->IDR/$rateIDR,1)}}
       @endif 
@@ -295,6 +293,138 @@
     <p class="baseline-pricing__category" data-v-23fc334c>
         {{$item->kategories}} @if($item->kategories == 'Per Group') up to {{$item->capacity}} @endif
       </p>
+
+    </div>
+    </div>
+    </footer> 
+    <div class="vertical-activity-card__bottom">
+    </div>
+    </div>
+    </a> 
+    <div class="vertical-activity-card__wishlist">
+    </div>
+    </div>
+    </article>
+
+    <article data-test-id="vertical-activity-card" class="vertical-activity-card d-block d-md-none" data-v-76e871e0>
+    <div class="vertical-activity-card__content-wrapper">
+    <a href="{{'/item/'.$item->slug}}" role="contentinfo" data-activity-id="62214" target="_blank" class="vertical-activity-card__container gtm-trigger__card-interaction">
+    <div class="vertical-activity-card__top-wrapper">
+    <div class="vertical-activity-card__top">
+    <div class="cobamobile">
+    <picture>
+    <source srcset="{{ url('public/img/'.$item->image2) }}" type="image/webp"> 
+    <img class="cobamobile" src="{{ url('public/img/'.$item->image2) }}" alt="{{$item->namawisata}}">
+    </picture>
+    </div> 
+    <div class="vertical-activity-card__badge">
+    </div>
+    </div> 
+    <header class="vertical-activity-card__header">
+    <div class="vertical-activity-card__activity-type-wrapper">
+      </div> 
+      <p data-test-id="activity-card-title" class="vertical-activity-card__title">
+            {{$item->namawisata}} 
+          </p> </header> 
+      <div class="vertical-activity-card__body">
+      <ul class="activity-attributes__container" data-v-33ad6115>
+      <li class="activity-attributes__attribute" data-v-33ad6115>
+      <span data-v-33ad6115>Duration: {{$item->durasi}} 
+      </span>
+      </li>
+      </ul>
+      @if($item->label == 'Likely to sell out') 
+      <span class="vertical-activity-card__badges">
+      <span class="vertical-activity-card__ltso-badge c-marketplace-badge c-marketplace-badge--primary">
+              Likely to sell out
+            </span> 
+      </span>
+      @elseif($item->label == 'Bestseller')
+      <span class="vertical-activity-card__badges">
+      <span class="vertical-activity-card__ltso-badge c-marketplace-badge c-marketplace-badge--primary" style="background-color: green;">
+              Bestseller
+            </span> 
+      </span>
+      @endif
+      </div>
+      </div> 
+      <div class="vertical-activity-card__details">
+      <footer class="vertical-activity-card__footer">
+      <div class="rating-overall__container">
+      <div class="rating-overall__rating"> 
+      <div class="rating-star rating-overall__rating-stars">
+        <div class="" style="margin-bottom: 10px;">
+              <div class="small-ratings">
+                <i class="fa fa-star rating-color"></i>
+                <i class="fa fa-star rating-color"></i>
+                <i class="fa fa-star rating-color"></i>
+                <i class="fa fa-star rating-color"></i>
+                <i class="fa fa-star rating-color"></i>
+              </div>
+            </div>
+      </div> 
+  </div> 
+  <div class="rating-overall__reviews">
+  </div>
+  </div> 
+  <div class="baseline-pricing" data-v-23fc334c>
+  <div class="baseline-pricing__container" data-v-23fc334c>
+  	@if($item->discount == 'yes' && $session == 'USD')
+  	<div class="baseline-pricing__value" data-v-23fc334c style="text-decoration: line-through;color: red;">
+      	US$ {{number_format ($item->IDR_awal/$rateIDR,1)}}
+      </div>
+      @endif
+
+      @if($item->discount == 'yes' && $session == 'IDR')
+  	<div class="baseline-pricing__value" data-v-23fc334c style="text-decoration: line-through;color: red;">
+      	@currency($item->IDR_awal)
+      </div>
+      @endif
+
+      @if($item->discount == 'yes' && $session == 'MYR')
+  	<div class="baseline-pricing__value" data-v-23fc334c style="text-decoration: line-through;color: red;">
+      	MYR {{ number_format(($item->IDR_awal / $rateIDR) * $rateMYR, 0, ',', '.') }}
+      </div>
+      @endif
+
+      @if($item->discount == 'yes' && $session == 'SGD')
+  	<div class="baseline-pricing__value" data-v-23fc334c style="text-decoration: line-through;color: red;">
+      	SGD {{ number_format(($item->IDR_awal / $rateIDR) * $rateSGD, 0, ',', '.') }}
+      </div>
+      @endif
+
+      @if($item->discount == 'yes' && $session == 'EUR')
+  	<div class="baseline-pricing__value" data-v-23fc334c style="text-decoration: line-through;color: red;">
+      	 € {{ number_format(($item->IDR_awal / $rateIDR) * $rateEUR, 0, ',', '.') }}
+      </div>
+      @endif
+  <div class="baseline-pricing__value" data-v-23fc334c>
+  <p class="baseline-pricing__from" data-v-23fc334c>From</p>
+      
+        @if($session == 'USD') 
+      US$ {{number_format ($item->IDR/$rateIDR,1)}}
+      @endif 
+
+      @if($session == 'IDR') 
+      @currency($item->IDR)
+      @endif 
+
+      @if($session == 'MYR') 
+      MYR {{ number_format(($item->IDR / $rateIDR) * $rateMYR, 0, ',', '.') }}
+      @endif
+
+      @if($session == 'SGD') 
+      SGD {{ number_format(($item->IDR / $rateIDR) * $rateSGD, 0, ',', '.') }}
+      @endif
+
+      @if($session == 'EUR') 
+      € {{ number_format(($item->IDR / $rateIDR) * $rateEUR, 0, ',', '.') }}
+      @endif
+      </div> 
+    <p class="baseline-pricing__category" data-v-23fc334c>
+        {{$item->kategories}} @if($item->kategories == 'Per Group') up to {{$item->capacity}} @endif
+      </p>
+
     </div>
     </div>
     </footer> 
@@ -345,7 +475,7 @@
 </div>
 
 	<div id="gyg" data-server-rendered="true" class="d-none d-sm-block">
-  <div class="main-wrapper  partner-left-layout" data-v-5120f7ad>
+  <div class="partner-left-layout" data-v-5120f7ad>
   <a href="#main-content" class="skip-link">Skip to content</a> 
   <main id="main-content">
     <section layout="vertical" class="grid-wrapper container grid-wrapper--list">
