@@ -464,6 +464,7 @@
 </li>
   @endforeach
   </ul>
+  <center>	<button class="btn btn-light" style="font-size: 20px;border-color:#f0f0f0;border-radius:20px;margin-top:20px;">Discover all tours</button> </center>
   </div>
 </div>
 
