@@ -1720,14 +1720,20 @@ class BlogController extends Controller
 
 public function datefilter(Request $request)
 {
-    $from = $request->from;
-    $to = $request->to;
-    $booking = DB::table('booking')
-        ->join('wisata', 'wisata.wisata_id', '=', 'booking.wisata_id')
-        ->select('wisata.image', 'booking.id', 'booking.paketwisata', 'booking.total','booking.traveldate','booking.namawisata','booking.name','booking.surname','booking.created_at','booking.phone','booking.code','booking.email','booking.country','booking.adult','booking.totalgroup','booking.child','booking.time','booking.request','booking.pickup','booking.participants')
-        ->whereBetween('booking.traveldate', [$from , $to])
-            ->paginate(10);
-           
+    $from = $request->from; // '26/08/2023'
+$to = $request->to;     // '29/08/2023'
+
+$booking = DB::table('booking')
+    ->join('wisata', 'wisata.wisata_id', '=', 'booking.wisata_id')
+    ->select('wisata.image', 'booking.id', 'booking.paketwisata', 'booking.total', 'booking.traveldate', 'booking.namawisata', 'booking.name', 'booking.surname', 'booking.created_at', 'booking.phone', 'booking.code', 'booking.email', 'booking.country', 'booking.adult', 'booking.totalgroup', 'booking.child', 'booking.time', 'booking.request', 'booking.pickup', 'booking.participants')
+    ->whereRaw("STR_TO_DATE(booking.traveldate, '%d/%m/%Y') BETWEEN STR_TO_DATE('$from', '%d/%m/%Y') AND STR_TO_DATE('$to', '%d/%m/%Y')")
+    ->paginate(10);
+
+    foreach ($booking as $record) {
+        $traveldate = Carbon::createFromFormat('d/m/Y', $record->traveldate);
+        $record->travelStatus = $traveldate->isPast() ? 'done' : 'active';
+        }
+    
     return view('booking',compact('booking'));
 }
 
