@@ -59,6 +59,12 @@
       <span data-v-67560657>Travel date: {{$item->traveldate}}</span>
       <br>
       <span data-v-67560657>Name: {{$item->name}} {{$item->surname}}</span>
+      <br>
+      @if($item->travelStatus == 'active')
+      <span class="badge badge-pill badge-success">Active</span>
+      @else
+      <span class="badge badge-pill badge-secondary">Done</span>
+      @endif
     </span>
   </span>
 </li>

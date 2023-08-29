@@ -171,11 +171,15 @@ class BlogController extends Controller
     public function bookinglist(){
         // $booking=booking::orderBy('created_at','DESC')->paginate(10);
 
-        $booking = DB::table('booking')
-        ->join('wisata', 'wisata.wisata_id', '=', 'booking.wisata_id')
+        $booking = booking::join('wisata', 'wisata.wisata_id', '=', 'booking.wisata_id')
         ->select('wisata.image', 'booking.id', 'booking.paketwisata', 'booking.participants','booking.total','booking.traveldate','booking.namawisata','booking.name','booking.surname','booking.created_at','booking.phone','booking.code','booking.email','booking.country','booking.adult','booking.totalgroup','booking.child','booking.time','booking.request','booking.pickup')
         ->orderBy('created_at','DESC')
         ->paginate(10);
+
+        foreach ($booking as $record) {
+            $traveldate = Carbon::createFromFormat('d/m/Y', $record->traveldate);
+            $record->travelStatus = $traveldate->isPast() ? 'done' : 'active';
+        }
         return view('booking', compact('booking'));
     }
 
