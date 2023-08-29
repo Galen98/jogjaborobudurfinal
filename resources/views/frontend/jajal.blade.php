@@ -271,7 +271,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   <div class="photo-gallery__blur-outer">
   <div class="photo-gallery__blur-inner">
     @foreach($travel as $item)
-  <div class="photo-gallery__blur-image" style="background-image:url({{('public/img/'.$item->image) }});"></div></div></div> <!----> 
+  <div class="photo-gallery__blur-image" style="background-image:url({{('public/img/'.$item->image) }});"></div></div></div> 
   <section class="photo-gallery-slider">
   <div draggable="false" class="gyg-slider" style="--scroll-snap-stop:always;--slide-width:100%;--slides-per-view:1;"> 
   <section id="gyg-slider__aria-6571975" aria-roledescription="carousel" class="gyg-slider__content">
@@ -326,7 +326,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   <span class="photo-gallery__button-next gtm-trigger__adp-gallery-interaction"></span></button>   
   <div class="gyg-slider__header">
   <ul role="list" class="gyg-slider__bullets"></ul></div>
-  </div> <!---->
+  </div> 
   </section> 
 
   <div class="photo-collage photo-gallery-collage">
@@ -436,7 +436,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   </section> 
   <section class="activity__price activity__price--mobile" data-v-46d2d245 data-v-c4be1764>
   <div data-test-id="activity-price-block" class="price-block price-block--has-price price-block--persuation-badge" data-v-46d2d245>
-  <!----> 
+  
   @foreach($travel as $item)
   <section class="price-block__persuation-badge-container" data-v-46d2d245>
     @if($item->label == 'Bestseller')
@@ -499,13 +499,13 @@ font-family: 'GT Eesti Text Trial', sans-serif;
     <div class="activity__container-columns" data-v-c4be1764>
     <div id="overview" class="activity__container-columns--main js-section-content" data-v-c4be1764>
     <div data-track="overview" data-v-c4be1764>
-    <section id="activity-overview" data-component="overview" class="activity-overview" data-v-bc99966e data-v-c4be1764 style="margin-top:-50px; "><!----> <!----> 
+    <section id="activity-overview" data-component="overview" class="activity-overview" data-v-bc99966e data-v-c4be1764 style="margin-top:-50px; ">
     <p data-test-id="activity-overview-content" class="activity-overview__content" data-v-bc99966e>
         {{$item->shortdescription}}
       </p>
     </section>
     
-  </div> <!----> <!----> 
+  </div> 
     <div data-track="key-details" data-v-c4be1764>
     <section id="key-details" data-component="key-details" data-test-id="activity-key-details" class="activity-key-details js-section-content" data-v-4a3743c6 data-v-c4be1764>
     <p style="font-size: 24px;font-weight: bolder;margin-top: 15px;">About this tour </p>
@@ -522,13 +522,13 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   
     @foreach($travel as $item)
     @if($item->pickup == 'yes')
-    <dl class="activity-key-details__list" data-v-4a3743c6><!----> 
+    <dl class="activity-key-details__list" data-v-4a3743c6>
     <div data-v-4a3743c6>
     <dt class="activity-key-details__term" data-v-4a3743c6><span class="activity-key-details__term-icon" data-v-4a3743c6>
     <span aria-label="Free cancellation" class="c-icon activity-key-details__icon" data-v-4a3743c6>
     <span data-v-4a3743c6>
     <img src="{{asset('traveler')}}/images/pickup.png" width="27" height="27">
-    </span> <!---->
+    </span> 
     </span>
     </span> 
     <span data-v-4a3743c6 style="font-size: 20px;">Pickup included</span>
@@ -536,7 +536,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
     <dd class="activity-key-details__description" data-v-4a3743c6 style="
     font-size: 17px;">
         {{$item->wherepickup}}
-        <!----></dd></div>
+        </dd></div>
     </dl>
     @else
     <p></p>
@@ -628,7 +628,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
 
   </section>
 
-    <button type="button" id="cekharga" class="cekharga js-check-availability gtm-trigger__adp-check-availability-btn avoid-close-dropdown-on-click c-button c-button--medium filbtn" data-v-dd428772><!---->
+    <button type="button" id="cekharga" class="cekharga js-check-availability gtm-trigger__adp-check-availability-btn avoid-close-dropdown-on-click c-button c-button--medium filbtn" data-v-dd428772>
     Check availability
   </button>
 </div>
@@ -699,7 +699,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
           </section>
           @endforeach
           <section class="activity-swap-columns" data-v-c4be1764 style="border-top: solid;border-top-color: #e6e8eb;border-top-width: 1pt;">
-          <div class="overlay" data-v-c4be1764><!----> 
+          <div class="overlay" data-v-c4be1764>
           <div id="activity-experience" class="activity-experience js-section-content" data-v-d21396c2 data-v-c4be1764 style="">
             <p style="font-size: 20px;font-weight: bolder;margin-top: 15px;">Include </p>
             <br>
@@ -712,7 +712,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
           </section>
 
           <section class="activity-swap-columns" data-v-c4be1764 style="border-top: solid;border-top-color: #e6e8eb;border-top-width: 1pt;">
-  <div class="overlay" data-v-c4be1764><!----> 
+  <div class="overlay" data-v-c4be1764>
           <div id="activity-experience" class="activity-experience js-section-content" data-v-d21396c2 data-v-c4be1764 style="">
             <p style="font-size: 20px;font-weight: bolder;margin-top: 15px;">Exclude </p>
             <br>
@@ -728,7 +728,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
             @foreach($travel as $item)
           <aside class="activity__container-columns--side" data-v-c4be1764>
           <section class="activity__price" data-v-46d2d245 data-v-c4be1764>
-          <div data-test-id="activity-price-block" class="price-block price-block--has-price price-block--persuation-badge" data-v-46d2d245><!----> 
+          <div data-test-id="activity-price-block" class="price-block price-block--has-price price-block--persuation-badge" data-v-46d2d245>
           <section class="price-block__persuation-badge-container" data-v-46d2d245>
             @if($item->label == 'Bestseller')
           <span data-test-id="price-block-is-likely-to-sell-out" class="price-block__persuation-badge c-marketplace-badge c-marketplace-badge--primary persuasion-badge--LTSO persuasion-badge--size-R" data-v-46d2d245 style="background-color: green;">
@@ -739,7 +739,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   Likely to sell out
 </span>
 @else<span></span>@endif
- <!----></section> 
+ </section> 
           <div data-test-id="activity-price-block" class="price-block-display-price-wrapper" data-v-46d2d245>
           <p class="price-block-display-price" data-v-46d2d245><span class="price-block__from">From @if($item->discount == 'yes' && $session == 'USD')
           <span style="font-size:16px;text-decoration: line-through;color: red;font-weight:bolder;">US$ {{number_format ($item->IDR_awal/$rateIDR,1)}}</span>    
@@ -781,12 +781,12 @@ font-family: 'GT Eesti Text Trial', sans-serif;
             <span class="price-block__explanation">{{$item->kategories}} @if($item->kategories == 'Per Group') up to {{$item->capacity}} @endif</span></p> 
             <div class="price-block__button" data-v-46d2d245>
               <a href="#books">
-            <button type="button" id="btn-booking-header" data-test-id="btn-booking-header" class="gtm-trigger__book-now-price-box-btn c-button c-button--medium filbtn" data-v-46d2d245><!----> 
+            <button type="button" id="btn-booking-header" data-test-id="btn-booking-header" class="gtm-trigger__book-now-price-box-btn c-button c-button--medium filbtn" data-v-46d2d245>
     Book now
   </button>
   </a>
 </div></div> 
-            <!----></div>
+            </div>
             <div> 
             <ul> 
             <li style="font-weight:bolder;">Why Book With Us?</li>
@@ -827,7 +827,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
     <div class="vertical-activity-cards__grid" data-v-76e871e0>
 
       @foreach($other as $item)
-    <article data-test-id="vertical-activity-card" class="vertical-activity-card" data-v-76e871e0>
+      <article data-test-id="vertical-activity-card" class="vertical-activity-card d-none d-sm-block" data-v-76e871e0>
     <div class="vertical-activity-card__content-wrapper">
     <a href="{{'/item/'.$item->slug}}" role="contentinfo" data-activity-id="62214" target="_blank" class="vertical-activity-card__container gtm-trigger__card-interaction">
     <div class="vertical-activity-card__top-wrapper">
@@ -838,33 +838,41 @@ font-family: 'GT Eesti Text Trial', sans-serif;
     <img src="{{ url('public/img/'.$item->image) }}" alt="{{$item->namawisata}}">
     </picture>
     </div> 
-    <div class="vertical-activity-card__badge"><!---->
+    <div class="vertical-activity-card__badge">
     </div>
     </div> 
     <header class="vertical-activity-card__header">
     <div class="vertical-activity-card__activity-type-wrapper">
       </div> 
-      <h1 data-test-id="activity-card-title" class="vertical-activity-card__title">
-            {{$item->namawisata}}
-</h1> <!----></header> 
+      <p data-test-id="activity-card-title" class="vertical-activity-card__title">
+            {{$item->namawisata}} 
+          </p> </header> 
       <div class="vertical-activity-card__body">
       <ul class="activity-attributes__container" data-v-33ad6115>
       <li class="activity-attributes__attribute" data-v-33ad6115>
-      <span data-v-33ad6115>Duration: {{$item->durasi}}
+      <span data-v-33ad6115>Duration: {{$item->durasi}} 
       </span>
       </li>
-      </ul> 
+      </ul>
+      @if($item->label == 'Likely to sell out') 
       <span class="vertical-activity-card__badges">
       <span class="vertical-activity-card__ltso-badge c-marketplace-badge c-marketplace-badge--primary">
               Likely to sell out
-            </span> <!----> <!----> <!---->
+            </span> 
       </span>
+      @elseif($item->label == 'Bestseller')
+      <span class="vertical-activity-card__badges">
+      <span class="vertical-activity-card__ltso-badge c-marketplace-badge c-marketplace-badge--primary" style="background-color: green;">
+              Bestseller
+            </span> 
+      </span>
+      @endif
       </div>
       </div> 
       <div class="vertical-activity-card__details">
       <footer class="vertical-activity-card__footer">
       <div class="rating-overall__container">
-      <div class="rating-overall__rating"><!----> 
+      <div class="rating-overall__rating"> 
       <div class="rating-star rating-overall__rating-stars">
         <div class="" style="margin-bottom: 10px;">
               <div class="small-ratings">
@@ -876,13 +884,41 @@ font-family: 'GT Eesti Text Trial', sans-serif;
               </div>
             </div>
       </div> 
-     <!----> 
   </div> 
   <div class="rating-overall__reviews">
   </div>
   </div> 
   <div class="baseline-pricing" data-v-23fc334c>
   <div class="baseline-pricing__container" data-v-23fc334c>
+  	@if($item->discount == 'yes' && $session == 'USD')
+  	<div class="baseline-pricing__value" data-v-23fc334c style="text-decoration: line-through;color: red;">
+      	US$ {{number_format ($item->IDR_awal/$rateIDR,1)}}
+      </div>
+      @endif
+
+      @if($item->discount == 'yes' && $session == 'IDR')
+  	<div class="baseline-pricing__value" data-v-23fc334c style="text-decoration: line-through;color: red;">
+      	@currency($item->IDR_awal)
+      </div>
+      @endif
+
+      @if($item->discount == 'yes' && $session == 'MYR')
+  	<div class="baseline-pricing__value" data-v-23fc334c style="text-decoration: line-through;color: red;">
+      	MYR {{ number_format(($item->IDR_awal / $rateIDR) * $rateMYR, 0, ',', '.') }}
+      </div>
+      @endif
+
+      @if($item->discount == 'yes' && $session == 'SGD')
+  	<div class="baseline-pricing__value" data-v-23fc334c style="text-decoration: line-through;color: red;">
+      	SGD {{ number_format(($item->IDR_awal / $rateIDR) * $rateSGD, 0, ',', '.') }}
+      </div>
+      @endif
+
+      @if($item->discount == 'yes' && $session == 'EUR')
+  	<div class="baseline-pricing__value" data-v-23fc334c style="text-decoration: line-through;color: red;">
+      	 € {{ number_format(($item->IDR_awal / $rateIDR) * $rateEUR, 0, ',', '.') }}
+      </div>
+      @endif
   <div class="baseline-pricing__value" data-v-23fc334c>
   <p class="baseline-pricing__from" data-v-23fc334c>From</p>
       
@@ -909,10 +945,142 @@ font-family: 'GT Eesti Text Trial', sans-serif;
     <p class="baseline-pricing__category" data-v-23fc334c>
         {{$item->kategories}} @if($item->kategories == 'Per Group') up to {{$item->capacity}} @endif
       </p>
+
     </div>
     </div>
     </footer> 
-    <div class="vertical-activity-card__bottom"><!---->
+    <div class="vertical-activity-card__bottom">
+    </div>
+    </div>
+    </a> 
+    <div class="vertical-activity-card__wishlist">
+    </div>
+    </div>
+    </article>
+
+    <article data-test-id="vertical-activity-card" class="vertical-activity-card d-block d-md-none" data-v-76e871e0>
+    <div class="vertical-activity-card__content-wrapper">
+    <a href="{{'/item/'.$item->slug}}" role="contentinfo" data-activity-id="62214" target="_blank" class="vertical-activity-card__container gtm-trigger__card-interaction">
+    <div class="vertical-activity-card__top-wrapper">
+    <div class="vertical-activity-card__top">
+    <div class="cobamobile">
+    <picture>
+    <source srcset="{{ url('public/img/'.$item->image) }}" type="image/webp"> 
+    <img class="cobamobile" src="{{ url('public/img/'.$item->image) }}" alt="{{$item->namawisata}}">
+    </picture>
+    </div> 
+    <div class="vertical-activity-card__badge">
+    </div>
+    </div> 
+    <header class="vertical-activity-card__header">
+    <div class="vertical-activity-card__activity-type-wrapper">
+      </div> 
+      <p data-test-id="activity-card-title" class="vertical-activity-card__title">
+            {{$item->namawisata}} 
+          </p> </header> 
+      <div class="vertical-activity-card__body">
+      <ul class="activity-attributes__container" data-v-33ad6115>
+      <li class="activity-attributes__attribute" data-v-33ad6115>
+      <span data-v-33ad6115>Duration: {{$item->durasi}} 
+      </span>
+      </li>
+      </ul>
+      @if($item->label == 'Likely to sell out') 
+      <span class="vertical-activity-card__badges">
+      <span class="vertical-activity-card__ltso-badge c-marketplace-badge c-marketplace-badge--primary">
+              Likely to sell out
+            </span> 
+      </span>
+      @elseif($item->label == 'Bestseller')
+      <span class="vertical-activity-card__badges">
+      <span class="vertical-activity-card__ltso-badge c-marketplace-badge c-marketplace-badge--primary" style="background-color: green;">
+              Bestseller
+            </span> 
+      </span>
+      @endif
+      </div>
+      </div> 
+      <div class="vertical-activity-card__details">
+      <footer class="vertical-activity-card__footer">
+      <div class="rating-overall__container">
+      <div class="rating-overall__rating"> 
+      <div class="rating-star rating-overall__rating-stars">
+        <div class="" style="margin-bottom: 10px;">
+              <div class="small-ratings">
+                <i class="fa fa-star rating-color"></i>
+                <i class="fa fa-star rating-color"></i>
+                <i class="fa fa-star rating-color"></i>
+                <i class="fa fa-star rating-color"></i>
+                <i class="fa fa-star rating-color"></i>
+              </div>
+            </div>
+      </div> 
+  </div> 
+  <div class="rating-overall__reviews">
+  </div>
+  </div> 
+  <div class="baseline-pricing" data-v-23fc334c>
+  <div class="baseline-pricing__container" data-v-23fc334c>
+  	@if($item->discount == 'yes' && $session == 'USD')
+  	<div class="baseline-pricing__value" data-v-23fc334c style="text-decoration: line-through;color: red;">
+      	US$ {{number_format ($item->IDR_awal/$rateIDR,1)}}
+      </div>
+      @endif
+
+      @if($item->discount == 'yes' && $session == 'IDR')
+  	<div class="baseline-pricing__value" data-v-23fc334c style="text-decoration: line-through;color: red;">
+      	@currency($item->IDR_awal)
+      </div>
+      @endif
+
+      @if($item->discount == 'yes' && $session == 'MYR')
+  	<div class="baseline-pricing__value" data-v-23fc334c style="text-decoration: line-through;color: red;">
+      	MYR {{ number_format(($item->IDR_awal / $rateIDR) * $rateMYR, 0, ',', '.') }}
+      </div>
+      @endif
+
+      @if($item->discount == 'yes' && $session == 'SGD')
+  	<div class="baseline-pricing__value" data-v-23fc334c style="text-decoration: line-through;color: red;">
+      	SGD {{ number_format(($item->IDR_awal / $rateIDR) * $rateSGD, 0, ',', '.') }}
+      </div>
+      @endif
+
+      @if($item->discount == 'yes' && $session == 'EUR')
+  	<div class="baseline-pricing__value" data-v-23fc334c style="text-decoration: line-through;color: red;">
+      	 € {{ number_format(($item->IDR_awal / $rateIDR) * $rateEUR, 0, ',', '.') }}
+      </div>
+      @endif
+  <div class="baseline-pricing__value" data-v-23fc334c>
+  <p class="baseline-pricing__from" data-v-23fc334c>From</p>
+      
+        @if($session == 'USD') 
+      US$ {{number_format ($item->IDR/$rateIDR,1)}}
+      @endif 
+
+      @if($session == 'IDR') 
+      @currency($item->IDR)
+      @endif 
+
+      @if($session == 'MYR') 
+      MYR {{ number_format(($item->IDR / $rateIDR) * $rateMYR, 0, ',', '.') }}
+      @endif
+
+      @if($session == 'SGD') 
+      SGD {{ number_format(($item->IDR / $rateIDR) * $rateSGD, 0, ',', '.') }}
+      @endif
+
+      @if($session == 'EUR') 
+      € {{ number_format(($item->IDR / $rateIDR) * $rateEUR, 0, ',', '.') }}
+      @endif
+      </div> 
+    <p class="baseline-pricing__category" data-v-23fc334c>
+        {{$item->kategories}} @if($item->kategories == 'Per Group') up to {{$item->capacity}} @endif
+      </p>
+
+    </div>
+    </div>
+    </footer> 
+    <div class="vertical-activity-card__bottom">
     </div>
     </div>
     </a> 
@@ -974,7 +1142,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
 
         </div>
     </div>
-    </section> <!---->
+    </section> 
     </div>
     </main>
     </div>
