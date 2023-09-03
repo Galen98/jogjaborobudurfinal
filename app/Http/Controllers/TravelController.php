@@ -945,51 +945,73 @@ public function getrate()
     }
 
     public function getSearchResults(Request $request)
-{
-    try {
-        $query = $request->input('query');
-        $lang = $request->server('HTTP_ACCEPT_LANGUAGE');
-        $langs = Str::substr($lang, 0, 2);
-        if ($langs == 'id') {
-            $sessions = session()->get("bahasa") ?? "Bahasa";
-        } elseif ($langs == 'en-US') {
-            $sessions = session()->get("bahasa") ?? "English";
-        } elseif ($langs == 'en') {
-            $sessions = session()->get("bahasa") ?? "English";
-        } elseif ($langs == 'ms') {
-            $sessions = session()->get("bahasa") ?? "Malay";
-        } else {
-            $sessions = session()->get("bahasa") ?? "English";
+    {
+        try {
+            $query = $request->input('query');
+            $lang = $request->server('HTTP_ACCEPT_LANGUAGE');
+            $langs = Str::substr($lang, 0, 2);
+            if ($langs == 'id') {
+                $sessions = session()->get("bahasa") ?? "Bahasa";
+            } elseif ($langs == 'en-US') {
+                $sessions = session()->get("bahasa") ?? "English";
+            } elseif ($langs == 'en') {
+                $sessions = session()->get("bahasa") ?? "English";
+            } elseif ($langs == 'ms') {
+                $sessions = session()->get("bahasa") ?? "Malay";
+            } else {
+                $sessions = session()->get("bahasa") ?? "English";
+            }
+    
+           // Search provinces
+$provinceResults = DB::table('province')
+->where('namaprovince', 'LIKE', $query . '%')
+->select([
+    DB::raw('namaprovince COLLATE utf8mb4_general_ci as name'),
+    DB::raw('slugprovince COLLATE utf8mb4_general_ci as slug'),
+    'id',
+    DB::raw("'province' as type")
+]);
+
+// Search regions
+$regionResults = DB::table('region')
+->where('namaregion', 'LIKE', $query . '%')
+->select([
+    DB::raw('namaregion COLLATE utf8mb4_general_ci as name'),
+    DB::raw('slugregion COLLATE utf8mb4_general_ci as slug'),
+    'id',
+    DB::raw("'region' as type")
+]);
+
+$destinationResults = DB::table('destination')
+->where('destination', 'LIKE', $query . '%')
+->select([
+    DB::raw('destination COLLATE utf8mb4_general_ci as name'),
+    DB::raw('destination COLLATE utf8mb4_general_ci as slug'),
+    'id',
+    DB::raw("'destination' as type")
+]);
+
+$travelResults = DB::table('wisata')
+->where('namawisata', 'LIKE', $query . '%')
+->where('bahasa', $sessions)
+->select([
+    DB::raw('namawisata COLLATE utf8mb4_general_ci as name'),
+    DB::raw('slug COLLATE utf8mb4_general_ci as slug'),
+    'wisata_id as id',
+    DB::raw("'trip' as type")
+]);
+
+    
+            // Combine the results from provinces, regions, and destinations using UNION
+            $results = $provinceResults->union($regionResults)->union($destinationResults)->union($travelResults)->get();
+    
+            return response()->json(['results' => $results]);
+        } catch (\Exception $e) {
+            // Handle the exception gracefully
+            return response()->json(['error' => $e->getMessage()], 500);
         }
-
-        // Search provinces
-        $provinceResults = DB::table('province')
-            ->where('namaprovince', 'LIKE', $query . '%')
-            ->select('namaprovince as name', 'slugprovince as slug', 'id as id', DB::raw("'province' as type"));
-
-        // Search regions
-        $regionResults = DB::table('region')
-            ->where('namaregion', 'LIKE', $query . '%')
-            ->select('namaregion as name', 'slugregion as slug', 'id as id', DB::raw("'region' as type"));
-
-        $destinationResults = DB::table('destination')
-            ->where('destination', 'LIKE', $query . '%')
-            ->select('destination as name', 'destination as slug', 'id as id', DB::raw("'destination' as type"));
-
-        $travelResults = DB::table('wisata')
-            ->where('namawisata', 'LIKE', $query . '%')
-            ->where('bahasa', $sessions)
-            ->select('namawisata as name', 'slug as slug', 'wisata_id as id', DB::raw("'trip' as type"));
-
-        // Combine the results from provinces, regions, and destinations using UNION
-        $results = $provinceResults->union($regionResults)->union($destinationResults)->union($travelResults)->get();
-
-        return response()->json(['results' => $results]);
-    } catch (\Exception $e) {
-        // Handle the exception gracefully
-        return response()->json(['error' => $e->getMessage()], 500);
     }
-}
+    
 
 
 
