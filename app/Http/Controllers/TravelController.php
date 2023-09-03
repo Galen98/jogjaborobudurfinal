@@ -933,6 +933,32 @@ public function getrate()
         return "ok";
     }
 
+    public function getSearchprovince(Request $request)
+    {
+        $query = $request->input('query');
+
+        $suggestions = DB::table('province')
+            ->where('namaprovince', 'LIKE', $query . '%')
+            ->pluck('namaprovince');
+
+        return response()->json(['suggestions' => $suggestions]);
+    }
+
+    public function checkDestination(Request $request)
+{
+    $query = $request->input('query');
+    $province = province::where('namaprovince', $query)->first();
+
+    if ($province) {
+        return response()->json([
+            'exists' => true,
+            'slugprovince' => $province->slugprovince,
+            'idprovince' => $province->id,
+        ]);
+    } else {
+        return response()->json(['exists' => false]);
+    }
+}
 
 
 }

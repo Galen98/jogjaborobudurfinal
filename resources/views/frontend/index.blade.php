@@ -105,7 +105,16 @@
           </svg>
             @endif
             @if($sessions == 'English')
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40px" style="margin-bottom:5px;" viewBox="0 0 7410 3900"><path fill="#b22234" d="M0 0h7410v3900H0z"/><path d="M0 450h7410m0 600H0m0 600h7410m0 600H0m0 600h7410m0 600H0" stroke="#fff" stroke-width="300"/><path fill="#3c3b6e" d="M0 0h2964v2100H0z"/><g fill="#fff"><g id="d"><g id="c"><g id="e"><g id="b"><path id="a" d="M247 90l70.534 217.082-184.66-134.164h228.253L176.466 307.082z"/><use xlink:href="#a" y="420"/><use xlink:href="#a" y="840"/><use xlink:href="#a" y="1260"/></g><use xlink:href="#a" y="1680"/></g><use xlink:href="#b" x="247" y="210"/></g><use xlink:href="#c" x="494"/></g><use xlink:href="#d" x="988"/><use xlink:href="#c" x="1976"/><use xlink:href="#e" x="2470"/></g></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40px" style="margin-bottom:5px;" viewBox="0 0 7410 3900">
+              <path fill="#b22234" d="M0 0h7410v3900H0z"/>
+              <path d="M0 450h7410m0 600H0m0 600h7410m0 600H0m0 600h7410m0 600H0" stroke="#fff" stroke-width="300"/>
+              <path fill="#3c3b6e" d="M0 0h2964v2100H0z"/><g fill="#fff"><g id="d"><g id="c"><g id="e"><g id="b">
+                <path id="a" d="M247 90l70.534 217.082-184.66-134.164h228.253L176.466 307.082z"/>
+                <use xlink:href="#a" y="420"/><use xlink:href="#a" y="840"/><use xlink:href="#a" y="1260"/></g>
+                <use xlink:href="#a" y="1680"/></g><use xlink:href="#b" x="247" y="210"/></g>
+                <use xlink:href="#c" x="494"/></g><use xlink:href="#d" x="988"/>
+                <use xlink:href="#c" x="1976"/><use xlink:href="#e" x="2470"/></g>
+              </svg>
             @endif
             @if($sessions == 'Malay')
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13440 6720" width="40px" style="margin-bottom:5px;"><g transform="scale(480)"><path fill="#fff" d="m0 0h28v14H0z"/><path stroke="#c00" d="m1 .5h27m0 2H1m0 2h27m0 2H1"/><path fill="#006" d="m0 0h14v8.5H0z"/><path stroke="#c00" d="m0 8.5h28m0 2H0m0 2h28"/></g><path fill="#fc0" d="m4200 720 107 732 414-613-222 706 639-373-506 540 738-59-690 267 690 267-738-59 506 540-639-373 222 706-414-613-107 732-107-732-414 613 222-706-639 373 506-540-738 59 690-267-690-267 738 59-506-540 639 373-222-706 414 613zm-600 30a1280 1280 0 1 0 0 2340 1440 1440 0 1 1 0-2340z"/></svg>
@@ -154,25 +163,28 @@
 				<div class="row-mt-15em" style="margin-top:100px; ">
 						<div class="col-md-7 mt-text" style="margin-top:-10px;margin-left:0px;">
 							<h1>{{$item->header}}</h1><br>
-              <form action="/alltours" method="GET">
+             
               <!-- <button type="submit" class="js-check-availability gtm-trigger__adp-check-availability-btn avoid-close-dropdown-on-click c-button c-button--medium filbtn" data-test-id="checkout-submit-btn" id="tess">Learn More</button> -->
               <div class="d-none d-sm-block"> 
             <div class="search-box" id="tess">
-            <input type="text" class="form-control search-input" placeholder="Where are you going?">
-            <button class="c-button c-button--medium c-button--filled-standard billing-form__validate-billing-details-and-sri__button" style="margin-right:5px;">
+            <input type="text" id="searchInput" class="form-control search-input" placeholder="Where are you going?" name="query">
+            <button type="button" class="c-button c-button--medium c-button--filled-standard billing-form__validate-billing-details-and-sri__button searchprovince" style="margin-right:5px;">
               <i class="fas fa-search"></i>
             </button>
           </div>
+          <div id="searchSuggestions"></div>
           </div>
+
           <div class="d-block d-sm-none"> 
             <div class="search-box-mobile" id="tess">
-            <input type="text" class="form-control search-input" placeholder="Where are you going?">
-            <button class="c-button c-button--medium c-button--filled-standard billing-form__validate-billing-details-and-sri__button" style="margin-right:5px;">
+            <input type="text" id="searchInput1" class="form-control search-input" placeholder="Where are you going?" name="query">
+            <button type="button" class="c-button c-button--medium c-button--filled-standard billing-form__validate-billing-details-and-sri__button searchprovince1" style="margin-right:5px;">
               <i class="fas fa-search"></i>
             </button>
           </div>
+          <div id="searchSuggestions1"></div>
           </div>
-            </form>
+            
 						</div>
 						<div class="col-md-4 col-md-push-1 animate-box" data-animate-effect="fadeInRight" style="margin-top: -180px;">
 						</div>
@@ -746,4 +758,146 @@
 </div>
 </div> -->		
 	<!-- </div> -->
+
+@endsection
+@section('scripts')
+<script>
+$('#searchInput').on('input', function() {
+    var query = $(this).val();
+
+    if (query === '') {
+        $('#searchSuggestions').empty(); // Clear suggestion list when input is empty
+        return;
+    }
+    
+    $.ajax({
+        url: '/get-search-recommendations',
+        method: 'GET',
+        data: { query: query },
+        success: function(data) {
+            var suggestions = data.suggestions;
+            var suggestionList = '';
+
+            if (suggestions.length === 0) {
+                suggestionList = '<div class="suggestion">Destination does not exist</div>';
+            } else {
+                $.each(suggestions, function(index, suggestion) {
+                    suggestionList += '<div class="suggestion">' + suggestion + '</div>';
+                });
+            }
+
+            $('#searchSuggestions').html(suggestionList);
+        }
+    });    
+});
+
+$(document).on('click', '.suggestion', function() {
+    var suggestionText = $(this).text();
+    if (suggestionText !== 'Destination does not exist') {
+        $('#searchInput').val(suggestionText);
+    }
+    $('#searchSuggestions').empty(); // Clear suggestion list
+});
+</script>
+
+<script>
+$('#searchInput1').on('input', function() {
+    var query = $(this).val();
+
+    if (query === '') {
+        $('#searchSuggestions1').empty(); // Clear suggestion list when input is empty
+        return;
+    }
+    
+    $.ajax({
+        url: '/get-search-recommendations',
+        method: 'GET',
+        data: { query: query },
+        success: function(data) {
+            var suggestions = data.suggestions;
+            var suggestionList = '';
+
+            if (suggestions.length === 0) {
+                suggestionList = '<div class="suggestion1">Destination does not exist</div>';
+            } else {
+                $.each(suggestions, function(index, suggestion) {
+                    suggestionList += '<div class="suggestion1">' + suggestion + '</div>';
+                });
+            }
+
+            $('#searchSuggestions1').html(suggestionList);
+        }
+    });
+});
+
+$(document).on('click', '.suggestion1', function() {
+    var suggestionText = $(this).text();
+    if (suggestionText !== 'Destination does not exist') {
+        $('#searchInput1').val(suggestionText);
+    }
+    $('#searchSuggestions1').empty(); // Clear suggestion list
+});
+
+$('.searchprovince').on('click', function () {
+    var query = $('#searchInput').val();
+
+    if (query !== '') {
+        // Perform an AJAX request to check if the destination exists
+        $.ajax({
+            url: '/check-destination',
+            method: 'GET',
+            data: { query: query },
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // Include CSRF token
+            },
+            success: function (data) {
+                if (data.exists) {
+                    // If the destination exists, redirect to the URL
+                    window.location.href = '/' + 'location/' + data.slugprovince + '/' + data.idprovince;
+                } else {
+                    
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Destination does not exist',
+                    text: 'Please check your input and try again.'
+                });
+
+                }
+            }
+        });
+    }
+});
+
+$('.searchprovince1').on('click', function () {
+    var query = $('#searchInput1').val();
+
+    if (query !== '') {
+        // Perform an AJAX request to check if the destination exists
+        $.ajax({
+            url: '/check-destination',
+            method: 'GET',
+            data: { query: query },
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // Include CSRF token
+            },
+            success: function (data) {
+                if (data.exists) {
+                    // If the destination exists, redirect to the URL
+                    window.location.href = '/' + 'location/' + data.slugprovince + '/' + data.idprovince;
+                } else {
+                    
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Destination does not exist',
+                    text: 'Please check your input and try again.'
+                });
+
+                }
+            }
+        });
+    }
+});
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endsection
