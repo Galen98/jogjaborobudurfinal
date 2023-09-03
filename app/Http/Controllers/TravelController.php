@@ -979,13 +979,13 @@ public function getrate()
         ->where('destination', 'LIKE', $query . '%')
         ->select('destination as name', 'destination as slug', 'id as id', DB::raw("'destination' as type"));
 
-        $travelResults = DB::table('wisata')
-        ->where('namawisata', 'LIKE', $query . '%')
-        ->where('bahasa', $sessions)
-        ->select('namawisata as name', 'slug as slug', 'wisata_id as id', DB::raw("'trip' as type"));
+        // $travelResults = DB::table('wisata')
+        // ->where('namawisata', 'LIKE', $query . '%')
+        // ->where('bahasa', $sessions)
+        // ->select('namawisata as name', 'slug as slug', 'wisata_id as id', DB::raw("'trip' as type"));
 
     // Combine the results from provinces, regions, and destinations using UNION
-    $results = $provinceResults->union($regionResults)->union($destinationResults)->union($travelResults)->get();
+    $results = $provinceResults->union($regionResults)->union($destinationResults)->get();
 
     return response()->json(['results' => $results]);
 }

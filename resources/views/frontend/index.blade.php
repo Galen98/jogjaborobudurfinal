@@ -802,7 +802,7 @@ $('#searchInput').on('input', function() {
     }
     
     $.ajax({
-        url: 'get-search-results', // Change the URL to match your new endpoint
+        url: '/get-search-results', // Change the URL to match your new endpoint
         method: 'GET',
         data: { query: query },
         success: function(data) {
