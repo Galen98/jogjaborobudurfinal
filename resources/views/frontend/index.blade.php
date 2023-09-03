@@ -168,7 +168,7 @@
               <div class="d-none d-sm-block"> 
             <div class="search-box" id="tess">
             <input type="text" id="searchInput" class="form-control search-input" placeholder="Where are you going?" name="query">
-            <button type="button" class="c-button c-button--medium c-button--filled-standard billing-form__validate-billing-details-and-sri__button searchprovince" style="margin-right:5px;">
+            <button type="button" class="c-button c-button--medium billing-form__validate-billing-details-and-sri__button filbtn searchprovince" style="margin-right:5px;">
               <i class="fas fa-search"></i>
             </button>
           </div>
@@ -178,7 +178,7 @@
           <div class="d-block d-sm-none"> 
             <div class="search-box-mobile" id="tess">
             <input type="text" id="searchInput1" class="form-control search-input" placeholder="Where are you going?" name="query">
-            <button type="button" class="c-button c-button--medium c-button--filled-standard billing-form__validate-billing-details-and-sri__button searchprovince1" style="margin-right:5px;">
+            <button type="button" class="c-button c-button--medium billing-form__validate-billing-details-and-sri__button filbtn searchprovince1" style="margin-right:5px;">
               <i class="fas fa-search"></i>
             </button>
           </div>
@@ -193,11 +193,13 @@
 			</div>
       @endforeach
 	</header>
+
 	@endsection
  
 	@section('content')
 @include('sweetalert::alert')
-   <div class="wrapper container">
+
+   <div class="wrapper container " id="contentBelowSearch">
    <br>
   <br>
    <div class="d-none d-sm-block">
@@ -762,6 +764,35 @@
 @endsection
 @section('scripts')
 <script>
+// $('#searchInput').on('input', function() {
+//     var query = $(this).val();
+
+//     if (query === '') {
+//         $('#searchSuggestions').empty(); // Clear suggestion list when input is empty
+//         return;
+//     }
+    
+//     $.ajax({
+//         url: '/get-search-recommendations',
+//         method: 'GET',
+//         data: { query: query },
+//         success: function(data) {
+//             var suggestions = data.suggestions;
+//             var suggestionList = '';
+
+//             if (suggestions.length === 0) {
+//                 suggestionList = '<div class="suggestion">Destination does not exist</div>';
+//             } else {
+//                 $.each(suggestions, function(index, suggestion) {
+//                     suggestionList += '<div class="suggestion">' + suggestion + '</div>';
+//                 });
+//             }
+
+//             $('#searchSuggestions').html(suggestionList);
+//         }
+//     });    
+// });
+
 $('#searchInput').on('input', function() {
     var query = $(this).val();
 
@@ -771,18 +802,18 @@ $('#searchInput').on('input', function() {
     }
     
     $.ajax({
-        url: '/get-search-recommendations',
+        url: '/get-search-results', // Change the URL to match your new endpoint
         method: 'GET',
         data: { query: query },
         success: function(data) {
-            var suggestions = data.suggestions;
+            var results = data.results;
             var suggestionList = '';
 
-            if (suggestions.length === 0) {
+            if (results.length === 0) {
                 suggestionList = '<div class="suggestion">Destination does not exist</div>';
             } else {
-                $.each(suggestions, function(index, suggestion) {
-                    suggestionList += '<div class="suggestion">' + suggestion + '</div>';
+                $.each(results, function(index, result) {
+                    suggestionList += '<div class="suggestion">' + result.name + '</div>';
                 });
             }
 
@@ -790,6 +821,7 @@ $('#searchInput').on('input', function() {
         }
     });    
 });
+
 
 $(document).on('click', '.suggestion', function() {
     var suggestionText = $(this).text();
@@ -801,6 +833,35 @@ $(document).on('click', '.suggestion', function() {
 </script>
 
 <script>
+// $('#searchInput1').on('input', function() {
+//     var query = $(this).val();
+
+//     if (query === '') {
+//         $('#searchSuggestions1').empty(); // Clear suggestion list when input is empty
+//         return;
+//     }
+    
+//     $.ajax({
+//         url: '/get-search-recommendations',
+//         method: 'GET',
+//         data: { query: query },
+//         success: function(data) {
+//             var suggestions = data.suggestions;
+//             var suggestionList = '';
+
+//             if (suggestions.length === 0) {
+//                 suggestionList = '<div class="suggestion1">Destination does not exist</div>';
+//             } else {
+//                 $.each(suggestions, function(index, suggestion) {
+//                     suggestionList += '<div class="suggestion1">' + suggestion + '</div>';
+//                 });
+//             }
+
+//             $('#searchSuggestions1').html(suggestionList);
+//         }
+//     });
+// });
+
 $('#searchInput1').on('input', function() {
     var query = $(this).val();
 
@@ -810,24 +871,24 @@ $('#searchInput1').on('input', function() {
     }
     
     $.ajax({
-        url: '/get-search-recommendations',
+        url: '/get-search-results', // Change the URL to match your new endpoint
         method: 'GET',
         data: { query: query },
         success: function(data) {
-            var suggestions = data.suggestions;
+            var results = data.results;
             var suggestionList = '';
 
-            if (suggestions.length === 0) {
-                suggestionList = '<div class="suggestion1">Destination does not exist</div>';
+            if (results.length === 0) {
+                suggestionList = '<div class="suggestion">Destination does not exist</div>';
             } else {
-                $.each(suggestions, function(index, suggestion) {
-                    suggestionList += '<div class="suggestion1">' + suggestion + '</div>';
+                $.each(results, function(index, result) {
+                    suggestionList += '<div class="suggestion1">' + result.name + '</div>';
                 });
             }
 
             $('#searchSuggestions1').html(suggestionList);
         }
-    });
+    });    
 });
 
 $(document).on('click', '.suggestion1', function() {
@@ -839,64 +900,99 @@ $(document).on('click', '.suggestion1', function() {
 });
 
 $('.searchprovince').on('click', function () {
-    var query = $('#searchInput').val();
+var query = $('#searchInput').val();
 
-    if (query !== '') {
-        // Perform an AJAX request to check if the destination exists
-        $.ajax({
-            url: '/check-destination',
-            method: 'GET',
-            data: { query: query },
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // Include CSRF token
-            },
-            success: function (data) {
-                if (data.exists) {
-                    // If the destination exists, redirect to the URL
-                    window.location.href = '/' + 'location/' + data.slugprovince + '/' + data.idprovince;
-                } else {
-                    
-                  Swal.fire({
+if (query !== '') {
+    $.ajax({
+        url: '/check-destination',
+        method: 'GET',
+        data: { query: query },
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // Include CSRF token
+        },
+        success: function (data) {
+            if (data.exists) {
+                var redirectUrl = '';
+                switch (data.type) {
+                    case 'province':
+                        redirectUrl = '/location/' + data.slugprovince + '/' + data.idprovince;
+                        break;
+                    case 'region':
+                        redirectUrl = '/city/' + data.slugregion;
+                        break;
+                    case 'destination':
+                        redirectUrl = '/category-destination/' + data.iddestination;
+                        break;
+                        case 'trip':
+                        redirectUrl = '/item/' + data.slugtrip;
+                        break;
+                    default:
+                        break;
+                }
+
+                if (redirectUrl !== '') {
+                    // Redirect to the determined URL
+                    window.location.href = redirectUrl;
+                }
+            } else {
+                Swal.fire({
                     icon: 'error',
                     title: 'Destination does not exist',
                     text: 'Please check your input and try again.'
                 });
-
-                }
             }
-        });
-    }
+        }
+    });
+}
 });
 
 $('.searchprovince1').on('click', function () {
-    var query = $('#searchInput1').val();
+  var query = $('#searchInput1').val();
 
-    if (query !== '') {
-        // Perform an AJAX request to check if the destination exists
-        $.ajax({
-            url: '/check-destination',
-            method: 'GET',
-            data: { query: query },
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // Include CSRF token
-            },
-            success: function (data) {
-                if (data.exists) {
-                    // If the destination exists, redirect to the URL
-                    window.location.href = '/' + 'location/' + data.slugprovince + '/' + data.idprovince;
-                } else {
-                    
-                  Swal.fire({
+if (query !== '') {
+    $.ajax({
+        url: '/check-destination',
+        method: 'GET',
+        data: { query: query },
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // Include CSRF token
+        },
+        success: function (data) {
+            if (data.exists) {
+                var redirectUrl = '';
+                switch (data.type) {
+                    case 'province':
+                        redirectUrl = '/location/' + data.slugprovince + '/' + data.idprovince;
+                        break;
+                    case 'region':
+                        redirectUrl = '/city/' + data.slugregion;
+                        break;
+                    case 'destination':
+                        redirectUrl = '/category-destination/' + data.iddestination;
+                        break;
+                        case 'trip':
+                        redirectUrl = '/item/' + data.slugtrip;
+                        break;
+                    default:
+                        break;
+                }
+
+                if (redirectUrl !== '') {
+                    // Redirect to the determined URL
+                    window.location.href = redirectUrl;
+                }
+            } else {
+                Swal.fire({
                     icon: 'error',
                     title: 'Destination does not exist',
                     text: 'Please check your input and try again.'
                 });
-
-                }
             }
-        });
-    }
+        }
+    });
+}
 });
+
 
 </script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

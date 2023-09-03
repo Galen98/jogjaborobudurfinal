@@ -149,10 +149,10 @@
 <div class="container">
 <div class="collection-header d-none d-sm-block" data-v-76e871e0>
     <div class="collection-header--title-container" data-v-76e871e0>
-    <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0 style="font-size:20px;margin-bottom:10px;">
+    <!-- <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0 style="font-size:20px;margin-bottom:10px;">
     Things to do in
-      </span>
-    <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0 style="font-size:90px;">
+      </span> -->
+    <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0 style="font-size:70px;">
     @foreach($provinces as $item){{$item->namaprovince}}@endforeach
       </span>
     </div> 
@@ -160,10 +160,10 @@
 
     <div class="collection-header d-block d-sm-none" data-v-76e871e0>
     <div class="collection-header--title-container" data-v-76e871e0>
-    <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0 style="font-size:20px;margin-bottom:10px;">
+    <!-- <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0 style="font-size:20px;margin-bottom:10px;">
     Things to do in
-      </span>
-    <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0 style="font-size:60px;">
+      </span> -->
+    <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0 style="font-size:40px;">
     @foreach($provinces as $item){{$item->namaprovince}}@endforeach
       </span>
     </div> 

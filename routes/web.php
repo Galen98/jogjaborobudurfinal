@@ -334,6 +334,7 @@ Route::get('/facebookshare', [App\Http\Controllers\BlogController::class,'sharef
 
 //travel route admin
 Route::get('/get-search-recommendations', [App\Http\Controllers\TravelController::class,'getSearchprovince']);
+Route::get('/get-search-results', [App\Http\Controllers\TravelController::class,'getSearchResults']);
 Route::get('/check-destination', [App\Http\Controllers\TravelController::class,'checkDestination']);
 Route::post('inserttravel', [App\Http\Controllers\TravelController::class,'inserttravel']);
 Route::post('insertoption', [App\Http\Controllers\BlogController::class,'insertoption']);

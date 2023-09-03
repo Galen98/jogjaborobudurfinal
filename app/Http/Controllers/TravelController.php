@@ -687,7 +687,7 @@ class TravelController extends Controller
         $bahasa=bahasa::get();
         $city=region::get();
         $destination=destination::get();
-         $lang=$request->server('HTTP_ACCEPT_LANGUAGE');
+        $lang=$request->server('HTTP_ACCEPT_LANGUAGE');
          $langs=Str::substr($lang, 0,2);
         if ($langs == 'id') {
         $sessions = session()->get("bahasa") ?? "Bahasa";
@@ -944,21 +944,102 @@ public function getrate()
         return response()->json(['suggestions' => $suggestions]);
     }
 
-    public function checkDestination(Request $request)
+    public function getSearchResults(Request $request)
 {
     $query = $request->input('query');
+    $lang=$request->server('HTTP_ACCEPT_LANGUAGE');
+         $langs=Str::substr($lang, 0,2);
+        if ($langs == 'id') {
+        $sessions = session()->get("bahasa") ?? "Bahasa";
+        
+        }elseif ($langs == 'en-US'){
+        $sessions = session()->get("bahasa") ?? "English";
+        
+        }elseif ($langs == 'en'){
+        $sessions = session()->get("bahasa") ?? "English";
+        }
+        elseif ($langs == 'ms'){
+        $sessions = session()->get("bahasa") ?? "Malay";
+        }
+        else{
+        $sessions = session()->get("bahasa") ?? "English";     
+        }
+
+    // Search provinces
+    $provinceResults = DB::table('province')
+        ->where('namaprovince', 'LIKE', $query . '%')
+        ->select('namaprovince as name', 'slugprovince as slug', 'id as id', DB::raw("'province' as type"));
+
+    // Search regions
+    $regionResults = DB::table('region')
+        ->where('namaregion', 'LIKE', $query . '%')
+        ->select('namaregion as name', 'slugregion as slug', 'id as id', DB::raw("'region' as type"));
+
+        $destinationResults = DB::table('destination')
+        ->where('destination', 'LIKE', $query . '%')
+        ->select('destination as name', 'destination as slug', 'id as id', DB::raw("'destination' as type"));
+
+        $travelResults = DB::table('wisata')
+        ->where('namawisata', 'LIKE', $query . '%')
+        ->where('bahasa', $sessions)
+        ->select('namawisata as name', 'slug as slug', 'wisata_id as id', DB::raw("'trip' as type"));
+
+    // Combine the results from provinces, regions, and destinations using UNION
+    $results = $provinceResults->union($regionResults)->union($destinationResults)->union($travelResults)->get();
+
+    return response()->json(['results' => $results]);
+}
+
+
+public function checkDestination(Request $request)
+{
+    $query = $request->input('query');
+
+    // Search for a province
     $province = province::where('namaprovince', $query)->first();
+
+    // Search for a region
+    $region = region::where('namaregion', $query)->first();
+
+    // Search for a destination
+    $destination = destination::where('destination', $query)->first();
+
+    $trip = travel::where('namawisata', $query)->first();
 
     if ($province) {
         return response()->json([
             'exists' => true,
             'slugprovince' => $province->slugprovince,
             'idprovince' => $province->id,
+            'type' => 'province',
+        ]);
+    } elseif ($region) {
+        return response()->json([
+            'exists' => true,
+            'slugregion' => $region->slugregion, // Adjust column name
+            'idregion' => $region->id, // Adjust column name
+            'type' => 'region',
+        ]);
+    } elseif ($destination) {
+        return response()->json([
+            'exists' => true,
+            'slugdestination' => $destination->destination, // Adjust column name
+            'iddestination' => $destination->id, // Adjust column name
+            'type' => 'destination',
+        ]);
+    }elseif ($trip) {
+        return response()->json([
+            'exists' => true,
+            'slugtrip' => $trip->slug, // Adjust column name
+            'idtrip' => $trip->wisata_id, // Adjust column name
+            'type' => 'trip',
         ]);
     } else {
         return response()->json(['exists' => false]);
     }
 }
+
+
 
 
 }
