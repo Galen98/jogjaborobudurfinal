@@ -8,7 +8,17 @@
     <div class="page-header__content" data-v-3a2bcacc >
   <a href="/" data-test-id="page-header-logo" class="page-header__logo-link" data-v-3a2bcacc style="margin-top: 10px;">
   <img src="{{asset('spica')}}/images/logomini.png" alt="logo" height="50" width="100" style="margin-left:5px;"/>
-  </a> 
+  </a>
+  <div class="d-none d-sm-block" style="margin-left:15px;"> 
+            <div class="search-box" id="tess">
+            <input type="text" id="searchInput" class="form-control search-input" placeholder="Where are you going?" name="query">
+            <button type="button" class="c-button c-button--medium billing-form__validate-billing-details-and-sri__button filbtn searchprovince" style="margin-right:5px;">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+          <div id="searchSuggestions"></div>
+          </div>
+
   <nav data-test-id="page-header-nav" class="navigation page-header__navigation light" data-v-3a2bcacc >
   <ul class="navigation__list">
     
@@ -93,6 +103,7 @@
           </div>
   </li>
   
+ 
 
   <li tabindex="0" data-test-id="header-navigation-pickers" class="item__dropdown item__dropdown--language js-navigation-language-dropdown d-none d-sm-block">
      <div class="dropdown drops">
@@ -165,15 +176,7 @@
 							<h1>{{$item->header}}</h1><br>
              
               <!-- <button type="submit" class="js-check-availability gtm-trigger__adp-check-availability-btn avoid-close-dropdown-on-click c-button c-button--medium filbtn" data-test-id="checkout-submit-btn" id="tess">Learn More</button> -->
-              <div class="d-none d-sm-block"> 
-            <div class="search-box" id="tess">
-            <input type="text" id="searchInput" class="form-control search-input" placeholder="Where are you going?" name="query">
-            <button type="button" class="c-button c-button--medium billing-form__validate-billing-details-and-sri__button filbtn searchprovince" style="margin-right:5px;">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-          <div id="searchSuggestions"></div>
-          </div>
+              
 
           <div class="d-block d-sm-none"> 
             <div class="search-box-mobile" id="tess">
@@ -800,6 +803,7 @@ $('#searchInput').on('input', function() {
         $('#searchSuggestions').empty(); // Clear suggestion list when input is empty
         return;
     }
+    
     
     $.ajax({
         url: '/get-search-results', // Change the URL to match your new endpoint
