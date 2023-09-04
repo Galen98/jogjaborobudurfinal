@@ -9,7 +9,7 @@
   <a href="/" data-test-id="page-header-logo" class="page-header__logo-link" data-v-3a2bcacc style="margin-top: 10px;">
   <img src="{{asset('spica')}}/images/logomini.png" alt="logo" height="50" width="100" style="margin-left:5px;"/>
   </a>
-  <div class="d-none d-sm-block" style="margin-left:15px;"> 
+  <div class="d-none d-sm-block" style="margin-left:30px;"> 
             <div class="search-box" id="tess">
             <input type="text" id="searchInput" class="form-control search-input" placeholder="Where are you going?" name="query">
             <button type="button" class="c-button c-button--medium billing-form__validate-billing-details-and-sri__button filbtn searchprovince" style="margin-right:5px;">
