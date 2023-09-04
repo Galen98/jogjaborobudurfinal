@@ -812,8 +812,22 @@ $('#searchInput').on('input', function() {
             if (results.length === 0) {
                 suggestionList = '<div class="suggestion">Destination does not exist</div>';
             } else {
+              
                 $.each(results, function(index, result) {
-                    suggestionList += '<div class="suggestion">' + result.name + '</div>';
+                  var icon = '';
+
+                  // Add icons based on the 'type' value
+                  if (result.type === 'province') {
+                    icon = '<i class="fa fa-map-marker" aria-hidden="true"></i> '; // Replace with your desired icon class
+                  } else if (result.type === 'region') {
+                    icon = '<i class="fa fa-map-marker" aria-hidden="true"></i> '; // Replace with your desired icon class
+                  } else if (result.type === 'destination') {
+                    icon = '<i class="fa fa-map-marker" aria-hidden="true"></i> '; // Replace with your desired icon class
+                  }
+                  else if (result.type === 'trip') {
+                    icon = '<i class="fa-regular fa-map"></i> '; // Replace with your desired icon class
+                  }
+                    suggestionList += '<div class="suggestion">'  + icon + result.name + '</div>';
                 });
             }
 
@@ -879,10 +893,23 @@ $('#searchInput1').on('input', function() {
             var suggestionList = '';
 
             if (results.length === 0) {
-                suggestionList = '<div class="suggestion">Destination does not exist</div>';
+                suggestionList = '<div class="suggestion1">Destination does not exist</div>';
             } else {
-                $.each(results, function(index, result) {
-                    suggestionList += '<div class="suggestion1">' + result.name + '</div>';
+              $.each(results, function(index, result) {
+                  var icon = '';
+
+                  // Add icons based on the 'type' value
+                  if (result.type === 'province') {
+                    icon = '<i class="fa fa-map-marker" aria-hidden="true"></i> '; // Replace with your desired icon class
+                  } else if (result.type === 'region') {
+                    icon = '<i class="fa fa-map-marker" aria-hidden="true"></i> '; // Replace with your desired icon class
+                  } else if (result.type === 'destination') {
+                    icon = '<i class="fa fa-map-marker" aria-hidden="true"></i> '; // Replace with your desired icon class
+                  }
+                  else if (result.type === 'trip') {
+                    icon = '<i class="fa-regular fa-map"></i> '; // Replace with your desired icon class
+                  }
+                    suggestionList += '<div class="suggestion1">'  + icon + result.name + '</div>';
                 });
             }
 
