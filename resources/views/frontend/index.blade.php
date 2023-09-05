@@ -179,9 +179,9 @@
               
 
           <div class="d-block d-sm-none"> 
-            <div class="search-box-mobile" id="tess">
+            <div class="search-box-mobile" id="tess" style="background-color:white;">
               <i class="fas fa-search" style="margin-left:20px;margin-bottom:2px;"></i>
-            <input id="openModalBtn" class="form-control search-input" placeholder="Where would you like to go?" readonly>
+            <input id="openModalBtn" class="form-control search-input" style="background-color:white;" placeholder="Where would you like to go?" readonly>
           </div>
           <!-- <div id="searchSuggestions1"></div> -->
           </div>
