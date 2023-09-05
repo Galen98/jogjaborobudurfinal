@@ -2685,7 +2685,7 @@ color: #182c4c;
 #searchSuggestions1 {
   border: none;
   background-color: white;
-  max-height: auto;
+  max-height: 500px;
   margin-left: 11px;
   margin-top: 10px;
   position: absolute;
