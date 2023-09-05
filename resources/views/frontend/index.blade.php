@@ -925,7 +925,7 @@ $('#searchInput1').on('input', function() {
                   else if (result.type === 'trip') {
                     icon = '<i class="fa-regular fa-map"></i> '; // Replace with your desired icon class
                   }
-                    suggestionList += '<div class="suggestion1">'  + icon + result.name + '</div>';
+                    suggestionList += '<div class="suggestion1">'  + icon + result.name + '<hr/>' + '</div>';
                 });
             }
 
