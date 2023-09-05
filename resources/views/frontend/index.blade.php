@@ -181,7 +181,7 @@
           <div class="d-block d-sm-none"> 
             <div class="search-box-mobile" id="tess">
               <i class="fas fa-search" style="margin-left:20px;margin-bottom:2px;"></i>
-            <input type="text" id="openModalBtn" class="form-control search-input" placeholder="Where would you like to go?" >
+            <input  id="openModalBtn" class="form-control search-input" placeholder="Where would you like to go?" >
           </div>
           <!-- <div id="searchSuggestions1"></div> -->
           </div>
