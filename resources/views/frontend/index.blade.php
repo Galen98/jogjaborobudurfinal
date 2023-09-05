@@ -1036,22 +1036,31 @@ if (query !== '') {
 }
 });
 
-// Open the modal when the button is clicked
-$("#openModalBtn").click(function() {
+
+function showModal() {
   $("#myModal").css("display", "block");
-});
+  $("body").addClass("body-lock"); // Kunci body
+}
 
-// Close the modal when the close button is clicked
-$(".close").click(function() {
+// Fungsi untuk menyembunyikan modal
+function hideModal() {
   $("#myModal").css("display", "none");
-});
+  $("body").removeClass("body-lock"); // Lepaskan kunci body
+}
 
-// Close the modal if the user clicks outside of it
+// Event listener untuk tombol penutup modal
+$(".close").click(hideModal);
+
+// Event listener untuk menampilkan modal (misalnya, saat tombol di klik)
+$("#openModalBtn").click(showModal);
+
+// Event listener untuk menutup modal jika pengguna mengklik di luar modal
 $(window).click(function(event) {
   if (event.target == document.getElementById("myModal")) {
-    $("#myModal").css("display", "none");
+    hideModal();
   }
 });
+
 
 
 

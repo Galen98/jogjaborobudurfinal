@@ -2716,6 +2716,7 @@ color: #182c4c;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
+  overflow-y: scroll; /* Menampilkan scrollbar jika kontennya melebihi tinggi modal */
 }
 
 .modals-content {
@@ -2726,21 +2727,35 @@ color: #182c4c;
   height: 100%;
   background-color: white;
   padding: 20px;
-  text-align:left;
+  text-align: left;
+  overflow-y: auto; /* Mengaktifkan scrollbar di dalam modal jika kontennya melebihi tinggi modal */
 }
 
-.closes {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 24px;
-  cursor: pointer;
+/* Gaya scrollbar (opsional) */
+.modals-content::-webkit-scrollbar {
+  width: 8px;
 }
 
-/* Media query for mobile screens */
-/* @media (max-width: 768px) {
+.modals-content::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+.modals-content::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+/* Kunci body ketika modal muncul */
+.body-lock {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
   .modals-content {
     max-width: 100%;
     width: 100%;
   }
-} */
+}
+
