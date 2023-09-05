@@ -180,10 +180,8 @@
 
           <div class="d-block d-sm-none"> 
             <div class="search-box-mobile" id="tess">
+              <i class="fas fa-search" style="margin-left:20px;margin-bottom:2px;"></i>
             <input type="text" id="openModalBtn" class="form-control search-input" placeholder="Where would you like to go?" >
-            <button type="button" class="c-button c-button--medium billing-form__validate-billing-details-and-sri__button filbtn " style="margin-right:5px;">
-              <i class="fas fa-search"></i>
-            </button>
           </div>
           <!-- <div id="searchSuggestions1"></div> -->
           </div>
