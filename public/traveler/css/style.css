@@ -2657,10 +2657,10 @@ color: #182c4c;
 #searchSuggestions {
   border: none;
   background-color: white;
-  max-height: 300px; /* Set the maximum height to 150px */
+  max-height: auto; 
   margin-left: 0px;
   margin-top: 5px;
-  overflow-y: auto; /* Add a vertical scrollbar when content exceeds the height */
+  overflow-y: auto; 
   position: absolute;
   z-index: 999;
   width: 450px;
@@ -2690,6 +2690,7 @@ color: #182c4c;
   margin-top: 10px;
   position: absolute;
   width: 300px;
+  overflow-y: auto;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
   border-top-left-radius: 15px;
