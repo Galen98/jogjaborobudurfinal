@@ -163,23 +163,24 @@ class TravelController extends Controller
         $travel=travel::create($data);
 
         $data = [
-            'wisata_id'=> $travel->id,
+            'wisata_id'=>$travel->id,
             'season_id'=>$season
         ];
-        foreach($season as $index){
+
+            foreach($season as $index){
             $data['season_id']=$index;
             tambahseason::create($data);
             }
 
             $data = [
-                'wisata_id' => $travel->id,
+                'wisata_id'=>$travel->wisata_id,
                 'namaprovince' => $province,
                 'slugprovince'=>\Str::slug($request->province)
             ];
             $provinsi = tambahprovince::create($data);
 
             $data = [
-                'wisata_id' => $travel->id,
+                'wisata_id' => $travel->wisata_id,
                 'tambahprovince_id' => $provinsi->id,
                
             ];
@@ -278,7 +279,7 @@ class TravelController extends Controller
 
               
                 $data = [
-                'wisata_id'=> $travel->id,
+                'wisata_id'=> $travel->wisata_id,
                 'subwisata_id' => $option->id,
                 'min'=>$personrange,
                 'maks'=>$range,
@@ -299,7 +300,7 @@ class TravelController extends Controller
                
 
         Alert::success('Berhasil');
-        return redirect('/paketwisata/diskon/'.$travel->id);
+        return redirect('/paketwisata/diskon/'.$travel->wisata_id);
 
     }
 
