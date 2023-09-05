@@ -11,7 +11,7 @@
   </a>
   <div class="d-none d-sm-block" style="margin-left:30px;"> 
             <div class="search-box" id="tess">
-            <input type="text" id="searchInput" class="form-control search-input" placeholder="Where are you going?" name="query">
+            <input type="text" id="searchInput" class="form-control search-input" placeholder="Where would you like to go?" name="query">
             <button type="button" class="c-button c-button--medium billing-form__validate-billing-details-and-sri__button filbtn searchprovince" style="margin-right:5px;">
               <i class="fas fa-search"></i>
             </button>
@@ -180,13 +180,27 @@
 
           <div class="d-block d-sm-none"> 
             <div class="search-box-mobile" id="tess">
-            <input type="text" id="searchInput1" class="form-control search-input" placeholder="Where are you going?" name="query">
-            <button type="button" class="c-button c-button--medium billing-form__validate-billing-details-and-sri__button filbtn searchprovince1" style="margin-right:5px;">
+            <input type="text" id="openModalBtn" class="form-control search-input" placeholder="Where would you like to go?" >
+            <button type="button" class="c-button c-button--medium billing-form__validate-billing-details-and-sri__button filbtn " style="margin-right:5px;">
               <i class="fas fa-search"></i>
             </button>
           </div>
-          <div id="searchSuggestions1"></div>
+          <!-- <div id="searchSuggestions1"></div> -->
           </div>
+
+          <div id="myModal" class="modals">
+    <div class="modals-content">
+    <span class="close">&times;</span>
+    <div class="search-box-mobile" id="tess">
+    <input type="text" id="searchInput1" class="form-control search-input" placeholder="Where would you like to go?" name="query">
+            <button type="button" class="c-button c-button--medium billing-form__validate-billing-details-and-sri__button filbtn searchprovince1" style="margin-right:5px;">
+              <i class="fas fa-search"></i>
+            </button>
+            
+</div>
+<div id="searchSuggestions1"></div>
+  </div>
+  </div>
             
 						</div>
 						<div class="col-md-4 col-md-push-1 animate-box" data-animate-effect="fadeInRight" style="margin-top: -180px;">
@@ -1023,6 +1037,24 @@ if (query !== '') {
     });
 }
 });
+
+// Open the modal when the button is clicked
+$("#openModalBtn").click(function() {
+  $("#myModal").css("display", "block");
+});
+
+// Close the modal when the close button is clicked
+$(".close").click(function() {
+  $("#myModal").css("display", "none");
+});
+
+// Close the modal if the user clicks outside of it
+$(window).click(function(event) {
+  if (event.target == document.getElementById("myModal")) {
+    $("#myModal").css("display", "none");
+  }
+});
+
 
 
 </script>
