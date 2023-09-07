@@ -131,9 +131,9 @@
 <div class="wrapper container" style="overflow:hidden;">
       <div class="icon"><i id="left" class="fa-solid fa-angle-left"></i></div>
       <ul class="tabs-box">
-      <a href="{{url('location/'.$slugprovince.'/'.$provinceid)}}" class="tabhref season-link" ><li class="tab">All</li></a>
+      <li><a href="{{url('location/'.$slugprovince.'/'.$provinceid)}}" class="btn btn-outline-dark" style="border-radius:20px;">All</a></li>
         @foreach($season as $item)
-        <a href="{{url('locationfilter/'.$slugprovince.'/'.$item->id)}}" class="tabhref season-link {{ $seasonactive == $item->id ? 'actives' : '' }}" ><li class="tab">{{$item->namaseason}}</li></a>
+        <li><a href="{{url('locationfilter/'.$slugprovince.'/'.$item->id)}}" class="btn btn-outline-dark {{ $seasonactive == $item->id ? 'active' : '' }}" style="border-radius:20px;">{{$item->namaseason}}</a></li>
         @endforeach
       </ul>
       <div class="icon"><i id="right" class="fa-solid fa-angle-right"></i></div>
