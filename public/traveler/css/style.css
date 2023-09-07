@@ -2763,3 +2763,12 @@ color: #182c4c;
   }
 }
 
+.actives {
+   /* Warna latar belakang tautan aktif */
+  color: #fc2c04; /* Warna teks tautan aktif */
+}
+
+.active{
+  color: white;
+}
+

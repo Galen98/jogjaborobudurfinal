@@ -550,4 +550,6 @@ Route::get("/change-session/{currency}", function ($currency) {
 
 //post admin kirim link review
 Route::post('/sendlinkreview/{idbooking}', [App\Http\Controllers\Reviewemail::class,'sendReviewLinks']);
-
+//filter season
+// Route::get('/location/{province}/{seasonId}', [App\Http\Controllers\TravelController::class,'getTravelByProvinceAndSeason']);
+Route::get('/locationfilter/{slugprovince}/{namaseason}', [App\Http\Controllers\TravelController::class,'filterseasonprovince'])->name('filter-season-province');

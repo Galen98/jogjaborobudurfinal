@@ -123,13 +123,17 @@
 <br>
 <br>
 @endif
+<!-- @foreach($provinces as $item)
+<p>{{$item->slugprovince}}</p>
+@endforeach -->
 @if(count($count) > 0)
 <div class="d-none d-sm-block">
 <div class="wrapper container" style="overflow:hidden;">
       <div class="icon"><i id="left" class="fa-solid fa-angle-left"></i></div>
       <ul class="tabs-box">
+      <a href="{{url('location/'.$slugprovince.'/'.$provinceid)}}" class="tabhref season-link" ><li class="tab">All</li></a>
         @foreach($season as $item)
-        <a href="{{'/season/' .$item->id}}" class="tabhref"><li class="tab">{{$item->namaseason}}</li></a>
+        <a href="{{url('locationfilter/'.$slugprovince.'/'.$item->id)}}" class="tabhref season-link {{ $seasonactive == $item->id ? 'actives' : '' }}" ><li class="tab">{{$item->namaseason}}</li></a>
         @endforeach
       </ul>
       <div class="icon"><i id="right" class="fa-solid fa-angle-right"></i></div>
@@ -139,8 +143,9 @@
 <div class="wrapper container">
 <div class="d-block d-md-none">
 <ul class="custom-horizontal-list">
+<li><a href="{{url('location/'.$slugprovince.'/'.$provinceid)}}" class="btn btn-outline-dark" style="border-radius:20px;">All</a></li>
 @foreach($season as $item)
-<li><a href="{{'/season/' .$item->id}}" class="btn btn-outline-dark" style="color:#233351;border-radius:20px;">{{$item->namaseason}}</a></li>
+<li><a href="{{url('locationfilter/'.$slugprovince.'/'.$item->id)}}" class="btn btn-outline-dark {{ $seasonactive == $item->id ? 'active' : '' }}" style="border-radius:20px;">{{$item->namaseason}}</a></li>
 @endforeach
 </ul>
 </div>
@@ -181,10 +186,10 @@
 <div class="collection-body" data-v-76e871e0>
     <div class="collection-body--horizontal" data-v-76e871e0>
     <div class="vertical-activity-cards__grid" data-v-76e871e0>
- 
+
       @foreach($travel as $item)
-      <article data-test-id="vertical-activity-card" class="vertical-activity-card d-none d-sm-block" data-v-76e871e0>
-    <div class="vertical-activity-card__content-wrapper">
+      <article  data-test-id="vertical-activity-card"  class="vertical-activity-card d-none d-sm-block" data-v-76e871e0>
+    <div class="vertical-activity-card__content-wrapper" >
     <a href="{{'/item/'.$item->slug}}" role="contentinfo" data-activity-id="62214" target="_blank" class="vertical-activity-card__container gtm-trigger__card-interaction">
     <div class="vertical-activity-card__top-wrapper">
     <div class="vertical-activity-card__top">
@@ -675,6 +680,10 @@
   @endforeach
 </ul>
 </div>
+@endsection
+
+@section('scripts')
+
 @endsection
     
 
