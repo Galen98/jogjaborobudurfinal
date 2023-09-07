@@ -189,7 +189,7 @@
           <div id="myModal" class="modals">
     <div class="modals-content">
     <span class="close">&times;</span>
-    <div class="search-box-mobile" id="tess">
+    <div class="search-box-mobiles" id="tess">
     <input type="text" id="searchInput1" class="form-control search-input" placeholder="Where would you like to go?" name="query">
             <button type="button" class="c-button c-button--medium billing-form__validate-billing-details-and-sri__button filbtn searchprovince1" style="margin-right:5px;">
               <i class="fas fa-search"></i>
@@ -916,14 +916,14 @@ $('#searchInput1').on('input', function() {
 
                   // Add icons based on the 'type' value
                   if (result.type === 'province') {
-                    icon = '<i class="fa fa-map-marker" aria-hidden="true"></i> '; // Replace with your desired icon class
+                    icon = '<i class="fa fa-map-marker" style="color:#fc2c04; aria-hidden="true"></i> '; // Replace with your desired icon class
                   } else if (result.type === 'region') {
-                    icon = '<i class="fa fa-map-marker" aria-hidden="true"></i> '; // Replace with your desired icon class
+                    icon = '<i class="fa fa-map-marker" style="color:#fc2c04; aria-hidden="true"></i> '; // Replace with your desired icon class
                   } else if (result.type === 'destination') {
-                    icon = '<i class="fa fa-map-marker" aria-hidden="true"></i> '; // Replace with your desired icon class
+                    icon = '<i class="fa fa-map-marker" style="color:#fc2c04; aria-hidden="true"></i> '; // Replace with your desired icon class
                   }
                   else if (result.type === 'trip') {
-                    icon = '<i class="fa-regular fa-map"></i> '; // Replace with your desired icon class
+                    icon = '<i class="fa-regular fa-map" style="color:#fc2c04;"></i> '; // Replace with your desired icon class
                   }
                     suggestionList += '<div class="suggestion1">'  + icon + result.name + '<hr/>' + '</div>';
                 });
@@ -1039,13 +1039,15 @@ if (query !== '') {
 
 function showModal() {
   $("#myModal").css("display", "block");
-  $("body").addClass("body-lock"); // Kunci body
+  $("body").addClass("body-lock");
+ 
 }
 
 // Fungsi untuk menyembunyikan modal
 function hideModal() {
   $("#myModal").css("display", "none");
-  $("body").removeClass("body-lock"); // Lepaskan kunci body
+  $("body").removeClass("body-lock");
+  
 }
 
 // Event listener untuk tombol penutup modal
