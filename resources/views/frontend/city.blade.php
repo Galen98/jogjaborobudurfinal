@@ -152,8 +152,9 @@
 <div class="d-none d-sm-block">
       <div class="icon"><i id="left" class="fa-solid fa-angle-left"></i></div>
       <ul class="tabs-box">
+      <li><a href="{{url('city/'.$slugcity)}}" class="btn btn-outline-dark" style="border-radius:20px;">All</a></li>
         @foreach($season as $item)
-        <a href="{{'/season/' .$item->id}}" class="tabhref"><li class="tab">{{$item->namaseason}}</li></a>
+        <li><a href="{{url('cityfilter/'.$slugcity.'/'.$item->id)}}" class="btn btn-outline-dark {{ $seasonactive == $item->id ? 'active' : '' }}" style="border-radius:20px;">{{$item->namaseason}}</a></li>
         @endforeach
       </ul>
       <div class="icon"><i id="right" class="fa-solid fa-angle-right"></i></div>
@@ -161,8 +162,9 @@
 
     <div class="d-block d-md-none">
   <ul class="custom-horizontal-list">
+  <li><a href="{{url('city/'.$slugcity)}}" class="btn btn-outline-dark" style="border-radius:20px;">All</a></li>
   @foreach($season as $item)
-  <li class=""><a href="{{'/season/' .$item->id}}" class="btn btn-outline-dark" style="color:#233351;border-radius:20px;">{{$item->namaseason}}</a></li>
+  <li><a href="{{url('cityfilter/'.$slugcity.'/'.$item->id)}}" class="btn btn-outline-dark {{ $seasonactive == $item->id ? 'active' : '' }}" style="border-radius:20px;">{{$item->namaseason}}</a></li>
   @endforeach
   </ul>
   </div>

@@ -130,8 +130,9 @@
 <div class="wrapper container" style="overflow:hidden;">
       <div class="icon"><i id="left" class="fa-solid fa-angle-left"></i></div>
       <ul class="tabs-box">
+      <li><a href="{{url('category-destination/'.$categoryid)}}" class="btn btn-outline-dark" style="border-radius:20px;">All</a></li>
         @foreach($season as $item)
-        <a href="{{'/season/' .$item->id}}" class="tabhref"><li class="tab">{{$item->namaseason}}</li></a>
+        <li><a href="{{url('destinationfilter/'.$categoryid.'/'.$item->id)}}" class="btn btn-outline-dark {{ $seasonactive == $item->id ? 'active' : '' }}" style="border-radius:20px;">{{$item->namaseason}}</a></li>
         @endforeach
       </ul>
       <div class="icon"><i id="right" class="fa-solid fa-angle-right"></i></div>
@@ -140,9 +141,10 @@
 <div class="wrapper container">
 <div class="d-block d-md-none">
 <ul class="custom-horizontal-list">
-@foreach($season as $item)
-<li><a href="{{'/season/' .$item->id}}" class="btn btn-outline-dark" style="color:#233351;border-radius:20px;">{{$item->namaseason}}</a></li>
-@endforeach
+<li><a href="{{url('category-destination/'.$categoryid)}}" class="btn btn-outline-dark" style="border-radius:20px;">All</a></li>
+        @foreach($season as $item)
+        <li><a href="{{url('destinationfilter/'.$categoryid.'/'.$item->id)}}" class="btn btn-outline-dark {{ $seasonactive == $item->id ? 'active' : '' }}" style="border-radius:20px;">{{$item->namaseason}}</a></li>
+        @endforeach
 </ul>
 </div>
 </div>
@@ -438,7 +440,14 @@
     </div>
     @endif
 
-
+    <section data-test-id="activity-picks" class="collection-container container activities__cards" data-v-76e871e0 data-v-680034d2 style="margin-top:-80px; ">
+    <div class="collection-header" data-v-76e871e0><div class="collection-header--title-container" data-v-76e871e0>
+    <span data-test-id="collection-title" class="" data-v-76e871e0>
+        {{$destination->links()}}
+      </span> 
+    </div> 
+    </div> 
+</section>
 
 <div class="gtco-section d-none d-sm-block" style="margin-top:-80px;margin-bottom:-80px;">
 		<div class="gtco-container">
