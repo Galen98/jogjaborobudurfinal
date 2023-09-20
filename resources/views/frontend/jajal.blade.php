@@ -720,7 +720,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
           </section>
 
           <section class="activity-swap-columns" data-v-c4be1764 style="border-top: solid;border-top-color: #e6e8eb;border-top-width: 1pt;">
-  <div class="overlay" data-v-c4be1764>
+         <div class="overlay" data-v-c4be1764>
           <div id="activity-experience" class="activity-experience js-section-content" data-v-d21396c2 data-v-c4be1764 style="">
             <p style="font-size: 20px;font-weight: bolder;margin-top: 15px;">Exclude </p>
             <br>
@@ -729,6 +729,19 @@ font-family: 'GT Eesti Text Trial', sans-serif;
                   <li><i style="color: red;" class="ti-close"></i> {{$item->exclude}}</li>
                   @endforeach
             </ul>
+            </div></div>
+          </section>
+
+          <section class="activity-swap-columns" data-v-c4be1764 style="border-top: solid;border-top-color: #e6e8eb;border-top-width: 1pt;">
+         <div class="overlay" data-v-c4be1764>
+          <div id="activity-experience" class="activity-experience js-section-content" data-v-d21396c2 data-v-c4be1764 style="">
+            <p style="font-size: 20px;font-weight: bolder;margin-top: 15px;">Important information </p>
+            <br>
+            <ul data-test-id="activity-highlights" class="activity-highlights__list" data-v-5234723c>
+                  @foreach($important as $item)
+                  <li class="activity-highlights__list-item" data-v-5234723c> {{$item->importantinformation}}</li>
+                  @endforeach
+                </ul>
             </div></div>
           </section>
             

@@ -221,17 +221,15 @@
       <div class="icon"><i id="left" class="fa-solid fa-angle-left"></i></div>
       <ul class="tabs-box">
         @foreach($season as $item)
-        <li class=""><a href="{{'/season/' .$item->id}}" class="btn btn-outline-dark" style="color:#233351;border-radius:20px;">{{$item->namaseason}}</a></li>
+        <li class=""><a href="{{'/season/' .$item->id}}" class="btn btn-outline-dark" style="border-radius:20px;">{{$item->namaseason}}</a></li>
         @endforeach
       </ul>
       <div class="icon"><i id="right" class="fa-solid fa-angle-right"></i></div>
       </div>
-
-
     <div class="d-block d-md-none">
   <ul class="custom-horizontal-list">
   @foreach($season as $item)
-  <li class=""><a href="{{'/season/' .$item->id}}" class="btn btn-outline-dark" style="color:#233351;border-radius:20px;">{{$item->namaseason}}</a></li>
+  <li class=""><a href="{{'/season/' .$item->id}}" class="btn btn-outline-dark" style="border-radius:20px;">{{$item->namaseason}}</a></li>
   @endforeach
   </ul>
   </div>

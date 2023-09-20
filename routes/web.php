@@ -224,6 +224,7 @@ Route::delete('deleteoption/{idoption}', [App\Http\Controllers\BlogController::c
 Route::delete('hapuswaktu/{idtime}', [App\Http\Controllers\BlogController::class,'hapuswaktu']);
 Route::delete('hapusexclude/{idexclude}', [App\Http\Controllers\BlogController::class,'hapusexclude']);
 Route::delete('hapushighlight/{idhighlight}', [App\Http\Controllers\BlogController::class,'hapushighlight']);
+Route::delete('hapusimportant/{idimportant}', [App\Http\Controllers\BlogController::class,'hapusimportant']);
 Route::get('/rating/{idtravel}', [App\Http\Controllers\BlogController::class,'ratingwisata']);
 
 
@@ -254,6 +255,7 @@ Route::get('/showeditjam/{JamID}', [App\Http\Controllers\BlogController::class,'
 Route::get('/showaddjam/{SubID}', [App\Http\Controllers\BlogController::class,'showaddjam']);
 Route::get('/showeditexclude/{ExcludeID}', [App\Http\Controllers\BlogController::class,'showeditexclude']);
 Route::get('/showedithighlight/{HighlightID}', [App\Http\Controllers\BlogController::class,'showedithighlight']);
+Route::get('/showeditimportant/{ImportantID}', [App\Http\Controllers\BlogController::class,'showeditimportant']);
 Route::get('/showhapusmessage/{MessageID}', [App\Http\Controllers\BlogController::class,'showhapusmessage']);
 Route::get('/showmessage/{MessageID}', [App\Http\Controllers\BlogController::class,'showhapusmessage']);
 Route::get('/detailcorporate/{CorporateID}', [App\Http\Controllers\BlogController::class,'showhapuscorporate']);
@@ -519,7 +521,9 @@ Route::delete('deletehargachild/{idchild}', [BlogController::class, 'deleteharga
 Route::post('insertbackgroundlanding', [BlogController::class, 'insertbackground']);
 Route::post('addexclude', [BlogController::class, 'addexclude']);
 Route::post('addhighlight', [BlogController::class, 'addhighlight']);
+Route::post('addimportant', [BlogController::class, 'addimportant']);
 Route::patch('/updatehighlight/{idhighlight}',[BlogController::class,'updatehighlight']);
+Route::patch('/updateimportant/{idimportant}',[BlogController::class,'updateimportant']);
 Route::patch('/updatehargachild/{idhargachild}',[BlogController::class,'updatehargachild']);
 Route::patch('/updatediskon/{idtravell}',[BlogController::class,'updatediskon']);
 Route::post('generatepdf',[App\Http\Controllers\emailController::class, 'sendPDF']);

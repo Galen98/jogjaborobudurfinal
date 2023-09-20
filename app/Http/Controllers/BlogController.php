@@ -23,6 +23,7 @@ use App\Models\tambahprovince;
 use App\Models\tambahlocation;
 use App\Models\Rate;
 use App\Models\bahasa;
+use App\Models\importants;
 use App\Models\tambahseason;
 use App\Models\season;
 use App\Models\rating;
@@ -298,6 +299,12 @@ class BlogController extends Controller
         return redirect()->back();
     }
 
+    public function hapusimportant($idimportant){
+        importants::where('id',$idimportant)->delete();
+        Alert::error('Berhasil Dihapus');
+        return redirect()->back();
+    }
+
     public function hapuswisata(Request $request,$idwisata){
         $idwisata=Request('idwisata');
         $images=travel::where('wisata_id', $idwisata)->first();
@@ -448,6 +455,14 @@ class BlogController extends Controller
         return response()->json([
         'status'=>200,
         'Highlight'=>$Highlight
+        ]);
+    }
+
+    public function showeditimportant($ImportantID){
+        $Important=DB::table('importants')->where('id',$ImportantID)->first();
+        return response()->json([
+        'status'=>200,
+        'Important'=>$Important
         ]);
     }
 
@@ -667,11 +682,19 @@ class BlogController extends Controller
     }
 
     public function updatehighlight(Request $request,$idhighlight){
-        
         $idhighlight = Request('idhighlight');
        $Highlight = highlight::where('id', $idhighlight)
        ->update([
         'highlight' => $request->highlight
+       ]);
+               
+    }
+
+    public function updateimportant(Request $request,$idimportant){
+        $idimportant = Request('idimportant');
+       $Important = importants::where('id', $idimportant)
+       ->update([
+        'importantinformation' => $request->important
        ]);
                
     }
@@ -767,6 +790,16 @@ class BlogController extends Controller
             'highlight'=>$highlight
         ];
         highlight::create($data);
+    }
+
+    public function addimportant(Request $request){
+        $idtravel=Request('idtravel');
+        $important=Request('important');
+        $data=[
+            'wisata_id'=>$idtravel,
+            'importantinformation'=>$important
+        ];
+        importants::create($data);
     }
 
     public function showeditcurrency($RateID){
@@ -902,10 +935,11 @@ class BlogController extends Controller
         $include=DB::table('include')->where('wisata_id',$idwisata)->get();
         $exclude=DB::table('exclude')->where('wisata_id',$idwisata)->get();
         $highlight=DB::table('highlight')->where('wisata_id',$idwisata)->get();
+        $important = importants::where('wisata_id', $idwisata)->get();
         $jam=DB::table('waktu')->where('wisata_id',$idwisata)->get();
         $tambahseason=tambahseason::where('wisata_id',$idwisata)->get();
 
-        return view('editwisata',compact('province','pilihan','regionadd','provinceadd','travel','include','exclude','destination','highlight','jam','destinasi','season','seasonadd','bahasa'));
+        return view('editwisata',compact('important','province','pilihan','regionadd','provinceadd','travel','include','exclude','destination','highlight','jam','destinasi','season','seasonadd','bahasa'));
     }
 
     public function editblogproses(Request $request,$idblog){

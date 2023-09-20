@@ -399,6 +399,57 @@
             </div>
             <br>
 <br>
+<div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Important</h4>
+                  <br>
+                    <button type="button" class="tambahimportant btn btn-sm btn-primary btn-rounded btn-fw" value=""><i class="mdi mdi-plus"></i> Tambah</button>
+                  <div class="table-responsive pt-3">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>
+                            No.
+                          </th>
+                          <th>
+                            Important information
+                          </th>
+                          <th>
+                            Edit
+                          </th>
+                          <th>Hapus</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      @foreach($important as $item)
+                        <tr style="color: black;">
+                          <td >
+                          {{ $loop->iteration }}
+                          </td>
+                          <td>
+                          {{$item->importantinformation ?? ''}}
+                          </td>
+                          <td>
+                          <button type="button" class="btneditimportant btn btn-sm btn-info btn-rounded btn-fw" style="color: white;" value="{{$item->id}}"><i class="mdi mdi-pencil-box" style="color: white;"></i> Edit</button>
+                          </td>
+                          <td>
+                         <form action="{{url('hapusimportant/'.$item->id)}}" method="POST">
+                              @csrf
+                              @method('DELETE')
+                         <button type="submit" class="hapusbtn btn btn-sm btn-danger btn-rounded btn-fw"><i class="mdi mdi-delete"></i> Hapus</button>
+                         </form>
+                          </td>
+                        </tr>
+                        @endforeach
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+<br>
 <div class="col-lg-12 grid-margin stretch-card" >
               <div class="card">
               <div class="card-body">
@@ -545,6 +596,33 @@
         <input type="text" name="highlight" class="form-control" id="highlight">
         </div>
         <button type="button" class="btn btn-primary btnupdatehighlight">Update</button>
+        </form> 
+        <br>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="editModalimportant" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edit Important</h5>
+            <button type="button" class="btn-close" data-dismiss="modal">
+            </button>
+      </div>
+      <div class="modal-body">
+      <div class="form-group">
+      <form action="{{url('updateimportant')}}" action="POST" enctype="multipart/form-data" id="formeditimportant">
+        @csrf
+      <div class="form-group">
+        <label>Important information</label>
+        @foreach($travel as $item)<input type="hidden" id="idtravel" name="idtravel" value="{{$item->wisata_id}}">@endforeach
+        <input type="hidden" name="idimportant" id="idimportant" readonly=""> 
+        <input type="text" name="important" class="form-control" id="important">
+        </div>
+        <button type="button" class="btn btn-primary btnupdateimportant">Update</button>
         </form> 
         <br>
         </div>
@@ -739,6 +817,32 @@
 </div>
 </div>
 
+<div class="modal fade" id="Modalimportant" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add Important</h5>
+            <button type="button" class="btn-close" data-dismiss="modal">
+            </button>
+      </div>
+      <div class="modal-body">
+      <div class="form-group">
+      <form action="{{url('addimportant')}}" action="POST" enctype="multipart/form-data" id="formimportant">
+        @csrf
+      <div class="form-group">
+        <label>Important information</label>
+        @foreach($travel as $item)<input type="hidden" id="idtravel" name="idtravel" value="{{$item->wisata_id}}">@endforeach
+        <input type="text" name="important" class="form-control" id="important"> 
+        </div>
+        <button type="button" class="btn btn-primary btnimportant">Post</button>
+        </form> 
+        <br>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
 <div class="modal fade" id="editModalProvince" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -909,6 +1013,49 @@
 
             $.ajax({
                 url:'/updateexclude/${idexclude}',
+                method:"PATCH",
+                data:formData,
+                success:function(data){
+                    $('#editModal').modal('hide')
+                    window.location.assign('/paketwisata/edit/'+idtravel);
+                }
+            })
+        });
+        </script>
+
+      <script>
+        $(document).ready(function(){
+        $(document).on('click', '.btneditimportant', function(){
+            var idimportant=$(this).val();
+            $('#editModalimportant').modal('show');
+            $.ajax({
+                
+                type: "GET",
+                url:"/showeditimportant/"+idimportant,
+                success:function(response){
+                    //onsole.log(response.Rate.id);
+                     //$('#orderid').val(response.Order.OrderID);
+                     $('#idimportant').val(response.Important.id); 
+                    $('#important').val(response.Important.importantinformation);  
+                }
+            });
+        });
+
+        $(".btn-close").click(function(){
+            $("#editModalimportant").modal('hide');
+        });
+    });
+
+    $(document).on('click', '.btnupdateimportant', function(){
+            var idtravel=$('#formeditimportant').find('#idtravel').val()
+            var idimportant=$('#formeditimportant').find('#idimportant').val()
+            // var orid=$('#formedit').find('#idrate').val()
+            let formData=$('#formeditimportant').serialize()
+            //console.log(progid);
+            console.log(formData)
+
+            $.ajax({
+                url:'/updateimportant/${idimportant}',
                 method:"PATCH",
                 data:formData,
                 success:function(data){
@@ -1198,6 +1345,7 @@
         });
     });
 
+
     $(document).on('click', '.btnhighlight', function(){
             var idtravel=$('#formhighlight').find('#idtravel').val()
             let formData=$('#formhighlight').serialize()
@@ -1215,6 +1363,36 @@
             })
         });
         </script>
+
+        <script> 
+      $(document).ready(function(){
+        $(document).on('click', '.tambahimportant', function(){
+            $('#Modalimportant').modal('show');
+          
+        });
+
+        $(".btn-close").click(function(){
+            $("#Modalimportant").modal('hide');
+        });
+    });
+
+    $(document).on('click', '.btnimportant', function(){
+            var idtravel=$('#formimportant').find('#idtravel').val()
+            let formData=$('#formimportant').serialize()
+            //console.log(progid);
+            console.log(formData)
+
+            $.ajax({
+                url:'{{url('addimportant')}}',
+                method:"POST",
+                data:formData,
+                success:function(data){
+                    $('#Modalimportant').modal('hide')
+                    window.location.assign('/paketwisata/edit/'+idtravel);
+                }
+            })
+        });
+      </script>
 
 <script>
     $(document).ready(function(){

@@ -156,8 +156,7 @@
 <br>
 <div id="gyg" data-server-rendered="true" style="margin-top:-25px;margin-bottom: -40px;">
 
-  <div class="new-homepage-layout main-wrapper  partner-left-layout" data-v-1e9f5217>    
-  <!-- <a href="#main-content" class="skip-link">Skip to content</a>  -->
+  <div class="new-homepage-layout main-wrapper  partner-left-layout" data-v-1e9f5217>
   <main id="main-content" class="home-page">
 <div class="activities" data-v-680034d2 data-v-1e9f5217>
     <section data-test-id="activity-picks" class="collection-container container activities__cards" data-v-76e871e0 data-v-680034d2>

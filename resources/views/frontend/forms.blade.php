@@ -354,6 +354,32 @@
 	</div>
 	<br>
 	<div class="c-form-field c-form-field--vertical pickup">
+	<div class="c-form-field__container">
+	<table class="form-group">
+                    <div class="form-group">
+                  <br>
+                  <tbody class="tbodyimportant">
+                    <br>
+                    <label for="item" style="font-weight: bold;">Important information:</label>
+                    <tr>
+                      <td></td>
+                      <td> <a  class="btn btn-info addRowimportant" style="float:right;">+</a></td>
+                      </tr>
+                    <tr>
+                      <td>
+                  <input class="form-control important" type="text" name="important[]" placeholder="important information" required>
+                    <td style="text-align:right"><button class="btn btn-danger remove">Delete</button> </td>
+                    </td>
+                    </tr>
+                    <br>
+                  </tbody>
+                  </div>
+                    </table>
+	<span class="c-input__icon c-input__icon--posticon"></span>
+	</div>
+	</div>
+	<br>
+	<div class="c-form-field c-form-field--vertical pickup">
 	<div class="c-form-field__container">	
 	<table class="form-group">
                     <div class="form-group">
@@ -942,6 +968,30 @@ $('.tbodyx').append(trx);
 };
 
 $('.tbodyx').on('click', '.remove', function(){
+$(this).parent().parent().remove();
+});
+</script>
+
+<script type="text/javascript">
+$('.addRowimportant').on('click', function(){
+    addRowimportant();
+});
+
+function addRowimportant(){
+  var trimportant=
+  '<tr>' +
+          '<td>'+
+		  '<input class="form-control important" type="text" name="important[]" placeholder="important information" required>'+
+          '<td style="text-align:right"><button class="btn btn-danger remove">Delete</button> </td>'+
+'</td>'+
+'<br>'+
+'</tr>'+
+'<br>';
+
+$('.tbodyimportant').append(trimportant);
+};
+
+$('.tbodyimportant').on('click', '.remove', function(){
 $(this).parent().parent().remove();
 });
 </script>
