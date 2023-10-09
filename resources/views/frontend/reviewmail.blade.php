@@ -42,7 +42,7 @@
     <h1 style="text-align: center;">{{ $booking->namawisata }}</h1>
     
     <center>
-    <a href="http://localhost:8000/reviewtour/{{$reviews->token}}">
+    <a href="http://103.82.92.84/reviewtour/{{$reviews->token}}">
     <button class="awesome-button">Click this link for review!</button>
     </a>
     </center>
