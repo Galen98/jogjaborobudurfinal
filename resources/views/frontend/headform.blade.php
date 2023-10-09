@@ -54,20 +54,20 @@
   <body>
     <div id="gyg">
     <div>
-	<div class="main-wrapper  partner-left-layout customer-information customer-information--gyg-symbol-on-mobile"><!----><!----><!---->
+	<div class="main-wrapper  partner-left-layout customer-information customer-information--gyg-symbol-on-mobile">
 	<header class="page-header light" data-test-id="page-header" data-v-36cff088 style="background-color:#182c4c;margin-top: 0px;">
-	<div class="page-header__content" data-v-36cff088><!--[-->
+	<div class="page-header__content" data-v-36cff088>
 	<div class="page-header__logo-image" role="img" aria-label="GetYourGuide logo">
 	<img style="margin-top: 10px;" class="logs" src="{{asset('spica')}}/images/logomini.png" alt="logo"/>
-	</div><!--]--><!----><!---->
+	</div>
 	</div>
 	</header>
 	@yield('content')
 	
-	<!---->
+	
 	<footer class="page-footer" style="background-color:  #182c4c;">
 	<div class="page-footer__content">
-	<nav class="navigation page-footer__navigation"><!---->
+	<nav class="navigation page-footer__navigation">
 	<div class="navigation__directory"><p class="navigation__item navigation__item-section_copyright">
 	<span> © <time>2023</time> Jogja Borobudur Tour &amp; Travel</span></p>
 	
@@ -75,10 +75,10 @@
 	</nav>
 	</div>
 	</footer>
-	<div><!---->
-	<div style="display:contents;"><!--[--><!--]-->
+	<div>
+	<div style="display:contents;">
 	</div>
-	</div><!----><!---->
+	</div>
 	</div>
 	</div>
 	</div>

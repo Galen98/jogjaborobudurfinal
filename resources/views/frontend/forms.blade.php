@@ -58,7 +58,7 @@
 
 	<div class="main-wrapper  partner-left-layout customer-information customer-information--gyg-symbol-on-mobile" >
 	<header class="page-header light" data-test-id="page-header" data-v-36cff088 style="background-color:  #182c4c;">
-	<div class="page-header__content" data-v-36cff088><!--[-->
+	<div class="page-header__content" data-v-36cff088>
 	<div class="page-header__logo-image" role="img" aria-label="GetYourGuide logo">
 	<a href="/paketwisata">
 	<img src="{{asset('spica')}}/images/logomini.png" class="logs" alt="logo"/>
@@ -71,7 +71,7 @@
 	<div class="customer-information__container">
 	<section class="customer-information__step-navigation">
 	<div class="step-navigation" data-v-5a727b98>
-	<ul class="step-navigation__list" data-v-5a727b98><!--[-->
+	<ul class="step-navigation__list" data-v-5a727b98>
 	</ul>
 	</div>
 	</section>
@@ -94,37 +94,37 @@
 	@csrf
 	<div class="customer-information__container" data-test-id="checkout-section">
 	<section class="customer-information__content">
-	<div class="billing-form"><!--[--><h2>Create Tours & Activity</h2>
+	<div class="billing-form"><h2>Create Tours & Activity</h2>
 	<div>
 	
 	<div class="billing-form__container">
 	<div id="inform">
-	<div class="c-form-field c-form-field--vertical"><!---->
-	<div class="c-form-field__container"><!--[-->
-	<div class="c-input c-input--with-label billing-form__field"><!---->
+	<div class="c-form-field c-form-field--vertical">
+	<div class="c-form-field__container">
+	<div class="c-input c-input--with-label billing-form__field">
 	<div class="c-input__container">
 	<label class="c-input__label" for="c-input-3241">Nama Wisata</label>
 	<input id="c-input-3241" class="c-input__field namatravels" value data-test-id="billing-fullname" type="text" name="namawisata" autocomplete="namawisata" modelvalue required>
 	</div>
 	<span class="c-input__icon c-input__icon--posticon"></span>
-	</div><!--]--><!----><!---->
+	</div>
 	</div>
 	</div>
 
 	
 
-	<div class="c-form-field c-form-field--vertical"><!---->
-	<div class="c-form-field__container"><!--[-->
-	<div class="c-input c-input--with-label billing-form__field"><!---->
+	<div class="c-form-field c-form-field--vertical">
+	<div class="c-form-field__container">
+	<div class="c-input c-input--with-label billing-form__field">
 	<div class="c-input__container"><label class="c-input__label" for="c-input-3246">Durasi</label>
 	<input id="c-input-3246" class="c-input__field durations" value data-test-id="billing-email" type="text" name="durasi" placeholder="Contoh: 10 Hours" modelvalue required>
 	</div>
-	<span class="c-input__icon c-input__icon--posticon"><!--[--><!--]--></span></div><!--]--><!----><!---->
+	<span class="c-input__icon c-input__icon--posticon"></span></div>
 	</div>
 </div>
 
 	<div class="c-form-field c-form-field--vertical">
-	<div class="c-form-field__container"><!--[-->
+	<div class="c-form-field__container">
 	<div class="c-input c-input--with-label billing-form__field">
 	<div class="c-input__container">
 	<label class="c-input__label" for="c-input-3241">Harga</label>
@@ -136,7 +136,7 @@
 	</div>
 
 	<div class="c-form-field c-form-field--vertical">
-	<div class="c-form-field__container"><!--[-->
+	<div class="c-form-field__container">
 	<div class="c-input c-input--with-label billing-form__field">
 	<div class="c-input__container">
 	<label class="c-input__label" for="c-input-3241">Label</label>
@@ -152,7 +152,7 @@
 
 
 	<div class="c-form-field c-form-field--vertical">
-	<div class="c-form-field__container"><!--[-->	
+	<div class="c-form-field__container">	
 	<table class="form-group">
                     <div class="form-group">
                   <br>
@@ -180,7 +180,7 @@
 	</div>
 
 	<div class="c-form-field c-form-field--vertical">
-	<div class="c-form-field__container"><!--[-->	
+	<div class="c-form-field__container">	
 	<table class="form-group">
                     <div class="form-group">
                   <br>
@@ -208,7 +208,7 @@
 	</div>
 
 	<div class="c-form-field c-form-field--vertical">
-	<div class="c-form-field__container"><!--[-->
+	<div class="c-form-field__container">
 	<div class="c-input c-input--with-label billing-form__field">
 	<div class="c-input__container">
 	<label class="c-input__label" for="c-input-3241">Bahasa</label>
@@ -227,7 +227,7 @@
 	<br>
 	<div class="c-form-field c-form-field--vertical kategori">
 		<label class="c-input__label" for="c-input-3241">Per Person/Per Group</label>
-	<div class="c-form-field__container"><!--[-->	
+	<div class="c-form-field__container">	
 	<input type="radio" class="form-check-input" name="person" id="membershipRadios1 persons" value="Per Person">Per Person
 	<input type="radio" class="form-check-input" name="person" id="membershipRadios1 persons" value="Per Group">Per Group
 	<span class="c-input__icon c-input__icon--posticon"></span>
@@ -235,7 +235,7 @@
 	</div>
 
 	<div class="c-form-field c-form-field--vertical rangegroup">
-	<div class="c-form-field__container"><!--[-->
+	<div class="c-form-field__container">
 	<div class="c-input c-input--with-label billing-form__field">
 	<div class="c-input__container">
 	<label class="c-input__label" for="c-input-3241">Kapasitas Group (up to)</label>
@@ -424,9 +424,9 @@
 	
 
 	<div id="inform3">
-	<div class="c-form-field c-form-field--vertical"><!---->
-	<div class="c-form-field__container"><!--[-->
-	<div class="c-input c-input--with-label billing-form__field"><!---->
+	<div class="c-form-field c-form-field--vertical">
+	<div class="c-form-field__container">
+	<div class="c-input c-input--with-label billing-form__field">
 	<div class="c-input__container">
 	<label class="c-input__label" for="c-input-3241">Nama Option</label>
 	<input id="c-input-3241" class="c-input__field" value data-test-id="billing-fullname" type="text" name="namaoption" autocomplete="namaoption" modelvalue required>
@@ -438,7 +438,7 @@
 
 	<div class="c-form-field c-form-field--vertical">
 	<label class="c-input__label" for="c-input-3241">Short Description</label>
-	<div class="c-form-field__container"><!--[-->	
+	<div class="c-form-field__container">	
 	<textarea class="form-control" style="height:200px;width: 577px;" name="shortoption" placeholder="Short Description"></textarea>
 	<span class="c-input__icon c-input__icon--posticon"></span>
 	</div>
@@ -446,7 +446,7 @@
 
 	<div class="c-form-field c-form-field--vertical">
 		<label class="c-input__label" for="c-input-3241">Per Person/Per Group</label>
-	<div class="c-form-field__container"><!--[-->	
+	<div class="c-form-field__container">	
 	<input type="radio" class="form-check-input" name="personoption" id="membershipRadios1" value="Per Person" >Per Person
 	<input type="radio" class="form-check-input" name="personoption" id="membershipRadios1" value="Per Group" >Per Group
 	<span class="c-input__icon c-input__icon--posticon"></span>
@@ -486,7 +486,7 @@
 	<br>
 	<div class="c-form-field c-form-field--vertical childes">
 		<label class="c-input__label" for="c-input-3241">For Children</label>
-	<div class="c-form-field__container childprice" id="childprice"><!--[-->	
+	<div class="c-form-field__container childprice" id="childprice">	
 	<input type="radio" class="form-check-input" name="childoption" id="membershipRadios1" value="yes" >Yes
 	<input type="radio" class="form-check-input" name="childoption" id="membershipRadios1" value="no" >No
 	<span class="c-input__icon c-input__icon--posticon"></span>

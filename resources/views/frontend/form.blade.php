@@ -10,32 +10,20 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.css" integrity="sha512-FA9cIbtlP61W0PRtX36P6CGRy0vZs0C2Uw26Q1cMmj3xwhftftymr0sj8/YeezDnRwL9wtWw8ZwtCiTDXlXGjQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/fontawesome.css" integrity="sha512-/Jsoj+nRoCkEHw4HnymLk48dWblqtN+0rW+UMAanfbHZjzgphJipQOEuuOEdZ0IzSEYgK0NXCNda8r+4juGbPg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/fontawesome.min.css" integrity="sha512-giQeaPns4lQTBMRpOOHsYnGw1tGVzbAIHUyHRgn7+6FmiEgGGjaG0T2LZJmAPMzRCl+Cug0ItQ2xDZpTmEc+CQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
- 
   <link rel="stylesheet" href="{{asset('traveler')}}/css/animate.css">
   <link rel="stylesheet" href="{{asset('traveler')}}/css/icomoon.css">
   <link rel="stylesheet" href="{{asset('traveler')}}/css/themify-icons.css">
   <link rel="stylesheet" href="{{asset('traveler')}}/css/bootstrap.css">
   <link href="{{asset('traveler')}}/css/blogs2.css" rel="stylesheet" type="text/css"/>
   <link rel="stylesheet" href="{{asset('traveler')}}/css/blogs.css" />
-  <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
-/>
-  <link rel="stylesheet" href="{{asset('traveler')}}/css/magnific-popup.css">
-  <link rel="stylesheet" href="{{asset('traveler')}}/css/bootstrap-datepicker.min.css">
-  <link rel="stylesheet" href="{{asset('traveler')}}/css/owl.carousel.min.css">
-  <link rel="stylesheet" href="{{asset('traveler')}}/css/owl.theme.default.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="{{asset('traveler')}}/css/style.css">
-  <link rel="stylesheet" href="{{asset('traveler')}}/css/lightbox.min.css">
-  <script src="{{asset('traveler')}}/js/modernizr-2.6.2.min.js"></script>
   <link rel="preload" href="{{asset('traveler')}}/css/new.css" as="style">
   <link rel="stylesheet" href="{{asset('traveler')}}/css/new2.css">
   <link rel="stylesheet" href="{{asset('traveler')}}/css/new3.css">
   <link rel="stylesheet" href="{{asset('traveler')}}/css/new4.css">
   <link rel="stylesheet" href="{{asset('traveler')}}/css/new5.css">
   <link rel="stylesheet" href="{{asset('traveler')}}/css/new7.css">
-        
   <link rel="icon" type="image/png" sizes="32x32" href="{{asset('spica')}}/images/favicon.png">
   <link rel="icon" type="image/png" sizes="16x16" href="{{asset('spica')}}/images/favicon.png">
   <link rel="shortcut icon" href="favicon.png">
@@ -203,65 +191,11 @@
 	
 	<!-- jQuery -->
 	<script src="{{asset('traveler')}}/js/jquery.min.js"></script>
-	<!-- jQuery Easing -->
-	<script src="{{asset('traveler')}}/js/jquery.easing.1.3.js"></script>
 	<!-- Bootstrap -->
 	<script src="{{asset('traveler')}}/js/bootstrap.min.js"></script>
 	<!-- Waypoints -->
 	<script src="{{asset('traveler')}}/js/jquery.waypoints.min.js"></script>
-	<!-- Carousel -->
-	<script src="{{asset('traveler')}}/js/owl.carousel.min.js"></script>
-	<!-- countTo -->
-	<script src="{{asset('traveler')}}/js/jquery.countTo.js"></script>
-
-	<!-- Stellar Parallax -->
-	<script src="{{asset('traveler')}}/js/jquery.stellar.min.js"></script>
-
-	<!-- Magnific Popup -->
-	<script src="{{asset('traveler')}}/js/jquery.magnific-popup.min.js"></script>
-	<script src="{{asset('traveler')}}/js/magnific-popup-options.js"></script>
-	
-	<!-- Datepicker -->
-	<script src="{{asset('traveler')}}/js/bootstrap-datepicker.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-
-	<!-- Main -->
 	<script src="{{asset('traveler')}}/js/main.js"></script>
-	<script>
-	var swiper = new Swiper(".slide-container", {
-  slidesPerView: 4,
-  spaceBetween: 20,
-  sliderPerGroup: 4,
-  loop: true,
-  centerSlide: "true",
-  fade: "true",
-  grabCursor: "true",
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-    dynamicBullets: true,
-  },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-
-  breakpoints: {
-    0: {
-      slidesPerView: 1,
-    },
-    520: {
-      slidesPerView: 2,
-    },
-    768: {
-      slidesPerView: 3,
-    },
-    1000: {
-      slidesPerView: 4,
-    },
-  },
-});
-	</script>
 
 	</body>
 </html>

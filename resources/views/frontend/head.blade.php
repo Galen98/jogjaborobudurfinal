@@ -47,7 +47,6 @@
     <link rel="stylesheet" href="{{asset('traveler')}}/css/style.css">
     <link rel="stylesheet" href="{{asset('traveler')}}/css/booking10.css">
     <link rel="stylesheet" href="{{asset('traveler')}}/css/booking11.css">
-    <script src="{{asset('traveler')}}/js/modernizr-2.6.2.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   </head>
   <body>
@@ -92,28 +91,10 @@
         <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
         </div>
   
-  <!-- jQuery -->
-  <script src="{{asset('traveler')}}/js/lightbox-plus-jquery.min.js"></script>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-
   <script src="{{asset('traveler')}}/js/jquery.min.js"></script>
-  <!-- jQuery Easing -->
-  <script src="{{asset('traveler')}}/js/jquery.easing.1.3.js"></script>
-  <!-- Bootstrap -->
   <script src="{{asset('traveler')}}/js/bootstrap.min.js"></script>
-  <!-- Waypoints -->
-  <script src="{{asset('traveler')}}/js/jquery.waypoints.min.js"></script>
-  <!-- Carousel -->
-  <script src="{{asset('traveler')}}/js/owl.carousel.min.js"></script>
-  <!-- countTo -->
-  <script src="{{asset('traveler')}}/js/jquery.countTo.js"></script>
-
-  <!-- Stellar Parallax -->
-  <script src="{{asset('traveler')}}/js/jquery.stellar.min.js"></script>
-  
-  <!-- Datepicker -->
-  <script src="{{asset('traveler')}}/js/bootstrap-datepicker.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="{{asset('traveler')}}/js/jquery.min.js"></script>
   
