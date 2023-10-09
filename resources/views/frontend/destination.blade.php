@@ -108,20 +108,8 @@
   @endsection
 @section('content')
 @include('sweetalert::alert')
-<!-- <div class="d-none d-sm-block">
-<div class="wrapper container" style="overflow:hidden;">
-      <div class="icon"><i id="left" class="fa-solid fa-angle-left"></i></div>
-      <ul class="tabs-box">
-        @foreach($seasones as $item)
-        <a href="{{'/season/' .$item->id}}" class="tabhref"><li class="tab">{{$item->namaseason}}</li></a>
-        @endforeach
-      </ul>
-      <div class="icon"><i id="right" class="fa-solid fa-angle-right"></i></div>
-    </div>
-</div>
-<br> -->
 <div id="gyg" data-server-rendered="true" style="margin-top:-25px;">
-  <div class="new-homepage-layout main-wrapper  partner-left-layout" data-v-1e9f5217><!----> <!----> <!----> <!----> 
+  <div class="new-homepage-layout main-wrapper  partner-left-layout" data-v-1e9f5217>
   <a href="#main-content" class="skip-link">Skip to content</a> 
   <main id="main-content" class="home-page">
 <div class="activities" data-v-680034d2 data-v-1e9f5217>
@@ -129,8 +117,8 @@
     <div class="collection-header" data-v-76e871e0><div class="collection-header--title-container" data-v-76e871e0>
     <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0>
         Our Tours and Activity
-      </span> <!---->
-    </div> <!---->
+      </span> 
+    </div> 
     </div> 
     <div class="collection-body" data-v-76e871e0>
     <div class="collection-body--horizontal" data-v-76e871e0>
@@ -416,28 +404,6 @@
       </span> 
     </div> 
     </div>
-
-    <!-- <div id="gtco-subscribe" style="background-color: white;">
-<div class="gtco-container"  style="margin-top:-70px;">
-  <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
- <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0>
-           You might also like other destination
-      </span>
-        </div>
-    @foreach($destination as $item)
-    <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:20px;max-height:300px;">
-      <a href="/location/{{$item->slugprovince}}/{{$item->id}}">
-      <div class="hover hover-2 text-white rounded"><img src="{{ url('public/img/'.$item->image) }}" alt="{{$item->namaprovince}}"/>
-          <div class="hover-overlay"></div>
-          <div class="hover-2-content px-5 py-4">
-            <h4 class="hover-2-title text-capitalize font-weight-bold mb-0" style="font-size:24px;color:white;"> {{$item->namaprovince}}</h4>
-          </div>
-        </div>
-        </a>
-      </div>
-      @endforeach
-      </div>
-      </div>  -->
 </section>
 
 

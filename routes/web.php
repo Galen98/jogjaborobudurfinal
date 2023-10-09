@@ -89,13 +89,23 @@ Route::get('/', function (Request $request) {
     $city = region::get();
     // get session user
     $session = session()->get("rate") ?? "USD";
-    $traveltop=travel::orderBy('created_at','DESC')->where('bahasa',$sessions)->paginate(8);
+    $traveltop=DB::table('wisata')
+    ->orderBy('created_at','DESC')
+    ->where('bahasa',$sessions)
+    ->leftJoin('countrating', 'wisata.wisata_id', '=', 'countrating.wisata_id')
+    ->select('wisata.created_at','wisata.wisata_id','wisata.namawisata','wisata.image','countrating.totalrating', 'wisata.label','wisata.durasi','wisata.IDR','wisata.image2','wisata.discount','wisata.kategories','wisata.capacity','wisata.IDR_awal','wisata.slug')->paginate(8);
     //$traveltop=travel::paginate(8);
 
-    $other=travel::orderBy('created_at','DESC')->where('label','Likely to sell out')->where('bahasa', $sessions)->paginate(4);
+    $other=DB::table('wisata')
+    ->orderBy('created_at','DESC')
+    ->where('label', 'Likely to sell out')
+    ->where('bahasa',$sessions)
+    ->leftJoin('countrating', 'wisata.wisata_id', '=', 'countrating.wisata_id')
+    ->select('wisata.created_at','wisata.wisata_id','wisata.namawisata','wisata.image','countrating.totalrating', 'wisata.label','wisata.durasi','wisata.IDR','wisata.image2','wisata.discount','wisata.kategories','wisata.capacity','wisata.IDR_awal','wisata.slug')
+    ->paginate(4);
     $blog=blog::orderBy('created_at','DESC')->where('bahasa', $sessions)->paginate(3);
     return view('frontend.index', compact('city','provinces','province','sessions','traveltop','other','blog',"rateIDR", "rateSGD", "rateMYR", "session","rateEUR","destination",'destinate','season','bahasa','background'));
-});
+})->name('homepage');
 
 
 
@@ -103,14 +113,14 @@ Route::get('/paketwisata', function () {
     $travel=travel::orderBy('created_at','DESC')->paginate(9);
     $bahasa=bahasa::get();
     return view('wisata',compact('travel','bahasa'));
-});
+})->middleware('auth');;
 
 Route::get('/paketwisata/filter', function (Request $request) {
     $bahasa=Request('bahasa');
     $travel=travel::where('bahasa',$bahasa)->orderBy('created_at','DESC')->paginate(9);
     $bahasa=bahasa::get();
     return view('wisata',compact('travel','bahasa'));
-});
+})->middleware('auth');;
 
 Route::get('/formss', function () {
     $destination=destination::get();
@@ -151,60 +161,59 @@ $background=background::where('place', 'about')->get();
 return view('frontend.about',compact('bahasa','background'));
 });
 
-Route::get('/paketwisata/diskon/{travelid}', [App\Http\Controllers\BlogController::class,'diskon']);
-Route::get('/paketwisata/diskon/buatoption/{travelid}', [App\Http\Controllers\BlogController::class,'buatoption']);
-Route::get('/paketwisata/edit/{idwisata}', [App\Http\Controllers\BlogController::class,'editwisata']);
+Route::get('/paketwisata/diskon/{travelid}', [App\Http\Controllers\BlogController::class,'diskon'])->middleware('auth');
+Route::get('/paketwisata/diskon/buatoption/{travelid}', [App\Http\Controllers\BlogController::class,'buatoption'])->middleware('auth');
+Route::get('/paketwisata/edit/{idwisata}', [App\Http\Controllers\BlogController::class,'editwisata'])->middleware('auth');
 
 Route::get('/blogadmin', function () {
     $blog=blog::orderBy('created_at','DESC')->paginate(7);
     return view('blog', compact('blog'));
-});
+})->middleware('auth');
 
 Route::get('/background/change', function(){
 return view('changebackground');
-});
+})->middleware('auth');
 
 Route::get('/message/corporate', function () {
     $corporate=corporate::paginate(7);
     return view('corporate', compact('corporate'));
-});
+})->middleware('auth');
 
 Route::get('/message/travelagent', function () {
     $travelagent=travelagent::paginate(7);
     return view('travelagent', compact('travelagent'));
-});
+})->middleware('auth');
 
 Route::get('/message/influencer', function () {
     $influencer=influencer::paginate(7);
     return view('influencer', compact('influencer'));
-});
+})->middleware('auth');
 
 Route::get('/message/message', function () {
     $message=message::orderBy('created_at','DESC')->paginate(10);
     return view('message', compact('message'));
-});
+})->middleware('auth');
 
 Route::get('/message/affiliate', function () {
     $affiliate=affiliate::orderBy('created_at','DESC')->paginate(10);
     return view('affiliate', compact('affiliate'));
-});
+})->middleware('auth');
 
 Route::get('/message/selltours', function () {
     $selltours=selltours::orderBy('created_at','DESC')->paginate(10);
     return view('selltours', compact('selltours'));
-});
+})->middleware('auth');
 
 Route::get('/message/platform', function () {
     $platform=platform::orderBy('created_at','DESC')->paginate(10);
     return view('platform', compact('platform'));
-});
+})->middleware('auth');
 
 Route::get('/blogadmin/formblog', function () {
     $tags=DB::table('tags')->get();
     $bahasa=bahasa::get();
     return view('formblog',compact('tags','bahasa'));
-});
-
+})->middleware('auth');
 
 Route::get('/paketwisata/form', function () {
     $destination=destination::get();
@@ -213,8 +222,9 @@ Route::get('/paketwisata/form', function () {
     $province=province::get();
     $region=region::get();
     return view('frontend.forms',compact('destination','season','bahasa','province','region'));
-});
-Route::get('/rating', [App\Http\Controllers\BlogController::class,'kelolarating']);
+})->middleware('auth');
+
+Route::get('/rating', [App\Http\Controllers\BlogController::class,'kelolarating'])->middleware('auth');
 Route::get('/data-booking', [App\Http\Controllers\BlogController::class,'bookinglist']);
 Route::delete('deleterating/{idrating}', [App\Http\Controllers\BlogController::class,'deleterating']);
 Route::delete('deletetheme/{idtheme}', [App\Http\Controllers\BlogController::class,'deletetheme']);
@@ -225,14 +235,10 @@ Route::delete('hapuswaktu/{idtime}', [App\Http\Controllers\BlogController::class
 Route::delete('hapusexclude/{idexclude}', [App\Http\Controllers\BlogController::class,'hapusexclude']);
 Route::delete('hapushighlight/{idhighlight}', [App\Http\Controllers\BlogController::class,'hapushighlight']);
 Route::delete('hapusimportant/{idimportant}', [App\Http\Controllers\BlogController::class,'hapusimportant']);
-Route::get('/rating/{idtravel}', [App\Http\Controllers\BlogController::class,'ratingwisata']);
+Route::get('/rating/{idtravel}', [App\Http\Controllers\BlogController::class,'ratingwisata'])->middleware('auth');
 
 
 
-
-// Route::get('/index', function () {
-//     return view('admin');
-// });
 Route::get('/cekblog', function () {
     return view('blogjogjaborobudur.content');
 });
@@ -275,13 +281,13 @@ Route::delete('/hapustravelagent/{idtravelagent}', [App\Http\Controllers\BlogCon
 Route::delete('/hapusaffiliate/{idaffiliate}', [App\Http\Controllers\BlogController::class,'hapusaffiliate']);
 Route::delete('/hapusselltours/{idselltours}', [App\Http\Controllers\BlogController::class,'hapusselltours']);
 Route::delete('/hapusplatform/{idplatform}', [App\Http\Controllers\BlogController::class,'hapusplatform']);
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 // Route::get('/viewblog', function(){
 //     return view('viewblog');
 // });
-Route::get('/blogadmin/viewblog/{idblog}', [App\Http\Controllers\BlogController::class,'viewblog']);
-Route::get('/data-booking/filter', [App\Http\Controllers\BlogController::class,'datefilter']);
-Route::get('/blogadmin/editblog/{idblog}', [App\Http\Controllers\BlogController::class,'editblog']);
+Route::get('/blogadmin/viewblog/{idblog}', [App\Http\Controllers\BlogController::class,'viewblog'])->middleware('auth');
+Route::get('/data-booking/filter', [App\Http\Controllers\BlogController::class,'datefilter'])->middleware('auth');
+Route::get('/blogadmin/editblog/{idblog}', [App\Http\Controllers\BlogController::class,'editblog'])->middleware('auth');
 Route::patch('editblog/{idblog}', [App\Http\Controllers\BlogController::class,'editblogproses']);
 //edit background
 Route::patch('editimagelanding/{idimage}', [App\Http\Controllers\BlogController::class,'editimagelanding']);
@@ -368,16 +374,17 @@ Route::get('/showeditdiskon/{WisataID}', [App\Http\Controllers\BlogController::c
 Route::post('/hapuswisata/{idwisata}', [App\Http\Controllers\BlogController::class,'hapuswisata']);
 Route::get('/formseason',function(){
     return view('formseason');
-});
+})->middleware('auth');
 
 Route::get('/province/form',function(){
     return view('formprovince');
-});
+})->middleware('auth');
 Route::post('insertprovince', [BlogController::class, 'insertprovince']);
 
 Route::get('/region/form',function(){
     return view('formregion');
-});
+})->middleware('auth');
+
 Route::post('insertregion', [BlogController::class, 'insertregion']);
 Route::post('/hapusprovince/{idprovince}', [App\Http\Controllers\BlogController::class,'hapusprovince']);
 Route::post('/hapusregion/{idregions}', [App\Http\Controllers\BlogController::class,'hapusregion']);
@@ -385,18 +392,18 @@ Route::patch('/updateprovince/{provinceid}',[BlogController::class,'updateprovin
 Route::patch('/updateregion/{regionid}',[BlogController::class,'updateregion']);
 Route::delete('/deletetambahprovince/{idprovince}',[BlogController::class,'deletetambahprovince']);
 Route::delete('/deletetambahlocation/{idcity}',[BlogController::class,'deletetambahlocation']);
-Route::get('/paketwisata/edit/buatlocation/{travelid}', [BlogController::class, 'formlocation']);
+Route::get('/paketwisata/edit/buatlocation/{travelid}', [BlogController::class, 'formlocation'])->middleware('auth');
 Route::post('insertlocation', [BlogController::class, 'insertlocation']);
 Route::get('/region',function(){
     $region=region::get();
     return view('region', compact('region'));
-});
+})->middleware('auth');
 Route::get('/region/edit/{regionid}', [BlogController::class,'editregion']);
 
 Route::get('/province',function(){
     $province=province::get();
     return view('province', compact('province'));
-});
+})->middleware('auth');
 
 //customer
 Route::get('/corporate/corporatediscount',function(){
@@ -450,52 +457,53 @@ Route::get('/currency/currency',function(){
 Route::get('/background/change/landingpage',function(){
     $background=background::where('place', 'landingpage')->get();
     return view('formbackground',compact('background'));
-});
+})->middleware('auth');
 
 Route::get('/background/change/agent',function(){
     $background=background::where('place', 'agent')->get();
     return view('backgroundagent',compact('background'));
-});
+})->middleware('auth');
 
 Route::get('/background/change/affiliate',function(){
     $background=background::where('place', 'affiliate')->get();
     return view('backgroundaffiliate',compact('background'));
-});
+})->middleware('auth');
 
 Route::get('/background/change/selltours',function(){
     $background=background::where('place', 'selltours')->get();
     return view('backgroundselltours',compact('background'));
-});
+})->middleware('auth');
 
 Route::get('/background/change/about',function(){
     $background=background::where('place', 'about')->get();
     return view('backgroundabout',compact('background'));
-});
+})->middleware('auth');
 
 Route::get('/background/change/corporate',function(){
     $background=background::where('place', 'corporate')->get();
     return view('backgroundcorporate',compact('background'));
-});
+})->middleware('auth');
 
 Route::get('/background/change/contact',function(){
     $background=background::where('place', 'contact')->get();
     return view('backgroundcontact',compact('background'));
-});
+})->middleware('auth');
 
 Route::get('/background/change/influencer',function(){
     $background=background::where('place', 'influencer')->get();
     return view('backgroundinfluencer',compact('background'));
-});
+})->middleware('auth');
 
 Route::get('/background/change/platform',function(){
     $background=background::where('place', 'platform')->get();
     return view('backgroundplatform',compact('background'));
-});
+})->middleware('auth');
 
 Route::get('/paketwisata/editimage/{idwisata}',function($idwisata){
     $gambar=travel::where('wisata_id',$idwisata)->get();
     return view('editimagetravel', compact('gambar'));
-});
+})->middleware('auth');
+
 Route::patch('/editimagetravel/{idtravel}',[BlogController::class,'editimagetravel']);
 Route::patch('/updatecurrency/{idrate}',[BlogController::class,'updatecurrency']);
 Route::patch('/updatetheme/{idtheme}',[BlogController::class,'updatetheme']);
@@ -533,17 +541,17 @@ return view('redesignblog.landingblog');
 });
 
 
-Route::get('/item', function(){
-    $other=travel::paginate(9);
-     $destination = destination::get();
-    $rateIDR = Rate::where("currency", "IDR")->first()->rate;
-    $rateSGD = Rate::where("currency", "SGD")->first()->rate;
-    $rateMYR = Rate::where("currency", "MYR")->first()->rate;
-    $rateEUR = Rate::where("currency", "EUR")->first()->rate;
-    // get session user
-    $session = session()->get("rate") ?? "USD";
-    return view('frontend.jajal', compact('other','rateIDR','rateMYR','rateSGD','session','rateEUR'));
-});
+// Route::get('/item', function(){
+//     $other=travel::paginate(9);
+//      $destination = destination::get();
+//     $rateIDR = Rate::where("currency", "IDR")->first()->rate;
+//     $rateSGD = Rate::where("currency", "SGD")->first()->rate;
+//     $rateMYR = Rate::where("currency", "MYR")->first()->rate;
+//     $rateEUR = Rate::where("currency", "EUR")->first()->rate;
+//     // get session user
+//     $session = session()->get("rate") ?? "USD";
+//     return view('frontend.jajal', compact('other','rateIDR','rateMYR','rateSGD','session','rateEUR'));
+// });
 
 Route::get("/change-session/{currency}", function ($currency) {
     session()->put("rate", $currency);
@@ -551,11 +559,45 @@ Route::get("/change-session/{currency}", function ($currency) {
     return back();
 });
 
-
 //post admin kirim link review
 Route::post('/sendlinkreview/{idbooking}', [App\Http\Controllers\Reviewemail::class,'sendReviewLinks']);
+Route::get('/automailreview', [App\Http\Controllers\Reviewemail::class,'autoSendReviewLinks']);
+Route::get('/reviewtour/{token}', [App\Http\Controllers\Reviewemail::class,'reviewpage']);
+Route::patch('insertreview', [App\Http\Controllers\Reviewemail::class,'insertReview']);
 //filter season
-// Route::get('/location/{province}/{seasonId}', [App\Http\Controllers\TravelController::class,'getTravelByProvinceAndSeason']);
 Route::get('/locationfilter/{slugprovince}/{namaseason}', [App\Http\Controllers\TravelController::class,'filterseasonprovince'])->name('filter-season-province');
 Route::get('/cityfilter/{slugregion}/{namaseason}', [App\Http\Controllers\TravelController::class,'filterseasoncity']);
 Route::get('/destinationfilter/{categoryid}/{namaseason}', [App\Http\Controllers\TravelController::class,'filterseasondestination']);
+//route fallback
+
+Route::fallback(function () {
+ $bahasa=bahasa::get();
+ $lang=Request::server('HTTP_ACCEPT_LANGUAGE');
+ $langs=Str::substr($lang, 0,2);
+if ($langs == 'id') {
+$sessions = session()->get("bahasa") ?? "Bahasa";
+
+}elseif ($langs == 'en-US'){
+$sessions = session()->get("bahasa") ?? "English";
+
+}elseif ($langs == 'en'){
+$sessions = session()->get("bahasa") ?? "English";
+}
+elseif ($langs == 'ms'){
+$sessions = session()->get("bahasa") ?? "Malay";
+}
+else{
+$sessions = session()->get("bahasa") ?? "English";     
+}
+    $city=region::get();
+    $province=province::get();
+    $season = season::get();
+    $destination=destination::get();
+    $rateIDR = Rate::where("currency", "IDR")->first()->rate;
+    $rateSGD = Rate::where("currency", "SGD")->first()->rate;
+    $rateMYR = Rate::where("currency", "MYR")->first()->rate;
+    $rateEUR = Rate::where("currency", "EUR")->first()->rate;
+    // get session user
+    $session = session()->get("rate") ?? "USD";
+    return view('errors.404', compact('bahasa','session','sessions','province','city','season','destination'));
+    });

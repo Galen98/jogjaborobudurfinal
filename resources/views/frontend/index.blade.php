@@ -23,18 +23,6 @@
   <ul class="navigation__list">
     
   <li data-test-id="header-navigation-search" class="navigation__list-item-parent item__search">
-  <!-- <div class="dropdown drops">
-            <button class="btn btn-secondary" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color:#fc2c04;color: white;border-color:#fc2c04;">
-             <span class="material-symbols-outlined" style="font-size: 26px;">
-            language
-            </span>
-            </button>
-            <div class="dropdown-menu">
-              @foreach($bahasa as $item)
-              <a class="dropdown-item" href="/change-language/{{$item->bahasa}}">{{$item->bahasa}}</a>
-              @endforeach
-            </div>
-          </div> -->
             <div class="dropdown drops">
             <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color:#fc2c04;color: white;border-color:#fc2c04;" >
             @if($sessions == 'Bahasa')
@@ -59,36 +47,8 @@
           </div>
   </li> 
 
-  <!-- <li data-test-id="header-navigation-search" class="navigation__list-item-parent item__search" style="margin-left:-35px;" >
-  <div class="dropdown drops">
-            <button class="btn btn-sm btn-secondary" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color:#fc2c04;color: white;border-color:#fc2c04;" >
-            <span class="material-symbols-outlined" style="font-size: 26px;">
-            paid
-            </span>
-            </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="/change-session/USD">USD</a>
-              <a class="dropdown-item" href="/change-session/IDR">IDR</a>
-              <a class="dropdown-item" href="/change-session/MYR">MYR</a>
-              <a class="dropdown-item" href="/change-session/SGD">SGD</a>
-              <a class="dropdown-item" href="/change-session/EUR">EUR</a>
-            </div>
-          </div>
-  </li> -->
 
   <li data-test-id="header-navigation-search" class="navigation__list-item-parent item__search" style="margin-left:-35px;margin-right:-15px;" >
-  <!-- <div class="dropdown drops">
-            <button class="btn btn-sm btn-secondary" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color:#fc2c04;color: white;border-color:#fc2c04;" >
-            <span class="material-symbols-outlined">
-            travel_explore
-            </span>
-            </button>
-            <div class="dropdown-menu">
-            @foreach($season as $item)
-            <a class="dropdown-item" href="{{'/season/' .$item->id}}">{{$item->namaseason}}</a>
-            @endforeach
-            </div>
-          </div> -->
           <div class="dropdown drops" >
             <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color:#fc2c04;color: white;border-color:#fc2c04;">
              {!! $session !!}
@@ -175,9 +135,6 @@
 						<div class="col-md-7 mt-text" style="margin-top:-10px;margin-left:0px;">
 							<h1>{{$item->header}}</h1><br>
              
-              <!-- <button type="submit" class="js-check-availability gtm-trigger__adp-check-availability-btn avoid-close-dropdown-on-click c-button c-button--medium filbtn" data-test-id="checkout-submit-btn" id="tess">Learn More</button> -->
-              
-
           <div class="d-block d-sm-none"> 
             <div class="search-box-mobile" id="tess" style="background-color:white;">
               <i class="fas fa-search" style="margin-left:20px;margin-bottom:2px;"></i>
@@ -194,7 +151,6 @@
             <button type="button" class="c-button c-button--medium billing-form__validate-billing-details-and-sri__button filbtn searchprovince1" style="margin-right:5px;">
               <i class="fas fa-search"></i>
             </button>
-            
 </div>
 <div id="searchSuggestions1"></div>
   </div>
@@ -221,7 +177,7 @@
       <div class="icon"><i id="left" class="fa-solid fa-angle-left"></i></div>
       <ul class="tabs-box">
         @foreach($season as $item)
-        <li class=""><a href="{{'/season/' .$item->id}}" class="btn btn-outline-dark" style="border-radius:20px;">{{$item->namaseason}}</a></li>
+        <li class=""><a href="{{'/season/' .$item->id}}" class="btn btn-outline-dark no-hover" style="border-radius:20px;">{{$item->namaseason}}</a></li>
         @endforeach
       </ul>
       <div class="icon"><i id="right" class="fa-solid fa-angle-right"></i></div>
@@ -229,7 +185,7 @@
     <div class="d-block d-md-none">
   <ul class="custom-horizontal-list">
   @foreach($season as $item)
-  <li class=""><a href="{{'/season/' .$item->id}}" class="btn btn-outline-dark" style="border-radius:20px;">{{$item->namaseason}}</a></li>
+  <li class=""><a href="{{'/season/' .$item->id}}" class="btn btn-outline-dark no-hover" style="border-radius:20px;">{{$item->namaseason}}</a></li>
   @endforeach
   </ul>
   </div>
@@ -304,17 +260,33 @@
       <div class="rating-star rating-overall__rating-stars">
         <div class="" style="margin-bottom: 10px;">
               <div class="small-ratings">
+                @php
+            $rating = $item->totalrating;
+            $fullStars = floor($rating);
+            $halfStar = ceil($rating - $fullStars);
+            $emptyStars = 5 - ($fullStars + $halfStar);
+            @endphp
+            @for ($i = 1; $i <= $fullStars; $i++)
                 <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
+            @endfor
+            @if ($halfStar)
+            <i class="fa fa-star-half rating-color"></i>
+            @endif
+            @for ($i = 1; $i <= $emptyStars; $i++)
+                <!-- <i class="fa fa-star rating-color" style="color:grey !important;"></i> -->
+            @endfor
+            @if($rating == 0)
+            @for ($i = 1; $i <= 5; $i++)
+                <i class="fa fa-star rating-color" style="color:grey !important;"></i>
+            @endfor
+            @endif
               </div>
             </div>
+            <div class="rating-overall__reviews" style="margin-bottom:15px;">
+            ({!! number_format($item->totalrating, 1) !!})
+          </div>
       </div> 
   </div> 
-  <div class="rating-overall__reviews">
-  </div>
   </div> 
   <div class="baseline-pricing" data-v-23fc334c>
   <div class="baseline-pricing__container" data-v-23fc334c>
@@ -434,17 +406,33 @@
       <div class="rating-overall__rating"> 
       <div class="rating-star rating-overall__rating-stars">
         <div class="" style="margin-bottom: 10px;">
-              <div class="small-ratings">
+        <div class="small-ratings">
+                @php
+            $rating = $item->totalrating;
+            $fullStars = floor($rating);
+            $halfStar = ceil($rating - $fullStars);
+            $emptyStars = 5 - ($fullStars + $halfStar);
+            @endphp
+            @for ($i = 1; $i <= $fullStars; $i++)
                 <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
+            @endfor
+            @if ($halfStar)
+            <i class="fa fa-star-half rating-color"></i>
+            @endif
+            @for ($i = 1; $i <= $emptyStars; $i++)
+                <!-- <i class="fa fa-star rating-color" style="color:grey !important;"></i> -->
+            @endfor
+            @if($rating == 0)
+            @for ($i = 1; $i <= 5; $i++)
+                <i class="fa fa-star rating-color" style="color:grey !important;"></i>
+            @endfor
+            @endif
               </div>
             </div>
       </div> 
   </div> 
-  <div class="rating-overall__reviews">
+  <div class="rating-overall__reviews" style="margin-bottom:15px;">
+  ({!! number_format($item->totalrating, 1) !!})
   </div>
   </div> 
   <div class="baseline-pricing" data-v-23fc334c>
@@ -528,18 +516,6 @@
     </div>
     </div>
 	
-	<!-- <div class="gtco-section"  style="margin-top:-80px;margin-bottom:-80px;">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-					<form action="/alltours" method="get">
-				<center>	<button class="btn btn-light" style="font-size: 20px;border-color:#f0f0f0;border-radius:20px;">Discover all tours</button> </center>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div> -->
-
   <div class="wrapper container d-block d-md-none" style="overflow:hidden;margin-bottom:100px;margin-top:50px;">
   <div class="d-block d-md-none">
   <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0 style="font-size:28px;">
@@ -580,14 +556,31 @@
   <div class="rating-overall__rating">
   <div class="rating-star rating-overall__rating-stars">
  <div class="small-ratings">
+            @php
+            $rating = $item->totalrating;
+            $fullStars = floor($rating);
+            $halfStar = ceil($rating - $fullStars);
+            $emptyStars = 5 - ($fullStars + $halfStar);
+            @endphp
+            @for ($i = 1; $i <= $fullStars; $i++)
                 <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
+            @endfor
+            @if ($halfStar)
+            <i class="fa fa-star-half rating-color"></i>
+            @endif
+            @for ($i = 1; $i <= $emptyStars; $i++)
+                <!-- <i class="fa fa-star rating-color" style="color:grey !important;"></i> -->
+            @endfor
+            @if($rating == 0)
+            @for ($i = 1; $i <= 5; $i++)
+                <i class="fa fa-star rating-color" style="color:grey !important;"></i>
+            @endfor
+            @endif
               </div>
-
-</div>   
+</div>
+<div class="rating-overall__reviews" style="margin-bottom:15px;">
+  ({!! number_format($item->totalrating, 1) !!})
+  </div>   
 </div> 
 </div> 
 <div class="activity-card__pricing" data-v-a1084d9e><div class="baseline-pricing" data-v-24caa43d data-v-a1084d9e><div class="baseline-pricing__container" data-v-24caa43d><div class="baseline-pricing__value" data-v-24caa43d><p class="baseline-pricing__from" data-v-24caa43d>From</p>
@@ -672,14 +665,32 @@
   
   <div class="rating-star rating-overall__rating-stars">
  <div class="small-ratings">
+ @php
+            $rating = $item->totalrating;
+            $fullStars = floor($rating);
+            $halfStar = ceil($rating - $fullStars);
+            $emptyStars = 5 - ($fullStars + $halfStar);
+            @endphp
+            @for ($i = 1; $i <= $fullStars; $i++)
                 <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
+            @endfor
+            @if ($halfStar)
+            <i class="fa fa-star-half rating-color"></i>
+            @endif
+            @for ($i = 1; $i <= $emptyStars; $i++)
+                <!-- <i class="fa fa-star rating-color" style="color:grey !important;"></i> -->
+            @endfor
+            @if($rating == 0)
+            @for ($i = 1; $i <= 5; $i++)
+                <i class="fa fa-star rating-color" style="color:grey !important;"></i>
+            @endfor
+            @endif
               </div>
 
-</div>   
+</div>
+<div class="rating-overall__reviews" style="margin-bottom:15px;">
+  ({!! number_format($item->totalrating, 1) !!})
+  </div>   
 </div> 
 </div> 
 <div class="activity-card__pricing" data-v-a1084d9e><div class="baseline-pricing" data-v-24caa43d data-v-a1084d9e><div class="baseline-pricing__container" data-v-24caa43d><div class="baseline-pricing__value" data-v-24caa43d><p class="baseline-pricing__from" data-v-24caa43d>From</p>
@@ -715,9 +726,9 @@
     <center>
     <form action="/alltours" method="get">    
     <button type="submit" class="btn btn-light" style="font-size: 20px;border-color:#f0f0f0;border-radius:20px;">Discover all tours</button>
-</form> </center>
+</form>
+ </center>
   </section>
-
 </div>
 </div>
 
@@ -740,72 +751,9 @@
   @endforeach
 </ul>
 </div>
-
-	<!-- <div id="gtco-subscribe" style="background-color: white;" >
-<div class="gtco-container"  style="margin-top:-50px; ">
-  <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-          <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0>
-        Choose Your Destination
-      </span>
-        </div>
-    @foreach($provinces as $item)
-    <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:10px;max-height:300px;"> -->
-    <!-- <a href="/location/{{$item->slugprovince}}/{{$item->id}}">
-      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto">
-         <article class="text-left">
-            <h2>{{$item->namaprovince}}</h2>
-            <h4>{!! $item->shortdescription !!}</h4>
-         </article>
-         <img src="https://i0.wp.com/www.mediainfo.id/wp-content/uploads/2022/01/Travel-Pekalongan-Jogja.webp" alt="{{$item->province}}">
-      </div>
-      </a> -->
-      <!-- <a href="/location/{{$item->slugprovince}}/{{$item->id}}">
-      <div class="hover hover-2 text-white rounded"><img src="{{ url('public/img/'.$item->image) }}" alt="{{$item->namaprovince}}"/>
-          <div class="hover-overlay"></div>
-          <div class="hover-2-content px-5 py-4">
-            <h4 class="hover-2-title text-capitalize font-weight-bold mb-0" style="font-size:24px;color:white;"> {{$item->namaprovince}}</h4>
-          </div>
-        </div>
-        </a>
-      </div>
-      
-      @endforeach
-</div>
-</div> -->		
-	<!-- </div> -->
-
 @endsection
 @section('scripts')
 <script>
-// $('#searchInput').on('input', function() {
-//     var query = $(this).val();
-
-//     if (query === '') {
-//         $('#searchSuggestions').empty(); // Clear suggestion list when input is empty
-//         return;
-//     }
-    
-//     $.ajax({
-//         url: '/get-search-recommendations',
-//         method: 'GET',
-//         data: { query: query },
-//         success: function(data) {
-//             var suggestions = data.suggestions;
-//             var suggestionList = '';
-
-//             if (suggestions.length === 0) {
-//                 suggestionList = '<div class="suggestion">Destination does not exist</div>';
-//             } else {
-//                 $.each(suggestions, function(index, suggestion) {
-//                     suggestionList += '<div class="suggestion">' + suggestion + '</div>';
-//                 });
-//             }
-
-//             $('#searchSuggestions').html(suggestionList);
-//         }
-//     });    
-// });
-
 $('#searchInput').on('input', function() {
     var query = $(this).val();
 
@@ -829,17 +777,15 @@ $('#searchInput').on('input', function() {
               
                 $.each(results, function(index, result) {
                   var icon = '';
-
-                  // Add icons based on the 'type' value
                   if (result.type === 'province') {
-                    icon = '<i class="fa fa-map-marker" aria-hidden="true"></i> '; // Replace with your desired icon class
+                    icon = '<i class="fa fa-map-marker" aria-hidden="true"></i> '; 
                   } else if (result.type === 'region') {
-                    icon = '<i class="fa fa-map-marker" aria-hidden="true"></i> '; // Replace with your desired icon class
+                    icon = '<i class="fa fa-map-marker" aria-hidden="true"></i> '; 
                   } else if (result.type === 'destination') {
-                    icon = '<i class="fa fa-map-marker" aria-hidden="true"></i> '; // Replace with your desired icon class
+                    icon = '<i class="fa fa-map-marker" aria-hidden="true"></i> '; 
                   }
                   else if (result.type === 'trip') {
-                    icon = '<i class="fa-regular fa-map"></i> '; // Replace with your desired icon class
+                    icon = '<i class="fa-regular fa-map"></i> '; 
                   }
                     suggestionList += '<div class="suggestion">'  + icon + result.name + '</div>';
                 });
@@ -861,35 +807,6 @@ $(document).on('click', '.suggestion', function() {
 </script>
 
 <script>
-// $('#searchInput1').on('input', function() {
-//     var query = $(this).val();
-
-//     if (query === '') {
-//         $('#searchSuggestions1').empty(); // Clear suggestion list when input is empty
-//         return;
-//     }
-    
-//     $.ajax({
-//         url: '/get-search-recommendations',
-//         method: 'GET',
-//         data: { query: query },
-//         success: function(data) {
-//             var suggestions = data.suggestions;
-//             var suggestionList = '';
-
-//             if (suggestions.length === 0) {
-//                 suggestionList = '<div class="suggestion1">Destination does not exist</div>';
-//             } else {
-//                 $.each(suggestions, function(index, suggestion) {
-//                     suggestionList += '<div class="suggestion1">' + suggestion + '</div>';
-//                 });
-//             }
-
-//             $('#searchSuggestions1').html(suggestionList);
-//         }
-//     });
-// });
-
 $('#searchInput1').on('input', function() {
     var query = $(this).val();
 
@@ -914,14 +831,14 @@ $('#searchInput1').on('input', function() {
 
                   // Add icons based on the 'type' value
                   if (result.type === 'province') {
-                    icon = '<i class="fa fa-map-marker" style="color:#fc2c04; aria-hidden="true"></i> '; // Replace with your desired icon class
+                    icon = '<i class="fa fa-map-marker" style="color:#fc2c04; aria-hidden="true"></i> '; 
                   } else if (result.type === 'region') {
-                    icon = '<i class="fa fa-map-marker" style="color:#fc2c04; aria-hidden="true"></i> '; // Replace with your desired icon class
+                    icon = '<i class="fa fa-map-marker" style="color:#fc2c04; aria-hidden="true"></i> '; 
                   } else if (result.type === 'destination') {
-                    icon = '<i class="fa fa-map-marker" style="color:#fc2c04; aria-hidden="true"></i> '; // Replace with your desired icon class
+                    icon = '<i class="fa fa-map-marker" style="color:#fc2c04; aria-hidden="true"></i> '; 
                   }
                   else if (result.type === 'trip') {
-                    icon = '<i class="fa-regular fa-map" style="color:#fc2c04;"></i> '; // Replace with your desired icon class
+                    icon = '<i class="fa-regular fa-map" style="color:#fc2c04;"></i> '; 
                   }
                     suggestionList += '<div class="suggestion1">'  + icon + result.name + '<hr/>' + '</div>';
                 });
@@ -996,7 +913,7 @@ if (query !== '') {
         method: 'GET',
         data: { query: query },
         headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // Include CSRF token
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         success: function (data) {
             if (data.exists) {
@@ -1041,29 +958,20 @@ function showModal() {
  
 }
 
-// Fungsi untuk menyembunyikan modal
 function hideModal() {
   $("#myModal").css("display", "none");
   $("body").removeClass("body-lock");
   
 }
 
-// Event listener untuk tombol penutup modal
 $(".close").click(hideModal);
-
-// Event listener untuk menampilkan modal (misalnya, saat tombol di klik)
 $("#openModalBtn").click(showModal);
-
-// Event listener untuk menutup modal jika pengguna mengklik di luar modal
 $(window).click(function(event) {
   if (event.target == document.getElementById("myModal")) {
     hideModal();
   }
 });
-
-
-
-
 </script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endsection
+

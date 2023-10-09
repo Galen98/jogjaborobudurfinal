@@ -6,6 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Console\\Commands\\AutoSendReviewLinks' => $baseDir . '/app/Console/Commands/AutoSendReviewLinks.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
@@ -45,6 +46,7 @@ return array(
     'App\\Models\\harga' => $baseDir . '/app/Models/harga.php',
     'App\\Models\\hargachild' => $baseDir . '/app/Models/hargachild.php',
     'App\\Models\\highlight' => $baseDir . '/app/Models/highlight.php',
+    'App\\Models\\importants' => $baseDir . '/app/Models/importants.php',
     'App\\Models\\includes' => $baseDir . '/app/Models/includes.php',
     'App\\Models\\influencer' => $baseDir . '/app/Models/influencer.php',
     'App\\Models\\message' => $baseDir . '/app/Models/message.php',

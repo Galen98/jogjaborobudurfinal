@@ -27,5 +27,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Blade::directive('currency', function ( $expression ) { return "Rp. <?php echo number_format($expression,0,',','.'); ?>"; });
         Paginator::useBootstrap();
+        date_default_timezone_set('Asia/Jakarta');
     }
 }

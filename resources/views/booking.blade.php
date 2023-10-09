@@ -39,7 +39,7 @@
   <article data-test-id="horizontal-activity-card" class="activity-card horizontal-activity-card companion-inactive activity-card-block__card--grid activity-card-block--desktop" data-v-a1084d9e>
   <a role="contentinfo" target="_blank" rel="noopener" data-activity-id="412877" class="activity-card__container gtm-trigger__card-interaction" data-v-a1084d9e>
   <div class="activity-card__image" data-v-a1084d9e> 
-  <div class="activity-card__image-info align-end" data-v-a1084d9e><!----></div> 
+  <div class="activity-card__image-info align-end" data-v-a1084d9e></div> 
   <picture data-v-a1084d9e>
   <source srcset="{{ url('public/img/'.$item->image) }}" type="image/webp"> 
   <img src="{{ url('public/img/'.$item->image) }}">
@@ -47,7 +47,7 @@
   </div> 
   <div class="activity-card__details" data-v-a1084d9e>
   <div class="activity-card__details-main" data-v-a1084d9e>
-  <div class="activity-card__details-left" data-v-a1084d9e><!----> 
+  <div class="activity-card__details-left" data-v-a1084d9e> 
   <h2 class="activity-card__title" data-v-a1084d9e>{{$item->namawisata}}</h2> 
   <div class="activity-card__attributes" data-v-a1084d9e>
   <ul class="activity-attributes__container" data-v-67560657 data-v-a1084d9e>
@@ -63,9 +63,9 @@
     </span>
   </span>
 </li>
-  </ul> <!---->
-  </div> <!----> 
-  <div class="activity-card__badges__container" data-v-a1084d9e><!----> <!----> <!---->
+  </ul> 
+  </div>  
+  <div class="activity-card__badges__container" data-v-a1084d9e>  
   </div>
   </div> 
   <div class="activity-card__details-right" data-v-a1084d9e>
@@ -95,8 +95,8 @@
       </div> 
       <p class="baseline-pricing__category" data-v-24caa43d>
         
-      </p></div></div></div> <!---->
-    </div> <!---->
+      </p></div></div></div> 
+    </div> 
     </div>
     </div>
     </a>

@@ -24,4 +24,9 @@ class travel extends Model
     public function subwisata(){
     	return $this->hasMany('App\Models\subwisata');
     }
+
+    public function countratings()
+    {
+        return $this->hasMany('App\Models\countrating', 'wisata_id', 'id');
+    }
 }

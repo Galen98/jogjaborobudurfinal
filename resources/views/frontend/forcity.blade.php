@@ -185,32 +185,19 @@ font-family: 'GT Eesti Text Trial', sans-serif;
         <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
         </div>
   
-  <!-- jQuery -->
+
   <script src="{{asset('traveler')}}/js/lightbox-plus-jquery.min.js"></script>
   <script src="{{asset('traveler')}}/js/jquery.min.js"></script>
-  <!-- jQuery Easing -->
   <script src="{{asset('traveler')}}/js/jquery.easing.1.3.js"></script>
-  <!-- Bootstrap -->
   <script src="{{asset('traveler')}}/js/bootstrap.min.js"></script>
-  <!-- Waypoints -->
   <script src="{{asset('traveler')}}/js/jquery.waypoints.min.js"></script>
-  <!-- Carousel -->
   <script src="{{asset('traveler')}}/js/owl.carousel.min.js"></script>
-  <!-- countTo -->
   <script src="{{asset('traveler')}}/js/jquery.countTo.js"></script>
-
-  <!-- Stellar Parallax -->
   <script src="{{asset('traveler')}}/js/jquery.stellar.min.js"></script>
-
-  <!-- Magnific Popup -->
   <script src="{{asset('traveler')}}/js/jquery.magnific-popup.min.js"></script>
   <script src="{{asset('traveler')}}/js/magnific-popup-options.js"></script>
-  
-  <!-- Datepicker -->
   <script src="{{asset('traveler')}}/js/bootstrap-datepicker.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-
-  <!-- Main -->
   <script src="{{asset('traveler')}}/js/main.js"></script>
 	<script>
 	var swiper = new Swiper(".slide-container", {
@@ -263,7 +250,6 @@ const handleIcons = (scrollVal) => {
 
 arrowIcons.forEach(icon => {
     icon.addEventListener("click", () => {
-        // if clicked icon is left, reduce 350 from tabsBox scrollLeft else add
         let scrollWidth = tabsBox.scrollLeft += icon.id === "left" ? -340 : 340;
         handleIcons(scrollWidth);
     });

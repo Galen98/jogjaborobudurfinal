@@ -2037,7 +2037,7 @@ form label {
 .star-rating label::before {
   content: '\2606';
   position: absolute;
-  top: 0px;
+  top: 10px;
   line-height: 26px;
 }
 /* set full star shape for checked label and those that come after it */
@@ -2070,18 +2070,20 @@ form label {
          font-size:30px;
          color:#ccc;
          }
-         .rated:not(:checked) > label {
-         float:right;
-         width:1em;
-         overflow:hidden;
-         white-space:nowrap;
-         cursor:pointer;
-         font-size:30px;
-         color:#ccc;
-         }
+        
          .rate:not(:checked) > label:before {
-         content: '★ ';
+          content: '\f005'; 
+         font-family: 'Font Awesome 5 Free';
+         font-size: 20px;
+         font-weight: 900; 
          }
+         /* .rate:not(:checked) > label:before {
+          content: '\f005'; 
+          font-family: 'Font Awesome 5 Free';
+          display: inline-block;
+          font-style: normal;
+          font-weight: 900; 
+      } */
          .rate > input:checked ~ label {
          color: #ffc700;
          }
@@ -2764,11 +2766,63 @@ color: #182c4c;
 }
 
 .actives {
-   /* Warna latar belakang tautan aktif */
   color: #fc2c04; /* Warna teks tautan aktif */
 }
 
 .active{
   color: white;
 }
+
+.btn.btn-outline-dark.no-hover:not(.active):hover {
+  background-color: transparent;
+  color: #6c757d;
+  border-color: #6c757d;
+}
+
+/* custom.css */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination .page-item.disabled .page-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px !important;
+}
+
+.pagination li {
+  margin: 0 5px;
+  list-style: none;
+}
+
+.pagination a  {
+  display: block;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: #fc2c04 !important;
+  border: 1px solid #ddd;
+  border-radius: 50px !important;
+}
+
+.pagination a:hover {
+   background-color: #ddd; 
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #fc2c04 !important;
+  color: #fff !important;
+  border: none;
+  border-radius: 50px !important;
+}
+
+.half-star::before {
+  content: '\f089'; /* Unicode character for a half star in Font Awesome */
+  color: #808080; /* Color for the half star (gray) */
+}
+
+
+
 

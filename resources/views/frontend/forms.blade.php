@@ -1073,7 +1073,7 @@ $(this).parent().parent().remove();
 </script>
 <script>
   var uploadField = document.getElementById("file");
-uploadField.onchange = function() {
+	uploadField.onchange = function() {
     if(this.files[0].size > 1999999){
 		swal("Ulangi!", "File terlalu besar", "error");
        this.value = "";
@@ -1082,7 +1082,7 @@ uploadField.onchange = function() {
 </script>
 <script>
   var uploadField2 = document.getElementById("file2");
-uploadField2.onchange = function() {
+	uploadField2.onchange = function() {
     if(this.files[0].size > 1999999){
 		swal("Ulangi!", "File terlalu besar", "error");
        this.value = "";

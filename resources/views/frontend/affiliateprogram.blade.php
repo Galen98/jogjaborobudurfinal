@@ -81,11 +81,9 @@
                   Submit
                 </button>
             </div>
-
-            
+  
         </div>
-        <div class="col-md-5 col-md-push-1">
-          
+        <div class="col-md-5 col-md-push-1"> 
           <div class="gtco-contact-info">
             <div class="row form-group">
               <div class="col-md-12">

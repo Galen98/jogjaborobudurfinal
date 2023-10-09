@@ -14,9 +14,9 @@ class Kernel extends ConsoleKernel
      * @return void
      */
     protected function schedule(Schedule $schedule)
-    {
-        // $schedule->command('inspire')->hourly();
-    }
+{
+    $schedule->command('auto-send-review-links')->everyMinute(); // Adjust the schedule as needed
+}
 
     /**
      * Register the commands for the application.

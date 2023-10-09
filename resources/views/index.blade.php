@@ -11,12 +11,6 @@
   <link rel="stylesheet" href="{{asset('spica')}}/vendors/css/vendor.bundle.base.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link href="https://fonts.cdnfonts.com/css/gt-eesti-display-trial" rel="stylesheet">
-  <!-- endinject -->
-  <!-- plugin css for this page -->
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
-  
-  <!-- endinject -->
   <link rel="stylesheet" href="{{asset('spica')}}/css/style.css">
    <link rel="preload" href="{{asset('traveler')}}/css/new.css" as="style">
   <link rel="stylesheet" href="{{asset('traveler')}}/css/new2.css">
@@ -24,7 +18,6 @@
   <link rel="stylesheet" href="{{asset('traveler')}}/css/activity.css">
   <link rel="stylesheet" href="{{asset('traveler')}}/css/location.css">
   <link rel="shortcut icon" href="{{asset('spica')}}/images/favicon.png" />
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/blitzer/jquery-ui.min.css" integrity="sha512-ibBo2Ns078qm7xZNTPbIrg5XP4pZ+Aujfmz0QFsce2f4LYpCnF1Esy6FkIRFBgXC9cY30XiS7Ui9+RpN8K7ICg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script src="https://cdn.tiny.cloud/1/u2xw6yackdc61xx9e7q9zfuoioxbk0b4gxo0rnuc2dl0r5nv/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> -->
@@ -119,8 +112,7 @@
           </button>
          
          
-          <ul class="navbar-nav navbar-nav-right">
-            
+          <ul class="navbar-nav navbar-nav-right">  
           </ul>
           <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
             <span class="mdi mdi-menu"></span>

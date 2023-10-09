@@ -39,14 +39,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   </head>
   <body>
-    
-    
-    
-    <div id="gyg"><div>
+    <div id="gyg">
+	<div>
 	<div class="main-wrapper  partner-left-layout customer-information customer-information--gyg-symbol-on-mobile">
 	<header class="page-header light" data-test-id="page-header" data-v-36cff088 style="background-color:  #fc2c04;">
 	<div class="page-header__content" data-v-36cff088>
-	<div class="page-header__logo-image" role="img" aria-label="GetYourGuide logo">
+	<div class="page-header__logo-image" role="img">
 	<img src="{{asset('spica')}}/images/logomini.png" class="logs" alt="logo"/>
 	</div>
 	</div>
@@ -57,7 +55,7 @@
 	<span></span>
 	</aside>
 	<div class="customer-information__container customer-information__order-summary--mweb customer-information--mweb-only">
-	<div class="order-summary-collapsible" data-test-id="order-summary" style=""><!---->
+	<div class="order-summary-collapsible" data-test-id="order-summary" style="">
 	<div class="order-summary-collapsible__container">
 	<div class="isCollapsed order-summary-collapsible__controllers">
 	<div>
@@ -102,7 +100,7 @@
 	<div class="customer-information__container">
 	<section class="customer-information__step-navigation">
 	<div class="step-navigation" data-v-5a727b98>
-	<ul class="step-navigation__list" data-v-5a727b98><!--[-->
+	<ul class="step-navigation__list" data-v-5a727b98>
 	<li id="step-item-checkout" class="step-navigation__list--step--active step-navigation__list--step" data-v-5a727b98>Booking</li>
 	</ul>
 	</div>
@@ -111,52 +109,52 @@
 	
 	<div class="customer-information__container" data-test-id="checkout-section">
 	<section class="customer-information__content">
-	<div style="" class="billing-form"><!--[--><h2>Enter your personal details</h2>
+	<div style="" class="billing-form"><h2>Enter your personal details</h2>
 	
 	
 	<div class="billing-form__container">
 	<form novalidate data-test-id="customer-information-form" action="{{url('generatepdf')}}" method="POST">
 	@csrf
-	<div class="billing-form__legend"> * Required fields</div><!----><!--[-->
-	<div class="c-form-field c-form-field--vertical"><!---->
-	<div class="c-form-field__container"><!--[-->
-	<div class="c-input c-input--with-label billing-form__field"><!---->
+	<div class="billing-form__legend"> * Required fields</div>
+	<div class="c-form-field c-form-field--vertical">
+	<div class="c-form-field__container">
+	<div class="c-input c-input--with-label billing-form__field">
 	<div class="c-input__container">
 	<label class="c-input__label" for="c-input-3241">First name *</label>
 	<input id="c-input-3241" class="c-input__field" value data-test-id="billing-fullname" type="text" name="name" autocomplete="name" modelvalue>
 	</div>
-	<span class="c-input__icon c-input__icon--posticon"><!--[--><!--]--></span>
-	</div><!--]--><!----><!---->
+	<span class="c-input__icon c-input__icon--posticon"></span>
+	</div>
 	</div>
 	</div>
 
-	<div class="c-form-field c-form-field--vertical"><!---->
-	<div class="c-form-field__container"><!--[-->
-	<div class="c-input c-input--with-label billing-form__field"><!---->
+	<div class="c-form-field c-form-field--vertical">
+	<div class="c-form-field__container">
+	<div class="c-input c-input--with-label billing-form__field">
 	<div class="c-input__container">
 	<label class="c-input__label" for="c-input-3241">surname *</label>
 	<input id="c-input-3241" class="c-input__field" value data-test-id="billing-fullname" type="text" name="surname" autocomplete="surname" modelvalue>
 	</div>
-	<span class="c-input__icon c-input__icon--posticon"><!--[--><!--]--></span>
-	</div><!--]--><!----><!---->
+	<span class="c-input__icon c-input__icon--posticon"></span>
+	</div>
 	</div>
 	</div>
 
 	
 
-	<div class="c-form-field c-form-field--vertical"><!---->
-	<div class="c-form-field__container"><!--[-->
-	<div class="c-input c-input--with-label billing-form__field"><!---->
+	<div class="c-form-field c-form-field--vertical">
+	<div class="c-form-field__container">
+	<div class="c-input c-input--with-label billing-form__field">
 	<div class="c-input__container"><label class="c-input__label" for="c-input-3246">Email *</label>
 	<input id="c-input-3246" class="c-input__field" value data-test-id="billing-email" type="email" name="email" modelvalue>
 	</div>
-	<span class="c-input__icon c-input__icon--posticon"><!--[--><!--]--></span></div><!--]--><!----><!---->
+	<span class="c-input__icon c-input__icon--posticon"></span></div>
 	</div>
 </div>
 
 
 	<div class="c-form-field c-form-field--vertical">
-	<div class="c-form-field__container"><!--[-->
+	<div class="c-form-field__container">
 	<div class="c-input c-input--with-label billing-form__field">
 	<div class="c-input__container">
 	<label class="c-input__label" for="c-input-3241">Country</label>
@@ -172,7 +170,7 @@
 	</div>
 	</div>
 
-	<div class="c-form-field c-form-field--vertical billing-form__field billing-form__phone-number"><!---->
+	<div class="c-form-field c-form-field--vertical billing-form__field billing-form__phone-number">
 	<div class="c-form-field__container">
 	<section class="billing-form__country-phone-picker">
 	<span class="select-label">Phone</span>
@@ -188,52 +186,52 @@
 	<span class="gyg-select-caret"></span>
 	</span>
 	</div>
-	<div class="c-input c-input--with-label"><!---->
+	<div class="c-input c-input--with-label">
 	<div class="c-input__container">
 	<label class="c-input__label" for="c-input-1693">Phone number *</label>
 	<input id="c-input-1693" class="c-input__field" value data-test-id="billing-phone-nr" autocomplete="tel-national" type="tel" name="phone" modelvalue>
 	</div>
-	<span class="c-input__icon c-input__icon--posticon"><!--[--><!--]--></span>
+	<span class="c-input__icon c-input__icon--posticon"></span>
 	</div>
 	
-	</section><!--]-->
+	</section>
 	</div>
 	</div>
 
-	<div class="c-form-field c-form-field--vertical"><!---->
-	<div class="c-form-field__container"><!--[-->
-	<div class="c-input c-input--with-label billing-form__field"><!---->
+	<div class="c-form-field c-form-field--vertical">
+	<div class="c-form-field__container">
+	<div class="c-input c-input--with-label billing-form__field">
 	<div class="c-input__container">
 	<label class="c-input__label" for="c-input-3241">Pickup Location *</label>
 	<input id="c-input-3241" class="c-input__field" value data-test-id="billing-fullname" type="text" name="pickup" autocomplete="pickup" modelvalue required="">
 	</div>
-	<span class="c-input__icon c-input__icon--posticon"><!--[--><!--]--></span>
-	</div><!--]--><!----><!---->
+	<span class="c-input__icon c-input__icon--posticon"></span>
+	</div>
 	</div>
 	</div>
 	
 	<section class="supplier-requested-information-collection">
 
 	<section class="supplier-requested-information supplier-requested-information-collection__supplier-requested-information">
-	<div class="supplier-requested-information__booking-level"><!--[-->
+	<div class="supplier-requested-information__booking-level">
 	<div class="supplier-requested-information__entry">
 	<div class="pickup-location">
 	</div>
-  	</div><!--]-->
-  	</div><!---->
+  	</div>
+  	</div>
  	<div class="supplier-requested-information__entry">
  	<div class="fallback-answer">
  	<div class="fallback-answer__label">Special Request</div>
- 	<div class="c-form-field c-form-field--vertical"><!---->
- 	<div class="c-form-field__container"><!--[-->
+ 	<div class="c-form-field c-form-field--vertical">
+ 	<div class="c-form-field__container">
  	<div class="c-textarea fallback-answer__description">
- 	<textarea id="c-textarea-2030" name="request" class="c-textarea__field" rows="5" modelvalue placeholder></textarea><!---->
- 	</div><!--]--><!----><!---->
+ 	<textarea id="c-textarea-2030" name="request" class="c-textarea__field" rows="5" modelvalue placeholder></textarea>
  	</div>
  	</div>
  	</div>
  	</div>
- 	</section><!--]-->
+ 	</div>
+ 	</section>
 	</section>
 	<input type="hidden" name="idtravel" value="{!! $idtravel !!}">
 	<input type="hidden" name="idoption" value="{!! $idoption !!}">
@@ -256,13 +254,13 @@
 
 	
 	</div>
-	</div><!----><!---->
+	</div>
 	</section>
 	
 	<section class="customer-information__sidebar">
 	<div class="order-summary-collapsible customer-information--desktop-only" data-test-id="order-summary" style="">
 	<h3 class="order-summary-collapsible__title">Order summary</h3>
-	<div class="order-summary-collapsible__container"><!---->
+	<div class="order-summary-collapsible__container">
 	<section>
 	<div class="order-summary-collapsible__cart-items">
 	<div class="cart-item" data-test-id="cart-item" data-v-039efa20>
@@ -274,7 +272,7 @@
 	<div class="rating-overall__container" data-v-039efa20>
 	<div class="rating-overall__rating">
 	
-	<div class="rating-star rating-overall__rating-stars"><!--[-->
+	<div class="rating-star rating-overall__rating-stars">
 	<div class="small-ratings">
                 <i class="fa fa-star rating-color"></i>
                 <i class="fa fa-star rating-color"></i>
@@ -282,9 +280,9 @@
                 <i class="fa fa-star rating-color"></i>
                 <i class="fa fa-star rating-color"></i>
               </div>
-	</div><!---->
-	<span class="rating-overall__rating-reviews">({!! $reviews !!} Review)</span><!--[--><!--]-->
-	</div><!----></div></div>
+	</div>
+	<span class="rating-overall__rating-reviews">({!! $reviews !!} Review)</span>
+	</div></div></div>
 	
 	</div>
 	<div class="cart-item__description" data-v-039efa20>
@@ -315,13 +313,13 @@
 	@else<p></p>@endif
 	</div>
 	</div>
-	</div><!---->
-	</div><!---->
+	</div>
+	</div>
 	
 	</section>
-	</div><!--]-->
 	</div>
-	<!---->
+	</div>
+	
 	<div class="order-summary-collapsible__total">
 	<div class="order-summary-collapsible__total--items-count">Total</div>
 	<div class="order-summary-collapsible__total--price">
@@ -340,14 +338,14 @@
 	</section>
 
 	</div>
-	<section><!----><!----></section>
+	<section></section>
 	</div>
-	</section><!---->
-	</div><!----><!--]-->
-	</main><!---->
+	</section>
+	</div>
+	</main>
 	<footer class="page-footer" style="background-color:  #fc2c04;">
 	<div class="page-footer__content">
-	<nav class="navigation page-footer__navigation"><!---->
+	<nav class="navigation page-footer__navigation">
 	<div class="navigation__directory"><p class="navigation__item navigation__item-section_copyright">
 	<span> © <time>2023</time> Jogja Borobudur Tour &amp; Travel</span></p>
 	
@@ -355,10 +353,10 @@
 	</nav>
 	</div>
 	</footer>
-	<div><!---->
-	<div style="display:contents;"><!--[--><!--]-->
+	<div>
+	<div style="display:contents;">
 	</div>
-	</div><!----><!---->
+	</div>
 	</div>
 	</div>
 	</div>

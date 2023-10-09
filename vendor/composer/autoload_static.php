@@ -594,6 +594,7 @@ class ComposerStaticIniteaa51caf42a905b6550dc1e5f5ce5489
     );
 
     public static $classMap = array (
+        'App\\Console\\Commands\\AutoSendReviewLinks' => __DIR__ . '/../..' . '/app/Console/Commands/AutoSendReviewLinks.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
@@ -633,6 +634,7 @@ class ComposerStaticIniteaa51caf42a905b6550dc1e5f5ce5489
         'App\\Models\\harga' => __DIR__ . '/../..' . '/app/Models/harga.php',
         'App\\Models\\hargachild' => __DIR__ . '/../..' . '/app/Models/hargachild.php',
         'App\\Models\\highlight' => __DIR__ . '/../..' . '/app/Models/highlight.php',
+        'App\\Models\\importants' => __DIR__ . '/../..' . '/app/Models/importants.php',
         'App\\Models\\includes' => __DIR__ . '/../..' . '/app/Models/includes.php',
         'App\\Models\\influencer' => __DIR__ . '/../..' . '/app/Models/influencer.php',
         'App\\Models\\message' => __DIR__ . '/../..' . '/app/Models/message.php',

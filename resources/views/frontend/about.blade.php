@@ -92,7 +92,7 @@
 					<span style="font-size: 30px;" data-test-id="collection-title" class="collection-header_title" data-v-76e871e0>
 			       “Stop dreaming, start planning!”<br><br>
 			       <a href="/">
-            <button type="button" id="btn-booking-header" data-test-id="btn-booking-header" class="gtm-trigger__book-now-price-box-btn c-button c-button--medium c-button--filled-standard text-capitalize" data-v-46d2d245>
+           			 <button type="button" id="btn-booking-header" data-test-id="btn-booking-header" class="gtm-trigger__book-now-price-box-btn c-button c-button--medium text-capitalize filbtn" data-v-46d2d245>
                         Start Explore
                       </button>
                       </a>
