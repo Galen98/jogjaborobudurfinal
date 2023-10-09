@@ -253,7 +253,6 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
   </div>
 
-  <script src="{{asset('traveler')}}/js/lightbox-plus-jquery.min.js"></script>
   <script src="{{asset('traveler')}}/js/jquery.min.js"></script>
   <script src="{{asset('traveler')}}/js/bootstrap.min.js"></script>
   <script src="{{asset('traveler')}}/js/main.js"></script>
