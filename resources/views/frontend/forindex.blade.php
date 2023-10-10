@@ -47,6 +47,15 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="www.jogjaborobudur.com" />
   <meta property="og:title" content="jogja borobudur tour & travel" />
+  @if($sessions == 'Bahasa')
+  <meta name="lang" content="id">
+  @endif
+  @if($sessions == 'English')
+  <meta name="lang" content="en">
+  @endif
+  @if($sessions == 'Malay')
+  <meta name="lang" content="ms">
+  @endif
   <meta property="og:description"
     content="Jogja Borobudur tour & travel Explore borobudur, prambanan, and many more free cancellation." />
     <meta property="og:image" content="{{ asset('traveler/images/gambarseo1.jpeg') }}"/>
