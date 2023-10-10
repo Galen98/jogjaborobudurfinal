@@ -1,5 +1,13 @@
 <!DOCTYPE HTML>
+@if($sessions == 'English')
 <html lang="en-US" default-lang="en-US">
+@endif
+@if($sessions == 'Bahasa')
+<html lang="en-US" default-lang="id">
+@endif
+@if($sessions == 'Malay')
+<html lang="en-US" default-lang="ms">
+@endif
 	<head>
 	  <meta charset="utf-8" />   
   <link data-vue-meta="ssr" rel="preload" href="{{asset('font')}}/GT-Eesti-Pro-Display-Regular.woff2" as="font" type="font/woff2" crossorigin="true">
