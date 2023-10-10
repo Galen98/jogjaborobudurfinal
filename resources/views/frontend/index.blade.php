@@ -665,7 +665,7 @@
   
   <div class="rating-star rating-overall__rating-stars">
  <div class="small-ratings">
- @php
+            @php
             $rating = $item->totalrating;
             $fullStars = floor($rating);
             $halfStar = ceil($rating - $fullStars);

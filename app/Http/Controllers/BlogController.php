@@ -33,6 +33,8 @@ use App\Models\affiliate;
 use App\Models\platform;
 use App\Models\region;
 use App\Models\province;
+use App\Models\reviews;
+use App\Models\countrating;
 // use Request;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -317,6 +319,10 @@ class BlogController extends Controller
         DB::table('include')->where('wisata_id',$idwisata)->delete();
         DB::table('exclude')->where('wisata_id',$idwisata)->delete();
         DB::table('tambahdestinasi')->where('wisata_id',$idwisata)->delete();
+        DB::table('tambahlocation')->where('wisata_id',$idwisata)->delete();
+        DB::table('tambahprovince')->where('wisata_id',$idwisata)->delete();
+        DB::table('review')->where('wisata_id',$idwisata)->delete();
+        DB::table('countrating')->where('wisata_id',$idwisata)->delete();
         DB::table('waktu')->where('wisata_id',$idwisata)->delete();
         DB::table('subwisata')->where('wisata_id',$idwisata)->delete();
         DB::table('hargabaru')->where('wisata_id',$idwisata)->delete();
@@ -1625,14 +1631,126 @@ class BlogController extends Controller
         return view('rating',compact('travel'));
     }
 
+    public function editreview($idreview){
+        $review=reviews::where('id', $idreview)->get();
+        return view('formEditReview', compact('review'));
+    }
+
+    public function buatreview($idtravel){
+        $review = travel::where('wisata_id', $idtravel)->first();
+        $idwisata = $review->wisata_id;
+        $country=DB::table('country')->get();
+        return view('formCreateReview', compact('idwisata','country'));
+    }
+
+    public function insertreview(Request $request){
+        $travelid = $request->idwisata;
+        $name = $request->name;
+        $country = $request->negaras;
+        $rating = $request->rating;
+        $review = $request->review;
+        $imageColumns = ['image', 'image2', 'image3', 'image4', 'image5'];
+        $images = $request->file('images');
+
+        if($images){
+            foreach ($images as $index => $image) {
+                $nama_file = time() . '_' . $index . '.webp';
+                Image::make($image->getRealPath())
+                    ->encode('webp', 80)
+                    ->save(public_path('public/img/review/' . pathinfo($nama_file, PATHINFO_FILENAME) . '.webp'));
+                $columnName = $imageColumns[$index];
+
+                $data = [
+                    'country' => $country,
+                    'name' => $name,
+                    'comments' => $review,
+                    'star_rating' => $rating,
+                    $columnName => $nama_file,
+                    'wisata_id' => $travelid
+                ];
+                reviews::create($data);
+            }
+        } else{
+            $data = [
+                'country' => $country,
+                'name' => $name,
+                'comments' => $review,
+                'star_rating' => $rating,
+                'wisata_id' => $travelid
+            ];
+            reviews::create($data);
+        }
+        $rating = reviews::where('wisata_id', $travelid)
+        ->where('token', null)
+        ->avg('star_rating');
+
+        $getwisataRating = countrating::where('wisata_id', $travelid)->first();
+        if($getwisataRating == null){
+            $data = [
+                'wisata_id' => $travelid,
+                'totalrating' => $rating
+            ];
+            countrating::create($data);
+        } else{
+            countrating::where('wisata_id', $travelid)->update([
+                'totalrating' => $rating
+            ]);
+        }
+
+        Alert::success('Berhasil');
+        return redirect()->to('/rating/' . $travelid);
+    }
+
     public function ratingwisata($idtravel){
-        $travel=rating::where('wisata_id',$idtravel)->paginate(10);
+        $travel=reviews::where('wisata_id',$idtravel)
+        ->where('token', null)
+        ->paginate(10);
         $namatravel=travel::where('wisata_id',$idtravel)->first('namawisata');
-        return view('ratingwisata',compact('travel','namatravel'));
+        $wisataid=travel::where('wisata_id',$idtravel)->first('wisata_id');
+        return view('ratingwisata',compact('travel','namatravel','wisataid'));
+    }
+
+    public function editreviewprocess(Request $request,$idreview){
+        $getWisataIds=reviews::where('id', $idreview)->first();
+        $idwisata = $getWisataIds->wisata_id;
+        $review=reviews::where('id', $idreview)
+        ->update([
+            'star_rating' => $request->rating,
+            'comments' => $request->review
+        ]);
+        Alert::success('Berhasil');
+        return redirect()->to('/rating/' . $idwisata);
     }
 
     public function deleterating($idrating){
-        $rating=rating::where('id',$idrating)->delete();
+        $images=reviews::where('id',$idrating)->first();
+        $travelid=$images->wisata_id;
+        if($images->image !== null){
+        File::delete('public/img/review/'.$images->image);
+        }
+        if($images->image2 !== null){
+            File::delete('public/img/review/'.$images->image2);
+            }
+        if($images->image3 !== null){
+            File::delete('public/img/review/'.$images->image3);
+            }
+        if($images->image4 !== null){
+            File::delete('public/img/review/'.$images->image4);
+            }
+        if($images->image5 !== null){
+            File::delete('public/img/review/'.$images->image5);
+            }
+        $rating=reviews::where('id',$idrating)->delete();
+
+        $ratings = reviews::where('wisata_id', $travelid)
+        ->where('token', null)
+        ->avg('star_rating');
+        
+        $getwisataRating = countrating::where('wisata_id', $travelid)->first();
+        countrating::where('wisata_id', $travelid)->update([
+        'totalrating' => $ratings
+        ]);
+       
         Alert::error('Berhasil Dihapus');
         return redirect()->back();
     }

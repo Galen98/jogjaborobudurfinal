@@ -90,18 +90,21 @@ Route::get('/', function (Request $request) {
     // get session user
     $session = session()->get("rate") ?? "USD";
     $traveltop=DB::table('wisata')
-    ->orderBy('created_at','DESC')
+    // ->orderBy('created_at','DESC')
     ->where('bahasa',$sessions)
     ->leftJoin('countrating', 'wisata.wisata_id', '=', 'countrating.wisata_id')
-    ->select('wisata.created_at','wisata.wisata_id','wisata.namawisata','wisata.image','countrating.totalrating', 'wisata.label','wisata.durasi','wisata.IDR','wisata.image2','wisata.discount','wisata.kategories','wisata.capacity','wisata.IDR_awal','wisata.slug')->paginate(8);
+    ->select('wisata.created_at','wisata.wisata_id','wisata.namawisata','wisata.image','countrating.totalrating', 'wisata.label','wisata.durasi','wisata.IDR','wisata.image2','wisata.discount','wisata.kategories','wisata.capacity','wisata.IDR_awal','wisata.slug')
+    ->orderBy('countrating.totalrating','DESC')
+    ->paginate(8);
     //$traveltop=travel::paginate(8);
 
     $other=DB::table('wisata')
-    ->orderBy('created_at','DESC')
+    // ->orderBy('created_at','DESC')
     ->where('label', 'Likely to sell out')
     ->where('bahasa',$sessions)
     ->leftJoin('countrating', 'wisata.wisata_id', '=', 'countrating.wisata_id')
     ->select('wisata.created_at','wisata.wisata_id','wisata.namawisata','wisata.image','countrating.totalrating', 'wisata.label','wisata.durasi','wisata.IDR','wisata.image2','wisata.discount','wisata.kategories','wisata.capacity','wisata.IDR_awal','wisata.slug')
+    ->orderBy('countrating.totalrating','DESC')
     ->paginate(4);
     $blog=blog::orderBy('created_at','DESC')->where('bahasa', $sessions)->paginate(3);
     return view('frontend.index', compact('city','provinces','province','sessions','traveltop','other','blog',"rateIDR", "rateSGD", "rateMYR", "session","rateEUR","destination",'destinate','season','bahasa','background'));
@@ -225,7 +228,9 @@ Route::get('/paketwisata/form', function () {
 })->middleware('auth');
 
 Route::get('/rating', [App\Http\Controllers\BlogController::class,'kelolarating'])->middleware('auth');
-Route::get('/data-booking', [App\Http\Controllers\BlogController::class,'bookinglist']);
+Route::post('insertnewreview', [App\Http\Controllers\BlogController::class,'insertreview'])->middleware('auth');
+Route::get('/rating/createreview/form/{idtravel}', [App\Http\Controllers\BlogController::class,'buatreview'])->middleware('auth');
+Route::get('/data-booking', [App\Http\Controllers\BlogController::class,'bookinglist'])->middleware('auth');
 Route::delete('deleterating/{idrating}', [App\Http\Controllers\BlogController::class,'deleterating']);
 Route::delete('deletetheme/{idtheme}', [App\Http\Controllers\BlogController::class,'deletetheme']);
 Route::delete('deletedestination/{iddestination}', [App\Http\Controllers\BlogController::class,'deletedestination']);
@@ -236,6 +241,7 @@ Route::delete('hapusexclude/{idexclude}', [App\Http\Controllers\BlogController::
 Route::delete('hapushighlight/{idhighlight}', [App\Http\Controllers\BlogController::class,'hapushighlight']);
 Route::delete('hapusimportant/{idimportant}', [App\Http\Controllers\BlogController::class,'hapusimportant']);
 Route::get('/rating/{idtravel}', [App\Http\Controllers\BlogController::class,'ratingwisata'])->middleware('auth');
+Route::get('/rating/edit/{idreview}', [App\Http\Controllers\BlogController::class,'editreview'])->middleware('auth');
 
 
 
@@ -288,21 +294,21 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/blogadmin/viewblog/{idblog}', [App\Http\Controllers\BlogController::class,'viewblog'])->middleware('auth');
 Route::get('/data-booking/filter', [App\Http\Controllers\BlogController::class,'datefilter'])->middleware('auth');
 Route::get('/blogadmin/editblog/{idblog}', [App\Http\Controllers\BlogController::class,'editblog'])->middleware('auth');
-Route::patch('editblog/{idblog}', [App\Http\Controllers\BlogController::class,'editblogproses']);
+Route::patch('editblog/{idblog}', [App\Http\Controllers\BlogController::class,'editblogproses'])->middleware('auth');
 //edit background
-Route::patch('editimagelanding/{idimage}', [App\Http\Controllers\BlogController::class,'editimagelanding']);
-Route::patch('editimagecontact/{idimage}', [App\Http\Controllers\BlogController::class,'editimagecontact']);
-Route::patch('editimageinfluencer/{idimage}', [App\Http\Controllers\BlogController::class,'editimageinfluencer']);
-Route::patch('editimageplatform/{idimage}', [App\Http\Controllers\BlogController::class,'editimageplatform']);
-Route::patch('editimagecorporate/{idimage}', [App\Http\Controllers\BlogController::class,'editimagecorporate']);
-Route::patch('editimageagent/{idimage}', [App\Http\Controllers\BlogController::class,'editimageagent']);
-Route::patch('editimageaffiliate/{idimage}', [App\Http\Controllers\BlogController::class,'editimageaffiliate']);
-Route::patch('editimageselltours/{idimage}', [App\Http\Controllers\BlogController::class,'editimageselltours']);
-Route::patch('editimageabout/{idimage}', [App\Http\Controllers\BlogController::class,'editimageabout']);
-
-Route::patch('editwisata/{idwisata}', [App\Http\Controllers\BlogController::class,'editproseswisata']);
-Route::patch('diskonpost/{travelid}', [App\Http\Controllers\BlogController::class,'diskonpost']);
-Route::get('/home/viewblog/{idblog}', [App\Http\Controllers\BlogController::class,'viewblog']);
+Route::patch('editimagelanding/{idimage}', [App\Http\Controllers\BlogController::class,'editimagelanding'])->middleware('auth');
+Route::patch('editimagecontact/{idimage}', [App\Http\Controllers\BlogController::class,'editimagecontact'])->middleware('auth');
+Route::patch('editimageinfluencer/{idimage}', [App\Http\Controllers\BlogController::class,'editimageinfluencer'])->middleware('auth');
+Route::patch('editimageplatform/{idimage}', [App\Http\Controllers\BlogController::class,'editimageplatform'])->middleware('auth');
+Route::patch('editimagecorporate/{idimage}', [App\Http\Controllers\BlogController::class,'editimagecorporate'])->middleware('auth');
+Route::patch('editimageagent/{idimage}', [App\Http\Controllers\BlogController::class,'editimageagent'])->middleware('auth');
+Route::patch('editimageaffiliate/{idimage}', [App\Http\Controllers\BlogController::class,'editimageaffiliate'])->middleware('auth');
+Route::patch('editimageselltours/{idimage}', [App\Http\Controllers\BlogController::class,'editimageselltours'])->middleware('auth');
+Route::patch('editimageabout/{idimage}', [App\Http\Controllers\BlogController::class,'editimageabout'])->middleware('auth');
+Route::patch('editreview/{idreview}', [App\Http\Controllers\BlogController::class,'editreviewprocess'])->middleware('auth');
+Route::patch('editwisata/{idwisata}', [App\Http\Controllers\BlogController::class,'editproseswisata'])->middleware('auth');
+Route::patch('diskonpost/{travelid}', [App\Http\Controllers\BlogController::class,'diskonpost'])->middleware('auth');
+Route::get('/home/viewblog/{idblog}', [App\Http\Controllers\BlogController::class,'viewblog'])->middleware('auth');
 Auth::routes();
 Route::post('insertblog',[App\Http\Controllers\BlogController::class, 'insertblog']);
 Route::post('insertseason',[App\Http\Controllers\BlogController::class, 'insertseason']);

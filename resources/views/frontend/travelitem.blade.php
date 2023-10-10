@@ -308,7 +308,7 @@
 
      @foreach($travel as $item)
     <section class="activity__mobile-header" data-v-c4be1764>
-  <section data-v-c4be1764>
+  <section data-v-c4be1764 style="margin-bottom:-25px;">
   <p data-test-id="collection-title" class="collection-header_title" data-v-76e871e0 style="font-size:22px;">
       {{$item->namawisata}}
 </p> 
@@ -323,7 +323,7 @@
   <small class="supplier-name__label" data-v-5db601b6>
     </small>
   </div> @endforeach
-  <div data-track="activity-rating" class="activity__row activity__rating activity__rating--mobile" data-v-c4be1764>
+  <!-- <div data-track="activity-rating" class="activity__row activity__rating activity__rating--mobile" data-v-c4be1764>
     <div class="rating-star">
   
   </div> 
@@ -333,7 +333,7 @@
   <span class="gtm-trigger__adp-total-reviews-btn">
       
     </span></p>
-  </div>
+  </div> -->
   </section> 
   <section class="activity__price activity__price--mobile" data-v-46d2d245 data-v-c4be1764>
   <div data-test-id="activity-price-block" class="price-block price-block--has-price price-block--persuation-badge" data-v-46d2d245>
@@ -731,13 +731,31 @@
   <div class="rating-overall__rating">
   <div class="rating-star rating-overall__rating-stars">
  <div class="small-ratings">
+ @php
+            $rating = $item->totalrating;
+            $fullStars = floor($rating);
+            $halfStar = ceil($rating - $fullStars);
+            $emptyStars = 5 - ($fullStars + $halfStar);
+            @endphp
+            @for ($i = 1; $i <= $fullStars; $i++)
                 <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
+            @endfor
+            @if ($halfStar)
+            <i class="fa fa-star-half rating-color"></i>
+            @endif
+            @for ($i = 1; $i <= $emptyStars; $i++)
+                <!-- <i class="fa fa-star rating-color" style="color:grey !important;"></i> -->
+            @endfor
+            @if($rating == 0)
+            @for ($i = 1; $i <= 5; $i++)
+                <i class="fa fa-star rating-color" style="color:grey !important;"></i>
+            @endfor
+            @endif
               </div>
-</div>   
+</div>
+<div class="rating-overall__reviews" style="margin-bottom:15px;">
+  ({!! number_format($item->totalrating, 1) !!})
+  </div>   
 </div> 
 </div> 
 <div class="activity-card__pricing" data-v-a1084d9e><div class="baseline-pricing" data-v-24caa43d data-v-a1084d9e><div class="baseline-pricing__container" data-v-24caa43d><div class="baseline-pricing__value" data-v-24caa43d><p class="baseline-pricing__from" data-v-24caa43d>From</p>
@@ -841,16 +859,32 @@
       <div class="rating-star rating-overall__rating-stars">
         <div class="" style="margin-bottom: 10px;">
               <div class="small-ratings">
+              @php
+            $rating = $item->totalrating;
+            $fullStars = floor($rating);
+            $halfStar = ceil($rating - $fullStars);
+            $emptyStars = 5 - ($fullStars + $halfStar);
+            @endphp
+            @for ($i = 1; $i <= $fullStars; $i++)
                 <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
+            @endfor
+            @if ($halfStar)
+            <i class="fa fa-star-half rating-color"></i>
+            @endif
+            @for ($i = 1; $i <= $emptyStars; $i++)
+                <!-- <i class="fa fa-star rating-color" style="color:grey !important;"></i> -->
+            @endfor
+            @if($rating == 0)
+            @for ($i = 1; $i <= 5; $i++)
+                <i class="fa fa-star rating-color" style="color:grey !important;"></i>
+            @endfor
+            @endif
               </div>
             </div>
       </div> 
   </div> 
-  <div class="rating-overall__reviews">
+  <div class="rating-overall__reviews" style="margin-bottom:15px;">
+  ({!! number_format($item->totalrating, 1) !!})
   </div>
   </div> 
   <div class="baseline-pricing" data-v-23fc334c>
@@ -1063,8 +1097,8 @@
         <div>
 <div class="row">
 <div class="col mt-4">
-<span data-test-id="collection-title" class="collection-header_title" style="font-size:25px;font-weight:bolder;">
-     Customer reviews 
+<span data-test-id="collection-title" class="collection-header_title" style="font-size:20px;font-weight:bolder;">
+     Customer reviews (Only customer who made bookings can review this experience)
    </span> 
       <br/>
       <br/>
@@ -1085,7 +1119,9 @@
                 @endfor
                 </div>
             </div>
+            <div style="margin-right:15px;">
             <p class="disabled">{{ \Carbon\Carbon::parse($values->updated_at)->formatLocalized('%d %B %Y') }}</p>
+          </div>
           </div>
           <div class="form-group row mt-0">
             <div class="col">
@@ -1126,7 +1162,7 @@
             </div>
             </div>
     <div class="d-block d-md-none">
-  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div id="carouselExampleControls{{$values->id}}" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner" style="border-radius:15px;">
   @if($values->image !== null)
     <div class="carousel-item active">
@@ -1154,11 +1190,11 @@
     </div>
     @endif
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+  <a class="carousel-control-prev" href="#carouselExampleControls{{$values->id}}" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+  <a class="carousel-control-next" href="#carouselExampleControls{{$values->id}}" role="button" data-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
@@ -1206,6 +1242,6 @@
 </ul>
 </div>
 @endsection
-
+<!-- {!! $cityGet !!} -->
 @section('scripts')
 @endsection

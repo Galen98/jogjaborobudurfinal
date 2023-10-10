@@ -57,7 +57,7 @@
     <div class="row">
         
 <div class="col mt-4">
-   <form class="py-2 px-4" action="{{url('insertreview')}}" enctype="multipart/form-data" style="" method="POST" autocomplete="off">  
+   <form class="py-2 px-4" id="forms" action="{{url('insertreview')}}" enctype="multipart/form-data" style="" method="POST" autocomplete="off">  
    @csrf
     @method('patch')
       <input type="hidden" value="{!! $databooking->name !!}" name="name"/>
@@ -98,7 +98,9 @@
          </div>
       </div>
       <div class="form-group row mt-4">
+      <div class="rate" style="margin-bottom:-10px;">
       <span data-test-id="collection-title" class="collection-header_title" style="font-size:18px;font-weight:bolder;">Add some photos</span>
+    </div>
   <div class="col">
   <input class="form-control" type="file" name="images[]" accept="image/*" id="formFileMultiple" multiple>
 </div>
@@ -109,8 +111,7 @@
     <hr>
     <div class="mt-3 text-right">
          <button type="submit" class="c-button--medium billing-form__validate-billing-details-and-sri__button filbtn" type="button" data-test-id="checkout-submit-btn">Submit</button>
-      </div>
-      
+      </div>  
 </form>
 </div> 
 </div>
@@ -144,18 +145,14 @@ $(document).ready(function () {
             swal("Error", "Max allowed photos is 5", "error");
             return;
         }
-
         photoPreviewContainer.empty();
-
         $.each(files, function (index, file) {
             const reader = new FileReader();
-
             // Validasi ukuran file
             if (file.size > maxFileSizeMB * 1024 * 1024) {
                 swal("Error", "File size exceeds 2MB limit", "error");
                 return;
             }
-
             reader.onload = function (e) {
                 const img = $('<img>').attr('src', e.target.result).css({
                     'max-width': '200px',
@@ -170,4 +167,29 @@ $(document).ready(function () {
     }
 });
     </script>
+
+<script>
+$(document).ready(function() {
+
+    function validateForm() {
+        if (!$('input[name="rating"]:checked').val()) {
+            // Tampilkan notifikasi jika validasi gagal
+            swal("Error", "Please select a rating.", "error");
+            return false;
+        }
+
+        var comment = $('textarea[name="comment"]').val().trim();
+        if (comment === '') {
+            swal("Error", "Review cannot be empty.", "error");
+            return false; 
+        }
+
+        return true;
+    }
+
+    $('form').submit(function() {
+        return validateForm();
+    });
+});
+</script>
 </body>

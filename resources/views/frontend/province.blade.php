@@ -235,16 +235,32 @@
       <div class="rating-star rating-overall__rating-stars">
         <div class="" style="margin-bottom: 10px;">
               <div class="small-ratings">
+              @php
+            $rating = $item->totalrating;
+            $fullStars = floor($rating);
+            $halfStar = ceil($rating - $fullStars);
+            $emptyStars = 5 - ($fullStars + $halfStar);
+            @endphp
+            @for ($i = 1; $i <= $fullStars; $i++)
                 <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
+            @endfor
+            @if ($halfStar)
+            <i class="fa fa-star-half rating-color"></i>
+            @endif
+            @for ($i = 1; $i <= $emptyStars; $i++)
+                <!-- <i class="fa fa-star rating-color" style="color:grey !important;"></i> -->
+            @endfor
+            @if($rating == 0)
+            @for ($i = 1; $i <= 5; $i++)
+                <i class="fa fa-star rating-color" style="color:grey !important;"></i>
+            @endfor
+            @endif
               </div>
             </div>
       </div> 
   </div> 
-  <div class="rating-overall__reviews">
+  <div class="rating-overall__reviews" style="margin-bottom:15px;">
+  ({!! number_format($item->totalrating, 1) !!})
   </div>
   </div> 
   <div class="baseline-pricing" data-v-23fc334c>
@@ -366,16 +382,32 @@
       <div class="rating-star rating-overall__rating-stars">
         <div class="" style="margin-bottom: 10px;">
               <div class="small-ratings">
+              @php
+            $rating = $item->totalrating;
+            $fullStars = floor($rating);
+            $halfStar = ceil($rating - $fullStars);
+            $emptyStars = 5 - ($fullStars + $halfStar);
+            @endphp
+            @for ($i = 1; $i <= $fullStars; $i++)
                 <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
+            @endfor
+            @if ($halfStar)
+            <i class="fa fa-star-half rating-color"></i>
+            @endif
+            @for ($i = 1; $i <= $emptyStars; $i++)
+                <!-- <i class="fa fa-star rating-color" style="color:grey !important;"></i> -->
+            @endfor
+            @if($rating == 0)
+            @for ($i = 1; $i <= 5; $i++)
+                <i class="fa fa-star rating-color" style="color:grey !important;"></i>
+            @endfor
+            @endif
               </div>
             </div>
       </div> 
   </div> 
-  <div class="rating-overall__reviews">
+  <div class="rating-overall__reviews" style="margin-bottom:15px;">
+  ({!! number_format($item->totalrating, 1) !!})
   </div>
   </div> 
   <div class="baseline-pricing" data-v-23fc334c>
@@ -467,23 +499,9 @@
       </span> 
     </div> 
     </div> 
-</section>
+  </section>
 
-<div class="gtco-section d-none d-sm-block" style="margin-top:-80px;margin-bottom:-80px;">
-		<div class="gtco-container">
-			<div class="col-md-8 col-md-offset-2 text-center gtco-heading" style="margin-bottom:-10px; ">
-     
-        </div>
-			<div class="row">
-				<div class="col-md-12">
-				<div class="col-md-6 ">
-					<div class="container">
-		</div>
-		</div>
-</div>
-	</div>
-</div>
-</div>
+
 
 	<div id="gyg" data-server-rendered="true" class="d-none d-sm-block">
   <div class="partner-left-layout" data-v-5120f7ad>
@@ -529,14 +547,31 @@
   
   <div class="rating-star rating-overall__rating-stars">
  <div class="small-ratings">
+            @php
+            $rating = $item->totalrating;
+            $fullStars = floor($rating);
+            $halfStar = ceil($rating - $fullStars);
+            $emptyStars = 5 - ($fullStars + $halfStar);
+            @endphp
+            @for ($i = 1; $i <= $fullStars; $i++)
                 <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
+            @endfor
+            @if ($halfStar)
+            <i class="fa fa-star-half rating-color"></i>
+            @endif
+            @for ($i = 1; $i <= $emptyStars; $i++)
+                <!-- <i class="fa fa-star rating-color" style="color:grey !important;"></i> -->
+            @endfor
+            @if($rating == 0)
+            @for ($i = 1; $i <= 5; $i++)
+                <i class="fa fa-star rating-color" style="color:grey !important;"></i>
+            @endfor
+            @endif
               </div>
-
-</div> 
+</div>
+<div class="rating-overall__reviews" style="margin-bottom:15px;">
+  ({!! number_format($item->totalrating, 1) !!})
+  </div> 
 </div> 
 </div> 
 <div class="activity-card__pricing" data-v-a1084d9e><div class="baseline-pricing" data-v-24caa43d data-v-a1084d9e><div class="baseline-pricing__container" data-v-24caa43d><div class="baseline-pricing__value" data-v-24caa43d><p class="baseline-pricing__from" data-v-24caa43d>From</p>
@@ -614,14 +649,31 @@
   <div class="rating-overall__rating">
   <div class="rating-star rating-overall__rating-stars">
  <div class="small-ratings">
+ @php
+            $rating = $item->totalrating;
+            $fullStars = floor($rating);
+            $halfStar = ceil($rating - $fullStars);
+            $emptyStars = 5 - ($fullStars + $halfStar);
+            @endphp
+            @for ($i = 1; $i <= $fullStars; $i++)
                 <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
+            @endfor
+            @if ($halfStar)
+            <i class="fa fa-star-half rating-color"></i>
+            @endif
+            @for ($i = 1; $i <= $emptyStars; $i++)
+                <!-- <i class="fa fa-star rating-color" style="color:grey !important;"></i> -->
+            @endfor
+            @if($rating == 0)
+            @for ($i = 1; $i <= 5; $i++)
+                <i class="fa fa-star rating-color" style="color:grey !important;"></i>
+            @endfor
+            @endif
               </div>
-
-</div>   
+</div>
+<div class="rating-overall__reviews" style="margin-bottom:15px;">
+  ({!! number_format($item->totalrating, 1) !!})
+  </div>   
 </div> 
 </div> 
 <div class="activity-card__pricing" data-v-a1084d9e><div class="baseline-pricing" data-v-24caa43d data-v-a1084d9e><div class="baseline-pricing__container" data-v-24caa43d><div class="baseline-pricing__value" data-v-24caa43d><p class="baseline-pricing__from" data-v-24caa43d>From</p>

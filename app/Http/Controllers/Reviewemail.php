@@ -13,6 +13,7 @@ use App\Models\bahasa;
 use App\Models\Rate;
 use App\Models\travel;
 use App\Mail\ReviewLinkMail;
+use App\Mail\EmailConfirmation;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -139,6 +140,7 @@ class Reviewemail extends Controller
     }
     }
 
+
     public function insertReview(Request $request){
         $reviewid = $request->reviewid;
         $travelid = $request->travelid;
@@ -175,8 +177,11 @@ class Reviewemail extends Controller
             ]);
         }
 
-        $rating = reviews::where('wisata_id', $travelid)->avg('star_rating');
-        $getwisataRating = countrating::where('wisata_id', $travelid)->first();
+        $rating = reviews::where('wisata_id', $travelid)
+        ->where('token', null)
+        ->avg('star_rating');
+        $getwisataRating = countrating::where('wisata_id', $travelid)
+        ->first();
 
         if($getwisataRating == null){
             $data = [
@@ -190,6 +195,13 @@ class Reviewemail extends Controller
             ]);
         }
 
+        $review=reviews::where('id', $reviewid)->first();
+        $bookingid=$review->booking_id;
+        $booking=booking::where('id', $bookingid)->first();
+        $travel=travel::where('wisata_id', $travelid)->first();
+        $email=$booking->email;
+
+        Mail::to($email)->send(new EmailConfirmation($travel, $review));
         Alert::success('Success');
         return redirect()->to('/');
     }

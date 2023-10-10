@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="{{asset('traveler')}}/css/booking11.css">
     <script src="{{asset('traveler')}}/js/modernizr-2.6.2.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" ></script>
   </head>
   <body>
     <div id="gyg">
@@ -121,7 +122,7 @@
 	<div class="c-input c-input--with-label billing-form__field">
 	<div class="c-input__container">
 	<label class="c-input__label" for="c-input-3241">First name *</label>
-	<input id="c-input-3241" class="c-input__field" value data-test-id="billing-fullname" type="text" name="name" autocomplete="name" modelvalue>
+	<input id="c-input-3241" class="c-input__field" value data-test-id="billing-fullname" type="text" name="name" autocomplete="name" required>
 	</div>
 	<span class="c-input__icon c-input__icon--posticon"></span>
 	</div>
@@ -140,8 +141,6 @@
 	</div>
 	</div>
 
-	
-
 	<div class="c-form-field c-form-field--vertical">
 	<div class="c-form-field__container">
 	<div class="c-input c-input--with-label billing-form__field">
@@ -159,7 +158,7 @@
 	<div class="c-input__container">
 	<label class="c-input__label" for="c-input-3241">Country</label>
 	<select name="negaras" class="c-input__field">
-	<option class="option">Select Your Country</option>
+	<option class="option" value="">Select Your Country</option>
 		@foreach($country as $item)
 	<option value="{{$item->nicename}}" id="countrys" class="option">{{$item->nicename}}</option>
 	@endforeach
@@ -179,7 +178,7 @@
 	<select value="" class="gyg-select-field" id="countryphone" modelvalue="" name="country" data-test-id="country-form-select" autocomplete="country">
 	<option class="option" value="Enter code">Select Phone Number Code</option>
 	@foreach($country as $item)
-	<option value="{{$item->phonecode}}"  class="option" value="+{{$item->phonecode}}">{{$item->nicename}} (+{{$item->phonecode}})</option>
+	<option value="{{$item->phonecode}}" class="option" value="+{{$item->phonecode}}">{{$item->nicename}} (+{{$item->phonecode}})</option>
 	@endforeach
 	</select>
 	<span class="gyg-select-icon gyg-select-icon-posticon">
@@ -361,34 +360,15 @@
 	</div>
 	</div>
     
-    
-    
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <div class="gototop js-top">
         <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
         </div>
-  
-  <!-- jQuery -->
-  <script src="{{asset('traveler')}}/js/lightbox-plus-jquery.min.js"></script>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-
   <script src="{{asset('traveler')}}/js/jquery.min.js"></script>
-  <!-- jQuery Easing -->
-  <script src="{{asset('traveler')}}/js/jquery.easing.1.3.js"></script>
-  <!-- Bootstrap -->
   <script src="{{asset('traveler')}}/js/bootstrap.min.js"></script>
-  <!-- Waypoints -->
-  <script src="{{asset('traveler')}}/js/jquery.waypoints.min.js"></script>
-  <!-- Carousel -->
-  <script src="{{asset('traveler')}}/js/owl.carousel.min.js"></script>
-  <!-- countTo -->
-  <script src="{{asset('traveler')}}/js/jquery.countTo.js"></script>
-
-  <!-- Stellar Parallax -->
-  <script src="{{asset('traveler')}}/js/jquery.stellar.min.js"></script>
-  
-  <!-- Datepicker -->
   <script src="{{asset('traveler')}}/js/bootstrap-datepicker.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -402,11 +382,10 @@
 //   });
 // });
 </script>
+
 <script type="text/javascript">
   $(document).ready(function(){
 	const country = {!! $country !!}
-	
-
 	$('#countryphone').on('change', function() {
 	let countrymobile=$("#countrymobile").val()
 	let countryphone=$("#countryphone").val()
@@ -415,6 +394,48 @@
 	}
 	});
   });
+  </script>
+  <script>
+	$(document).ready(function () {
+    $('form').submit(function () {
+        return validateForm();
+    });
+
+    function validateForm() {
+        var fullName = $('input[name="name"]').val().trim();
+		var email = $('input[name="email"]').val().trim();
+		var phone = $('input[name="phone"]').val().trim();
+		var pickup = $('input[name="pickup"]').val().trim();
+		var selectedCountry = $('select[name="negaras"]').val();
+        if (fullName === '') {
+            swal("Error", "First Name cannot be empty.", "error");
+            return false; 
+        }
+
+		if (email === '') {
+            swal("Error", "Email cannot be empty.", "error");
+            return false; 
+        }
+
+		if (!selectedCountry) {
+            swal("Error", "Please select a country.", "error");
+            return false;
+        }
+
+		if (phone === '') {
+            swal("Error", "Phone number cannot be empty.", "error");
+            return false; 
+        }
+
+		if (pickup === '') {
+            swal("Error", "Pickup location cannot be empty.", "error");
+            return false; 
+        }
+
+        return true;
+    }
+});
+
   </script>
 
 </body>

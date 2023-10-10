@@ -2,6 +2,15 @@
 @extends('navadmin')
 @section('content')
 @include('sweetalert::alert')
+<div class="card-body">
+<form action="/rating/createreview/form/{{$wisataid->wisata_id}}" method="GET" >
+<button class="btn btn-danger btn-icon-text">
+<i class="mdi mdi-upload btn-icon-prepend"></i>                                                    
+Buat Review
+</button>
+</form>
+</div>
+
 <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
@@ -11,13 +20,16 @@
                       <thead>
                         <tr >
                           <th style="font-weight: bold;">
-                            No.
+                            Cust. Name
                           </th>
                           <th style="font-weight: bold;">
                             Comment
                           </th>
                           <th style="font-weight: bold;">
                             Rating
+                          </th>
+                          <th style="font-weight: bold;">
+                            Edit
                           </th>
                           <th style="font-weight: bold;">
                             Delete
@@ -34,13 +46,19 @@
                       @foreach($travel as $item)
                         <tr>
                           <td>
-                          {{ $loop->iteration }}
+                          <!-- {{ $loop->iteration }} -->
+                          {{ $item->name }}
                           </td>
                           <td>
                          {{$item->comments}}
                           </td>
                           <td>
                           {{$item->star_rating}} Rating
+                          </td>
+                          <td> 
+                          <form action="{{'/rating/edit/'.$item->id}}" method="get">
+                          <button type="submit" class="btn btn-sm btn-info btn-rounded btn-fw" style="color: white;"><i class="mdi mdi-pencil-box" style="color: white;"></i> Edit</button>
+                          </form>
                           </td>
                           <td>
                           	<form action="{{url('deleterating/'.$item->id)}}" method="POST">

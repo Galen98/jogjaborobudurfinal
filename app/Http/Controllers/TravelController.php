@@ -302,13 +302,8 @@ class TravelController extends Controller
                 $data['min'] = $row;
                 $data['maks'] = $range[$index];
                 $data['harga'] = $pricerange[$index];
-              
-
                 $hargas=harga::create($data);
-                }
-                
-
-               
+                }            
 
         Alert::success('Berhasil');
         return redirect('/paketwisata/diskon/'.$travel->id);
@@ -409,11 +404,30 @@ class TravelController extends Controller
         $city=region::get();
         $category = destination::where('id', $idcategory)->get();
         $count = tambahdestinasi::where('destinasi_id',$idcategory)->get();
-        $other = travel::where('bahasa', $sessions)->paginate(4);
-        $destination = DB::table('tambahdestinasi')->where('destinasi_id',$idcategory)->where('bahasa',$sessions)
+        //$other = travel::where('bahasa', $sessions)->paginate(4);
+        $destination = DB::table('tambahdestinasi')
+            ->where('destinasi_id',$idcategory)
+            ->where('bahasa',$sessions)
             ->leftJoin('wisata', 'tambahdestinasi.wisata_id', '=', 'wisata.wisata_id')
-            ->select('wisata.wisata_id','wisata.namawisata', 'wisata.label','wisata.durasi','wisata.IDR','wisata.image2','wisata.discount','wisata.kategories','wisata.capacity','wisata.IDR_awal','wisata.slug')->paginate(8);
-        return view('frontend.destinationcategory', compact('categoryid','seasonactive','city','province','category','count','destination','other','rateEUR','rateIDR','rateSGD','rateMYR','session','destinate','destinasi','season','bahasa','session','sessions'));
+            ->select('wisata.wisata_id','wisata.namawisata', 'wisata.label','wisata.durasi','wisata.IDR','wisata.image2','wisata.discount','wisata.kategories','wisata.capacity','wisata.IDR_awal','wisata.slug')
+            ->leftJoin('countrating', 'wisata.wisata_id', '=', 'countrating.wisata_id')
+            ->select('wisata.created_at','wisata.wisata_id','wisata.namawisata','wisata.image','countrating.totalrating', 'wisata.label','wisata.durasi','wisata.IDR','wisata.image2','wisata.discount','wisata.kategories','wisata.capacity','wisata.IDR_awal','wisata.slug')
+            ->orderBy('countrating.totalrating','DESC')
+            ->paginate(8);
+
+         // $getCategoryId = tambahdestinasi::where('wisata_id', '!=', $wisatacategoryId)->pluck('wisata_id');
+        // $wisataIds = $getCategoryId->toArray();
+        $categoryids = tambahdestinasi::where('destinasi_id', $idcategory)->pluck('wisata_id');
+        $wisatacategoryId = $categoryids->toArray();
+        $other = DB::table('wisata')
+        ->where('wisata.wisata_id','!=' , $wisatacategoryId)
+        ->where('wisata.bahasa', $sessions)
+        ->leftJoin('countrating', 'wisata.wisata_id', '=', 'countrating.wisata_id')
+        ->select('wisata.created_at', 'wisata.wisata_id', 'wisata.namawisata', 'wisata.image', 'wisata.label', 'wisata.durasi', 'wisata.IDR', 'wisata.image2', 'wisata.discount', 'wisata.kategories', 'wisata.capacity', 'wisata.IDR_awal', 'wisata.slug', 'countrating.totalrating')
+        ->orderBy('countrating.totalrating', 'DESC')
+        ->get()
+        ->take(4);
+        return view('frontend.destinationcategory', compact('categoryids','categoryid','seasonactive','city','province','category','count','destination','other','rateEUR','rateIDR','rateSGD','rateMYR','session','destinate','destinasi','season','bahasa','session','sessions'));
         }
     }
 
@@ -484,10 +498,26 @@ class TravelController extends Controller
             return view('errors.404', compact('bahasa','session','sessions','province','city','season','destination'));
         } else {
         $count = tambahseason::where('season_id',$idseason)->get();
-        $other = travel::where('bahasa', $sessions)->paginate(4);
-        $seasons = DB::table('tambahseason')->where('season_id',$idseason)->where('bahasa', $sessions)
+        // $other = travel::where('bahasa', $sessions)->paginate(4);
+        $seasonids = tambahseason::where('season_id', $idseason)->pluck('wisata_id');
+        $wisataseasonId = $seasonids->toArray();
+        $other = DB::table('wisata')
+        ->where('wisata.wisata_id','!=' , $wisataseasonId)
+        ->where('wisata.bahasa', $sessions)
+        ->leftJoin('countrating', 'wisata.wisata_id', '=', 'countrating.wisata_id')
+        ->select('wisata.created_at', 'wisata.wisata_id', 'wisata.namawisata', 'wisata.image', 'wisata.label', 'wisata.durasi', 'wisata.IDR', 'wisata.image2', 'wisata.discount', 'wisata.kategories', 'wisata.capacity', 'wisata.IDR_awal', 'wisata.slug', 'countrating.totalrating')
+        ->orderBy('countrating.totalrating', 'DESC')
+        ->get()
+        ->take(4);
+
+        $seasons = DB::table('tambahseason')->where('season_id',$idseason)
+        ->where('bahasa', $sessions)
         ->leftJoin('wisata','tambahseason.wisata_id', '=', 'wisata.wisata_id')
-        ->select('wisata.wisata_id','wisata.namawisata', 'wisata.label','wisata.durasi','wisata.IDR','wisata.image2','wisata.discount','wisata.kategories','wisata.capacity','wisata.IDR_awal','wisata.slug')->get();
+        ->select('wisata.wisata_id','wisata.namawisata', 'wisata.label','wisata.durasi','wisata.IDR','wisata.image2','wisata.discount','wisata.kategories','wisata.capacity','wisata.IDR_awal','wisata.slug')
+        ->leftJoin('countrating', 'wisata.wisata_id', '=', 'countrating.wisata_id')
+        ->select('wisata.created_at','wisata.wisata_id','wisata.namawisata','wisata.image','countrating.totalrating', 'wisata.label','wisata.durasi','wisata.IDR','wisata.image2','wisata.discount','wisata.kategories','wisata.capacity','wisata.IDR_awal','wisata.slug')
+        ->orderBy('countrating.totalrating','DESC')
+        ->paginate(8);
         return view('frontend.season', compact('seasonactive','city','province','seasones','other','rateEUR','rateIDR','rateSGD','rateMYR','session','destinate','season','seasons','count','bahasa','session','sessions'));
         }
     }
@@ -525,7 +555,12 @@ class TravelController extends Controller
   
     // $English = travel::where("bahasa",$sessions)->first()->bahasa;
     $province=province::get();
-    $travel=travel::orderBy('created_at','DESC')->where('bahasa',$sessions)->paginate(8);
+    $travel=travel::orderBy('created_at','DESC')
+    ->where('bahasa',$sessions)
+    ->leftJoin('countrating', 'wisata.wisata_id', '=', 'countrating.wisata_id')
+    ->select('wisata.created_at','wisata.wisata_id','wisata.namawisata','wisata.image','countrating.totalrating', 'wisata.label','wisata.durasi','wisata.IDR','wisata.image2','wisata.discount','wisata.kategories','wisata.capacity','wisata.IDR_awal','wisata.slug')
+    ->orderBy('countrating.totalrating','DESC')
+    ->paginate(8);
     $destination = province::all()->take(3);
     return view('frontend.destination', compact('city','seasones','travel','rateIDR','rateMYR','rateSGD','session','rateEUR','destination','destinate','bahasa','sessions','session','province'));
     }
@@ -607,8 +642,22 @@ class TravelController extends Controller
         $value=reviews::where('wisata_id',$idtravel)->where('token', null)->paginate(5);
         $jumlahreview = reviews::where('wisata_id', $idtravel)->where('token', null)->count();
         $jumlahrating = reviews::where('wisata_id', $idtravel)->where('token', null)->avg('star_rating');
-        $other=travel::where('label','Likely to sell out')->where('bahasa',$sessions)->paginate(4);
-        return view('frontend.travelitem', compact('jumlahrating','important','city','seasones','provinces','travel','childoption','includes','excludes','other','value','jumlahreview',"rateIDR","rateMYR","rateSGD","session","rateEUR",'highlight','harga','destination','rangeharga','hargachild','jam','destinate','option','pilihan','harganew','options','hargachildnew','destinasi','season','bahasa','session','sessions','region','province')); 
+        // $other=travel::where('label','Likely to sell out')->where('bahasa',$sessions)->paginate(4);
+        $travelgetId=travel::where('slug', $slug)->first();
+        $cityTravel=tambahlocation::where('wisata_id', $travelgetId->wisata_id)->first();
+        $cityGet=tambahlocation::where('namaregion',$cityTravel->namaregion)->pluck('wisata_id');
+        $wisataIds = $cityGet->toArray();
+        $getLastwisataId = travel::whereIn('wisata_id', $wisataIds)->where('wisata_id', '!=', $idtravel)
+        ->pluck('wisata_id')->toArray();
+        $other = DB::table('wisata')
+        ->whereIn('wisata.wisata_id', $getLastwisataId)
+        ->where('wisata.bahasa', $sessions)
+        ->leftJoin('countrating', 'wisata.wisata_id', '=', 'countrating.wisata_id')
+        ->select('wisata.created_at', 'wisata.wisata_id', 'wisata.namawisata', 'wisata.image', 'wisata.label', 'wisata.durasi', 'wisata.IDR', 'wisata.image2', 'wisata.discount', 'wisata.kategories', 'wisata.capacity', 'wisata.IDR_awal', 'wisata.slug', 'countrating.totalrating')
+        ->orderBy('countrating.totalrating', 'DESC')
+        ->paginate(4);
+
+        return view('frontend.travelitem', compact('cityGet','jumlahrating','important','city','seasones','provinces','travel','childoption','includes','excludes','other','value','jumlahreview',"rateIDR","rateMYR","rateSGD","session","rateEUR",'highlight','harga','destination','rangeharga','hargachild','jam','destinate','option','pilihan','harganew','options','hargachildnew','destinasi','season','bahasa','session','sessions','region','province')); 
     }
     }
 
@@ -838,11 +887,26 @@ class TravelController extends Controller
         // get session user
         $session = session()->get("rate") ?? "USD";
         $count = tambahprovince::where('slugprovince',$slugprovince)->get();
-        $other = travel::where('bahasa', $sessions)->get()->take(4);
-        $travel = DB::table('tambahprovince')->where('slugprovince',$slugprovince)->where('bahasa',$sessions)
+        // $other = travel::where('bahasa', $sessions)->get()->take(4);
+        $travel = DB::table('tambahprovince')->where('slugprovince',$slugprovince)
+        ->where('bahasa',$sessions)
         ->leftJoin('wisata', 'tambahprovince.wisata_id', '=', 'wisata.wisata_id')
-        ->select('wisata.wisata_id','wisata.namawisata', 'wisata.label','wisata.durasi','wisata.IDR','wisata.image2','wisata.discount','wisata.kategories','wisata.capacity','wisata.IDR_awal','wisata.slug','tambahprovince.slugprovince')->paginate(8);
-        
+        ->select('wisata.wisata_id','wisata.namawisata', 'wisata.label','wisata.durasi','wisata.IDR','wisata.image2','wisata.discount','wisata.kategories','wisata.capacity','wisata.IDR_awal','wisata.slug','tambahprovince.slugprovince')
+        ->leftJoin('countrating', 'wisata.wisata_id', '=', 'countrating.wisata_id')
+        ->select('wisata.created_at','wisata.wisata_id','wisata.namawisata','wisata.image','countrating.totalrating', 'wisata.label','wisata.durasi','wisata.IDR','wisata.image2','wisata.discount','wisata.kategories','wisata.capacity','wisata.IDR_awal','wisata.slug')
+        ->orderBy('countrating.totalrating','DESC')
+        ->paginate(8);
+
+        $getIdprovince = tambahprovince::where('slugprovince', '!=' ,$slugprovince)->pluck('wisata_id');
+        $wisataIds = $getIdprovince->toArray();
+        $other = DB::table('wisata')
+        ->whereIn('wisata.wisata_id', $wisataIds)
+        ->where('wisata.bahasa', $sessions)
+        ->leftJoin('countrating', 'wisata.wisata_id', '=', 'countrating.wisata_id')
+        ->select('wisata.created_at', 'wisata.wisata_id', 'wisata.namawisata', 'wisata.image', 'wisata.label', 'wisata.durasi', 'wisata.IDR', 'wisata.image2', 'wisata.discount', 'wisata.kategories', 'wisata.capacity', 'wisata.IDR_awal', 'wisata.slug', 'countrating.totalrating')
+        ->orderBy('countrating.totalrating', 'DESC')
+        ->get()->take(4);
+
         return view('frontend.province', compact('seasonactive','provinceid','slugprovince','destination','city','provinces','province','bahasa','session','season','count','other','rateEUR','rateIDR','rateSGD','rateMYR','session','season','sessions','travel'));
     }
     }
@@ -915,11 +979,26 @@ class TravelController extends Controller
         // get session user
         $session = session()->get("rate") ?? "USD";
         $count = tambahlocation::where('slugregion',$slugcity)->get();
-        $other = travel::where('bahasa', $sessions)->get()->take(4);
-        $travel = DB::table('tambahlocation')->where('slugregion',$slugcity)->where('bahasa',$sessions)
+        // $other = travel::where('bahasa', $sessions)->get()->take(4);
+        $travel = DB::table('tambahlocation')
+        ->where('slugregion',$slugcity)
+        ->where('bahasa',$sessions)
         ->leftJoin('wisata', 'tambahlocation.wisata_id', '=', 'wisata.wisata_id')
-        ->select('wisata.wisata_id','wisata.namawisata', 'wisata.label','wisata.durasi','wisata.IDR','wisata.image2','wisata.discount','wisata.kategories','wisata.capacity','wisata.IDR_awal','wisata.slug','tambahlocation.slugregion')->paginate(8);
+        ->select('wisata.wisata_id','wisata.namawisata', 'wisata.label','wisata.durasi','wisata.IDR','wisata.image2','wisata.discount','wisata.kategories','wisata.capacity','wisata.IDR_awal','wisata.slug','tambahlocation.slugregion')
+        ->leftJoin('countrating', 'wisata.wisata_id', '=', 'countrating.wisata_id')
+        ->select('wisata.created_at','wisata.wisata_id','wisata.namawisata','wisata.image','countrating.totalrating', 'wisata.label','wisata.durasi','wisata.IDR','wisata.image2','wisata.discount','wisata.kategories','wisata.capacity','wisata.IDR_awal','wisata.slug')
+        ->orderBy('countrating.totalrating','DESC')
+        ->paginate(8);
         
+        $getIdother = tambahlocation::where('slugregion', '!=' ,$slugcity)->pluck('wisata_id');
+        $wisataIds = $getIdother->toArray();
+        $other = DB::table('wisata')
+        ->whereIn('wisata.wisata_id', $wisataIds)
+        ->where('wisata.bahasa', $sessions)
+        ->leftJoin('countrating', 'wisata.wisata_id', '=', 'countrating.wisata_id')
+        ->select('wisata.created_at', 'wisata.wisata_id', 'wisata.namawisata', 'wisata.image', 'wisata.label', 'wisata.durasi', 'wisata.IDR', 'wisata.image2', 'wisata.discount', 'wisata.kategories', 'wisata.capacity', 'wisata.IDR_awal', 'wisata.slug', 'countrating.totalrating')
+        ->orderBy('countrating.totalrating', 'DESC')
+        ->get()->take(4);
         return view('frontend.city', compact('slugcity','cityid','seasonactive','destination','city','regions','province','bahasa','session','season','count','other','rateEUR','rateIDR','rateSGD','rateMYR','session','season','sessions','travel'));
     }
     }
@@ -1039,7 +1118,6 @@ public function insertselltours(Request $request){
     return redirect()->back();
 }
 
-
 public function insertplatform(Request $request){
     $website=Request('website');
     $sosmed=Request('sosmed');
@@ -1117,9 +1195,9 @@ Alert::success('Success');
 return redirect()->back();
 }
 
-public function totalprice(Request $request){
+// public function totalprice(Request $request){
     
-}
+// }
 
 public function getrate()
     {
@@ -1322,19 +1400,32 @@ public function filterseasonprovince($slugprovince, $namaseason,Request $request
         // get session user
         $session = session()->get("rate") ?? "USD";
         $count = tambahprovince::where('slugprovince',$slugprovince)->get();
-        $other = travel::where('bahasa', $sessions)->get()->take(4);
         $selectedSeason = $request->input('season');
 
     // Query untuk mengambil data travel berdasarkan musim dan provinsi
-    $travel = DB::table('tambahprovince')
+         $travel = DB::table('tambahprovince')
         ->where('slugprovince', $slugprovince)
         ->where('bahasa', $sessions)
         ->leftJoin('wisata', 'tambahprovince.wisata_id', '=', 'wisata.wisata_id')
         ->leftJoin('tambahseason', 'tambahprovince.wisata_id', '=', 'tambahseason.wisata_id')
         ->where('tambahseason.season_id', $namaseason)
-        ->select('wisata.wisata_id', 'wisata.namawisata', 'wisata.label', 'wisata.durasi', 'wisata.IDR', 'wisata.image2', 'wisata.discount', 'wisata.kategories', 'wisata.capacity', 'wisata.IDR_awal', 'wisata.slug', 'tambahprovince.slugprovince');
+        ->select('wisata.wisata_id', 'wisata.namawisata', 'wisata.label', 'wisata.durasi', 'wisata.IDR', 'wisata.image2', 'wisata.discount', 'wisata.kategories', 'wisata.capacity', 'wisata.IDR_awal', 'wisata.slug', 'tambahprovince.slugprovince')
+        ->leftJoin('countrating', 'wisata.wisata_id', '=', 'countrating.wisata_id')
+        ->select('wisata.created_at','wisata.wisata_id','wisata.namawisata','wisata.image','countrating.totalrating', 'wisata.label','wisata.durasi','wisata.IDR','wisata.image2','wisata.discount','wisata.kategories','wisata.capacity','wisata.IDR_awal','wisata.slug')
+        ->orderBy('countrating.totalrating','DESC')
+        ->paginate(8);
 
-    $travel = $travel->paginate(8);
+        $getIdprovince = tambahprovince::where('slugprovince', '!=' ,$slugprovince)->pluck('wisata_id');
+        $wisataIds = $getIdprovince->toArray();
+        $other = DB::table('wisata')
+        ->whereIn('wisata.wisata_id', $wisataIds)
+        ->where('wisata.bahasa', $sessions)
+        ->leftJoin('countrating', 'wisata.wisata_id', '=', 'countrating.wisata_id')
+        ->select('wisata.created_at', 'wisata.wisata_id', 'wisata.namawisata', 'wisata.image', 'wisata.label', 'wisata.durasi', 'wisata.IDR', 'wisata.image2', 'wisata.discount', 'wisata.kategories', 'wisata.capacity', 'wisata.IDR_awal', 'wisata.slug', 'countrating.totalrating')
+        ->orderBy('countrating.totalrating', 'DESC')
+        ->get()->take(4);
+
+    // $travel = $travel->paginate(8);
 
     return view('frontend.province', compact('seasonactive','provinceid','slugprovince','destination','city','provinces','province','bahasa','session','season','count','other','rateEUR','rateIDR','rateSGD','rateMYR','session','season','sessions','travel'));
 }
@@ -1376,15 +1467,29 @@ public function filterseasoncity($slugcity, $namaseason,Request $request)
     // get session user
     $session = session()->get("rate") ?? "USD";
     $count = tambahlocation::where('slugregion',$slugcity)->get();
-    $other = travel::where('bahasa', $sessions)->get()->take(4);
+    // $other = travel::where('bahasa', $sessions)->get()->take(4);
+    $getIdother = tambahlocation::where('slugregion', '!=' ,$slugcity)->pluck('wisata_id');
+        $wisataIds = $getIdother->toArray();
+        $other = DB::table('wisata')
+        ->whereIn('wisata.wisata_id', $wisataIds)
+        ->where('wisata.bahasa', $sessions)
+        ->leftJoin('countrating', 'wisata.wisata_id', '=', 'countrating.wisata_id')
+        ->select('wisata.created_at', 'wisata.wisata_id', 'wisata.namawisata', 'wisata.image', 'wisata.label', 'wisata.durasi', 'wisata.IDR', 'wisata.image2', 'wisata.discount', 'wisata.kategories', 'wisata.capacity', 'wisata.IDR_awal', 'wisata.slug', 'countrating.totalrating')
+        ->orderBy('countrating.totalrating', 'DESC')
+        ->get()->take(4);
+
     $travel = DB::table('tambahlocation')
         ->where('slugregion',$slugcity)
         ->where('bahasa',$sessions)
         ->leftJoin('wisata', 'tambahlocation.wisata_id', '=', 'wisata.wisata_id')
         ->leftJoin('tambahseason', 'tambahlocation.wisata_id', '=', 'tambahseason.wisata_id')
         ->where('tambahseason.season_id', $namaseason)
-        ->select('wisata.wisata_id','wisata.namawisata', 'wisata.label','wisata.durasi','wisata.IDR','wisata.image2','wisata.discount','wisata.kategories','wisata.capacity','wisata.IDR_awal','wisata.slug','tambahlocation.slugregion');
-        $travel=$travel->paginate(8);
+        ->select('wisata.wisata_id','wisata.namawisata', 'wisata.label','wisata.durasi','wisata.IDR','wisata.image2','wisata.discount','wisata.kategories','wisata.capacity','wisata.IDR_awal','wisata.slug','tambahlocation.slugregion')
+        ->leftJoin('countrating', 'wisata.wisata_id', '=', 'countrating.wisata_id')
+        ->select('wisata.created_at','wisata.wisata_id','wisata.namawisata','wisata.image','countrating.totalrating', 'wisata.label','wisata.durasi','wisata.IDR','wisata.image2','wisata.discount','wisata.kategories','wisata.capacity','wisata.IDR_awal','wisata.slug')
+        ->orderBy('countrating.totalrating','DESC')
+        ->paginate(8);
+        // $travel=$travel->paginate(8);
         return view('frontend.city', compact('slugcity','cityid','seasonactive','destination','city','regions','province','bahasa','session','season','count','other','rateEUR','rateIDR','rateSGD','rateMYR','session','season','sessions','travel'));
 
 }
@@ -1427,15 +1532,30 @@ public function filterseasondestination($idcategory, $namaseason,Request $reques
     $city=region::get();
     $category = destination::where('id', $idcategory)->get();
     $count = tambahdestinasi::where('destinasi_id',$idcategory)->get();
-    $other = travel::where('bahasa', $sessions)->paginate(4);
+    // $other = travel::where('bahasa', $sessions)->paginate(4);
     $destination = DB::table('tambahdestinasi')
         ->where('destinasi_id',$idcategory)
         ->where('bahasa',$sessions)
         ->leftJoin('wisata', 'tambahdestinasi.wisata_id', '=', 'wisata.wisata_id')
         ->leftJoin('tambahseason', 'tambahdestinasi.wisata_id', '=', 'tambahseason.wisata_id')
         ->where('tambahseason.season_id', $namaseason)
-        ->select('wisata.wisata_id','wisata.namawisata', 'wisata.label','wisata.durasi','wisata.IDR','wisata.image2','wisata.discount','wisata.kategories','wisata.capacity','wisata.IDR_awal','wisata.slug');
-        $destination=$destination->paginate(8);
+        ->select('wisata.wisata_id','wisata.namawisata', 'wisata.label','wisata.durasi','wisata.IDR','wisata.image2','wisata.discount','wisata.kategories','wisata.capacity','wisata.IDR_awal','wisata.slug')
+        ->leftJoin('countrating', 'wisata.wisata_id', '=', 'countrating.wisata_id')
+        ->select('wisata.created_at','wisata.wisata_id','wisata.namawisata','wisata.image','countrating.totalrating', 'wisata.label','wisata.durasi','wisata.IDR','wisata.image2','wisata.discount','wisata.kategories','wisata.capacity','wisata.IDR_awal','wisata.slug')
+        ->orderBy('countrating.totalrating','DESC')
+        ->paginate(8);
+        
+        $categoryids = tambahdestinasi::where('destinasi_id', $idcategory)->pluck('wisata_id');
+        $wisatacategoryId = $categoryids->toArray();
+        $other = DB::table('wisata')
+        ->where('wisata.wisata_id','!=' , $wisatacategoryId)
+        ->where('wisata.bahasa', $sessions)
+        ->leftJoin('countrating', 'wisata.wisata_id', '=', 'countrating.wisata_id')
+        ->select('wisata.created_at', 'wisata.wisata_id', 'wisata.namawisata', 'wisata.image', 'wisata.label', 'wisata.durasi', 'wisata.IDR', 'wisata.image2', 'wisata.discount', 'wisata.kategories', 'wisata.capacity', 'wisata.IDR_awal', 'wisata.slug', 'countrating.totalrating')
+        ->orderBy('countrating.totalrating', 'DESC')
+        ->get()
+        ->take(4);
+        // $destination=$destination->paginate(8);
         return view('frontend.destinationcategory', compact('categoryid','seasonactive','city','province','category','count','destination','other','rateEUR','rateIDR','rateSGD','rateMYR','session','destinate','destinasi','season','bahasa','session','sessions'));
 
 }
