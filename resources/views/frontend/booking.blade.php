@@ -273,14 +273,29 @@
 	
 	<div class="rating-star rating-overall__rating-stars">
 	<div class="small-ratings">
+	@php
+            $rating = $rating;
+            $fullStars = floor($rating);
+            $halfStar = ceil($rating - $fullStars);
+            $emptyStars = 5 - ($fullStars + $halfStar);
+            @endphp
+            @for ($i = 1; $i <= $fullStars; $i++)
                 <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
+            @endfor
+            @if ($halfStar)
+            <i class="fa fa-star-half rating-color"></i>
+            @endif
+            @for ($i = 1; $i <= $emptyStars; $i++)
+                <!-- <i class="fa fa-star rating-color" style="color:grey !important;"></i> -->
+            @endfor
+            @if($rating == 0)
+            @for ($i = 1; $i <= 5; $i++)
+                <i class="fa fa-star rating-color" style="color:grey !important;"></i>
+            @endfor
+            @endif
               </div>
 	</div>
-	<span class="rating-overall__rating-reviews">({!! $reviews !!} Review)</span>
+	<span class="rating-overall__rating-reviews">({!! $rating !!})</span>
 	</div></div></div>
 	
 	</div>
@@ -294,7 +309,6 @@
 	<div data-v-039efa20><i class="fa-regular fa-calendar"></i> Travel date: {!!$tanggaltravel!!}</div>
 	
 	<div data-v-039efa20><i class="fa-regular fa-clock"></i> Pickup time: {!! $waktu !!}</div>
-	
 	</div>
 	<div class="cart-item__description--details--entry" data-v-039efa20>
 	<div data-v-039efa20>

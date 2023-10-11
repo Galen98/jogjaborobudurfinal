@@ -229,7 +229,6 @@
             <div class="col-lg-12">
             {{ $booking->links() }}
             </div>
-
             <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
             <div class="modal-content">

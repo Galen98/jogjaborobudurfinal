@@ -11,6 +11,7 @@ use App\Models\excludes;
 use App\Models\influencer;
 use App\Models\message;
 use App\Models\rating;
+use App\Models\countrating;
 use App\Models\destination;
 use App\Models\highlight;
 use App\Models\tambahdestinasi;
@@ -324,8 +325,9 @@ class TravelController extends Controller
         $totalgroup=Request('tothargagroup');
         $tanggaltravel=Request('tanggaltravel');
         $country=DB::table('country')->get();
-
-        return view('frontend.booking',compact('namawisata','reviews','total','tanggaltravel','adult','child','group','totalgroup','country','waktu','idoption','idtravel','paketwisata'));
+        $ratingGet=countrating::where('wisata_id', $idtravel)->first();
+        $rating=$ratingGet->totalrating;
+        return view('frontend.booking',compact('rating','namawisata','reviews','total','tanggaltravel','adult','child','group','totalgroup','country','waktu','idoption','idtravel','paketwisata'));
     }
 
     public function viewtraveladmin($idtravel){
