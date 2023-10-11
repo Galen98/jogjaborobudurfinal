@@ -34,9 +34,10 @@
   <a href="#main-content" class="skip-link">Skip to content</a> 
   <main id="main-content">
     <section layout="vertical" class="grid-wrapper container grid-wrapper--list">
-@foreach($booking as $item)
-  <div class="activity-card-block--grid" style="margin-bottom: 0px;">
-  <article data-test-id="horizontal-activity-card" class="activity-card horizontal-activity-card companion-inactive activity-card-block__card--grid activity-card-block--desktop" data-v-a1084d9e>
+  @foreach($booking as $item)
+  <div class="activity-card-block--grid d-block d-md-none" style="margin-bottom: 0px;">
+  <article style="overflow-x: auto; white-space: nowrap;" data-test-id="horizontal-activity-card" class="activity-card horizontal-activity-card companion-inactive activity-card-block__card--grid activity-card-block--desktop" data-v-a1084d9e>
+  <div style="width: 200%;"> 
   <a role="contentinfo" target="_blank" rel="noopener" data-activity-id="412877" class="activity-card__container gtm-trigger__card-interaction" data-v-a1084d9e>
   <div class="activity-card__image" data-v-a1084d9e> 
   <div class="activity-card__image-info align-end" data-v-a1084d9e></div> 
@@ -58,8 +59,7 @@
       <br>
       <span data-v-67560657>Travel date: {{$item->traveldate}}</span>
       <br>
-      <span data-v-67560657>Name: {{$item->name}} {{$item->surname}}</span>
-     
+      <span data-v-67560657>Name: {{$item->name}} {{$item->surname}}</span>   
     </span>
   </span>
 </li>
@@ -100,6 +100,100 @@
     </div>
     </div>
     </a>
+</div>
+    </article>
+    <div class="collapse" id="collapseExample{{$item->id}}">
+  <div class="card card-body">
+    <span data-v-67560657>Email: {{$item->email}}</span>
+    <span data-v-67560657>Phone: +{{$item->code}} {{$item->phone}}</span>
+    <span data-v-67560657>Country: {{$item->country}}</span>
+     @if(($item->adult) == 0)
+     <p></p>
+     @elseif(($item->adult) > 0)
+     <span data-v-67560657>Participants: {{$item->adult}} Adult</span>
+     @endif
+     @if(($item->child) == 0)
+     <p></p>
+     @elseif(($item->child) > 0)
+     <span data-v-67560657>Child Participants: {{$item->child}} Child</span>
+     @endif
+     @if(($item->totalgroup) == 0)
+     <p></p>
+     @elseif(($item->participants) > 0)
+     <span data-v-67560657>Group Participants: {{$item->participants}} Person</span>
+     @endif
+     <span data-v-67560657>Pickup Location: {{$item->pickup}}</span>
+     <span data-v-67560657>Special Request: {{$item->request}}</span>
+  </div>
+</div>
+    </div>
+
+    <div class="activity-card-block--grid d-none d-sm-block" style="margin-bottom: 0px;">
+  <article data-test-id="horizontal-activity-card" class="activity-card horizontal-activity-card companion-inactive activity-card-block__card--grid activity-card-block--desktop" data-v-a1084d9e>
+  <div> 
+  <a role="contentinfo" target="_blank" rel="noopener" data-activity-id="412877" class="activity-card__container gtm-trigger__card-interaction" data-v-a1084d9e>
+  <div class="activity-card__image" data-v-a1084d9e> 
+  <div class="activity-card__image-info align-end" data-v-a1084d9e></div> 
+  <picture data-v-a1084d9e>
+  <source srcset="{{ url('public/img/'.$item->image) }}" type="image/webp"> 
+  <img src="{{ url('public/img/'.$item->image) }}">
+  </picture>
+  </div> 
+  <div class="activity-card__details" data-v-a1084d9e>
+  <div class="activity-card__details-main" data-v-a1084d9e>
+  <div class="activity-card__details-left" data-v-a1084d9e> 
+  <h2 class="activity-card__title" data-v-a1084d9e>{{$item->namawisata}}</h2> 
+  <div class="activity-card__attributes" data-v-a1084d9e>
+  <ul class="activity-attributes__container" data-v-67560657 data-v-a1084d9e>
+  <li class="activity-attributes__attribute" data-v-67560657>
+  <span data-v-67560657>
+    <span data-v-67560657>
+      <span data-v-67560657>Option: {{$item->paketwisata}}</span>
+      <br>
+      <span data-v-67560657>Travel date: {{$item->traveldate}}</span>
+      <br>
+      <span data-v-67560657>Name: {{$item->name}} {{$item->surname}}</span>   
+    </span>
+  </span>
+</li>
+  </ul> 
+  </div>  
+  <div class="activity-card__badges__container" data-v-a1084d9e>  
+  </div>
+  </div> 
+  <div class="activity-card__details-right" data-v-a1084d9e>
+  <div class="rating-overall__container" data-v-a1084d9e>
+  <div class="rating-overall__rating">
+  <button type="button" class="btn-sm btn btn-outline-info" data-bs-toggle="collapse" href="#collapseExample{{$item->id}}" role="button" aria-expanded="false" aria-controls="collapseExample" style="margin-right: 10px;">Details</button>
+  <form action="{{url('/sendlinkreview/'.$item->id)}}" method="POST" enctype="multipart/form-data">
+      @csrf
+  <button type="submit" class="btn-sm btn btn-outline-primary" style="margin-right: 10px;"><i class="mdi mdi-send btn-icon-prepend"></i> Send link review</button>
+</form>
+
+  <button type="button" class="hapusbtn btn-sm btn btn-outline-danger" value="{{$item->id}}"><i class="mdi mdi-delete btn-icon-prepend"></i> Delete</button>
+</div> 
+</div>
+ 
+<div class="activity-card__pricing" data-v-a1084d9e>
+  <div class="baseline-pricing" data-v-24caa43d data-v-a1084d9e>
+    <div class="baseline-pricing__container" data-v-24caa43d>
+    @if($item->travelStatus == 'active')
+      <span class="badge badge-pill badge-success" style="font-size: 10px; padding: 3px 6px;">ACTIVE</span>
+      @else
+      <span class="badge badge-pill badge-secondary" style="font-size: 10px; padding: 3px 6px;">DONE</span>
+      @endif
+      <div class="baseline-pricing__value" data-v-24caa43d>
+        <p class="baseline-pricing__from" data-v-24caa43d>Total</p>
+        {{$item->total}} {{$item->totalgroup}}
+      </div> 
+      <p class="baseline-pricing__category" data-v-24caa43d>
+        
+      </p></div></div></div> 
+    </div> 
+    </div>
+    </div>
+    </a>
+</div>
     </article>
     <div class="collapse" id="collapseExample{{$item->id}}">
   <div class="card card-body">

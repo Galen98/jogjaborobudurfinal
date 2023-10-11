@@ -144,38 +144,68 @@ class Reviewemail extends Controller
     public function insertReview(Request $request){
         $reviewid = $request->reviewid;
         $travelid = $request->travelid;
-        $imageColumns = ['image', 'image2', 'image3', 'image4', 'image5'];
-        $images = $request->file('images');
+        $img= $request->file('images');
+        if($img !== null){
+        $image = Image::make($img->getRealPath());
+        $nama_file = time() . "_" . $img->getClientOriginalName();
+        $tujuan_upload = 'public/img/review/';
+        $image->encode('webp', 80)->save(public_path($tujuan_upload . '/' . pathinfo($nama_file, PATHINFO_FILENAME) . '.webp'));
+    } else{
+        $nama_file = null;
+    }
+    
+        $img2= $request->file('images2');
+        if($img2 !== null){
+        $image2 = Image::make($img2->getRealPath());
+        $nama_file2 = time() . "_" . $img2->getClientOriginalName();
+        $tujuan_upload2 = 'public/img/review/';
+        $image2->encode('webp', 80)->save(public_path($tujuan_upload2 . '/' . pathinfo($nama_file2, PATHINFO_FILENAME) . '.webp'));
+    } else{
+        $nama_file2 = null;
+    }
 
-        if ($images){
-        foreach ($images as $index => $image) {
-            $nama_file = time() . '_' . $index . '.webp';
-            Image::make($image->getRealPath())
-                ->encode('webp', 80)
-                ->save(public_path('public/img/review/' . pathinfo($nama_file, PATHINFO_FILENAME) . '.webp'));
-        
-            $columnName = $imageColumns[$index];
-            reviews::where('id', $reviewid)->update([
-                'star_rating'=>$request->rating,
-                'name'=>$request->name,
-                'traveldate'=>$request->traveldate,
-                'paketwisata'=>$request->paketwisata,
-                'comments'=>$request->comment,
-                'country'=>$request->country,
-                'token' => null,
-                $columnName => $nama_file
-            ]);
-        } } else {
-            reviews::where('id', $reviewid)->update([
-                'star_rating'=>$request->rating,
-                'name'=>$request->name,
-                'traveldate'=>$request->traveldate,
-                'paketwisata'=>$request->paketwisata,
-                'comments'=>$request->comment,
-                'country'=>$request->country,
-                'token' => null,
-            ]);
+        $img3= $request->file('images3');
+        if($img3 !== null){
+        $image3 = Image::make($img3->getRealPath());
+        $nama_file3 = time() . "_" . $img3->getClientOriginalName();
+        $tujuan_upload3 = 'public/img/review/';
+        $image3->encode('webp', 80)->save(public_path($tujuan_upload3 . '/' . pathinfo($nama_file3, PATHINFO_FILENAME) . '.webp'));
+    } else{
+        $nama_file3 = null;
+    }
+        $img4= $request->file('images4');
+        if($img4 !== null){
+        $image4 = Image::make($img4->getRealPath());
+        $nama_file4 = time() . "_" . $img4->getClientOriginalName();
+        $tujuan_upload4 = 'public/img/review/';
+        $image4->encode('webp', 80)->save(public_path($tujuan_upload4 . '/' . pathinfo($nama_file4, PATHINFO_FILENAME) . '.webp'));
+    } else{
+        $nama_file4 = null;
+    }
+        $img5= $request->file('images5');
+        if($img5 !== null){
+        $image5 = Image::make($img5->getRealPath());
+        $nama_file5 = time() . "_" . $img5->getClientOriginalName();
+        $tujuan_upload5 = 'public/img/review/';
+        $image5->encode('webp', 80)->save(public_path($tujuan_upload5 . '/' . pathinfo($nama_file5, PATHINFO_FILENAME) . '.webp'));
+        } else{
+            $nama_file5 = null;
         }
+        
+        reviews::where('id', $reviewid)->update([
+                    'star_rating' => $request->rating,
+                    'name' => $request->name,
+                    'traveldate' => $request->traveldate,
+                    'paketwisata' => $request->paketwisata,
+                    'comments' => $request->comment,
+                    'country' => $request->country,
+                    'token' => null,
+                    'image' => $nama_file,
+                    'image2' => $nama_file2,
+                    'image3' => $nama_file3,
+                    'image4' => $nama_file4,
+                    'image5' => $nama_file5,
+                ]);
 
         $rating = reviews::where('wisata_id', $travelid)
         ->where('token', null)

@@ -1097,9 +1097,21 @@
         <div>
 <div class="row">
 <div class="col mt-4">
-<span data-test-id="collection-title" class="collection-header_title" style="font-size:20px;font-weight:bolder;">
-     Customer reviews (Only customer who made bookings can review this experience)
-   </span> 
+<div class="d-none d-sm-block">
+<div style="display: flex; align-items: baseline;">
+    <span data-test-id="collection-title" class="collection-header_title" style="font-size:24px;font-weight:bolder;">
+        Customer reviews 
+    </span>
+    <p class="disabled" style="margin-left: 10px;">(Only customers who made bookings can review this experience)</p>
+</div>
+</div>
+
+<div class="d-block d-md-none">
+    <span data-test-id="collection-title" class="collection-header_title" style="font-size:24px;font-weight:bolder;">
+        Customer reviews 
+    </span>
+    <p class="disabled">(Only customers who made bookings can review this experience)</p>
+</div>
       <br/>
       <br/>
       </div>

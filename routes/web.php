@@ -125,10 +125,10 @@ Route::get('/paketwisata/filter', function (Request $request) {
     return view('wisata',compact('travel','bahasa'));
 })->middleware('auth');;
 
-Route::get('/formss', function () {
-    $destination=destination::get();
-    return view('frontend.formnew',compact('destination'));
-});
+// Route::get('/formss', function () {
+//     $destination=destination::get();
+//     return view('frontend.formnew',compact('destination'));
+// });
 
 Route::get('/privacy-policy', function () {
     return view('frontend.privacypolicy');
@@ -138,15 +138,16 @@ Route::get('/terms-condition', function () {
     return view('frontend.termscondition');
 });
 
-Route::get('/journey', function () {
-    return view('frontend.journey');
-});
+// Route::get('/journey', function () {
+//     return view('frontend.journey');
+// });
 
 Route::get('/destination-category',function(){
 $destination=destination::get();
 return view('destinationcategory',compact('destination'));
 });
 
+//for travel web
 Route::get('category-destination/{iddestination}',[App\Http\Controllers\TravelController::class,'categorydestination']);
 Route::get('season/{idseason}',[App\Http\Controllers\TravelController::class,'seasons']);
 Route::get('destination',[App\Http\Controllers\TravelController::class,'destinasi']);
@@ -155,7 +156,7 @@ Route::get('alltours',[App\Http\Controllers\TravelController::class,'destination
 
 Route::get('/destination-category/form',function(){
 return view('formcategory');
-});
+})->middleware('auth');;
 
 
 Route::get('/about-us', function(){
@@ -231,62 +232,62 @@ Route::get('/rating', [App\Http\Controllers\BlogController::class,'kelolarating'
 Route::post('insertnewreview', [App\Http\Controllers\BlogController::class,'insertreview'])->middleware('auth');
 Route::get('/rating/createreview/form/{idtravel}', [App\Http\Controllers\BlogController::class,'buatreview'])->middleware('auth');
 Route::get('/data-booking', [App\Http\Controllers\BlogController::class,'bookinglist'])->middleware('auth');
-Route::delete('deleterating/{idrating}', [App\Http\Controllers\BlogController::class,'deleterating']);
-Route::delete('deletetheme/{idtheme}', [App\Http\Controllers\BlogController::class,'deletetheme']);
-Route::delete('deletedestination/{iddestination}', [App\Http\Controllers\BlogController::class,'deletedestination']);
-Route::delete('hapusinclude/{idinclude}', [App\Http\Controllers\BlogController::class,'hapusinclude']);
-Route::delete('deleteoption/{idoption}', [App\Http\Controllers\BlogController::class,'hapusoption']);
-Route::delete('hapuswaktu/{idtime}', [App\Http\Controllers\BlogController::class,'hapuswaktu']);
-Route::delete('hapusexclude/{idexclude}', [App\Http\Controllers\BlogController::class,'hapusexclude']);
-Route::delete('hapushighlight/{idhighlight}', [App\Http\Controllers\BlogController::class,'hapushighlight']);
-Route::delete('hapusimportant/{idimportant}', [App\Http\Controllers\BlogController::class,'hapusimportant']);
-Route::get('/rating/{idtravel}', [App\Http\Controllers\BlogController::class,'ratingwisata'])->middleware('auth');
-Route::get('/rating/edit/{idreview}', [App\Http\Controllers\BlogController::class,'editreview'])->middleware('auth');
+Route::delete('deleterating/{idrating}', [App\Http\Controllers\BlogController::class,'deleterating'])->middleware('auth');
+Route::delete('deletetheme/{idtheme}', [App\Http\Controllers\BlogController::class,'deletetheme'])->middleware('auth');
+Route::delete('deletedestination/{iddestination}', [App\Http\Controllers\BlogController::class,'deletedestination'])->middleware('auth');
+Route::delete('hapusinclude/{idinclude}', [App\Http\Controllers\BlogController::class,'hapusinclude'])->middleware('auth');
+Route::delete('deleteoption/{idoption}', [App\Http\Controllers\BlogController::class,'hapusoption'])->middleware('auth');
+Route::delete('hapuswaktu/{idtime}', [App\Http\Controllers\BlogController::class,'hapuswaktu'])->middleware('auth');
+Route::delete('hapusexclude/{idexclude}', [App\Http\Controllers\BlogController::class,'hapusexclude'])->middleware('auth');
+Route::delete('hapushighlight/{idhighlight}', [App\Http\Controllers\BlogController::class,'hapushighlight'])->middleware('auth');
+Route::delete('hapusimportant/{idimportant}', [App\Http\Controllers\BlogController::class,'hapusimportant'])->middleware('auth');
+Route::get('/rating/{idtravel}', [App\Http\Controllers\BlogController::class,'ratingwisata'])->middleware('auth')->middleware('auth');
+Route::get('/rating/edit/{idreview}', [App\Http\Controllers\BlogController::class,'editreview'])->middleware('auth')->middleware('auth');
 
 
 
-Route::get('/cekblog', function () {
-    return view('blogjogjaborobudur.content');
-});
+// Route::get('/cekblog', function () {
+//     return view('blogjogjaborobudur.content');
+// });
 
 //Routing Blog
 Auth::routes();
-Route::get('/showhapusblog/{BlogID}', [App\Http\Controllers\BlogController::class,'showhapusblog']);
-Route::get('/showdetailbooking/{BookingID}', [App\Http\Controllers\BlogController::class,'showdetailbooking']);
-Route::get('/showdeleteprovince/{ProvinceID}', [App\Http\Controllers\BlogController::class,'showdeleteprovince']);
-Route::get('/showdeleteregion/{RegionID}', [App\Http\Controllers\BlogController::class,'showdeleteregion']);
-Route::get('/showhapuslanguage/{LanguageID}', [App\Http\Controllers\BlogController::class,'showhapuslanguage']);
-Route::get('/showeditcurrency/{RateID}', [App\Http\Controllers\BlogController::class,'showeditcurrency']);
-Route::get('/showedittheme/{ThemeID}', [App\Http\Controllers\BlogController::class,'showedittheme']);
-Route::get('/showedittag/{TagID}', [App\Http\Controllers\BlogController::class,'showedittag']);
-Route::get('/showedittambahprovince/{ProvinceID}', [App\Http\Controllers\BlogController::class,'showedittambahprovince']);
-Route::get('/showedittambahlocation/{CityID}', [App\Http\Controllers\BlogController::class,'showedittambahlocation']);
-Route::get('/showeditdestination/{DestinationID}', [App\Http\Controllers\BlogController::class,'showeditdestination']);
-Route::get('/showeditinclude/{IncludeID}', [App\Http\Controllers\BlogController::class,'showeditinclude']);
-Route::get('/showeditjam/{JamID}', [App\Http\Controllers\BlogController::class,'showeditjam']);
-Route::get('/showaddjam/{SubID}', [App\Http\Controllers\BlogController::class,'showaddjam']);
-Route::get('/showeditexclude/{ExcludeID}', [App\Http\Controllers\BlogController::class,'showeditexclude']);
-Route::get('/showedithighlight/{HighlightID}', [App\Http\Controllers\BlogController::class,'showedithighlight']);
-Route::get('/showeditimportant/{ImportantID}', [App\Http\Controllers\BlogController::class,'showeditimportant']);
-Route::get('/showhapusmessage/{MessageID}', [App\Http\Controllers\BlogController::class,'showhapusmessage']);
-Route::get('/showmessage/{MessageID}', [App\Http\Controllers\BlogController::class,'showhapusmessage']);
-Route::get('/detailcorporate/{CorporateID}', [App\Http\Controllers\BlogController::class,'showhapuscorporate']);
-Route::get('/detailtravelagent/{TravelagentID}', [App\Http\Controllers\BlogController::class,'showhapustravelagent']);
-Route::get('/detailaffiliate/{AffiliateID}', [App\Http\Controllers\BlogController::class,'showdetailaffiliate']);
-Route::get('/detailselltours/{SelltoursID}', [App\Http\Controllers\BlogController::class,'showdetailselltours']);
-Route::get('/detailplatform/{PlatformID}', [App\Http\Controllers\BlogController::class,'showdetailplatform']);
-Route::get('/detailinfluencer/{InfluencerID}', [App\Http\Controllers\BlogController::class,'showhapusinfluencer']);
-Route::post('/hapusblog/{idblog}', [App\Http\Controllers\BlogController::class,'hapusblog']);
-Route::post('/hapustag/{idtags}', [App\Http\Controllers\BlogController::class,'hapustag']);
-Route::delete('/hapusbooking/{bookingid}', [App\Http\Controllers\BlogController::class,'hapusbooking']);
-Route::delete('/hapusbahasa/{idlanguage}', [App\Http\Controllers\BlogController::class,'hapusbahasa']);
-Route::delete('/hapusmessage/{idmessage}', [App\Http\Controllers\BlogController::class,'hapusmessage']);
-Route::delete('/hapusinfluencer/{idinfluencer}', [App\Http\Controllers\BlogController::class,'hapusinfluencer']);
-Route::delete('/hapuscorporate/{idcorporate}', [App\Http\Controllers\BlogController::class,'hapusdiscount']);
-Route::delete('/hapustravelagent/{idtravelagent}', [App\Http\Controllers\BlogController::class,'hapustravelagent']);
-Route::delete('/hapusaffiliate/{idaffiliate}', [App\Http\Controllers\BlogController::class,'hapusaffiliate']);
-Route::delete('/hapusselltours/{idselltours}', [App\Http\Controllers\BlogController::class,'hapusselltours']);
-Route::delete('/hapusplatform/{idplatform}', [App\Http\Controllers\BlogController::class,'hapusplatform']);
+Route::get('/showhapusblog/{BlogID}', [App\Http\Controllers\BlogController::class,'showhapusblog'])->middleware('auth');
+Route::get('/showdetailbooking/{BookingID}', [App\Http\Controllers\BlogController::class,'showdetailbooking'])->middleware('auth');
+Route::get('/showdeleteprovince/{ProvinceID}', [App\Http\Controllers\BlogController::class,'showdeleteprovince'])->middleware('auth');
+Route::get('/showdeleteregion/{RegionID}', [App\Http\Controllers\BlogController::class,'showdeleteregion'])->middleware('auth');
+Route::get('/showhapuslanguage/{LanguageID}', [App\Http\Controllers\BlogController::class,'showhapuslanguage'])->middleware('auth');
+Route::get('/showeditcurrency/{RateID}', [App\Http\Controllers\BlogController::class,'showeditcurrency'])->middleware('auth');
+Route::get('/showedittheme/{ThemeID}', [App\Http\Controllers\BlogController::class,'showedittheme'])->middleware('auth');
+Route::get('/showedittag/{TagID}', [App\Http\Controllers\BlogController::class,'showedittag'])->middleware('auth');
+Route::get('/showedittambahprovince/{ProvinceID}', [App\Http\Controllers\BlogController::class,'showedittambahprovince'])->middleware('auth');
+Route::get('/showedittambahlocation/{CityID}', [App\Http\Controllers\BlogController::class,'showedittambahlocation'])->middleware('auth');
+Route::get('/showeditdestination/{DestinationID}', [App\Http\Controllers\BlogController::class,'showeditdestination'])->middleware('auth');
+Route::get('/showeditinclude/{IncludeID}', [App\Http\Controllers\BlogController::class,'showeditinclude'])->middleware('auth');
+Route::get('/showeditjam/{JamID}', [App\Http\Controllers\BlogController::class,'showeditjam'])->middleware('auth');
+Route::get('/showaddjam/{SubID}', [App\Http\Controllers\BlogController::class,'showaddjam'])->middleware('auth');
+Route::get('/showeditexclude/{ExcludeID}', [App\Http\Controllers\BlogController::class,'showeditexclude'])->middleware('auth');
+Route::get('/showedithighlight/{HighlightID}', [App\Http\Controllers\BlogController::class,'showedithighlight'])->middleware('auth');
+Route::get('/showeditimportant/{ImportantID}', [App\Http\Controllers\BlogController::class,'showeditimportant'])->middleware('auth');
+Route::get('/showhapusmessage/{MessageID}', [App\Http\Controllers\BlogController::class,'showhapusmessage'])->middleware('auth');
+Route::get('/showmessage/{MessageID}', [App\Http\Controllers\BlogController::class,'showhapusmessage'])->middleware('auth');
+Route::get('/detailcorporate/{CorporateID}', [App\Http\Controllers\BlogController::class,'showhapuscorporate'])->middleware('auth');
+Route::get('/detailtravelagent/{TravelagentID}', [App\Http\Controllers\BlogController::class,'showhapustravelagent'])->middleware('auth');
+Route::get('/detailaffiliate/{AffiliateID}', [App\Http\Controllers\BlogController::class,'showdetailaffiliate'])->middleware('auth');
+Route::get('/detailselltours/{SelltoursID}', [App\Http\Controllers\BlogController::class,'showdetailselltours'])->middleware('auth');
+Route::get('/detailplatform/{PlatformID}', [App\Http\Controllers\BlogController::class,'showdetailplatform'])->middleware('auth');
+Route::get('/detailinfluencer/{InfluencerID}', [App\Http\Controllers\BlogController::class,'showhapusinfluencer'])->middleware('auth');
+Route::post('/hapusblog/{idblog}', [App\Http\Controllers\BlogController::class,'hapusblog'])->middleware('auth');
+Route::post('/hapustag/{idtags}', [App\Http\Controllers\BlogController::class,'hapustag'])->middleware('auth');
+Route::delete('/hapusbooking/{bookingid}', [App\Http\Controllers\BlogController::class,'hapusbooking'])->middleware('auth');
+Route::delete('/hapusbahasa/{idlanguage}', [App\Http\Controllers\BlogController::class,'hapusbahasa'])->middleware('auth');
+Route::delete('/hapusmessage/{idmessage}', [App\Http\Controllers\BlogController::class,'hapusmessage'])->middleware('auth');
+Route::delete('/hapusinfluencer/{idinfluencer}', [App\Http\Controllers\BlogController::class,'hapusinfluencer'])->middleware('auth');
+Route::delete('/hapuscorporate/{idcorporate}', [App\Http\Controllers\BlogController::class,'hapusdiscount'])->middleware('auth');
+Route::delete('/hapustravelagent/{idtravelagent}', [App\Http\Controllers\BlogController::class,'hapustravelagent'])->middleware('auth');
+Route::delete('/hapusaffiliate/{idaffiliate}', [App\Http\Controllers\BlogController::class,'hapusaffiliate'])->middleware('auth');
+Route::delete('/hapusselltours/{idselltours}', [App\Http\Controllers\BlogController::class,'hapusselltours'])->middleware('auth');
+Route::delete('/hapusplatform/{idplatform}', [App\Http\Controllers\BlogController::class,'hapusplatform'])->middleware('auth');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 // Route::get('/viewblog', function(){
 //     return view('viewblog');
@@ -310,9 +311,9 @@ Route::patch('editwisata/{idwisata}', [App\Http\Controllers\BlogController::clas
 Route::patch('diskonpost/{travelid}', [App\Http\Controllers\BlogController::class,'diskonpost'])->middleware('auth');
 Route::get('/home/viewblog/{idblog}', [App\Http\Controllers\BlogController::class,'viewblog'])->middleware('auth');
 Auth::routes();
-Route::post('insertblog',[App\Http\Controllers\BlogController::class, 'insertblog']);
-Route::post('insertseason',[App\Http\Controllers\BlogController::class, 'insertseason']);
-Route::post('insertdestinationcategory',[App\Http\Controllers\BlogController::class, 'insertdestinationcategory']);
+Route::post('insertblog',[App\Http\Controllers\BlogController::class, 'insertblog'])->middleware('auth');
+Route::post('insertseason',[App\Http\Controllers\BlogController::class, 'insertseason'])->middleware('auth');
+Route::post('insertdestinationcategory',[App\Http\Controllers\BlogController::class, 'insertdestinationcategory'])->middleware('auth');
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //jogjaborobudur blog
@@ -391,20 +392,20 @@ Route::get('/region/form',function(){
     return view('formregion');
 })->middleware('auth');
 
-Route::post('insertregion', [BlogController::class, 'insertregion']);
-Route::post('/hapusprovince/{idprovince}', [App\Http\Controllers\BlogController::class,'hapusprovince']);
-Route::post('/hapusregion/{idregions}', [App\Http\Controllers\BlogController::class,'hapusregion']);
-Route::patch('/updateprovince/{provinceid}',[BlogController::class,'updateprovince']);
-Route::patch('/updateregion/{regionid}',[BlogController::class,'updateregion']);
-Route::delete('/deletetambahprovince/{idprovince}',[BlogController::class,'deletetambahprovince']);
-Route::delete('/deletetambahlocation/{idcity}',[BlogController::class,'deletetambahlocation']);
+Route::post('insertregion', [BlogController::class, 'insertregion'])->middleware('auth');
+Route::post('/hapusprovince/{idprovince}', [App\Http\Controllers\BlogController::class,'hapusprovince'])->middleware('auth');
+Route::post('/hapusregion/{idregions}', [App\Http\Controllers\BlogController::class,'hapusregion'])->middleware('auth');
+Route::patch('/updateprovince/{provinceid}',[BlogController::class,'updateprovince'])->middleware('auth');
+Route::patch('/updateregion/{regionid}',[BlogController::class,'updateregion'])->middleware('auth');
+Route::delete('/deletetambahprovince/{idprovince}',[BlogController::class,'deletetambahprovince'])->middleware('auth');
+Route::delete('/deletetambahlocation/{idcity}',[BlogController::class,'deletetambahlocation'])->middleware('auth');
 Route::get('/paketwisata/edit/buatlocation/{travelid}', [BlogController::class, 'formlocation'])->middleware('auth');
 Route::post('insertlocation', [BlogController::class, 'insertlocation']);
 Route::get('/region',function(){
     $region=region::get();
     return view('region', compact('region'));
 })->middleware('auth');
-Route::get('/region/edit/{regionid}', [BlogController::class,'editregion']);
+Route::get('/region/edit/{regionid}', [BlogController::class,'editregion'])->middleware('auth');
 
 Route::get('/province',function(){
     $province=province::get();
@@ -510,41 +511,41 @@ Route::get('/paketwisata/editimage/{idwisata}',function($idwisata){
     return view('editimagetravel', compact('gambar'));
 })->middleware('auth');
 
-Route::patch('/editimagetravel/{idtravel}',[BlogController::class,'editimagetravel']);
-Route::patch('/updatecurrency/{idrate}',[BlogController::class,'updatecurrency']);
-Route::patch('/updatetheme/{idtheme}',[BlogController::class,'updatetheme']);
-Route::patch('/updatecategory/{iddestination}',[BlogController::class,'updatecategory']);
-Route::patch('/updateharga/{idharga}',[BlogController::class,'updateharga']);
-Route::patch('/updateoption/{idoption}',[BlogController::class,'updateoption']);
-Route::patch('/updatetambahprovince/{idprovince}',[BlogController::class,'updatetambahprovince']);
-Route::patch('/updatetambahlocation/{idcity}',[BlogController::class,'updatetambahlocation']);
-Route::patch('/updateinclude/{idinclude}',[BlogController::class,'updateinclude']);
-Route::patch('/updatedestinasi/{iddestination}',[BlogController::class,'updatedestinasi']);
-Route::patch('/updateseason/{idseason}',[BlogController::class,'updateseason']);
-Route::patch('/updatetag/{idtag}',[BlogController::class,'updatetag']);
-Route::patch('/updatetime/{idtime}',[BlogController::class,'updatetime']);
-Route::patch('/updateexclude/{idexclude}',[BlogController::class,'updateexclude']);
-Route::post('addinclude', [BlogController::class, 'addinclude']);
-Route::post('addtime', [BlogController::class, 'addtime']);
-Route::post('addcity', [BlogController::class, 'addcity']);
-Route::post('addhargaperson', [BlogController::class, 'addhargaperson']);
-Route::post('addhargachild', [BlogController::class, 'addhargachild']);
-Route::delete('deletetime/{idjam}', [BlogController::class, 'deletetime']);
-Route::delete('deletehargaperson/{idperson}', [BlogController::class, 'deletehargaperson']);
-Route::delete('deletehargachild/{idchild}', [BlogController::class, 'deletehargachild']);
-Route::post('insertbackgroundlanding', [BlogController::class, 'insertbackground']);
-Route::post('addexclude', [BlogController::class, 'addexclude']);
-Route::post('addhighlight', [BlogController::class, 'addhighlight']);
-Route::post('addimportant', [BlogController::class, 'addimportant']);
-Route::patch('/updatehighlight/{idhighlight}',[BlogController::class,'updatehighlight']);
-Route::patch('/updateimportant/{idimportant}',[BlogController::class,'updateimportant']);
-Route::patch('/updatehargachild/{idhargachild}',[BlogController::class,'updatehargachild']);
-Route::patch('/updatediskon/{idtravell}',[BlogController::class,'updatediskon']);
-Route::post('generatepdf',[App\Http\Controllers\emailController::class, 'sendPDF']);
+Route::patch('/editimagetravel/{idtravel}',[BlogController::class,'editimagetravel'])->middleware('auth');
+Route::patch('/updatecurrency/{idrate}',[BlogController::class,'updatecurrency'])->middleware('auth');
+Route::patch('/updatetheme/{idtheme}',[BlogController::class,'updatetheme'])->middleware('auth');
+Route::patch('/updatecategory/{iddestination}',[BlogController::class,'updatecategory'])->middleware('auth');
+Route::patch('/updateharga/{idharga}',[BlogController::class,'updateharga'])->middleware('auth');
+Route::patch('/updateoption/{idoption}',[BlogController::class,'updateoption'])->middleware('auth');
+Route::patch('/updatetambahprovince/{idprovince}',[BlogController::class,'updatetambahprovince'])->middleware('auth');
+Route::patch('/updatetambahlocation/{idcity}',[BlogController::class,'updatetambahlocation'])->middleware('auth');
+Route::patch('/updateinclude/{idinclude}',[BlogController::class,'updateinclude'])->middleware('auth');
+Route::patch('/updatedestinasi/{iddestination}',[BlogController::class,'updatedestinasi'])->middleware('auth');
+Route::patch('/updateseason/{idseason}',[BlogController::class,'updateseason'])->middleware('auth');
+Route::patch('/updatetag/{idtag}',[BlogController::class,'updatetag'])->middleware('auth');
+Route::patch('/updatetime/{idtime}',[BlogController::class,'updatetime'])->middleware('auth');
+Route::patch('/updateexclude/{idexclude}',[BlogController::class,'updateexclude'])->middleware('auth');
+Route::post('addinclude', [BlogController::class, 'addinclude'])->middleware('auth');
+Route::post('addtime', [BlogController::class, 'addtime'])->middleware('auth');
+Route::post('addcity', [BlogController::class, 'addcity'])->middleware('auth');
+Route::post('addhargaperson', [BlogController::class, 'addhargaperson'])->middleware('auth');
+Route::post('addhargachild', [BlogController::class, 'addhargachild'])->middleware('auth');
+Route::delete('deletetime/{idjam}', [BlogController::class, 'deletetime'])->middleware('auth');
+Route::delete('deletehargaperson/{idperson}', [BlogController::class, 'deletehargaperson'])->middleware('auth');
+Route::delete('deletehargachild/{idchild}', [BlogController::class, 'deletehargachild'])->middleware('auth');
+Route::post('insertbackgroundlanding', [BlogController::class, 'insertbackground'])->middleware('auth');
+Route::post('addexclude', [BlogController::class, 'addexclude'])->middleware('auth');
+Route::post('addhighlight', [BlogController::class, 'addhighlight'])->middleware('auth');
+Route::post('addimportant', [BlogController::class, 'addimportant'])->middleware('auth');
+Route::patch('/updatehighlight/{idhighlight}',[BlogController::class,'updatehighlight'])->middleware('auth');
+Route::patch('/updateimportant/{idimportant}',[BlogController::class,'updateimportant'])->middleware('auth');
+Route::patch('/updatehargachild/{idhargachild}',[BlogController::class,'updatehargachild'])->middleware('auth');
+Route::patch('/updatediskon/{idtravell}',[BlogController::class,'updatediskon'])->middleware('auth');
+Route::post('generatepdf',[App\Http\Controllers\emailController::class, 'sendPDF'])->middleware('auth');
 
-Route::get('/jaljal', function(){
-return view('redesignblog.landingblog');
-});
+// Route::get('/jaljal', function(){
+// return view('redesignblog.landingblog');
+// });
 
 
 // Route::get('/item', function(){

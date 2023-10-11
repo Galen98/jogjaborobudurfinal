@@ -40,7 +40,7 @@
 <div class="container">
         <div class="row">
             <div class="col-md-6 text-center">
-              <center><img src="http://103.82.92.84/traveler/images/logoabout.JPG" class="imageemail"/></center>
+              <center><img src="www.jogjaborobudur.com/traveler/images/logoabout.JPG" class="imageemail"/></center>
     <h1 style="text-align: center;">Thank you! You have submitted your review.</h1>
     <h2 style="text-align: center;">{{ $reviews->paketwisata }}</h2>
     <p style="text-align: center;"> 
@@ -49,7 +49,7 @@
     @endfor
     </p>
     <p style="text-align: center;font-size:15px;">"{{ $reviews->comments }}"</p>
-    <p style="text-align: center;"><a href="http://localhost:8000/item/{{$travel->slug}}">Click here to see your review!</a></p>
+    <p style="text-align: center;"><a href="www.jogjaborobudur.com/item/{{$travel->slug}}">Click here to see your review!</a></p>
     <br>
     <p style="text-align: center;">Thank you for choosing Jogja Borobudur Tour & Travel for your trip!</p>
     <hr>

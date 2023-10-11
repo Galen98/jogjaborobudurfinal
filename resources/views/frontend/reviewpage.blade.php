@@ -35,6 +35,20 @@
   <link rel="stylesheet" href="{{asset('traveler')}}/css/location.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" ></script>
+  <style>
+    input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+label.success {
+    color: green; /* Atau gaya atau warna lain sesuai kebutuhan Anda */
+}
+</style>
   </head>
   <body>
   <header data-test-id="page-header" class="page-header light" data-v-3a2bcacc style="background-color:#fc2c04;margin-top: 0px;">
@@ -97,17 +111,54 @@
             <textarea class="form-control" name="comment" rows="6 " placeholder="Write your review for this experience" maxlength="200"></textarea>
          </div>
       </div>
+      <br>
       <div class="form-group row mt-4">
-      <div class="rate" style="margin-bottom:-10px;">
+      <div class="rate">
       <span data-test-id="collection-title" class="collection-header_title" style="font-size:18px;font-weight:bolder;">Add some photos</span>
     </div>
+    <br>
+    <br>
+    <br>
+  <div style="margin-top:-15px;">
   <div class="col">
-  <input class="form-control" type="file" name="images[]" accept="image/*" id="formFileMultiple" multiple>
+  <label for="file-upload-1"  class="custom-file-upload">
+    <i id="icon-1" class="fa fa-cloud-upload"></i> Photo 1
+</label>
+<input id="file-upload-1" type="file" name="images" accept=".jpg, .jpeg, .png, .JPG, .PNG"/>
+
+<label for="file-upload-2" class="custom-file-upload">
+    <i id="icon-2" class="fa fa-cloud-upload"></i> Photo 2
+</label>
+<input id="file-upload-2" type="file" name="images2" accept=".jpg, .jpeg"/>
+
+<label for="file-upload-3" class="custom-file-upload">
+    <i id="icon-3" class="fa fa-cloud-upload"></i> Photo 3
+</label>
+<input id="file-upload-3" type="file" name="images3" accept=".jpg, .jpeg"/>
+</div>
+
+<div class="col" style="margin-top:15px;">
+<label for="file-upload-4" class="custom-file-upload">
+    <i  id="icon-4" class="fa fa-cloud-upload"></i> Photo 4
+</label>
+<input id="file-upload-4" type="file" name="images4" accept=".jpg, .jpeg"/>
+
+<label for="file-upload-5" class="custom-file-upload">
+    <i id="icon-5" class="fa fa-cloud-upload"></i> Photo 5
+</label>
+<input id="file-upload-5" type="file" name="images5" accept=".jpg, .jpeg"/>
+</div>
 </div>
     </div>
-    <div id="photo-preview-container">
+
+    <div class="">
+    <div class=" col">
+    <div id="photo-preview-container" class="d-none d-sm-block">
     <!-- Preview images will be displayed here -->
     </div>
+  </div>
+</div>
+
     <hr>
     <div class="mt-3 text-right">
          <button type="submit" class="c-button--medium billing-form__validate-billing-details-and-sri__button filbtn" type="button" data-test-id="checkout-submit-btn">Submit</button>
@@ -116,7 +167,6 @@
 </div> 
 </div>
 </main>
-
 </div>
 <footer class="page-footer" style="background-color:  #fc2c04;">
 	<div class="page-footer__content">
@@ -129,9 +179,9 @@
 	</footer>
 </div>
 </div>
-<script>
+<!-- <script>
 $(document).ready(function () {
-    const inputPhotos = $('input[name="images[]"]');
+    const inputPhotos = $('input[name="images"]');
     const photoPreviewContainer = $('#photo-preview-container');
     const maxAllowedPhotos = 5;
     const maxFileSizeMB = 2;
@@ -145,7 +195,17 @@ $(document).ready(function () {
             swal("Error", "Max allowed photos is 5", "error");
             return;
         }
-        photoPreviewContainer.empty();
+
+        // Dapatkan nama file dari gambar-gambar yang sudah ada
+        // const existingImageNames = [];
+
+        // // Dapatkan nama file dari gambar-gambar yang sudah ada
+        // photoPreviewContainer.find('img').each(function () {
+        //     const imageName = $(this).data('filename');
+        //     existingImageNames.push(imageName);
+        // });
+
+        // Tambahkan gambar-gambar baru ke container
         $.each(files, function (index, file) {
             const reader = new FileReader();
             // Validasi ukuran file
@@ -154,26 +214,38 @@ $(document).ready(function () {
                 return;
             }
             reader.onload = function (e) {
-                const img = $('<img>').attr('src', e.target.result).css({
-                    'max-width': '200px',
-                    'max-height': '100px',
-                    'margin-right': '20px'
+                const img = $('<img>').attr('src', e.target.result).data('filename', file.name).css({
+                    'max-width': '70px',
+                    'max-height': '70px',
+                    'margin-right': '20px',
                 });
                 photoPreviewContainer.append(img);
             };
 
             reader.readAsDataURL(file);
         });
+        // const allImageNames = existingImageNames.concat(Array.from(files, file => file.name));
+        // inputPhotos.data('existing-images', allImageNames);
     }
 });
-    </script>
+
+    </script> -->
+
+    <script>
+$(document).ready(function () {
+    $('body').on('change', 'input[type="file"]', function () {
+        const inputId = $(this).attr('id');
+        const iconId = 'icon-' + inputId.split('-')[2];
+        $('#' + iconId).removeClass('fa-cloud-upload').addClass('fa-check-circle').css('color', 'green');
+    });
+});
+</script>
 
 <script>
 $(document).ready(function() {
 
     function validateForm() {
         if (!$('input[name="rating"]:checked').val()) {
-            // Tampilkan notifikasi jika validasi gagal
             swal("Error", "Please select a rating.", "error");
             return false;
         }

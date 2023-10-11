@@ -81,8 +81,6 @@
                   Submit
                 </button>
             </div>
-
-            
         </div>
         <div class="col-md-5 col-md-push-1">
           

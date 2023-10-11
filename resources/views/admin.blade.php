@@ -10,15 +10,16 @@
       <div class="collection-header" data-v-76e871e0><div class="collection-header--title-container" data-v-76e871e0>
     <span class="collection-header_title" data-v-76e871e0>
         Jogja Borobudur Tour & Travel
-      </span> <!---->
-    </div> <!---->
+      </span> 
+    </div> 
     </div>
 @foreach($travel as $item)
   <div class="activity-card-block--grid" style="margin-bottom: 0px;">
   <article data-test-id="horizontal-activity-card" class="activity-card horizontal-activity-card companion-inactive activity-card-block__card--grid activity-card-block--desktop" data-v-a1084d9e>
-  <a  target="_blank" class="activity-card__container gtm-trigger__card-interaction" data-v-a1084d9e>
+  <div>
+  <a target="_blank" class="activity-card__container gtm-trigger__card-interaction" data-v-a1084d9e>
   <div class="activity-card__image" data-v-a1084d9e> 
-  <div class="activity-card__image-info align-end" data-v-a1084d9e><!----></div> 
+  <div class="activity-card__image-info align-end" data-v-a1084d9e></div> 
   <picture data-v-a1084d9e>
   <source srcset="{{ url('public/img/'.$item->image) }}" type="image/webp"> 
   <img src="{{ url('public/img/'.$item->image) }}" alt="{{$item->namawisata}}">
@@ -26,7 +27,7 @@
   </div> 
   <div class="activity-card__details" data-v-a1084d9e>
   <div class="activity-card__details-main" data-v-a1084d9e>
-  <div class="activity-card__details-left" data-v-a1084d9e><!----> 
+  <div class="activity-card__details-left" data-v-a1084d9e> 
   <h2 class="activity-card__title" data-v-a1084d9e>{{$item->namawisata}}</h2> 
   <div class="activity-card__attributes" data-v-a1084d9e>
   <ul class="activity-attributes__container" data-v-67560657 data-v-a1084d9e>
@@ -35,9 +36,9 @@
     <span data-v-67560657>{{$item->durasi}}</span>
   </span>
 </li>
-  </ul> <!---->
-  </div> <!----> 
-  <div class="activity-card__badges__container" data-v-a1084d9e><!----> <!----> <!---->
+  </ul> 
+  </div>  
+  <div class="activity-card__badges__container" data-v-a1084d9e>  
   </div>
   </div> 
   <div class="activity-card__details-right" data-v-a1084d9e>
@@ -52,11 +53,12 @@
         @currency($item->IDR)
       </div> <p class="baseline-pricing__category" data-v-24caa43d>
         {{$item->kategories}}
-      </p></div></div></div> <!---->
-    </div> <!---->
+      </p></div></div></div> 
+    </div> 
     </div>
     </div>
     </a>
+  </div>
     </article>
     </div>
     @endforeach
@@ -66,7 +68,7 @@
 </div>
 <div class="container">
 <div class="text-center">
-<a href="{{'paketwisata'}}" class="btn btn-light">See more!</a>
+<a href="{{'paketwisata'}}" class="btn btn-light" style="border-radius:30px;">See more!</a>
 </div>
 </div>
 @endsection
@@ -80,15 +82,15 @@
       <div class="collection-header" data-v-76e871e0><div class="collection-header--title-container" data-v-76e871e0>
     <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0>
         Jogja Borobudur Blog
-      </span> <!---->
-    </div> <!---->
+      </span> 
+    </div> 
     </div>
 @foreach($blog as $item)
   <div class="activity-card-block--grid" style="margin-bottom: 0px;">
   <article data-test-id="horizontal-activity-card" class="activity-card horizontal-activity-card companion-inactive activity-card-block__card--grid activity-card-block--desktop" data-v-a1084d9e>
   <a role="contentinfo" target="_blank" rel="noopener" data-activity-id="412877" class="activity-card__container gtm-trigger__card-interaction" data-v-a1084d9e>
   <div class="activity-card__image" data-v-a1084d9e> 
-  <div class="activity-card__image-info align-end" data-v-a1084d9e><!----></div> 
+  <div class="activity-card__image-info align-end" data-v-a1084d9e></div> 
   <picture data-v-a1084d9e>
   <source srcset="{{ url('public/img/'.$item->image) }}" type="image/webp"> 
   <img src="{{ url('public/img/'.$item->image) }}" alt="{{$item->namawisata}}">
@@ -96,7 +98,7 @@
   </div> 
   <div class="activity-card__details" data-v-a1084d9e>
   <div class="activity-card__details-main" data-v-a1084d9e>
-  <div class="activity-card__details-left" data-v-a1084d9e><!----> 
+  <div class="activity-card__details-left" data-v-a1084d9e> 
   <h2 class="activity-card__title" data-v-a1084d9e>{{$item->judulblog ?? ''}}</h2> 
   <div class="activity-card__attributes" data-v-a1084d9e>
   <ul class="activity-attributes__container" data-v-67560657 data-v-a1084d9e>
@@ -105,9 +107,9 @@
     <span data-v-67560657>{{$item->shortdescription ?? ''}}</span>
   </span>
 </li>
-  </ul> <!---->
-  </div> <!----> 
-  <div class="activity-card__badges__container" data-v-a1084d9e><!----> <!----> <!---->
+  </ul> 
+  </div>  
+  <div class="activity-card__badges__container" data-v-a1084d9e>  
   </div>
   </div> 
   <div class="activity-card__details-right" data-v-a1084d9e>
@@ -120,8 +122,8 @@
 </div> 
 <div class="activity-card__pricing" data-v-a1084d9e><div class="baseline-pricing" data-v-24caa43d data-v-a1084d9e><div class="baseline-pricing__container" data-v-24caa43d><div class="baseline-pricing__value" data-v-24caa43d><p class="baseline-pricing__from" data-v-24caa43d>Posted in: {{\Carbon\Carbon::parse($item->created_at)->format('d/m/Y') ?? ''}}</p>
       </div> 
-    </div></div></div> <!---->
-    </div> <!---->
+    </div></div></div> 
+    </div> 
     </div>
     </div>
     </a>
@@ -135,7 +137,7 @@
 
 <div class="container">
 <div class="text-center">
-<a href="{{'blog'}}" class="btn btn-light">See more!</a>
+<a href="{{'blog'}}" class="btn btn-light" style="border-radius:30px;">See more!</a>
 </div>
 </div>
 @endsection

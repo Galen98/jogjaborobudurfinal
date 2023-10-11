@@ -36,13 +36,13 @@
 <div class="container">
         <div class="row">
             <div class="col-md-6 text-center">
-              <center><img src="http://103.82.92.84/traveler/images/logoabout.JPG" class="imageemail"/></center>
-                <h1 style="text-align: center;">Was your tour of {{ $booking->namawisata }} <br>as good as expected?</h1>
+              <center><img src="www.jogjaborobudur.com//traveler/images/logoabout.JPG" class="imageemail"/></center>
+                <h2 style="text-align: center;">Was your tour of {{ $booking->namawisata }} <br>as good as expected?</h2>
     <p style="text-align: center;">Hello {{ $booking->name }}, lets review</p>
-    <h1 style="text-align: center;">{{ $booking->namawisata }}</h1>
+    <h3 style="text-align: center;">{{ $booking->namawisata }}</h3>
     
     <center>
-    <a href="http://103.82.92.84/reviewtour/{{$reviews->token}}">
+    <a href="www.jogjaborobudur.com/reviewtour/{{$reviews->token}}">
     <button class="awesome-button">Click this link for review!</button>
     </a>
     </center>

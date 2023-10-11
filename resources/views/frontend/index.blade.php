@@ -210,7 +210,6 @@
     <div class="collection-body--horizontal" data-v-76e871e0>
     <div class="vertical-activity-cards__grid" data-v-76e871e0>
       @foreach($traveltop as $item)
-
     <article data-test-id="vertical-activity-card" class="vertical-activity-card d-none d-sm-block" data-v-76e871e0>
     <div class="vertical-activity-card__content-wrapper">
     <a href="{{'/item/'.$item->slug}}" role="contentinfo" data-activity-id="62214" target="_blank" class="vertical-activity-card__container gtm-trigger__card-interaction">
