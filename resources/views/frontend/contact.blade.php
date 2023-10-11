@@ -44,7 +44,7 @@
   <meta property="og:title" content="jogja borobudur tour & travel" />
   <meta property="og:description"
     content="Jogja Borobudur tour & travel Explore borobudur, prambanan, and many more free cancellation." />
-    <meta property="og:image" content="{{ asset('traveler/images/gambarseo2.jpg') }}"/>
+  <meta property="og:image" content="{{ asset('traveler/images/gambarseo2.jpg') }}"/>
   <!-- end tag -->
   <title>Jogja Borobudur Tour & Travel</title>
 
@@ -67,7 +67,7 @@
 			<div class="row">
       <div class="col-sm-4 col-xs-12">
 					<a href="/">
-					<div id="gtco-logo"><img src="{{asset('spica')}}/images/logomini.png" alt="logo" height="80" width="90" style="margin-left:5px;"/></div>
+					<div id="gtco-logo"><img src="{{asset('spica')}}/images/logomini.png" alt="logo" height="50" width="60" style="margin-left:5px;"/></div>
 					</a>
 				</div>
 			
