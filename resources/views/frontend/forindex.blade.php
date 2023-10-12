@@ -10,9 +10,9 @@
 @endif
 	<head>
 	  <meta charset="utf-8" />   
-  <link data-vue-meta="ssr" rel="preload" href="{{asset('font')}}/GT-Eesti-Pro-Display-Regular.woff2" as="font" type="font/woff2" crossorigin="true">
-  <link data-vue-meta="ssr" rel="preload" href="{{asset('font')}}/GT-Eesti-Pro-Display-Medium.woff2" as="font" type="font/woff2" crossorigin="true">
-  <link data-vue-meta="ssr" rel="preload" href="{{asset('font')}}/GT-Eesti-Pro-Display-Bold.woff2" crossorigin="true">
+  <link  href="{{asset('font')}}/GT-Eesti-Pro-Display-Regular.woff2" as="font" type="font/woff2" crossorigin="true">
+  <link  href="{{asset('font')}}/GT-Eesti-Pro-Display-Medium.woff2" as="font" type="font/woff2" crossorigin="true">
+  <link  href="{{asset('font')}}/GT-Eesti-Pro-Display-Bold.woff2" crossorigin="true">
   <!-- Animate.css -->
   <link rel="stylesheet" href="{{asset('traveler')}}/css/animate.css">
   <!-- Icomoon Icon Fonts-->
@@ -32,7 +32,7 @@
   <link rel="stylesheet" href="{{asset('traveler')}}/css/lightbox.min.css">
   <!-- Modernizr JS -->
   <script src="{{asset('traveler')}}/js/modernizr-2.6.2.min.js"></script>
-  <link rel="preload" href="{{asset('traveler')}}/css/new.css" as="style">
+  <link rel="stylesheet" href="{{asset('traveler')}}/css/new.css" as="style">
   <link rel="stylesheet" href="{{asset('traveler')}}/css/style.css">
   <link rel="stylesheet" href="{{asset('traveler')}}/css/new2.css">
   <link rel="stylesheet" href="{{asset('traveler')}}/css/new3.css">
