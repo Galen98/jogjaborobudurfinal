@@ -1,6 +1,14 @@
 
 <!DOCTYPE html>
+@if($sessions == 'English')
 <html lang="en-US" default-lang="en-US">
+@endif
+@if($sessions == 'Bahasa')
+<html lang="id" default-lang="id">
+@endif
+@if($sessions == 'Malay')
+<html lang="ms" default-lang="ms">
+@endif
   <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="{{asset('traveler')}}/css/bootstrap.css">
@@ -35,8 +43,9 @@
         />
     <title>Jogja Borobudur Tour & Travel</title>
 
-    <meta name="title" content="jogja Borobudur | Tour & Travel" />
+  <meta name="title" content="jogja Borobudur | Tour & Travel" />
   <meta name="description" content="JogjaBorobudur Tour and Travel. Explore borobudur, prambanan, and many more."/>
+  <meta name="robots" content="index, follow">
   <!-- facebook tag -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="www.jogjaborobudur.com" />

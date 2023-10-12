@@ -1,5 +1,13 @@
 <!DOCTYPE html>
+@if($sessions == 'English')
 <html lang="en-US" default-lang="en-US">
+@endif
+@if($sessions == 'Bahasa')
+<html lang="id" default-lang="id">
+@endif
+@if($sessions == 'Malay')
+<html lang="ms" default-lang="ms">
+@endif
 <head>
   @foreach($travel as $item)
   <meta charset="utf-8" />
@@ -39,19 +47,19 @@
   <!-- Modernizr JS -->
   <script src="{{asset('traveler')}}/js/modernizr-2.6.2.min.js"></script>
   <link rel="preload" href="{{asset('traveler')}}/css/new.css" as="style">
-<link rel="stylesheet" href="{{asset('traveler')}}/css/new2.css">
-<link rel="stylesheet" href="{{asset('traveler')}}/css/new3.css">
-<link rel="stylesheet" href="{{asset('traveler')}}/css/new4.css">
-<link rel="stylesheet" href="{{asset('traveler')}}/css/new5.css">
-<link rel="stylesheet" href="{{asset('traveler')}}/css/new7.css">
-<link rel="stylesheet" href="{{asset('traveler')}}/css/grids.css">
-<link rel="stylesheet" href="{{asset('traveler')}}/css/activity.css">
-<link rel="stylesheet" href="{{asset('traveler')}}/css/location.css"> 
-<link rel="icon" type="image/png" sizes="32x32" href="{{asset('spica')}}/images/favicon.png">
-<link rel="icon" type="image/png" sizes="16x16" href="{{asset('spica')}}/images/favicon.png">
-<link rel="shortcut icon" href="favicon.png">
-<meta name="viewport"content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
-        />
+  <link rel="stylesheet" href="{{asset('traveler')}}/css/new2.css">
+  <link rel="stylesheet" href="{{asset('traveler')}}/css/new3.css">
+  <link rel="stylesheet" href="{{asset('traveler')}}/css/new4.css">
+  <link rel="stylesheet" href="{{asset('traveler')}}/css/new5.css">
+  <link rel="stylesheet" href="{{asset('traveler')}}/css/new7.css">
+  <link rel="stylesheet" href="{{asset('traveler')}}/css/grids.css">
+  <link rel="stylesheet" href="{{asset('traveler')}}/css/activity.css">
+  <link rel="stylesheet" href="{{asset('traveler')}}/css/location.css"> 
+  <link rel="icon" type="image/png" sizes="32x32" href="{{asset('spica')}}/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{asset('spica')}}/images/favicon.png">
+  <link rel="shortcut icon" href="favicon.png">
+  <meta name="viewport"content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+          />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -78,9 +86,13 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   <!-- google tag -->
   <meta name="title" content="{{$item->namawisata}}" />
   <meta name="description" content="{{$item->shortdescription}}"/>
+  <link rel="canonical" href="https://www.jogjaborobudur.com/item/{{$item->slug}}">
+  <link rel="canonical" href="https://jogjaborobudur.com/item/{{$item->slug}}">
+  <meta name="author" content="Jogja borobudur tour & travel">
+  <meta name="robots" content="index, follow">
   <!-- facebook tag -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="www.jogjaborobudur.com" />
+  <meta property="og:url" content="www.jogjaborobudur.com/item/{{$item->slug}}" />
   <meta property="og:title" content="{{$item->namawisata}}" />
   <meta property="og:description" content="{{$item->shortdescription}}" />
   <meta property="og:image" content="{{ url('public/img/'.$item->image) }}" />

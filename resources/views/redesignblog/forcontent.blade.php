@@ -1,5 +1,13 @@
 <!doctype html>
+@if($sessions == 'English')
 <html lang="en-US" default-lang="en-US">
+@endif
+@if($sessions == 'Bahasa')
+<html lang="id" default-lang="id">
+@endif
+@if($sessions == 'Malay')
+<html lang="ms" default-lang="ms">
+@endif
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -18,13 +26,16 @@
   <meta name="robots" content="index, follow">
   <meta name="keywords" content="blog travel, travel, wisata, borobudur, prambanan, yogyakarta, explore">
   <meta name="description" content="{{$item->shortdescription}}"/>
+  <link rel="canonical" href="https://www.jogjaborobudur.com/blog/{{$item->slug}}">
+  <link rel="canonical" href="https://jogjaborobudur.com/blog//{{$item->slug}}">
+  <meta name="author" content="{{$item->author}}">
   <!-- facebook tag -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="www.jogjaborobudur.com" />
+  <meta property="og:url" content="www.jogjaborobudur.com/blog//{{$item->slug}}" />
   <meta property="og:title" content="{{$item->judulblog}}" />
   <meta property="og:description"
     content="{{$item->shortdescription}}" />
-    <meta property="og:image" content="{{ asset('traveler/images/gambarseo2.jpg') }}"/>
+    <meta property="og:image" content="{{ url('public/img/'.$item->image) }}"/>
   <!-- end tag -->
   @endforeach
   </head>

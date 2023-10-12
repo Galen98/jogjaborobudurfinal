@@ -1,5 +1,13 @@
 <!DOCTYPE HTML>
+@if($sessions == 'English')
 <html lang="en-US" default-lang="en-US">
+@endif
+@if($sessions == 'Bahasa')
+<html lang="id" default-lang="id">
+@endif
+@if($sessions == 'Malay')
+<html lang="ms" default-lang="ms">
+@endif
 	<head>
 	 <meta charset="utf-8" />
    <link data-vue-meta="ssr" rel="preload" href="{{asset('font')}}/GT-Eesti-Pro-Display-Regular.woff2" as="font" type="font/woff2" crossorigin="true">
@@ -36,18 +44,21 @@
   <link rel="stylesheet" href="{{asset('traveler')}}/css/location.css"> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  
     <!-- primary tag SEO -->
     @foreach($season as $item)
   <meta name="title" content="The BEST {{$item->namaseason}}| Jogja Borobudur Tour & Travel" />
   <meta name="description" content="Find Top-rated Things to Do in {{$item->namaseason}}. BEST Tours and Activities."/>
+  <link rel="canonical" href="https://www.jogjaborobudur.com/season/{{$item->id}}">
+  <link rel="canonical" href="https://jogjaborobudur.com/season/{{$item->id}}">
+  <meta name="author" content="Jogja borobudur tour & travel">
+  <meta name="robots" content="index, follow">
   <!-- facebook tag -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="www.jogjaborobudur.com" />
+  <meta property="og:url" content="www.jogjaborobudur.com/season/{{$item->id}}" />
   <meta property="og:title" content="The BEST {{$item->namaseason}}| Jogja Borobudur Tour & Travel" />
   <meta property="og:description"
     content="Find Top-rated Things to Do in {{$item->namaseason}}. BEST Tours and Activities." />
-    <meta property="og:image" content="{{ asset('traveler/images/gambarseo1.jpeg') }}"/>
+  <meta property="og:image" content="{{ asset('traveler/images/gambarseo1.jpeg') }}"/>
   @endforeach
   <!-- end tag -->
   <style type="text/css">

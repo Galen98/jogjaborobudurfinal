@@ -541,7 +541,7 @@ Route::patch('/updatehighlight/{idhighlight}',[BlogController::class,'updatehigh
 Route::patch('/updateimportant/{idimportant}',[BlogController::class,'updateimportant'])->middleware('auth');
 Route::patch('/updatehargachild/{idhargachild}',[BlogController::class,'updatehargachild'])->middleware('auth');
 Route::patch('/updatediskon/{idtravell}',[BlogController::class,'updatediskon'])->middleware('auth');
-Route::post('generatepdf',[App\Http\Controllers\emailController::class, 'sendPDF'])->middleware('auth');
+Route::post('generatepdf',[App\Http\Controllers\emailController::class, 'sendPDF']);
 
 // Route::get('/jaljal', function(){
 // return view('redesignblog.landingblog');

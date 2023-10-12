@@ -50,9 +50,15 @@
   <link rel="stylesheet" href="{{asset('traveler')}}/css/location.css"> 
   <!-- primary tag SEO -->
   <meta name="title" content="jogja Borobudur | Tour & Travel" />
-  <meta name="description" content="JogjaBorobudur Tour and Travel. Explore borobudur, prambanan, and many more."/>
+  @foreach($background as $item)
+  <meta name="description" content="{{$item->header}}"/>
+  @endforeach
   <!-- facebook tag -->
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="website"/>
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://jogjaborobudur.com">
+  <link rel="canonical" href="https://www.jogjaborobudur.com">
+  <meta name="author" content="Jogja borobudur tour & travel">
   <meta property="og:url" content="www.jogjaborobudur.com" />
   <meta property="og:title" content="jogja borobudur tour & travel" />
   @if($sessions == 'Bahasa')
@@ -65,8 +71,8 @@
   <meta name="lang" content="ms">
   @endif
   <meta property="og:description"
-    content="Jogja Borobudur tour & travel Explore borobudur, prambanan, and many more free cancellation." />
-    <meta property="og:image" content="{{ asset('traveler/images/gambarseo1.jpeg') }}"/>
+  content="Jogja Borobudur tour & travel Explore borobudur, prambanan, and many more free cancellation." />
+  <meta property="og:image" content="{{ asset('traveler/images/gambarseo1.jpeg') }}"/>
   <!-- end tag -->
   <title>Jogja Borobudur Tour & Travel</title>
   <style>

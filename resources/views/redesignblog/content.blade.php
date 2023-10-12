@@ -29,7 +29,7 @@
 	  					<span class="author-tag">Blogger</span>
 	  					</div>	
 	  				</div>
-	  				<span class="date mt-2">{{\Carbon\Carbon::parse($item->created_at)->format('d/m/Y') ?? ''}}</span>
+	  				<span class="date mt-2">{{ \Carbon\Carbon::parse($item->created_at)->formatLocalized('%d %B %Y') }}</span>
 	  				<div class="tags mt-2">
                       @foreach($tagblog as $item)
 							<a href="{{'/blog/tag/'.$item->tags}}"><span class="badge badge-pill p-2 badge-light">#{{$item->tags}}</span></a>

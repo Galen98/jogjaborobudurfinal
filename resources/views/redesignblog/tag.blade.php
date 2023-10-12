@@ -1,10 +1,15 @@
-@extends('redesignblog.index')
+@extends('redesignblog.forAllContent')
 @extends('redesignblog.nav')
 @extends('redesignblog.footer')
-
 @section('herosection')
 <br>
-@foreach($tags as $item)<div class="hero-title pt-5 pb-5"  id="article-grid"><h3 id="font500" style="font-weight:700;">Result of: #{{$item->tags}}</h3><div>@endforeach
+@foreach($tags as $item)
+<center>
+<div class="hero-title pt-5 pb-5"  id="article-grid">
+    <h3 id="font500" style="font-weight:700;">Result of: #{{$item->tags}}</h3>
+<div>
+</center>
+    @endforeach
     @endsection
 
     @section('sectionallblog')
@@ -36,10 +41,9 @@
         {{ $similarblog->links() }}
     </div>
 <div class="tags mt-2">
-        Other popular tags: 
+        Other popular tags: <br>
         @foreach($tagx as $item)
 							<a href="{{'/blog/tag/'.$item->tags}}"><span class="badge badge-pill p-2 badge-light">#{{$item->tags}}</span></a>
-                            @endforeach
-                        
+                            @endforeach  
 	  				</div>
 @endsection

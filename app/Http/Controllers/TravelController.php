@@ -524,8 +524,6 @@ class TravelController extends Controller
         }
     }
 
-    
-
     public function destinations(Request $request){
     $seasones = season::get();
     $bahasa=bahasa::get();

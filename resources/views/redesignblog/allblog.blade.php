@@ -1,4 +1,4 @@
-@extends('redesignblog.index')
+@extends('redesignblog.forAllContent')
 @extends('redesignblog.nav')
 @extends('redesignblog.footer')
 

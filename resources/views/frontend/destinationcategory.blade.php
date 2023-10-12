@@ -525,7 +525,7 @@
   
   <div class="rating-star rating-overall__rating-stars">
  <div class="small-ratings">
- @php
+            @php
             $rating = $item->totalrating;
             $fullStars = floor($rating);
             $halfStar = ceil($rating - $fullStars);
@@ -627,14 +627,31 @@
   <div class="rating-overall__rating">
   <div class="rating-star rating-overall__rating-stars">
  <div class="small-ratings">
+            @php
+            $rating = $item->totalrating;
+            $fullStars = floor($rating);
+            $halfStar = ceil($rating - $fullStars);
+            $emptyStars = 5 - ($fullStars + $halfStar);
+            @endphp
+            @for ($i = 1; $i <= $fullStars; $i++)
                 <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
-                <i class="fa fa-star rating-color"></i>
+            @endfor
+            @if ($halfStar)
+            <i class="fa fa-star-half rating-color"></i>
+            @endif
+            @for ($i = 1; $i <= $emptyStars; $i++)
+                <!-- <i class="fa fa-star rating-color" style="color:grey !important;"></i> -->
+            @endfor
+            @if($rating == 0)
+            @for ($i = 1; $i <= 5; $i++)
+                <i class="fa fa-star rating-color" style="color:grey !important;"></i>
+            @endfor
+            @endif
               </div>
-
-</div>   
+</div>
+<div class="rating-overall__reviews" style="margin-bottom:15px;">
+  ({!! number_format($item->totalrating, 1) !!})
+  </div>   
 </div> 
 </div> 
 <div class="activity-card__pricing" data-v-a1084d9e><div class="baseline-pricing" data-v-24caa43d data-v-a1084d9e><div class="baseline-pricing__container" data-v-24caa43d><div class="baseline-pricing__value" data-v-24caa43d><p class="baseline-pricing__from" data-v-24caa43d>From</p>

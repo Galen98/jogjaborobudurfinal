@@ -115,19 +115,26 @@
   <ul itemscope="itemscope" itemtype="https://schema.org/BreadcrumbList" class="activity-breadcrumbs" data-v-2833ce42 data-v-c4be1764>
   <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42>
  <span itemprop="name" data-v-2833ce42><a href="/" style="color:grey;">Home</a></span>
+ <meta itemprop="position" content="1" />
   </li> 
-  @foreach($province as $item)
+  @foreach($province as $index => $item)
   <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42>
  <span itemprop="name" data-v-2833ce42><a href="/location/{{$item->slugprovince}}/{{$item->id}}" style="color:grey;">{{$item->namaprovince}}</a></span>
+ <meta itemprop="position" content="{{ $index + 2 }}" />
   </li> 
   @endforeach 
-  @foreach($region as $item)
+  @foreach($region as $index => $item)
   <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42>
  <span itemprop="name" data-v-2833ce42><a href="/city/{{$item->slugregion}}" style="color:grey;">{{$item->namaregion}}</a></span>
+ <meta itemprop="position" content="{{ $index + count($province) + 2 }}" />
   </li> 
   @endforeach 
   <li itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope="itemscope" class="activity-breadcrumbs__item" data-v-2833ce42>
-  @foreach($destinasi as $item)<span itemprop="name" data-v-2833ce42><a href="{{'/category-destination/' .$item->id}}" style="color:grey;">{{$item->destination}}</a></span>@endforeach 
+  @foreach($destinasi as $index => $item)<span itemprop="name" data-v-2833ce42>
+  <a href="{{'/category-destination/' .$item->id}}" style="color:grey;">{{$item->destination}}</a>
+  </span>
+  <meta itemprop="position" content="{{ $index + count($province) + count($region) + 2 }}" />
+  @endforeach 
   </li> 
   </ul>
 </section> 

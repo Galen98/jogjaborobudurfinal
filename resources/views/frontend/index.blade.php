@@ -1,7 +1,7 @@
 @extends('frontend.forindex')
 @section('header')
 @foreach($background as $item)
-	<header id="gtco-header" class="gtco-cover" role="banner" style="background-image:linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) ,url({{ url('public/img/'.$item->image) }});height: 643px;overflow: hidden;">
+	<header id="gtco-header" class="gtco-cover" role="banner" style="background-image:linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) ,url({{ asset('public/img/'.$item->image) }});height: 643px;overflow: hidden;">
     <div>
       <div>
         @endforeach
@@ -134,7 +134,6 @@
 				<div class="row-mt-15em" style="margin-top:100px; ">
 						<div class="col-md-7 mt-text" style="margin-top:-10px;margin-left:0px;">
 							<h1>{{$item->header}}</h1><br>
-             
           <div class="d-block d-sm-none"> 
             <div class="search-box-mobile" id="tess" style="background-color:white;">
               <i class="fas fa-search" style="margin-left:20px;margin-bottom:2px;"></i>
@@ -142,7 +141,6 @@
           </div>
           <!-- <div id="searchSuggestions1"></div> -->
           </div>
-
           <div id="myModal" class="modals">
     <div class="modals-content">
     <span class="close">&times;</span>
@@ -217,8 +215,8 @@
     <div class="vertical-activity-card__top">
     <div class="vertical-activity-card__photo">
     <picture>
-    <source srcset="{{ url('public/img/'.$item->image) }}" type="image/webp"> 
-    <img src="{{ url('public/img/'.$item->image) }}" alt="{{$item->namawisata}}">
+    <source srcset="{{ asset('public/img/'.$item->image) }}" type="image/webp"> 
+    <img src="{{ asset('public/img/'.$item->image) }}" alt="{{$item->namawisata}}">
     </picture>
     </div> 
     <div class="vertical-activity-card__badge">
@@ -364,8 +362,8 @@
     <div class="vertical-activity-card__top">
     <div class="cobamobile">
     <picture>
-    <source srcset="{{ url('public/img/'.$item->image) }}" type="image/webp"> 
-    <img class="cobamobile" src="{{ url('public/img/'.$item->image) }}" alt="{{$item->namawisata}}">
+    <source srcset="{{ asset('public/img/'.$item->image) }}" type="image/webp"> 
+    <img class="cobamobile" src="{{ asset('public/img/'.$item->image) }}" alt="{{$item->namawisata}}">
     </picture>
     </div> 
     <div class="vertical-activity-card__badge">
@@ -531,8 +529,8 @@
   <div class="activity-card__image" data-v-a1084d9e> 
   <div class="activity-card__image-info align-end" data-v-a1084d9e></div> 
   <picture data-v-a1084d9e>
-  <source srcset="{{ url('public/img/'.$item->image) }}" type="image/webp"> 
-  <img src="{{ url('public/img/'.$item->image) }}" alt="{{$item->namawisata}}"></picture>
+  <source srcset="{{ asset('public/img/'.$item->image) }}" type="image/webp"> 
+  <img src="{{ asset('public/img/'.$item->image) }}" alt="{{$item->namawisata}}"></picture>
   </div> 
   <div class="activity-card__details" data-v-a1084d9e>
   <div class="activity-card__details-main" data-v-a1084d9e>
@@ -639,8 +637,8 @@
   <div class="activity-card__image" data-v-a1084d9e> 
   <div class="activity-card__image-info align-end" data-v-a1084d9e></div> 
   <picture data-v-a1084d9e>
-  <source srcset="{{ url('public/img/'.$item->image) }}" type="image/webp"> 
-  <img src="{{ url('public/img/'.$item->image) }}" alt="{{$item->namawisata}}"></picture>
+  <source srcset="{{ asset('public/img/'.$item->image) }}" type="image/webp"> 
+  <img src="{{ asset('public/img/'.$item->image) }}" alt="{{$item->namawisata}}"></picture>
   </div> 
   <div class="activity-card__details" data-v-a1084d9e>
   <div class="activity-card__details-main" data-v-a1084d9e>

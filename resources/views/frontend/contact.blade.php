@@ -24,7 +24,6 @@
   <link rel="stylesheet" href="{{asset('traveler')}}/css/new4.css">
   <link rel="stylesheet" href="{{asset('traveler')}}/css/new5.css">
   <link rel="stylesheet" href="{{asset('traveler')}}/css/new7.css">
-        
   <link rel="icon" type="image/png" sizes="32x32" href="{{asset('spica')}}/images/favicon.png">
   <link rel="icon" type="image/png" sizes="16x16" href="{{asset('spica')}}/images/favicon.png">
   <link rel="shortcut icon" href="favicon.png">
@@ -38,9 +37,12 @@
    <!-- primary tag SEO -->
   <meta name="title" content="jogja Borobudur | Tour & Travel" />
   <meta name="description" content="JogjaBorobudur Tour and Travel. Explore borobudur, prambanan, and many more."/>
+  <link rel="canonical" href="https://jogjaborobudur.com/contact/contacts-us">
+  <link rel="canonical" href="https://www.jogjaborobudur.com/contact/contacts-us">
+  <meta name="author" content="Jogja borobudur tour & travel">
   <!-- facebook tag -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="www.jogjaborobudur.com" />
+  <meta property="og:url" content="www.jogjaborobudur.com/contact/contacts-us" />
   <meta property="og:title" content="jogja borobudur tour & travel" />
   <meta property="og:description"
     content="Jogja Borobudur tour & travel Explore borobudur, prambanan, and many more free cancellation." />

@@ -1,5 +1,13 @@
 <!DOCTYPE HTML>
-<html>
+@if($sessions == 'English')
+<html lang="en-US" default-lang="en-US">
+@endif
+@if($sessions == 'Bahasa')
+<html lang="id" default-lang="id">
+@endif
+@if($sessions == 'Malay')
+<html lang="ms" default-lang="ms">
+@endif
 	<head>
 	  <meta charset="utf-8" />
     <link data-vue-meta="ssr" rel="preload" href="{{asset('font')}}/GT-Eesti-Pro-Display-Regular.woff2" as="font" type="font/woff2" crossorigin="true">
@@ -40,9 +48,13 @@
     @foreach($regions as $item)
   <meta name="title" content="jogja Borobudur | {{$item->namaregion}}" />
   <meta name="description" content="{{$item->shortdescription}}"/>
+  <link rel="canonical" href="https://jogjaborobudur.com/city/{{$item->slugregion}}">
+  <link rel="canonical" href="https://www.jogjaborobudur.com/city/{{$item->slugregion}}">
+  <meta name="author" content="Jogja borobudur tour & travel">
+  <meta name="robots" content="index, follow">
   <!-- facebook tag -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="www.jogjaborobudur.com" />
+  <meta property="og:url" content="www.jogjaborobudur.com/city/{{$item->slugregion}}" />
   <meta property="og:title" content="jogja Borobudur | {{$item->namaregion}}" />
   <meta property="og:description"
     content="{{$item->shortdescription}}" />

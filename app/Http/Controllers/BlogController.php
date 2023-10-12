@@ -1027,7 +1027,7 @@ class BlogController extends Controller
         'created_at',
         Carbon::now()->format('m')
     )->where('bahasa', $sessions)->get();
-        return view('redesignblog.landingblog', compact('blog2','today','popular','tags','language','banner'));
+        return view('redesignblog.landingblog', compact('sessions','blog2','today','popular','tags','language','banner'));
     }
 
     public function listblog(Request $request){
@@ -1051,7 +1051,7 @@ class BlogController extends Controller
         $blog=DB::table('blog')->where('bahasa', $sessions)->paginate(8);
         $tagx=DB::table('tags')->get();
         $language=bahasa::get();
-        return view('redesignblog.allblog',compact('blog','tagx','language'));
+        return view('redesignblog.allblog',compact('sessions','blog','tagx','language'));
     }
 
     public function detailblog(Request $request,$slug){
@@ -1109,7 +1109,7 @@ class BlogController extends Controller
         $randomArticleIds = blog::inRandomOrder()->pluck('id')->take(2);
         $randomArticles = blog::whereIn('id', $randomArticleIds)->get();
 
-        return view('redesignblog.content',compact('randomArticles','similarex','shareButtons1','blog','popular','similarblog','tagblog','tags','today','popular','language'));
+        return view('redesignblog.content',compact('sessions','randomArticles','similarex','shareButtons1','blog','popular','similarblog','tagblog','tags','today','popular','language'));
     }
 
     public function tagsview(Request $request,$tagsid){
@@ -1138,7 +1138,7 @@ class BlogController extends Controller
         ->where('tambahtags.tags',$tagsid)->where('bahasa', $sessions)
         ->orderBy('created_at','DESC')
         ->paginate(8);
-        return view('redesignblog.tag',compact('tags','similarblog','tagx','language'));
+        return view('redesignblog.tag',compact('sessions','tags','similarblog','tagx','language'));
     }
 
     public function insertcomment(Request $request){

@@ -18,25 +18,23 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{asset('redesign-blog')}}/styles.css">
 	<link rel="icon" type="image/png" sizes="32x32" href="{{asset('spica')}}/images/favicon.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{asset('spica')}}/images/favicon.png">
-  <title>Jogjaborobudur Tour & Travel - Blog</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('spica')}}/images/favicon.png">
+    <title>Jogjaborobudur Tour & Travel - Blog</title>
      <!-- primary tag SEO -->
   <meta name="title" content="jogja Borobudur | Tour & Travel - Blog" />
   <meta name="robots" content="index, follow">
-  @foreach($banner as $item)
   <meta name="keywords" content="blog travel, travel, wisata, borobudur, prambanan, yogyakarta, explore">
   <meta name="description" content="Start your journey with us, and explore the world. Jogja Borobudur Tour & Travel Blog"/>
   <link rel="canonical" href="https://www.jogjaborobudur.com/blog">
   <link rel="canonical" href="https://jogjaborobudur.com/blog">
-  <meta name="author" content="{{$item->author}}">
+  <meta name="author" content="jogja borobudur tour & travel">
   <!-- facebook tag -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="www.jogjaborobudur.com/blog" />
   <meta property="og:title" content="jogja borobudur tour & travel - Blog" />
   <meta property="og:description"
     content="Jogja Borobudur tour & travel Explore borobudur, prambanan, and many more free cancellation." />
-	<meta property="og:image" content="{{ url('public/img/'.$item->image) }}"/>
-  @endforeach
+	<meta property="og:image" content="{{ asset('traveler/images/gambarseo2.jpg') }}"/>
   </head>
   <body>
 <div class="container-fluid" id="header">

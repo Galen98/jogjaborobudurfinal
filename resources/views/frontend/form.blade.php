@@ -1,6 +1,14 @@
 <!DOCTYPE HTML>
 
+@if($sessions == 'English')
 <html lang="en-US" default-lang="en-US">
+@endif
+@if($sessions == 'Bahasa')
+<html lang="id" default-lang="id">
+@endif
+@if($sessions == 'Malay')
+<html lang="ms" default-lang="ms">
+@endif
 <head>
     <meta charset="utf-8" />
     <link data-vue-meta="ssr" rel="preload" href="{{asset('font')}}/GT-Eesti-Pro-Display-Regular.woff2" as="font" type="font/woff2" crossorigin="true">
@@ -37,14 +45,14 @@
    <!-- primary tag SEO -->
   <meta name="title" content="jogja Borobudur | Tour & Travel" />
   <meta name="description" content="JogjaBorobudur Tour and Travel. Explore borobudur, prambanan, and many more."/>
+  <meta name="author" content="Jogja borobudur tour & travel">
   <!-- facebook tag -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="www.jogjaborobudur.com" />
   <meta property="og:title" content="jogja borobudur tour & travel" />
   <meta property="og:description"
     content="Jogja Borobudur tour & travel Explore borobudur, prambanan, and many more free cancellation." />
-    <meta property="og:image" content="{{ asset('traveler/images/gambarseo2.jpg') }}"/>
-
+  <meta property="og:image" content="{{ asset('traveler/images/gambarseo2.jpg') }}"/>
   <!-- end tag -->
   <title>Jogja Borobudur Tour & Travel</title>
 

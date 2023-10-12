@@ -64,23 +64,18 @@ class emailController extends Controller
         $data['email2'] = 'herucod@gmail.com';
         $data['subject'] = 'Booking Order Jogja Borobudur Tours & Travel'; // subject email
     
-        $booking['body'] = booking::latest()->paginate(1); //Ambil data postingan dari table di database
-		
-        //Ganti posts.postsPDF dengan file yang akan di jadikan .pdf
-        // $pdf = PDF::loadView('frontend.invoice', $booking); // generate file .pdf
-        
-        //Ganti posts.sendPDF dengan file yang akan di jadikan body email
+        $booking['body'] = booking::latest()->paginate(1);
         Mail::send('frontend.bodyemail', $booking, function($message)use($data) {
             $message->to($data['email'], $data['email'])
                     ->subject($data['subject']);
-                    // ->attachData($pdf->output(), time() .'_'.'data.pdf');
-        }); //kirim lampiran file pdf melakui email 
+                   
+        }); 
 
         Mail::send('frontend.bodyemail', $booking, function($message)use($data) {
             $message->to($data['email2'], $data['email2'])
                     ->subject($data['subject']);
-                    // ->attachData($pdf->output(), time() .'_'.'data.pdf')
-        }); //kirim lampiran file pdf melakui email 
+                    
+        }); 
 
         Alert::success('Success','Please check your email for our confirmation');
         return redirect()->to('/');
