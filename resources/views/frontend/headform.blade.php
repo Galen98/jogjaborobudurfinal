@@ -25,9 +25,9 @@
 	<link rel="stylesheet" href="{{asset('traveler')}}/css/booking7.css">
 	<link rel="stylesheet" href="{{asset('traveler')}}/css/booking8.css">
 	<link rel="stylesheet" href="{{asset('traveler')}}/css/booking9.css">
-	<link data-vue-meta="ssr" rel="preload" href="https://cdn.getyourguide.com/design-system/GT-Eesti/GT-Eesti-Pro-Display-Regular.woff2" as="font" type="font/woff2" crossorigin="true">
-  <link data-vue-meta="ssr" rel="preload" href="https://cdn.getyourguide.com/design-system/GT-Eesti/GT-Eesti-Pro-Display-Medium.woff2" as="font" type="font/woff2" crossorigin="true">
-  <link data-vue-meta="ssr" rel="preload" href="https://cdn.getyourguide.com/design-system/GT-Eesti/GT-Eesti-Pro-Display-Bold.woff2" as="font" type="font/woff2" crossorigin="true">
+	<link rel="preload" href="https://cdn.getyourguide.com/design-system/GT-Eesti/GT-Eesti-Pro-Display-Regular.woff2" as="font" type="font/woff2" crossorigin="true">
+  <link rel="preload" href="https://cdn.getyourguide.com/design-system/GT-Eesti/GT-Eesti-Pro-Display-Medium.woff2" as="font" type="font/woff2" crossorigin="true">
+  <link rel="preload" href="https://cdn.getyourguide.com/design-system/GT-Eesti/GT-Eesti-Pro-Display-Bold.woff2" as="font" type="font/woff2" crossorigin="true">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" type="image/png" sizes="32x32" href="{{asset('spica')}}/images/favicon.png">
 <link rel="icon" type="image/png" sizes="16x16" href="{{asset('spica')}}/images/favicon.png">

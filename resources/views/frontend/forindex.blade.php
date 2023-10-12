@@ -10,9 +10,9 @@
 @endif
 	<head>
 	  <meta charset="utf-8" />   
-  <link  href="{{asset('font')}}/GT-Eesti-Pro-Display-Regular.woff2" as="font" type="font/woff2" crossorigin="true">
-  <link  href="{{asset('font')}}/GT-Eesti-Pro-Display-Medium.woff2" as="font" type="font/woff2" crossorigin="true">
-  <link  href="{{asset('font')}}/GT-Eesti-Pro-Display-Bold.woff2" crossorigin="true">
+  <link rel="preload" href="{{asset('font')}}/GT-Eesti-Pro-Display-Regular.woff2" as="font" type="font/woff2" crossorigin="true">
+  <link rel="preload" href="{{asset('font')}}/GT-Eesti-Pro-Display-Medium.woff2" as="font" type="font/woff2" crossorigin="true">
+  <link rel="preload" href="{{asset('font')}}/GT-Eesti-Pro-Display-Bold.woff2" crossorigin="true">
   <!-- Animate.css -->
   <link rel="stylesheet" href="{{asset('traveler')}}/css/animate.css">
   <!-- Icomoon Icon Fonts-->
@@ -32,7 +32,7 @@
   <link rel="stylesheet" href="{{asset('traveler')}}/css/lightbox.min.css">
   <!-- Modernizr JS -->
   <script src="{{asset('traveler')}}/js/modernizr-2.6.2.min.js"></script>
-  <link rel="stylesheet" href="{{asset('traveler')}}/css/new.css" as="style">
+  <link rel="preload" href="{{asset('traveler')}}/css/new.css" as="style">
   <link rel="stylesheet" href="{{asset('traveler')}}/css/style.css">
   <link rel="stylesheet" href="{{asset('traveler')}}/css/new2.css">
   <link rel="stylesheet" href="{{asset('traveler')}}/css/new3.css">
@@ -41,7 +41,7 @@
   <link rel="stylesheet" href="{{asset('traveler')}}/css/new7.css">    
   <link rel="icon" type="image/png" sizes="32x32" href="{{asset('spica')}}/images/logo.png">
   <link rel="icon" type="image/png" sizes="16x16" href="{{asset('spica')}}/images/logo.png">
-  <link rel="shortcut icon" href="logo.png">
+  <link rel="shortcut icon" href="{{asset('spica')}}/images/logo.png">
   <meta name="viewport"content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
