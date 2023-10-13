@@ -150,8 +150,9 @@ class Reviewemail extends Controller
         $nama_file = time() . "_" . $img->getClientOriginalName();
         $tujuan_upload = 'public/img/review/';
         $image->encode('webp', 80)->save(public_path($tujuan_upload . '/' . pathinfo($nama_file, PATHINFO_FILENAME) . '.webp'));
+        $nama_files = pathinfo($nama_file, PATHINFO_FILENAME) . '.webp';
     } else{
-        $nama_file = null;
+        $nama_files = null;
     }
     
         $img2= $request->file('images2');
@@ -160,8 +161,9 @@ class Reviewemail extends Controller
         $nama_file2 = time() . "_" . $img2->getClientOriginalName();
         $tujuan_upload2 = 'public/img/review/';
         $image2->encode('webp', 80)->save(public_path($tujuan_upload2 . '/' . pathinfo($nama_file2, PATHINFO_FILENAME) . '.webp'));
+        $nama_files2 = pathinfo($nama_file2, PATHINFO_FILENAME) . '.webp';
     } else{
-        $nama_file2 = null;
+        $nama_files2 = null;
     }
 
         $img3= $request->file('images3');
@@ -170,8 +172,9 @@ class Reviewemail extends Controller
         $nama_file3 = time() . "_" . $img3->getClientOriginalName();
         $tujuan_upload3 = 'public/img/review/';
         $image3->encode('webp', 80)->save(public_path($tujuan_upload3 . '/' . pathinfo($nama_file3, PATHINFO_FILENAME) . '.webp'));
+        $nama_files3 = pathinfo($nama_file3, PATHINFO_FILENAME) . '.webp';
     } else{
-        $nama_file3 = null;
+        $nama_files3 = null;
     }
         $img4= $request->file('images4');
         if($img4 !== null){
@@ -179,8 +182,9 @@ class Reviewemail extends Controller
         $nama_file4 = time() . "_" . $img4->getClientOriginalName();
         $tujuan_upload4 = 'public/img/review/';
         $image4->encode('webp', 80)->save(public_path($tujuan_upload4 . '/' . pathinfo($nama_file4, PATHINFO_FILENAME) . '.webp'));
+        $nama_files4 = pathinfo($nama_file4, PATHINFO_FILENAME) . '.webp';
     } else{
-        $nama_file4 = null;
+        $nama_files4 = null;
     }
         $img5= $request->file('images5');
         if($img5 !== null){
@@ -188,8 +192,9 @@ class Reviewemail extends Controller
         $nama_file5 = time() . "_" . $img5->getClientOriginalName();
         $tujuan_upload5 = 'public/img/review/';
         $image5->encode('webp', 80)->save(public_path($tujuan_upload5 . '/' . pathinfo($nama_file5, PATHINFO_FILENAME) . '.webp'));
+        $nama_files5 = pathinfo($nama_file5, PATHINFO_FILENAME) . '.webp';
         } else{
-            $nama_file5 = null;
+            $nama_files5 = null;
         }
         
         reviews::where('id', $reviewid)->update([
@@ -200,11 +205,11 @@ class Reviewemail extends Controller
                     'comments' => $request->comment,
                     'country' => $request->country,
                     'token' => null,
-                    'image' => $nama_file,
-                    'image2' => $nama_file2,
-                    'image3' => $nama_file3,
-                    'image4' => $nama_file4,
-                    'image5' => $nama_file5,
+                    'image' => $nama_files,
+                    'image2' => $nama_files2,
+                    'image3' => $nama_files3,
+                    'image4' => $nama_files4,
+                    'image5' => $nama_files5,
                 ]);
 
         $rating = reviews::where('wisata_id', $travelid)
