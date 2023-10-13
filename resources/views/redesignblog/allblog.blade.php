@@ -35,7 +35,7 @@
         {{ $blog->links() }}
     </div>
 <div class="tags mt-2">
-        popular tags: 
+        popular tags: <br>
         @foreach($tagx as $item)
 							<a href="{{'/blog/tag/'.$item->tags}}"><span class="badge badge-pill p-2 badge-light">#{{$item->tags}}</span></a>
                             @endforeach

@@ -62,7 +62,7 @@
 
         @section('pagination')
         <div class="tags mt-2 mb-3">
-        popular tags: 
+        popular tags: <br>
         @foreach($tags as $item)
 							<a href="{{'/blog/tag/'.$item->tags}}"><span class="badge badge-pill p-2 badge-light">#{{$item->tags}}</span></a>
                             @endforeach
