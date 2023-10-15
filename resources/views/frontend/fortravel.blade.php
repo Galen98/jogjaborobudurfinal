@@ -317,6 +317,7 @@ $("#dialogs").css("display","none");
             $("#totalgroup{{$p->id}}").text("Total: " + convertrate(item.harga))
             $("#groupe{{$p->id}}").val(group)
             $("#tothargagroup{{$p->id}}").val(convertrate(hargagroup{{$p->id}}))
+            $("#tothargagroupnoconvert{{$p->id}}").val((hargagroup{{$p->id}}))
           }
 
         })
@@ -347,7 +348,9 @@ $("#dialogs").css("display","none");
       @foreach($pilihan as $p)
       if (hargadewasa{{$p->id}} + hargaanak{{$p->id}} > 0) {
         $("#harga{{$p->id}}").text("Total: " + convertrate(hargadewasa{{$p->id}} + hargaanak{{$p->id}} ))
-         $("#totharga{{$p->id}}").val(convertrate(hargadewasa{{$p->id}}  + hargaanak{{$p->id}} ))
+        $("#harganoconvert{{$p->id}}").text((hargadewasa{{$p->id}} + hargaanak{{$p->id}} ))
+        $("#totharga{{$p->id}}").val(convertrate(hargadewasa{{$p->id}}  + hargaanak{{$p->id}} ))
+        $("#totharganoconvert{{$p->id}}").val((hargadewasa{{$p->id}}  + hargaanak{{$p->id}} ))
       }
       else{
         $("#harga{{$p->id}}").text(" ")

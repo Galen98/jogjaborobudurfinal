@@ -39,6 +39,8 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Http;
 use Intervention\Image\ImageManagerStatic as Image;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\Tags\Url;
 
 class TravelController extends Controller
 {
@@ -93,6 +95,9 @@ class TravelController extends Controller
 		// $tujuan_upload = 'public/img';
         // $img->move($tujuan_upload,$nama_file);
         $image = Image::make($img->getRealPath());
+        $image->resize(800, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
         $nama_file = time() . "_" . $img->getClientOriginalName();
         $tujuan_upload = 'public/img';
         $image->encode('webp', 80)->save(public_path($tujuan_upload . '/' . pathinfo($nama_file, PATHINFO_FILENAME) . '.webp'));
@@ -102,6 +107,9 @@ class TravelController extends Controller
         // ]);
         $img2= request('image2');
         $image2 = Image::make($img2->getRealPath());
+        $image2->resize(800, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
         $nama_file2 = time() . "_" . $img2->getClientOriginalName();
         $tujuan_upload2 = 'public/img';
         $image2->encode('webp', 80)->save(public_path($tujuan_upload2 . '/' . pathinfo($nama_file2, PATHINFO_FILENAME) . '.webp'));
@@ -111,6 +119,9 @@ class TravelController extends Controller
         // ]);
         $img3= request('image3');
         $image3 = Image::make($img3->getRealPath());
+        $image3->resize(800, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
         $nama_file3 = time() . "_" . $img3->getClientOriginalName();
         $tujuan_upload3 = 'public/img';
         $image3->encode('webp', 80)->save(public_path($tujuan_upload3 . '/' . pathinfo($nama_file3, PATHINFO_FILENAME) . '.webp'));
@@ -120,6 +131,9 @@ class TravelController extends Controller
         // ]);
         $img4= request('image4');
         $image4 = Image::make($img4->getRealPath());
+        $image4->resize(800, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
         $nama_file4 = time() . "_" . $img4->getClientOriginalName();
         $tujuan_upload4 = 'public/img';
         $image4->encode('webp', 80)->save(public_path($tujuan_upload4 . '/' . pathinfo($nama_file4, PATHINFO_FILENAME) . '.webp'));
@@ -129,6 +143,9 @@ class TravelController extends Controller
         // ]);
         $img5= request('image5');
         $image5 = Image::make($img5->getRealPath());
+        $image5->resize(800, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
         $nama_file5 = time() . "_" . $img5->getClientOriginalName();
         $tujuan_upload5 = 'public/img';
         $image5->encode('webp', 80)->save(public_path($tujuan_upload5 . '/' . pathinfo($nama_file5, PATHINFO_FILENAME) . '.webp'));

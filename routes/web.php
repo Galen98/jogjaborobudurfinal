@@ -31,7 +31,8 @@ use App\Models\tambahseason;
 use App\Models\tambahprovince;
 use App\Models\tambahlocation;
 use Illuminate\Support\Str;
-
+use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\Tags\Url;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -608,3 +609,52 @@ $sessions = session()->get("bahasa") ?? "English";
     $session = session()->get("rate") ?? "USD";
     return view('errors.404', compact('bahasa','session','sessions','province','city','season','destination'));
     });
+ 
+    Route::get('/sitemap', function(){
+        $sitemap = Sitemap::create()
+        ->add(Url::create('/')->setPriority(1.0))
+        ->add(Url::create('/contact/contacts-us'))
+        ->add(Url::create('/blog/list'))
+        ->add(Url::create('/about-us'))
+        ->add(Url::create('/alltours'))
+        ->add(Url::create('/blog'))
+        ->add(Url::create('/terms-condition'))
+        ->add(Url::create('/privacy-policy'))
+        ->add(Url::create('/onlinebooking/platform'))
+        ->add(Url::create('/corporate/corporatediscount'))
+        ->add(Url::create('/influencer/influencer'))
+        ->add(Url::create('/affiliate/affiliateprogram'))
+        ->add(Url::create('/sellyourtours/sellyourtours'));
+        
+        $itemwisata = travel::all();
+        foreach ($itemwisata as $item) {
+            $sitemap->add(Url::create("/item/{$item->slug}"));
+        }
+
+        $location = province::all();
+        foreach ($location as $item) {
+            $sitemap->add(Url::create("/location/{$item->slugprovince}/{$item->id}"));
+        }
+
+        $city = region::all();
+        foreach ($city as $item) {
+            $sitemap->add(Url::create("/city/{$item->slugregion}"));
+        }
+
+        $season = season::all();
+        foreach ($season as $item) {
+            $sitemap->add(Url::create("/season/{$item->id}"));
+        }
+
+        $tag = tags::all();
+        foreach ($tag as $item) {
+            $sitemap->add(Url::create("/blog/tag/{$item->tags}"));
+        }
+
+        $blog = blog::all();
+        foreach ($blog as $item) {
+            $sitemap->add(Url::create("/blog/{$item->slug}"));
+        }
+
+        $sitemap->writeToFile(public_path('sitemap.xml'));
+    }); 

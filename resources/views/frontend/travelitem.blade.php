@@ -213,7 +213,7 @@
   <source srcset="{{ url('public/img/'.$item->image) }}" media="(max-width: 767px)"> 
   <source srcset="{{ url('public/img/'.$item->image) }}" media="(min-width: 768px) and (max-width: 1199px)"> 
   <source srcset="{{ url('public/img/'.$item->image) }}" media="(min-width: 1200px)"> 
-  <img loading="lazy" src="{{ url('public/img/'.$item->image) }}" class="photo-gallery-slider__slide-image photo-gallery-slider__slide-image--contain" style="object-position:center;">
+  <img alt="{{$item->slug}}" loading="lazy" src="{{ url('public/img/'.$item->image) }}" class="photo-gallery-slider__slide-image photo-gallery-slider__slide-image--contain" style="object-position:center;">
   </picture>
   </div>
   @endforeach
@@ -224,7 +224,7 @@
   <source data-srcset="{{ url('public/img/'.$item->image2) }}" media="(max-width: 767px)" class="vanilla-lazy-loaded-image">
   <source data-srcset="{{ url('public/img/'.$item->image2) }}" media="(min-width: 768px) and (max-width: 1199px)" class="vanilla-lazy-loaded-image">
   <source data-srcset="{{ url('public/img/'.$item->image2) }}" media="(min-width: 1200px)" class="vanilla-lazy-loaded-image"> 
-  <img alt="" data-src="{{ url('public/img/'.$item->image2) }}" src="{{ url('public/img/'.$item->image2) }}" title="" class="vanilla-lazy-loaded-image photo-gallery-slider__slide-image--contain photo-gallery-slider__slide-image"></picture></div>
+  <img alt="{{$item->slug}}" data-src="{{ url('public/img/'.$item->image2) }}" src="{{ url('public/img/'.$item->image2) }}" title="" class="vanilla-lazy-loaded-image photo-gallery-slider__slide-image--contain photo-gallery-slider__slide-image"></picture></div>
   @endforeach
 
   @foreach($travel as $item)
@@ -233,13 +233,13 @@
   <source data-srcset="{{ url('public/img/'.$item->image3) }}" media="(max-width: 767px)" class="vanilla-lazy-loaded-image">
   <source data-srcset="{{ url('public/img/'.$item->image3) }}" media="(min-width: 768px) and (max-width: 1199px)" class="vanilla-lazy-loaded-image">
   <source data-srcset="{{ url('public/img/'.$item->image3) }}" media="(min-width: 1200px)" class="vanilla-lazy-loaded-image"> 
-  <img alt="" data-src="{{ url('public/img/'.$item->image3) }}" src="{{ url('public/img/'.$item->image3) }}" title="" class="vanilla-lazy-loaded-image photo-gallery-slider__slide-image--contain photo-gallery-slider__slide-image"></picture></div>
+  <img alt="{{$item->slug}}" data-src="{{ url('public/img/'.$item->image3) }}" src="{{ url('public/img/'.$item->image3) }}" title="" class="vanilla-lazy-loaded-image photo-gallery-slider__slide-image--contain photo-gallery-slider__slide-image"></picture></div>
   @endforeach
 
   @foreach($travel as $item)
   <div id="slide-3" data-slide-id="3" aria-labelledby="slide-button-3" aria-roledescription="slide" class="gyg-slide photo-gallery-slider__slide"><picture style="object-position:center;"><source data-srcset="{{ url('public/img/'.$item->image4) }}" media="(max-width: 767px)" class="vanilla-lazy-loaded-image"><source data-srcset="{{ url('public/img/'.$item->image4) }}" media="(min-width: 768px) and (max-width: 1199px)" class="vanilla-lazy-loaded-image">
     <source data-srcset="{{ url('public/img/'.$item->image4) }}" media="(min-width: 1200px)" class="vanilla-lazy-loaded-image"> 
-      <img alt="" data-src="{{ url('public/img/'.$item->image4) }}" src="{{ url('public/img/'.$item->image4) }}" title="" class="vanilla-lazy-loaded-image photo-gallery-slider__slide-image--contain photo-gallery-slider__slide-image"></picture></div>
+      <img alt="{{$item->slug}}" data-src="{{ url('public/img/'.$item->image4) }}" src="{{ url('public/img/'.$item->image4) }}" title="" class="vanilla-lazy-loaded-image photo-gallery-slider__slide-image--contain photo-gallery-slider__slide-image"></picture></div>
   @endforeach
 
   @foreach($travel as $item)
@@ -248,7 +248,7 @@
     <source data-srcset="{{ url('public/img/'.$item->image5) }}" media="(max-width: 767px)" class="vanilla-lazy-loaded-image">
     <source data-srcset="{{ url('public/img/'.$item->image5) }}" media="(min-width: 768px) and (max-width: 1199px)" class="vanilla-lazy-loaded-image">
     <source data-srcset="{{ url('public/img/'.$item->image5) }}" media="(min-width: 1200px)" class="vanilla-lazy-loaded-image"> 
-    <img alt="" data-src="{{ url('public/img/'.$item->image5) }}" src="{{ url('public/img/'.$item->image5) }}" title="" class="vanilla-lazy-loaded-image photo-gallery-slider__slide-image--contain photo-gallery-slider__slide-image"></picture></div>
+    <img alt="{{$item->slug}}" data-src="{{ url('public/img/'.$item->image5) }}" src="{{ url('public/img/'.$item->image5) }}" title="" class="vanilla-lazy-loaded-image photo-gallery-slider__slide-image--contain photo-gallery-slider__slide-image"></picture></div>
     @endforeach
 
 
@@ -266,28 +266,28 @@
   <picture class="photo-collage__image photo-collage__image--0">
     <source srcset="data:image/gif;base64, R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 767px)"> 
     <a href="{{ url('public/img/'.$item->image) }}" data-lightbox="mygallery" data-title="">
-  <img src="{{ url('public/img/'.$item->image) }}" loading="lazy" class="photo-collage__image-source">
+  <img src="{{ url('public/img/'.$item->image) }}" loading="lazy" class="photo-collage__image-source" alt="{{$item->slug}}">
 </a></picture>
 
   <picture class="photo-collage__image photo-collage__image--1">
   <source srcset="data:image/gif;base64, R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 767px)">
   <a href="{{ url('public/img/'.$item->image2) }}" data-lightbox="mygallery" data-title=""> 
-  <img src="{{ url('public/img/'.$item->image2) }}" loading="lazy" class="photo-collage__image-source">
+  <img src="{{ url('public/img/'.$item->image2) }}" loading="lazy" class="photo-collage__image-source" alt="{{$item->slug}}">
 </a></picture>
 
   <picture class="photo-collage__image photo-collage__image--2"><source srcset="data:image/gif;base64, R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 767px)">
   <a href="{{ url('public/img/'.$item->image3) }}" data-lightbox="mygallery" data-title=""> 
-  <img src="{{ url('public/img/'.$item->image3) }}" loading="lazy" class="photo-collage__image-source">
+  <img src="{{ url('public/img/'.$item->image3) }}" loading="lazy" class="photo-collage__image-source" alt="{{$item->slug}}">
 </a></picture>
   <picture class="photo-collage__image photo-collage__image--3"><source srcset="data:image/gif;base64, R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 767px)">
   <a href="{{ url('public/img/'.$item->image4) }}" data-lightbox="mygallery" data-title=""> 
-  <img src="{{ url('public/img/'.$item->image4) }}" loading="lazy" class="photo-collage__image-source">
+  <img src="{{ url('public/img/'.$item->image4) }}" loading="lazy" class="photo-collage__image-source" alt="{{$item->slug}}">
 </a></picture>
 
 <picture class="photo-collage__image photo-collage__image--3">
   <source srcset="data:image/gif;base64, R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 767px)">
   <a href="{{ url('public/img/'.$item->image5) }}" data-lightbox="mygallery" data-title=""> 
-  <img src="{{ url('public/img/'.$item->image5) }}" loading="lazy" class="photo-collage__image-source">
+  <img src="{{ url('public/img/'.$item->image5) }}" loading="lazy" class="photo-collage__image-source" alt="{{$item->slug}}">
 </a></picture>
   @endforeach 
   <button class="photo-collage__show-all">
@@ -561,7 +561,9 @@
       <h3 class="booking-assistant-configurator__header" data-v-dd428772 style="font-size:17px;font-weight: bolder;color:#182c4c;text-align:left;" id="harga{{$p->id}}"></h3>
       <h3 class="booking-assistant-configurator__header" data-v-dd428772 style="font-size:17px;font-weight: bolder;color:#182c4c;text-align:left;" id="totalgroup{{$p->id}}"></h3>
       <input type="hidden" name="totharga" id="totharga{{$p->id}}">
+      <input type="hidden" name="totharganoconvert" id="totharganoconvert{{$p->id}}">
       <input type="hidden" name="tothargagroup" id="tothargagroup{{$p->id}}">
+      <input type="hidden" name="tothargagroupnoconvert" id="tothargagroupnoconvert{{$p->id}}">
     </section>
      
   <button type="submit" id="bookx" class="js-check-availability gtm-trigger__adp-check-availability-btn avoid-close-dropdown-on-click c-button c-button--medium filbtn" data-v-dd428772>  

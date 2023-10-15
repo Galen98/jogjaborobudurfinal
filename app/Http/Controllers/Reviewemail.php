@@ -147,9 +147,12 @@ class Reviewemail extends Controller
         $img= $request->file('images');
         if($img !== null){
         $image = Image::make($img->getRealPath());
+        $image->resize(750, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
         $nama_file = time() . "_" . $img->getClientOriginalName();
         $tujuan_upload = 'public/img/review/';
-        $image->encode('webp', 80)->save(public_path($tujuan_upload . '/' . pathinfo($nama_file, PATHINFO_FILENAME) . '.webp'));
+        $image->encode('webp', 10)->save(public_path($tujuan_upload . '/' . pathinfo($nama_file, PATHINFO_FILENAME) . '.webp'));
         $nama_files = pathinfo($nama_file, PATHINFO_FILENAME) . '.webp';
     } else{
         $nama_files = null;
@@ -158,6 +161,9 @@ class Reviewemail extends Controller
         $img2= $request->file('images2');
         if($img2 !== null){
         $image2 = Image::make($img2->getRealPath());
+        $image2->resize(750, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
         $nama_file2 = time() . "_" . $img2->getClientOriginalName();
         $tujuan_upload2 = 'public/img/review/';
         $image2->encode('webp', 80)->save(public_path($tujuan_upload2 . '/' . pathinfo($nama_file2, PATHINFO_FILENAME) . '.webp'));
@@ -169,6 +175,9 @@ class Reviewemail extends Controller
         $img3= $request->file('images3');
         if($img3 !== null){
         $image3 = Image::make($img3->getRealPath());
+        $image3->resize(750, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
         $nama_file3 = time() . "_" . $img3->getClientOriginalName();
         $tujuan_upload3 = 'public/img/review/';
         $image3->encode('webp', 80)->save(public_path($tujuan_upload3 . '/' . pathinfo($nama_file3, PATHINFO_FILENAME) . '.webp'));
@@ -179,6 +188,9 @@ class Reviewemail extends Controller
         $img4= $request->file('images4');
         if($img4 !== null){
         $image4 = Image::make($img4->getRealPath());
+        $image4->resize(750, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
         $nama_file4 = time() . "_" . $img4->getClientOriginalName();
         $tujuan_upload4 = 'public/img/review/';
         $image4->encode('webp', 80)->save(public_path($tujuan_upload4 . '/' . pathinfo($nama_file4, PATHINFO_FILENAME) . '.webp'));
@@ -189,6 +201,9 @@ class Reviewemail extends Controller
         $img5= $request->file('images5');
         if($img5 !== null){
         $image5 = Image::make($img5->getRealPath());
+        $image5->resize(750, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
         $nama_file5 = time() . "_" . $img5->getClientOriginalName();
         $tujuan_upload5 = 'public/img/review/';
         $image5->encode('webp', 80)->save(public_path($tujuan_upload5 . '/' . pathinfo($nama_file5, PATHINFO_FILENAME) . '.webp'));
