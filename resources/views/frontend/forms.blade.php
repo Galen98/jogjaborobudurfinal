@@ -927,7 +927,7 @@ function addRowregion(){
 '<td>'+
 					  '<select class="form-control" name="region[]">'+
 						'@foreach($region as $item)'+
-						'<option class="form-control" value="{{$item->id}}">{{$item->namaregion}}</option>'+
+						'<option class="form-control" value="{{$item->namaregion}}">{{$item->namaregion}}</option>'+
 						'@endforeach'+
 					'</select>'+
                     '<td style="text-align:left;"><button class="btn btn-danger remove">Delete</button></td>'+

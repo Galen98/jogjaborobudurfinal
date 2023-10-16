@@ -1,4 +1,4 @@
-@extends('frontend.forindex')
+@extends('frontend.for404')
 @section('nav')
 <header data-test-id="page-header" class="page-header light" data-v-3a2bcacc style="background-color:#fc2c04;margin-top: 0px;">
 <div class="page-header__content" data-v-3a2bcacc >
