@@ -134,7 +134,7 @@ class BlogController extends Controller
         File::delete('public/img/'.$images->image);
         province::where('id',$idprovince)->delete();
         $provinsiid=tambahprovince::where('namaprovince',$namaprovince)->first();
-        if($provinsiid > 0){
+        if($provinsiid !== null){
             tambahlocation::where('tambahprovince_id', $provinsiid->id)->delete();
         }
         tambahprovince::where('namaprovince',$namaprovince)->delete();
