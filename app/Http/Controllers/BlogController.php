@@ -1173,7 +1173,7 @@ class BlogController extends Controller
     }
 
     public function editimagelanding(Request $request,$idimage){
-        $img= request('image');
+        $img=request('image');
         
         if($img == null){
             $nama_file=$request->namagambar;
@@ -1192,6 +1192,21 @@ class BlogController extends Controller
             'place'=>'landingpage'
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
+        return redirect()->to('/background/change');
+    }
+
+    public function insertimagelanding(Request $request){
+        $img=request('image');
+        $nama_file = time()."_".$img->getClientOriginalName();
+        $tujuan_upload = 'public/img';
+        $img->move($tujuan_upload,$nama_file);
+
+        background::create([
+            'place'=>'landingpage',
+            'header'=>$request->teks,
+            'image'=>$nama_file,
+        ]);
+        Alert::success('Berhasil','Berhasil Ditambahkan');
         return redirect()->to('/background/change');
     }
 
@@ -1212,9 +1227,26 @@ class BlogController extends Controller
         ->update([
             'header'=>$request->teks,
             'image'=>$nama_file,
-            'place'=>'landingpage'
+            'subheader'=>$request->tekssmall,
+            'place'=>'agent'
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
+        return redirect()->to('/background/change');
+    }
+
+    public function insertimageagent(Request $request){
+        $img=request('image');
+        $nama_file = time()."_".$img->getClientOriginalName();
+        $tujuan_upload = 'public/img';
+        $img->move($tujuan_upload,$nama_file);
+
+        background::create([
+            'header'=>$request->teks,
+            'image'=>$nama_file,
+            'subheader'=>$request->tekssmall,
+            'place'=>'agent'
+        ]);
+        Alert::success('Berhasil','Berhasil Ditambahkan');
         return redirect()->to('/background/change');
     }
 
@@ -1235,9 +1267,26 @@ class BlogController extends Controller
         ->update([
             'header'=>$request->teks,
             'image'=>$nama_file,
+            'subheader'=>$request->tekssmall,
             'place'=>'affiliate'
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
+        return redirect()->to('/background/change');
+    }
+
+    public function insertimageaffiliate(Request $request){
+        $img=request('image');
+        $nama_file = time()."_".$img->getClientOriginalName();
+        $tujuan_upload = 'public/img';
+        $img->move($tujuan_upload,$nama_file);
+
+        background::create([
+            'header'=>$request->teks,
+            'image'=>$nama_file,
+            'subheader'=>$request->tekssmall,
+            'place'=>'affiliate'
+        ]);
+        Alert::success('Berhasil','Berhasil Ditambahkan');
         return redirect()->to('/background/change');
     }
 
@@ -1258,9 +1307,26 @@ class BlogController extends Controller
         ->update([
             'header'=>$request->teks,
             'image'=>$nama_file,
+            'subheader'=>$request->tekssmall,
             'place'=>'selltours'
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
+        return redirect()->to('/background/change');
+    }
+
+    public function insertimageselltours(Request $request){
+        $img=request('image');
+        $nama_file = time()."_".$img->getClientOriginalName();
+        $tujuan_upload = 'public/img';
+        $img->move($tujuan_upload,$nama_file);
+
+        background::create([
+            'header'=>$request->teks,
+            'image'=>$nama_file,
+            'subheader'=>$request->tekssmall,
+            'place'=>'selltours'
+        ]);
+        Alert::success('Berhasil','Berhasil Ditambahkan');
         return redirect()->to('/background/change');
     }
 
@@ -1281,9 +1347,26 @@ class BlogController extends Controller
         ->update([
             'header'=>$request->teks,
             'image'=>$nama_file,
+            'subheader'=>$request->tekssmall,
             'place'=>'about'
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
+        return redirect()->to('/background/change');
+    }
+
+    public function insertimageabout(Request $request){
+        $img=request('image');
+        $nama_file = time()."_".$img->getClientOriginalName();
+        $tujuan_upload = 'public/img';
+        $img->move($tujuan_upload,$nama_file);
+
+        background::create([
+            'header'=>$request->teks,
+            'image'=>$nama_file,
+            'subheader'=>$request->tekssmall,
+            'place'=>'about'
+        ]);
+        Alert::success('Berhasil','Berhasil Ditambahkan');
         return redirect()->to('/background/change');
     }
 
@@ -1304,9 +1387,26 @@ class BlogController extends Controller
         ->update([
             'header'=>$request->teks,
             'image'=>$nama_file,
+            'subheader'=>$request->tekssmall,
             'place'=>'platform'
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
+        return redirect()->to('/background/change');
+    }
+
+    public function insertimageplatform(Request $request){
+        $img=request('image');
+        $nama_file = time()."_".$img->getClientOriginalName();
+        $tujuan_upload = 'public/img';
+        $img->move($tujuan_upload,$nama_file);
+
+        background::create([
+            'header'=>$request->teks,
+            'image'=>$nama_file,
+            'subheader'=>$request->tekssmall,
+            'place'=>'platform'
+        ]);
+        Alert::success('Berhasil','Berhasil Ditambahkan');
         return redirect()->to('/background/change');
     }
 
@@ -1327,9 +1427,26 @@ class BlogController extends Controller
         ->update([
             'header'=>$request->teks,
             'image'=>$nama_file,
+            'subheader'=>$request->tekssmall,
             'place'=>'corporate'
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
+        return redirect()->to('/background/change');
+    }
+
+    public function insertimagecorporate(Request $request){
+        $img=request('image');
+        $nama_file = time()."_".$img->getClientOriginalName();
+        $tujuan_upload = 'public/img';
+        $img->move($tujuan_upload,$nama_file);
+
+        background::create([
+            'header'=>$request->teks,
+            'image'=>$nama_file,
+            'subheader'=>$request->tekssmall,
+            'place'=>'corporate'
+        ]);
+        Alert::success('Berhasil','Berhasil Ditambahkan');
         return redirect()->to('/background/change');
     }
 
@@ -1349,10 +1466,27 @@ class BlogController extends Controller
         DB::table('background')->where('id',$idimage)
         ->update([
             'header'=>$request->teks,
+            'subheader'=>$request->tekssmall,
             'image'=>$nama_file,
             'place'=>'contact'
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
+        return redirect()->to('/background/change');
+    }
+
+    public function insertimagecontact(Request $request){
+        $img=request('image');
+        $nama_file = time()."_".$img->getClientOriginalName();
+        $tujuan_upload = 'public/img';
+        $img->move($tujuan_upload,$nama_file);
+
+        background::create([
+            'header'=>$request->teks,
+            'subheader'=>$request->tekssmall,
+            'image'=>$nama_file,
+            'place'=>'contact'
+        ]);
+        Alert::success('Berhasil','Berhasil Ditambahkan');
         return redirect()->to('/background/change');
     }
 
@@ -1373,9 +1507,26 @@ class BlogController extends Controller
         ->update([
             'header'=>$request->teks,
             'image'=>$nama_file,
+            'subheader'=>$request->tekssmall,
             'place'=>'influencer'
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
+        return redirect()->to('/background/change');
+    }
+
+    public function insertimageinfluencer(Request $request){
+        $img=request('image');
+        $nama_file = time()."_".$img->getClientOriginalName();
+        $tujuan_upload = 'public/img';
+        $img->move($tujuan_upload,$nama_file);
+
+        background::create([
+            'header'=>$request->teks,
+            'image'=>$nama_file,
+            'subheader'=>$request->tekssmall,
+            'place'=>'influencer'
+        ]);
+        Alert::success('Berhasil','Berhasil Ditambahkan');
         return redirect()->to('/background/change');
     }
 
