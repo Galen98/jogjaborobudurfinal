@@ -288,7 +288,7 @@
             @for ($i = 1; $i <= $emptyStars; $i++)
                 <!-- <i class="fa fa-star rating-color" style="color:grey !important;"></i> -->
             @endfor
-            @if($rating == 0)
+            @if($rating == null)
             @for ($i = 1; $i <= 5; $i++)
                 <i class="fa fa-star rating-color" style="color:grey !important;"></i>
             @endfor
