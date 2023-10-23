@@ -80,7 +80,7 @@ class BlogController extends Controller
             $nama_file = time() . "_" . $img->getClientOriginalName();
             $tujuan_upload = 'public/img';
             // Konversi dan simpan ke format WebP
-            $image->encode('webp', 80)->save(public_path($tujuan_upload . '/' . pathinfo($nama_file, PATHINFO_FILENAME) . '.webp'));
+            $image->encode('webp', 80)->save(($tujuan_upload . '/' . pathinfo($nama_file, PATHINFO_FILENAME) . '.webp'));
         
         $data=[
             'judulblog'=>$judul,
@@ -963,7 +963,7 @@ class BlogController extends Controller
     $image->heighten(750);
     $nama_file = time() . "_" . $img->getClientOriginalName();
     $tujuan_upload = 'public/img';
-    $image->encode('webp', 80)->save(public_path($tujuan_upload . '/' . pathinfo($nama_file, PATHINFO_FILENAME) . '.webp'));
+    $image->encode('webp', 80)->save(($tujuan_upload . '/' . pathinfo($nama_file, PATHINFO_FILENAME) . '.webp'));
         }
         DB::table('blog')->where('id',$idblog)
         ->update([
@@ -1549,7 +1549,7 @@ class BlogController extends Controller
             });
             $nama_file = time() . "_" . $img->getClientOriginalName();
             $tujuan_upload = 'public/img';
-            $image->encode('webp', 80)->save(public_path($tujuan_upload . '/' . pathinfo($nama_file, PATHINFO_FILENAME) . '.webp'));
+            $image->encode('webp', 80)->save(($tujuan_upload . '/' . pathinfo($nama_file, PATHINFO_FILENAME) . '.webp'));
         }
 
         if($img2 == null){
@@ -1564,7 +1564,7 @@ class BlogController extends Controller
             });
             $nama_file2 = time() . "_" . $img2->getClientOriginalName();
             $tujuan_upload2 = 'public/img';
-            $image2->encode('webp', 80)->save(public_path($tujuan_upload2 . '/' . pathinfo($nama_file2, PATHINFO_FILENAME) . '.webp'));
+            $image2->encode('webp', 80)->save(($tujuan_upload2 . '/' . pathinfo($nama_file2, PATHINFO_FILENAME) . '.webp'));
         }
 
         if($img3 == null){
@@ -1579,7 +1579,7 @@ class BlogController extends Controller
             });
             $nama_file3 = time() . "_" . $img3->getClientOriginalName();
             $tujuan_upload3 = 'public/img';
-            $image3->encode('webp', 80)->save(public_path($tujuan_upload3 . '/' . pathinfo($nama_file3, PATHINFO_FILENAME) . '.webp'));
+            $image3->encode('webp', 80)->save(($tujuan_upload3 . '/' . pathinfo($nama_file3, PATHINFO_FILENAME) . '.webp'));
         }
 
         if($img4 == null){
@@ -1594,7 +1594,7 @@ class BlogController extends Controller
             });
             $nama_file4 = time() . "_" . $img4->getClientOriginalName();
             $tujuan_upload4 = 'public/img';
-            $image4->encode('webp', 80)->save(public_path($tujuan_upload4 . '/' . pathinfo($nama_file4, PATHINFO_FILENAME) . '.webp'));
+            $image4->encode('webp', 80)->save(($tujuan_upload4 . '/' . pathinfo($nama_file4, PATHINFO_FILENAME) . '.webp'));
         }
 
         if($img5 == null){
@@ -1609,7 +1609,7 @@ class BlogController extends Controller
             });
             $nama_file5 = time() . "_" . $img5->getClientOriginalName();
             $tujuan_upload5 = 'public/img';
-            $image5->encode('webp', 80)->save(public_path($tujuan_upload5 . '/' . pathinfo($nama_file5, PATHINFO_FILENAME) . '.webp'));
+            $image5->encode('webp', 80)->save(($tujuan_upload5 . '/' . pathinfo($nama_file5, PATHINFO_FILENAME) . '.webp'));
         }
 
         DB::table('wisata')->where('wisata_id',$idtravel)
@@ -1825,7 +1825,7 @@ class BlogController extends Controller
                 $nama_file = time() . '_' . $index . '.webp';
                 Image::make($image->getRealPath())
                     ->encode('webp', 80)
-                    ->save(public_path('public/img/review/' . pathinfo($nama_file, PATHINFO_FILENAME) . '.webp'));
+                    ->save(('public/img/review/' . pathinfo($nama_file, PATHINFO_FILENAME) . '.webp'));
                 $columnName = $imageColumns[$index];
 
                 $data = [
@@ -1962,7 +1962,7 @@ class BlogController extends Controller
         $nama_file = time()."_".$img->getClientOriginalName();
         $gambar = Image::make($img);
         $gambar->resize(600,600);
-        $tujuan_upload = public_path('public/img/');
+        $tujuan_upload = ('public/img/');
         $gambar->save($tujuan_upload .$nama_file); 
 
         $data = [
@@ -2006,7 +2006,7 @@ class BlogController extends Controller
         $nama_file = time()."_".$img->getClientOriginalName();
         $gambar = Image::make($img);
         $gambar->resize(600,600);
-        $tujuan_upload = public_path('public/img/');
+        $tujuan_upload = ('public/img/');
         $gambar->save($tujuan_upload .$nama_file); 
 
         $data = [

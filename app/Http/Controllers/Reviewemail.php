@@ -152,7 +152,7 @@ class Reviewemail extends Controller
         });
         $nama_file = time() . "_" . $img->getClientOriginalName();
         $tujuan_upload = 'public/img/review/';
-        $image->encode('webp', 10)->save(public_path($tujuan_upload . '/' . pathinfo($nama_file, PATHINFO_FILENAME) . '.webp'));
+        $image->encode('webp', 10)->save(($tujuan_upload . '/' . pathinfo($nama_file, PATHINFO_FILENAME) . '.webp'));
         $nama_files = pathinfo($nama_file, PATHINFO_FILENAME) . '.webp';
     } else{
         $nama_files = null;
@@ -166,7 +166,7 @@ class Reviewemail extends Controller
         });
         $nama_file2 = time() . "_" . $img2->getClientOriginalName();
         $tujuan_upload2 = 'public/img/review/';
-        $image2->encode('webp', 80)->save(public_path($tujuan_upload2 . '/' . pathinfo($nama_file2, PATHINFO_FILENAME) . '.webp'));
+        $image2->encode('webp', 80)->save(($tujuan_upload2 . '/' . pathinfo($nama_file2, PATHINFO_FILENAME) . '.webp'));
         $nama_files2 = pathinfo($nama_file2, PATHINFO_FILENAME) . '.webp';
     } else{
         $nama_files2 = null;
@@ -180,7 +180,7 @@ class Reviewemail extends Controller
         });
         $nama_file3 = time() . "_" . $img3->getClientOriginalName();
         $tujuan_upload3 = 'public/img/review/';
-        $image3->encode('webp', 80)->save(public_path($tujuan_upload3 . '/' . pathinfo($nama_file3, PATHINFO_FILENAME) . '.webp'));
+        $image3->encode('webp', 80)->save(($tujuan_upload3 . '/' . pathinfo($nama_file3, PATHINFO_FILENAME) . '.webp'));
         $nama_files3 = pathinfo($nama_file3, PATHINFO_FILENAME) . '.webp';
     } else{
         $nama_files3 = null;
@@ -193,7 +193,7 @@ class Reviewemail extends Controller
         });
         $nama_file4 = time() . "_" . $img4->getClientOriginalName();
         $tujuan_upload4 = 'public/img/review/';
-        $image4->encode('webp', 80)->save(public_path($tujuan_upload4 . '/' . pathinfo($nama_file4, PATHINFO_FILENAME) . '.webp'));
+        $image4->encode('webp', 80)->save(($tujuan_upload4 . '/' . pathinfo($nama_file4, PATHINFO_FILENAME) . '.webp'));
         $nama_files4 = pathinfo($nama_file4, PATHINFO_FILENAME) . '.webp';
     } else{
         $nama_files4 = null;
@@ -206,7 +206,7 @@ class Reviewemail extends Controller
         });
         $nama_file5 = time() . "_" . $img5->getClientOriginalName();
         $tujuan_upload5 = 'public/img/review/';
-        $image5->encode('webp', 80)->save(public_path($tujuan_upload5 . '/' . pathinfo($nama_file5, PATHINFO_FILENAME) . '.webp'));
+        $image5->encode('webp', 80)->save(($tujuan_upload5 . '/' . pathinfo($nama_file5, PATHINFO_FILENAME) . '.webp'));
         $nama_files5 = pathinfo($nama_file5, PATHINFO_FILENAME) . '.webp';
         } else{
             $nama_files5 = null;
