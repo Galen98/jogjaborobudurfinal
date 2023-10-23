@@ -295,8 +295,14 @@
             @endif
               </div>
 	</div>
+	@if($rating == null)
+	<span class="rating-overall__rating-reviews">(0)</span>
+	@else
 	<span class="rating-overall__rating-reviews">({!! $rating !!})</span>
-	</div></div></div>
+	@endif
+	</div>
+	</div>
+	</div>
 	
 	</div>
 	<div class="cart-item__description" data-v-039efa20>

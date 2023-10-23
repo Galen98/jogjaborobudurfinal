@@ -343,7 +343,11 @@ class TravelController extends Controller
         $tanggaltravel=Request('tanggaltravel');
         $country=DB::table('country')->get();
         $ratingGet=countrating::where('wisata_id', $idtravel)->first();
+        if($ratingGet == null){
+            $rating = null;
+        } else{
         $rating=$ratingGet->totalrating;
+    }
         return view('frontend.booking',compact('rating','namawisata','reviews','total','tanggaltravel','adult','child','group','totalgroup','country','waktu','idoption','idtravel','paketwisata'));
     }
 
