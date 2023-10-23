@@ -481,7 +481,7 @@
 <div>
 <h6>Adults</h6>
 </div>
-<input type="text" id="adult" value="0" name="adultquantity" data-min="0" data-code="adults" required readonly/>
+<input type="text" id="adult" class="adults" value="0" name="adultquantity" data-min="0" data-code="adults" required readonly/>
 </div>
 @else
 <div class="d-flex justify-content-between align-items-center my-1">

@@ -360,6 +360,124 @@ $("#dialogs").css("display","none");
     }
     })
 
+$("input[data-code]").change(function(){
+      let date=$("#date-start").val()
+      let group=$("#group").val()
+      let person=$("#adult").val()
+      let personchild=$("#child").val()      
+      let dates= $("#tanggal{{$p->id}}").val()
+      @foreach($travel as $item)
+      @if($item->kategories == 'Per Person')
+      if($("#adult").val() === "0" ){
+        // $( "#dialogs" ).dialog();
+        $('.participants-control').next().toggle();
+    }
+    @else
+    if($("#group").val() === "0" ){
+        // $( "#dialogs" ).dialog();
+        $('.participants-control').next().toggle();
+    }
+    @endif
+    @endforeach
+    else if($("#date-start").val().length === 0 ){
+        // $( "#dialog" ).dialog();
+        $("#date-start").focus();
+    }
+    else{
+      @foreach($pilihan as $p) $("#totals{{$p->id}}").slideDown("fast"); 
+     let subid{{$p->id}}=$("#subid{{$p->id}}").val()
+     let hargaanak{{$p->id}}=0
+     let hargadewasa{{$p->id}}=0
+     let hargagroup{{$p->id}}=0
+     @endforeach
+      
+      @foreach($pilihan as $p)
+      if (date) {
+        $("#tanggal{{$p->id}}").text("Travel Date: " + date)
+        $("#tanggaltravel{{$p->id}}").val(date)
+      }
+      @endforeach
+
+      @foreach($pilihan as $p)
+      if (person > 0){
+        harganew.forEach(function(item){
+          if (item.kategories == 'Per Person' && person >= item.min && person <= item.maks && item.subwisata_id == subid{{$p->id}}){
+            hargadewasa{{$p->id}} = item.harga * person 
+            // const hargs = item.harga.toFixed(2)
+            $("#jumlahdewasa{{$p->id}}").text("Adult: " + person + " x" + ' ' + convertrate(item.harga)) 
+            $("#hargadewasa{{$p->id}}").text("Price: " + convertrate(item.harga))
+            $("#dewasa{{$p->id}}").val(person)
+          }
+
+          else if (item.kategories == 'Per Group' && person >= item.min && person <= item.maks && item.subwisata_id == subid{{$p->id}}){
+            hargadewasa{{$p->id}} = item.harga 
+            // const hargs = item.harga.toFixed(2)
+            $("#jumlahdewasa{{$p->id}}").text("Participants: " + person+ ' ' + convertrate(item.harga))
+            $("#hargadewasa{{$p->id}}").text("Price: " + convertrate(item.harga))
+            $("#dewasa{{$p->id}}").val(person)
+          }
+
+        })
+      }else{
+            $("#dewasa{{$p->id}}").val("")
+            $("#jumlahdewasa{{$p->id}}").text("")
+            $("#hargadewasa{{$p->id}}").text("")
+          }
+          @endforeach
+
+          @foreach($pilihan as $p)
+      if (group > 0){
+        harganew.forEach(function(item){
+          if (item.kategories == 'Per Group' && group >= item.min && group <= item.maks && item.subwisata_id == subid{{$p->id}}){
+            hargagroup{{$p->id}} = item.harga 
+            // const hargs = item.harga.toFixed(2)
+            $("#jumlahgroup{{$p->id}}").text("Participants: " + group + ' Person')
+            $("#totalgroup{{$p->id}}").text("Total: " + convertrate(item.harga))
+            $("#groupe{{$p->id}}").val(group)
+            $("#tothargagroup{{$p->id}}").val(convertrate(hargagroup{{$p->id}}))
+            $("#tothargagroupnoconvert{{$p->id}}").val((hargagroup{{$p->id}}))
+          }
+
+        })
+      }else{
+            $("#group{{$p->id}}").val("")
+            $("#jumlahgroup{{$p->id}}").text("")
+            $("#hargagroup{{$p->id}}").text("")
+          }
+          @endforeach
+
+          @foreach($pilihan as $p)
+      if (personchild > 0) {
+        hargachildnew.forEach(function(item){
+          if (personchild >= item.min && personchild <= item.maks && item.subwisata_id == subid{{$p->id}}) {
+            hargaanak{{$p->id}} = item.harga * personchild 
+            $("#anak{{$p->id}}").val(personchild)
+            $("#jumlahchild{{$p->id}}").text("Child: "+personchild + " x" + ' ' +convertrate(item.harga))
+            $("#hargachild{{$p->id}}").text("Price (Child): "+convertrate(item.harga))
+          }
+        })
+      }else{
+        $("#anak{{$p->id}}").val("")
+        $("#jumlahchild{{$p->id}}").text("")
+        $("#hargachild{{$p->id}}").text("")
+      }
+      @endforeach
+
+      @foreach($pilihan as $p)
+      if (hargadewasa{{$p->id}} + hargaanak{{$p->id}} > 0) {
+        $("#harga{{$p->id}}").text("Total: " + convertrate(hargadewasa{{$p->id}} + hargaanak{{$p->id}} ))
+        $("#harganoconvert{{$p->id}}").text((hargadewasa{{$p->id}} + hargaanak{{$p->id}} ))
+        $("#totharga{{$p->id}}").val(convertrate(hargadewasa{{$p->id}}  + hargaanak{{$p->id}} ))
+        $("#totharganoconvert{{$p->id}}").val((hargadewasa{{$p->id}}  + hargaanak{{$p->id}} ))
+      }
+      else{
+        $("#harga{{$p->id}}").text(" ")
+        $("#totharga{{$p->id}}").val("")
+      }
+      @endforeach 
+    }
+    })
+
     function convertrate(harga){
       let rateidr = {{$rateIDR}}
       let ratemyr = {{$rateMYR}}
