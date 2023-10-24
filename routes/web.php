@@ -668,5 +668,5 @@ $sessions = session()->get("bahasa") ?? "English";
             $sitemap->add(Url::create("/blog/{$item->slug}"));
         }
 
-        $sitemap->writeToFile(public_path('sitemap.xml'));
+        $sitemap->writeToFile(('sitemap.xml'));
     }); 
