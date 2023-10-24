@@ -303,6 +303,18 @@ class BlogController extends Controller
         return redirect()->back();
     }
 
+    public function hapusseason($idseason){
+        tambahseason::where('id',$idseason)->delete();
+        Alert::error('Berhasil Dihapus');
+        return redirect()->back();
+    }
+
+    public function hapusdestination($iddestination){
+        tambahdestinasi::where('id',$iddestination)->delete();
+        Alert::error('Berhasil Dihapus');
+        return redirect()->back();
+    }
+
     public function hapusimportant($idimportant){
         importants::where('id',$idimportant)->delete();
         Alert::error('Berhasil Dihapus');
@@ -398,6 +410,8 @@ class BlogController extends Controller
         'Season'=>$Season
         ]);
     }
+
+    
 
     public function showeditharga($HargaID){
         $Harga=DB::table('hargabaru')->where('id',$HargaID)->first();
@@ -798,6 +812,26 @@ class BlogController extends Controller
             'highlight'=>$highlight
         ];
         highlight::create($data);
+    }
+
+    public function addseason(Request $request){
+        $idtravel=Request('idtravel');
+        $season=Request('season');
+        $data=[
+            'wisata_id'=>$idtravel,
+            'season_id'=>$season
+        ];
+        tambahseason::create($data);
+    }
+
+    public function adddestination(Request $request){
+        $idtravel=Request('idtravel');
+        $destination=Request('destinasi');
+        $data=[
+            'wisata_id'=>$idtravel,
+            'destinasi_id'=>$destination
+        ];
+        tambahdestinasi::create($data);
     }
 
     public function addimportant(Request $request){

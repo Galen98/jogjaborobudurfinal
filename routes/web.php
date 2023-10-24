@@ -244,6 +244,8 @@ Route::delete('deleteoption/{idoption}', [App\Http\Controllers\BlogController::c
 Route::delete('hapuswaktu/{idtime}', [App\Http\Controllers\BlogController::class,'hapuswaktu'])->middleware('auth');
 Route::delete('hapusexclude/{idexclude}', [App\Http\Controllers\BlogController::class,'hapusexclude'])->middleware('auth');
 Route::delete('hapushighlight/{idhighlight}', [App\Http\Controllers\BlogController::class,'hapushighlight'])->middleware('auth');
+Route::delete('hapusseason/{idseason}', [App\Http\Controllers\BlogController::class,'hapusseason'])->middleware('auth');
+Route::delete('hapusdestination/{iddestination}', [App\Http\Controllers\BlogController::class,'hapusdestination'])->middleware('auth');
 Route::delete('hapusimportant/{idimportant}', [App\Http\Controllers\BlogController::class,'hapusimportant'])->middleware('auth');
 Route::get('/rating/{idtravel}', [App\Http\Controllers\BlogController::class,'ratingwisata'])->middleware('auth')->middleware('auth');
 Route::get('/rating/edit/{idreview}', [App\Http\Controllers\BlogController::class,'editreview'])->middleware('auth')->middleware('auth');
@@ -549,6 +551,8 @@ Route::delete('deletehargachild/{idchild}', [BlogController::class, 'deleteharga
 Route::post('insertbackgroundlanding', [BlogController::class, 'insertbackground'])->middleware('auth');
 Route::post('addexclude', [BlogController::class, 'addexclude'])->middleware('auth');
 Route::post('addhighlight', [BlogController::class, 'addhighlight'])->middleware('auth');
+Route::post('addseason', [BlogController::class, 'addseason'])->middleware('auth');
+Route::post('adddestination', [BlogController::class, 'adddestination'])->middleware('auth');
 Route::post('addimportant', [BlogController::class, 'addimportant'])->middleware('auth');
 Route::patch('/updatehighlight/{idhighlight}',[BlogController::class,'updatehighlight'])->middleware('auth');
 Route::patch('/updateimportant/{idimportant}',[BlogController::class,'updateimportant'])->middleware('auth');

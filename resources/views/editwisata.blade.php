@@ -170,6 +170,8 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Destination  </h4>
+                  <br>
+                  <button type="button" class="tambahdestination btn btn-sm btn-primary btn-rounded btn-fw"><i class="mdi mdi-plus"></i> Tambah</button>
                   <div class="table-responsive pt-3">
                     <table class="table table-bordered">
                       <thead>
@@ -182,6 +184,9 @@
                           </th>
                           <th>
                             Edit
+                          </th>
+                          <th>
+                            Hapus
                           </th>
                         </tr>
                       </thead>
@@ -197,6 +202,14 @@
                           <td>
                           <button type="button" class="btneditdestination btn btn-sm btn-info btn-rounded btn-fw" style="color: white;" value="{{$item->id}}"><i class="mdi mdi-pencil-box" style="color: white;"></i> Edit</button>
                           </td>
+                          <td> 
+                          <form action="{{url('hapusdestination/'.$item->id)}}" method="POST">
+                              @csrf
+                              @method('DELETE')
+                         <button type="submit" class="hapusbtn btn btn-sm btn-danger btn-rounded btn-fw">
+                          <i class="mdi mdi-delete"></i> Hapus</button>
+                       </form>
+                          </td>
                         </tr>
                         @endforeach
                       </tbody>
@@ -210,6 +223,8 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Season  </h4>
+                  <br>
+                  <button type="button" class="tambahseason btn btn-sm btn-primary btn-rounded btn-fw"><i class="mdi mdi-plus"></i> Tambah</button>
                   <div class="table-responsive pt-3">
                     <table class="table table-bordered">
                       <thead>
@@ -222,6 +237,9 @@
                           </th>
                           <th>
                             Edit
+                          </th>
+                          <th>
+                            Hapus
                           </th>
                         </tr>
                       </thead>
@@ -236,6 +254,13 @@
                           </td>
                           <td>
                           <button type="button" class="btneditseason btn btn-sm btn-info btn-rounded btn-fw" style="color: white;" value="{{$item->id}}"><i class="mdi mdi-pencil-box" style="color: white;"></i> Edit</button>
+                          </td>
+                          <td>
+                          <form action="{{url('hapusseason/'.$item->id)}}" method="POST">
+                              @csrf
+                              @method('DELETE')
+                         <button type="submit" class="hapusbtn btn btn-sm btn-danger btn-rounded btn-fw"><i class="mdi mdi-delete"></i> Hapus</button>
+                       </form>
                           </td>
                         </tr>
                         @endforeach
@@ -935,6 +960,64 @@
 </div>
 </div>
 </div>
+
+<div class="modal fade" id="Modalseason" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add Season</h5>
+            <button type="button" class="btn-close" data-dismiss="modal">
+            </button>
+      </div>
+      <div class="modal-body">
+      <div class="form-group">
+      <form action="{{url('addseason')}}" action="POST" enctype="multipart/form-data" id="formseasonadd">
+        @csrf
+      <div class="form-group">
+        <label>Season</label>
+        @foreach($travel as $item)<input type="hidden" id="idtravel" name="idtravel" value="{{$item->wisata_id}}">@endforeach
+        <select class="form-control" name="season">
+          @foreach($seasonadd as $item)<option class="form-control" value="{{$item->id}}">{{$item->namaseason}}</option>@endforeach
+        </select>
+        </div>
+        <button type="button" class="btn btn-primary btnseason">Post</button>
+        </form> 
+        <br>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="Modaldestination" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add Season</h5>
+            <button type="button" class="btn-close" data-dismiss="modal">
+            </button>
+      </div>
+      <div class="modal-body">
+      <div class="form-group">
+      <form action="{{url('adddestination')}}" action="POST" enctype="multipart/form-data" id="formdestinationadd">
+        @csrf
+      <div class="form-group">
+        <label>Destination</label>
+        @foreach($travel as $item)<input type="hidden" id="idtravel" name="idtravel" value="{{$item->wisata_id}}">@endforeach
+        <select class="form-control" name="destinasi">
+          @foreach($destinasi as $item)
+          <option class="form-control" value="{{$item->id}}">{{$item->destination}}</option>
+          @endforeach
+        </select>
+        </div>
+        <button type="button" class="btn btn-primary btndestination">Post</button>
+        </form> 
+        <br>
+        </div>
+    </div>
+</div>
+</div>
+</div>
 @endsection
 @section('scripts')
 <script>
@@ -943,6 +1026,7 @@
             var idinclude=$(this).val();
             $('#editModal').modal('show');
             const dateFormat="dddd, MMMM Do YYYY, h:mm";
+
             $.ajax({
                 
                 type: "GET",
@@ -1394,6 +1478,66 @@
         });
       </script>
 
+      <script> 
+    $(document).ready(function(){
+        $(document).on('click', '.tambahdestination', function(){
+            $('#Modaldestination').modal('show');
+          
+        });
+
+        $(".btn-close").click(function(){
+            $("#Modaldestination").modal('hide');
+        });
+
+        $(document).on('click', '.btndestination', function(){
+            var idtravel=$('#formdestinationadd').find('#idtravel').val()
+            let formData=$('#formdestinationadd').serialize()
+            //console.log(progid);
+            console.log(formData)
+
+            $.ajax({
+                url:'{{url('adddestination')}}',
+                method:"POST",
+                data:formData,
+                success:function(data){
+                    $('#Modaldestination').modal('hide')
+                    window.location.assign('/paketwisata/edit/'+idtravel);
+                }
+            })
+        });
+    });
+      </script>
+
+      <script> 
+      $(document).ready(function(){
+        $(document).on('click', '.tambahseason', function(){
+            $('#Modalseason').modal('show');
+          
+        });
+
+        $(".btn-close").click(function(){
+            $("#Modalseason").modal('hide');
+        });
+
+        $(document).on('click', '.btnseason', function(){
+            var idtravel=$('#formseasonadd').find('#idtravel').val()
+            let formData=$('#formseasonadd').serialize()
+            //console.log(progid);
+            console.log(formData)
+
+            $.ajax({
+                url:'{{url('addseason')}}',
+                method:"POST",
+                data:formData,
+                success:function(data){
+                    $('#Modalseason').modal('hide')
+                    window.location.assign('/paketwisata/edit/'+idtravel);
+                }
+            })
+        });
+    });
+      </script>
+
 <script>
     $(document).ready(function(){
         $(document).on('click', '.btneditprovince', function(){
@@ -1442,6 +1586,8 @@
 
 <script>
     $(document).ready(function(){
+     
+
         $(document).on('click', '.tambahcity', function(){
             var idtambahprovinces=$(this).val();
             $('#addModalCity').modal('show');
