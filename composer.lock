@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "666677d3c4dc0053a7d181c27ff654f1",
+    "content-hash": "15e30391b68e53ad2c79d9ede68537a7",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -212,6 +212,38 @@
                 "source": "https://github.com/cocur/slugify/tree/v4.3.0"
             },
             "time": "2022-12-07T19:48:48+00:00"
+        },
+        {
+            "name": "crocodicstudio/dokularavel",
+            "version": "v1.6.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/crocodic-studio/dokularavel.git",
+                "reference": "ac23343cc4baa20ad479dbbfb7427dbe4bfae082"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/crocodic-studio/dokularavel/zipball/ac23343cc4baa20ad479dbbfb7427dbe4bfae082",
+                "reference": "ac23343cc4baa20ad479dbbfb7427dbe4bfae082",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "crocodicstudio\\dokularavel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "This package is DOKU Payment Gateway Library for Laravel",
+            "support": {
+                "issues": "https://github.com/crocodic-studio/dokularavel/issues",
+                "source": "https://github.com/crocodic-studio/dokularavel/tree/master"
+            },
+            "abandoned": true,
+            "time": "2017-09-22T03:13:03+00:00"
         },
         {
             "name": "cviebrock/eloquent-sluggable",

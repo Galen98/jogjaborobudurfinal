@@ -11,49 +11,24 @@
 <head>
   @foreach($travel as $item)
   <meta charset="utf-8" />
-  <link rel="preload" href="{{asset('font')}}/GT-Eesti-Pro-Display-Regular.woff2" as="font" type="font/woff2" crossorigin="true">
-  <link rel="preload" href="{{asset('font')}}/GT-Eesti-Pro-Display-Medium.woff2" as="font" type="font/woff2" crossorigin="true">
-  <link rel="preload" href="{{asset('font')}}/GT-Eesti-Pro-Display-Bold.woff2" crossorigin="true">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.css" integrity="sha512-FA9cIbtlP61W0PRtX36P6CGRy0vZs0C2Uw26Q1cMmj3xwhftftymr0sj8/YeezDnRwL9wtWw8ZwtCiTDXlXGjQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/fontawesome.css" integrity="sha512-/Jsoj+nRoCkEHw4HnymLk48dWblqtN+0rW+UMAanfbHZjzgphJipQOEuuOEdZ0IzSEYgK0NXCNda8r+4juGbPg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/fontawesome.min.css" integrity="sha512-giQeaPns4lQTBMRpOOHsYnGw1tGVzbAIHUyHRgn7+6FmiEgGGjaG0T2LZJmAPMzRCl+Cug0ItQ2xDZpTmEc+CQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- Animate.css -->
-  <link rel="stylesheet" href="{{asset('traveler')}}/css/animate.css">
-  <!-- Icomoon Icon Fonts-->
-  <link rel="stylesheet" href="{{asset('traveler')}}/css/icomoon.css">
-  <!-- Themify Icons-->
   <link rel="stylesheet" href="{{asset('traveler')}}/css/themify-icons.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/blitzer/jquery-ui.min.css" integrity="sha512-ibBo2Ns078qm7xZNTPbIrg5XP4pZ+Aujfmz0QFsce2f4LYpCnF1Esy6FkIRFBgXC9cY30XiS7Ui9+RpN8K7ICg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- Bootstrap  -->
   <link rel="stylesheet" href="{{asset('traveler')}}/css/bootstrap.css">
-  <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
-/>
-<link href="{{asset('traveler')}}/css/blogs2.css" rel="stylesheet" type="text/css"/>
+  <link href="{{asset('traveler')}}/css/blogs2.css" rel="stylesheet" type="text/css"/>
   <link rel="stylesheet" href="{{asset('traveler')}}/css/blogs.css" />
-  <!-- Magnific Popup -->
-  <link rel="stylesheet" href="{{asset('traveler')}}/css/magnific-popup.css">
-  <!-- Magnific Popup -->
   <link rel="stylesheet" href="{{asset('traveler')}}/css/bootstrap-datepicker.min.css">
-  <!-- Owl Carousel  -->
-  <link rel="stylesheet" href="{{asset('traveler')}}/css/owl.carousel.min.css">
-  <link rel="stylesheet" href="{{asset('traveler')}}/css/owl.theme.default.min.css">
-  <!-- Theme style  -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="{{asset('traveler')}}/css/style.css">
   <link rel="stylesheet" href="{{asset('traveler')}}/css/lightbox.min.css">
-  <!-- Modernizr JS -->
-  <script src="{{asset('traveler')}}/js/modernizr-2.6.2.min.js"></script>
   <link rel="preload" href="{{asset('traveler')}}/css/new.css" as="style">
   <link rel="stylesheet" href="{{asset('traveler')}}/css/new2.css">
   <link rel="stylesheet" href="{{asset('traveler')}}/css/new3.css">
-  <link rel="stylesheet" href="{{asset('traveler')}}/css/new4.css">
-  <link rel="stylesheet" href="{{asset('traveler')}}/css/new5.css">
   <link rel="stylesheet" href="{{asset('traveler')}}/css/new7.css">
   <link rel="stylesheet" href="{{asset('traveler')}}/css/grids.css">
-  <link rel="stylesheet" href="{{asset('traveler')}}/css/activity.css">
   <link rel="stylesheet" href="{{asset('traveler')}}/css/location.css"> 
   <link rel="icon" type="image/png" sizes="32x32" href="{{asset('spica')}}/images/favicon.png">
   <link rel="icon" type="image/png" sizes="16x16" href="{{asset('spica')}}/images/favicon.png">
@@ -183,9 +158,6 @@ font-family: 'GT Eesti Text Trial', sans-serif;
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <div class="gototop js-top">
-        <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
-        </div>
   
 <div id="dialog" title="invalid value">
   <p>Please fill out all the required fields</p>
@@ -194,24 +166,16 @@ font-family: 'GT Eesti Text Trial', sans-serif;
 <div id="dialogs" title="invalid value">
   <p>Please fill out all the required fields</p>
 </div>   
-  <!-- jQuery -->
   <script src="{{asset('traveler')}}/js/lightbox-plus-jquery.min.js"></script>
   <script src="{{asset('traveler')}}/js/jquery.min.js"></script>
-  <!-- Bootstrap -->
   <script src="{{asset('traveler')}}/js/bootstrap.min.js"></script>
-  <!-- Waypoints -->
   <script src="{{asset('traveler')}}/js/jquery.waypoints.min.js"></script>
-  <!-- Carousel -->
   <script src="{{asset('traveler')}}/js/owl.carousel.min.js"></script>
-  <!-- countTo -->
   <script src="{{asset('traveler')}}/js/jquery.countTo.js"></script>
-  <!-- Stellar Parallax -->
   <script src="{{asset('traveler')}}/js/jquery.stellar.min.js"></script>
-  <!-- Magnific Popup -->
   <script src="{{asset('traveler')}}/js/jquery.magnific-popup.min.js"></script>
   <script src="{{asset('traveler')}}/js/magnific-popup-options.js"></script>
   <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
-  <!-- Datepicker -->
   <script src="{{asset('traveler')}}/js/bootstrap-datepicker.min.js"></script>  
   <!-- Main -->
   <script> 

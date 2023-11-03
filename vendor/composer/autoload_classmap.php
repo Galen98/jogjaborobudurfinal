@@ -23,6 +23,7 @@ return array(
     'App\\Http\\Controllers\\TravelController' => $baseDir . '/app/Http/Controllers/TravelController.php',
     'App\\Http\\Controllers\\emailController' => $baseDir . '/app/Http/Controllers/emailController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
+    'App\\Http\\Livewire\\Payment' => $baseDir . '/app/Http/Livewire/Payment.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',
     'App\\Http\\Middleware\\PreventRequestsDuringMaintenance' => $baseDir . '/app/Http/Middleware/PreventRequestsDuringMaintenance.php',
@@ -5828,5 +5829,8 @@ return array(
     'Whoops\\Util\\Misc' => $vendorDir . '/filp/whoops/src/Whoops/Util/Misc.php',
     'Whoops\\Util\\SystemFacade' => $vendorDir . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
     'Whoops\\Util\\TemplateHelper' => $vendorDir . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
+    'crocodicstudio\\dokularavel\\Controllers\\Controller' => $vendorDir . '/crocodicstudio/dokularavel/src/Controllers/Controller.php',
+    'crocodicstudio\\dokularavel\\Controllers\\DokuController' => $vendorDir . '/crocodicstudio/dokularavel/src/Controllers/DokuController.php',
+    'crocodicstudio\\dokularavel\\DokuLaravelServiceProvider' => $vendorDir . '/crocodicstudio/dokularavel/src/DokuLaravelServiceProvider.php',
     'voku\\helper\\ASCII' => $vendorDir . '/voku/portable-ascii/src/voku/helper/ASCII.php',
 );

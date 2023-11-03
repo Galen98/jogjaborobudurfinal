@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'b536f1a7b24a71209026f20a917fa4e744220d27',
+        'reference' => '4d1b820355f71cbe28d28853279cd561a29e7562',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -42,6 +42,15 @@
             'replaced' => array(
                 0 => '*',
             ),
+        ),
+        'crocodicstudio/dokularavel' => array(
+            'pretty_version' => 'v1.6.6',
+            'version' => '1.6.6.0',
+            'reference' => 'ac23343cc4baa20ad479dbbfb7427dbe4bfae082',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../crocodicstudio/dokularavel',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'cviebrock/eloquent-sluggable' => array(
             'pretty_version' => '9.0.0',
@@ -421,7 +430,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'b536f1a7b24a71209026f20a917fa4e744220d27',
+            'reference' => '4d1b820355f71cbe28d28853279cd561a29e7562',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
