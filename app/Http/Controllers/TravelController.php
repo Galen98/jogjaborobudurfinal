@@ -589,25 +589,23 @@ class TravelController extends Controller
     public function itemtravel(Request $request,$slug){
         $provinces=province::get();
         $bahasa=bahasa::get();
-        $lang=$request->server('HTTP_ACCEPT_LANGUAGE');
-        $langs=Str::substr($lang, 0,2);
-    if ($langs == 'id') {
-        $sessions = session()->get("bahasa") ?? "Bahasa";
-        
-    }elseif ($langs == 'en-US'){
-        $sessions = session()->get("bahasa") ?? "English";
-        
-    }elseif ($langs == 'en'){
-        $sessions = session()->get("bahasa") ?? "English";
-    }
-    elseif ($langs == 'ms'){
-        $sessions = session()->get("bahasa") ?? "Malay";
-    }
-    else{
-        $sessions = session()->get("bahasa") ?? "English";     
-    }
-        $idtravel=travel::where('slug', $slug)->pluck('wisata_id');
         $idslug=travel::where('slug', $slug)->first();
+        $langs = $idslug->bahasa;
+        if ($langs == 'Bahasa') {
+            $sessions = session()->get("bahasa") ?? "Bahasa";
+            
+        }elseif ($langs == 'English'){
+            $sessions = session()->get("bahasa") ?? "English";
+            
+        }
+        elseif ($langs == 'Malay'){
+            $sessions = session()->get("bahasa") ?? "Malay";
+        }
+        else{
+            $sessions = session()->get("bahasa") ?? "English";     
+        }
+        $idtravel=travel::where('slug', $slug)->pluck('wisata_id');
+       
         if ($idslug == null) {
             $city=region::get();
             $province=province::get();
