@@ -593,16 +593,19 @@ class TravelController extends Controller
         $langs = $idslug->bahasa;
         if ($langs == 'Bahasa') {
             $sessions = session()->get("bahasa") ?? "Bahasa";
+            session()->put("bahasa", 'Bahasa');
             
         }elseif ($langs == 'English'){
             $sessions = session()->get("bahasa") ?? "English";
-            
+            session()->put("bahasa", 'English');
         }
         elseif ($langs == 'Malay'){
             $sessions = session()->get("bahasa") ?? "Malay";
+            session()->put("bahasa", 'Malay');
         }
         else{
-            $sessions = session()->get("bahasa") ?? "English";     
+            $sessions = session()->get("bahasa") ?? "English";   
+            session()->put("bahasa", 'English');  
         }
         $idtravel=travel::where('slug', $slug)->pluck('wisata_id');
        
