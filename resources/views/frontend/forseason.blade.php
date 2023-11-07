@@ -69,8 +69,8 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   'opsz' 48
 }
 </style>
-
     @foreach($season as $item)<title>Jogja Borobudur Tour & Travel | {{$item->namaseason}} </title>@endforeach
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	</head>
 	<body>
 	<!-- <div id="page"> -->
