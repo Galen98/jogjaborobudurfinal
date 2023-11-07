@@ -65,28 +65,35 @@ Route::get('/', function (Request $request) {
     
     if ($langs == 'id') {
         if(bahasa::where('bahasa', 'Bahasa')->exists()){
+            session()->put("bahasa", 'Bahasa');
             $sessions = session()->get("bahasa") ?? "Bahasa";
         } else {
+            session()->put("bahasa", 'English');
             $sessions = session()->get("bahasa") ?? "English";
         }
              
     }elseif ($langs == 'en-US'){
         if(bahasa::where('bahasa', 'English')->exists()){
-             $sessions = session()->get("bahasa") ?? "English";
+            session()->put("bahasa", 'English');
+            $sessions = session()->get("bahasa") ?? "English";
         }
     }elseif ($langs == 'en'){
         if(bahasa::where('bahasa', 'English')->exists()){
+            session()->put("bahasa", 'English');
             $sessions = session()->get("bahasa") ?? "English";
        }
     }
     elseif ($langs == 'ms'){
         if(bahasa::where('bahasa', 'Malay')->exists()){
+            session()->put("bahasa", 'Malay');
             $sessions = session()->get("bahasa") ?? "Malay";
        } else {
+        session()->put("bahasa", 'English');
         $sessions = session()->get("bahasa") ?? "English";
     }   
     }
     else{
+        session()->put("bahasa", 'English');
         $sessions = session()->get("bahasa") ?? "English";     
     }
     
@@ -140,10 +147,6 @@ Route::get('/paketwisata/filter', function (Request $request) {
     return view('wisata',compact('travel','bahasa'));
 })->middleware('auth');;
 
-// Route::get('/formss', function () {
-//     $destination=destination::get();
-//     return view('frontend.formnew',compact('destination'));
-// });
 
 Route::get('/privacy-policy', function () {
     return view('frontend.privacypolicy');
@@ -153,9 +156,6 @@ Route::get('/terms-condition', function () {
     return view('frontend.termscondition');
 });
 
-// Route::get('/journey', function () {
-//     return view('frontend.journey');
-// });
 
 Route::get('/destination-category',function(){
 $destination=destination::get();
@@ -260,12 +260,6 @@ Route::delete('hapusdestination/{iddestination}', [App\Http\Controllers\BlogCont
 Route::delete('hapusimportant/{idimportant}', [App\Http\Controllers\BlogController::class,'hapusimportant'])->middleware('auth');
 Route::get('/rating/{idtravel}', [App\Http\Controllers\BlogController::class,'ratingwisata'])->middleware('auth')->middleware('auth');
 Route::get('/rating/edit/{idreview}', [App\Http\Controllers\BlogController::class,'editreview'])->middleware('auth')->middleware('auth');
-
-
-
-// Route::get('/cekblog', function () {
-//     return view('blogjogjaborobudur.content');
-// });
 
 //Routing Blog
 Auth::routes();
@@ -570,24 +564,6 @@ Route::patch('/updateimportant/{idimportant}',[BlogController::class,'updateimpo
 Route::patch('/updatehargachild/{idhargachild}',[BlogController::class,'updatehargachild'])->middleware('auth');
 Route::patch('/updatediskon/{idtravell}',[BlogController::class,'updatediskon'])->middleware('auth');
 Route::post('generatepdf',[App\Http\Controllers\emailController::class, 'sendPDF']);
-
-// Route::get('/jaljal', function(){
-// return view('redesignblog.landingblog');
-// });
-
-
-// Route::get('/item', function(){
-//     $other=travel::paginate(9);
-//      $destination = destination::get();
-//     $rateIDR = Rate::where("currency", "IDR")->first()->rate;
-//     $rateSGD = Rate::where("currency", "SGD")->first()->rate;
-//     $rateMYR = Rate::where("currency", "MYR")->first()->rate;
-//     $rateEUR = Rate::where("currency", "EUR")->first()->rate;
-//     // get session user
-//     $session = session()->get("rate") ?? "USD";
-//     return view('frontend.jajal', compact('other','rateIDR','rateMYR','rateSGD','session','rateEUR'));
-// });
-
 Route::get("/change-session/{currency}", function ($currency) {
     session()->put("rate", $currency);
     // kembali ke welcome
