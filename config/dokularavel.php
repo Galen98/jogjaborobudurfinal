@@ -18,8 +18,8 @@ return [
 	|
 	*/
 	'PAYMENT_PATH' => 'dokularavel',
-	'SHARED_KEY'   => NULL, 
-	'MALL_ID'      => NULL,
+	'SHARED_KEY'   => 'SK-qA9kQrQTRUdSYoEHBg1O', 
+	'MALL_ID'      => 'BRN-0291-1680684866312',
 	'PERMATA_CODE' => NULL,
 	'CURRENCY'	   => 360,
 	'NOTIFY_SCREET_CODE'=>'123456',
@@ -30,18 +30,18 @@ return [
 	| ---------------------------------------------------------
 	| 
 	*/
-	'TABLE_ORDER'                  => NULL,
-	'TABLE_FIELD_NO_ORDER'         => NULL,
-	'TABLE_FIELD_AMOUNT'           => NULL,
-	'TABLE_FIELD_CUSTOMER_NAME'    => NULL,
-	'TABLE_FIELD_CUSTOMER_PHONE'   => NULL,
-	'TABLE_FIELD_CUSTOMER_EMAIL'   => NULL,
-	'TABLE_FIELD_CUSTOMER_ADDRESS' => NULL,
-	'TABLE_FIELD_PAYMENT_DATE'     => NULL,
-	'TABLE_FIELD_PAYMENT_STATUS'   => NULL,
-	'TABLE_FIELD_PAYMENT_CHANNEL'  => NULL,
-	'TABLE_FIELD_PAYMENT_APPROVAL_CODE' => NULL,
-	'TABLE_FIELD_PAYMENT_SESSION_ID'=> NULL,
+	'TABLE_ORDER'                  => 'booking',
+	'TABLE_FIELD_NO_ORDER'         => 'id',
+	'TABLE_FIELD_AMOUNT'           => 30000,
+	'TABLE_FIELD_CUSTOMER_NAME'    => 'name',
+	'TABLE_FIELD_CUSTOMER_PHONE'   => 'phone',
+	'TABLE_FIELD_CUSTOMER_EMAIL'   => 'email',
+	'TABLE_FIELD_CUSTOMER_ADDRESS' => 'jiwa',
+	'TABLE_FIELD_PAYMENT_DATE'     => 'jiwa',
+	'TABLE_FIELD_PAYMENT_STATUS'   => 'jiwa',
+	'TABLE_FIELD_PAYMENT_CHANNEL'  => 'jiwa',
+	'TABLE_FIELD_PAYMENT_APPROVAL_CODE' => 'jiwa',
+	'TABLE_FIELD_PAYMENT_SESSION_ID'=> 'jiwa',
 
 
 	/*
