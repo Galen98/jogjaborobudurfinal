@@ -176,7 +176,7 @@
 	<span class="select-mobile-label" id="countrymobile"></span>
 	<div class="gyg-select">
 	<select value="" class="gyg-select-field" id="countryphone" modelvalue="" name="country" data-test-id="country-form-select" autocomplete="country">
-	<option class="option" value="Enter code">Select Phone Number Code</option>
+	<option class="option" value="Entercode">Select Phone Number Code</option>
 	@foreach($country as $item)
 	<option value="{{$item->phonecode}}" class="option" value="+{{$item->phonecode}}">{{$item->nicename}} (+{{$item->phonecode}})</option>
 	@endforeach
@@ -423,6 +423,9 @@
 
     function validateForm() {
         var fullName = $('input[name="name"]').val().trim();
+		var phoneCode = $('select[name="country"]').val().trim();
+		var surName = $('input[name="surname"]').val().trim();
+		var specialReq = $('textarea[name="request"]').val().trim();
 		var email = $('input[name="email"]').val().trim();
 		var phone = $('input[name="phone"]').val().trim();
 		var pickup = $('input[name="pickup"]').val().trim();
@@ -431,6 +434,12 @@
             swal("Error", "First Name cannot be empty.", "error");
             return false; 
         }
+
+		if (surName === '') {
+            swal("Error", "Surname cannot be empty.", "error");
+            return false; 
+        }
+
 
 		if (email === '') {
             swal("Error", "Email cannot be empty.", "error");
@@ -442,6 +451,11 @@
             return false;
         }
 
+		if (phoneCode == 'Entercode') {
+            swal("Error", "Please select your country code.", "error");
+            return false;
+        }
+
 		if (phone === '') {
             swal("Error", "Phone number cannot be empty.", "error");
             return false; 
@@ -449,6 +463,11 @@
 
 		if (pickup === '') {
             swal("Error", "Pickup location cannot be empty.", "error");
+            return false; 
+        }
+
+		if (specialReq === '') {
+            swal("Error", "Special request cannot be empty.", "error");
             return false; 
         }
 

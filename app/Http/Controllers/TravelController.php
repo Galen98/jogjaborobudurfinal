@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\travel;
+use Mail;
 use App\Models\Rate;
 use App\Models\includes;
 use App\Models\corporate;
@@ -1043,9 +1044,19 @@ class TravelController extends Controller
             'phone'=>$phone,
             'message'=>$message
         ];
-        corporate::create($data);
-        Alert::success('Success');
-        return redirect()->to('/companydiscount');
+        $dataMessage=corporate::create($data);
+        $data['email2'] = 'herucod@gmail.com';
+        $data['subject'] = 'Message from Corporate';
+        $link['link'] = 'corporate';
+        $head['head'] = 'Influencer';
+        $messages['body'] = corporate::where('id', $dataMessage->id)->first();
+        Mail::send('frontend.emailMessage', ['link' => $link, 'messages' => $messages, 'head' => $head], function($messagesData)use($data) {
+            $messagesData->to($data['email2'], $data['email2'])
+            ->subject($data['subject']);               
+                }); 
+
+    Alert::success('Success');
+    return redirect()->to('/');
 }
 
 public function insertinfluencer(Request $request){
@@ -1060,9 +1071,20 @@ public function insertinfluencer(Request $request){
         'email'=>$email,
         'message'=>$message
     ];
-    influencer::create($data);
+$dataMessage=influencer::create($data);
+
+$data['email2'] = 'herucod@gmail.com';
+$data['subject'] = 'Message from influencer';
+$link['link'] = 'influencer';
+$head['head'] = 'Influencer';
+$messages['body'] = influencer::where('id', $dataMessage->id)->first();
+Mail::send('frontend.emailMessage', ['link' => $link, 'messages' => $messages, 'head' => $head], function($messagesData)use($data) {
+    $messagesData->to($data['email2'], $data['email2'])
+    ->subject($data['subject']);               
+        }); 
+
     Alert::success('Success');
-    return redirect()->back();
+    return redirect()->to('/');
 }
 
 public function inserttravelagent(Request $request){
@@ -1085,9 +1107,19 @@ public function inserttravelagent(Request $request){
         'phone'=>$phone,
         'message'=>$message
     ];
-    travelagent::create($data);
+    $dataMessage=travelagent::create($data);
+    $data['email2'] = 'herucod@gmail.com';
+    $data['subject'] = 'Message from Travel Agent';
+    $link['link'] = 'travelagent';
+    $head['head'] = 'Travel Agent';
+    $messages['body'] = travelagent::where('id', $dataMessage->id)->first();
+    Mail::send('frontend.emailMessage', ['link' => $link, 'messages' => $messages, 'head' => $head], function($messagesData)use($data) {
+        $messagesData->to($data['email2'], $data['email2'])
+        ->subject($data['subject']);               
+            }); 
+
     Alert::success('Success');
-    return redirect()->back();
+    return redirect()->to('/');
 }
 
 public function insertaffiliate(Request $request){
@@ -1110,9 +1142,19 @@ public function insertaffiliate(Request $request){
         'phone'=>$phone,
         'message'=>$message
     ];
-    affiliate::create($data);
+    $dataMessage=affiliate::create($data);
+    $data['email2'] = 'herucod@gmail.com';
+    $data['subject'] = 'Message from Affiliate';
+    $link['link'] = 'affiliate';
+    $head['head'] = 'Affiliate';
+    $messages['body'] = affiliate::where('id', $dataMessage->id)->first();
+    Mail::send('frontend.emailMessage', ['link' => $link, 'messages' => $messages, 'head' => $head], function($messagesData)use($data) {
+        $messagesData->to($data['email2'], $data['email2'])
+        ->subject($data['subject']);               
+            }); 
+
     Alert::success('Success');
-    return redirect()->back();
+    return redirect()->to('/');
 }
 
 public function insertselltours(Request $request){
@@ -1135,9 +1177,19 @@ public function insertselltours(Request $request){
         'phone'=>$phone,
         'message'=>$message
     ];
-    selltours::create($data);
+    $dataMessage=selltours::create($data);
+    $data['email2'] = 'herucod@gmail.com';
+    $data['subject'] = 'Message from Sell Tours';
+    $link['link'] = 'selltours';
+    $head['head'] = 'Sell Tours';
+    $messages['body'] = selltours::where('id', $dataMessage->id)->first();
+    Mail::send('frontend.emailMessage', ['link' => $link, 'messages' => $messages, 'head' => $head], function($messagesData)use($data) {
+        $messagesData->to($data['email2'], $data['email2'])
+        ->subject($data['subject']);               
+            }); 
+
     Alert::success('Success');
-    return redirect()->back();
+    return redirect()->to('/');
 }
 
 public function insertplatform(Request $request){
@@ -1160,9 +1212,19 @@ public function insertplatform(Request $request){
         'phone'=>$phone,
         'message'=>$message
     ];
-    platform::create($data);
+    $dataMessage=platform::create($data);
+    $data['email2'] = 'herucod@gmail.com';
+    $data['subject'] = 'Message from Booking Platform';
+    $link['link'] = 'platform';
+    $head['head'] = 'Booking Platform';
+    $messages['body'] = platform::where('id', $dataMessage->id)->first();
+    Mail::send('frontend.emailMessage', ['link' => $link, 'messages' => $messages, 'head' => $head], function($messagesData)use($data) {
+        $messagesData->to($data['email2'], $data['email2'])
+        ->subject($data['subject']);               
+            }); 
+
     Alert::success('Success');
-    return redirect()->back();
+    return redirect()->to('/');
 }
 
 public function filtertravel(Request $request){
@@ -1197,9 +1259,19 @@ $data=[
 'type'=>$type,
 'message'=>$message
 ];
-message::create($data);
+$dataMessage = message::create($data);
+
+$data['email2'] = 'herucod@gmail.com';
+$data['subject'] = 'Message from travellers';
+$link['link'] = 'message';
+$head['head'] = 'Message';
+$messages['body'] = message::where('id', $dataMessage->id)->first();
+Mail::send('frontend.emailMessage', ['link' => $link, 'messages' => $messages, 'head' => $head], function($messagesData)use($data) {
+    $messagesData->to($data['email2'], $data['email2'])
+    ->subject($data['subject']);               
+        }); 
 Alert::success('Success');
-return redirect()->back();
+return redirect()->to('/');
 }
 
 public function insertrating(Request $request){
@@ -1217,9 +1289,6 @@ Alert::success('Success');
 return redirect()->back();
 }
 
-// public function totalprice(Request $request){
-    
-// }
 
 public function getrate()
     {

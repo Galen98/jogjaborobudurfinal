@@ -101,6 +101,15 @@
     <h2>Your Booking: </h2>
     <h3>{{$item->namawisata}}</h3>
     <p>Your Option: {{$item->paketwisata}}</p>
+    @if($item->adult > 0)
+    <p>Participants: {{$item->adult}} Person</p>
+    @endif
+    @if($item->child > 0)
+    <p>Participants (Child): {{$item->child}} Child</p>
+    @endif
+    @if($item->participants > 0)
+    <p>Participants (Group): {{$item->participants}} Person</p>
+    @endif
     <p>Travel Date: {{$item->traveldate}}</p>
     <p>Pickup Time: {{$item->time}}</p>
      @if($item->total > 0)

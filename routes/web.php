@@ -183,7 +183,7 @@ return view('frontend.about',compact('bahasa','background'));
 Route::get('/paketwisata/diskon/{travelid}', [App\Http\Controllers\BlogController::class,'diskon'])->middleware('auth');
 Route::get('/paketwisata/diskon/buatoption/{travelid}', [App\Http\Controllers\BlogController::class,'buatoption'])->middleware('auth');
 Route::get('/paketwisata/edit/{idwisata}', [App\Http\Controllers\BlogController::class,'editwisata'])->middleware('auth');
-
+Route::post('/testPayment', [App\Http\Controllers\PaymentController::class,'testPayment']);
 Route::get('/blogadmin', function () {
     $blog=blog::orderBy('created_at','DESC')->paginate(7);
     return view('blog', compact('blog'));

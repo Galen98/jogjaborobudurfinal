@@ -79,8 +79,6 @@ class emailController extends Controller
 
         Alert::success('Success','Please check your email for our confirmation');
         return redirect()->to('/');
-        
-
     }
 
 }
