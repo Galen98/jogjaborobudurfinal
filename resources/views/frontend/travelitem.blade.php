@@ -468,9 +468,9 @@
 
 <section data-test-id="activity-filters-primary-date-picker" class="ba-dropdown ba-date-picker ba-date-picker--multiple-months ba-date-picker--experimental-theme" data-v-0605f8ac data-v-dd428772>
 @if($item->status == 0)
-<input type="text" name="traveldate" id="date-start" class="form-control" style="background-color: white;" placeholder="Not available" required readonly disabled>
+<input type="text" name="traveldate" id="date-start" class="form-control" style="background-color: white;" placeholder="Not available" data-code="date-start" required readonly disabled>
 @else
-<input type="text" name="traveldate" id="date-start" class="form-control" style="background-color: white;" placeholder="Select date" required readonly>
+<input type="text" name="traveldate" id="date-start" class="form-control" style="background-color: white;" placeholder="Select date" data-code="date-start" required readonly>
 @endif
     </section>
     <section data-test-id="activity-filters-primary-people-picker" class="ba-dropdown people-picker " data-v-0605f8ac data-v-7e630b00 data-v-dd428772>
@@ -551,7 +551,7 @@ style="margin-top:5px;height:46px;margin-right:-20px;margin-left:-17px;margin-to
 <div><p id="alerts"></p></div>
   @foreach($pilihan as $p)
   <section id="booking-assistant" data-test-id="booking-assistant" data-v-a17e5250 data-v-c4be1764 >
-    <form action="{{'/booking/' .$p->id}}" method="GET" enctype="multipart/form-data">
+    <form action="{{'/booking/' .$p->id}}" method="GET" enctype="multipart/form-data" id="formBooking">
         @csrf
       @foreach($travel as $item) <input type="hidden" name="paketwisata" value="{{$item->namawisata}}">@endforeach
         <input type="hidden" name="idtravel" value="{{$p->wisata_id}}">
@@ -1299,5 +1299,3 @@ style="margin-top:5px;height:46px;margin-right:-20px;margin-left:-17px;margin-to
 </div>
 @endsection
 <!-- {!! $cityGet !!} -->
-@section('scripts')
-@endsection

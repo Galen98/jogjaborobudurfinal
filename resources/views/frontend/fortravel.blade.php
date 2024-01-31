@@ -36,6 +36,7 @@
   <meta name="viewport"content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
           />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" ></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <style type="text/css">
@@ -524,4 +525,48 @@ jQuery(function ($) {
     });
 });
 </script>
+
+<script>
+ $(document).ready(function () {
+        $('#formBooking').submit(function (event) {
+            event.preventDefault();
+            if (validateForm()) {
+                this.submit();
+            }
+        });
+
+        function validateForm() {
+            var dateStart = $('input[name="traveldate"]').val().trim();
+            var timeSelected = $('select[name="waktu"]').val().trim();
+            
+            var dateParts = dateStart.split('/');
+            var month = parseInt(dateParts[1], 10) - 1;
+            var day = parseInt(dateParts[0], 10);
+            var year = parseInt(dateParts[2], 10);
+            
+
+            var timeParts = timeSelected.split(':');
+            var hours = parseInt(timeParts[0], 10);
+            var minutes = parseInt(timeParts[1].split(' ')[0], 10);
+            var period = timeParts[1].split(' ')[1];
+
+            if (period === 'PM' && hours !== 12) {
+                hours += 12;
+            }
+            
+            var datetimeSelected = new Date(year, month, day, hours, minutes);
+
+            var currentDate = new Date();
+
+            var timeDifference = datetimeSelected - currentDate;
+            var hoursDifference = timeDifference/ (1000 * 60 * 60);;
+            if (hoursDifference < 10) {
+              swal("Error", "Tour not available", "error");
+                return false;
+            }
+
+            return true
+        }
+    });
+  </script>
 </body>

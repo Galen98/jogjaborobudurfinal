@@ -474,7 +474,6 @@
         return true;
     }
 });
-
   </script>
 
 </body>
