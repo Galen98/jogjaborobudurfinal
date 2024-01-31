@@ -527,8 +527,9 @@ jQuery(function ($) {
 </script>
 
 <script>
+@foreach($pilihan as $p)
  $(document).ready(function () {
-        $('#formBooking').submit(function (event) {
+        $('#formBooking{{$p->id}}').submit(function (event) {
             event.preventDefault();
             if (validateForm()) {
                 this.submit();
@@ -552,6 +553,8 @@ jQuery(function ($) {
 
             if (period === 'PM' && hours !== 12) {
                 hours += 12;
+            } else if (period === 'AM' && hours === 12) {
+                hours = 0;
             }
             
             var datetimeSelected = new Date(year, month, day, hours, minutes);
@@ -561,12 +564,13 @@ jQuery(function ($) {
             var timeDifference = datetimeSelected - currentDate;
             var hoursDifference = timeDifference/ (1000 * 60 * 60);;
             if (hoursDifference < 10) {
-              swal("Error", "Tour not available", "error");
-                return false;
+              swal("Error", "Tour not available.", "error");
+              return false;
             }
 
             return true
         }
     });
+    @endforeach
   </script>
 </body>

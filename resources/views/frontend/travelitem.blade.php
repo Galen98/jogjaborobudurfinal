@@ -551,7 +551,7 @@ style="margin-top:5px;height:46px;margin-right:-20px;margin-left:-17px;margin-to
 <div><p id="alerts"></p></div>
   @foreach($pilihan as $p)
   <section id="booking-assistant" data-test-id="booking-assistant" data-v-a17e5250 data-v-c4be1764 >
-    <form action="{{'/booking/' .$p->id}}" method="GET" enctype="multipart/form-data" id="formBooking">
+    <form action="{{'/booking/' .$p->id}}" method="GET" enctype="multipart/form-data" id="formBooking{{$p->id}}">
         @csrf
       @foreach($travel as $item) <input type="hidden" name="paketwisata" value="{{$item->namawisata}}">@endforeach
         <input type="hidden" name="idtravel" value="{{$p->wisata_id}}">
