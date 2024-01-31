@@ -459,9 +459,7 @@ Route::get('/sellyourtours/sellyourtours',function(){
     $background=background::where('place', 'selltours')->get();
     return view('frontend.sellyourtour',compact('bahasa','background'));
 });
-Route::get('/jajal',function(){
-    return view('frontend.jajal');
-});
+
 Route::get('/travelagent/travelagent',function(){
     $bahasa=bahasa::get();
     $background=background::where('place', 'agent')->get();
@@ -537,6 +535,7 @@ Route::patch('/updatetheme/{idtheme}',[BlogController::class,'updatetheme'])->mi
 Route::patch('/updatecategory/{iddestination}',[BlogController::class,'updatecategory'])->middleware('auth');
 Route::patch('/updateharga/{idharga}',[BlogController::class,'updateharga'])->middleware('auth');
 Route::patch('/updateoption/{idoption}',[BlogController::class,'updateoption'])->middleware('auth');
+Route::post('/updateavailableoption/{idoption}',[BlogController::class,'updateAvailableOption'])->middleware('auth');
 Route::patch('/updatetambahprovince/{idprovince}',[BlogController::class,'updatetambahprovince'])->middleware('auth');
 Route::patch('/updatetambahlocation/{idcity}',[BlogController::class,'updatetambahlocation'])->middleware('auth');
 Route::patch('/updateinclude/{idinclude}',[BlogController::class,'updateinclude'])->middleware('auth');
@@ -580,7 +579,19 @@ Route::get('/locationfilter/{slugprovince}/{namaseason}', [App\Http\Controllers\
 Route::get('/cityfilter/{slugregion}/{namaseason}', [App\Http\Controllers\TravelController::class,'filterseasoncity']);
 Route::get('/destinationfilter/{categoryid}/{namaseason}', [App\Http\Controllers\TravelController::class,'filterseasondestination']);
 //route fallback
+Route::get('/cekpayment', [App\Http\Controllers\PaymentController::class,'testPayment']);
+Route::get('/cobapayment',function(){
+    return view('frontend.cobaPayment');
+});
 
+//date available admins
+Route::get('/dateavailable', [App\Http\Controllers\AdminController::class,'getTravel'])->middleware('auth');
+Route::get('/dateavailable/item/{slug}', [App\Http\Controllers\AdminController::class,'getTraveldate'])->middleware('auth');
+Route::get('/dateavailable/item/manage/{id}', [App\Http\Controllers\AdminController::class,'getTraveloption'])->middleware('auth');
+Route::get('/dateavailable/item/manage/create/{id}', [App\Http\Controllers\AdminController::class,'createDateavailable'])->middleware('auth');
+Route::post('/dateavailable', [App\Http\Controllers\AdminController::class,'postAvailable'])->middleware('auth');
+Route::get('/dateavailablecheck', [App\Http\Controllers\AdminController::class,'cekAvailability'])->middleware('auth');
+//fallback
 Route::fallback(function () {
  $bahasa=bahasa::get();
  $lang=Request::server('HTTP_ACCEPT_LANGUAGE');

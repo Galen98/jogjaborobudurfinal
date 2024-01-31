@@ -170,9 +170,9 @@
             <i class="fa fa-star rating-color" style="color:grey !important;"></i>
         @endfor
         @endif
-              </div>
-            </div>
-          </div>
+        </div>
+        </div>
+        </div>
       <span class="gtm-trigger__adp-total-reviews-btn" style="margin-left:5px;">
       ({!! number_format($jumlahrating, 1) !!})
       </span> 
@@ -419,7 +419,8 @@
      <br>
      <ul data-test-id="activity-highlights" class="activity-highlights__list" data-v-5234723c>
     @foreach($highlight as $item)
-    <li class="activity-highlights__list-item" data-v-5234723c> {{$item->highlight}}</li>
+    <li class="activity-highlights__list-item" data-v-5234723c> 
+    {{$item->highlight}}</li>
     @endforeach
     </ul>
      <br>
@@ -466,21 +467,37 @@
     <h2 class="booking-assistant-configurator__header" data-v-dd428772 style="font-size:20px;"><i class="ti-user" style="font-size: 20px;color: white;"></i> Select participants and date</h2> 
 
 <section data-test-id="activity-filters-primary-date-picker" class="ba-dropdown ba-date-picker ba-date-picker--multiple-months ba-date-picker--experimental-theme" data-v-0605f8ac data-v-dd428772>
+@if($item->status == 0)
+<input type="text" name="traveldate" id="date-start" class="form-control" style="background-color: white;" placeholder="Not available" required readonly disabled>
+@else
 <input type="text" name="traveldate" id="date-start" class="form-control" style="background-color: white;" placeholder="Select date" required readonly>
+@endif
     </section>
     <section data-test-id="activity-filters-primary-people-picker" class="ba-dropdown people-picker " data-v-0605f8ac data-v-7e630b00 data-v-dd428772>
-      <div class="form-control form-control-participants">
-<div class="text d-flex align-items-center participants-control " style="margin-top:5px;height:46px;margin-right:-20px;margin-left:-17px;margin-top:-8px;">
+
+
+<div class="form-control form-control-participants">
+@if($item->status == 0)
+<div class="text d-flex align-items-center" 
+style="margin-top:5px;height:46px;margin-right:-20px;margin-left:-17px;margin-top:-8px;">
+<i class="fas fa-user-friends flex-shrink-0 mr-2 ml-2"></i> Not available
+<div class="participant-label-span text-truncate"></div>
+</div>
+@else
+<div class="text d-flex align-items-center participants-control" 
+style="margin-top:5px;height:46px;margin-right:-20px;margin-left:-17px;margin-top:-8px;">
 <i class="fas fa-user-friends flex-shrink-0 mr-2 ml-2"></i>
 <div class="participant-label-span text-truncate"></div>
 </div>
+@endif
+
 <div id="persontoogle" class="participants-input-container  bg-light" style="display: none; z-index: 1;padding:10px;">
-<div class="border-top mb-2"></div>
 @if($item->kategories == 'Per Person')
 <div class="d-flex justify-content-between align-items-center my-1">
 <div>
 <h6>Adults</h6>
 </div>
+
 <input type="text" id="adult" class="adults" value="0" name="adultquantity" data-min="0" data-code="adults" required readonly/>
 </div>
 @else
@@ -516,9 +533,18 @@
 <p></p>
 @endif
   </section>
+  @foreach($travel as $item)
+  @if($item->status == 0)
   <button type="button" id="cekharga" class="cekharga js-check-availability gtm-trigger__adp-check-availability-btn avoid-close-dropdown-on-click c-button c-button--medium filbtn" data-v-dd428772>
+  Not available
+  </button>
+  @else
+  <button type="button" id="cekharga" class="cekharga js-check-availability gtm-trigger__adp-check-availability-btn avoid-close-dropdown-on-click 
+  c-button c-button--medium filbtn" data-v-dd428772>
   Check availability
   </button>
+  @endif
+  @endforeach
 </div>
 </section>
 
@@ -532,17 +558,21 @@
         <input type="hidden" name="review" value="{!! $jumlahreview !!}"> 
       <input type="hidden" name="idoption" value="{{$p->id}}">
       <input type="hidden" name="namawisata" value="{{$p->judulsub}}">
-    <div is-date-selected="" class="booking-assistant-configurator booking-assistant" data-v-dd428772 data-v-a17e5250 style="background-color: white;border-width: 1px;border-style: solid;border-color: #b80404;border-radius: 10px 10px 10px 10px;" id="totals{{$p->id}}">
+    <div is-date-selected="" class="booking-assistant-configurator booking-assistant" data-v-dd428772 data-v-a17e5250 style="background-color: white;border-width: 1px;border-style: solid;border-color: #b80404;border-radius: 10px 10px 10px 10px;" 
+    id="totals{{$p->id}}">
       <input type="hidden" name="subid" id="subid{{$p->id}}" value="{{$p->id}}">
     <h2 class="booking-assistant-configurator__header" data-v-dd428772 style="font-weight: bolder;color:#182c4c;text-align:left;"> {{$p->judulsub}}</h2>
     <h3 class="booking-assistant-configurator__header" data-v-dd428772  style="font-size:14px;font-weight: bolder;color:grey;margin-right: 10px;text-align:left;">{{$p->short}}</h3>
     <br>
+    @if($p->status == true)
     <h3 class="booking-assistant-configurator__header" data-v-dd428772 style="font-size:15px;font-weight: bolder;color:#182c4c;text-align:left;">Select a starting time:
      <select name="waktu" style="font-size:15px;width: 180px;border-radius: 10px 10px 10px 10px;" required>
         @foreach($p->waktu as $w)<option value="{{ Carbon\Carbon::parse($w->time)->format('g:i A') }}" required>{{ Carbon\Carbon::parse($w->time)->format('g:i A') }}</option>@endforeach
       </select></h3>
-      <h2 class="booking-assistant-configurator__header" data-v-dd428772 style="color: #182c4c;font-size:15px;text-align:left;" id="tanggal{{$p->id}}"></h2>
+
+    <h2 class="booking-assistant-configurator__header" data-v-dd428772 style="color: #182c4c;font-size:15px;text-align:left;" id="tanggal{{$p->id}}"></h2>
     <input type="hidden" name="tanggaltravel" class="tanggalx" id="tanggaltravel{{$p->id}}">
+
     <section data-test-id="activity-filters-primary-people-picker" class="ba-dropdown people-picker" data-v-0605f8ac data-v-7e630b00 data-v-dd428772>
       <h3 class="booking-assistant-configurator__header" data-v-dd428772 style="font-size:16px;font-weight: bolder;color:#182c4c;text-align:left;" id="jumlahdewasa{{$p->id}}"></h3>
       <input type="hidden" name="dewasa" id="dewasa{{$p->id}}">
@@ -551,6 +581,7 @@
       <h3 class="booking-assistant-configurator__header" data-v-dd428772 style="font-size:16px;font-weight: bolder;color:#182c4c;text-align:left;" id="jumlahchild{{$p->id}}"></h3>
       <input type="hidden" name="anak" id="anak{{$p->id}}">
     </section>
+   
     <section data-test-id="activity-filters-primary-people-picker" class="ba-dropdown people-picker" data-v-0605f8ac data-v-7e630b00 data-v-dd428772>
       <!-- <h3 style="font-size:16px;font-weight: bolder;color:#182c4c;text-align:left;margin-left:15px;" id="hargadewasa{{$p->id}}"></h3> -->
       <!-- <h3 style="font-size:16px;font-weight: bolder;color:#182c4c;margin-left:15px;" id="hargagroup{{$p->id}}"></h3> -->
@@ -565,10 +596,14 @@
       <input type="hidden" name="tothargagroup" id="tothargagroup{{$p->id}}">
       <input type="hidden" name="tothargagroupnoconvert" id="tothargagroupnoconvert{{$p->id}}">
     </section>
-     
+    @endif
+    @if($p->status == true)
   <button type="submit" id="bookx" class="js-check-availability gtm-trigger__adp-check-availability-btn avoid-close-dropdown-on-click c-button c-button--medium filbtn" data-v-dd428772>  
     Book now
-  </button> 
+  </button>
+  @else 
+  <h2>This option is not available</h2>
+  @endif
   </form>
     </div>
   </section>
@@ -651,7 +686,7 @@
           </span> 
 
           
-            @if($session == 'USD') 
+      @if($session == 'USD') 
       <strong class="price-block__price-actual "> <span>US$ {{number_format ($item->IDR/$rateIDR,1)}} </span> </strong>
       @endif 
 
@@ -701,8 +736,8 @@
     <br>
 
     <div class="wrapper container d-block d-md-none" style="overflow:hidden;margin-bottom:100px;margin-top:50px;">
-  <div class="d-block d-md-none">
-  <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0 style="font-size:28px;">
+    <div class="d-block d-md-none">
+    <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0 style="font-size:28px;">
         Other Popular Tours
       </span>
       <br>

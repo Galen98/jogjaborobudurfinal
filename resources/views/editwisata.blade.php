@@ -2,15 +2,26 @@
 @extends('navadmin')
 @section('content')
 @include('sweetalert::alert')
-<div class="">
+<div class="card border-0 bg-transparent">
 <div class="card-body">
 @foreach($travel as $item)
-<h2>{{$item->namawisata}}</h2>
+<h3 class="card-title">{{$item->namawisata}}</h3>
 <br>
 <form method="post" action="{{url('editwisata/' .$item->wisata_id)}}" enctype="multipart/form-data">
 @method('patch')
 @csrf
-
+<div class="form-group">
+<label for="exampleInputName1">Availability</label>
+<div class="form-check form-switch ml-5">
+  @if($item->status == true)
+  <input class="form-check-input" type="checkbox" name="status" role="switch" id="flexSwitchCheckChecked" checked style="height:22px;width:50px;">
+  @elseif($item->status == false)
+  <input class="form-check-input" type="checkbox" name="status" role="switch" id="flexSwitchCheckChecked" style="height:22px;width:50px;">
+  @else
+  <input class="form-check-input" type="checkbox" name="status" role="switch" id="flexSwitchCheckChecked" checked style="height:22px;width:50px;">
+  @endif
+</div>
+</div>
 <div class="form-group">
 <label for="exampleInputName1">Judul Wisata</label>
 <input type="text" class="form-control" id="exampleInputName1" name="namawisata" placeholder="Masukan Judul Artikel" value="{{$item->namawisata}}">

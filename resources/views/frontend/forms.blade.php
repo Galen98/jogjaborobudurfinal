@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="{{asset('traveler')}}/css/booking11.css">
     <script src="{{asset('traveler')}}/js/modernizr-2.6.2.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+	<script src="https://cdn.tiny.cloud/1/u2xw6yackdc61xx9e7q9zfuoioxbk0b4gxo0rnuc2dl0r5nv/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" ></script>
   <script>
 		tinymce.init({

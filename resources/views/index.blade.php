@@ -19,9 +19,11 @@
   <link rel="stylesheet" href="{{asset('traveler')}}/css/location.css">
   <link rel="shortcut icon" href="{{asset('spica')}}/images/favicon.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/blitzer/jquery-ui.min.css" integrity="sha512-ibBo2Ns078qm7xZNTPbIrg5XP4pZ+Aujfmz0QFsce2f4LYpCnF1Esy6FkIRFBgXC9cY30XiS7Ui9+RpN8K7ICg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<script src="https://cdn.tiny.cloud/1/u2xw6yackdc61xx9e7q9zfuoioxbk0b4gxo0rnuc2dl0r5nv/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> -->
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" ></script>
+  <script src="https://cdn.tiny.cloud/1/u2xw6yackdc61xx9e7q9zfuoioxbk0b4gxo0rnuc2dl0r5nv/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" ></script>
+  <link rel="stylesheet" href="{{asset('traveler')}}/css/bootstrap-datepicker.min.css">
+  
   <script>
 	tinymce.init({
   selector: 'textarea#mytextarea',
@@ -203,14 +205,29 @@
   <script src="{{asset('spica')}}/js/dashboard.js"></script>
   <!-- End custom js for this page-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="{{ asset('js/app.js') }}"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
-   
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="{{ asset('js/app.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+  <script src="{{asset('traveler')}}/js/bootstrap-datepicker.min.js"></script>  
+  <!-- Main -->
+  <script> 
+  var dateForm = function() {
+		$('#date-start').datepicker({
+			format: 'yyyy-mm-dd',
+			startDate: new Date(),
+			todayHighlight: true,
+            autoclose: true,
+            orientation: 'bottom',		
+		});
+	};
+  $(function(){
+    dateForm();
+  });
+</script> 
 @yield('scripts')
 </body>
 

@@ -7,6 +7,13 @@
         </li>
 
         <li class="nav-item">
+          <a class="nav-link" href="/dateavailable">
+            <i class="mdi mdi-calendar-multiple menu-icon"></i>
+            <span class="menu-title">Date Available</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
           <a class="nav-link" href="/destination-category">
             <i class="mdi mdi-apple-safari menu-icon"></i>
             <span class="menu-title">Destination Category</span>

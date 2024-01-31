@@ -10,7 +10,7 @@ class subwisata extends Model
     use HasFactory;
     public $timestamps = false;
     protected $table = "subwisata";
-    protected $fillable = ['wisata_id','judulsub','short','kategories','child'];
+    protected $fillable = ['wisata_id','judulsub','short','kategories','child', 'status'];
      public function waktu(){
     	return $this->hasMany('App\Models\waktu');
     }

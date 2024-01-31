@@ -26,7 +26,6 @@ use App\Models\tambahprovince;
 use App\Models\selltours;
 use App\Models\platform;
 use Illuminate\Http\Request;
-// use Illuminate\Http\Request::server();
 use App\Models\harga;
 use App\Models\bahasa;
 use App\Models\season;
@@ -42,6 +41,8 @@ use Intervention\Image\ImageManagerStatic as Image;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
+use App\Models\dateAvailable;
+use App\Models\tambahAvailable;
 
 class TravelController extends Controller
 {
@@ -88,13 +89,8 @@ class TravelController extends Controller
         $childoption=Request('childoption');
         $subdescription=Request('shortoption');
         $personoption=Request('personoption');
-        // $request->validate([
-        //  'image' => 'required|mimes:jpeg,png,jpg'
-        // ]);
+
         $img= request('image');
-        // $nama_file = time()."_".$img->getClientOriginalName();
-		// $tujuan_upload = 'public/img';
-        // $img->move($tujuan_upload,$nama_file);
         $image = Image::make($img->getRealPath());
         $image->resize(800, null, function ($constraint) {
             $constraint->aspectRatio();
@@ -103,9 +99,7 @@ class TravelController extends Controller
         $tujuan_upload = 'public/img';
         $image->encode('webp', 80)->save(($tujuan_upload . '/' . pathinfo($nama_file, PATHINFO_FILENAME) . '.webp'));
 		 
-        //  $request->validate([
-        //  'image2' => 'required|mimes:jpeg,png,jpg'
-        // ]);
+
         $img2= request('image2');
         $image2 = Image::make($img2->getRealPath());
         $image2->resize(800, null, function ($constraint) {
@@ -115,9 +109,7 @@ class TravelController extends Controller
         $tujuan_upload2 = 'public/img';
         $image2->encode('webp', 80)->save(($tujuan_upload2 . '/' . pathinfo($nama_file2, PATHINFO_FILENAME) . '.webp'));
 
-        //  $request->validate([
-        //  'image3' => 'required|mimes:jpeg,png,jpg'
-        // ]);
+
         $img3= request('image3');
         $image3 = Image::make($img3->getRealPath());
         $image3->resize(800, null, function ($constraint) {
@@ -127,9 +119,7 @@ class TravelController extends Controller
         $tujuan_upload3 = 'public/img';
         $image3->encode('webp', 80)->save(($tujuan_upload3 . '/' . pathinfo($nama_file3, PATHINFO_FILENAME) . '.webp'));
 
-        //  $request->validate([
-        //  'image4' => 'required|mimes:jpeg,png,jpg'
-        // ]);
+
         $img4= request('image4');
         $image4 = Image::make($img4->getRealPath());
         $image4->resize(800, null, function ($constraint) {
@@ -139,9 +129,7 @@ class TravelController extends Controller
         $tujuan_upload4 = 'public/img';
         $image4->encode('webp', 80)->save(($tujuan_upload4 . '/' . pathinfo($nama_file4, PATHINFO_FILENAME) . '.webp'));
          
-        //   $request->validate([
-        //  'image5' => 'required|mimes:jpeg,png,jpg'
-        // ]);
+
         $img5= request('image5');
         $image5 = Image::make($img5->getRealPath());
         $image5->resize(800, null, function ($constraint) {
@@ -162,7 +150,6 @@ class TravelController extends Controller
             'student'=>$student,
             'kitas'=>$kitas,
             'pickup'=>$airport,
-            // 'highlight'=>$highlight,
             'child'=>'yes',
             'city'=>$city,
             'student'=>'yes',
@@ -172,7 +159,6 @@ class TravelController extends Controller
             'image3'=>pathinfo($nama_file3, PATHINFO_FILENAME) . '.webp',
             'image4'=>pathinfo($nama_file4, PATHINFO_FILENAME) . '.webp',
             'image5'=>pathinfo($nama_file5, PATHINFO_FILENAME) . '.webp',
-            // 'IDRchild'=>$hargachild,
             'wherepickup'=>$wherepickup,
             'kategories'=>$kategories,
             'capacity'=>$capacity,
@@ -271,7 +257,8 @@ class TravelController extends Controller
                 'judulsub' => $subwisata,
                 'short'=>$subdescription,
                 'kategories'=>$personoption,
-                'child'=>$childoption
+                'child'=>$childoption,
+                'status' => true
             ];
 
             $option=subwisata::create($data);
@@ -279,7 +266,7 @@ class TravelController extends Controller
                 $data = [
                 'wisata_id'=> $travel->id,
                 'subwisata_id' => $option->id,
-                'time'=>$time,  
+                'time' => $time,  
                 ];
 
                 foreach($time as $index){
@@ -303,7 +290,6 @@ class TravelController extends Controller
                 $data['harga'] = $pricechildrange[$index];
 
                 hargachild::create($data);
-                
                 }
                 }
 
@@ -339,8 +325,10 @@ class TravelController extends Controller
         $reviews=Request('review');
         $group=Request('groupe');
         $total=Request('totharga');
+        $totalnoconvert=Request('totharganoconvert');
         $idoption=Request('idoption');
         $totalgroup=Request('tothargagroup');
+        $totalgroupnoconvert=Request('tothargagroupnoconvert');
         $tanggaltravel=Request('tanggaltravel');
         $country=DB::table('country')->get();
         $ratingGet=countrating::where('wisata_id', $idtravel)->first();
@@ -349,7 +337,7 @@ class TravelController extends Controller
         } else{
         $rating=$ratingGet->totalrating;
     }
-        return view('frontend.booking',compact('rating','namawisata','reviews','total','tanggaltravel','adult','child','group','totalgroup','country','waktu','idoption','idtravel','paketwisata'));
+        return view('frontend.booking',compact('totalnoconvert','totalgroupnoconvert','rating','namawisata','reviews','total','tanggaltravel','adult','child','group','totalgroup','country','waktu','idoption','idtravel','paketwisata'));
     }
 
     public function viewtraveladmin($idtravel){
@@ -419,17 +407,17 @@ class TravelController extends Controller
             // get session user
             $session = session()->get("rate") ?? "USD";
             return view('errors.404', compact('bahasa','session','sessions','province','city','season','destination'));
-        } else {
-        $categoryid = $destinasiid->id; 
-        $seasonactive=[];
-        // get session user
-        $session = session()->get("rate") ?? "USD";
-        $province=province::get();
-        $city=region::get();
-        $category = destination::where('id', $idcategory)->get();
-        $count = tambahdestinasi::where('destinasi_id',$idcategory)->get();
-        //$other = travel::where('bahasa', $sessions)->paginate(4);
-        $destination = DB::table('tambahdestinasi')
+            } else {
+            $categoryid = $destinasiid->id; 
+            $seasonactive=[];
+            // get session user
+            $session = session()->get("rate") ?? "USD";
+            $province=province::get();
+            $city=region::get();
+            $category = destination::where('id', $idcategory)->get();
+            $count = tambahdestinasi::where('destinasi_id',$idcategory)->get();
+            //$other = travel::where('bahasa', $sessions)->paginate(4);
+            $destination = DB::table('tambahdestinasi')
             ->where('destinasi_id',$idcategory)
             ->where('bahasa',$sessions)
             ->leftJoin('wisata', 'tambahdestinasi.wisata_id', '=', 'wisata.wisata_id')
@@ -454,10 +442,6 @@ class TravelController extends Controller
         return view('frontend.destinationcategory', compact('categoryids','categoryid','seasonactive','city','province','category','count','destination','other','rateEUR','rateIDR','rateSGD','rateMYR','session','destinate','destinasi','season','bahasa','session','sessions'));
         }
     }
-
-    // public function province(Request $request,$idcategory){
-
-    // }
 
     public function seasons(Request $request,$idseason){
         $seasones = season::get();

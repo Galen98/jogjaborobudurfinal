@@ -253,20 +253,20 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   <script src="{{asset('traveler')}}/js/bootstrap.min.js"></script>
   <script src="{{asset('traveler')}}/js/main.js"></script>
 
-<script type="text/javascript">
+  <script type="text/javascript">
   const tabsBox = document.querySelector(".tabs-box"),
-allTabs = tabsBox.querySelectorAll(".tab"),
-arrowIcons = document.querySelectorAll(".icon i");
+  allTabs = tabsBox.querySelectorAll(".tab"),
+  arrowIcons = document.querySelectorAll(".icon i");
 
-let isDragging = false;
+  let isDragging = false;
 
-const handleIcons = (scrollVal) => {
+  const handleIcons = (scrollVal) => {
     let maxScrollableWidth = tabsBox.scrollWidth - tabsBox.clientWidth;
     arrowIcons[0].parentElement.style.display = scrollVal <= 0 ? "none" : "flex";
     arrowIcons[1].parentElement.style.display = maxScrollableWidth - scrollVal <= 1 ? "none" : "flex";
-}
+  }
 
-arrowIcons.forEach(icon => {
+  arrowIcons.forEach(icon => {
     icon.addEventListener("click", () => {
         // if clicked icon is left, reduce 350 from tabsBox scrollLeft else add
         let scrollWidth = tabsBox.scrollLeft += icon.id === "left" ? -340 : 340;

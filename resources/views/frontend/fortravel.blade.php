@@ -159,13 +159,13 @@ font-family: 'GT Eesti Text Trial', sans-serif;
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   
-<div id="dialog" title="invalid value">
+  <div id="dialog" title="invalid value">
   <p>Please fill out all the required fields</p>
-</div>
+  </div>
 
-<div id="dialogs" title="invalid value">
+  <div id="dialogs" title="invalid value">
   <p>Please fill out all the required fields</p>
-</div>   
+  </div>   
   <script src="{{asset('traveler')}}/js/lightbox-plus-jquery.min.js"></script>
   <script src="{{asset('traveler')}}/js/jquery.min.js"></script>
   <script src="{{asset('traveler')}}/js/bootstrap.min.js"></script>
@@ -192,7 +192,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
     dateForm();
   });
 </script>  
-  <script src="{{asset('traveler')}}/js/main.js"></script>
+<script src="{{asset('traveler')}}/js/main.js"></script>
 <!-- script total harga/ -->
 <script type="text/javascript">
 $("#dialog").css("display","none");

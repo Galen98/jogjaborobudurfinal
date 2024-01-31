@@ -11,7 +11,8 @@ class travel extends Model
     use HasFactory;
     protected $table = "wisata";
     // protected $primaryKey = 'wisata_id';
-    protected $fillable = ['namawisata','durasi','discount','image','image2','image3','image4','image5','IDR','label','deskripsi_english','city','city','child','pickup','highlight','wherepickup','student','kitas','kategories','shortdescription','capacity' ,'bahasa','slug']; 
+    protected $fillable = ['namawisata','durasi','discount','image','image2','image3','image4','image5','IDR','label','deskripsi_english','city','city','child','pickup','highlight','wherepickup',
+    'student','kitas','kategories','shortdescription','capacity' ,'bahasa','slug', 'status']; 
 
     public function sluggable(): array
     {

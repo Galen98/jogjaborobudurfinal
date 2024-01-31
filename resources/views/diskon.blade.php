@@ -154,7 +154,21 @@
                 <div class="card-body" style="border-bottom: 5px solid #e0e0de;margin-top:40px;">
                  <h4 class="card-title" style="font-size:18px;">{{$item->judulsub}}</h4>
                  <p>{{$item->short}}</p>
-                <h5 class="card-title" style="font-size:14px;margin-top:10px;margin-bottom:20px;"><i class="mdi mdi-account-multiple"></i> {{$item->kategories}}</h5>
+                <h5 class="card-title" style="font-size:14px;margin-top:10px;margin-bottom:20px;">
+                <i class="mdi mdi-account-multiple"></i> {{$item->kategories}}</h5>
+                <div class="form-group">
+                <label for="exampleInputName1">Availability</label>
+                <div class="form-check form-switch ml-5 mb-5">
+                  @if($item->status == true)
+                  <input class="form-check-input" type="checkbox" name="status" role="switch" id="flexSwitchCheckChecked" checked style="height:22px;width:50px;">
+                  @elseif($item->status == false)
+                  <input class="form-check-input" type="checkbox" name="status" role="switch" id="flexSwitchCheckChecked" style="height:22px;width:50px;">
+                  @else
+                  <input class="form-check-input" type="checkbox" name="status" role="switch" id="flexSwitchCheckChecked" checked style="height:22px;width:50px;">
+                  @endif
+                  <input type="hidden" name="idsub" value="{{$item->id}}">
+                </div>
+                </div>
                 <table>
               <tbody>
               <tr>
@@ -1016,5 +1030,34 @@ $(".sebelum").slideUp("fast");
         });
     });
     </script>
+
+<script>
+  $(document).ready(function() {
+    $('input[name="status"]').change(function() {
+      var isChecked = $(this).is(':checked');
+      var idsub = $(this).siblings('input[name="idsub"]').val();
+
+      $.ajax({
+        url: '/updateavailableoption/' + idsub,
+        type: 'POST',
+        dataType: 'json',
+        data: {
+          _token: '{{ csrf_token() }}',
+          status: isChecked ? 1 : 0 
+        },
+        success: function(response) {
+          if (response.success) {
+            console.log('Status updated successfully');
+          } else {
+            console.error('Failed to update status');
+          }
+        },
+        error: function(xhr, status, error) {
+          console.error('Error occurred while updating status:', error);
+        }
+      });
+    });
+  });
+</script>
 
 @endsection

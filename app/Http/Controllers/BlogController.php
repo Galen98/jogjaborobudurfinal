@@ -586,6 +586,13 @@ class BlogController extends Controller
         // ]);
     }
 
+    public function updateAvailableOption(Request $request,$idoption){
+        $option = subwisata::where('id', $idoption)
+        ->update([
+            'status' => $request->status
+        ]);
+    }
+
     public function updatetambahprovince(Request $request, $idprovince){
         $idprovince = Request('idprovince');
         $idtravels = Request('idtravels');
@@ -1012,6 +1019,12 @@ class BlogController extends Controller
     }
 
     public function editproseswisata(Request $request,$idwisata){
+        $status = $request->status;
+        if($status == "on"){
+            $status = true;
+        } else {
+            $status = false;
+        }
         DB::table('wisata')->where('wisata_id',$idwisata)
         ->update([
             'namawisata'=>$request->namawisata,
@@ -1023,7 +1036,8 @@ class BlogController extends Controller
             'pickup'=>$request->airport,
             'wherepickup'=>$request->wherepickup,
             'capacity'=>$request->capacity,
-            'slug'=>\Str::slug($request->namawisata)
+            'slug'=>\Str::slug($request->namawisata),
+            'status' => $status
 
         ]);
         Alert::success('Berhasil','Berhasil Diupdate');
