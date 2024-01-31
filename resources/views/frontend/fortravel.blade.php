@@ -35,8 +35,7 @@
   <link rel="shortcut icon" href="favicon.png">
   <meta name="viewport"content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
           />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <style type="text/css">
@@ -564,7 +563,11 @@ jQuery(function ($) {
             var timeDifference = datetimeSelected - currentDate;
             var hoursDifference = timeDifference/ (1000 * 60 * 60);;
             if (hoursDifference < 10) {
-              swal("Error", "Tour not available.", "error");
+              Swal.fire({
+              title: "",
+              html: "<div style='text-align: center;'>Tour not available,<br/>please try another time slot or date.</div>",
+              icon: "error"
+            });
               return false;
             }
 
