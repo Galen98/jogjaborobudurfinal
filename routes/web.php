@@ -297,10 +297,10 @@ Route::delete('/hapusaffiliate/{idaffiliate}', [App\Http\Controllers\BlogControl
 Route::delete('/hapusselltours/{idselltours}', [App\Http\Controllers\BlogController::class,'hapusselltours'])->middleware('auth');
 Route::delete('/hapusplatform/{idplatform}', [App\Http\Controllers\BlogController::class,'hapusplatform'])->middleware('auth');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
-Route::get('/home/analytics', function () {
-    $analyticsData = Analytics::fetchVisitorsAndPageViews(Period::days(7));
-    return view('analytic', ['analyticsData' => $analyticsData]);
-})->middleware('auth');
+// Route::get('/home/analytics', function () {
+//     $analyticsData = Analytics::fetchVisitorsAndPageViews(Period::days(7));
+//     return view('analytic', ['analyticsData' => $analyticsData]);
+// })->middleware('auth');
 
 Route::get('/blogadmin/viewblog/{idblog}', [App\Http\Controllers\BlogController::class,'viewblog'])->middleware('auth');
 Route::get('/data-booking/filter', [App\Http\Controllers\BlogController::class,'datefilter'])->middleware('auth');
