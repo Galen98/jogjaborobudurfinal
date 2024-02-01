@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\TravelController;
+use App\Http\Controllers\AnalyticsController;
 use App\Http\Controllers\emailController;
 use App\Models\blog;
 use App\Models\tags;
@@ -33,6 +34,9 @@ use App\Models\tambahlocation;
 use Illuminate\Support\Str;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
+use Spatie\Analytics\Period;
+use Analytics;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -65,35 +69,28 @@ Route::get('/', function (Request $request) {
     
     if ($langs == 'id') {
         if(bahasa::where('bahasa', 'Bahasa')->exists()){
-            session()->put("bahasa", 'Bahasa');
             $sessions = session()->get("bahasa") ?? "Bahasa";
         } else {
-            session()->put("bahasa", 'English');
             $sessions = session()->get("bahasa") ?? "English";
         }
              
     }elseif ($langs == 'en-US'){
         if(bahasa::where('bahasa', 'English')->exists()){
-            session()->put("bahasa", 'English');
             $sessions = session()->get("bahasa") ?? "English";
         }
     }elseif ($langs == 'en'){
         if(bahasa::where('bahasa', 'English')->exists()){
-            session()->put("bahasa", 'English');
             $sessions = session()->get("bahasa") ?? "English";
        }
     }
     elseif ($langs == 'ms'){
         if(bahasa::where('bahasa', 'Malay')->exists()){
-            session()->put("bahasa", 'Malay');
             $sessions = session()->get("bahasa") ?? "Malay";
        } else {
-        session()->put("bahasa", 'English');
         $sessions = session()->get("bahasa") ?? "English";
     }   
     }
     else{
-        session()->put("bahasa", 'English');
         $sessions = session()->get("bahasa") ?? "English";     
     }
     
@@ -300,9 +297,11 @@ Route::delete('/hapusaffiliate/{idaffiliate}', [App\Http\Controllers\BlogControl
 Route::delete('/hapusselltours/{idselltours}', [App\Http\Controllers\BlogController::class,'hapusselltours'])->middleware('auth');
 Route::delete('/hapusplatform/{idplatform}', [App\Http\Controllers\BlogController::class,'hapusplatform'])->middleware('auth');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
-// Route::get('/viewblog', function(){
-//     return view('viewblog');
-// });
+Route::get('/home/analytics', function () {
+    $analyticsData = Analytics::fetchVisitorsAndPageViews(Period::days(7));
+    return view('analytic', ['analyticsData' => $analyticsData]);
+})->middleware('auth');
+
 Route::get('/blogadmin/viewblog/{idblog}', [App\Http\Controllers\BlogController::class,'viewblog'])->middleware('auth');
 Route::get('/data-booking/filter', [App\Http\Controllers\BlogController::class,'datefilter'])->middleware('auth');
 Route::get('/blogadmin/editblog/{idblog}', [App\Http\Controllers\BlogController::class,'editblog'])->middleware('auth');
@@ -334,7 +333,7 @@ Auth::routes();
 Route::post('insertblog',[App\Http\Controllers\BlogController::class, 'insertblog'])->middleware('auth');
 Route::post('insertseason',[App\Http\Controllers\BlogController::class, 'insertseason'])->middleware('auth');
 Route::post('insertdestinationcategory',[App\Http\Controllers\BlogController::class, 'insertdestinationcategory'])->middleware('auth');
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 //jogjaborobudur blog
 Route::get('/blog', [App\Http\Controllers\BlogController::class,'landingpageblog']);
@@ -342,12 +341,6 @@ Route::get('/blog/list', [App\Http\Controllers\BlogController::class,'listblog']
 Route::get('/blog/{slug}', [App\Http\Controllers\BlogController::class,'detailblog']);
 Route::get('/blog/allblogs', [App\Http\Controllers\BlogController::class,'allblog']);
 Route::get('/blog/tag/{tagsid}', [App\Http\Controllers\BlogController::class,'tagsview']);
-// Route::get('/about', function(){
-//     return view('blogs.about');
-// });
-// Route::get('/contact', function(){
-//     return view('blogs.contact');
-// });
 Route::get('/bahasa', function(){
     $bahasa=bahasa::get();
     return view('bahasa',compact('bahasa'));
