@@ -35,7 +35,7 @@ use Illuminate\Support\Str;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
 use Spatie\Analytics\Period;
-use Analytics;
+
 
 /*
 |--------------------------------------------------------------------------

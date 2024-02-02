@@ -1,5 +1,4 @@
 <?php 
-
 return [
 	/*
 	| ---------------------------------------------------------
@@ -18,10 +17,10 @@ return [
 	|
 	*/
 	'PAYMENT_PATH' => 'dokularavel',
-	'SHARED_KEY'   => 'SK-qA9kQrQTRUdSYoEHBg1O', 
-	'MALL_ID'      => 'BRN-0291-1680684866312',
+	'SHARED_KEY'   => 'SK-R9XuAX6DJNacoJsGeBEG', 
+	'MALL_ID'      => 'BRN-0286-1699886030538',
 	'PERMATA_CODE' => NULL,
-	'CURRENCY'	   => 360,
+	'CURRENCY'     => 360,
 	'NOTIFY_SCREET_CODE'=>'123456',
 
 	/* 
@@ -31,17 +30,17 @@ return [
 	| 
 	*/
 	'TABLE_ORDER'                  => 'booking',
-	'TABLE_FIELD_NO_ORDER'         => 'id',
-	'TABLE_FIELD_AMOUNT'           => 30000,
+	'TABLE_FIELD_NO_ORDER'         => 'inv_id',
+	'TABLE_FIELD_AMOUNT'           => 'amount',
 	'TABLE_FIELD_CUSTOMER_NAME'    => 'name',
 	'TABLE_FIELD_CUSTOMER_PHONE'   => 'phone',
 	'TABLE_FIELD_CUSTOMER_EMAIL'   => 'email',
-	'TABLE_FIELD_CUSTOMER_ADDRESS' => 'jiwa',
-	'TABLE_FIELD_PAYMENT_DATE'     => 'jiwa',
-	'TABLE_FIELD_PAYMENT_STATUS'   => 'jiwa',
-	'TABLE_FIELD_PAYMENT_CHANNEL'  => 'jiwa',
-	'TABLE_FIELD_PAYMENT_APPROVAL_CODE' => 'jiwa',
-	'TABLE_FIELD_PAYMENT_SESSION_ID'=> 'jiwa',
+	'TABLE_FIELD_CUSTOMER_ADDRESS' => 'address',
+	'TABLE_FIELD_PAYMENT_DATE'     => 'date',
+	'TABLE_FIELD_PAYMENT_STATUS'   => 'status',
+	'TABLE_FIELD_PAYMENT_CHANNEL'  => 'channel',
+	'TABLE_FIELD_PAYMENT_APPROVAL_CODE' => 'approval_code',
+	'TABLE_FIELD_PAYMENT_SESSION_ID' => 'session_id',
 
 
 	/*

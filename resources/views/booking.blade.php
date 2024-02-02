@@ -129,7 +129,8 @@
     </div>
 
     <div class="activity-card-block--grid d-none d-sm-block" style="margin-bottom: 0px;">
-  <article data-test-id="horizontal-activity-card" class="activity-card horizontal-activity-card companion-inactive activity-card-block__card--grid activity-card-block--desktop" data-v-a1084d9e>
+  <article style="overflow-y: auto;" data-test-id="horizontal-activity-card" class="activity-card horizontal-activity-card 
+  companion-inactive activity-card-block__card--grid activity-card-block--desktop" data-v-a1084d9e>
   <div> 
   <a role="contentinfo" target="_blank" rel="noopener" data-activity-id="412877" class="activity-card__container gtm-trigger__card-interaction" data-v-a1084d9e>
   <div class="activity-card__image" data-v-a1084d9e> 
@@ -403,22 +404,14 @@
         </script>
         <script>
           $(function() {
-    $( "#from" ).datepicker({
-      changeMonth: true,
-      dateFormat: 'dd/mm/yy',
-      numberOfMonths: 1,
-      onClose: function( selectedDate ) {
-        $( "#to" ).datepicker( "option", "minDate", selectedDate );
-      }
-    });
-    $( "#to" ).datepicker({
-      changeMonth: true,
-      dateFormat: 'dd/mm/yy',
-      numberOfMonths: 1,
-      onClose: function( selectedDate ) {
-        $( "#from" ).datepicker( "option", "maxDate", selectedDate );
-      }
-    });
-  });
+        $( "#from" ).datepicker({
+        format: 'dd/mm/yyyy',
+        autoclose: true
+        });
+        $( "#to" ).datepicker({
+        format: 'dd/mm/yyyy',
+        autoclose: true
+        });
+      });
         </script>
 @endsection

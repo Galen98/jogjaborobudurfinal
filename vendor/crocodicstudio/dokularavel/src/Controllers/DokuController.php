@@ -104,9 +104,9 @@ class DokuController extends Controller {
 					'payment_channel'  =>$query->{$this->table_field_payment_channel},
 					'amount'           =>preg_replace('/\D/', '', $query->{$this->table_field_amount}).'.00',
 					'customer_name'    =>preg_replace('/[^a-zA-Z ]+/', '', $query->{$this->table_field_customer_name}),
-					'customer_phone'   =>str_limit(preg_replace('/\D/', '', $query->{$this->table_field_customer_phone}), 12, ''),
+					'customer_phone'   =>\Illuminate\Support\Str::limit(preg_replace('/\D/', '', $query->{$this->table_field_customer_phone}), 12, ''),
 					'customer_email'   =>$query->{$this->table_field_customer_email},
-					'customer_address' =>str_limit($query->{$this->table_field_customer_address},100),
+					'customer_address' =>\Illuminate\Support\Str::limit($query->{$this->table_field_customer_address},100),
 					'payment_status'   =>$query->{$this->table_field_payment_status}
 					];		
 						
@@ -220,7 +220,7 @@ class DokuController extends Controller {
 			'name'         => trim($this->invoice['customer_name']),
 			'data_phone'   => trim($this->invoice['customer_phone']),
 			'data_email'   => trim($this->invoice['customer_email']),
-			'data_address' => str_limit(trim($this->invoice['customer_address']),100)
+			'data_address' => \Illuminate\Support\Str::limit(trim($this->invoice['customer_address']),100),
 		);		
 
 		$ymdis = date('YmdHis');
@@ -242,7 +242,7 @@ class DokuController extends Controller {
 			'req_mobile_phone'		=> trim($this->invoice['customer_phone']),
 			'req_email'             => trim($this->invoice['customer_email']),
 			'req_token_id'          => $token, 
-			'req_address' 			=> str_limit(trim($this->invoice['customer_address']),100)			
+			'req_address' 			=> \Illuminate\Support\Str::limit(trim($this->invoice['customer_address']),100)		
 		);
 
 		Cache::forever('dataPayment',$dataPayment);
