@@ -8,7 +8,7 @@
       <form action="/destination-category/form" method="GET" >
         <button class="btn btn-danger btn-icon-text">
           <i class="mdi mdi-upload btn-icon-prepend"></i>                                                    
-          Buat Kategori Destinasi
+          Add New Point of Interest
         </button>
       </form>
     </div>

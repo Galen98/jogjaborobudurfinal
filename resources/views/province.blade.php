@@ -8,7 +8,7 @@
       <form action="/province/form" method="GET" >
         <button class="btn btn-danger btn-icon-text">
           <i class="mdi mdi-upload btn-icon-prepend"></i>                                                    
-          Create Province List
+          Add New Province
         </button>
       </form>
     </div>

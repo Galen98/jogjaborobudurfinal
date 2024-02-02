@@ -8,7 +8,7 @@
       <form action="/region/form" method="GET" >
         <button class="btn btn-danger btn-icon-text">
           <i class="mdi mdi-upload btn-icon-prepend"></i>                                                    
-          Create City List
+          Create New City
         </button>
       </form>
     </div>
