@@ -129,7 +129,7 @@
     </div>
 
     <div class="activity-card-block--grid d-none d-sm-block" style="margin-bottom: 0px;overflow-y: auto;overflow-y: scroll;">
-  <article style="overflow-y: auto;overflow-y: scroll;" data-test-id="horizontal-activity-card" class="activity-card horizontal-activity-card 
+  <article style="overflow-y: auto;overflow-y: scroll;white-space: nowrap;" data-test-id="horizontal-activity-card" class="activity-card horizontal-activity-card 
   companion-inactive activity-card-block__card--grid activity-card-block--desktop" data-v-a1084d9e>
   <div> 
   <a role="contentinfo" target="_blank" rel="noopener" data-activity-id="412877" class="activity-card__container gtm-trigger__card-interaction" data-v-a1084d9e>
