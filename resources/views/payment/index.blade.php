@@ -47,7 +47,9 @@
 <p>expected real alur: customer isi data booking, dikasih pilihan manual transfer or via paypal,<br> kalau pilih paypal otomatis redirect ke
 halaman paypal dan data berhasil atau tidak nanti terintegrasi dgn data bookings.</p>
 
-@if($dataPay != null)
+@if($dataPay->isEmpty())
+<p></p>
+@else
 <div class="mt-4">
 Data pembayaran 
 <table class="table">
