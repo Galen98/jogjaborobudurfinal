@@ -21,6 +21,10 @@ class GoogleCloudDiscoveryengineV1betaConverseConversationRequest extends \Googl
 {
   protected $conversationType = GoogleCloudDiscoveryengineV1betaConversation::class;
   protected $conversationDataType = '';
+  /**
+   * @var string
+   */
+  public $filter;
   protected $queryType = GoogleCloudDiscoveryengineV1betaTextInput::class;
   protected $queryDataType = '';
   /**
@@ -51,6 +55,20 @@ class GoogleCloudDiscoveryengineV1betaConverseConversationRequest extends \Googl
   public function getConversation()
   {
     return $this->conversation;
+  }
+  /**
+   * @param string
+   */
+  public function setFilter($filter)
+  {
+    $this->filter = $filter;
+  }
+  /**
+   * @return string
+   */
+  public function getFilter()
+  {
+    return $this->filter;
   }
   /**
    * @param GoogleCloudDiscoveryengineV1betaTextInput

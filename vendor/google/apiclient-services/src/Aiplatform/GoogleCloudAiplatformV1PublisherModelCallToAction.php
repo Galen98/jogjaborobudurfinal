@@ -27,12 +27,16 @@ class GoogleCloudAiplatformV1PublisherModelCallToAction extends \Google\Model
   protected $openEvaluationPipelineDataType = '';
   protected $openFineTuningPipelineType = GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences::class;
   protected $openFineTuningPipelineDataType = '';
+  protected $openFineTuningPipelinesType = GoogleCloudAiplatformV1PublisherModelCallToActionOpenFineTuningPipelines::class;
+  protected $openFineTuningPipelinesDataType = '';
   protected $openGenerationAiStudioType = GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences::class;
   protected $openGenerationAiStudioDataType = '';
   protected $openGenieType = GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences::class;
   protected $openGenieDataType = '';
   protected $openNotebookType = GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences::class;
   protected $openNotebookDataType = '';
+  protected $openNotebooksType = GoogleCloudAiplatformV1PublisherModelCallToActionOpenNotebooks::class;
+  protected $openNotebooksDataType = '';
   protected $openPromptTuningPipelineType = GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences::class;
   protected $openPromptTuningPipelineDataType = '';
   protected $requestAccessType = GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences::class;
@@ -97,6 +101,20 @@ class GoogleCloudAiplatformV1PublisherModelCallToAction extends \Google\Model
     return $this->openFineTuningPipeline;
   }
   /**
+   * @param GoogleCloudAiplatformV1PublisherModelCallToActionOpenFineTuningPipelines
+   */
+  public function setOpenFineTuningPipelines(GoogleCloudAiplatformV1PublisherModelCallToActionOpenFineTuningPipelines $openFineTuningPipelines)
+  {
+    $this->openFineTuningPipelines = $openFineTuningPipelines;
+  }
+  /**
+   * @return GoogleCloudAiplatformV1PublisherModelCallToActionOpenFineTuningPipelines
+   */
+  public function getOpenFineTuningPipelines()
+  {
+    return $this->openFineTuningPipelines;
+  }
+  /**
    * @param GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences
    */
   public function setOpenGenerationAiStudio(GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences $openGenerationAiStudio)
@@ -137,6 +155,20 @@ class GoogleCloudAiplatformV1PublisherModelCallToAction extends \Google\Model
   public function getOpenNotebook()
   {
     return $this->openNotebook;
+  }
+  /**
+   * @param GoogleCloudAiplatformV1PublisherModelCallToActionOpenNotebooks
+   */
+  public function setOpenNotebooks(GoogleCloudAiplatformV1PublisherModelCallToActionOpenNotebooks $openNotebooks)
+  {
+    $this->openNotebooks = $openNotebooks;
+  }
+  /**
+   * @return GoogleCloudAiplatformV1PublisherModelCallToActionOpenNotebooks
+   */
+  public function getOpenNotebooks()
+  {
+    return $this->openNotebooks;
   }
   /**
    * @param GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences

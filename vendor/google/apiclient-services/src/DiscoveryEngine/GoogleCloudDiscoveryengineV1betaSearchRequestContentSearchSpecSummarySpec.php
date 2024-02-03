@@ -35,6 +35,10 @@ class GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpec 
    * @var string
    */
   public $languageCode;
+  protected $modelPromptSpecType = GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelPromptSpec::class;
+  protected $modelPromptSpecDataType = '';
+  protected $modelSpecType = GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelSpec::class;
+  protected $modelSpecDataType = '';
   /**
    * @var int
    */
@@ -95,6 +99,34 @@ class GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpec 
   public function getLanguageCode()
   {
     return $this->languageCode;
+  }
+  /**
+   * @param GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelPromptSpec
+   */
+  public function setModelPromptSpec(GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelPromptSpec $modelPromptSpec)
+  {
+    $this->modelPromptSpec = $modelPromptSpec;
+  }
+  /**
+   * @return GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelPromptSpec
+   */
+  public function getModelPromptSpec()
+  {
+    return $this->modelPromptSpec;
+  }
+  /**
+   * @param GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelSpec
+   */
+  public function setModelSpec(GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelSpec $modelSpec)
+  {
+    $this->modelSpec = $modelSpec;
+  }
+  /**
+   * @return GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelSpec
+   */
+  public function getModelSpec()
+  {
+    return $this->modelSpec;
   }
   /**
    * @param int

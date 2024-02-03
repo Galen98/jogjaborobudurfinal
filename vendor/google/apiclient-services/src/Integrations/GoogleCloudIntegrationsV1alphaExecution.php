@@ -39,6 +39,10 @@ class GoogleCloudIntegrationsV1alphaExecution extends \Google\Collection
   /**
    * @var string
    */
+  public $integrationVersionState;
+  /**
+   * @var string
+   */
   public $name;
   protected $requestParametersType = GoogleCloudIntegrationsV1alphaValueType::class;
   protected $requestParametersDataType = 'map';
@@ -48,6 +52,10 @@ class GoogleCloudIntegrationsV1alphaExecution extends \Google\Collection
   protected $responseParametersDataType = 'map';
   protected $responseParamsType = EnterpriseCrmFrontendsEventbusProtoParameterEntry::class;
   protected $responseParamsDataType = 'array';
+  /**
+   * @var string
+   */
+  public $snapshotNumber;
   /**
    * @var string
    */
@@ -144,6 +152,20 @@ class GoogleCloudIntegrationsV1alphaExecution extends \Google\Collection
   /**
    * @param string
    */
+  public function setIntegrationVersionState($integrationVersionState)
+  {
+    $this->integrationVersionState = $integrationVersionState;
+  }
+  /**
+   * @return string
+   */
+  public function getIntegrationVersionState()
+  {
+    return $this->integrationVersionState;
+  }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
@@ -210,6 +232,20 @@ class GoogleCloudIntegrationsV1alphaExecution extends \Google\Collection
   public function getResponseParams()
   {
     return $this->responseParams;
+  }
+  /**
+   * @param string
+   */
+  public function setSnapshotNumber($snapshotNumber)
+  {
+    $this->snapshotNumber = $snapshotNumber;
+  }
+  /**
+   * @return string
+   */
+  public function getSnapshotNumber()
+  {
+    return $this->snapshotNumber;
   }
   /**
    * @param string

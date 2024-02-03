@@ -156,7 +156,10 @@ class OrganizationsSecurityHealthAnalyticsSettingsCustomModules extends \Google\
    * @param GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string updateMask The list of fields to update.
+   * @opt_param string updateMask The list of fields to be updated. The only
+   * fields that can be updated are `enablement_state` and `custom_config`. If
+   * empty or set to the wildcard value `*`, both `enablement_state` and
+   * `custom_config` are updated.
    * @return GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
    */
   public function patch($name, GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule $postBody, $optParams = [])
@@ -170,9 +173,10 @@ class OrganizationsSecurityHealthAnalyticsSettingsCustomModules extends \Google\
    * (customModules.simulate)
    *
    * @param string $parent Required. The relative resource name of the
-   * organization, project, or folder. See:
-   * https://cloud.google.com/apis/design/resource_names#relative_resource_name An
-   * example is: "organizations/{organization_id}".
+   * organization, project, or folder. For more information about relative
+   * resource names, see [Relative Resource Name](https://cloud.google.com/apis/de
+   * sign/resource_names#relative_resource_name) Example:
+   * `organizations/{organization_id}`
    * @param SimulateSecurityHealthAnalyticsCustomModuleRequest $postBody
    * @param array $optParams Optional parameters.
    * @return SimulateSecurityHealthAnalyticsCustomModuleResponse

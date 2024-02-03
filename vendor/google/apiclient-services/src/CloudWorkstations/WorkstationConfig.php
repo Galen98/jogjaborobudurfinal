@@ -24,8 +24,16 @@ class WorkstationConfig extends \Google\Collection
    * @var string[]
    */
   public $annotations;
+  /**
+   * @var Status[]
+   */
+  public $conditions;
   protected $conditionsType = Status::class;
   protected $conditionsDataType = 'array';
+  /**
+   * @var Container
+   */
+  public $container;
   protected $containerType = Container::class;
   protected $containerDataType = '';
   /**
@@ -41,15 +49,31 @@ class WorkstationConfig extends \Google\Collection
    */
   public $deleteTime;
   /**
+   * @var bool
+   */
+  public $disableTcpConnections;
+  /**
    * @var string
    */
   public $displayName;
+  /**
+   * @var bool
+   */
+  public $enableAuditAgent;
+  /**
+   * @var CustomerEncryptionKey
+   */
+  public $encryptionKey;
   protected $encryptionKeyType = CustomerEncryptionKey::class;
   protected $encryptionKeyDataType = '';
   /**
    * @var string
    */
   public $etag;
+  /**
+   * @var Host
+   */
+  public $host;
   protected $hostType = Host::class;
   protected $hostDataType = '';
   /**
@@ -64,8 +88,16 @@ class WorkstationConfig extends \Google\Collection
    * @var string
    */
   public $name;
+  /**
+   * @var PersistentDirectory[]
+   */
+  public $persistentDirectories;
   protected $persistentDirectoriesType = PersistentDirectory::class;
   protected $persistentDirectoriesDataType = 'array';
+  /**
+   * @var ReadinessCheck[]
+   */
+  public $readinessChecks;
   protected $readinessChecksType = ReadinessCheck::class;
   protected $readinessChecksDataType = 'array';
   /**
@@ -174,6 +206,20 @@ class WorkstationConfig extends \Google\Collection
     return $this->deleteTime;
   }
   /**
+   * @param bool
+   */
+  public function setDisableTcpConnections($disableTcpConnections)
+  {
+    $this->disableTcpConnections = $disableTcpConnections;
+  }
+  /**
+   * @return bool
+   */
+  public function getDisableTcpConnections()
+  {
+    return $this->disableTcpConnections;
+  }
+  /**
    * @param string
    */
   public function setDisplayName($displayName)
@@ -186,6 +232,20 @@ class WorkstationConfig extends \Google\Collection
   public function getDisplayName()
   {
     return $this->displayName;
+  }
+  /**
+   * @param bool
+   */
+  public function setEnableAuditAgent($enableAuditAgent)
+  {
+    $this->enableAuditAgent = $enableAuditAgent;
+  }
+  /**
+   * @return bool
+   */
+  public function getEnableAuditAgent()
+  {
+    return $this->enableAuditAgent;
   }
   /**
    * @param CustomerEncryptionKey

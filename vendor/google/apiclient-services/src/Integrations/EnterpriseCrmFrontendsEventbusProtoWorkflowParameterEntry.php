@@ -25,6 +25,10 @@ class EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry extends \Google\
   protected $childrenType = EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry::class;
   protected $childrenDataType = 'array';
   /**
+   * @var bool
+   */
+  public $containsLargeData;
+  /**
    * @var string
    */
   public $dataType;
@@ -96,6 +100,20 @@ class EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry extends \Google\
   public function getChildren()
   {
     return $this->children;
+  }
+  /**
+   * @param bool
+   */
+  public function setContainsLargeData($containsLargeData)
+  {
+    $this->containsLargeData = $containsLargeData;
+  }
+  /**
+   * @return bool
+   */
+  public function getContainsLargeData()
+  {
+    return $this->containsLargeData;
   }
   /**
    * @param string

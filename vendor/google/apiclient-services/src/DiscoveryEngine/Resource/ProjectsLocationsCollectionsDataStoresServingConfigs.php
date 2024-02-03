@@ -43,10 +43,12 @@ class ProjectsLocationsCollectionsDataStoresServingConfigs extends \Google\Servi
    * engine ID will be used as the ID of the default serving config. For example,
    * for Engine `projects/locations/global/collections/engines/my-engine`, you can
    * use `projects/locations/global/collections/engines/my-
-   * engine/servingConfigs/my-engine` for your Recommend requests.
+   * engine/servingConfigs/my-engine` for your RecommendationService.Recommend
+   * requests.
    * @param GoogleCloudDiscoveryengineV1betaRecommendRequest $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleCloudDiscoveryengineV1betaRecommendResponse
+   * @throws \Google\Service\Exception
    */
   public function recommend($servingConfig, GoogleCloudDiscoveryengineV1betaRecommendRequest $postBody, $optParams = [])
   {
@@ -66,6 +68,7 @@ class ProjectsLocationsCollectionsDataStoresServingConfigs extends \Google\Servi
    * @param GoogleCloudDiscoveryengineV1betaSearchRequest $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleCloudDiscoveryengineV1betaSearchResponse
+   * @throws \Google\Service\Exception
    */
   public function search($servingConfig, GoogleCloudDiscoveryengineV1betaSearchRequest $postBody, $optParams = [])
   {

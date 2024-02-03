@@ -22,7 +22,7 @@ return new class extends Migration
             $table->text('cust_phone');
             $table->string('cust_email');
             $table->string('cust_address');
-            $table->date('')
+            $table->date('');
         });
     }
 

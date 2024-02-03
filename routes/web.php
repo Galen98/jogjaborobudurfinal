@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\TravelController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\AnalyticsController;
 use App\Http\Controllers\emailController;
 use App\Models\blog;
@@ -334,6 +335,8 @@ Route::post('insertblog',[App\Http\Controllers\BlogController::class, 'insertblo
 Route::post('insertseason',[App\Http\Controllers\BlogController::class, 'insertseason'])->middleware('auth');
 Route::post('insertdestinationcategory',[App\Http\Controllers\BlogController::class, 'insertdestinationcategory'])->middleware('auth');
 
+//payment route
+Route::post('pay',[PaymentController::class, 'pay'])->name('payment');
 
 //jogjaborobudur blog
 Route::get('/blog', [App\Http\Controllers\BlogController::class,'landingpageblog']);
@@ -571,10 +574,9 @@ Route::patch('insertreview', [App\Http\Controllers\Reviewemail::class,'insertRev
 Route::get('/locationfilter/{slugprovince}/{namaseason}', [App\Http\Controllers\TravelController::class,'filterseasonprovince'])->name('filter-season-province');
 Route::get('/cityfilter/{slugregion}/{namaseason}', [App\Http\Controllers\TravelController::class,'filterseasoncity']);
 Route::get('/destinationfilter/{categoryid}/{namaseason}', [App\Http\Controllers\TravelController::class,'filterseasondestination']);
-//route fallback
-Route::get('/cekpayment', [App\Http\Controllers\PaymentController::class,'testPayment']);
+
 Route::get('/cobapayment',function(){
-    return view('frontend.cobaPayment');
+    return view('payment.index');
 });
 
 //date available admins

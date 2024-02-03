@@ -19,6 +19,8 @@ namespace Google\Service\Aiplatform;
 
 class GoogleCloudAiplatformV1PipelineJobRuntimeConfig extends \Google\Model
 {
+  protected $defaultRuntimeType = GoogleCloudAiplatformV1PipelineJobRuntimeConfigDefaultRuntime::class;
+  protected $defaultRuntimeDataType = '';
   /**
    * @var string
    */
@@ -36,6 +38,20 @@ class GoogleCloudAiplatformV1PipelineJobRuntimeConfig extends \Google\Model
   protected $parametersType = GoogleCloudAiplatformV1Value::class;
   protected $parametersDataType = 'map';
 
+  /**
+   * @param GoogleCloudAiplatformV1PipelineJobRuntimeConfigDefaultRuntime
+   */
+  public function setDefaultRuntime(GoogleCloudAiplatformV1PipelineJobRuntimeConfigDefaultRuntime $defaultRuntime)
+  {
+    $this->defaultRuntime = $defaultRuntime;
+  }
+  /**
+   * @return GoogleCloudAiplatformV1PipelineJobRuntimeConfigDefaultRuntime
+   */
+  public function getDefaultRuntime()
+  {
+    return $this->defaultRuntime;
+  }
   /**
    * @param string
    */

@@ -52,6 +52,14 @@ class Snapshot extends \Google\Collection
    * @var string
    */
   public $downloadBytes;
+  /**
+   * @var bool
+   */
+  public $enableConfidentialCompute;
+  /**
+   * @var GuestOsFeature[]
+   */
+  public $guestOsFeatures;
   protected $guestOsFeaturesType = GuestOsFeature::class;
   protected $guestOsFeaturesDataType = 'array';
   /**
@@ -89,11 +97,19 @@ class Snapshot extends \Google\Collection
   /**
    * @var bool
    */
+  public $satisfiesPzi;
+  /**
+   * @var bool
+   */
   public $satisfiesPzs;
   /**
    * @var string
    */
   public $selfLink;
+  /**
+   * @var CustomerEncryptionKey
+   */
+  public $snapshotEncryptionKey;
   protected $snapshotEncryptionKeyType = CustomerEncryptionKey::class;
   protected $snapshotEncryptionKeyDataType = '';
   /**
@@ -104,6 +120,10 @@ class Snapshot extends \Google\Collection
    * @var string
    */
   public $sourceDisk;
+  /**
+   * @var CustomerEncryptionKey
+   */
+  public $sourceDiskEncryptionKey;
   protected $sourceDiskEncryptionKeyType = CustomerEncryptionKey::class;
   protected $sourceDiskEncryptionKeyDataType = '';
   /**
@@ -252,6 +272,20 @@ class Snapshot extends \Google\Collection
     return $this->downloadBytes;
   }
   /**
+   * @param bool
+   */
+  public function setEnableConfidentialCompute($enableConfidentialCompute)
+  {
+    $this->enableConfidentialCompute = $enableConfidentialCompute;
+  }
+  /**
+   * @return bool
+   */
+  public function getEnableConfidentialCompute()
+  {
+    return $this->enableConfidentialCompute;
+  }
+  /**
    * @param GuestOsFeature[]
    */
   public function setGuestOsFeatures($guestOsFeatures)
@@ -376,6 +410,20 @@ class Snapshot extends \Google\Collection
   public function getName()
   {
     return $this->name;
+  }
+  /**
+   * @param bool
+   */
+  public function setSatisfiesPzi($satisfiesPzi)
+  {
+    $this->satisfiesPzi = $satisfiesPzi;
+  }
+  /**
+   * @return bool
+   */
+  public function getSatisfiesPzi()
+  {
+    return $this->satisfiesPzi;
   }
   /**
    * @param bool

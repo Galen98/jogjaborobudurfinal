@@ -54,6 +54,7 @@ class ProjectsLocationsFeatureOnlineStoresFeatureViews extends \Google\Service\R
    * sync will be run immediately, regardless whether the FeatureView.sync_config
    * is configured or not.
    * @return GoogleLongrunningOperation
+   * @throws \Google\Service\Exception
    */
   public function create($parent, GoogleCloudAiplatformV1FeatureView $postBody, $optParams = [])
   {
@@ -69,6 +70,7 @@ class ProjectsLocationsFeatureOnlineStoresFeatureViews extends \Google\Service\R
    * _online_store}/featureViews/{feature_view}`
    * @param array $optParams Optional parameters.
    * @return GoogleLongrunningOperation
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -85,6 +87,7 @@ class ProjectsLocationsFeatureOnlineStoresFeatureViews extends \Google\Service\R
    * @param GoogleCloudAiplatformV1FetchFeatureValuesRequest $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleCloudAiplatformV1FetchFeatureValuesResponse
+   * @throws \Google\Service\Exception
    */
   public function fetchFeatureValues($featureView, GoogleCloudAiplatformV1FetchFeatureValuesRequest $postBody, $optParams = [])
   {
@@ -100,6 +103,7 @@ class ProjectsLocationsFeatureOnlineStoresFeatureViews extends \Google\Service\R
    * tore}/featureViews/{feature_view}`
    * @param array $optParams Optional parameters.
    * @return GoogleCloudAiplatformV1FeatureView
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -140,6 +144,7 @@ class ProjectsLocationsFeatureOnlineStoresFeatureViews extends \Google\Service\R
    * to FeatureOnlineStoreAdminService.ListFeatureViews must match the call that
    * provided the page token.
    * @return GoogleCloudAiplatformV1ListFeatureViewsResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsLocationsFeatureOnlineStoresFeatureViews($parent, $optParams = [])
   {
@@ -150,9 +155,9 @@ class ProjectsLocationsFeatureOnlineStoresFeatureViews extends \Google\Service\R
   /**
    * Updates the parameters of a single FeatureView. (featureViews.patch)
    *
-   * @param string $name Output only. Name of the FeatureView. Format: `projects/{
-   * project}/locations/{location}/featureOnlineStores/{feature_online_store}/feat
-   * ureViews/{feature_view}`
+   * @param string $name Identifier. Name of the FeatureView. Format: `projects/{p
+   * roject}/locations/{location}/featureOnlineStores/{feature_online_store}/featu
+   * reViews/{feature_view}`
    * @param GoogleCloudAiplatformV1FeatureView $postBody
    * @param array $optParams Optional parameters.
    *
@@ -164,6 +169,7 @@ class ProjectsLocationsFeatureOnlineStoresFeatureViews extends \Google\Service\R
    * overwritten. Set the update_mask to `*` to override all fields. Updatable
    * fields: * `labels`
    * @return GoogleLongrunningOperation
+   * @throws \Google\Service\Exception
    */
   public function patch($name, GoogleCloudAiplatformV1FeatureView $postBody, $optParams = [])
   {
@@ -180,6 +186,7 @@ class ProjectsLocationsFeatureOnlineStoresFeatureViews extends \Google\Service\R
    * @param GoogleCloudAiplatformV1SyncFeatureViewRequest $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleCloudAiplatformV1SyncFeatureViewResponse
+   * @throws \Google\Service\Exception
    */
   public function sync($featureView, GoogleCloudAiplatformV1SyncFeatureViewRequest $postBody, $optParams = [])
   {

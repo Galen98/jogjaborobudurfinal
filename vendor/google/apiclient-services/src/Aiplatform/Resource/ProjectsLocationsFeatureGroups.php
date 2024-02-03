@@ -46,6 +46,7 @@ class ProjectsLocationsFeatureGroups extends \Google\Service\Resource
    * are `[a-z0-9_]`. The first character cannot be a number. The value must be
    * unique within the project and location.
    * @return GoogleLongrunningOperation
+   * @throws \Google\Service\Exception
    */
   public function create($parent, GoogleCloudAiplatformV1FeatureGroup $postBody, $optParams = [])
   {
@@ -65,6 +66,7 @@ class ProjectsLocationsFeatureGroups extends \Google\Service\Resource
    * will also be deleted. (Otherwise, the request will only work if the
    * FeatureGroup has no Features.)
    * @return GoogleLongrunningOperation
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -78,6 +80,7 @@ class ProjectsLocationsFeatureGroups extends \Google\Service\Resource
    * @param string $name Required. The name of the FeatureGroup resource.
    * @param array $optParams Optional parameters.
    * @return GoogleCloudAiplatformV1FeatureGroup
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -115,6 +118,7 @@ class ProjectsLocationsFeatureGroups extends \Google\Service\Resource
    * FeatureGroupAdminService.ListFeatureGroups must match the call that provided
    * the page token.
    * @return GoogleCloudAiplatformV1ListFeatureGroupsResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsLocationsFeatureGroups($parent, $optParams = [])
   {
@@ -125,7 +129,7 @@ class ProjectsLocationsFeatureGroups extends \Google\Service\Resource
   /**
    * Updates the parameters of a single FeatureGroup. (featureGroups.patch)
    *
-   * @param string $name Output only. Name of the FeatureGroup. Format:
+   * @param string $name Identifier. Name of the FeatureGroup. Format:
    * `projects/{project}/locations/{location}/featureGroups/{featureGroup}`
    * @param GoogleCloudAiplatformV1FeatureGroup $postBody
    * @param array $optParams Optional parameters.
@@ -138,6 +142,7 @@ class ProjectsLocationsFeatureGroups extends \Google\Service\Resource
    * overwritten. Set the update_mask to `*` to override all fields. Updatable
    * fields: * `labels`
    * @return GoogleLongrunningOperation
+   * @throws \Google\Service\Exception
    */
   public function patch($name, GoogleCloudAiplatformV1FeatureGroup $postBody, $optParams = [])
   {

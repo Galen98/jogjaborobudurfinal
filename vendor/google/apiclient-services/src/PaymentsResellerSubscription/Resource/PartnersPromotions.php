@@ -33,14 +33,15 @@ class PartnersPromotions extends \Google\Service\Resource
 {
   /**
    * To find eligible promotions for the current user. The API requires user
-   * authorization via OAuth. The user is inferred from the authenticated OAuth
-   * credential. (promotions.findEligible)
+   * authorization via OAuth. The bare minimum oauth scope `openid` is sufficient,
+   * which will skip the consent screen. (promotions.findEligible)
    *
    * @param string $parent Required. The parent, the partner that can resell.
    * Format: partners/{partner}
    * @param GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse
+   * @throws \Google\Service\Exception
    */
   public function findEligible($parent, GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest $postBody, $optParams = [])
   {
@@ -77,6 +78,7 @@ class PartnersPromotions extends \Google\Service\Resource
    * paginating, all other parameters provided to `ListPromotions` must match the
    * call that provided the page token.
    * @return GoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse
+   * @throws \Google\Service\Exception
    */
   public function listPartnersPromotions($parent, $optParams = [])
   {
