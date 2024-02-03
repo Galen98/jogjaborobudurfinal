@@ -72,6 +72,7 @@ Data pembayaran
         @endforeach
     </tbody>
 </table>
+<p>Sebenere data masih banyak tapi sek tak ambil sek penting2 aja</p>
 </div>
 @endif
 </div>

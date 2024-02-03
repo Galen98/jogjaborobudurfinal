@@ -61,7 +61,7 @@ class PaymentController extends Controller
 
                 $payment->save();
 
-                return "payment success, transaction id: " . $arr['id'];
+                return redirect()->to('/cobapayment');
             }
             else{
                 return $response->getMessage();
