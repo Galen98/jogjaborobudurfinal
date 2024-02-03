@@ -47,6 +47,33 @@
 <p>expected real alur: customer isi data booking, dikasih pilihan manual transfer or via paypal,<br> kalau pilih paypal otomatis redirect ke
 halaman paypal dan data berhasil atau tidak nanti terintegrasi dgn data bookings.</p>
 
+@if($dataPay != null)
+<div class="mt-4">
+Data pembayaran 
+<table class="table">
+    <thead>
+        <th>id_trans</th>
+        <th>id_payer</th>
+        <th>email</th>
+        <th>total</th>
+        <th>currency</th>
+        <th>status</th>
+    </thead>
+    <tbody>
+        @foreach($dataPay as $item)
+        <tr style="font-size:12px;">
+            <td>{{$item->payment_id}}</td>
+            <td>{{$item->payer_id}}</td>
+            <td>{{$item->payer_email}}</td>
+            <td>{{$item->amount}}</td>
+            <td>{{$item->currency}}</td>
+            <td>{{$item->payment_status}}</td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+</div>
+@endif
 </div>
 </div>
 <script>

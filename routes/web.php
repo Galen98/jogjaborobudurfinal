@@ -12,6 +12,7 @@ use App\Http\Controllers\emailController;
 use App\Models\blog;
 use App\Models\tags;
 use App\Models\travel;
+use App\Models\Payment;
 use App\Models\corporate;
 use App\Models\travelagent;
 use App\Models\influencer;
@@ -337,6 +338,8 @@ Route::post('insertdestinationcategory',[App\Http\Controllers\BlogController::cl
 
 //payment route
 Route::post('pay',[PaymentController::class, 'pay'])->name('payment');
+Route::get('success',[PaymentController::class, 'success']);
+Route::get('error',[PaymentController::class, 'error']);
 
 //jogjaborobudur blog
 Route::get('/blog', [App\Http\Controllers\BlogController::class,'landingpageblog']);
@@ -576,7 +579,8 @@ Route::get('/cityfilter/{slugregion}/{namaseason}', [App\Http\Controllers\Travel
 Route::get('/destinationfilter/{categoryid}/{namaseason}', [App\Http\Controllers\TravelController::class,'filterseasondestination']);
 
 Route::get('/cobapayment',function(){
-    return view('payment.index');
+    $dataPay = Payment::all();
+    return view('payment.index',compact('dataPay'));
 });
 
 //date available admins
