@@ -317,6 +317,8 @@ class TravelController extends Controller
 
     public function booking(Request $request, $idpilihan){
         $waktu = Request('waktu');
+        $amount = Request('amount');
+        $currency = Request('currency');
         $idtravel = Request('idtravel');
         $paketwisata = Request('paketwisata');
         $namawisata=Request('namawisata');
@@ -336,8 +338,9 @@ class TravelController extends Controller
             $rating = null;
         } else{
         $rating=$ratingGet->totalrating;
-    }
-        return view('frontend.booking',compact('totalnoconvert','totalgroupnoconvert','rating','namawisata','reviews','total','tanggaltravel','adult','child','group','totalgroup','country','waktu','idoption','idtravel','paketwisata'));
+        }
+        return view('payment.information',compact('totalnoconvert','totalgroupnoconvert','rating','namawisata','reviews','total','tanggaltravel','adult','child','group',
+        'totalgroup','country','waktu','idoption','idtravel','paketwisata', 'amount', 'currency'));
     }
 
     public function viewtraveladmin($idtravel){

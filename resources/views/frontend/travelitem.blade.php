@@ -592,6 +592,14 @@ style="margin-top:5px;height:46px;margin-right:-20px;margin-left:-17px;margin-to
       <h3 class="booking-assistant-configurator__header" data-v-dd428772 style="font-size:17px;font-weight: bolder;color:#182c4c;text-align:left;" id="harga{{$p->id}}"></h3>
       <h3 class="booking-assistant-configurator__header" data-v-dd428772 style="font-size:17px;font-weight: bolder;color:#182c4c;text-align:left;" id="totalgroup{{$p->id}}"></h3>
       <input type="hidden" name="totharga" id="totharga{{$p->id}}">
+      <input type="hidden" name="amount" id="amount{{$p->id}}">
+      @if($session == 'IDR')
+      <input type="hidden" name="currency" id="" value="USD">
+      @elseif($session == 'MYR')
+      <input type="hidden" name="currency" id="" value="USD">
+      @else
+      <input type="hidden" name="currency" id="" value="{{$session}}">
+      @endif
       <input type="hidden" name="totharganoconvert" id="totharganoconvert{{$p->id}}">
       <input type="hidden" name="tothargagroup" id="tothargagroup{{$p->id}}">
       <input type="hidden" name="tothargagroupnoconvert" id="tothargagroupnoconvert{{$p->id}}">
@@ -1017,10 +1025,11 @@ style="margin-top:5px;height:46px;margin-right:-20px;margin-left:-17px;margin-to
     </div> 
     <header class="vertical-activity-card__header">
     <div class="vertical-activity-card__activity-type-wrapper">
-      </div> 
-      <p data-test-id="activity-card-title" class="vertical-activity-card__title">
-            {{$item->namawisata}} 
-          </p> </header> 
+    </div> 
+    <p data-test-id="activity-card-title" class="vertical-activity-card__title">
+    {{$item->namawisata}} 
+     </p> 
+    </header> 
       <div class="vertical-activity-card__body">
       <ul class="activity-attributes__container" data-v-33ad6115>
       <li class="activity-attributes__attribute" data-v-33ad6115>

@@ -94,39 +94,40 @@
     <a href="">
     <img src="https://i.ibb.co/hBbrrfw/logojogjaborobudur.png" alt="logo" height="52" width="68">
     </a>
-    @foreach($body as $item)
+
+
     <p>
-        Hi {{$item->name}}, thanks for your order.
+        Hi {!! $body->name !!}, thanks for your order.
     </p>
     <h2>Your Booking: </h2>
-    <h3>{{$item->namawisata}}</h3>
-    <p>Your Option: {{$item->paketwisata}}</p>
-    @if($item->adult > 0)
-    <p>Participants: {{$item->adult}} Person</p>
+    <h3>{!! $body->namawisata !!}</h3>
+    <p>Your Option: {!! $body->paketwisata !!}</p>
+    @if($body->adult > 0)
+    <p>Participants: {!! $body->adult !!} Person</p>
     @endif
-    @if($item->child > 0)
-    <p>Participants (Child): {{$item->child}} Child</p>
+    @if($body->child > 0)
+    <p>Participants (Child): {!! $body->child !!} Child</p>
     @endif
-    @if($item->participants > 0)
-    <p>Participants (Group): {{$item->participants}} Person</p>
+    @if($body->participants > 0)
+    <p>Participants (Group): {!! $body->participants !!} Person</p>
     @endif
-    <p>Travel Date: {{$item->traveldate}}</p>
-    <p>Pickup Time: {{$item->time}}</p>
-     @if($item->total > 0)
-    <p style="font-weight: bolder;">Total Price: {{$item->total}}</p>
+    <p>Travel Date: {!! $body->traveldate !!}</p>
+    <p>Pickup Time: {!! $body->time !!}</p>
+     @if($body->total > 0)
+    <p style="font-weight: bolder;">Total Price: {!! $body->total !!}</p>
     @endif
-    @if($item->totalgroup > 0)
-    <p style="font-weight: bolder;">Total Price: {{$item->totalgroup}}</p>
+    @if($body->totalgroup > 0)
+    <p style="font-weight: bolder;">Total Price: {!! $body->totalgroup !!}</p>
     @endif
-    <p>Full name: {{$item->name}} {{$item->surname}}</p>
-    <p>Country: {{$item->country}}</p>
-    <p>Phone: +{{$item->code}}{{$item->phone}}</p>
-    <p>Email: {{$item->email}}</p>
-    <p>Pickup location: {{$item->pickup}}</p>
-    <p>Special request: {{$item->request}}</p>
-    @endforeach
+    <p>Full name: {!! $body->name !!} {!! $body->surname !!}</p>
+    <p>Country: {!! $body->country !!}</p>
+    <p>Phone: +{!! $body->code !!}{!! $body->phone !!}</p>
+    <p>Email: {!! $body->email !!}</p>
+    <p>Pickup location: {!! $body->pickup !!}</p>
+    <p>Special request: {!! $body->request !!}</p>
+
     <p>
-        INVOICE#{{$item->id}} is now being confirmed. Our customer care will contact you as soon as posible to confirm your order and guide you to the payment options.
+        INVOICE#{!! $body->id !!} is now being confirmed. Our customer care will contact you as soon as posible to confirm your order and guide you to the payment options.
         <br>
         <br>
         Best regards,<br>

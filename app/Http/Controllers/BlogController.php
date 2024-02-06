@@ -174,10 +174,7 @@ class BlogController extends Controller
     }
 
     public function bookinglist(){
-        // $booking=booking::orderBy('created_at','DESC')->paginate(10);
-
-        $booking = booking::join('wisata', 'wisata.wisata_id', '=', 'booking.wisata_id')
-        ->select('wisata.image', 'booking.id', 'booking.paketwisata', 'booking.participants','booking.total','booking.traveldate','booking.namawisata','booking.name','booking.surname','booking.created_at','booking.phone','booking.code','booking.email','booking.country','booking.adult','booking.totalgroup','booking.child','booking.time','booking.request','booking.pickup')
+        $booking = booking::where('token', null)
         ->orderBy('created_at','DESC')
         ->paginate(10);
 
@@ -2094,13 +2091,12 @@ public function datefilter(Request $request)
     if($from == null || $to == null){
         return redirect()->to('/data-booking');
     }else{
-    $booking = DB::table('booking')
-        ->join('wisata', 'wisata.wisata_id', '=', 'booking.wisata_id')
-        ->select('wisata.image', 'booking.id', 'booking.paketwisata', 'booking.total', 'booking.traveldate', 'booking.namawisata', 'booking.name', 'booking.surname', 'booking.created_at', 'booking.phone', 'booking.code', 'booking.email', 'booking.country', 'booking.adult', 'booking.totalgroup', 'booking.child', 'booking.time', 'booking.request', 'booking.pickup', 'booking.participants')
+    $booking = booking::where('token', null)
         ->whereRaw("STR_TO_DATE(booking.traveldate, '%d/%m/%Y') BETWEEN STR_TO_DATE('$from', '%d/%m/%Y') AND STR_TO_DATE('$to', '%d/%m/%Y')")
+        ->orderBy('created_at','DESC')
         ->paginate(10);
 
-        foreach ($booking as $record) {
+    foreach ($booking as $record) {
             $traveldate = Carbon::createFromFormat('d/m/Y', $record->traveldate);
             $record->travelStatus = $traveldate->isPast() ? 'done' : 'active';
             }

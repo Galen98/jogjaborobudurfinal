@@ -166,7 +166,7 @@
 	@endsection
  
 	@section('content')
-@include('sweetalert::alert')
+  @include('sweetalert::alert')
 
    <div class="wrapper container " id="contentBelowSearch">
    <br>

@@ -1,94 +1,97 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coba payment paypal</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<html lang="en-US" default-lang="en-US" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.css" integrity="sha512-FA9cIbtlP61W0PRtX36P6CGRy0vZs0C2Uw26Q1cMmj3xwhftftymr0sj8/YeezDnRwL9wtWw8ZwtCiTDXlXGjQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/fontawesome.css" integrity="sha512-/Jsoj+nRoCkEHw4HnymLk48dWblqtN+0rW+UMAanfbHZjzgphJipQOEuuOEdZ0IzSEYgK0NXCNda8r+4juGbPg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/fontawesome.min.css" integrity="sha512-giQeaPns4lQTBMRpOOHsYnGw1tGVzbAIHUyHRgn7+6FmiEgGGjaG0T2LZJmAPMzRCl+Cug0ItQ2xDZpTmEc+CQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{asset('traveler')}}/css/booking1.css">
+	<link rel="stylesheet" href="{{asset('traveler')}}/css/booking2.css">
+	<link rel="stylesheet" href="{{asset('traveler')}}/css/booking3.css">
+	<link rel="stylesheet" href="{{asset('traveler')}}/css/booking4.css">
+	<link rel="stylesheet" href="{{asset('traveler')}}/css/booking5.css">
+	<link rel="stylesheet" href="{{asset('traveler')}}/css/booking6.css">
+	<link rel="stylesheet" href="{{asset('traveler')}}/css/booking7.css">
+	<link rel="stylesheet" href="{{asset('traveler')}}/css/booking8.css">
+	<link rel="stylesheet" href="{{asset('traveler')}}/css/booking9.css">
+	<link data-vue-meta="ssr" rel="preload" href="{{asset('font')}}/GT-Eesti-Pro-Display-Regular.woff2" as="font" type="font/woff2" crossorigin="true">
+  	<link data-vue-meta="ssr" rel="preload" href="{{asset('font')}}/GT-Eesti-Pro-Display-Medium.woff2" as="font" type="font/woff2" crossorigin="true">
+  	<link data-vue-meta="ssr" rel="preload" href="{{asset('font')}}/GT-Eesti-Pro-Display-Bold.woff2" crossorigin="true">
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{{asset('spica')}}/images/favicon.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{asset('spica')}}/images/favicon.png">
+	<link rel="shortcut icon" href="favicon.png">
+	<meta name="viewport"content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+        />
+    <title>Booking</title>
+	<meta name="description">
+	<meta property="og:description">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="www.jogjaborobudur.com">
+	<meta property="og:title" content="Booking">
+    <link rel="stylesheet" href="{{asset('traveler')}}/css/style.css">
+    <meta name="service-name" content="traveler-frontend-checkout" />
+    <link rel="stylesheet" href="{{asset('traveler')}}/css/booking10.css">
+    <link rel="stylesheet" href="{{asset('traveler')}}/css/booking11.css">
+    <script src="{{asset('traveler')}}/js/modernizr-2.6.2.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" ></script>
+  </head>
+  <body>
+    <div id="gyg">
+	<div>
+	<div class="main-wrapper  partner-left-layout customer-information customer-information--gyg-symbol-on-mobile">
+    <!-- header -->
+	<header class="page-header light" data-test-id="page-header" data-v-36cff088 style="background-color:  #fc2c04;">
+	<div class="page-header__content" data-v-36cff088>
+	<div class="page-header__logo-image" role="img">
+	<img src="{{asset('spica')}}/images/logomini.png" style="margin-top:5px;" height="50" alt="logo"/>
+	</div>
+	</div>
+	</header>
 
-    <style>
-        html,
-        body {
-        height: 100%
-        }
-    </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-</head>
-<body>
-<div class="h-100 d-flex align-items-center justify-content-center">
-<div class="">
-<h2 class="mb-5 fw-bold">Coba Bayar Pakai Paypal JIBITI Tour</h2>
-<form action="{{route('payment')}}" method="post">
-    @csrf
-    <div class="mb-3">
-    <select name="currency" id="currency" class="form-control">
-        <option value="">Pilih currency IDR MYR no support</option>
-        <option value="USD">USD</option>
-        <option value="EUR">EUR</option>
-        <option value="SGD">SGD</option>
-    </select>
-    </div>
+	<a href="#main-content" class="skip-link">Skip to content</a>
+	<main id="main-content" class="">
+    @yield('content')
+    @include('sweetalert::alert')
 
-    <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Input amount</label>
-    <input type="number" name="amount" class="form-control" id="amount">
-    </div>
+	</main>
 
-<span class="price"></span>
-<div class="mb-3">
-<button type="submit" class="mt-3 btn btn-dark rounded-pill">Bayar</button>
-</div>
-</form>
+	<footer class="page-footer" style="background-color:  #fc2c04;">
+	<div class="page-footer__content">
+	<nav class="navigation page-footer__navigation">
+	<div class="navigation__directory"><p class="navigation__item navigation__item-section_copyright">
+	<span> © <time>2023</time> Jogja Borobudur Tour &amp; Travel</span></p>
+	</div>
+	</nav>
+	</div>
+	</footer>
 
-<p><b>Akun untuk testing:</b></p>
-<p>email: <b>sb-o2pyp29020005@personal.example.com</b></p>
-<p>password: <b>$v!s@M{7</b></p>
-
-<p>expected real alur: customer isi data booking, dikasih pilihan manual transfer or via paypal,<br> kalau pilih paypal otomatis redirect ke
-halaman paypal dan data berhasil atau tidak nanti terintegrasi dgn data bookings.</p>
-
-@if($dataPay->isEmpty())
-<p></p>
-@else
-<div class="mt-4">
-Data pembayaran 
-<table class="table">
-    <thead>
-        <th>id_trans</th>
-        <th>id_payer</th>
-        <th>email</th>
-        <th>total</th>
-        <th>currency</th>
-        <th>status</th>
-    </thead>
-    <tbody>
-        @foreach($dataPay as $item)
-        <tr style="font-size:12px;">
-            <td>{{$item->payment_id}}</td>
-            <td>{{$item->payer_id}}</td>
-            <td>{{$item->payer_email}}</td>
-            <td>{{$item->amount}}</td>
-            <td>{{$item->currency}}</td>
-            <td>{{$item->payment_status}}</td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
-<p>Sebenere data masih banyak tapi sek tak ambil sek penting2 aja</p>
-</div>
-@endif
-</div>
-</div>
-<script>
+	<div>
+	<div style="display:contents;">
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+    
+    @yield('script')
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="{{asset('traveler')}}/js/jquery.min.js"></script>
+  <script src="{{asset('traveler')}}/js/bootstrap.min.js"></script>
+  <script src="{{asset('traveler')}}/js/bootstrap-datepicker.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="{{asset('traveler')}}/js/jquery.min.js"></script>
+  <script>
     $(document).ready(function() {
-        $('#amount, #currency').on('input', function() {
-        var amount = $('#amount').val();
-        var currency = $('#currency').val();
-        var totalPrice = amount + ' ' + currency;
-        $('.price').text(totalPrice);
+    var timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    var time = $('#time').val(timezone);
     });
-});
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </script>
 </body>
 </html>

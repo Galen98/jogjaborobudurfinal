@@ -60,9 +60,9 @@ class emailController extends Controller
 
         booking::create($data);
 
-        $data['email'] = $email; //email penerima
+        $data['email'] = $email;
         $data['email2'] = 'herucod@gmail.com';
-        $data['subject'] = 'Booking Order Jogja Borobudur Tours & Travel'; // subject email
+        $data['subject'] = 'Booking Order Jogja Borobudur Tours & Travel';
     
         $booking['body'] = booking::latest()->paginate(1);
         Mail::send('frontend.bodyemail', $booking, function($message)use($data) {

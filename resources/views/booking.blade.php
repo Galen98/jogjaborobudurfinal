@@ -42,8 +42,8 @@
   <div class="activity-card__image" data-v-a1084d9e> 
   <div class="activity-card__image-info align-end" data-v-a1084d9e></div> 
   <picture data-v-a1084d9e>
-  <source srcset="{{ url('public/img/'.$item->image) }}" type="image/webp"> 
-  <img src="{{ url('public/img/'.$item->image) }}">
+  <source srcset="{{ url('public/img/'.$item->wisata->image) }}" type="image/webp"> 
+  <img src="{{ url('public/img/'.$item->wisata->image) }}">
   </picture>
   </div> 
   <div class="activity-card__details" data-v-a1084d9e>
@@ -76,7 +76,6 @@
       @csrf
   <button type="submit" class="btn-sm btn btn-outline-primary" style="margin-right: 10px;"><i class="mdi mdi-send btn-icon-prepend"></i> Send link review</button>
 </form>
-
   <button type="button" class="hapusbtn btn-sm btn btn-outline-danger" value="{{$item->id}}"><i class="mdi mdi-delete btn-icon-prepend"></i> Delete</button>
 </div> 
 </div>
@@ -84,6 +83,9 @@
 <div class="activity-card__pricing" data-v-a1084d9e>
   <div class="baseline-pricing" data-v-24caa43d data-v-a1084d9e>
     <div class="baseline-pricing__container" data-v-24caa43d>
+    @if($item->payment !== null)
+    <i class="mdi mdi-paypal menu-icon"></i>
+    @endif
     @if($item->travelStatus == 'active')
       <span class="badge badge-pill badge-success" style="font-size: 10px; padding: 3px 6px;">ACTIVE</span>
       @else
@@ -104,6 +106,14 @@
     </article>
     <div class="collapse" id="collapseExample{{$item->id}}">
   <div class="card card-body">
+  @if($item->payment !== null)
+      <span data-v-67560657>Currency: {{$item->payment->currency}}</span>
+      <span data-v-67560657>Amount: {{$item->payment->amount}}</span>
+      <span data-v-67560657>Payment ID: {{$item->payment->payment_id}}</span>
+      <span data-v-67560657>Payer ID: {{$item->payment->payer_id}}</span>
+      <span data-v-67560657>Payment status: {{$item->payment->payment_status}}</span>
+      <hr>
+      @endif
     <span data-v-67560657>Email: {{$item->email}}</span>
     <span data-v-67560657>Phone: +{{$item->code}} {{$item->phone}}</span>
     <span data-v-67560657>Country: {{$item->country}}</span>
@@ -128,16 +138,16 @@
 </div>
     </div>
 
-  <div class="activity-card-block--grid d-none d-sm-block" style="margin-bottom: 0px;overflow-y: auto;overflow-y: scroll;">
-  <article style="overflow-y: auto;overflow-y: scroll;white-space: nowrap;" data-test-id="horizontal-activity-card" class="activity-card horizontal-activity-card 
+  <div class="activity-card-block--grid d-none d-sm-block" style="margin-bottom: 0px;">
+  <article style="overflow-y:auto;overflow-y:scroll;white-space:nowrap;" data-test-id="horizontal-activity-card" class="activity-card horizontal-activity-card 
   companion-inactive activity-card-block__card--grid activity-card-block--desktop" data-v-a1084d9e>
   <div> 
   <a role="contentinfo" target="_blank" rel="noopener" data-activity-id="412877" class="activity-card__container gtm-trigger__card-interaction" data-v-a1084d9e>
   <div class="activity-card__image" data-v-a1084d9e> 
   <div class="activity-card__image-info align-end" data-v-a1084d9e></div> 
   <picture data-v-a1084d9e>
-  <source srcset="{{ url('public/img/'.$item->image) }}" type="image/webp"> 
-  <img src="{{ url('public/img/'.$item->image) }}">
+  <source srcset="{{ url('public/img/'.$item->wisata->image) }}" type="image/webp"> 
+  <img src="{{ url('public/img/'.$item->wisata->image) }}">
   </picture>
   </div> 
   <div class="activity-card__details" data-v-a1084d9e>
@@ -178,6 +188,9 @@
 <div class="activity-card__pricing" data-v-a1084d9e>
   <div class="baseline-pricing" data-v-24caa43d data-v-a1084d9e>
     <div class="baseline-pricing__container" data-v-24caa43d>
+    @if($item->payment !== null)
+    <i class="mdi mdi-paypal menu-icon"></i>
+    @endif
     @if($item->travelStatus == 'active')
       <span class="badge badge-pill badge-success" style="font-size: 10px; padding: 3px 6px;">ACTIVE</span>
       @else
@@ -198,6 +211,14 @@
     </article>
     <div class="collapse" id="collapseExample{{$item->id}}">
   <div class="card card-body">
+      @if($item->payment !== null)
+      <span data-v-67560657>Currency: {{$item->payment->currency}}</span>
+      <span data-v-67560657>Amount: {{$item->payment->amount}}</span>
+      <span data-v-67560657>Payment ID: {{$item->payment->payment_id}}</span>
+      <span data-v-67560657>Payer ID: {{$item->payment->payer_id}}</span>
+      <span data-v-67560657>Payment status: {{$item->payment->payment_status}}</span>
+      <hr>
+      @endif
     <span data-v-67560657>Email: {{$item->email}}</span>
     <span data-v-67560657>Phone: +{{$item->code}} {{$item->phone}}</span>
     <span data-v-67560657>Country: {{$item->country}}</span>

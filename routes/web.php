@@ -338,6 +338,10 @@ Route::post('insertdestinationcategory',[App\Http\Controllers\BlogController::cl
 
 //payment route
 Route::post('pay',[PaymentController::class, 'pay'])->name('payment');
+Route::post('paytransfer',[PaymentController::class, 'payTransfer'])->name('paymenttransfer');
+Route::get('deleteexpiredtoken',[PaymentController::class, 'deleteExpiredBookings']);
+Route::post('addCart',[PaymentController::class, 'addCart'])->name('addCart');
+Route::get('/payment/{token}',[PaymentController::class, 'paymentMethod'])->name('paymentmethods');
 Route::get('success',[PaymentController::class, 'success']);
 Route::get('error',[PaymentController::class, 'error']);
 
@@ -577,11 +581,6 @@ Route::patch('insertreview', [App\Http\Controllers\Reviewemail::class,'insertRev
 Route::get('/locationfilter/{slugprovince}/{namaseason}', [App\Http\Controllers\TravelController::class,'filterseasonprovince'])->name('filter-season-province');
 Route::get('/cityfilter/{slugregion}/{namaseason}', [App\Http\Controllers\TravelController::class,'filterseasoncity']);
 Route::get('/destinationfilter/{categoryid}/{namaseason}', [App\Http\Controllers\TravelController::class,'filterseasondestination']);
-
-Route::get('/cobapayment',function(){
-    $dataPay = Payment::all();
-    return view('payment.index',compact('dataPay'));
-});
 
 //date available admins
 Route::get('/dateavailable', [App\Http\Controllers\AdminController::class,'getTravel'])->middleware('auth');

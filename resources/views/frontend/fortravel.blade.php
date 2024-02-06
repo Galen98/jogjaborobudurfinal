@@ -281,12 +281,14 @@ $("#dialogs").css("display","none");
             $("#totalgroup{{$p->id}}").text("Total: " + convertrate(item.harga))
             $("#groupe{{$p->id}}").val(group)
             $("#tothargagroup{{$p->id}}").val(convertrate(hargagroup{{$p->id}}))
+            $("#amount{{$p->id}}").val(amount(hargagroup{{$p->id}}))
             $("#tothargagroupnoconvert{{$p->id}}").val((hargagroup{{$p->id}}))
           }
 
         })
       }else{
             $("#group{{$p->id}}").val("")
+            $("#amount{{$p->id}}").val("")
             $("#jumlahgroup{{$p->id}}").text("")
             $("#hargagroup{{$p->id}}").text("")
           }
@@ -314,11 +316,13 @@ $("#dialogs").css("display","none");
         $("#harga{{$p->id}}").text("Total: " + convertrate(hargadewasa{{$p->id}} + hargaanak{{$p->id}} ))
         $("#harganoconvert{{$p->id}}").text((hargadewasa{{$p->id}} + hargaanak{{$p->id}} ))
         $("#totharga{{$p->id}}").val(convertrate(hargadewasa{{$p->id}}  + hargaanak{{$p->id}} ))
+        $("#amount{{$p->id}}").val(amount(hargadewasa{{$p->id}}  + hargaanak{{$p->id}} ))
         $("#totharganoconvert{{$p->id}}").val((hargadewasa{{$p->id}}  + hargaanak{{$p->id}} ))
       }
       else{
         $("#harga{{$p->id}}").text(" ")
         $("#totharga{{$p->id}}").val("")
+        $("#amount{{$p->id}}").val("")
       }
       @endforeach 
     }
@@ -399,12 +403,14 @@ $("input[data-code]").change(function(){
             $("#totalgroup{{$p->id}}").text("Total: " + convertrate(item.harga))
             $("#groupe{{$p->id}}").val(group)
             $("#tothargagroup{{$p->id}}").val(convertrate(hargagroup{{$p->id}}))
+            $("#amount{{$p->id}}").val(amount(hargagroup{{$p->id}}))
             $("#tothargagroupnoconvert{{$p->id}}").val((hargagroup{{$p->id}}))
           }
 
         })
       }else{
             $("#group{{$p->id}}").val("")
+            $("#amount{{$p->id}}").val("")
             $("#jumlahgroup{{$p->id}}").text("")
             $("#hargagroup{{$p->id}}").text("")
           }
@@ -429,18 +435,54 @@ $("input[data-code]").change(function(){
 
       @foreach($pilihan as $p)
       if (hargadewasa{{$p->id}} + hargaanak{{$p->id}} > 0) {
-        $("#harga{{$p->id}}").text("Total: " + convertrate(hargadewasa{{$p->id}} + hargaanak{{$p->id}} ))
+        $("#harga{{$p->id}}").text("Totals: " + convertrate(hargadewasa{{$p->id}} + hargaanak{{$p->id}} ))
         $("#harganoconvert{{$p->id}}").text((hargadewasa{{$p->id}} + hargaanak{{$p->id}} ))
         $("#totharga{{$p->id}}").val(convertrate(hargadewasa{{$p->id}}  + hargaanak{{$p->id}} ))
+        $("#amount{{$p->id}}").val(amount(hargadewasa{{$p->id}}  + hargaanak{{$p->id}} ))
         $("#totharganoconvert{{$p->id}}").val((hargadewasa{{$p->id}}  + hargaanak{{$p->id}} ))
       }
       else{
         $("#harga{{$p->id}}").text(" ")
         $("#totharga{{$p->id}}").val("")
+        $("#amount{{$p->id}}").val("")
       }
       @endforeach 
     }
     })
+
+    function amount(harga){
+      let rateidr = {{$rateIDR}}
+      let ratemyr = {{$rateMYR}}
+      let ratesgd = {{$rateSGD}}
+      let rateeur = {{$rateEUR}}
+      let hargaconvert = 0
+      @if($session == 'USD') 
+      let hargaakhir = (harga / rateidr).toFixed(2)
+      hargaconvert = hargaakhir
+      @endif
+      
+      @if($session == 'IDR') 
+      let hargaakhir = (harga / rateidr).toFixed(2)
+      hargaconvert = hargaakhir
+      @endif
+
+      @if($session == 'MYR') 
+      let hargaakhir = (harga / rateidr).toFixed(2)
+      hargaconvert = hargaakhir
+      @endif
+
+      @if($session == 'SGD') 
+      let hargaakhir = ((harga / rateidr)*ratesgd).toFixed(2)
+      hargaconvert = hargaakhir
+      @endif
+
+      @if($session == 'EUR') 
+      let hargaakhir = ((harga / rateidr)*rateeur).toFixed(2)
+      hargaconvert = hargaakhir
+      @endif
+
+      return hargaconvert
+    }
 
     function convertrate(harga){
       let rateidr = {{$rateIDR}}
@@ -576,6 +618,7 @@ jQuery(function ($) {
     });
     @endforeach
   </script>
+
 
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-YTCCX40XDL"></script>

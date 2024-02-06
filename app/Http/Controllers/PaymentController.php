@@ -3,8 +3,14 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
 use Omnipay\Omnipay;
+use Mail;
 use App\Models\Payment;
+use App\Models\countrating;
+use App\Models\booking;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PaymentController extends Controller
 {
@@ -14,11 +20,106 @@ class PaymentController extends Controller
         $this->gateway = Omnipay::create('PayPal_Rest');
         $this->gateway->setClientId(env('PAYPAL_CLIENT_ID'));
         $this->gateway->setSecret(env('PAYPAL_CLIENT_SECRET'));
-        $this->gateway->setTestMode(true);
+        $this->gateway->setTestMode(false);
+    }
+
+    public function addCart(Request $request){
+        $token = Str::random(40);
+        $tokenExpirationServer = Carbon::now()->addMinutes(30);
+        $customerTimezone = Request('timezone');
+        $tokenExpirationCustomer = Carbon::now($customerTimezone)->addMinutes(30);
+        $countrys=Request('negaras');
+        $email=Request('email');
+        $surname=Request('surname');
+        $name=Request('name');
+        $negara=Request('country');
+        $phone=Request('phone');
+        $pickup=Request('pickup');
+        $namawisata=Request('namawisata');
+        $paketwisata=Request('paketwisata');
+        $tanggal=Request('tanggal');
+        $adult=Request('adult');
+        $child=Request('child');
+        $idoption=Request('idoption');
+        $idtravel=Request('idtravel');
+        $waktu=Request('waktu');
+        $total=Request('total');
+        $group=Request('group');
+        $totalgroup=Request('totalgroup');
+        $request=Request('request');
+        $currency=Request('currency');
+        $amount=Request('amount');
+
+        $data = [
+            'email'=>$email,
+            'name'=>$name,
+            'code'=>$negara,
+            'phone'=>$phone,
+            'paketwisata'=>$namawisata,
+            'namawisata'=>$paketwisata,
+            'wisata_id'=>$idtravel,
+            'subwisata_id'=>$idoption,
+            'traveldate'=>$tanggal,
+            'time'=>$waktu,
+            'adult'=>$adult,
+            'child'=>$child,
+            'participants'=>$group,
+            'total'=>$total,
+            'totalgroup'=>$totalgroup,
+            'pickup'=>$pickup,
+            'request'=>$request,
+            'surname'=>$surname,
+            'country'=>$countrys,
+            'token'=>$token,
+            'token_expired_at'=>$tokenExpirationServer,
+            'cust_time'=>$tokenExpirationCustomer,
+            'amount'=>$amount,
+            'currency'=>$currency
+        ];
+
+        $booking=booking::create($data);
+
+        $data['email'] = $email;
+        $data['email2'] = 'herucod@gmail.com';
+        $data['subject'] = 'Complete your payment - Jogja Borobudur Tours & Travel';
+    
+        $book['body'] = booking::where('id', $booking->id)->first();
+        Mail::send('payment.emailPayment', $book, function($message)use($data) {
+            $message->to($data['email'], $data['email'])
+                    ->subject($data['subject']);
+        }); 
+        Mail::send('payment.emailPayment', $book, function($message)use($data) {
+            $message->to($data['email2'], $data['email2'])
+                    ->subject($data['subject']);
+        }); 
+        
+        toast('Your order has been saved!','success');
+        
+        return redirect('/payment/'.$booking->token);
+        }
+
+    public function paymentMethod($token){
+        $tokenExist = booking::where('token', $token)->exists();
+        if($tokenExist){
+            $data = booking::where('token', $token)->first();
+            $ratingGet=countrating::where('wisata_id', $data->wisata_id)->first();
+            if($ratingGet == null){
+                $rating = null;
+            } else{
+            $rating=$ratingGet->totalrating;
+            }
+            return view('payment.booking', compact('data', 'rating'));
+        }
+        else{
+            toast('Your payment process has been expired!','error');
+            return redirect()->to('/');
+        }
     }
 
     public function pay(Request $request){
-
+        $idBooking = $request->bookingId;
+        $exists = booking::where('id', $idBooking)->exists();
+        if($exists){ 
         try{
             $response = $this->gateway->purchase(array(
                 'amount' => $request->amount,
@@ -26,6 +127,12 @@ class PaymentController extends Controller
                 'returnUrl' => url('success'),
                 'cancelUrl' => url('error')
             ))->send();
+
+            $idBooking = $request->bookingId;
+            $arr = $response->getData();
+            booking::where('id', $idBooking)->update([
+                'pay_id' => $arr['id']
+            ]);
 
             if($response->isRedirect()){
                 $response->redirect();
@@ -36,6 +143,10 @@ class PaymentController extends Controller
 
         } catch(\Throwable $th){
             return $th->getMessage();
+        } 
+        } else{
+            toast('Your payment process has been expired!','error');
+            return redirect()->to('/');
         }
     }
 
@@ -48,11 +159,13 @@ class PaymentController extends Controller
 
             $response = $transaction->send();
 
+
             if($response->isSuccessful()){
                 $arr = $response->getData();
-
+                $bookingId = booking::where('pay_id', $arr['id'])->first();
                 $payment = new Payment();
                 $payment->payment_id = $arr['id'];
+                $payment->booking_id = $bookingId->id;
                 $payment->payer_id = $arr['payer']['payer_info']['payer_id'];
                 $payment->payer_email = $arr['payer']['payer_info']['email'];
                 $payment->amount = $arr['transactions'][0]['amount']['total'];
@@ -61,18 +174,71 @@ class PaymentController extends Controller
 
                 $payment->save();
 
-                return redirect()->to('/cobapayment');
+                booking::where('id', $bookingId->id)->update([
+                    'token' => null,
+                    'cust_time' => null,
+                    'token_expired_at' => null
+                ]);
+
+                toast('Your payment success!','success');
+                return redirect()->to('/');
             }
             else{
                 return $response->getMessage();
             }
         }
         else{
-            return 'Payment canceled!';
+        toast('User decline the payment!','error');
+        return redirect()->to('/');
         }
     }
 
     public function error() {
-        return 'user decline the payment';
+        toast('User decline the payment!','error');
+        return redirect()->to('/');
+    }
+
+    public function payTransfer(Request $request){
+
+        $idBooking = $request->idBooking;
+        $exists = booking::where('id', $idBooking)->exists();
+        if($exists){
+        $bookings = booking::where('id', $idBooking)->first();
+        $data['email'] = $bookings->email;
+        $data['email2'] = 'herucod@gmail.com';
+        $data['subject'] = 'Booking Order Jogja Borobudur Tours & Travel';
+        $booking['body'] = $bookings;
+
+        Mail::send('frontend.bodyemail', $booking, function($message)use($data) {
+            $message->to($data['email'], $data['email'])
+                    ->subject($data['subject']);     
+        }); 
+
+        Mail::send('frontend.bodyemail', $booking, function($message)use($data) {
+            $message->to($data['email2'], $data['email2'])
+                    ->subject($data['subject']);    
+        }); 
+
+        booking::where('id', $idBooking)->update([
+            'token' => null,
+            'cust_time' => null,
+            'token_expired_at' => null
+        ]);
+
+        Alert::success('Success','Please check your email for our confirmation');
+        return redirect()->to('/');
+    } else{ 
+        toast('Your payment process has been expired!','error');
+        return redirect()->to('/');
+    }
+    }
+
+    public function deleteExpiredBookings()
+    {
+    $expiredBookings = booking::where('token_expired_at', '<', now())->get();
+
+    foreach ($expiredBookings as $booking) {
+        $booking->delete();
+    }
     }
 }

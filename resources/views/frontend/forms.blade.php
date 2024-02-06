@@ -709,11 +709,10 @@
 $(document).ready(function(){
 $(".rangegroup").css("display","none"); 
 $(".rangechild").css("display","none"); 
-$(".kategori").click(function(){ //Memberikan even ketika class pickup di klik (class pick ialah class radio button)
-if ($("input[name='person']:checked").val() == "Per Group" ) { //Jika radio button "berbeda" dipilih maka tampilkan form-inputan
-$(".rangegroup").slideDown("fast"); //Efek Slide Down (Menampilkan Form Input)
+$(".kategori").click(function(){
+if ($("input[name='person']:checked").val() == "Per Group" ) { 
 } else {
-$(".rangegroup").slideUp("fast"); //Efek Slide Up (Menghilangkan Form Input)
+$(".rangegroup").slideUp("fast");
 }
 });
 
