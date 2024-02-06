@@ -33,7 +33,7 @@
 Hi {!! $body->name !!}, please click the link below to complete your payment.
 </p>
 <br>
-<a href="http://localhost:8000/payment/{!! $body->token !!}"> 
+<a href="https://jogjaborobudur.com/payment/{!! $body->token !!}"> 
 <button class="awesome-button">Check Now!</button>
 </a>
 <hr>
