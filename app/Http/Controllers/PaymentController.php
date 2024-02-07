@@ -180,6 +180,22 @@ class PaymentController extends Controller
                     'token_expired_at' => null
                 ]);
 
+                $bookings = booking::where('id', $bookingId->id)->first();
+                $data['email'] = $bookings->email;
+                $data['email2'] = 'herucod@gmail.com';
+                $data['subject'] = 'Booking Order Jogja Borobudur Tours & Travel';
+                $booking['body'] = $bookings;
+
+                Mail::send('payment.emailAfterPayment', $booking, function($message)use($data) {
+                    $message->to($data['email'], $data['email'])
+                            ->subject($data['subject']);     
+                }); 
+
+                Mail::send('payment.emailAfterPayment', $booking, function($message)use($data) {
+                    $message->to($data['email2'], $data['email2'])
+                            ->subject($data['subject']);     
+                }); 
+
                 toast('Your payment success!','success');
                 return redirect()->to('/');
             }

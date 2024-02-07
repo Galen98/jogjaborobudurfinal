@@ -97,7 +97,7 @@
 
 
     <p>
-        Hi {!! $body->name !!}, thanks for your order.
+        Your payment has been succesfully confirmed. Here is your booking voucher.
     </p>
     <h2>Your Booking: </h2>
     <h3>{!! $body->namawisata !!}</h3>
