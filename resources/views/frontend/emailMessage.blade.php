@@ -25,5 +25,8 @@
 <h3>Email:{{$item->email}}</h3>
 <h3>Message:{{$item->message}}</h3>
 @endforeach
+<a href="https://jogjaborobudur.com/message/{{ $link['link'] }}"> 
+<button class="awesome-button">Check now!</button>
+</a>
 </body>
 </html>

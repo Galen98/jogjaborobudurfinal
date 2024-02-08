@@ -34,7 +34,7 @@ Hi {!! $body->name !!}, please click the link below to complete your payment.
 </p>
 <br>
 <a href="https://jogjaborobudur.com/payment/{!! $body->token !!}"> 
-<button class="awesome-button">Check Now!</button>
+<button class="awesome-button">Pay Now!</button>
 </a>
 <hr>
 <p style="text-align: center;">Best regrads, <br> Jogja Borobudur Tour & Travel</p>
