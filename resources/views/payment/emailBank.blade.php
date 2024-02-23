@@ -20,10 +20,10 @@
       <p>Account Holder: Heru Kristianto</p>
       <p>Bank Name: BCA</p>
       @if($body->total > 0)
-    <p>Total Ammount: {!! $body->total !!}</p>
+    <p>Total Amount: {!! $body->total !!}</p>
     @endif
     @if($body->totalgroup > 0)
-    <p>Total Ammount: {!! $body->totalgroup !!}</p>
+    <p>Total Amount: {!! $body->totalgroup !!}</p>
     @endif  
     </b>
 </strong>
