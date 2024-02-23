@@ -339,6 +339,7 @@ Route::post('insertdestinationcategory',[App\Http\Controllers\BlogController::cl
 //payment route
 Route::post('pay',[PaymentController::class, 'pay'])->name('payment');
 Route::post('paytransfer',[PaymentController::class, 'payTransfer'])->name('paymenttransfer');
+Route::post('sendvoucher',[PaymentController::class, 'payVoucher'])->name('sendvoucher');
 Route::get('deleteexpiredtoken',[PaymentController::class, 'deleteExpiredBookings']);
 Route::post('addCart',[PaymentController::class, 'addCart'])->name('addCart');
 Route::get('/payment/{token}',[PaymentController::class, 'paymentMethod'])->name('paymentmethods');

@@ -75,7 +75,7 @@
   <form action="{{url('/sendlinkreview/'.$item->id)}}" method="POST" enctype="multipart/form-data">
       @csrf
   <button type="submit" class="btn-sm btn btn-outline-primary" style="margin-right: 10px;"><i class="mdi mdi-send btn-icon-prepend"></i> Send link review</button>
-</form>
+  </form>
   <button type="button" class="hapusbtn btn-sm btn btn-outline-danger" value="{{$item->id}}"><i class="mdi mdi-delete btn-icon-prepend"></i> Delete</button>
 </div> 
 </div>
@@ -180,7 +180,14 @@
       @csrf
   <button type="submit" class="btn-sm btn btn-outline-primary" style="margin-right: 10px;"><i class="mdi mdi-send btn-icon-prepend"></i> Send link review</button>
 </form>
-
+  @if($item->payment == null)
+  <form action="{{route('sendvoucher')}}" method="post">
+      <input type="hidden" name="idBooking" value="{{$item->id}}" id="">
+      @csrf
+  <button type="submit" class="btn-sm btn btn-outline-primary" 
+  style="margin-right: 10px;">Send Booking Voucher</button>
+  </form>
+      @endif
   <button type="button" class="hapusbtn btn-sm btn btn-outline-danger" value="{{$item->id}}"><i class="mdi mdi-delete btn-icon-prepend"></i> Delete</button>
 </div> 
 </div>
@@ -190,6 +197,8 @@
     <div class="baseline-pricing__container" data-v-24caa43d>
     @if($item->payment !== null)
     <i class="mdi mdi-paypal menu-icon"></i>
+    @else
+    <i class="far fa-credit-card"></i> 
     @endif
     @if($item->travelStatus == 'active')
       <span class="badge badge-pill badge-success" style="font-size: 10px; padding: 3px 6px;">ACTIVE</span>

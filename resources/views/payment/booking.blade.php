@@ -52,8 +52,7 @@
 	</ul>
 	</div>
     <div class="alert alert-warning m-3" role="alert">
-    Your payment due {{ \Carbon\Carbon::parse($data->cust_time)->isoFormat('DD MMMM YYYY [at] h:mm A')}}, 
-    check your email if you want to pay it later.
+    Your payment due {{ \Carbon\Carbon::parse($data->cust_time)->isoFormat('DD MMMM YYYY [at] h:mm A')}}
     </div>
 	</section>
 	</div>

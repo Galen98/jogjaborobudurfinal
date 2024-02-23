@@ -79,19 +79,19 @@ class PaymentController extends Controller
 
         $booking=booking::create($data);
 
-        $data['email'] = $email;
-        $data['email2'] = 'herucod@gmail.com';
-        $data['subject'] = 'Complete your payment - Jogja Borobudur Tours & Travel';
+        // $data['email'] = $email;
+        // $data['email2'] = 'herucod@gmail.com';
+        // $data['subject'] = 'Complete your payment - Jogja Borobudur Tours & Travel';
     
-        $book['body'] = booking::where('id', $booking->id)->first();
-        Mail::send('payment.emailPayment', $book, function($message)use($data) {
-            $message->to($data['email'], $data['email'])
-                    ->subject($data['subject']);
-        }); 
-        Mail::send('payment.emailPayment', $book, function($message)use($data) {
-            $message->to($data['email2'], $data['email2'])
-                    ->subject($data['subject']);
-        }); 
+        // $book['body'] = booking::where('id', $booking->id)->first();
+        // Mail::send('payment.emailPayment', $book, function($message)use($data) {
+        //     $message->to($data['email'], $data['email'])
+        //             ->subject($data['subject']);
+        // }); 
+        // Mail::send('payment.emailPayment', $book, function($message)use($data) {
+        //     $message->to($data['email2'], $data['email2'])
+        //             ->subject($data['subject']);
+        // }); 
         
         toast('Your order has been saved!','success');
         
@@ -222,15 +222,15 @@ class PaymentController extends Controller
         $bookings = booking::where('id', $idBooking)->first();
         $data['email'] = $bookings->email;
         $data['email2'] = 'herucod@gmail.com';
-        $data['subject'] = 'Booking Order Jogja Borobudur Tours & Travel';
+        $data['subject'] = 'Payment Confirmation Jogja Borobudur Tours & Travel';
         $booking['body'] = $bookings;
 
-        Mail::send('frontend.bodyemail', $booking, function($message)use($data) {
+        Mail::send('payment.emailBank', $booking, function($message)use($data) {
             $message->to($data['email'], $data['email'])
                     ->subject($data['subject']);     
         }); 
 
-        Mail::send('frontend.bodyemail', $booking, function($message)use($data) {
+        Mail::send('payment.emailBank', $booking, function($message)use($data) {
             $message->to($data['email2'], $data['email2'])
                     ->subject($data['subject']);    
         }); 
@@ -249,6 +249,42 @@ class PaymentController extends Controller
     }
     }
 
+    public function payVoucher(Request $request){
+
+        $idBooking = $request->idBooking;
+        $exists = booking::where('id', $idBooking)->exists();
+        if($exists){
+        $bookings = booking::where('id', $idBooking)->first();
+        $data['email'] = $bookings->email;
+        $data['email2'] = 'herucod@gmail.com';
+        $data['subject'] = 'Payment Booking Order Jogja Borobudur Tours & Travel';
+        $booking['body'] = $bookings;
+
+        Mail::send('frontend.bodyemail', $booking, function($message)use($data) {
+            $message->to($data['email'], $data['email'])
+                    ->subject($data['subject']);     
+        }); 
+
+        Mail::send('frontend.bodyemail', $booking, function($message)use($data) {
+            $message->to($data['email2'], $data['email2'])
+                    ->subject($data['subject']);    
+        }); 
+
+        booking::where('id', $idBooking)->update([
+            'token' => null,
+            'cust_time' => null,
+            'token_expired_at' => null
+        ]);
+
+        toast('send email success!','success');
+        return redirect()->back();
+    } else{ 
+        toast('Your payment process has been expired!','error');
+        return redirect()->back();
+    }
+    }
+
+
     public function deleteExpiredBookings()
     {
     $expiredBookings = booking::where('token_expired_at', '<', now())->get();
@@ -257,4 +293,6 @@ class PaymentController extends Controller
         $booking->delete();
     }
     }
+
+    
 }

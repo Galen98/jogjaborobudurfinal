@@ -104,21 +104,21 @@ class Reviewemail extends Controller
         $bahasa=bahasa::get();
         $lang=$request->server('HTTP_ACCEPT_LANGUAGE');
         $langs=Str::substr($lang, 0,2);
-    if ($langs == 'id') {
-        $sessions = session()->get("bahasa") ?? "Bahasa";
-        
-    }elseif ($langs == 'en-US'){
-        $sessions = session()->get("bahasa") ?? "English";
-        
-    }elseif ($langs == 'en'){
-        $sessions = session()->get("bahasa") ?? "English";
-    }
-    elseif ($langs == 'ms'){
-        $sessions = session()->get("bahasa") ?? "Malay";
-    }
-    else{
-        $sessions = session()->get("bahasa") ?? "English";     
-    }
+        if ($langs == 'id') {
+            $sessions = session()->get("bahasa") ?? "Bahasa";
+            
+        }elseif ($langs == 'en-US'){
+            $sessions = session()->get("bahasa") ?? "English";
+            
+        }elseif ($langs == 'en'){
+            $sessions = session()->get("bahasa") ?? "English";
+        }
+        elseif ($langs == 'ms'){
+            $sessions = session()->get("bahasa") ?? "Malay";
+        }
+        else{
+            $sessions = session()->get("bahasa") ?? "English";     
+        }
             $city=region::get();
             $province=province::get();
             $season = season::get();
@@ -131,13 +131,13 @@ class Reviewemail extends Controller
             $session = session()->get("rate") ?? "USD";
             return view('errors.reviewsubmit', compact('bahasa','session','sessions','province','city','season','destination'));
 
-    }else{
-    $idbooking = $datareview->booking_id;
-    $idwisata = $datareview->wisata_id;
-    $databooking = booking::where('id', $idbooking)->first();
-    $datawisata = travel::where('wisata_id', $idwisata)->first();
-    return view('frontend.reviewpage', compact('databooking','datawisata', 'datareview'));
-    }
+            }else{
+            $idbooking = $datareview->booking_id;
+            $idwisata = $datareview->wisata_id;
+            $databooking = booking::where('id', $idbooking)->first();
+            $datawisata = travel::where('wisata_id', $idwisata)->first();
+            return view('frontend.reviewpage', compact('databooking','datawisata', 'datareview'));
+            }
     }
 
 

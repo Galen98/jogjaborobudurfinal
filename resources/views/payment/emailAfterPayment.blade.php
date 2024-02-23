@@ -127,7 +127,7 @@
     <p>Special request: {!! $body->request !!}</p>
 
     <p>
-        INVOICE#{!! $body->id !!} is now being confirmed. Our customer care will contact you as soon as posible to confirm your order and guide you to the payment options.
+        INVOICE#{!! $body->id !!} is now being confirmed. Our customer care will contact you as soon as posible to confirm your order.
         <br>
         <br>
         Best regards,<br>

@@ -91,13 +91,13 @@
 </head>
 <body>
     <h2 style="font-weight: bolder;">Tour Booking</h2>
-    <a href="">
+    <a href="www.jogjaborobudur.com">
     <img src="https://i.ibb.co/hBbrrfw/logojogjaborobudur.png" alt="logo" height="52" width="68">
     </a>
 
 
     <p>
-        Hi {!! $body->name !!}, thanks for your order.
+        Hi {!! $body->name !!}, thanks for your order. Here is your booking voucher.
     </p>
     <h2>Your Booking: </h2>
     <h3>{!! $body->namawisata !!}</h3>
@@ -127,7 +127,7 @@
     <p>Special request: {!! $body->request !!}</p>
 
     <p>
-        INVOICE#{!! $body->id !!} is now being confirmed. Our customer care will contact you as soon as posible to confirm your order and guide you to the payment options.
+    INVOICE#{!! $body->id !!} is now being confirmed. Our customer care will contact you as soon as posible to confirm your order.
         <br>
         <br>
         Best regards,<br>
