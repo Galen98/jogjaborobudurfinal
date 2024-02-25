@@ -17,7 +17,7 @@
 <strong>
     <b>
       <p>Account Number: 8020237067</p>
-      <p>Account Holder: Heru Kristianto</p>
+      <p>Account Holder: Heru Kristanto</p>
       <p>Bank Name: BCA</p>
       @if($body->total > 0)
     <p>Total Amount: {!! $body->total !!}</p>
@@ -51,7 +51,7 @@
 <hr>
 <div style="background-color:#DDF1FA;padding:5px;border-radius:10px;"> 
 <center><p>This is not your booking voucher. Once your payment is confirmed.
-    we will send your booking to your email.
+    we will send your booking voucher to your email.
 </p></center>
 </div>
 </body>

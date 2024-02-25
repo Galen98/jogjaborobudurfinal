@@ -76,6 +76,14 @@
       @csrf
   <button type="submit" class="btn-sm btn btn-outline-primary" style="margin-right: 10px;"><i class="mdi mdi-send btn-icon-prepend"></i> Send link review</button>
   </form>
+  @if($item->payment == null)
+  <form action="{{route('sendvoucher')}}" method="post">
+      <input type="hidden" name="idBooking" value="{{$item->id}}" id="">
+      @csrf
+  <button type="submit" class="btn-sm btn btn-outline-primary" 
+  style="margin-right: 10px;">Send Booking Voucher</button>
+  </form>
+      @endif
   <button type="button" class="hapusbtn btn-sm btn btn-outline-danger" value="{{$item->id}}"><i class="mdi mdi-delete btn-icon-prepend"></i> Delete</button>
 </div> 
 </div>
@@ -139,7 +147,7 @@
     </div>
 
   <div class="activity-card-block--grid d-none d-sm-block" style="margin-bottom: 0px;">
-  <article style="overflow-y:auto;overflow-y:scroll;white-space:nowrap;" data-test-id="horizontal-activity-card" class="activity-card horizontal-activity-card 
+  <article style="overflow-x:scroll;white-space:nowrap;" data-test-id="horizontal-activity-card" class="activity-card horizontal-activity-card 
   companion-inactive activity-card-block__card--grid activity-card-block--desktop" data-v-a1084d9e>
   <div> 
   <a role="contentinfo" target="_blank" rel="noopener" data-activity-id="412877" class="activity-card__container gtm-trigger__card-interaction" data-v-a1084d9e>
