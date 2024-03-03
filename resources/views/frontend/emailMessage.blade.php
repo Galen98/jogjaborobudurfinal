@@ -21,8 +21,12 @@
 <body>
 <h2 style="text-align:center;">Message from {{ $head['head'] }}</h2>
 <br>
+@if(isset($messages) && is_object($messages))
 <h3>Email:{{$messages->email}}</h3>
 <h3>Message:{{$messages->message}}</h3>
+@else
+    <p>Error: Unable to retrieve email</p>
+@endif
 <a href="https://jogjaborobudur.com/message/{{ $link['link'] }}"> 
 <button class="awesome-button">Check now!</button>
 </a>
