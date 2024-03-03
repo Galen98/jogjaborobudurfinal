@@ -6,10 +6,13 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "anhskohbo/no-captcha": "^3.5",
         "barryvdh/laravel-dompdf": "^2.0",
+        "biscolab/laravel-recaptcha": "^6.0",
         "crocodicstudio/dokularavel": "^1.6",
         "cviebrock/eloquent-sluggable": "^9.0",
         "doku/jokul-php-library": "^2.0",
+        "greggilbert/recaptcha": "^1.1",
         "guzzlehttp/guzzle": "^7.2",
         "intervention/image": "^2.7",
         "jorenvanhocht/laravel-share": "^4.2",

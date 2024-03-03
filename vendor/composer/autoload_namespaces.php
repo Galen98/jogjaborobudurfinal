@@ -6,4 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Greggilbert\\Recaptcha' => array($vendorDir . '/greggilbert/recaptcha/src'),
 );

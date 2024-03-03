@@ -42,6 +42,7 @@
   font-size: 18px;
   }
   </style>
+  {!! NoCaptcha::renderJs() !!}
 	</head>
 	<body>
 		
@@ -119,12 +120,15 @@
 								<textarea name="message" name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Write us something" required=""></textarea>
 							</div>
 						</div>
-						<div class="form-group">
+            {!! NoCaptcha::display() !!}
+            @if ($errors->has('g-recaptcha-response'))
+        <strong><p style="margin-top:10px;color:red;">{{ $errors->first('g-recaptcha-response') }}</p></strong>
+          @endif
+						<div class="form-group" style="margin-top:10px;">
 							<button type="submit" class="cekharga js-check-availability gtm-trigger__adp-check-availability-btn avoid-close-dropdown-on-click c-button c-button--medium filbtn" data-v-dd428772><!---->
 							    Submit
 							  </button>
 						</div>
-
 					</form>		
 				</div>
 				<div class="col-md-5 col-md-push-1">

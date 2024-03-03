@@ -43,6 +43,7 @@ use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
 use App\Models\dateAvailable;
 use App\Models\tambahAvailable;
+use Illuminate\Support\Facades\Validator;
 
 class TravelController extends Controller
 {
@@ -1240,6 +1241,21 @@ $email=Request('email');
 $message=Request('message');
 $type=Request('type');
 
+$messages = [
+    'g-recaptcha-response.required' => 'You must check the reCAPTCHA.',
+    'g-recaptcha-response.captcha' => 'Captcha error! try again later or contact site admin.',
+];
+
+$validator = Validator::make($request->all(), [
+    'g-recaptcha-response' => 'required|captcha'
+], $messages);
+
+if ($validator->fails()) {
+    return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+} else{
+
 $data=[
 'nama'=>$name,
 'email'=>$email,
@@ -1259,6 +1275,7 @@ Mail::send('frontend.emailMessage', ['link' => $link, 'messages' => $messages, '
         }); 
 Alert::success('Success');
 return redirect()->to('/');
+}
 }
 
 public function insertrating(Request $request){
