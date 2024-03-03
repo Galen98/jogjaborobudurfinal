@@ -1032,6 +1032,22 @@ class TravelController extends Controller
             'phone'=>$phone,
             'message'=>$message
         ];
+
+        $messages = [
+            'g-recaptcha-response.required' => 'You must check the reCAPTCHA.',
+            'g-recaptcha-response.captcha' => 'Captcha error! try again later or contact site admin.',
+        ];
+        
+        $validator = Validator::make($request->all(), [
+            'g-recaptcha-response' => 'required|captcha'
+        ], $messages);
+        
+        if ($validator->fails()) {
+            return redirect()->back()
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        else{
         $dataMessage=corporate::create($data);
         $data['email2'] = 'herucod@gmail.com';
         $data['subject'] = 'Message from Corporate';
@@ -1046,6 +1062,7 @@ class TravelController extends Controller
     Alert::success('Success');
     return redirect()->to('/');
 }
+}
 
 public function insertinfluencer(Request $request){
     $website=Request('website');
@@ -1059,20 +1076,35 @@ public function insertinfluencer(Request $request){
         'email'=>$email,
         'message'=>$message
     ];
-$dataMessage=influencer::create($data);
+    $messages = [
+        'g-recaptcha-response.required' => 'You must check the reCAPTCHA.',
+        'g-recaptcha-response.captcha' => 'Captcha error! try again later or contact site admin.',
+    ];
+    
+    $validator = Validator::make($request->all(), [
+        'g-recaptcha-response' => 'required|captcha'
+    ], $messages);
+    
+    if ($validator->fails()) {
+        return redirect()->back()
+                    ->withErrors($validator)
+                    ->withInput();
+    } else {
+    $dataMessage=influencer::create($data);
 
-$data['email2'] = 'herucod@gmail.com';
-$data['subject'] = 'Message from influencer';
-$link['link'] = 'influencer';
-$head['head'] = 'Influencer';
-$messages['body'] = influencer::where('id', $dataMessage->id)->first();
-Mail::send('frontend.emailMessage', ['link' => $link, 'messages' => $messages, 'head' => $head], function($messagesData)use($data) {
-    $messagesData->to($data['email2'], $data['email2'])
-    ->subject($data['subject']);               
-        }); 
+    $data['email2'] = 'herucod@gmail.com';
+    $data['subject'] = 'Message from influencer';
+    $link['link'] = 'influencer';
+    $head['head'] = 'Influencer';
+    $messages['body'] = influencer::where('id', $dataMessage->id)->first();
+    Mail::send('frontend.emailMessage', ['link' => $link, 'messages' => $messages, 'head' => $head], function($messagesData)use($data) {
+        $messagesData->to($data['email2'], $data['email2'])
+        ->subject($data['subject']);               
+            }); 
 
     Alert::success('Success');
     return redirect()->to('/');
+    }
 }
 
 public function inserttravelagent(Request $request){
@@ -1085,6 +1117,21 @@ public function inserttravelagent(Request $request){
     $phone=Request('phone');
     $message=Request('message');
 
+    $messages = [
+        'g-recaptcha-response.required' => 'You must check the reCAPTCHA.',
+        'g-recaptcha-response.captcha' => 'Captcha error! try again later or contact site admin.',
+    ];
+    
+    $validator = Validator::make($request->all(), [
+        'g-recaptcha-response' => 'required|captcha'
+    ], $messages);
+    
+    if ($validator->fails()) {
+        return redirect()->back()
+                    ->withErrors($validator)
+                    ->withInput();
+    }
+    else{
     $data=[
         'website'=>$website,
         'socialmedia'=>$sosmed,
@@ -1109,6 +1156,7 @@ public function inserttravelagent(Request $request){
     Alert::success('Success');
     return redirect()->to('/');
 }
+}
 
 public function insertaffiliate(Request $request){
     $website=Request('website');
@@ -1130,6 +1178,20 @@ public function insertaffiliate(Request $request){
         'phone'=>$phone,
         'message'=>$message
     ];
+    $messages = [
+        'g-recaptcha-response.required' => 'You must check the reCAPTCHA.',
+        'g-recaptcha-response.captcha' => 'Captcha error! try again later or contact site admin.',
+    ];
+    
+    $validator = Validator::make($request->all(), [
+        'g-recaptcha-response' => 'required|captcha'
+    ], $messages);
+    
+    if ($validator->fails()) {
+        return redirect()->back()
+                    ->withErrors($validator)
+                    ->withInput();
+    } else{
     $dataMessage=affiliate::create($data);
     $data['email2'] = 'herucod@gmail.com';
     $data['subject'] = 'Message from Affiliate';
@@ -1143,6 +1205,7 @@ public function insertaffiliate(Request $request){
 
     Alert::success('Success');
     return redirect()->to('/');
+    }
 }
 
 public function insertselltours(Request $request){
@@ -1165,6 +1228,21 @@ public function insertselltours(Request $request){
         'phone'=>$phone,
         'message'=>$message
     ];
+
+    $messages = [
+        'g-recaptcha-response.required' => 'You must check the reCAPTCHA.',
+        'g-recaptcha-response.captcha' => 'Captcha error! try again later or contact site admin.',
+    ];
+    
+    $validator = Validator::make($request->all(), [
+        'g-recaptcha-response' => 'required|captcha'
+    ], $messages);
+    
+    if ($validator->fails()) {
+        return redirect()->back()
+                    ->withErrors($validator)
+                    ->withInput();
+    } else {
     $dataMessage=selltours::create($data);
     $data['email2'] = 'herucod@gmail.com';
     $data['subject'] = 'Message from Sell Tours';
@@ -1178,6 +1256,7 @@ public function insertselltours(Request $request){
 
     Alert::success('Success');
     return redirect()->to('/');
+    }
 }
 
 public function insertplatform(Request $request){
@@ -1190,6 +1269,20 @@ public function insertplatform(Request $request){
     $phone=Request('phone');
     $message=Request('message');
 
+    $messages = [
+        'g-recaptcha-response.required' => 'You must check the reCAPTCHA.',
+        'g-recaptcha-response.captcha' => 'Captcha error! try again later or contact site admin.',
+    ];
+    
+    $validator = Validator::make($request->all(), [
+        'g-recaptcha-response' => 'required|captcha'
+    ], $messages);
+    
+    if ($validator->fails()) {
+        return redirect()->back()
+                    ->withErrors($validator)
+                    ->withInput();
+    } else{
     $data=[
         'website'=>$website,
         'socialmedia'=>$sosmed,
@@ -1213,6 +1306,7 @@ public function insertplatform(Request $request){
 
     Alert::success('Success');
     return redirect()->to('/');
+}
 }
 
 public function filtertravel(Request $request){

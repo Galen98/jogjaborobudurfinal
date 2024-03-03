@@ -10,7 +10,7 @@
 
 						<div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
 							<h3 style="color: white;font-size:70px;">{{$item->header}}</h3>
-							<h2>A{{$item->subheader}}</h2>	
+							<h2>{{$item->subheader}}</h2>	
 						</div>
 						@endforeach
 					</div>
@@ -52,12 +52,12 @@
 								<input type="text" name="email" id="subject" class="form-control" placeholder="Your Email" required="">
 							</div>
 						</div>
-
 						
-						
-
-						
-						<div class="form-group">
+						{!! NoCaptcha::display() !!}
+							@if ($errors->has('g-recaptcha-response'))
+						<strong><p style="margin-top:10px;color:red;">{{ $errors->first('g-recaptcha-response') }}</p></strong>
+						@endif
+						<div class="form-group" style="margin-top:10px;">
 							<button type="submit" class="cekharga js-check-availability gtm-trigger__adp-check-availability-btn avoid-close-dropdown-on-click c-button c-button--medium filbtn" data-v-dd428772><!---->
 							    Submit
 							  </button>

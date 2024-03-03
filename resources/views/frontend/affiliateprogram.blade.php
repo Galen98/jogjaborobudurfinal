@@ -76,10 +76,14 @@
                 <input type="text" name="phone" id="subject" class="form-control" placeholder="Your WhatsApp/wechat/line" required>
               </div>
             </div> 
-            <div class="form-group">
-              <button type="submit" class="cekharga js-check-availability gtm-trigger__adp-check-availability-btn avoid-close-dropdown-on-click c-button c-button--medium filbtn" data-v-dd428772><!---->
-                  Submit
-                </button>
+            {!! NoCaptcha::display() !!}
+            @if ($errors->has('g-recaptcha-response'))
+        <strong><p style="margin-top:10px;color:red;">{{ $errors->first('g-recaptcha-response') }}</p></strong>
+          @endif
+						<div class="form-group" style="margin-top:10px;">
+							<button type="submit" class="cekharga js-check-availability gtm-trigger__adp-check-availability-btn avoid-close-dropdown-on-click c-button c-button--medium filbtn" data-v-dd428772><!---->
+							    Submit
+							  </button>
             </div>
   
         </div>
