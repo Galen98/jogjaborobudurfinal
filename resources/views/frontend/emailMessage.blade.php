@@ -21,10 +21,8 @@
 <body>
 <h2 style="text-align:center;">Message from {{ $head['head'] }}</h2>
 <br>
-@foreach($messages as $item)
-<h3>Email:{{$item->email}}</h3>
-<h3>Message:{{$item->message}}</h3>
-@endforeach
+<h3>Email:{!! $item->email !!}</h3>
+<h3>Message:{!! $item->message !!}</h3>
 <a href="https://jogjaborobudur.com/message/{{ $link['link'] }}"> 
 <button class="awesome-button">Check now!</button>
 </a>
