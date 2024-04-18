@@ -183,11 +183,13 @@ class PaymentController extends Controller
                 $bookings = booking::where('id', $bookingId->id)->first();
                 $data['email'] = $bookings->email;
                 $data['email2'] = 'herucod@gmail.com';
+                $data['email3'] = 'kitchennyonyo@gmail.com';
                 $data['subject'] = 'Booking Order Jogja Borobudur Tours & Travel';
                 $booking['body'] = $bookings;
 
                 Mail::send('payment.emailAfterPayment', $booking, function($message)use($data) {
                     $message->to($data['email'], $data['email'])
+                            ->cc('herucod@gmail.com','kitchennyonyo@gmail.com')
                             ->subject($data['subject']);     
                 }); 
 
@@ -195,6 +197,11 @@ class PaymentController extends Controller
                     $message->to($data['email2'], $data['email2'])
                             ->subject($data['subject']);     
                 }); 
+
+                Mail::send('payment.emailBank', $booking, function($message)use($data) {
+                    $message->to($data['email3'], $data['email3'])
+                            ->subject($data['subject']);    
+                });
 
                 toast('Your payment success!','success');
                 return redirect()->to('/');
@@ -215,25 +222,31 @@ class PaymentController extends Controller
     }
 
     public function payTransfer(Request $request){
-
         $idBooking = $request->idBooking;
         $exists = booking::where('id', $idBooking)->exists();
         if($exists){
         $bookings = booking::where('id', $idBooking)->first();
         $data['email'] = $bookings->email;
         $data['email2'] = 'herucod@gmail.com';
+        $data['email3'] = 'kitchennyonyo@gmail.com';
         $data['subject'] = 'Payment Confirmation Jogja Borobudur Tours & Travel';
         $booking['body'] = $bookings;
 
         Mail::send('payment.emailBank', $booking, function($message)use($data) {
             $message->to($data['email'], $data['email'])
+                    ->cc('herucod@gmail.com','kitchennyonyo@gmail.com')
                     ->subject($data['subject']);     
         }); 
 
         Mail::send('payment.emailBank', $booking, function($message)use($data) {
             $message->to($data['email2'], $data['email2'])
                     ->subject($data['subject']);    
-        }); 
+        });
+        
+        Mail::send('payment.emailBank', $booking, function($message)use($data) {
+            $message->to($data['email3'], $data['email3'])
+                    ->subject($data['subject']);    
+        });
 
         booking::where('id', $idBooking)->update([
             'token' => null,
@@ -257,11 +270,13 @@ class PaymentController extends Controller
         $bookings = booking::where('id', $idBooking)->first();
         $data['email'] = $bookings->email;
         $data['email2'] = 'herucod@gmail.com';
+        $data['email3'] = 'kitchennyonyo@gmail.com';
         $data['subject'] = 'Payment Booking Order Jogja Borobudur Tours & Travel';
         $booking['body'] = $bookings;
 
         Mail::send('frontend.bodyemail', $booking, function($message)use($data) {
             $message->to($data['email'], $data['email'])
+                    ->cc('herucod@gmail.com','kitchennyonyo@gmail.com')
                     ->subject($data['subject']);     
         }); 
 
@@ -269,6 +284,11 @@ class PaymentController extends Controller
             $message->to($data['email2'], $data['email2'])
                     ->subject($data['subject']);    
         }); 
+
+        Mail::send('payment.emailBank', $booking, function($message)use($data) {
+            $message->to($data['email3'], $data['email3'])
+                    ->subject($data['subject']);    
+        });
 
         booking::where('id', $idBooking)->update([
             'token' => null,

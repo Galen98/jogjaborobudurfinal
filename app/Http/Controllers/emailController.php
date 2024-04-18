@@ -62,17 +62,25 @@ class emailController extends Controller
 
         $data['email'] = $email;
         $data['email2'] = 'herucod@gmail.com';
+        $data['email3'] = 'kitchennyonyo@gmail.com';
         $data['subject'] = 'Booking Order Jogja Borobudur Tours & Travel';
     
         $booking['body'] = booking::latest()->paginate(1);
         Mail::send('frontend.bodyemail', $booking, function($message)use($data) {
             $message->to($data['email'], $data['email'])
+                    ->cc('herucod@gmail.com','kitchennyonyo@gmail.com')
                     ->subject($data['subject']);
                    
         }); 
 
         Mail::send('frontend.bodyemail', $booking, function($message)use($data) {
             $message->to($data['email2'], $data['email2'])
+                    ->subject($data['subject']);
+                    
+        }); 
+
+        Mail::send('frontend.bodyemail', $booking, function($message)use($data) {
+            $message->to($data['email3'], $data['email3'])
                     ->subject($data['subject']);
                     
         }); 

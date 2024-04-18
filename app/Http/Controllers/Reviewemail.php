@@ -251,9 +251,11 @@ class Reviewemail extends Controller
         $travel=travel::where('wisata_id', $travelid)->first();
         $email=$booking->email;
         $email2='herucod@gmail.com';
+        $email3='kitchennyonyo@gmail.com';
 
         Mail::to($email)->send(new EmailConfirmation($travel, $review));
         Mail::to($email2)->send(new EmailConfirmation($travel, $review));
+        Mail::to($email3)->send(new EmailConfirmation($travel, $review));
         Alert::success('Success');
         return redirect()->to('/');
     }

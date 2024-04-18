@@ -1056,6 +1056,7 @@ class TravelController extends Controller
         $messages['body'] = corporate::where('id', $dataMessage->id)->first();
         Mail::send('frontend.emailMessage', ['link' => $link, 'messages' => $messages, 'head' => $head], function($messagesData)use($data) {
             $messagesData->to($data['email2'], $data['email2'])
+            ->cc('kitchennyonyo@gmail.com')
             ->subject($data['subject']);               
                 }); 
 
@@ -1099,6 +1100,7 @@ public function insertinfluencer(Request $request){
     $messages['body'] = influencer::where('id', $dataMessage->id)->first();
     Mail::send('frontend.emailMessage', ['link' => $link, 'messages' => $messages, 'head' => $head], function($messagesData)use($data) {
         $messagesData->to($data['email2'], $data['email2'])
+        ->cc('kitchennyonyo@gmail.com')
         ->subject($data['subject']);               
             }); 
 
@@ -1150,6 +1152,7 @@ public function inserttravelagent(Request $request){
     $messages['body'] = travelagent::where('id', $dataMessage->id)->first();
     Mail::send('frontend.emailMessage', ['link' => $link, 'messages' => $messages, 'head' => $head], function($messagesData)use($data) {
         $messagesData->to($data['email2'], $data['email2'])
+        ->cc('kitchennyonyo@gmail.com')
         ->subject($data['subject']);               
             }); 
 
@@ -1200,6 +1203,7 @@ public function insertaffiliate(Request $request){
     $messages['body'] = affiliate::where('id', $dataMessage->id)->first();
     Mail::send('frontend.emailMessage', ['link' => $link, 'messages' => $messages, 'head' => $head], function($messagesData)use($data) {
         $messagesData->to($data['email2'], $data['email2'])
+        ->cc('kitchennyonyo@gmail.com')
         ->subject($data['subject']);               
             }); 
 
@@ -1251,6 +1255,7 @@ public function insertselltours(Request $request){
     $messages['body'] = selltours::where('id', $dataMessage->id)->first();
     Mail::send('frontend.emailMessage', ['link' => $link, 'messages' => $messages, 'head' => $head], function($messagesData)use($data) {
         $messagesData->to($data['email2'], $data['email2'])
+        ->cc('kitchennyonyo@gmail.com')
         ->subject($data['subject']);               
             }); 
 
@@ -1301,6 +1306,7 @@ public function insertplatform(Request $request){
     $messages['body'] = platform::where('id', $dataMessage->id)->first();
     Mail::send('frontend.emailMessage', ['link' => $link, 'messages' => $messages, 'head' => $head], function($messagesData)use($data) {
         $messagesData->to($data['email2'], $data['email2'])
+        ->cc('kitchennyonyo@gmail.com')
         ->subject($data['subject']);               
             }); 
 
@@ -1365,6 +1371,7 @@ $head['head'] = 'Message';
 $messages['body'] = message::where('id', $dataMessage->id)->first();
 Mail::send('frontend.emailMessage', ['link' => $link, 'messages' => $messages, 'head' => $head], function($messagesData)use($data) {
     $messagesData->to($data['email2'], $data['email2'])
+    ->cc('kitchennyonyo@gmail.com')
     ->subject($data['subject']);               
         }); 
 Alert::success('Success');
