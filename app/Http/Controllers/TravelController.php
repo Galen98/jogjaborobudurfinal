@@ -1304,12 +1304,11 @@ public function insertplatform(Request $request){
     $link['link'] = 'platform';
     $head['head'] = 'Booking Platform';
     $messages['body'] = platform::where('id', $dataMessage->id)->first();
-    // Mail::send('frontend.emailMessage', ['link' => $link, 'messages' => $messages, 'head' => $head], function($messagesData)use($data) {
-    //     $messagesData->to($data['email2'], $data['email2'])
-    //     ->cc('kitchennyonyo@gmail.com')
-    //     ->subject($data['subject']);               
-    //         }); 
-    dd($messages);
+    Mail::send('frontend.emailMessage', ['link' => $link, 'messages' => $messages, 'head' => $head], function($messagesData)use($data) {
+        $messagesData->to($data['email2'], $data['email2'])
+        ->cc('kitchennyonyo@gmail.com')
+        ->subject($data['subject']);               
+            }); 
 
     Alert::success('Success');
     return redirect()->to('/');
@@ -1370,11 +1369,12 @@ $data['subject'] = 'Message from travellers';
 $link['link'] = 'message';
 $head['head'] = 'Message';
 $messages['body'] = message::where('id', $dataMessage->id)->first();
-Mail::send('frontend.emailMessage', ['link' => $link, 'messages' => $messages, 'head' => $head], function($messagesData)use($data) {
+Mail::send('frontend.emailMessage', ['link' => $link, 'messages' => $messages, 'head' => $head], function($messagesData) use ($data) {
     $messagesData->to($data['email2'], $data['email2'])
-    ->cc('kitchennyonyo@gmail.com')
-    ->subject($data['subject']);               
-        }); 
+        ->cc('kitchennyonyo@gmail.com')
+        ->subject($data['subject']);               
+});
+
 Alert::success('Success');
 return redirect()->to('/');
 }
