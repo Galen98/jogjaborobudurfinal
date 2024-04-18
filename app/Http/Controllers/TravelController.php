@@ -1304,11 +1304,12 @@ public function insertplatform(Request $request){
     $link['link'] = 'platform';
     $head['head'] = 'Booking Platform';
     $messages['body'] = platform::where('id', $dataMessage->id)->first();
-    Mail::send('frontend.emailMessage', ['link' => $link, 'messages' => $messages, 'head' => $head], function($messagesData)use($data) {
-        $messagesData->to($data['email2'], $data['email2'])
-        ->cc('kitchennyonyo@gmail.com')
-        ->subject($data['subject']);               
-            }); 
+    // Mail::send('frontend.emailMessage', ['link' => $link, 'messages' => $messages, 'head' => $head], function($messagesData)use($data) {
+    //     $messagesData->to($data['email2'], $data['email2'])
+    //     ->cc('kitchennyonyo@gmail.com')
+    //     ->subject($data['subject']);               
+    //         }); 
+    dd($messages);
 
     Alert::success('Success');
     return redirect()->to('/');
