@@ -1,13 +1,25 @@
 @extends('index')
 @extends('navadmin')
 @section('content')
+@include('sweetalert::alert')
 <div class="card">
                 <div class="card-body">
-                  <p class="card-description">
-                    Create Review
+                  <p class="card-description text-capitalize">
+                    Create Review {{$review->namawisata}}
                   </p>
                   
-                  <form method="post" action="{{url('insertnewreview')}}" enctype="multipart/form-data">
+                <div class="mt-3">
+                <div class="card-body">
+                <div class="form-check">
+                <input class="form-check-input" type="radio" value="insertreview" name="methods" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Insert Review
+                </label>
+              </div>
+                </div>
+                </div>
+
+                  <form method="post" action="{{url('insertnewreview')}}" enctype="multipart/form-data" class="insertreview">
                     @csrf
                     <div class="form-group">
                       <label for="exampleTextarea1">Name</label>
@@ -64,6 +76,43 @@
                     <a href="/destination-category">Cancel</a>
                   </form>
                  
+                  <div class="mt-3">
+                <div class="card-body">
+                <div class="form-check">
+                <input class="form-check-input" type="radio" value="sendemail" name="methods" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Send Review Email
+                </label>
+              </div>
+                </div>
+                </div>
+
+                <form method="post" action="{{url('sendreview')}}" enctype="multipart/form-data" class="sendreview">
+                    @csrf
+                    <div class="form-group">
+                      <label for="exampleTextarea1">Name</label>
+                      <input type="text" name="name" placeholder="Insert Name" class="form-control" required/>
+                      <input type="hidden" name="idwisata" placeholder="Insert Name" class="form-control" value="{{$idwisata}}" required/>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="exampleTextarea1">Nationality</label>
+                      <select name="country" class="form-control">
+                    <option class="option">Select Your Country</option>
+                        @foreach($country as $item)
+                    <option value="{{$item->nicename}}" id="countrys" class="option">{{$item->nicename}}</option>
+                    @endforeach
+                    </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="exampleTextarea1">Email</label>
+                      <input type="email" name="email" placeholder="Insert Email" class="form-control" required/>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <a href="/destination-category">Cancel</a>
+              </form>
                 </div>
               </div>
 @endsection
@@ -71,6 +120,9 @@
 @section('scripts')
 <script>
 $(document).ready(function () {
+    $('.insertreview').css("display","none");
+    $('.sendreview').css("display","none");
+    const checked = $("input[name='methods']:checked"); 
     const inputPhotos = $('input[name="images[]"]');
     const photoPreviewContainer = $('#photo-preview-container');
     const maxAllowedPhotos = 5;
@@ -109,6 +161,17 @@ $(document).ready(function () {
             reader.readAsDataURL(file);
         });
     }
+
+    $('input[name="methods"]').change(function() {
+        if ($(this).val() === "insertreview") {
+          $(".insertreview").slideDown("fast");
+          $(".sendreview").slideUp("fast");
+        } else {
+          $(".insertreview").slideUp("fast");
+          $(".sendreview").slideDown("fast");
+        }
+    });
+  
 });
     </script>
 @endsection

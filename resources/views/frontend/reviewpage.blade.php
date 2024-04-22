@@ -73,12 +73,28 @@ label.success {
    <form class="py-2 px-4" id="forms" action="{{url('insertreview')}}" enctype="multipart/form-data" style="" method="POST" autocomplete="off">  
    @csrf
     @method('patch')
-      <input type="hidden" value="{!! $databooking->name !!}" name="name"/>
+    @if(empty($databooking->name))
+      <input type="hidden" value="{!! $datareview->name !!}" name="name"/>
+    @else
+    <input type="hidden" value="{!! $databooking->name !!}" name="name"/>
+    @endif
+    @if(empty($databooking->traveldate))
+    <input type="hidden" name="traveldate">
+    @else
       <input type="hidden" value="{!! $databooking->traveldate !!}" name="traveldate"/>
+    @endif
+    @if(empty($databooking->paketwisata))
+    <input type="hidden" name="paketwisata">
+    @else
       <input type="hidden" value="{!! $databooking->paketwisata !!}" name="paketwisata"/>
+    @endif
       <input type="hidden" value="{!! $datareview->id !!}" name="reviewid"/>
       <input type="hidden" value="{!! $datareview->wisata_id !!}" name="travelid"/>
-      <input type="hidden" value="{!! $databooking->country !!}" name="country"/>
+    @if(empty($databooking->country))
+      <input type="hidden" value="{!! $datareview->country !!}" name="country"/>
+    @else
+    <input type="hidden" value="{!! $databooking->country !!}" name="country"/>
+    @endif
       <div class="form-group row">
        <div class="col">
          <div class="rate">

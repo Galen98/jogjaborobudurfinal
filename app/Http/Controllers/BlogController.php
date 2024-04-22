@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Cviebrock\EloquentSluggable\Sluggable;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\blog;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ReviewSendLink;
 use Illuminate\Support\Facades\Storage;
 use App\Models\travel;
 use App\Models\tags;
@@ -1839,6 +1841,7 @@ class BlogController extends Controller
         return redirect()->back();
     }
 
+    //review management
     public function kelolarating(){
         $travel=travel::paginate(10);
         return view('rating',compact('travel'));
@@ -1853,7 +1856,26 @@ class BlogController extends Controller
         $review = travel::where('wisata_id', $idtravel)->first();
         $idwisata = $review->wisata_id;
         $country=DB::table('country')->get();
-        return view('formCreateReview', compact('idwisata','country'));
+        return view('formCreateReview', compact('idwisata','country', 'review'));
+    }
+
+    public function sendreview(Request $request){
+        $token = Str::random(40); 
+        $email = $request->email;
+        while (reviews::where('token', $token)->exists()) {
+        $token = Str::random(40);
+        }
+        $data = [
+        'email' => $email,
+        'name' => $request->name,
+        'country' => $request->country,
+        'token'=>$token,
+        'wisata_id'=>$request->idwisata
+         ];
+        $review=reviews::create($data);
+        Mail::to($email)->send(new ReviewSendLink($review));
+        Alert::success('Berhasil');
+        return redirect()->back();
     }
 
     public function insertreview(Request $request){

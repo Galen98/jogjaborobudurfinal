@@ -246,14 +246,20 @@ class Reviewemail extends Controller
         }
 
         $review=reviews::where('id', $reviewid)->first();
-        $bookingid=$review->booking_id;
-        $booking=booking::where('id', $bookingid)->first();
+
+        if($review->booking_id !== null) {
+        $bookingid = $review->booking_id;
+        $booking = booking::where('id', $bookingid)->first();
+        $email = $booking->email;
+        } 
+
         $travel=travel::where('wisata_id', $travelid)->first();
-        $email=$booking->email;
         $email2='herucod@gmail.com';
         $email3='kitchennyonyo@gmail.com';
 
+        if($review->booking_id !== null) {
         Mail::to($email)->send(new EmailConfirmation($travel, $review));
+        }
         Mail::to($email2)->send(new EmailConfirmation($travel, $review));
         Mail::to($email3)->send(new EmailConfirmation($travel, $review));
         Alert::success('Success');

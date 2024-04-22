@@ -244,6 +244,7 @@ Route::get('/paketwisata/form', function () {
 
 Route::get('/rating', [App\Http\Controllers\BlogController::class,'kelolarating'])->middleware('auth');
 Route::post('insertnewreview', [App\Http\Controllers\BlogController::class,'insertreview'])->middleware('auth');
+Route::post('sendreview', [App\Http\Controllers\BlogController::class,'sendreview'])->middleware('auth');
 Route::get('/rating/createreview/form/{idtravel}', [App\Http\Controllers\BlogController::class,'buatreview'])->middleware('auth');
 Route::get('/data-booking', [App\Http\Controllers\BlogController::class,'bookinglist'])->middleware('auth');
 Route::delete('deleterating/{idrating}', [App\Http\Controllers\BlogController::class,'deleterating'])->middleware('auth');
