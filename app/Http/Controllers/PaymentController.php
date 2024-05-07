@@ -198,10 +198,10 @@ class PaymentController extends Controller
                             ->subject($data['subject']);     
                 }); 
 
-                Mail::send('payment.emailBank', $booking, function($message)use($data) {
+                Mail::send('payment.emailAfterPayment', $booking, function($message)use($data) {
                     $message->to($data['email3'], $data['email3'])
-                            ->subject($data['subject']);    
-                });
+                            ->subject($data['subject']);     
+                }); 
 
                 toast('Your payment success!','success');
                 return redirect()->to('/');
@@ -285,10 +285,10 @@ class PaymentController extends Controller
                     ->subject($data['subject']);    
         }); 
 
-        Mail::send('payment.emailBank', $booking, function($message)use($data) {
+        Mail::send('frontend.bodyemail', $booking, function($message)use($data) {
             $message->to($data['email3'], $data['email3'])
                     ->subject($data['subject']);    
-        });
+        }); 
 
         booking::where('id', $idBooking)->update([
             'token' => null,
