@@ -59,7 +59,9 @@
       <br>
       <span data-v-67560657>Travel date: {{$item->traveldate}}</span>
       <br>
-      <span data-v-67560657>Name: {{$item->name}} {{$item->surname}}</span>   
+      <span data-v-67560657>Name: {{$item->name}} {{$item->surname}}</span>
+      <br>
+      <span data-v-67560657>Time: {{$item->time}}</span>    
     </span>
   </span>
 </li>
@@ -172,6 +174,8 @@
       <span data-v-67560657>Travel date: {{$item->traveldate}}</span>
       <br>
       <span data-v-67560657>Name: {{$item->name}} {{$item->surname}}</span>   
+      <br>
+      <span data-v-67560657>Time: {{$item->time}}</span>   
     </span>
   </span>
 </li>

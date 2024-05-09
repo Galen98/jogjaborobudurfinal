@@ -5,7 +5,7 @@
 <div class="card border-0 bg-transparent">
 <div class="card-body">
 <h3 class="card-title">Date Availability</h3>
-<form action="/dateavailable" method="POST">
+<form action="/dateavailable" method="POST" id="{{$ids}}">
     @csrf
 <input type="hidden" name="idsub" value="{{$ids}}">
 <input type="hidden" name="idtravel" value="{{$idtravel}}">
@@ -66,11 +66,42 @@
     dateForm();
   });
 </script>  
+
 <script>
     $(document).ready(function () {
-    $('form').submit(function () {
-        return validateForm();
+    
+        $('#{{$ids}}').submit(function (event) {
+        var formId = $(this).attr('id');
+        event.preventDefault();
+        
+        if (validateForm() && validateAvailable(formId)) {
+            this.submit();
+        } 
+});
+
+function validateAvailable(id) {
+    var dateAvail = $('input[name="date"]').val();
+    var isDateAvailable = true;
+
+    $.ajax({
+        type: "GET",
+        url: "/checkdateavailability/" + id,
+        async: false,
+        success: function(response) {
+            var dates = response.date.map(index => index.date);
+
+            for (var i = 0; i < dates.length; i++) {
+                if (dates[i] === dateAvail) {
+                    isDateAvailable = false;
+                    swal("Error", "You have already chosen this date before.", "error");
+                    break;
+                }
+            }
+        }
     });
+
+    return isDateAvailable;
+}
 
     function validateForm() {
         var date = $('input[name="date"]').val();

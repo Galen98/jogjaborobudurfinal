@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->integer('wisata_id');
             $table->integer('subwisata_id');
-            $table->date('date');
+            $table->string('date');
+            $table->boolean('status');
             $table->timestamps();
         });
     }
