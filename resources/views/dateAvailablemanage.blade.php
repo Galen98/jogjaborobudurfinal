@@ -23,7 +23,7 @@
                             Date
                           </th>
                           <th>
-                            Action
+                            Availability
                           </th>
                         </tr>
                       </thead>
@@ -36,8 +36,19 @@
                         @foreach($getAvailable as $item)
                         <tr>
                           <th>{{$loop->iteration}}</th>
-                          <th>{{ \Carbon\Carbon::parse($item->date)->formatLocalized('%d %B %Y') }}</th>
-                          <th><a href="">edit availability!</a></th>
+                          <th>{{ $item->date }}</th>
+                          <th>
+                          <div class="form-check form-switch ml-5">
+                        @if($item->status == true)
+                        <input class="form-check-input" type="checkbox" name="status" role="switch" id="flexSwitchCheckChecked" checked style="height:22px;width:50px;">
+                        @elseif($item->status == false)
+                        <input class="form-check-input" type="checkbox" name="status" role="switch" id="flexSwitchCheckChecked" style="height:22px;width:50px;">
+                        @else
+                        <input class="form-check-input" type="checkbox" name="status" role="switch" id="flexSwitchCheckChecked" checked style="height:22px;width:50px;">
+                        @endif
+                        <input type="hidden" name="iddate" value="{{$item->id}}">
+                      </div>
+                          </th>
                         </tr>
                         @endforeach
                     @endif
@@ -46,5 +57,35 @@
                   </div>
 </div>
 </div>
+@endsection
 
+@section('scripts')
+<script>
+  $(document).ready(function() {
+    $('input[name="status"]').change(function() {
+      var isChecked = $(this).is(':checked');
+      var iddate = $(this).siblings('input[name="iddate"]').val();
+
+      $.ajax({
+        url: '/updatedateavailable/' + iddate,
+        type: 'POST',
+        dataType: 'json',
+        data: {
+          _token: '{{ csrf_token() }}',
+          status: isChecked ? 1 : 0 
+        },
+        success: function(response) {
+          if (response.success) {
+            console.log('Status updated successfully');
+          } else {
+            console.error('Failed to update status');
+          }
+        },
+        error: function(xhr, status, error) {
+          console.error('Error occurred while updating status:', error);
+        }
+      });
+    });
+  });
+</script>
 @endsection

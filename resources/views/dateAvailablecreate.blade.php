@@ -4,20 +4,18 @@
 @include('sweetalert::alert')
 <div class="card border-0 bg-transparent">
 <div class="card-body">
-<h3 class="card-title">Select date</h3>
+<h3 class="card-title">Date Availability</h3>
 <form action="/dateavailable" method="POST">
     @csrf
-<input type="text" name="date" id="date-start" class="form-control rounded-3" 
-style="background-color:white;width:200px;color:black;" placeholder="Select date" required readonly>
 <input type="hidden" name="idsub" value="{{$ids}}">
 <input type="hidden" name="idtravel" value="{{$idtravel}}">
 <table class="table border-0 table-borderless mt-2 text-center">
     <thead>
-        <th>Time</th>
-        <th>Available</th>
+        <th>Date</th>
+        <th>Availability</th>
     </thead>
     <tbody class="text-center">
-        @foreach($jam as $item)
+        <!-- @foreach($jam as $item)
         <tr>
             <td class="h1">{{$item->time}}</td>
             <td>
@@ -32,10 +30,21 @@ style="background-color:white;width:200px;color:black;" placeholder="Select date
             </div>
         </td>
         </tr>
-        @endforeach
+        @endforeach -->
+        <tr>
+            <td>
+            <input type="text" name="date" id="date-start" class="form-control rounded-3" 
+            style="background-color:white;width:300px;color:black;" placeholder="Select date" required readonly>
+            </td>
+            <td>
+            <div class="form-check form-switch ml-5">
+            <input class="form-check-input" type="checkbox" name="status" role="switch" id="flexSwitchCheckChecked" checked style="height:22px;width:50px;">
+            </div>
+            </td>
+        </tr>
     </tbody>
 </table>
-<button type="submit" class="btn btn-primary rounded-4 mt-2">Confirm</button>
+<button type="submit" class="btn btn-primary rounded-4 mt-2 ml-3">Confirm</button>
 </form>
 </div>
 </div>
@@ -43,6 +52,20 @@ style="background-color:white;width:200px;color:black;" placeholder="Select date
 @endsection
 
 @section('scripts')
+<script> 
+  var dateForm = function() {
+		$('#date-start').datepicker({
+			format: 'dd/mm/yyyy',
+			startDate: new Date(),
+			todayHighlight: true,
+            autoclose: true,
+            orientation: 'bottom',		
+		});
+	};
+  $(function(){
+    dateForm();
+  });
+</script>  
 <script>
     $(document).ready(function () {
     $('form').submit(function () {
@@ -52,7 +75,7 @@ style="background-color:white;width:200px;color:black;" placeholder="Select date
     function validateForm() {
         var date = $('input[name="date"]').val();
         if (date === '') {
-            swal("Error", "First Name cannot be empty.", "error");
+            swal("Error", "Date cannot be empty.", "error");
             return false; 
         }
         return true

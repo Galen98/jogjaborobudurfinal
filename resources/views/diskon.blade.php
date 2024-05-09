@@ -654,7 +654,6 @@ $(".sebelum").slideUp("fast");
             $('#editModal').modal('show');
             const dateFormat="dddd, MMMM Do YYYY, h:mm";
             $.ajax({
-                
                 type: "GET",
                 url:"/showeditharga/"+idharga,
                 success:function(response){

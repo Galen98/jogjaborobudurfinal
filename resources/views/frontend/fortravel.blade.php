@@ -435,7 +435,7 @@ $("input[data-code]").change(function(){
 
       @foreach($pilihan as $p)
       if (hargadewasa{{$p->id}} + hargaanak{{$p->id}} > 0) {
-        $("#harga{{$p->id}}").text("Totals: " + convertrate(hargadewasa{{$p->id}} + hargaanak{{$p->id}} ))
+        $("#harga{{$p->id}}").text("Total: " + convertrate(hargadewasa{{$p->id}} + hargaanak{{$p->id}} ))
         $("#harganoconvert{{$p->id}}").text((hargadewasa{{$p->id}} + hargaanak{{$p->id}} ))
         $("#totharga{{$p->id}}").val(convertrate(hargadewasa{{$p->id}}  + hargaanak{{$p->id}} ))
         $("#amount{{$p->id}}").val(amount(hargadewasa{{$p->id}}  + hargaanak{{$p->id}} ))
@@ -570,12 +570,42 @@ jQuery(function ($) {
 <script>
 @foreach($pilihan as $p)
  $(document).ready(function () {
-        $('#formBooking{{$p->id}}').submit(function (event) {
+        $('#{{$p->id}}').submit(function (event) {
+            var formId = $(this).attr('id');
             event.preventDefault();
-            if (validateForm()) {
-                this.submit();
-            }
+            if (validateForm() && validateAvailable(formId)) {
+              this.submit();
+            } else {
+              Swal.fire({
+                  title: "",
+                  html: "<div style='text-align: center;'>Tour not available,<br/>please try another time slot or date.</div>",
+                  icon: "error"
+              });
+          }
         });
+
+        function validateAvailable(id) {
+          var dateStart = $('input[name="traveldate"]').val().trim();
+          var isAvailable = true; 
+
+          $.ajax({
+              type: "GET",
+              url: "/checkdateavailability/" + id,
+              async: false, 
+              success: function(response) {
+                  var dates = response.date.map(index => index.date);
+                  var statuses = response.date.map(index => index.status);
+
+                  for (var i = 0; i < dates.length; i++) {
+                      if (dates[i] === dateStart && statuses[i] === 0) {
+                          isAvailable = false;
+                          break; 
+                      }
+                  }
+              }
+          });
+          return isAvailable;      
+        }
 
         function validateForm() {
             var dateStart = $('input[name="traveldate"]').val().trim();
@@ -609,7 +639,7 @@ jQuery(function ($) {
               title: "",
               html: "<div style='text-align: center;'>Tour not available,<br/>please try another time slot or date.</div>",
               icon: "error"
-            });
+              });
               return false;
             }
 

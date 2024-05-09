@@ -9,6 +9,6 @@ class dateAvailable extends Model
 {
     use HasFactory;
     protected $table = "date_availabe";
-    protected $fillable = ['wisata_id','subwisata_id','date']; 
+    protected $fillable = ['wisata_id','subwisata_id','date','status']; 
 
 }

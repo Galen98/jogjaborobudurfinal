@@ -585,6 +585,8 @@ Route::get('/cityfilter/{slugregion}/{namaseason}', [App\Http\Controllers\Travel
 Route::get('/destinationfilter/{categoryid}/{namaseason}', [App\Http\Controllers\TravelController::class,'filterseasondestination']);
 
 //date available admins
+Route::post('/updatedateavailable/{id}', [App\Http\Controllers\AdminController::class,'updateDateAvailability'])->middleware('auth');
+Route::get('/checkdateavailability/{id}', [App\Http\Controllers\AdminController::class,'checkDateAvailability']);
 Route::get('/dateavailable', [App\Http\Controllers\AdminController::class,'getTravel'])->middleware('auth');
 Route::get('/dateavailable/item/{slug}', [App\Http\Controllers\AdminController::class,'getTraveldate'])->middleware('auth');
 Route::get('/dateavailable/item/manage/{id}', [App\Http\Controllers\AdminController::class,'getTraveloption'])->middleware('auth');

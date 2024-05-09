@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\travel;
+use Carbon;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\dateAvailable;
 use App\Models\tambahAvailable;
@@ -27,8 +28,12 @@ class AdminController extends Controller
     public function getTraveloption($id){
         $namaOption = subwisata::where('id', $id)->first()->judulsub;
         $ids = $id;
-        $dateNow = date('Y-m-d');
-        $getAvailable = dateAvailable::where('subwisata_id', $id)->whereDate('date', '>=', $dateNow)->get();
+        $dateNow = \DateTime::createFromFormat('d/m/Y', date('d/m/Y'));
+        $getAvailable = dateAvailable::where('subwisata_id', $id)
+                                      ->whereDate('date', '>=', $dateNow->format('d/m/Y'))
+                                      ->orderBy('date','ASC')
+                                      ->get();
+    
         return view('dateAvailablemanage', compact('namaOption', 'getAvailable', 'ids'));
     }
 
@@ -36,7 +41,8 @@ class AdminController extends Controller
         $ids=$id;
         $idtravel=subwisata::where('id', $ids)->first()->wisata_id;
         $jam=waktu::where('subwisata_id', $id)->get();
-        return view('dateAvailablecreate', compact('jam', 'ids', 'idtravel'));
+        $date = dateAvailable::where('subwisata_id', $ids)->get();
+        return view('dateAvailablecreate', compact('jam', 'ids', 'idtravel', 'date'));
     }
 
     public function postAvailable(Request $request){
@@ -45,29 +51,54 @@ class AdminController extends Controller
         $idsub = $request->idsub;
         $ids = $request->id;
         $date = $request->date;
-
+        $status = $request->status;
+        if($status == "on"){
+            $status = true;
+        } else {
+            $status = false;
+        }
         $dateAvail = dateAvailable::create([
             'date' => $date,
             'wisata_id' => $idtravel,
-            'subwisata_id' => $idsub
+            'subwisata_id' => $idsub,
+            'status' => $status
         ]);
 
-            $data = [
-                'date_available_id'=> $dateAvail->id,
-                'waktu_id' => $ids, 
-                'subwisata_id' => $idsub,
-                'available' => $available,
-                ];
+            // $data = [
+            //     'date_available_id'=> $dateAvail->id,
+            //     'waktu_id' => $ids, 
+            //     'subwisata_id' => $idsub,
+            //     'available' => $available,
+            //     ];
         
-                foreach($available as $index => $row){
-                $data['available']=$row;
-                $data['waktu_id'] = $ids[$index];
-                tambahAvailable::create($data);
-                } 
+            //     foreach($available as $index => $row){
+            //     $data['available']=$row;
+            //     $data['waktu_id'] = $ids[$index];
+            //     tambahAvailable::create($data);
+            //     } 
 
-                Alert::success('Berhasil');
-                return redirect('/dateavailable/item/manage/'.$idsub);
+         Alert::success('Berhasil');
+         return redirect('/dateavailable/item/manage/'.$idsub);
         }
+    
+    public function updateDateAvailability(Request $request, $id) {
+        $status = $request->status;
+        if($status == "on"){
+            $status = true;
+        } else {
+            $status = false;
+        }
+        dateAvailable::where('id', $id)->update([
+            'status' => $status
+        ]);
+    }
+
+    public function checkDateAvailability($id) {
+        $date = dateAvailable::where('subwisata_id', $id)->get();
+        return response()->json([
+            'date' => $date
+        ]);
+    }
 
     public function cekAvailability(){
         $id = '102';
