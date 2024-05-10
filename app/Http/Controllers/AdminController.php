@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\travel;
-use Carbon;
+use Carbon\Carbon;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\dateAvailable;
 use App\Models\tambahAvailable;
@@ -28,13 +28,15 @@ class AdminController extends Controller
     public function getTraveloption($id){
         $namaOption = subwisata::where('id', $id)->first()->judulsub;
         $ids = $id;
-        $dateNow = \DateTime::createFromFormat('d/m/Y', date('d/m/Y'));
+        $dateNow = Carbon::now()->format('d/m/Y');
         $getAvailable = dateAvailable::where('subwisata_id', $id)
-                                      ->whereDate('date', '>=', $dateNow->format('d/m/Y'))
+                                      ->whereDate('date', '>=', $dateNow)
                                       ->orderBy('date','ASC')
                                       ->get();
     
+    
         return view('dateAvailablemanage', compact('namaOption', 'getAvailable', 'ids'));
+        //dd($dateNow);
     }
 
     public function createDateavailable($id){
@@ -81,6 +83,11 @@ class AdminController extends Controller
          return redirect('/dateavailable/item/manage/'.$idsub);
         }
     
+    public function deleteAvailability() {
+        $dateNow = Carbon::now()->format('d/m/Y');
+        dateAvailable::where('date', '<', $dateNow)->delete();
+    }
+
     public function updateDateAvailability(Request $request, $id) {
         $status = $request->status;
         if($status == "on"){
