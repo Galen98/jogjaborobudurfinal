@@ -1492,7 +1492,8 @@ $data=[
 'nama'=>$name,
 'email'=>$email,
 'type'=>$type,
-'message'=>$message
+'message'=>$message,
+'status'=>1
 ];
 $dataMessage = message::create($data);
 
