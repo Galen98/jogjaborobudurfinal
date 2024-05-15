@@ -62,9 +62,9 @@
                           </td>
                           <td>
                             @if($item->status == 1)
-                            <p class="text-danger">Unread</p>
+                            <p class="text-success">Unread</p>
                             @else
-                            <p class="text-success">Read</p>
+                            <p class="text-secondary">Read</p>
                             @endif
                           </td>
                         </tr>
