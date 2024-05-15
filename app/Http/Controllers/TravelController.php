@@ -358,21 +358,32 @@ class TravelController extends Controller
         $bahasa=bahasa::get();
          $lang=$request->server('HTTP_ACCEPT_LANGUAGE');
          $langs=Str::substr($lang, 0,2);
-    if ($langs == 'id') {
-        $sessions = session()->get("bahasa") ?? "Bahasa";
-        
-    }elseif ($langs == 'en-US'){
-        $sessions = session()->get("bahasa") ?? "English";
-        
-    }elseif ($langs == 'en'){
-        $sessions = session()->get("bahasa") ?? "English";
-    }
-    elseif ($langs == 'ms'){
-        $sessions = session()->get("bahasa") ?? "Malay";
-    }
-    else{
-        $sessions = session()->get("bahasa") ?? "English";     
-    }
+         if ($langs == 'id') {
+            if(bahasa::where('bahasa', 'Bahasa')->exists()){
+                $sessions = session()->get("bahasa") ?? "Bahasa";
+            } else {
+                $sessions = session()->get("bahasa") ?? "English";
+            }
+                 
+        }elseif ($langs == 'en-US'){
+            if(bahasa::where('bahasa', 'English')->exists()){
+                $sessions = session()->get("bahasa") ?? "English";
+            }
+        }elseif ($langs == 'en'){
+            if(bahasa::where('bahasa', 'English')->exists()){
+                $sessions = session()->get("bahasa") ?? "English";
+           }
+        }
+        elseif ($langs == 'ms'){
+            if(bahasa::where('bahasa', 'Malay')->exists()){
+                $sessions = session()->get("bahasa") ?? "Malay";
+           } else {
+            $sessions = session()->get("bahasa") ?? "English";
+        }   
+        }
+        else{
+            $sessions = session()->get("bahasa") ?? "English";     
+        }
         
         $rateIDR = Rate::where("currency", "IDR")->first()->rate;
         $rateSGD = Rate::where("currency", "SGD")->first()->rate;
@@ -385,20 +396,31 @@ class TravelController extends Controller
             $bahasa=bahasa::get();
          $lang=$request->server('HTTP_ACCEPT_LANGUAGE');
          $langs=Str::substr($lang, 0,2);
-        if ($langs == 'id') {
-        $sessions = session()->get("bahasa") ?? "Bahasa";
-        
+         if ($langs == 'id') {
+            if(bahasa::where('bahasa', 'Bahasa')->exists()){
+                $sessions = session()->get("bahasa") ?? "Bahasa";
+            } else {
+                $sessions = session()->get("bahasa") ?? "English";
+            }
+                 
         }elseif ($langs == 'en-US'){
-        $sessions = session()->get("bahasa") ?? "English";
-        
+            if(bahasa::where('bahasa', 'English')->exists()){
+                $sessions = session()->get("bahasa") ?? "English";
+            }
         }elseif ($langs == 'en'){
-        $sessions = session()->get("bahasa") ?? "English";
+            if(bahasa::where('bahasa', 'English')->exists()){
+                $sessions = session()->get("bahasa") ?? "English";
+           }
         }
         elseif ($langs == 'ms'){
-        $sessions = session()->get("bahasa") ?? "Malay";
+            if(bahasa::where('bahasa', 'Malay')->exists()){
+                $sessions = session()->get("bahasa") ?? "Malay";
+           } else {
+            $sessions = session()->get("bahasa") ?? "English";
+        }   
         }
         else{
-        $sessions = session()->get("bahasa") ?? "English";     
+            $sessions = session()->get("bahasa") ?? "English";     
         }
             $city=region::get();
             $province=province::get();
@@ -454,21 +476,32 @@ class TravelController extends Controller
         $province=province::get();
          $lang=$request->server('HTTP_ACCEPT_LANGUAGE');
          $langs=Str::substr($lang, 0,2);
-    if ($langs == 'id') {
-        $sessions = session()->get("bahasa") ?? "Bahasa";
-        
-    }elseif ($langs == 'en-US'){
-        $sessions = session()->get("bahasa") ?? "English";
-        
-    }elseif ($langs == 'en'){
-        $sessions = session()->get("bahasa") ?? "English";
-    }
-    elseif ($langs == 'ms'){
-        $sessions = session()->get("bahasa") ?? "Malay";
-    }
-    else{
-        $sessions = session()->get("bahasa") ?? "English";     
-    }
+         if ($langs == 'id') {
+            if(bahasa::where('bahasa', 'Bahasa')->exists()){
+                $sessions = session()->get("bahasa") ?? "Bahasa";
+            } else {
+                $sessions = session()->get("bahasa") ?? "English";
+            }
+                 
+        }elseif ($langs == 'en-US'){
+            if(bahasa::where('bahasa', 'English')->exists()){
+                $sessions = session()->get("bahasa") ?? "English";
+            }
+        }elseif ($langs == 'en'){
+            if(bahasa::where('bahasa', 'English')->exists()){
+                $sessions = session()->get("bahasa") ?? "English";
+           }
+        }
+        elseif ($langs == 'ms'){
+            if(bahasa::where('bahasa', 'Malay')->exists()){
+                $sessions = session()->get("bahasa") ?? "Malay";
+           } else {
+            $sessions = session()->get("bahasa") ?? "English";
+        }   
+        }
+        else{
+            $sessions = session()->get("bahasa") ?? "English";     
+        }
         $rateIDR = Rate::where("currency", "IDR")->first()->rate;
         $rateSGD = Rate::where("currency", "SGD")->first()->rate;
         $rateMYR = Rate::where("currency", "MYR")->first()->rate;
@@ -482,20 +515,31 @@ class TravelController extends Controller
             $bahasa=bahasa::get();
          $lang=$request->server('HTTP_ACCEPT_LANGUAGE');
          $langs=Str::substr($lang, 0,2);
-        if ($langs == 'id') {
-        $sessions = session()->get("bahasa") ?? "Bahasa";
-        
+         if ($langs == 'id') {
+            if(bahasa::where('bahasa', 'Bahasa')->exists()){
+                $sessions = session()->get("bahasa") ?? "Bahasa";
+            } else {
+                $sessions = session()->get("bahasa") ?? "English";
+            }
+                 
         }elseif ($langs == 'en-US'){
-        $sessions = session()->get("bahasa") ?? "English";
-        
+            if(bahasa::where('bahasa', 'English')->exists()){
+                $sessions = session()->get("bahasa") ?? "English";
+            }
         }elseif ($langs == 'en'){
-        $sessions = session()->get("bahasa") ?? "English";
+            if(bahasa::where('bahasa', 'English')->exists()){
+                $sessions = session()->get("bahasa") ?? "English";
+           }
         }
         elseif ($langs == 'ms'){
-        $sessions = session()->get("bahasa") ?? "Malay";
+            if(bahasa::where('bahasa', 'Malay')->exists()){
+                $sessions = session()->get("bahasa") ?? "Malay";
+           } else {
+            $sessions = session()->get("bahasa") ?? "English";
+        }   
         }
         else{
-        $sessions = session()->get("bahasa") ?? "English";     
+            $sessions = session()->get("bahasa") ?? "English";     
         }
             $city=region::get();
             $province=province::get();
@@ -540,16 +584,27 @@ class TravelController extends Controller
     $lang=$request->server('HTTP_ACCEPT_LANGUAGE');
     $langs=Str::substr($lang, 0,2);
     if ($langs == 'id') {
-        $sessions = session()->get("bahasa") ?? "Bahasa";
-        
+        if(bahasa::where('bahasa', 'Bahasa')->exists()){
+            $sessions = session()->get("bahasa") ?? "Bahasa";
+        } else {
+            $sessions = session()->get("bahasa") ?? "English";
+        }
+             
     }elseif ($langs == 'en-US'){
-        $sessions = session()->get("bahasa") ?? "English";
-        
+        if(bahasa::where('bahasa', 'English')->exists()){
+            $sessions = session()->get("bahasa") ?? "English";
+        }
     }elseif ($langs == 'en'){
-        $sessions = session()->get("bahasa") ?? "English";
+        if(bahasa::where('bahasa', 'English')->exists()){
+            $sessions = session()->get("bahasa") ?? "English";
+       }
     }
     elseif ($langs == 'ms'){
-        $sessions = session()->get("bahasa") ?? "Malay";
+        if(bahasa::where('bahasa', 'Malay')->exists()){
+            $sessions = session()->get("bahasa") ?? "Malay";
+       } else {
+        $sessions = session()->get("bahasa") ?? "English";
+    }   
     }
     else{
         $sessions = session()->get("bahasa") ?? "English";     
@@ -580,21 +635,31 @@ class TravelController extends Controller
         $bahasa=bahasa::get();
         $idslug=travel::where('slug', $slug)->first();
         $langs = $idslug->bahasa;
-        if ($langs == 'Bahasa') {
-            $sessions = session()->get("bahasa") ?? "Bahasa";
-            session()->put("bahasa", 'Bahasa');
-            
-        }elseif ($langs == 'English'){
-            $sessions = session()->get("bahasa") ?? "English";
-            session()->put("bahasa", 'English');
+        if ($langs == 'id') {
+            if(bahasa::where('bahasa', 'Bahasa')->exists()){
+                $sessions = session()->get("bahasa") ?? "Bahasa";
+            } else {
+                $sessions = session()->get("bahasa") ?? "English";
+            }
+                 
+        }elseif ($langs == 'en-US'){
+            if(bahasa::where('bahasa', 'English')->exists()){
+                $sessions = session()->get("bahasa") ?? "English";
+            }
+        }elseif ($langs == 'en'){
+            if(bahasa::where('bahasa', 'English')->exists()){
+                $sessions = session()->get("bahasa") ?? "English";
+           }
         }
-        elseif ($langs == 'Malay'){
-            $sessions = session()->get("bahasa") ?? "Malay";
-            session()->put("bahasa", 'Malay');
+        elseif ($langs == 'ms'){
+            if(bahasa::where('bahasa', 'Malay')->exists()){
+                $sessions = session()->get("bahasa") ?? "Malay";
+           } else {
+            $sessions = session()->get("bahasa") ?? "English";
+        }   
         }
         else{
-            $sessions = session()->get("bahasa") ?? "English";   
-            session()->put("bahasa", 'English');  
+            $sessions = session()->get("bahasa") ?? "English";     
         }
         $idtravel=travel::where('slug', $slug)->pluck('wisata_id');
        
@@ -677,21 +742,32 @@ class TravelController extends Controller
         $bahasa=bahasa::get();
         $lang=$request->server('HTTP_ACCEPT_LANGUAGE');
         $langs=Str::substr($lang, 0,2);
-    if ($langs == 'id') {
-        $sessions = session()->get("bahasa") ?? "Bahasa";
-        
-    }elseif ($langs == 'en-US'){
-        $sessions = session()->get("bahasa") ?? "English";
-        
-    }elseif ($langs == 'en'){
-        $sessions = session()->get("bahasa") ?? "English";
-    }
-    elseif ($langs == 'ms'){
-        $sessions = session()->get("bahasa") ?? "Malay";
-    }
-    else{
-        $sessions = session()->get("bahasa") ?? "English";     
-    }
+        if ($langs == 'id') {
+            if(bahasa::where('bahasa', 'Bahasa')->exists()){
+                $sessions = session()->get("bahasa") ?? "Bahasa";
+            } else {
+                $sessions = session()->get("bahasa") ?? "English";
+            }
+                 
+        }elseif ($langs == 'en-US'){
+            if(bahasa::where('bahasa', 'English')->exists()){
+                $sessions = session()->get("bahasa") ?? "English";
+            }
+        }elseif ($langs == 'en'){
+            if(bahasa::where('bahasa', 'English')->exists()){
+                $sessions = session()->get("bahasa") ?? "English";
+           }
+        }
+        elseif ($langs == 'ms'){
+            if(bahasa::where('bahasa', 'Malay')->exists()){
+                $sessions = session()->get("bahasa") ?? "Malay";
+           } else {
+            $sessions = session()->get("bahasa") ?? "English";
+        }   
+        }
+        else{
+            $sessions = session()->get("bahasa") ?? "English";     
+        }
         $idtravel=travel::where('slug', $slug)->pluck('wisata_id');
         $idslug=travel::where('slug', $slug)->first();
         if ($idslug == null) {
@@ -756,21 +832,32 @@ class TravelController extends Controller
         $bahasa=bahasa::get();
         $lang=$request->server('HTTP_ACCEPT_LANGUAGE');
         $langs=Str::substr($lang, 0,2);
-    if ($langs == 'id') {
-        $sessions = session()->get("bahasa") ?? "Bahasa";
-        
-    }elseif ($langs == 'en-US'){
-        $sessions = session()->get("bahasa") ?? "English";
-        
-    }elseif ($langs == 'en'){
-        $sessions = session()->get("bahasa") ?? "English";
-    }
-    elseif ($langs == 'ms'){
-        $sessions = session()->get("bahasa") ?? "Malay";
-    }
-    else{
-        $sessions = session()->get("bahasa") ?? "English";     
-    }
+        if ($langs == 'id') {
+            if(bahasa::where('bahasa', 'Bahasa')->exists()){
+                $sessions = session()->get("bahasa") ?? "Bahasa";
+            } else {
+                $sessions = session()->get("bahasa") ?? "English";
+            }
+                 
+        }elseif ($langs == 'en-US'){
+            if(bahasa::where('bahasa', 'English')->exists()){
+                $sessions = session()->get("bahasa") ?? "English";
+            }
+        }elseif ($langs == 'en'){
+            if(bahasa::where('bahasa', 'English')->exists()){
+                $sessions = session()->get("bahasa") ?? "English";
+           }
+        }
+        elseif ($langs == 'ms'){
+            if(bahasa::where('bahasa', 'Malay')->exists()){
+                $sessions = session()->get("bahasa") ?? "Malay";
+           } else {
+            $sessions = session()->get("bahasa") ?? "English";
+        }   
+        }
+        else{
+            $sessions = session()->get("bahasa") ?? "English";     
+        }
         $idtravel=travel::where('slug', $slug)->pluck('wisata_id');
         $idslug=travel::where('slug', $slug)->first();
         if ($idslug == null) {
@@ -840,20 +927,31 @@ class TravelController extends Controller
             $bahasa=bahasa::get();
          $lang=$request->server('HTTP_ACCEPT_LANGUAGE');
          $langs=Str::substr($lang, 0,2);
-        if ($langs == 'id') {
-        $sessions = session()->get("bahasa") ?? "Bahasa";
-        
+         if ($langs == 'id') {
+            if(bahasa::where('bahasa', 'Bahasa')->exists()){
+                $sessions = session()->get("bahasa") ?? "Bahasa";
+            } else {
+                $sessions = session()->get("bahasa") ?? "English";
+            }
+                 
         }elseif ($langs == 'en-US'){
-        $sessions = session()->get("bahasa") ?? "English";
-        
+            if(bahasa::where('bahasa', 'English')->exists()){
+                $sessions = session()->get("bahasa") ?? "English";
+            }
         }elseif ($langs == 'en'){
-        $sessions = session()->get("bahasa") ?? "English";
+            if(bahasa::where('bahasa', 'English')->exists()){
+                $sessions = session()->get("bahasa") ?? "English";
+           }
         }
         elseif ($langs == 'ms'){
-        $sessions = session()->get("bahasa") ?? "Malay";
+            if(bahasa::where('bahasa', 'Malay')->exists()){
+                $sessions = session()->get("bahasa") ?? "Malay";
+           } else {
+            $sessions = session()->get("bahasa") ?? "English";
+        }   
         }
         else{
-        $sessions = session()->get("bahasa") ?? "English";     
+            $sessions = session()->get("bahasa") ?? "English";     
         }
             $city=region::get();
             $province=province::get();
@@ -875,20 +973,31 @@ class TravelController extends Controller
         $bahasa=bahasa::get();
          $lang=$request->server('HTTP_ACCEPT_LANGUAGE');
          $langs=Str::substr($lang, 0,2);
-        if ($langs == 'id') {
-        $sessions = session()->get("bahasa") ?? "Bahasa";
-        
+         if ($langs == 'id') {
+            if(bahasa::where('bahasa', 'Bahasa')->exists()){
+                $sessions = session()->get("bahasa") ?? "Bahasa";
+            } else {
+                $sessions = session()->get("bahasa") ?? "English";
+            }
+                 
         }elseif ($langs == 'en-US'){
-        $sessions = session()->get("bahasa") ?? "English";
-        
+            if(bahasa::where('bahasa', 'English')->exists()){
+                $sessions = session()->get("bahasa") ?? "English";
+            }
         }elseif ($langs == 'en'){
-        $sessions = session()->get("bahasa") ?? "English";
+            if(bahasa::where('bahasa', 'English')->exists()){
+                $sessions = session()->get("bahasa") ?? "English";
+           }
         }
         elseif ($langs == 'ms'){
-        $sessions = session()->get("bahasa") ?? "Malay";
+            if(bahasa::where('bahasa', 'Malay')->exists()){
+                $sessions = session()->get("bahasa") ?? "Malay";
+           } else {
+            $sessions = session()->get("bahasa") ?? "English";
+        }   
         }
         else{
-        $sessions = session()->get("bahasa") ?? "English";     
+            $sessions = session()->get("bahasa") ?? "English";     
         }
         
         $rateIDR = Rate::where("currency", "IDR")->first()->rate;
@@ -931,20 +1040,31 @@ class TravelController extends Controller
             $bahasa=bahasa::get();
          $lang=$request->server('HTTP_ACCEPT_LANGUAGE');
          $langs=Str::substr($lang, 0,2);
-        if ($langs == 'id') {
-        $sessions = session()->get("bahasa") ?? "Bahasa";
-        
+         if ($langs == 'id') {
+            if(bahasa::where('bahasa', 'Bahasa')->exists()){
+                $sessions = session()->get("bahasa") ?? "Bahasa";
+            } else {
+                $sessions = session()->get("bahasa") ?? "English";
+            }
+                 
         }elseif ($langs == 'en-US'){
-        $sessions = session()->get("bahasa") ?? "English";
-        
+            if(bahasa::where('bahasa', 'English')->exists()){
+                $sessions = session()->get("bahasa") ?? "English";
+            }
         }elseif ($langs == 'en'){
-        $sessions = session()->get("bahasa") ?? "English";
+            if(bahasa::where('bahasa', 'English')->exists()){
+                $sessions = session()->get("bahasa") ?? "English";
+           }
         }
         elseif ($langs == 'ms'){
-        $sessions = session()->get("bahasa") ?? "Malay";
+            if(bahasa::where('bahasa', 'Malay')->exists()){
+                $sessions = session()->get("bahasa") ?? "Malay";
+           } else {
+            $sessions = session()->get("bahasa") ?? "English";
+        }   
         }
         else{
-        $sessions = session()->get("bahasa") ?? "English";     
+            $sessions = session()->get("bahasa") ?? "English";     
         }
             $city=region::get();
             $province=province::get();
@@ -967,20 +1087,31 @@ class TravelController extends Controller
         $destination=destination::get();
         $lang=$request->server('HTTP_ACCEPT_LANGUAGE');
          $langs=Str::substr($lang, 0,2);
-        if ($langs == 'id') {
-        $sessions = session()->get("bahasa") ?? "Bahasa";
-        
+         if ($langs == 'id') {
+            if(bahasa::where('bahasa', 'Bahasa')->exists()){
+                $sessions = session()->get("bahasa") ?? "Bahasa";
+            } else {
+                $sessions = session()->get("bahasa") ?? "English";
+            }
+                 
         }elseif ($langs == 'en-US'){
-        $sessions = session()->get("bahasa") ?? "English";
-        
+            if(bahasa::where('bahasa', 'English')->exists()){
+                $sessions = session()->get("bahasa") ?? "English";
+            }
         }elseif ($langs == 'en'){
-        $sessions = session()->get("bahasa") ?? "English";
+            if(bahasa::where('bahasa', 'English')->exists()){
+                $sessions = session()->get("bahasa") ?? "English";
+           }
         }
         elseif ($langs == 'ms'){
-        $sessions = session()->get("bahasa") ?? "Malay";
+            if(bahasa::where('bahasa', 'Malay')->exists()){
+                $sessions = session()->get("bahasa") ?? "Malay";
+           } else {
+            $sessions = session()->get("bahasa") ?? "English";
+        }   
         }
         else{
-        $sessions = session()->get("bahasa") ?? "English";     
+            $sessions = session()->get("bahasa") ?? "English";     
         }
         
         $rateIDR = Rate::where("currency", "IDR")->first()->rate;
@@ -1433,15 +1564,30 @@ public function getrate()
             $lang = $request->server('HTTP_ACCEPT_LANGUAGE');
             $langs = Str::substr($lang, 0, 2);
             if ($langs == 'id') {
-                $sessions = session()->get("bahasa") ?? "Bahasa";
-            } elseif ($langs == 'en-US') {
+                if(bahasa::where('bahasa', 'Bahasa')->exists()){
+                    $sessions = session()->get("bahasa") ?? "Bahasa";
+                } else {
+                    $sessions = session()->get("bahasa") ?? "English";
+                }
+                     
+            }elseif ($langs == 'en-US'){
+                if(bahasa::where('bahasa', 'English')->exists()){
+                    $sessions = session()->get("bahasa") ?? "English";
+                }
+            }elseif ($langs == 'en'){
+                if(bahasa::where('bahasa', 'English')->exists()){
+                    $sessions = session()->get("bahasa") ?? "English";
+               }
+            }
+            elseif ($langs == 'ms'){
+                if(bahasa::where('bahasa', 'Malay')->exists()){
+                    $sessions = session()->get("bahasa") ?? "Malay";
+               } else {
                 $sessions = session()->get("bahasa") ?? "English";
-            } elseif ($langs == 'en') {
-                $sessions = session()->get("bahasa") ?? "English";
-            } elseif ($langs == 'ms') {
-                $sessions = session()->get("bahasa") ?? "Malay";
-            } else {
-                $sessions = session()->get("bahasa") ?? "English";
+            }   
+            }
+            else{
+                $sessions = session()->get("bahasa") ?? "English";     
             }
     
            // Search provinces
@@ -1574,20 +1720,31 @@ public function filterseasonprovince($slugprovince, $namaseason,Request $request
         $bahasa=bahasa::get();
          $lang=$request->server('HTTP_ACCEPT_LANGUAGE');
          $langs=Str::substr($lang, 0,2);
-        if ($langs == 'id') {
-        $sessions = session()->get("bahasa") ?? "Bahasa";
-        
+         if ($langs == 'id') {
+            if(bahasa::where('bahasa', 'Bahasa')->exists()){
+                $sessions = session()->get("bahasa") ?? "Bahasa";
+            } else {
+                $sessions = session()->get("bahasa") ?? "English";
+            }
+                 
         }elseif ($langs == 'en-US'){
-        $sessions = session()->get("bahasa") ?? "English";
-        
+            if(bahasa::where('bahasa', 'English')->exists()){
+                $sessions = session()->get("bahasa") ?? "English";
+            }
         }elseif ($langs == 'en'){
-        $sessions = session()->get("bahasa") ?? "English";
+            if(bahasa::where('bahasa', 'English')->exists()){
+                $sessions = session()->get("bahasa") ?? "English";
+           }
         }
         elseif ($langs == 'ms'){
-        $sessions = session()->get("bahasa") ?? "Malay";
+            if(bahasa::where('bahasa', 'Malay')->exists()){
+                $sessions = session()->get("bahasa") ?? "Malay";
+           } else {
+            $sessions = session()->get("bahasa") ?? "English";
+        }   
         }
         else{
-        $sessions = session()->get("bahasa") ?? "English";     
+            $sessions = session()->get("bahasa") ?? "English";     
         }
         
         $rateIDR = Rate::where("currency", "IDR")->first()->rate;
@@ -1641,20 +1798,31 @@ public function filterseasoncity($slugcity, $namaseason,Request $request)
     $destination=destination::get();
     $lang=$request->server('HTTP_ACCEPT_LANGUAGE');
      $langs=Str::substr($lang, 0,2);
-    if ($langs == 'id') {
-    $sessions = session()->get("bahasa") ?? "Bahasa";
-    
+     if ($langs == 'id') {
+        if(bahasa::where('bahasa', 'Bahasa')->exists()){
+            $sessions = session()->get("bahasa") ?? "Bahasa";
+        } else {
+            $sessions = session()->get("bahasa") ?? "English";
+        }
+             
     }elseif ($langs == 'en-US'){
-    $sessions = session()->get("bahasa") ?? "English";
-    
+        if(bahasa::where('bahasa', 'English')->exists()){
+            $sessions = session()->get("bahasa") ?? "English";
+        }
     }elseif ($langs == 'en'){
-    $sessions = session()->get("bahasa") ?? "English";
+        if(bahasa::where('bahasa', 'English')->exists()){
+            $sessions = session()->get("bahasa") ?? "English";
+       }
     }
     elseif ($langs == 'ms'){
-    $sessions = session()->get("bahasa") ?? "Malay";
+        if(bahasa::where('bahasa', 'Malay')->exists()){
+            $sessions = session()->get("bahasa") ?? "Malay";
+       } else {
+        $sessions = session()->get("bahasa") ?? "English";
+    }   
     }
     else{
-    $sessions = session()->get("bahasa") ?? "English";     
+        $sessions = session()->get("bahasa") ?? "English";     
     }
     
     $rateIDR = Rate::where("currency", "IDR")->first()->rate;
@@ -1696,20 +1864,31 @@ public function filterseasondestination($idcategory, $namaseason,Request $reques
     $bahasa=bahasa::get();
     $lang=$request->server('HTTP_ACCEPT_LANGUAGE');
      $langs=Str::substr($lang, 0,2);
-    if ($langs == 'id') {
-    $sessions = session()->get("bahasa") ?? "Bahasa";
-    
+     if ($langs == 'id') {
+        if(bahasa::where('bahasa', 'Bahasa')->exists()){
+            $sessions = session()->get("bahasa") ?? "Bahasa";
+        } else {
+            $sessions = session()->get("bahasa") ?? "English";
+        }
+             
     }elseif ($langs == 'en-US'){
-    $sessions = session()->get("bahasa") ?? "English";
-    
+        if(bahasa::where('bahasa', 'English')->exists()){
+            $sessions = session()->get("bahasa") ?? "English";
+        }
     }elseif ($langs == 'en'){
-    $sessions = session()->get("bahasa") ?? "English";
+        if(bahasa::where('bahasa', 'English')->exists()){
+            $sessions = session()->get("bahasa") ?? "English";
+       }
     }
     elseif ($langs == 'ms'){
-    $sessions = session()->get("bahasa") ?? "Malay";
+        if(bahasa::where('bahasa', 'Malay')->exists()){
+            $sessions = session()->get("bahasa") ?? "Malay";
+       } else {
+        $sessions = session()->get("bahasa") ?? "English";
+    }   
     }
     else{
-    $sessions = session()->get("bahasa") ?? "English";     
+        $sessions = session()->get("bahasa") ?? "English";     
     }
     
     $rateIDR = Rate::where("currency", "IDR")->first()->rate;
