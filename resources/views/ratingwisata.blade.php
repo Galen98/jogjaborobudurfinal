@@ -40,7 +40,7 @@ Buat Review
 
                         @if(count($travel) === 0)
                       <tr>
-                      <th colspan="4" class="text-center">No data</th>
+                      <th colspan="5" class="text-center">No data</th>
                       </tr>
                       @else
                       @foreach($travel as $item)
