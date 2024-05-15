@@ -128,20 +128,20 @@
             <a class="navbar-brand brand-logo-mini" href="/home"><img src="{{asset('spica')}}/images/logomini.png" alt="logo"/></a>
           </div>
         </div>
-        <div class="navbar-menu-wrapper navbar-search-wrapper d-none d-lg-flex align-items-center">
+        <div class="navbar-menu-wrapper navbar-search-wrapper d-none d-lg-flex align-items-center" style="background-color: transparent;">
           <ul class="navbar-nav mr-lg-2">
             <li class="nav-item nav-search d-none d-lg-block">
-              <div class="input-group">
+              <!-- <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search Here..." aria-label="search" aria-describedby="search">
-              </div>
+              </div> -->
             </li>
           </ul>
           <ul class="navbar-nav navbar-nav-right">
-            <li class="nav-item nav-profile dropdown">
-              <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                <span class="nav-profile-name">{{ Auth::user()->name }}</span>
+            <li class="nav-item nav-profile dropdown text-dark">
+              <a class="nav-link dropdown-toggle btn btn-light rounded-lg" href="#" data-toggle="dropdown" id="profileDropdown">
+                <span class="nav-profile-name text-dark text-capitalize">{{ Auth::user()->name }}</span>
               </a>
-              <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown text-dark" aria-labelledby="profileDropdown">
                 <a class="dropdown-item" href="{{ route('logout') }}"
                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                   <i class="mdi mdi-logout text-primary"></i>
