@@ -52,7 +52,7 @@
                           {{$item->email ?? ''}}
                           </td>
                           <td>
-                          {{ \Carbon\Carbon::parse($item->updated_at)->formatLocalized('%d %B %Y') }}
+                          {{ \Carbon\Carbon::parse($item->created_at)->formatLocalized('%d %B %Y') }}
                           </td>
                           <td>
                           <button type="button" class="readbtn btn btn-sm btn-info btn-rounded btn-fw" value="{{$item->id}}"><i class="mdi mdi-information-outline"></i> Read</button>
