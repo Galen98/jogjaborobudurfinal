@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\travel;
+use App\Models\message;
 use Carbon\Carbon;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\dateAvailable;
@@ -122,5 +123,13 @@ class AdminController extends Controller
         return response()->json([
             'time' => $time,
         ]);
+    }
+
+    //READ MESSAGE SUCCESS
+    public function readMessage($id) {
+        message::where('id', $id)->update([
+            'status' => 0
+        ]);
+        return response()->json(['message' => 'Message status updated'], 200);
     }
 }

@@ -20,10 +20,16 @@
                             Email
                           </th>
                           <th style="font-weight: bold;">
+                            Date Create
+                          </th>
+                          <th style="font-weight: bold;">
                             Message
                           </th>
                           <th style="font-weight: bold;">
                             Hapus
+                          </th>
+                          <th style="font-weight: bold;">
+                            Status
                           </th>
                         </tr>
                       </thead>
@@ -46,10 +52,20 @@
                           {{$item->email ?? ''}}
                           </td>
                           <td>
+                          {{ \Carbon\Carbon::parse($item->updated_at)->formatLocalized('%d %B %Y') }}
+                          </td>
+                          <td>
                           <button type="button" class="readbtn btn btn-sm btn-info btn-rounded btn-fw" value="{{$item->id}}"><i class="mdi mdi-information-outline"></i> Read</button>
                           </td>  
                           <td>
                           <button type="button" class="hapusbtn btn btn-sm btn-danger btn-rounded btn-fw" value="{{$item->id}}"><i class="mdi mdi-delete"></i> Hapus</button>
+                          </td>
+                          <td>
+                            @if($item->status == 1)
+                            <p class="text-danger">Unread</p>
+                            @else
+                            <p class="text-success">Read</p>
+                            @endif
                           </td>
                         </tr>
                         
@@ -104,7 +120,7 @@
         <textarea class="form-control" readonly="" id="idpesan" style="height:400px;"></textarea>
       </div>
       <div class="modal-footer">
-        <button type="button" class="close btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="close btn btn-secondary" data-id="" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -162,13 +178,27 @@
                 url:"/showmessage/"+idpesan,
                 success:function(response){
                     $('#idpesan').val(response.Message.message);
+                    $('.close').attr('data-id', response.Message.id);
                 }
-            });
-          
+            });          
         });
 
+      $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+      });
+
         $(".close").click(function(){
-            $("#read").modal('hide');
+          var idpesan = $(this).data('id');
+          $.ajax({
+              type: "GET",
+              url: "/readmessage/"+idpesan,
+              success: function(response) {
+                $("#read").modal('hide');
+                window.location.reload()
+              }
+          });
         });
        });
 

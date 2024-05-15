@@ -43,6 +43,7 @@ use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
 use App\Models\dateAvailable;
 use App\Models\tambahAvailable;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Validator;
 
 class TravelController extends Controller

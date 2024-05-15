@@ -594,6 +594,8 @@ Route::get('/dateavailable/item/manage/{id}', [App\Http\Controllers\AdminControl
 Route::get('/dateavailable/item/manage/create/{id}', [App\Http\Controllers\AdminController::class,'createDateavailable'])->middleware('auth');
 Route::post('/dateavailable', [App\Http\Controllers\AdminController::class,'postAvailable'])->middleware('auth');
 Route::get('/dateavailablecheck', [App\Http\Controllers\AdminController::class,'cekAvailability'])->middleware('auth');
+//read message
+Route::get('/readmessage/{id}', [App\Http\Controllers\AdminController::class,'readMessage']);
 //fallback
 Route::fallback(function () {
  $bahasa=bahasa::get();
