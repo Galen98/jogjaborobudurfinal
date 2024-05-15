@@ -14,9 +14,19 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     // For manage date available in subwisata/options
-    public function getTravel(){
+    public function getTravel() {
        $travel = travel::orderBy('created_at', 'DESC')->paginate(10); 
        return view('dateAvailable', compact('travel'));
+    }
+
+    public function searchTravelAvailable(Request $request) {
+        $search = $request->search;
+        if($search == ''){
+            return redirect()->to('dateavailable');
+        } else {
+        $travel = travel::where('namawisata', 'LIKE', '%'. $search .'%')->orderBy('created_at', 'DESC')->paginate(10);
+        return view('dateAvailable', compact('travel'));
+        }
     }
 
     public function getTraveldate($slug){

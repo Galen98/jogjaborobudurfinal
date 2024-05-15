@@ -589,6 +589,7 @@ Route::post('/updatedateavailable/{id}', [App\Http\Controllers\AdminController::
 Route::get('/deleteavailability', [App\Http\Controllers\AdminController::class,'deleteAvailability']);
 Route::get('/checkdateavailability/{id}', [App\Http\Controllers\AdminController::class,'checkDateAvailability']);
 Route::get('/dateavailable', [App\Http\Controllers\AdminController::class,'getTravel'])->middleware('auth');
+Route::get('/dateavailable/search', [App\Http\Controllers\AdminController::class,'searchTravelAvailable'])->middleware('auth');
 Route::get('/dateavailable/item/{slug}', [App\Http\Controllers\AdminController::class,'getTraveldate'])->middleware('auth');
 Route::get('/dateavailable/item/manage/{id}', [App\Http\Controllers\AdminController::class,'getTraveloption'])->middleware('auth');
 Route::get('/dateavailable/item/manage/create/{id}', [App\Http\Controllers\AdminController::class,'createDateavailable'])->middleware('auth');
