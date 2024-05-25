@@ -1138,33 +1138,33 @@ class BlogController extends Controller
                ->whatsapp(); 
 
         $lang=$request->server('HTTP_ACCEPT_LANGUAGE');
-    $langs=Str::substr($lang, 0,2);
-    if ($langs == 'id') {
+        $langs=Str::substr($lang, 0,2);
+        if ($langs == 'id') {
         if(bahasa::where('bahasa', 'Bahasa')->exists()){
             $sessions = session()->get("bahasa") ?? "Bahasa";
         } else {
             $sessions = session()->get("bahasa") ?? "English";
+            }
+                
+        }elseif ($langs == 'en-US'){
+            if(bahasa::where('bahasa', 'English')->exists()){
+                $sessions = session()->get("bahasa") ?? "English";
+            }
+        }elseif ($langs == 'en'){
+            if(bahasa::where('bahasa', 'English')->exists()){
+                $sessions = session()->get("bahasa") ?? "English";
         }
-             
-    }elseif ($langs == 'en-US'){
-        if(bahasa::where('bahasa', 'English')->exists()){
-            $sessions = session()->get("bahasa") ?? "English";
         }
-    }elseif ($langs == 'en'){
-        if(bahasa::where('bahasa', 'English')->exists()){
+        elseif ($langs == 'ms'){
+            if(bahasa::where('bahasa', 'Malay')->exists()){
+                $sessions = session()->get("bahasa") ?? "Malay";
+        } else {
             $sessions = session()->get("bahasa") ?? "English";
-       }
-    }
-    elseif ($langs == 'ms'){
-        if(bahasa::where('bahasa', 'Malay')->exists()){
-            $sessions = session()->get("bahasa") ?? "Malay";
-       } else {
-        $sessions = session()->get("bahasa") ?? "English";
-    }   
-    }
-    else{
-        $sessions = session()->get("bahasa") ?? "English";     
-    }
+        }   
+        }
+        else{
+            $sessions = session()->get("bahasa") ?? "English";     
+        }
         $blog=DB::table('blog')->where('id',$idblog)->get();
         $tagblog=DB::table('tambahtags')->where('idblog',$idblog)->get();
         $popular=blog::where('bahasa', $sessions)->paginate(4);
