@@ -11,7 +11,12 @@ class subwisata extends Model
     public $timestamps = false;
     protected $table = "subwisata";
     protected $fillable = ['wisata_id','judulsub','short','kategories','child', 'status'];
-     public function waktu(){
+
+    public function tambahAvailable() {
+    	return $this->hasMany('App\Models\tambahAvailable');
+    }
+
+    public function waktu(){
     	return $this->hasMany('App\Models\waktu');
     }
 
@@ -22,7 +27,8 @@ class subwisata extends Model
     public function hargachild(){
     	return $this->hasMany('App\Models\hargachild');
     }
-     public function wisata(){
+
+    public function wisata(){
         return $this->belongsTo('App\Models\travel');
     }
 }

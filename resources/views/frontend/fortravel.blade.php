@@ -570,81 +570,146 @@ jQuery(function ($) {
 <script>
 @foreach($pilihan as $p)
  $(document).ready(function () {
-        $('#{{$p->id}}').submit(function (event) {
-            var formId = $(this).attr('id');
-            event.preventDefault();
-            if (validateForm() && validateAvailable(formId)) {
-              this.submit();
-            } else {
-              Swal.fire({
-                  title: "",
-                  html: "<div style='text-align: center;'>Tour not available,<br/>please try another time slot or date.</div>",
-                  icon: "error"
-              });
-          }
+        var initialSelectedId = $('#waktu_{{$p->id}}').find(':selected').data('id');
+        $('#id_waktu_{{$p->id}}').val(initialSelectedId);
+        $('#waktu_{{$p->id}}').change(function(){
+            var selectedId = $(this).find(':selected').data('id');
+            $('#id_waktu_{{$p->id}}').val(selectedId);
         });
 
-        function validateAvailable(id) {
-          var dateStart = $('input[name="traveldate"]').val().trim();
-          var isAvailable = true; 
-
-          $.ajax({
-              type: "GET",
-              url: "/checkdateavailability/" + id,
-              async: false, 
-              success: function(response) {
-                  var dates = response.date.map(index => index.date);
-                  var statuses = response.date.map(index => index.status);
-
-                  for (var i = 0; i < dates.length; i++) {
-                      if (dates[i] === dateStart && statuses[i] === 0) {
-                          isAvailable = false;
-                          break; 
-                      }
-                  }
-              }
-          });
-          return isAvailable;      
-        }
+        
+        // $('#{{$p->id}}').submit(function (event) {
+        //     var formId = $(this).attr('id');
+        //     event.preventDefault();
+        //     if (validateForm() && validateAvailable(formId)) {
+        //       this.submit();
+        //     } else {
+        //       Swal.fire({
+        //           title: "",
+        //           html: "<div style='text-align: center;'>Tour not available,<br/>please try another time slot or date.</div>",
+        //           icon: "error"
+        //       });
+        //   }
+        // });
 
         function validateForm() {
-            var dateStart = $('input[name="traveldate"]').val().trim();
-            var timeSelected = $('select[name="waktu"]').val().trim();
-            
-            var dateParts = dateStart.split('/');
-            var month = parseInt(dateParts[1], 10) - 1;
-            var day = parseInt(dateParts[0], 10);
-            var year = parseInt(dateParts[2], 10);
-            
+    var dateStart = $('input[name="traveldate"]').val().trim();
+    var timeSelected = $('select[name="waktu"]').val().trim();
 
-            var timeParts = timeSelected.split(':');
-            var hours = parseInt(timeParts[0], 10);
-            var minutes = parseInt(timeParts[1].split(' ')[0], 10);
-            var period = timeParts[1].split(' ')[1];
+    var dateParts = dateStart.split('/');
+    var month = parseInt(dateParts[1], 10) - 1;
+    var day = parseInt(dateParts[0], 10);
+    var year = parseInt(dateParts[2], 10);
 
-            if (period === 'PM' && hours !== 12) {
-                hours += 12;
-            } else if (period === 'AM' && hours === 12) {
-                hours = 0;
+    var timeParts = timeSelected.split(':');
+    var hours = parseInt(timeParts[0], 10);
+    var minutes = parseInt(timeParts[1].split(' ')[0], 10);
+    var period = timeParts[1].split(' ')[1];
+
+    if (period === 'PM' && hours !== 12) {
+        hours += 12;
+    } else if (period === 'AM' && hours === 12) {
+        hours = 0;
+    }
+
+    var datetimeSelected = new Date(year, month, day, hours, minutes);
+    var currentDate = new Date();
+
+    var timeDifference = datetimeSelected - currentDate;
+    var hoursDifference = timeDifference / (1000 * 60 * 60);
+
+    if (hoursDifference < 10) {
+        Swal.fire({
+            title: "",
+            html: "<div style='text-align: center;'>Tour not available,<br/>please try another time slot or date.</div>",
+            icon: "error"
+        });
+        return false;
+    }
+
+    return true;
+}
+
+function validateAvailable(id) {
+        return new Promise(function(resolve, reject) {
+        var dateStart = $('input[name="traveldate"]').val().trim();
+        var isAvailable = true;
+
+        function checkDateAvailability(id) {
+            return $.ajax({
+                type: "GET",
+                url: "/checkdateavailability/" + id,
+                async: true
+            });
+        }
+
+        function checkTimeAvailability(id) {
+            return $.ajax({
+                type: "GET",
+                url: "/checktimeavailability/" + id,
+                async: true
+            });
+        }
+
+        $.when(checkDateAvailability(id), checkTimeAvailability(id)).done(function(dateResponse, timeResponse) {
+            var dates = dateResponse[0].date.map(index => index.date);
+            var statuses = dateResponse[0].date.map(index => index.status);
+            var dateavailabilityId = dateResponse[0].date.map(index => index.id);
+            for (var i = 0; i < dates.length; i++) {
+                if (dates[i] === dateStart && statuses[i] === 0) {
+                    isAvailable = false;
+                    break;
+                }
             }
-            
-            var datetimeSelected = new Date(year, month, day, hours, minutes);
 
-            var currentDate = new Date();
+            if (isAvailable) {
+                var times = $('#id_waktu_{{$p->id}}').val().trim();
+                var timeId = timeResponse[0].waktu_id.map(index => index.waktu_id);
+                var available = timeResponse[0].waktu_id.map(index => index.available);
+                var dateAvailabilityIds = timeResponse[0].waktu_id.map(index => index.date_available_id);
+                var timeSlotAvailable = true;
+                for (var i = 0; i < dates.length; i++) {
+                if (dates[i] === dateStart && dateAvailabilityIds[i] == dateavailabilityId[i]) {
+                for (var i = 0; i < timeId.length; i++) {
+                    if (timeId[i] == times) {
+                        if (available[i] == 0) {
+                            timeSlotAvailable = false;
+                            break;
+                        }
+                    } 
+                }
+              }
+            }
+                isAvailable = timeSlotAvailable;
+            }
+            resolve(isAvailable);
+        }).fail(function() {
+            reject(false);
+        });
+    });
+}
 
-            var timeDifference = datetimeSelected - currentDate;
-            var hoursDifference = timeDifference/ (1000 * 60 * 60);;
-            if (hoursDifference < 10) {
+$('#{{$p->id}}').submit(function(event) {
+    event.preventDefault();
+    var formId = $(this).attr('id');
+
+    if (validateForm()) {
+        validateAvailable(formId).then(function(isAvailable) {
+            if (isAvailable) {
+                $('#' + formId)[0].submit();
+            } else {
               Swal.fire({
               title: "",
               html: "<div style='text-align: center;'>Tour not available,<br/>please try another time slot or date.</div>",
               icon: "error"
-              });
-              return false;
+             });
             }
+        }).catch(function() {
+            alert('Error checking availability.');
+        });
+    }
+});
 
-            return true
-        }
     });
     @endforeach
   </script>

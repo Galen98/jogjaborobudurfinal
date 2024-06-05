@@ -11,8 +11,12 @@ class waktu extends Model
     public $timestamps = false;
     protected $table = "waktu";
     protected $fillable = ['wisata_id','subwisata_id','time']; 
+
     public function subwisata(){
     	return $this->belongsTo('App\Models\subwisata');
     }
 
+    public function tambahAvailable(){
+    	return $this->hasMany('App\Models\tambahAvailable');
+    }
 }

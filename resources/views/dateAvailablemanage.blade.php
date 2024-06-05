@@ -34,21 +34,39 @@
                         </tr>
                         @else
                         @foreach($getAvailable as $item)
-                        <tr>
+                        <tr class="thead-light">
                           <th>{{$loop->iteration}}</th>
                           <th>{{ $item->date }}</th>
                           <th>
                           <div class="form-check form-switch ml-5">
                         @if($item->status == true)
-                        <input class="form-check-input" type="checkbox" name="status" role="switch" id="flexSwitchCheckChecked" checked style="height:22px;width:50px;">
+                        <input class="form-check-input" type="checkbox" name="status{{$item->id}}" role="switch" id="flexSwitchCheckChecked" checked style="height:22px;width:50px;">
+                        <input type="hidden" name="avail_date" id="avail_date{{$item->id}}" value="true">
                         @elseif($item->status == false)
-                        <input class="form-check-input" type="checkbox" name="status" role="switch" id="flexSwitchCheckChecked" style="height:22px;width:50px;">
-                        @else
-                        <input class="form-check-input" type="checkbox" name="status" role="switch" id="flexSwitchCheckChecked" checked style="height:22px;width:50px;">
+                        <input class="form-check-input" type="checkbox" name="status{{$item->id}}" role="switch" id="flexSwitchCheckChecked" style="height:22px;width:50px;">
+                        <input type="hidden" name="avail_date" id="avail_date{{$item->id}}" value="false">
                         @endif
-                        <input type="hidden" name="iddate" value="{{$item->id}}">
-                      </div>
+                        <input type="hidden" name="iddate{{$item->id}}" value="{{$item->id}}">
+                        </div>
                           </th>
+                          @foreach($item->tambahAvailable as $availability)
+                        <tr>
+                          <th></th>
+                          <th>{{$availability->waktu->time}}</th>
+                          <th>
+                          <div class="form-check form-switch ml-5">
+                        <input type="hidden" name="idavailability" id="idavailability{{$availability->id}}" value="{{$availability->id}}">
+                        @if($availability->available == true)
+                        <input class="form-check-input" type="checkbox" name="available" role="switch" id="availables_{{$availability->id}}" checked style="height:22px;width:50px;">
+                        <input type="hidden" name="avail_time" id="avail_time{{$availability->id}}" value="true">
+                        @elseif($availability->available == false)
+                        <input class="form-check-input" type="checkbox" name="available" role="switch" id="availables_{{$availability->id}}" style="height:22px;width:50px;">
+                        <input type="hidden" name="avail_time" id="avail_time{{$availability->id}}" value="false">
+                        @endif
+                        </div>
+                          </th>
+                        </tr>
+                        @endforeach
                         </tr>
                         @endforeach
                     @endif
@@ -62,9 +80,16 @@
 @section('scripts')
 <script>
   $(document).ready(function() {
-    $('input[name="status"]').change(function() {
+    @foreach($getAvailable as $item)
+    $('input[name="status{{$item->id}}"]').change(function() {
       var isChecked = $(this).is(':checked');
-      var iddate = $(this).siblings('input[name="iddate"]').val();
+      var iddate = $('input[name="iddate{{$item->id}}"]').val();
+      var isChecked = $(this).is(':checked');
+        if($(this).is(':checked')) {
+            var availabledate = $('#avail_date{{$item->id}}').val('true')
+        } else {
+           var availabledate = $('#avail_date{{$item->id}}').val('false')
+        }
 
       $.ajax({
         url: '/updatedateavailable/' + iddate,
@@ -72,7 +97,41 @@
         dataType: 'json',
         data: {
           _token: '{{ csrf_token() }}',
-          status: isChecked ? 1 : 0 
+          status: isChecked ? 'true' : 'false'  
+        },
+        success: function(response) {
+          if (response.success) {
+            console.log('Status updated successfully');
+          } else {
+            console.error('Failed to update status');
+          }
+        }
+      });
+    });
+    @endforeach
+  });
+</script>
+
+<script>
+  $(document).ready(function(){
+    @foreach($getAvailable as $item)
+      @foreach($item->tambahAvailable as $availability)
+    $('#availables_{{$availability->id}}').on('change', function() {
+      var id = $('#idavailability{{$availability->id}}').val()
+      var isChecked = $(this).is(':checked');
+        if($(this).is(':checked')) {
+            var available = $('#avail_time{{$availability->id}}').val('true')
+        } else {
+           var available = $('#avail_time{{$availability->id}}').val('false')
+        }
+      //alert(available)
+      $.ajax({
+        url: '/updatetimeavailable/' + id,
+        type: 'POST',
+        dataType: 'json',
+        data: {
+          _token: '{{ csrf_token() }}',
+          availability: isChecked ? 'true' : 'false' 
         },
         success: function(response) {
           if (response.success) {
@@ -81,11 +140,10 @@
             console.error('Failed to update status');
           }
         },
-        error: function(xhr, status, error) {
-          console.error('Error occurred while updating status:', error);
-        }
-      });
-    });
-  });
+      })
+    })
+      @endforeach
+    @endforeach
+  })
 </script>
 @endsection

@@ -566,9 +566,14 @@ style="margin-top:5px;height:46px;margin-right:-20px;margin-left:-17px;margin-to
     <br>
     @if($p->status == true)
     <h3 class="booking-assistant-configurator__header" data-v-dd428772 style="font-size:15px;font-weight: bolder;color:#182c4c;text-align:left;">Select a starting time:
-     <select name="waktu" style="font-size:15px;width: 180px;border-radius: 10px 10px 10px 10px;" required>
-        @foreach($p->waktu as $w)<option value="{{ Carbon\Carbon::parse($w->time)->format('g:i A') }}" required>{{ Carbon\Carbon::parse($w->time)->format('g:i A') }}</option>@endforeach
-      </select></h3>
+     <select id="waktu_{{$p->id}}" name="waktu" style="font-size:15px;width: 180px;border-radius: 10px 10px 10px 10px;" required>
+        @foreach($p->waktu as $w)
+        <option value="{{ Carbon\Carbon::parse($w->time)->format('g:i A') }}" data-id = "{{ $w->id }}" required>{{ Carbon\Carbon::parse($w->time)->format('g:i A') }}
+        </option>
+        @endforeach
+    </select>
+    </h3>
+    <input type="hidden" name="" id="id_waktu_{{$p->id}}">
 
     <h2 class="booking-assistant-configurator__header" data-v-dd428772 style="color: #182c4c;font-size:15px;text-align:left;" id="tanggal{{$p->id}}"></h2>
     <input type="hidden" name="tanggaltravel" class="tanggalx" id="tanggaltravel{{$p->id}}">

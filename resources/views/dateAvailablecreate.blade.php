@@ -15,22 +15,6 @@
         <th>Availability</th>
     </thead>
     <tbody class="text-center">
-        <!-- @foreach($jam as $item)
-        <tr>
-            <td class="h1">{{$item->time}}</td>
-            <td>
-            <div class="col-md-6"> 
-            <div class="form-group row diskoncek1">
-            <input type="hidden" name="id[]" value="{{$item->id}}">
-            <select class="form-select" name="available[]" aria-label="Default select example">
-            <option value="1" selected>Yes</option>
-            <option value="0">No</option>
-            </select>
-            </div> 
-            </div>
-        </td>
-        </tr>
-        @endforeach -->
         <tr>
             <td>
             <input type="text" name="date" id="date-start" class="form-control rounded-3" 
@@ -42,6 +26,18 @@
             </div>
             </td>
         </tr>
+        @foreach($jam as $item)
+        <tr>
+            <td class="h1">{{$item->time}}</td>
+            <td>
+            <div class="form-check form-switch ml-5">
+            <input type="hidden" name="waktu_id[]" id="" value="{{$item->id}}">
+            <input class="form-check-input" id="availables_{{$item->id}}" value="true" type="checkbox" name="available[]" role="switch" id="flexSwitchCheckChecked" checked style="height:22px;width:50px;">
+            <input type="hidden" name="avail_time[]" id="avail_time{{$item->id}}" value="true">
+            </div> 
+        </td>
+        </tr>
+        @endforeach
     </tbody>
 </table>
 <button type="submit" class="btn btn-primary rounded-4 mt-2 ml-3">Confirm</button>
@@ -52,6 +48,28 @@
 @endsection
 
 @section('scripts')
+<script>
+$(document).ready(function() {
+    @foreach($jam as $item)
+    $('#availables_{{$item->id}}').on('change', function() {
+        // if (!$(this).is(':checked')) {
+        //         // If the checkbox is not checked, set its value to false
+        //         $(this).val('false');
+        //     } else {
+        //         // If the checkbox is checked, set its value to true
+        //         $(this).val('true');
+        // }
+        if($(this).is(':checked')) {
+            $('#avail_time{{$item->id}}').val('true')
+        } else {
+            $('#avail_time{{$item->id}}').val('false')
+        }
+        //alert($(this).val())
+    })
+    @endforeach
+ })
+</script>
+
 <script> 
   var dateForm = function() {
 		$('#date-start').datepicker({
