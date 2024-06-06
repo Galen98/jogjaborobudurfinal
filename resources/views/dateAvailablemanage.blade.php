@@ -34,6 +34,7 @@
                         </tr>
                         @else
                         @foreach($getAvailable as $item)
+                        
                         <tr class="thead-light">
                           <th>{{$loop->iteration}}</th>
                           <th>{{ $item->date }}</th>
@@ -49,8 +50,12 @@
                         <input type="hidden" name="iddate{{$item->id}}" value="{{$item->id}}">
                         </div>
                           </th>
+                          <tr>
+                            <th colspan="3">
+                            <button class="float-end opens_{{$item->id}}"><i class="fa-solid fa-chevron-down"></i></button>
+                            <input type="hidden" name="" id="val_collapse_{{$item->id}}" value="false">
                           @foreach($item->tambahAvailable as $availability)
-                        <tr>
+                          <tr class="collapse_{{$item->id}}">
                           <th></th>
                           <th>{{$availability->waktu->time}}</th>
                           <th>
@@ -67,6 +72,8 @@
                           </th>
                         </tr>
                         @endforeach
+                        </th>
+                        </tr>
                         </tr>
                         @endforeach
                     @endif
@@ -81,6 +88,19 @@
 <script>
   $(document).ready(function() {
     @foreach($getAvailable as $item)
+    //hide and collapse
+    $('.collapse_{{$item->id}}').hide()
+    $('.opens_{{$item->id}}').click(function(){
+      var valCollapse = $('#val_collapse_{{$item->id}}').val()
+      if(valCollapse == 'false') {
+        $('#val_collapse_{{$item->id}}').val('true')
+        $('.collapse_{{$item->id}}').slideDown("fast");
+      } else {
+        $('#val_collapse_{{$item->id}}').val('false')
+        $('.collapse_{{$item->id}}').slideUp("fast");
+      }
+    })  
+  
     $('input[name="status{{$item->id}}"]').change(function() {
       var isChecked = $(this).is(':checked');
       var iddate = $('input[name="iddate{{$item->id}}"]').val();
