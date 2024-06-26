@@ -304,7 +304,7 @@
 <script type="text/javascript">
   $(document).ready(function(){
 	if($('#countryphone').val() == 'Entercode') {
-		$('#countrymobile').text('+Enter Code')
+		$('#countrymobile').text('+Code')
 	}
 
 	$('#spiners').hide()
