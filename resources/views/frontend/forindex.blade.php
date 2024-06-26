@@ -170,14 +170,19 @@ font-family: 'GT Eesti Text Trial', sans-serif;
 	
 
 
-    <footer id="gtco-footer" role="contentinfo" style="background-color:#fc2c04;padding:0px;">
+  <footer id="gtco-footer" role="contentinfo" style="background-color:#fc2c04;padding:0px;">
     <div class="gtco-container">
       <div class="row row-p b-md">
         <div class="col-md-3"  style="margin-top:50px;">
           <div class="gtco-widget">
             <h1 style="font-weight:bold;color: white;margin-bottom: 15px;font-size: 20px;">Payment Method</h1>
-            <img style="margin-bottom: 10px;" src="{{asset('aset')}}/paypal.png">
-            <img src="{{asset('spica')}}/images/logomini.png" height="80" width="100">
+            <img style="margin-bottom: 24px;" src="{{asset('spica')}}/images/logomini.png" height="80" width="100">
+            <br/>
+            <img style="margin-bottom: 10px;" src="{{asset('aset')}}/paypal_border.svg" height="24px" width="35px">
+            <img style="margin-bottom: 10px;" src="{{asset('aset')}}/mastercard.svg" height="24px" width="35px">
+            <img style="margin-bottom: 10px;" src="{{asset('aset')}}/visa.svg" height="24px" width="35px">
+            <img style="margin-bottom: 10px;" src="{{asset('aset')}}/amex.svg" height="24px" width="35px">
+            <img style="margin-bottom: 10px;" src="{{asset('aset')}}/discover.svg" height="24px" width="35px">
             <p> </p>
           </div>
         </div>
@@ -238,7 +243,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
         </div>
         <div class="col-md-12">
           <p class="text-center">
-            <small class="block" style="color: white;">&copy; 2010 - 2023 Jogja Borobudur Tour. All Rights Reserved.</small> 
+            <small class="block" style="color: white;">&copy; 2010 - {{ now()->year }} Jogja Borobudur Tour. All Rights Reserved.</small> 
           </p>
         </div>
       </div>

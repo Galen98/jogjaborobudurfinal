@@ -21,14 +21,17 @@
 <body>
 <h2 style="text-align:center;">Message from {{ $head['head'] }}</h2>
 <br>
-@if(isset($messages) && is_object($messages))
+<!-- @if(isset($messages) && is_object($messages))
     <h3>Email: {{ $messages->email }}</h3>
     <h3>Message: {{ $messages->message }}</h3>
 @else
     <p>Error: Unable to retrieve email</p>
-@endif
+@endif -->
+<center>
+<p>Please check this link, dont forget to login in admin dashboard.</p>
 <a href="https://jogjaborobudur.com/message/{{ $link['link'] }}"> 
 <button class="awesome-button">Check now!</button>
 </a>
+</center>
 </body>
 </html>

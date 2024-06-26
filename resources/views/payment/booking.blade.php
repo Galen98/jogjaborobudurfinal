@@ -75,12 +75,15 @@
   </div>
   <div class="card mb-4 border-top-0" id="bank">
   <div class="card-body">
-  <form action="{{route('paymenttransfer')}}" method="post">
+  <form action="{{route('paymenttransfer')}}" method="post" id="formbank">
     <input type="hidden" name="idBooking" value="{{$data->id}}" id="">
     @csrf
       <p class="text-muted">
       You will receive an email from us to complete the payment.</p>
-      <button type="submit" class="btn rounded-pill btn-dark mt-3">Confirm</button>
+      <button type="submit" class="btnbank btn rounded-pill btn-dark mt-3 w-75">
+		<p id="textbank">Confirm</p>
+		<div id="spinersbank" class="spinner-border text-white" style="width: 1.5rem; height: 1.5rem;"></div>
+		</button>
     </form>
   </div>
 </div>
@@ -97,13 +100,16 @@
   </div>
   <div class="card mb-4 border-top-0" id="paypal">
   <div class="card-body">
-    <form action="{{route('payment')}}" method="post">
+    <form action="{{route('payment')}}" method="post" id="formpp">
       @csrf
     <input type="hidden" name="amount" value="{!! $data->amount !!}">
     <input type="hidden" name="bookingId" value="{!! $data->id !!}">
     <input type="hidden" name="currency" value="{!! $data->currency !!}">
     <p class="text-muted">You will be redirected in a new window to PayPal to complete payment.</p>
-    <button type="submit" class="btn btn-dark rounded-pill mt-3">Confirm</button>
+    <button type="submit" class="btnpp btn btn-dark rounded-pill mt-3 w-75">
+	<p id="textpp">Confirm</p>
+	<div id="spinerspp" class="spinner-border text-white" style="width: 1.5rem; height: 1.5rem;"></div>
+	</button>
     </form>
   </div>
 </div>
@@ -211,6 +217,8 @@
 @section('script')
 <script>
   $(document).ready(function(){
+  $('#spinersbank').hide()
+  $('#spinerspp').hide()
   $("#bank").css("display","none"); 
   $("#paypal").css("display","none"); 
   $(".method").click(function(){
@@ -222,6 +230,20 @@
     $("#bank").slideUp("fast");
   }
   });
+  
+  $('#formpp').submit(function(){
+	$('#textpp').hide()
+	$('#spinerspp').show()
+	$('.btnpp').attr('disabled','disabled')
+	$('.btnpp').css('text-decoration','none')
+  })
+
+  $('#formbank').submit(function(){
+	$('#textbank').hide()
+	$('#spinersbank').show()
+	$('.btnbank').attr('disabled','disabled')
+	$('.btnbank').css('text-decoration','none')
+  })
   })
 </script>
 @endsection

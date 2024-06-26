@@ -539,7 +539,7 @@ style="margin-top:5px;height:46px;margin-right:-20px;margin-left:-17px;margin-to
   Not available
   </button>
   @else
-  <button type="button" id="cekharga" class="cekharga js-check-availability gtm-trigger__adp-check-availability-btn avoid-close-dropdown-on-click 
+  <button type="button" id="cekharga" class="cekharga p-1 js-check-availability gtm-trigger__adp-check-availability-btn avoid-close-dropdown-on-click 
   c-button c-button--medium filbtn" data-v-dd428772>
   Check availability
   </button>
@@ -611,8 +611,9 @@ style="margin-top:5px;height:46px;margin-right:-20px;margin-left:-17px;margin-to
     </section>
     @endif
     @if($p->status == true)
-  <button type="submit" id="bookx" class="js-check-availability gtm-trigger__adp-check-availability-btn avoid-close-dropdown-on-click c-button c-button--medium filbtn" data-v-dd428772>  
-    Book now
+  <button type="submit" id="bookx" class="btnbook{{$p->id}} p-1 js-check-availability gtm-trigger__adp-check-availability-btn avoid-close-dropdown-on-click c-button c-button--medium filbtn" data-v-dd428772>  
+    <p id="bookbtn{{$p->id}}">Book now</p>
+    <div id="spiners{{$p->id}}" class="spinner-border text-white"></div>
   </button>
   @else 
   <h2>This option is not available</h2>
@@ -722,10 +723,11 @@ style="margin-top:5px;height:46px;margin-right:-20px;margin-left:-17px;margin-to
             <div class="price-block__button" data-v-46d2d245>
               <a href="#books">
             <button type="button" id="btn-booking-header" data-test-id="btn-booking-header" class="gtm-trigger__book-now-price-box-btn c-button c-button--medium filbtn" data-v-46d2d245>
-    Book now
-  </button>
-  </a>
-</div></div> 
+              Book now
+            </button>
+            </a>
+          </div>
+          </div> 
             </div>
             <div> 
             <ul> 
@@ -1176,7 +1178,7 @@ style="margin-top:5px;height:46px;margin-right:-20px;margin-left:-17px;margin-to
   </div>
   </div>
   @foreach($value as $values)
-   <div>
+<div>
  <div class="row">
     <div class="col mt-0">     
           <div class="form-group row">
@@ -1196,9 +1198,10 @@ style="margin-top:5px;height:46px;margin-right:-20px;margin-left:-17px;margin-to
           <div class="form-group row mt-0">
             <div class="col">
             <p style="font-size: 14px;" class="text-capitalize">{{ $values->name }} - {{$values->country}}</p>
-            <div id="activity-experience" class="activity-experience js-section-content" data-v-d21396c2 data-v-c4be1764>
-                <p style="font-size: 16px;">"{{ $values->comments }}"</p>
-                </div>
+            <div id="activity-experience" class="activity-experience js-section-content" style="word-wrap: break-word; overflow-wrap: break-word;" data-v-d21396c2 data-v-c4be1764>
+                <p id="comment{{ $values->id }}" style="font-size: 16px;">"{{ $values->comments }}"</p>
+                <a href="javascript:void(0);" id="toggleComment{{$values->id}}" style="font-size: 16px;">See More</a>
+            </div>
                 <div id="photo-preview-container">
                 <div class="d-none d-sm-block">
                 @if($values->image !== null)

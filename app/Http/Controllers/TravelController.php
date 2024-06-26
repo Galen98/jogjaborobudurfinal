@@ -312,7 +312,7 @@ class TravelController extends Controller
                 $hargas=harga::create($data);
                 }            
 
-        Alert::success('Berhasil');
+        Alert::success('Success');
         return redirect('/paketwisata/diskon/'.$travel->id);
 
     }

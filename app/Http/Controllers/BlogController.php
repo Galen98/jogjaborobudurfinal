@@ -114,7 +114,7 @@ class BlogController extends Controller
         // $tambahtags=tambahtags::create($data); 
         // }
     
-        Alert::success('Blog Berhasil Ditambahkan');
+        Alert::success('Blog Success Ditambahkan');
         return redirect()->to('/blogadmin');
     }
     
@@ -245,21 +245,21 @@ class BlogController extends Controller
     public function hapusdiscount(Request $request,$idcorporate){
         $idcorporate=Request('idcorporate');
         DB::table('corporate')->where('id',$idcorporate)->delete();
-        Alert::error('Berhasil Dihapus');
+        Alert::error('Success Dihapus');
         return redirect()->back();
     }
 
     public function hapustravelagent(Request $request,$idtravelagent){
         $idtravelagent=Request('idtravelagent');
         DB::table('travelagent')->where('id',$idtravelagent)->delete();
-        Alert::error('Berhasil Dihapus');
+        Alert::error('Success Dihapus');
         return redirect()->back();
     }
 
     public function hapusaffiliate(Request $request,$idaffiliate){
         $idaffiliate=Request('idaffiliate');
         DB::table('affiliate')->where('id',$idaffiliate)->delete();
-        Alert::error('Berhasil Dihapus');
+        Alert::error('Success Dihapus');
         return redirect()->back();
     }
 
@@ -267,56 +267,56 @@ class BlogController extends Controller
     public function hapusselltours(Request $request,$idselltours){
         $idselltours=Request('idselltours');
         DB::table('selltour')->where('id',$idselltours)->delete();
-        Alert::error('Berhasil Dihapus');
+        Alert::error('Success Dihapus');
         return redirect()->back();
     }
 
     public function hapusplatform(Request $request,$idplatform){
         $idplatform=Request('idplatform');
         DB::table('platform')->where('id',$idplatform)->delete();
-        Alert::error('Berhasil Dihapus');
+        Alert::error('Success Dihapus');
         return redirect()->back();
     }
 
     public function hapusinclude($idinclude){
         $include=includes::where('id',$idinclude)->delete();
-        Alert::error('Berhasil Dihapus');
+        Alert::error('Success Dihapus');
         return redirect()->back();
     }
 
     public function hapuswaktu($idtime){
         $waktu=waktu::where('id',$idtime)->delete();
-        Alert::error('Berhasil Dihapus');
+        Alert::error('Success Dihapus');
         return redirect()->back();
     }
 
     public function hapusexclude($idexclude){
         excludes::where('id',$idexclude)->delete();
-        Alert::error('Berhasil Dihapus');
+        Alert::error('Success Dihapus');
         return redirect()->back();
     }
 
      public function hapushighlight($idhighlight){
         highlight::where('id',$idhighlight)->delete();
-        Alert::error('Berhasil Dihapus');
+        Alert::error('Success Dihapus');
         return redirect()->back();
     }
 
     public function hapusseason($idseason){
         tambahseason::where('id',$idseason)->delete();
-        Alert::error('Berhasil Dihapus');
+        Alert::error('Success Dihapus');
         return redirect()->back();
     }
 
     public function hapusdestination($iddestination){
         tambahdestinasi::where('id',$iddestination)->delete();
-        Alert::error('Berhasil Dihapus');
+        Alert::error('Success Dihapus');
         return redirect()->back();
     }
 
     public function hapusimportant($idimportant){
         importants::where('id',$idimportant)->delete();
-        Alert::error('Berhasil Dihapus');
+        Alert::error('Success Dihapus');
         return redirect()->back();
     }
 
@@ -342,7 +342,7 @@ class BlogController extends Controller
         DB::table('harga_child')->where('wisata_id',$idwisata)->delete();
         DB::table('tambahseason')->where('wisata_id',$idwisata)->delete();
         DB::table('highlight')->where('wisata_id',$idwisata)->delete();
-        Alert::error('Berhasil Dihapus');
+        Alert::error('Success Dihapus');
         return redirect()->back();
     }
 
@@ -447,19 +447,19 @@ class BlogController extends Controller
 
     public function deletetime($idjam){
         waktu::where('id',$idjam)->delete();
-        Alert::error('Berhasil Dihapus');
+        Alert::error('Success Dihapus');
         return redirect()->back();
     }
 
     public function deletehargaperson($idperson){
         harga::where('id', $idperson)->delete();
-        Alert::error('Berhasil Dihapus');
+        Alert::error('Success Dihapus');
         return redirect()->back();
     }
 
     public function deletehargachild($idchild){
         hargachild::where('id', $idchild)->delete();
-        Alert::error('Berhasil Dihapus');
+        Alert::error('Success Dihapus');
         return redirect()->back();
     }
 
@@ -558,7 +558,7 @@ class BlogController extends Controller
          'namaregion' => $request->namaregions,
          'slugregion'=>\Str::slug($request->namaregions)
         ]);       
-        Alert::success('Berhasil','Berhasil Diupdate');
+        Alert::success('Success','Success Diupdate');
         return redirect()->to('/region');
      }
 
@@ -615,7 +615,7 @@ class BlogController extends Controller
     
     public function deletetambahlocation($idcity){
         tambahlocation::where('id', $idcity)->delete();
-        Alert::error('Berhasil');
+        Alert::error('Success');
         return redirect()->back();
     }
 
@@ -1013,7 +1013,7 @@ class BlogController extends Controller
             'slug'=>\Str::slug($request->judulartikel),
             'image'=>pathinfo($nama_file, PATHINFO_FILENAME) . '.webp',
         ]);
-        Alert::success('Berhasil','Berhasil Diupdate');
+        Alert::success('Success','Success Diupdate');
         return redirect()->to('/blogadmin');
     }
 
@@ -1039,7 +1039,7 @@ class BlogController extends Controller
             'status' => $status
 
         ]);
-        Alert::success('Berhasil','Berhasil Diupdate');
+        Alert::success('Success','Success Diupdate');
         return redirect()->to('/paketwisata');
     }
 
@@ -1282,7 +1282,7 @@ class BlogController extends Controller
             'image'=>$nama_file,
             'place'=>'landingpage'
         ]);
-        Alert::success('Berhasil','Berhasil Diupdate');
+        Alert::success('Success','Success Diupdate');
         return redirect()->to('/background/change');
     }
 
@@ -1297,7 +1297,7 @@ class BlogController extends Controller
             'header'=>$request->teks,
             'image'=>$nama_file,
         ]);
-        Alert::success('Berhasil','Berhasil Ditambahkan');
+        Alert::success('Success','Success Ditambahkan');
         return redirect()->to('/background/change');
     }
 
@@ -1321,7 +1321,7 @@ class BlogController extends Controller
             'subheader'=>$request->tekssmall,
             'place'=>'agent'
         ]);
-        Alert::success('Berhasil','Berhasil Diupdate');
+        Alert::success('Success','Success Diupdate');
         return redirect()->to('/background/change');
     }
 
@@ -1337,7 +1337,7 @@ class BlogController extends Controller
             'subheader'=>$request->tekssmall,
             'place'=>'agent'
         ]);
-        Alert::success('Berhasil','Berhasil Ditambahkan');
+        Alert::success('Success','Success Ditambahkan');
         return redirect()->to('/background/change');
     }
 
@@ -1361,7 +1361,7 @@ class BlogController extends Controller
             'subheader'=>$request->tekssmall,
             'place'=>'affiliate'
         ]);
-        Alert::success('Berhasil','Berhasil Diupdate');
+        Alert::success('Success','Success Diupdate');
         return redirect()->to('/background/change');
     }
 
@@ -1377,7 +1377,7 @@ class BlogController extends Controller
             'subheader'=>$request->tekssmall,
             'place'=>'affiliate'
         ]);
-        Alert::success('Berhasil','Berhasil Ditambahkan');
+        Alert::success('Success','Success Ditambahkan');
         return redirect()->to('/background/change');
     }
 
@@ -1401,7 +1401,7 @@ class BlogController extends Controller
             'subheader'=>$request->tekssmall,
             'place'=>'selltours'
         ]);
-        Alert::success('Berhasil','Berhasil Diupdate');
+        Alert::success('Success','Success Diupdate');
         return redirect()->to('/background/change');
     }
 
@@ -1417,7 +1417,7 @@ class BlogController extends Controller
             'subheader'=>$request->tekssmall,
             'place'=>'selltours'
         ]);
-        Alert::success('Berhasil','Berhasil Ditambahkan');
+        Alert::success('Success','Success Ditambahkan');
         return redirect()->to('/background/change');
     }
 
@@ -1441,7 +1441,7 @@ class BlogController extends Controller
             'subheader'=>$request->tekssmall,
             'place'=>'about'
         ]);
-        Alert::success('Berhasil','Berhasil Diupdate');
+        Alert::success('Success','Success Diupdate');
         return redirect()->to('/background/change');
     }
 
@@ -1457,7 +1457,7 @@ class BlogController extends Controller
             'subheader'=>$request->tekssmall,
             'place'=>'about'
         ]);
-        Alert::success('Berhasil','Berhasil Ditambahkan');
+        Alert::success('Success','Success Ditambahkan');
         return redirect()->to('/background/change');
     }
 
@@ -1481,7 +1481,7 @@ class BlogController extends Controller
             'subheader'=>$request->tekssmall,
             'place'=>'platform'
         ]);
-        Alert::success('Berhasil','Berhasil Diupdate');
+        Alert::success('Success','Success Diupdate');
         return redirect()->to('/background/change');
     }
 
@@ -1497,7 +1497,7 @@ class BlogController extends Controller
             'subheader'=>$request->tekssmall,
             'place'=>'platform'
         ]);
-        Alert::success('Berhasil','Berhasil Ditambahkan');
+        Alert::success('Success','Success Ditambahkan');
         return redirect()->to('/background/change');
     }
 
@@ -1521,7 +1521,7 @@ class BlogController extends Controller
             'subheader'=>$request->tekssmall,
             'place'=>'corporate'
         ]);
-        Alert::success('Berhasil','Berhasil Diupdate');
+        Alert::success('Success','Success Diupdate');
         return redirect()->to('/background/change');
     }
 
@@ -1537,7 +1537,7 @@ class BlogController extends Controller
             'subheader'=>$request->tekssmall,
             'place'=>'corporate'
         ]);
-        Alert::success('Berhasil','Berhasil Ditambahkan');
+        Alert::success('Success','Success Ditambahkan');
         return redirect()->to('/background/change');
     }
 
@@ -1561,7 +1561,7 @@ class BlogController extends Controller
             'image'=>$nama_file,
             'place'=>'contact'
         ]);
-        Alert::success('Berhasil','Berhasil Diupdate');
+        Alert::success('Success','Success Diupdate');
         return redirect()->to('/background/change');
     }
 
@@ -1577,7 +1577,7 @@ class BlogController extends Controller
             'image'=>$nama_file,
             'place'=>'contact'
         ]);
-        Alert::success('Berhasil','Berhasil Ditambahkan');
+        Alert::success('Success','Success Ditambahkan');
         return redirect()->to('/background/change');
     }
 
@@ -1601,7 +1601,7 @@ class BlogController extends Controller
             'subheader'=>$request->tekssmall,
             'place'=>'influencer'
         ]);
-        Alert::success('Berhasil','Berhasil Diupdate');
+        Alert::success('Success','Success Diupdate');
         return redirect()->to('/background/change');
     }
 
@@ -1617,7 +1617,7 @@ class BlogController extends Controller
             'subheader'=>$request->tekssmall,
             'place'=>'influencer'
         ]);
-        Alert::success('Berhasil','Berhasil Ditambahkan');
+        Alert::success('Success','Success Ditambahkan');
         return redirect()->to('/background/change');
     }
 
@@ -1711,7 +1711,7 @@ class BlogController extends Controller
             'image4'=>pathinfo($nama_file4, PATHINFO_FILENAME) . '.webp',
             'image5'=>pathinfo($nama_file5, PATHINFO_FILENAME) . '.webp',
         ]);
-        Alert::success('Berhasil','Berhasil Diupdate');
+        Alert::success('Success','Success Diupdate');
         return redirect()->back();
     }
 
@@ -1733,7 +1733,7 @@ class BlogController extends Controller
             'tags' => $tag
         ];
         tags::create($data);
-        Alert::success('Berhasil','Berhasil Ditambah');
+        Alert::success('Success','Success Ditambah');
         return redirect()->back();
     }
 
@@ -1832,7 +1832,7 @@ class BlogController extends Controller
                 $hargas=harga::create($data);
                 }
 
-                Alert::success('Berhasil');
+                Alert::success('Success');
                 return redirect('/paketwisata/diskon/'.$option->wisata_id);
     }
 
@@ -1859,7 +1859,7 @@ class BlogController extends Controller
             tambahlocation::create($data);
         }
 
-        Alert::success('Berhasil');
+        Alert::success('Success');
         return redirect('/paketwisata/edit/'.$travelid);
     }
 
@@ -1881,7 +1881,7 @@ class BlogController extends Controller
             'kategories'=>$request->kategories,
             'capacity'=>$request->capacity
         ]);
-        Alert::success('Berhasil','Berhasil Diupdate');
+        Alert::success('Success','Success Diupdate');
         return redirect()->back();
     }
 
@@ -1918,7 +1918,7 @@ class BlogController extends Controller
          ];
         $review=reviews::create($data);
         Mail::to($email)->send(new ReviewSendLink($review));
-        Alert::success('Berhasil');
+        Alert::success('Success');
         return redirect()->back();
     }
 
@@ -1976,7 +1976,7 @@ class BlogController extends Controller
             ]);
         }
 
-        Alert::success('Berhasil');
+        Alert::success('Success');
         return redirect()->to('/rating/' . $travelid);
     }
 
@@ -1997,7 +1997,7 @@ class BlogController extends Controller
             'star_rating' => $request->rating,
             'comments' => $request->review
         ]);
-        Alert::success('Berhasil');
+        Alert::success('Success');
         return redirect()->to('/rating/' . $idwisata);
     }
 
@@ -2030,13 +2030,13 @@ class BlogController extends Controller
         'totalrating' => $ratings
         ]);
        
-        Alert::error('Berhasil Dihapus');
+        Alert::error('Success Dihapus');
         return redirect()->back();
     }
 
     public function deletetheme($idtheme){
         $theme=season::where('id',$idtheme)->delete();
-        Alert::error('Berhasil Dihapus');
+        Alert::error('Success Dihapus');
         return redirect()->back();
     }
 
@@ -2044,7 +2044,7 @@ class BlogController extends Controller
         $images=destination::where('id',$iddestination)->first();
         File::delete('public/img/'.$images->image);
         $destination=destination::where('id',$iddestination)->delete();
-        Alert::error('Berhasil Dihapus');
+        Alert::error('Success Dihapus');
         return redirect()->back();
     }
 
@@ -2055,14 +2055,14 @@ class BlogController extends Controller
             'bahasa'=>$bahasa
         ];
         bahasa::create($data);
-        Alert::success('Berhasil');
+        Alert::success('Success');
         return redirect()->back();
     }
 
     public function hapusbahasa(Request $request,$idlanguage){
         $idlanguage=$request->idlanguage;
         $bahasa=DB::table('bahasa')->where('id', $idlanguage)->delete();
-        Alert::error('Berhasil Dihapus');
+        Alert::error('Success Dihapus');
         return redirect()->back();
     }
 
@@ -2082,7 +2082,7 @@ class BlogController extends Controller
             'image'=>$nama_file
         ];
         destination::create($data);
-        Alert::success('Berhasil Ditambahkan');
+        Alert::success('Success Ditambahkan');
         return redirect()->to('/destination-category');
     }
 
@@ -2101,7 +2101,7 @@ class BlogController extends Controller
             'slugregion'=>\Str::slug($request->region)
         ];
         region::create($data);
-        Alert::success('Berhasil Ditambahkan');
+        Alert::success('Success Ditambahkan');
         return redirect()->to('/region');
     }
 
@@ -2127,7 +2127,7 @@ class BlogController extends Controller
             'slugprovince'=>\Str::slug($request->province)
         ];
         province::create($data);
-        Alert::success('Berhasil Ditambahkan');
+        Alert::success('Success Ditambahkan');
         return redirect()->to('/province');
     }
 
@@ -2145,7 +2145,7 @@ class BlogController extends Controller
         ];
 
         season::create($data);
-        Alert::success('Berhasil Ditambahkan');
+        Alert::success('Success Ditambahkan');
        return redirect()->to('/season');
     }
 

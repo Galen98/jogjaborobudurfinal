@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.css" integrity="sha512-FA9cIbtlP61W0PRtX36P6CGRy0vZs0C2Uw26Q1cMmj3xwhftftymr0sj8/YeezDnRwL9wtWw8ZwtCiTDXlXGjQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/fontawesome.css" integrity="sha512-/Jsoj+nRoCkEHw4HnymLk48dWblqtN+0rW+UMAanfbHZjzgphJipQOEuuOEdZ0IzSEYgK0NXCNda8r+4juGbPg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/fontawesome.min.css" integrity="sha512-giQeaPns4lQTBMRpOOHsYnGw1tGVzbAIHUyHRgn7+6FmiEgGGjaG0T2LZJmAPMzRCl+Cug0ItQ2xDZpTmEc+CQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="{{asset('traveler')}}/css/bootstrap.css">
   <link href="{{asset('traveler')}}/css/blogs2.css" rel="stylesheet" type="text/css"/>
   <link rel="stylesheet" href="{{asset('traveler')}}/css/blogs.css" />
@@ -104,8 +105,13 @@
         <div class="col-md-3"  style="margin-top:50px;">
           <div class="gtco-widget">
             <h1 style="font-weight:bold;color: white;margin-bottom: 15px;font-size: 20px;">Payment Method</h1>
-            <img style="margin-bottom: 10px;" src="{{asset('aset')}}/paypal.png">
-            <img src="{{asset('spica')}}/images/logomini.png" height="80" width="100">
+            <img style="margin-bottom: 24px;" src="{{asset('spica')}}/images/logomini.png" height="80" width="100">
+            <br/>
+            <img style="margin-bottom: 10px;" src="{{asset('aset')}}/paypal_border.svg" height="24px" width="35px">
+            <img style="margin-bottom: 10px;" src="{{asset('aset')}}/mastercard.svg" height="24px" width="35px">
+            <img style="margin-bottom: 10px;" src="{{asset('aset')}}/visa.svg" height="24px" width="35px">
+            <img style="margin-bottom: 10px;" src="{{asset('aset')}}/amex.svg" height="24px" width="35px">
+            <img style="margin-bottom: 10px;" src="{{asset('aset')}}/discover.svg" height="24px" width="35px">
             <p> </p>
           </div>
         </div>
@@ -138,21 +144,21 @@
           <div class="gtco-widget">
             <h1 style="font-weight:bold;color: white;margin-bottom: 15px;font-size: 20px;">Language</h1>
             <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle dropdown-menu-wide" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color: white;color: black;">
-              Select Language
-            </button>
-            <div class="dropdown-menu">
-              @foreach($bahasa as $item)
-              <a class="dropdown-item" href="/change-language/{{$item->bahasa}}">{{$item->bahasa}}</a>
-              @endforeach
-            </div>
-          </div>
+  <button class="btn btn-secondary dropdown-toggle  dropdown-menu-wide" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color: white;color: black;">
+    Select Language
+  </button>
+  <div class="dropdown-menu">
+    @foreach($bahasa as $item)
+    <a class="dropdown-item" href="/change-language/{{$item->bahasa}}">{{$item->bahasa}}</a>
+    @endforeach
+  </div>
+</div>
             <h1 style="font-weight:bold;color: white;margin-top: 10px;margin-bottom: 15px;font-size: 20px;">Currency</h1>
             <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle dropdown-menu-wide" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color: white;color: black;">
               Select Currency
             </button>
-            <div class="dropdown-menu">
+            <div class="dropdown-menu ">
               <a class="dropdown-item" href="/change-session/USD">USD</a>
               <a class="dropdown-item" href="/change-session/IDR">IDR</a>
               <a class="dropdown-item" href="/change-session/MYR">MYR</a>
@@ -166,7 +172,7 @@
         </div>
         <div class="col-md-12">
           <p class="text-center">
-            <small class="block" style="color: white;">&copy; 2010 - 2023 Jogja Borobudur Tour. All Rights Reserved.</small> 
+            <small class="block" style="color: white;">&copy; 2010 - {{ now()->year }} Jogja Borobudur Tour. All Rights Reserved.</small> 
           </p>
         </div>
       </div>
@@ -174,7 +180,8 @@
   </footer>
 
 	<!-- jQuery -->
-	<script src="{{asset('traveler')}}/js/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="{{asset('traveler')}}/js/jquery.min.js"></script>
 	<!-- Bootstrap -->
 	<script src="{{asset('traveler')}}/js/bootstrap.min.js"></script>
 	<!-- Waypoints -->

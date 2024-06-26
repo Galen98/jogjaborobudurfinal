@@ -228,6 +228,13 @@
     dateForm();
   });
 </script> 
+<script>
+  $(document).ready(function(){
+    $('.underdev').click(function(){
+      swal("Error", "This feature under development", "error");
+    })
+  })
+</script>
 @yield('scripts')
 </body>
 

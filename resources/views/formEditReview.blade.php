@@ -32,7 +32,7 @@
 
                     <div class="form-group">
                       <label for="exampleTextarea1">Review</label>
-                      <textarea class="form-control" style="height:150px" name="review" placeholder="Insert Review" id="formcategory">
+                      <textarea class="form-control" maxlength="1000" style="height:150px" name="review" placeholder="Insert Review" id="formcategory">
                     {{$item->comments}}
                     </textarea>
                     </div>

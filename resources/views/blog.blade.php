@@ -6,7 +6,7 @@
 <form action="/blogadmin/formblog" method="GET" >
 <button class="btn btn-danger btn-icon-text">
 <i class="mdi mdi-upload btn-icon-prepend"></i>                                                    
-Posting Blog
+Insert Blog
 </button>
 </form>
 </div>

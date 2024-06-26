@@ -100,7 +100,7 @@ class AdminController extends Controller
                 tambahAvailable::create($data);
             }
 
-         Alert::success('Berhasil');
+         Alert::success('Success');
          return redirect('/dateavailable/item/manage/'.$idsub);
         }
     

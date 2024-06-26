@@ -192,8 +192,10 @@
     <input type="hidden" name="timezone" id="time">
 	<div class="overlay billing-form__loading-overlay">
 	<div class="billing-form__validate-billing-details-and-sri">
-	<button class="c-button c-button--medium filbtn billing-form__validate-billing-details-and-sri__button" 
-    type="submit" data-test-id="checkout-submit-btn" id="tess">Payment</button>
+	<button class="paybtn c-button c-button--medium filbtn billing-form__validate-billing-details-and-sri__button" 
+    type="submit" data-test-id="checkout-submit-btn" id="tess">
+	<p id="paytxt">Payment</p>
+	<div id="spiners" class="spinner-border text-white"></div></button>
 	</form>
 	</div>
 	</div>
@@ -301,6 +303,11 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
+	if($('#countryphone').val() == 'Entercode') {
+		$('#countrymobile').text('+Enter Code')
+	}
+
+	$('#spiners').hide()
 	const country = {!! $country !!}
 	$('#countryphone').on('change', function() {
 	let countrymobile=$("#countrymobile").val()
@@ -367,7 +374,13 @@
             return false; 
         }
 
+		else {
+		$('#spiners').show()
+		$('#paytxt').hide()
+		$('.paybtn').attr('disabled','disabled')
+		$('.paybtn').css('text-decoration','none')
         return true;
+		}
     }
 });
   </script>

@@ -2,8 +2,7 @@
 @extends('navadmin')
 @section('content')
 @include('sweetalert::alert')
-<div class="container">
-  <div class="row">
+
     <div class="card-body">
       <form action="/province/form" method="GET" >
         <button class="btn btn-danger btn-icon-text">
@@ -12,8 +11,6 @@
         </button>
       </form>
     </div>
-  </div>
-</div>
 
 <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">

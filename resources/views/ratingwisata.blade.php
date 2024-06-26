@@ -6,7 +6,7 @@
 <form action="/rating/createreview/form/{{$wisataid->wisata_id}}" method="GET" >
 <button class="btn btn-danger btn-icon-text">
 <i class="mdi mdi-upload btn-icon-prepend"></i>                                                    
-Buat Review
+Add Review
 </button>
 </form>
 </div>

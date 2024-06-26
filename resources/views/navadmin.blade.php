@@ -91,5 +91,20 @@
             <span class="menu-title">Currency</span>
           </a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link underdev" href="#">
+            <i class="mdi mdi-airballoon menu-icon"></i>
+            <span class="menu-title">Open Trip</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link underdev" href="#">
+            <i class="mdi mdi-account-switch menu-icon"></i>
+            <span class="menu-title">Affiliate Program</span>
+          </a>
+        </li>
+
         @include('partials.nav')
 @endsection

@@ -2,12 +2,15 @@
 @extends('navadmin')
 @section('content')
 @include('sweetalert::alert')
+<div class="card-body">
+<h4 class="card-title">
+	<button type="button" class="btnadd btn btn-danger mr-2">Add Tag</button>		
+</h4>
+</div>
+
 <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">
-					<button type="button" class="btnadd btn btn-danger mr-2">Tambah Tag</button>		
-					</h4>
                   <div class="table-responsive pt-3">
                     <table class="table table-bordered">
                       <thead>

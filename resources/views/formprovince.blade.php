@@ -4,7 +4,7 @@
 <div class="card">
                 <div class="card-body">
                   <p class="card-description">
-                    Buat Province
+                    Add Province
                   </p>
                   <form class="forms-sample" method="POST" action="{{url('insertprovince')}}" enctype="multipart/form-data">
                   @csrf

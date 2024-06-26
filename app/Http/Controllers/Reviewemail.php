@@ -105,16 +105,27 @@ class Reviewemail extends Controller
         $lang=$request->server('HTTP_ACCEPT_LANGUAGE');
         $langs=Str::substr($lang, 0,2);
         if ($langs == 'id') {
-            $sessions = session()->get("bahasa") ?? "Bahasa";
-            
+            if(bahasa::where('bahasa', 'Bahasa')->exists()){
+                $sessions = session()->get("bahasa") ?? "Bahasa";
+            } else {
+                $sessions = session()->get("bahasa") ?? "English";
+            }
+                
         }elseif ($langs == 'en-US'){
-            $sessions = session()->get("bahasa") ?? "English";
-            
+            if(bahasa::where('bahasa', 'English')->exists()){
+                $sessions = session()->get("bahasa") ?? "English";
+            }
         }elseif ($langs == 'en'){
-            $sessions = session()->get("bahasa") ?? "English";
+            if(bahasa::where('bahasa', 'English')->exists()){
+                $sessions = session()->get("bahasa") ?? "English";
+        }
         }
         elseif ($langs == 'ms'){
-            $sessions = session()->get("bahasa") ?? "Malay";
+            if(bahasa::where('bahasa', 'Malay')->exists()){
+                $sessions = session()->get("bahasa") ?? "Malay";
+        } else {
+            $sessions = session()->get("bahasa") ?? "English";
+        }   
         }
         else{
             $sessions = session()->get("bahasa") ?? "English";     

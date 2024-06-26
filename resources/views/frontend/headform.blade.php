@@ -69,7 +69,7 @@
 	<div class="page-footer__content">
 	<nav class="navigation page-footer__navigation">
 	<div class="navigation__directory"><p class="navigation__item navigation__item-section_copyright">
-	<span> © <time>2023</time> Jogja Borobudur Tour &amp; Travel</span></p>
+	<span> © <time>{{ now()->year }}</time> Jogja Borobudur Tour &amp; Travel</span></p>
 	
 	</div>
 	</nav>

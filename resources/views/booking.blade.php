@@ -33,7 +33,7 @@
   <div class="main-wrapper  partner-left-layout" data-v-5120f7ad>
   <a href="#main-content" class="skip-link">Skip to content</a> 
   <main id="main-content">
-    <section layout="vertical" class="grid-wrapper container grid-wrapper--list">
+    <section layout="vertical" class="grid-wrapper grid-wrapper--list">
   @foreach($booking as $item)
   <div class="activity-card-block--grid d-block d-md-none" style="margin-bottom: 0px;">
   <article style="overflow-x: auto; white-space: nowrap;" data-test-id="horizontal-activity-card" class="activity-card horizontal-activity-card companion-inactive activity-card-block__card--grid activity-card-block--desktop" data-v-a1084d9e>
@@ -153,13 +153,13 @@
   companion-inactive activity-card-block__card--grid activity-card-block--desktop" data-v-a1084d9e>
   <div> 
   <a role="contentinfo" target="_blank" rel="noopener" data-activity-id="412877" class="activity-card__container gtm-trigger__card-interaction" data-v-a1084d9e>
-  <div class="activity-card__image" data-v-a1084d9e> 
+  <!-- <div class="activity-card__image" data-v-a1084d9e> 
   <div class="activity-card__image-info align-end" data-v-a1084d9e></div> 
   <picture data-v-a1084d9e>
   <source srcset="{{ url('public/img/'.$item->wisata->image) }}" type="image/webp"> 
   <img src="{{ url('public/img/'.$item->wisata->image) }}">
   </picture>
-  </div> 
+  </div>  -->
   <div class="activity-card__details" data-v-a1084d9e>
   <div class="activity-card__details-main" data-v-a1084d9e>
   <div class="activity-card__details-left" data-v-a1084d9e> 

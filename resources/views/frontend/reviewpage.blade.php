@@ -123,7 +123,8 @@ label.success {
       </div>
       <div class="form-group row mt-4">
          <div class="col">
-            <textarea class="form-control" name="comment" rows="6 " placeholder="Write your review for this experience" maxlength="200"></textarea>
+            <textarea id="myTextarea" class="form-control" name="comment" rows="6" placeholder="Write your review for this experience" maxlength="1000"></textarea>
+            <p style="margin-top:15px;" id="textareaLength"></p>
          </div>
       </div>
       <br>
@@ -187,7 +188,7 @@ label.success {
 	<div class="page-footer__content">
 	<nav class="navigation page-footer__navigation">
 	<div class="navigation__directory"><p class="navigation__item navigation__item-section_copyright">
-	<span> © <time>2023</time> Jogja Borobudur Tour &amp; Travel</span></p>
+	<span> © <time>{{ now()->year }}</time> Jogja Borobudur Tour &amp; Travel</span></p>
 	</div>
 	</nav>
 	</div>
@@ -258,6 +259,23 @@ $(document).ready(function () {
 
 <script>
 $(document).ready(function() {
+  var theCounter = $('#textareaLength'),
+    textarea = $('#myTextarea'),
+    maxLength = textarea.attr('maxlength');
+
+    theCounter.text('0 / '+maxLength);
+    theCounter.css({  
+        'top': (textarea.offset().top + textarea.height()) - theCounter.height(),
+        'left': (textarea.offset().left + textarea.width()) - theCounter.width()
+    });
+
+    textarea.on('keydown', function() {  
+        var theLength = $(this).val().length;
+        theCounter.text($(this).val().length+' / '+maxLength)
+        .css({  
+        'left': (textarea.offset().left + textarea.width()) - theCounter.width()
+         });
+    });
 
     function validateForm() {
         if (!$('input[name="rating"]:checked').val()) {

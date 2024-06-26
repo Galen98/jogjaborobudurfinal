@@ -57,6 +57,17 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   'GRAD' 0,
   'opsz' 48
 }
+.short-text, .full-text {
+    display: none;
+}
+
+.show-short-text .short-text {
+    display: inline;
+}
+
+.show-full-text .full-text {
+    display: inline;
+}
 </style>
   <!-- google tag -->
   <meta name="title" content="{{$item->namawisata}}" />
@@ -79,14 +90,19 @@ font-family: 'GT Eesti Text Trial', sans-serif;
 @yield('content')
 
 
-    <footer id="gtco-footer" role="contentinfo" style="background-color:#fc2c04;padding:0px;">
+<footer id="gtco-footer" role="contentinfo" style="background-color:#fc2c04;padding:0px;">
     <div class="gtco-container">
       <div class="row row-p b-md">
         <div class="col-md-3"  style="margin-top:50px;">
           <div class="gtco-widget">
             <h1 style="font-weight:bold;color: white;margin-bottom: 15px;font-size: 20px;">Payment Method</h1>
-            <img style="margin-bottom: 10px;" src="{{asset('aset')}}/paypal.png">
-            <img src="{{asset('spica')}}/images/logomini.png" height="80" width="100">
+            <img style="margin-bottom: 24px;" src="{{asset('spica')}}/images/logomini.png" height="80" width="100">
+            <br/>
+            <img style="margin-bottom: 10px;" src="{{asset('aset')}}/paypal_border.svg" height="24px" width="35px">
+            <img style="margin-bottom: 10px;" src="{{asset('aset')}}/mastercard.svg" height="24px" width="35px">
+            <img style="margin-bottom: 10px;" src="{{asset('aset')}}/visa.svg" height="24px" width="35px">
+            <img style="margin-bottom: 10px;" src="{{asset('aset')}}/amex.svg" height="24px" width="35px">
+            <img style="margin-bottom: 10px;" src="{{asset('aset')}}/discover.svg" height="24px" width="35px">
             <p> </p>
           </div>
         </div>
@@ -119,21 +135,21 @@ font-family: 'GT Eesti Text Trial', sans-serif;
           <div class="gtco-widget">
             <h1 style="font-weight:bold;color: white;margin-bottom: 15px;font-size: 20px;">Language</h1>
             <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle dropdown-menu-wide" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color: white;color: black;">
-              Select Language
-            </button>
-            <div class="dropdown-menu">
-              @foreach($bahasa as $item)
-              <a class="dropdown-item" href="/change-language/{{$item->bahasa}}">{{$item->bahasa}}</a>
-              @endforeach
-            </div>
-          </div>
+  <button class="btn btn-secondary dropdown-toggle  dropdown-menu-wide" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color: white;color: black;">
+    Select Language
+  </button>
+  <div class="dropdown-menu">
+    @foreach($bahasa as $item)
+    <a class="dropdown-item" href="/change-language/{{$item->bahasa}}">{{$item->bahasa}}</a>
+    @endforeach
+  </div>
+</div>
             <h1 style="font-weight:bold;color: white;margin-top: 10px;margin-bottom: 15px;font-size: 20px;">Currency</h1>
             <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle dropdown-menu-wide" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color: white;color: black;">
               Select Currency
             </button>
-            <div class="dropdown-menu">
+            <div class="dropdown-menu ">
               <a class="dropdown-item" href="/change-session/USD">USD</a>
               <a class="dropdown-item" href="/change-session/IDR">IDR</a>
               <a class="dropdown-item" href="/change-session/MYR">MYR</a>
@@ -147,11 +163,11 @@ font-family: 'GT Eesti Text Trial', sans-serif;
         </div>
         <div class="col-md-12">
           <p class="text-center">
-        <small class="block" style="color: white;">&copy; 2010 - 2023 Jogja Borobudur Tour. All Rights Reserved.</small> 
+            <small class="block" style="color: white;">&copy; 2010 - {{ now()->year }} Jogja Borobudur Tour. All Rights Reserved.</small> 
           </p>
         </div>
       </div>
-        </div>
+    </div>
   </footer>
   
   	@yield('scripts')
@@ -193,6 +209,33 @@ font-family: 'GT Eesti Text Trial', sans-serif;
   });
 </script>  
 <script src="{{asset('traveler')}}/js/main.js"></script>
+<script>
+$(document).ready(function(){
+  @foreach($value as $values)
+  var comment{{$values->id}} = $('#comment{{$values->id}}').text();
+    var shortText = comment{{$values->id}}.substr(0, 250);
+    var fullText = comment{{$values->id}};
+    var isTruncated = comment{{$values->id}}.length > 250;
+    // alert(shortText)
+    if (isTruncated) {
+        $('#comment{{$values->id}}').html('<span class="short-text">' + shortText + '...</span><span class="full-text">' + fullText + '</span>');
+        $('#comment{{$values->id}}').addClass('show-short-text');
+    } else {
+        $('#toggleComment{{$values->id}}').hide();
+    }
+
+    $('#toggleComment{{$values->id}}').click(function() {
+        if ($('#comment{{$values->id}}').hasClass('show-short-text')) {
+            $('#comment{{$values->id}}').removeClass('show-short-text').addClass('show-full-text');
+            $(this).text('See Less');
+        } else {
+            $('#comment{{$values->id}}').removeClass('show-full-text').addClass('show-short-text');
+            $(this).text('See More');
+        }
+    });
+    @endforeach
+})  
+</script>
 <!-- script total harga/ -->
 <script type="text/javascript">
 $("#dialog").css("display","none");
@@ -205,6 +248,15 @@ $("#dialogs").css("display","none");
      const jam ={!! $jam !!}
      const hargachild = {!!$hargachild!!}
      const options = {!! $options !!}
+
+     var spinnerIds = [
+        @foreach($pilihan as $p)
+            '#spiners{{$p->id}}',
+        @endforeach
+    ];
+    var spinnerSelector = spinnerIds.join(',');
+    $(spinnerSelector).hide();
+
 
     $("#cekharga").click(function(){
       let date=$("#date-start").val()
@@ -696,6 +748,10 @@ $('#{{$p->id}}').submit(function(event) {
     if (validateForm()) {
         validateAvailable(formId).then(function(isAvailable) {
             if (isAvailable) {
+              $(".btnbook{{$p->id}}").attr('disabled','disabled')
+              $(".btnbook{{$p->id}}").css('text-decoration','none')
+              $("#bookbtn{{$p->id}}").hide()
+              $('#spiners{{$p->id}}').show()
                 $('#' + formId)[0].submit();
             } else {
               Swal.fire({
