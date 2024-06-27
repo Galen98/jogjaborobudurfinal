@@ -151,7 +151,7 @@ font-family: 'GT Eesti Text Trial', sans-serif;
         </div>
         <div class="col-md-12">
           <p class="text-center">
-            <small class="block" style="color: white;">&copy; 2010 - {{ now()->year }} Jogja Borobudur Tour. All Rights Reserved.</small> 
+            <small class="block" style="color: white;">&copy; {{ now()->year }} Jogja Borobudur Tour. All Rights Reserved.</small> 
           </p>
         </div>
       </div>
