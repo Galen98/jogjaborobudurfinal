@@ -629,20 +629,6 @@ jQuery(function ($) {
             $('#id_waktu_{{$p->id}}').val(selectedId);
         });
 
-        
-        // $('#{{$p->id}}').submit(function (event) {
-        //     var formId = $(this).attr('id');
-        //     event.preventDefault();
-        //     if (validateForm() && validateAvailable(formId)) {
-        //       this.submit();
-        //     } else {
-        //       Swal.fire({
-        //           title: "",
-        //           html: "<div style='text-align: center;'>Tour not available,<br/>please try another time slot or date.</div>",
-        //           icon: "error"
-        //       });
-        //   }
-        // });
 
         function validateForm() {
     var dateStart = $('input[name="traveldate"]').val().trim();
@@ -714,23 +700,26 @@ function validateAvailable(id) {
                 }
             }
 
-            if (isAvailable) {
-                var times = $('#id_waktu_{{$p->id}}').val().trim();
+            if (isAvailable == true) {
+                var times = $('#id_waktu_{{$p->id}}').val();
                 var timeId = timeResponse[0].waktu_id.map(index => index.waktu_id);
                 var available = timeResponse[0].waktu_id.map(index => index.available);
                 var dateAvailabilityIds = timeResponse[0].waktu_id.map(index => index.date_available_id);
                 var timeSlotAvailable = true;
                 for (var i = 0; i < dates.length; i++) {
-                if (dates[i] === dateStart && dateAvailabilityIds[i] == dateavailabilityId[i]) {
-                for (var i = 0; i < timeId.length; i++) {
-                    if (timeId[i] == times) {
-                        if (available[i] == 0) {
-                            timeSlotAvailable = false;
-                            break;
+                if (dates[i] === dateStart) {
+                    for (var j = 0; j < timeId.length; j++) {
+                        if (dateAvailabilityIds[j] == dateavailabilityId[i] && timeId[j] == times) {
+                            if (available[j] == 0) {
+                                timeSlotAvailable = false;
+                                break;
+                            }
                         }
-                    } 
+                    }
                 }
-              }
+                if (!timeSlotAvailable) {
+                    break;
+                }
             }
                 isAvailable = timeSlotAvailable;
             }

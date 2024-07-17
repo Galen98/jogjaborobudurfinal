@@ -5,6 +5,7 @@
 <div class="card border-0 bg-transparent">
 <div class="card-body">
 <h3 class="card-title">{{$namaWisata}}</h3>
+<button onclick="goBack()" class="btn rounded-pill btn-outline-dark btn-sm mt-2"><i class="mdi mdi-keyboard-backspace"></i> Back</button>
 </div>
 </div>
 
@@ -47,4 +48,12 @@
                 </div>
               </div>
             </div>
+@endsection
+
+@section('scripts')
+<script>
+        function goBack() {
+            window.history.back();
+        }
+</script>
 @endsection

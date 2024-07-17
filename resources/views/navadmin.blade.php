@@ -87,7 +87,7 @@
 
         <li class="nav-item">
           <a class="nav-link" href="/currency/currency">
-            <i class=" mdi mdi-currency-usd menu-icon"></i>
+            <i class="mdi mdi-currency-usd menu-icon"></i>
             <span class="menu-title">Currency</span>
           </a>
         </li>
