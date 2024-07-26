@@ -5,10 +5,12 @@
 <div class="card border-0 bg-transparent">
 <div class="card-body">
 <h3 class="card-title">{{$namaOption}}</h3>
+<button id="goback" class="btn rounded-pill btn-outline-dark btn-sm mt-3"><i class="mdi mdi-keyboard-backspace"></i> Back</button>
+<br>
 <a href="/dateavailable/item/manage/create/{{$ids}}" class="btn btn-md mt-3 btn-danger rounded-lg">Add new</a>
 </div>
 </div>
-
+<input type="hidden" name="" id="slug" value="{{$slug}}">
 <div class="card border-0 bg-transparent">
 <div class="card-body">
     
@@ -85,6 +87,15 @@
 @endsection
 
 @section('scripts')
+<script>
+$(document).ready(function() {
+  $('#goback').click(function() {
+    let slug = $('#slug').val()
+    location.href = `/dateavailable/item/${slug}`;
+  })
+})
+</script>
+
 <script>
   $(document).ready(function() {
     @foreach($getAvailable as $item)

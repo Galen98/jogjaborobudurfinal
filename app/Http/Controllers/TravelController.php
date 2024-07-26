@@ -347,8 +347,8 @@ class TravelController extends Controller
 
     public function viewtraveladmin($idtravel){
         $travel = travel::where('wisata_id',$idtravel)->get();
-        $includes= includes::where('wisata_id',$idtravel)->get();
-        $excludes= excludes::where('wisata_id',$idtravel)->get();
+        $includes = includes::where('wisata_id',$idtravel)->get();
+        $excludes = excludes::where('wisata_id',$idtravel)->get();
         $highlight = highlight::where('wisata_id',$idtravel)->get();
         return view('viewtravel', compact('travel','includes','excludes','highlight'));
     }
@@ -356,9 +356,9 @@ class TravelController extends Controller
 
     public function categorydestination(Request $request,$idcategory){
         $season = season::get();
-        $bahasa=bahasa::get();
-         $lang=$request->server('HTTP_ACCEPT_LANGUAGE');
-         $langs=Str::substr($lang, 0,2);
+        $bahasa = bahasa::get();
+         $lang = $request->server('HTTP_ACCEPT_LANGUAGE');
+         $langs = Str::substr($lang, 0,2);
          if ($langs == 'id') {
             if(bahasa::where('bahasa', 'Bahasa')->exists()){
                 $sessions = session()->get("bahasa") ?? "Bahasa";

@@ -9,14 +9,15 @@
                             <tbody>
                             <tr class="control-group">
                               <td>
-                            <td><form action="/data-booking/filter" method="GET">
+                            <td>
+                            <form action="/data-booking/filter" method="GET">
                             <div class="wrapper">
                             <td><input type="text" id="from" name="from" class="form-control" placeholder="From"></td>
                             <td>&nbsp;&nbsp;&nbsp;</td>
                             <td><input type="text" id="to" name="to" class="form-control" placeholder="To"></td>
                           </div>
                             <td><button class="btn btn-primary" type="submit">Filter</button></td>
-                        </form>
+                          </form>
                    			 </td>
                             </td>  
                             </tr>    

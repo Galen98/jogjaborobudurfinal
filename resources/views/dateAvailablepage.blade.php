@@ -38,7 +38,7 @@
                         <tr>
                             <td>{{$loop->iteration}}</td>
                             <td class="text-capitalize">{{$item->judulsub}}</td>
-                            <td><a href="/dateavailable/item/manage/{{$item->id}}">Manage it!</a></td>
+                            <td><a href="/dateavailable/item/{{$slug}}/manage/{{$item->id}}">Manage it!</a></td>
                         </tr>
                         @endforeach
                         @endif
@@ -53,7 +53,7 @@
 @section('scripts')
 <script>
         function goBack() {
-            window.history.back();
+          location.href = '/dateavailable';
         }
 </script>
 @endsection

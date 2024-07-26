@@ -33,10 +33,10 @@ class AdminController extends Controller
         $wisataId = travel::where('slug', $slug)->first()->wisata_id;
         $namaWisata = travel::where('slug', $slug)->first()->namawisata;
         $travelOption = subwisata::where('wisata_id', $wisataId)->get();
-        return view('dateAvailablepage', compact('travelOption', 'namaWisata'));
+        return view('dateAvailablepage', compact('travelOption', 'namaWisata', 'slug'));
     }
 
-    public function getTraveloption($id){
+    public function getTraveloption($slug, $id){
         $namaOption = subwisata::where('id', $id)->first()->judulsub;
         $ids = $id;
         $dateNow = Carbon::now()->format('d/m/Y');
@@ -47,7 +47,7 @@ class AdminController extends Controller
                                       ->get();
     
         //dd($getAvailable);
-        return view('dateAvailablemanage', compact('namaOption', 'getAvailable', 'ids'));
+        return view('dateAvailablemanage', compact('slug', 'namaOption', 'getAvailable', 'ids'));
     }
 
     public function createDateavailable($id) { 
@@ -66,6 +66,7 @@ class AdminController extends Controller
         $date = $request->date;
         $status = $request->status;
 
+        $slug = travel::where('wisata_id',$idtravel)->first()->slug;
         if($status == "on"){
             $status = true;
         } else {
@@ -101,7 +102,7 @@ class AdminController extends Controller
             }
 
          Alert::success('Success');
-         return redirect('/dateavailable/item/manage/'.$idsub);
+         return redirect('/dateavailable/item/' .$slug. '/manage/' .$idsub);
         }
     
     public function deleteAvailability() {
