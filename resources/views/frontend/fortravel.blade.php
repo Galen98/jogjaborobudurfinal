@@ -257,6 +257,30 @@ $("#dialogs").css("display","none");
     var spinnerSelector = spinnerIds.join(',');
     $(spinnerSelector).hide();
 
+    var bookbtn = [
+      @foreach($pilihan as $p)
+        '#bookbtn{{$p->id}}',
+      @endforeach
+    ]
+    var bookbtnSelector = bookbtn.join(',')
+
+    var bookbtndisabled = [
+      @foreach($pilihan as $p)
+      '.btnbook{{$p->id}}',
+      @endforeach
+    ]
+    var bookbtndsbSelector = bookbtndisabled.join(',')
+
+    $(window).on('beforeunload', function() {
+        $(spinnerSelector).hide();
+        $(bookbtnSelector).show()
+    });
+
+    $(window).on('pageshow', function() {
+      $(spinnerSelector).hide();
+      $(bookbtnSelector).show();
+      $(bookbtndsbSelector).attr('disabled', false)
+    });
 
     $("#cekharga").click(function(){
       let date=$("#date-start").val()
@@ -630,7 +654,7 @@ jQuery(function ($) {
         });
 
 
-        function validateForm() {
+    function validateForm() {
     var dateStart = $('input[name="traveldate"]').val().trim();
     var timeSelected = $('select[name="waktu"]').val().trim();
 
@@ -737,10 +761,11 @@ $('#{{$p->id}}').submit(function(event) {
     if (validateForm()) {
         validateAvailable(formId).then(function(isAvailable) {
             if (isAvailable) {
-              $(".btnbook{{$p->id}}").attr('disabled','disabled')
+              // $(".btnbook{{$p->id}}").attr('disabled','disabled')
               $(".btnbook{{$p->id}}").css('text-decoration','none')
               $("#bookbtn{{$p->id}}").hide()
               $('#spiners{{$p->id}}').show()
+              $(".btnbook{{$p->id}}").attr('disabled', true)
                 $('#' + formId)[0].submit();
             } else {
               Swal.fire({
@@ -760,7 +785,7 @@ $('#{{$p->id}}').submit(function(event) {
   </script>
 
 
-  <!-- Google tag (gtag.js) -->
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-YTCCX40XDL"></script>
 <script>
   window.dataLayer = window.dataLayer || [];

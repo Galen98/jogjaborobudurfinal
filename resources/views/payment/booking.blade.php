@@ -1,7 +1,7 @@
 @extends('payment.index')
 @section('content')
 <div class="customer-information__container customer-information__order-summary--mweb customer-information--mweb-only">
-	<div class="order-summary-collapsible" data-test-id="order-summary" style="">
+	<div class="order-summary-collapsible" data-test-id="order-summary">
 	<div class="order-summary-collapsible__container">
 	<div class="isCollapsed order-summary-collapsible__controllers">
 	<div>
@@ -55,13 +55,12 @@
     Your payment due {{ \Carbon\Carbon::parse($data->cust_time)->isoFormat('DD MMMM YYYY [at] h:mm A')}}
     </div>
 	</section>
-	</div>
+</div>
 
   <div class="customer-information__container" data-test-id="checkout-section">
 	<section class="customer-information__content">
-	<div style="" class="billing-form"><h2>Choose payment methods</h2>
+	<div class="billing-form"><h2>Choose payment methods</h2>
 	<div class="billing-form__container">
- 
   <div class="method">
   <div class="card">
   <div class="card-body">
@@ -75,14 +74,15 @@
   </div>
   <div class="card mb-4 border-top-0" id="bank">
   <div class="card-body">
-  <form action="{{route('paymenttransfer')}}" method="post" id="formbank">
+  <form action="{{route('formtransfer')}}" method="get" id="formbank">
+	@csrf
     <input type="hidden" name="idBooking" value="{{$data->id}}" id="">
     @csrf
       <p class="text-muted">
-      You will receive an email from us to complete the payment.</p>
+      Complete the payment and you will receive an booking voucher.</p>
       <button type="submit" class="btnbank btn rounded-pill btn-dark mt-3 w-75">
 		<p id="textbank">Confirm</p>
-		<div id="spinersbank" class="spinner-border text-white" style="width: 1.5rem; height: 1.5rem;"></div>
+		<div id="spinersbank" style="display:none;" class="spinner-border text-white" style="width: 1.5rem; height: 1.5rem;"></div>
 		</button>
     </form>
   </div>
@@ -108,7 +108,7 @@
     <p class="text-muted">You will be redirected in a new window to PayPal to complete payment.</p>
     <button type="submit" class="btnpp btn btn-dark rounded-pill mt-3 w-75">
 	<p id="textpp">Confirm</p>
-	<div id="spinerspp" class="spinner-border text-white" style="width: 1.5rem; height: 1.5rem;"></div>
+	<div id="spinerspp" style="display:none;" class="spinner-border text-white" style="width: 1.5rem; height: 1.5rem;"></div>
 	</button>
     </form>
   </div>
@@ -119,7 +119,7 @@
   </section>
 
   <section class="customer-information__sidebar">
-	<div class="order-summary-collapsible customer-information--desktop-only" data-test-id="order-summary" style="">
+	<div class="order-summary-collapsible customer-information--desktop-only" data-test-id="order-summary">
 	<h3 class="order-summary-collapsible__title">Order summary</h3>
 	<div class="order-summary-collapsible__container">
 	<section>
@@ -219,8 +219,23 @@
   $(document).ready(function(){
   $('#spinersbank').hide()
   $('#spinerspp').hide()
+  $('#textpp').show();
+  $('#textbank').show();
   $("#bank").css("display","none"); 
   $("#paypal").css("display","none"); 
+
+  if (sessionStorage.getItem('spinnerState') === 'shown') {
+      $('#textpp').hide();
+      $('#spinerspp').show();
+      $('#textbank').hide();
+      $('#spinersbank').show();
+    } else {
+      $('#textpp').show();
+      $('#spinerspp').hide();
+      $('#textbank').show();
+      $('#spinersbank').hide();
+    }
+
   $(".method").click(function(){
   if ($("input[name='method']:checked").val() == "bank" ) { 
     $("#bank").slideDown("fast");
@@ -231,19 +246,40 @@
   }
   });
   
+  $(window).on('beforeunload', function() {
+    //   sessionStorage.setItem('spinnerState', 'shown');
+      $('#textpp').hide();
+      $('#spinerspp').show();
+      $('#textbank').hide();
+      $('#spinersbank').show();
+    });
+
+    $(window).on('pageshow', function() {
+      sessionStorage.removeItem('spinnerState');
+      $('#textpp').show();
+      $('#spinerspp').hide();
+      $('#textbank').show();
+      $('#spinersbank').hide();
+	  $('.btnbank').attr('disabled', false)
+	  $('.btnpp').attr('disabled', false)
+    });
+
   $('#formpp').submit(function(){
 	$('#textpp').hide()
 	$('#spinerspp').show()
-	$('.btnpp').attr('disabled','disabled')
 	$('.btnpp').css('text-decoration','none')
+	$('.btnpp').attr('disabled', true)
+	sessionStorage.setItem('spinnerState', 'shown');
   })
 
   $('#formbank').submit(function(){
 	$('#textbank').hide()
 	$('#spinersbank').show()
-	$('.btnbank').attr('disabled','disabled')
 	$('.btnbank').css('text-decoration','none')
+	$('.btnbank').attr('disabled', true)
+	sessionStorage.setItem('spinnerState', 'shown');
   })
+
   })
 </script>
 @endsection

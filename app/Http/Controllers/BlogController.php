@@ -71,7 +71,7 @@ class BlogController extends Controller
                 'slug'=>\Str::slug($request->judulartikel)
             ];
     
-            $blog=blog::create($data);
+            $blog = blog::create($data);
         }
         else{
             $image = Image::make($img->getRealPath());
@@ -2111,9 +2111,9 @@ class BlogController extends Controller
     }
 
     public function insertprovince(Request $request){
-        $region=$request->province;
-        $short=$request->shortdescription;
-        $img= request('image');
+        $region = $request->province;
+        $short = $request->shortdescription;
+        $img = request('image');
         $nama_file = time()."_".$img->getClientOriginalName();
         $gambar = Image::make($img);
         $gambar->resize(600,600);

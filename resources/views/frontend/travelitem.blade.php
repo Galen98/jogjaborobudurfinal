@@ -613,7 +613,7 @@ style="margin-top:5px;height:46px;margin-right:-20px;margin-left:-17px;margin-to
     @if($p->status == true)
   <button type="submit" id="bookx" class="btnbook{{$p->id}} p-1 js-check-availability gtm-trigger__adp-check-availability-btn avoid-close-dropdown-on-click c-button c-button--medium filbtn" data-v-dd428772>  
     <p id="bookbtn{{$p->id}}">Book now</p>
-    <div id="spiners{{$p->id}}" class="spinner-border text-white"></div>
+    <div id="spiners{{$p->id}}" style="display:none;" class="spinner-border text-white"></div>
   </button>
   @else 
   <h2>This option is not available</h2>

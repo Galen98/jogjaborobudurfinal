@@ -92,7 +92,7 @@ class TravelController extends Controller
         $subdescription=Request('shortoption');
         $personoption=Request('personoption');
 
-        $img= request('image');
+        $img = request('image');
         $image = Image::make($img->getRealPath());
         $image->resize(800, null, function ($constraint) {
             $constraint->aspectRatio();
@@ -102,7 +102,7 @@ class TravelController extends Controller
         $image->encode('webp', 80)->save(($tujuan_upload . '/' . pathinfo($nama_file, PATHINFO_FILENAME) . '.webp'));
 		 
 
-        $img2= request('image2');
+        $img2 = request('image2');
         $image2 = Image::make($img2->getRealPath());
         $image2->resize(800, null, function ($constraint) {
             $constraint->aspectRatio();

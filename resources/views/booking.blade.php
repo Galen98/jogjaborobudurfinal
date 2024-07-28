@@ -145,6 +145,11 @@
      @endif
      <span data-v-67560657>Pickup Location: {{$item->pickup}}</span>
      <span data-v-67560657>Special Request: {{$item->request}}</span>
+     @if(($item->proff_of_payment) !== null)
+     <span>
+     <a href="{{ route('downloadProff', $item->proff_of_payment) }}" class="btn btn-primary btn-sm mt-3"><i class="mdi mdi-download"></i> Proff of payment</a>
+     </span>
+     @endif
   </div>
 </div>
     </div>
@@ -261,6 +266,11 @@
      @endif
      <span data-v-67560657>Pickup Location: {{$item->pickup}}</span>
      <span data-v-67560657>Special Request: {{$item->request}}</span>
+     @if(($item->proff_of_payment) !== null)
+     <span>
+     <a href="{{ route('downloadProff', $item->proff_of_payment) }}" class="btn btn-primary btn-sm mt-3"><i class="mdi mdi-download"></i> Proff of payment</a>
+     </span>
+     @endif
   </div>
 </div>
     </div>

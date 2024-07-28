@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="{{asset('traveler')}}/css/booking11.css">
     <script src="{{asset('traveler')}}/js/modernizr-2.6.2.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	<script src="sweetalert2/dist/sweetalert2.min.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" ></script>
   </head>
   <body>

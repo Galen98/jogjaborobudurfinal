@@ -342,8 +342,11 @@ Route::post('pay',[PaymentController::class, 'pay'])->name('payment');
 Route::post('paytransfer',[PaymentController::class, 'payTransfer'])->name('paymenttransfer');
 Route::post('sendvoucher',[PaymentController::class, 'payVoucher'])->name('sendvoucher');
 Route::get('deleteexpiredtoken',[PaymentController::class, 'deleteExpiredBookings']);
+Route::get('formtransfer',[PaymentController::class, 'formBankTransfer'])->name('formtransfer');
 Route::post('addCart',[PaymentController::class, 'addCart'])->name('addCart');
+Route::post('transferBankProcess',[PaymentController::class, 'transferBankProcess'])->name('transferBankProcess');
 Route::get('/payment/{token}',[PaymentController::class, 'paymentMethod'])->name('paymentmethods');
+Route::get('/downloadProff/{proff}',[PaymentController::class, 'downloadProff'])->name('downloadProff');
 Route::get('success',[PaymentController::class, 'success']);
 Route::get('error',[PaymentController::class, 'error']);
 
