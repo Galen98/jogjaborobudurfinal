@@ -395,14 +395,6 @@
   <script src="{{asset('traveler')}}/js/jquery.min.js"></script>
   
 
-  <script>
-// $(document).ready(function(){
-//   $("#tess").click(function(){
-//    alert("The paragraph was clicked.");
-//   });
-// });
-</script>
-
 <script type="text/javascript">
   $(document).ready(function(){
 	const country = {!! $country !!}

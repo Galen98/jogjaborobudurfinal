@@ -195,7 +195,7 @@
 	<button class="paybtn c-button c-button--medium filbtn billing-form__validate-billing-details-and-sri__button" 
     type="submit" data-test-id="checkout-submit-btn" id="tess">
 	<p id="paytxt">Payment</p>
-	<div id="spiners" class="spinner-border text-white"></div>
+	<div id="spiners" style="display:none;" class="spinner-border text-white"></div>
 	</button>
 	</form>
 	</div>
@@ -308,7 +308,6 @@
 		$('#countrymobile').text('+Code')
 	}
 
-	$('#spiners').hide()
 	const country = {!! $country !!}
 	$('#countryphone').on('change', function() {
 	let countrymobile=$("#countrymobile").val()
@@ -321,8 +320,31 @@
   </script>
   <script>
 	$(document).ready(function () {
+	$('#spiners').hide()
+	$('#paytxt').show()
+	
     $('form').submit(function () {
         return validateForm();
+    });
+
+	if (sessionStorage.getItem('spinnerState') === 'shown') {
+		$('#spiners').show()
+		$('#paytxt').hide()
+    } else {
+		$('#spiners').hide()
+		$('#paytxt').show()
+    }
+
+	$(window).on('beforeunload', function() {
+		$('#spiners').show()
+		$('#paytxt').hide()
+    });
+
+    $(window).on('pageshow', function() {
+      sessionStorage.removeItem('spinnerState');
+      $('#spiners').hide()
+	  $('#paytxt').show()
+	  $('.paybtn').attr('disabled', false)
     });
 
     function validateForm() {
@@ -378,7 +400,7 @@
 		else {
 		$('#spiners').show()
 		$('#paytxt').hide()
-		$('.paybtn').attr('disabled','disabled')
+		$('.paybtn').attr('disabled', true)
 		$('.paybtn').css('text-decoration','none')
         return true;
 		}
