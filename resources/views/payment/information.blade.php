@@ -195,7 +195,7 @@
 	<button class="paybtn c-button c-button--medium filbtn billing-form__validate-billing-details-and-sri__button" 
     type="submit" data-test-id="checkout-submit-btn" id="tess">
 	<p id="paytxt">Payment</p>
-	<div id="spiners" style="display:none;" class="spinner-border text-white"></div>
+	<div id="spiners" style="display:none;width: 1.5rem; height: 1.5rem;" class="spinner-border text-white"></div>
 	</button>
 	</form>
 	</div>

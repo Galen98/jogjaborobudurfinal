@@ -29,18 +29,19 @@
             <h5 class="mb-2 fw-normal">Account Number: 8020237067</h5>
             <h5 class="mb-2 fw-normal">Account Holder: Heru Kristanto</h5>
             <h5 class="mb-2 fw-normal">Bank Name: BCA</h5>
-            <h5 class="mb-4 fw-normal">Swift Code: CENAIDJA (for international bank transfer)</h5>
+            <h5 class="mb-4 fw-normal">Swift Code: CENAIDJA (For International Bank Transfer)</h5>
             <h5 class="mb-4 fw-bolder">Total Amount: {!! $bookingData->total !!}</h5>
             <div class="border-0">
-            <label for="proffPay" class="form-label text-muted">Proff of payment</label>
+            <label for="proffPay" class="form-label text-muted">Proof of payment</label>
             <input accept="image/*" name="proffPay" onchange="showFiles(this)" class="form-control border-0 text-black" type="file" id="proffPay">
             </div>
             <div class="mt-3"> 
                 <div class="row" id="imagePreviews"></div> 
             </div> 
-            <button class="paybtn c-button c-button--medium filbtn billing-form__validate-billing-details-and-sri__button" 
-            type="submit" data-test-id="checkout-submit-btn">
-            <p>Confirm</p>
+            <button class="btnpay c-button c-button--medium filbtn billing-form__validate-billing-details-and-sri__button" 
+            type="submit">
+            <p id="txtconfirm">Confirm</p>
+            <div id="spiners" style="display:none;width: 1.5rem; height: 1.5rem;" class="spinner-border text-white"></div>
             </button>
         </form>
     </div>
@@ -53,6 +54,40 @@
 
 @section('script')
 <script> 
+  $('#spiners').hide()
+  $('#txtconfirm').show();
+  
+
+  if (sessionStorage.getItem('spinnerState') === 'shown') {
+    $('#spiners').show()
+    $('#txtconfirm').hide();
+    $('.btnpay').attr('disabled', true);
+    } else {
+    $('#spiners').hide()
+    $('#txtconfirm').show();
+    $('.btnpay').attr('disabled', false);
+    }
+
+    $(window).on('beforeunload', function() {
+    $('#spiners').show()
+    $('#txtconfirm').hide();
+    });
+
+    $(window).on('pageshow', function() {
+      sessionStorage.removeItem('spinnerState');
+      $('#spiners').hide()
+      $('#txtconfirm').show();
+	  $('.btnpay').attr('disabled', false)
+    });
+
+    $('form').submit(function(){
+        $('#spiners').show()
+        $('#txtconfirm').hide();
+        $('.btnpay').css('text-decoration','none')
+        $('.btnpay').attr('disabled', true);
+        sessionStorage.setItem('spinnerState', 'shown');
+    })
+  
         function showFiles(input) { 
             const previewsContainer = 
             document.getElementById('imagePreviews'); 
@@ -75,35 +110,5 @@
                 reader.readAsDataURL(file); 
             } 
         } 
-    </script>
-    
-    <script>
-        $(document).ready(function(){
-            $('form').submit(function (event) {
-                event.preventDefault(); 
-                return validateForm();
-            });
-
-            function validateForm() {
-                var proff = $("#proffPay").val()
-                if(proff == '') {
-                    swal("Error", "Upload your proff of payment.", "error");
-                    return false; 
-                } else{
-                    swal({
-                    title: "Are you sure?",
-                    text: "You won't be able to revert this!",
-                    icon: "warning",
-                    buttons: true,
-                    })
-                    .then((isConfirm) => {
-                    if (isConfirm) {
-                        $('form')[0].submit()
-                    }
-                    });
-                    return false;
-                }
-            }
-        })
     </script>
 @endsection

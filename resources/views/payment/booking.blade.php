@@ -82,7 +82,7 @@
       Complete the payment and you will receive an booking voucher.</p>
       <button type="submit" class="btnbank btn rounded-pill btn-dark mt-3 w-75">
 		<p id="textbank">Confirm</p>
-		<div id="spinersbank" style="display:none;" class="spinner-border text-white" style="width: 1.5rem; height: 1.5rem;"></div>
+		<div id="spinersbank" class="spinner-border text-white" style="display:none;width: 1.5rem; height: 1.5rem;"></div>
 		</button>
     </form>
   </div>
@@ -108,7 +108,7 @@
     <p class="text-muted">You will be redirected in a new window to PayPal to complete payment.</p>
     <button type="submit" class="btnpp btn btn-dark rounded-pill mt-3 w-75">
 	<p id="textpp">Confirm</p>
-	<div id="spinerspp" style="display:none;" class="spinner-border text-white" style="width: 1.5rem; height: 1.5rem;"></div>
+	<div id="spinerspp" style="display:none;width: 1.5rem; height: 1.5rem;" class="spinner-border text-white"></div>
 	</button>
     </form>
   </div>

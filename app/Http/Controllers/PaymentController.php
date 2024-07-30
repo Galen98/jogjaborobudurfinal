@@ -276,7 +276,7 @@ class PaymentController extends Controller
                     ->subject($data['subject']);     
         }); 
 
-        toast('Check your email for your booking voucher!','success');
+        toast('Thank you for submitting your payment, your booking voucher have been sent to your email!','success');
         return redirect()->to('/');
         } else {
         toast('Your payment process has been expired!','error');
