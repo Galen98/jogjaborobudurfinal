@@ -721,7 +721,7 @@ style="margin-top:5px;height:46px;margin-right:-20px;margin-left:-17px;margin-to
       @endif    
             <span class="price-block__explanation">{{$item->kategories}} @if($item->kategories == 'Per Group') up to {{$item->capacity}} @endif</span></p> 
             <div class="price-block__button" data-v-46d2d245>
-              <a href="#books">
+              <a href="#books" id="scroll-to-books">
             <button type="button" id="btn-booking-header" data-test-id="btn-booking-header" class="gtm-trigger__book-now-price-box-btn c-button c-button--medium filbtn" data-v-46d2d245>
               Book now
             </button>
@@ -858,13 +858,15 @@ style="margin-top:5px;height:46px;margin-right:-20px;margin-left:-17px;margin-to
   <main id="main-content" class="home-page">
 <div class="activities" data-v-680034d2 data-v-1e9f5217>
     <section data-test-id="activity-picks" class="collection-container container activities__cards" data-v-76e871e0 data-v-680034d2>
+    @if(count($other) > 0) 
     <div class="collection-header d-none d-sm-block" data-v-76e871e0>
     <div class="collection-header--title-container" data-v-76e871e0>
     <span data-test-id="collection-title" class="collection-header_title" data-v-76e871e0>
         Other popular tour
       </span> 
     </div> 
-    </div> 
+    </div>
+    
     <div class="collection-body d-none d-sm-block" data-v-76e871e0>
     <div class="collection-body--horizontal" data-v-76e871e0>
     <div class="vertical-activity-cards__grid" data-v-76e871e0>
@@ -1149,6 +1151,7 @@ style="margin-top:5px;height:46px;margin-right:-20px;margin-left:-17px;margin-to
     </div>
     </div>
     </div>
+      @endif
     <br>
     <hr>
     @if(count($value) === 0)

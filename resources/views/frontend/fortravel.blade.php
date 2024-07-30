@@ -210,6 +210,12 @@ font-family: 'GT Eesti Text Trial', sans-serif;
 </script>  
 <script src="{{asset('traveler')}}/js/main.js"></script>
 <script>
+  document.getElementById('scroll-to-books').addEventListener('click', function(event) {
+    event.preventDefault();
+    document.getElementById('books').scrollIntoView({ behavior: 'smooth' });
+   });
+</script>
+<script>
 $(document).ready(function(){
   @foreach($value as $values)
   var comment{{$values->id}} = $('#comment{{$values->id}}').text();
