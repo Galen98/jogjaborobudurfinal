@@ -107,11 +107,11 @@ class AdminController extends Controller
     
     public function deleteAvailability() {
         $dateNow = Carbon::now()->format('d/m/Y');
-        $ids = dateAvailable::where('date', '<', $dateNow)->get();
+        $ids = dateAvailable::whereRaw("STR_TO_DATE(date, '%d/%m/%Y') < STR_TO_DATE(?, '%d/%m/%Y')", [$dateNow])->get();        
         foreach($ids as $id) {
             tambahAvailable::where('date_available_id', $id->id)->delete();
         }
-        dateAvailable::where('date', '<', $dateNow)->delete();
+        dateAvailable::whereRaw("STR_TO_DATE(date, '%d/%m/%Y') < STR_TO_DATE(?, '%d/%m/%Y')", [$dateNow])->delete();
     }
 
     public function updateDateAvailability(Request $request, $id) {
