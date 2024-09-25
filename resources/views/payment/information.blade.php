@@ -371,6 +371,13 @@
             swal("Error", "Email cannot be empty.", "error");
             return false; 
         }
+		
+		//validation email
+		var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		if (!regex.test(email)) {
+            swal("Error", "Email format is invalid. Please enter a valid email.", "error");
+            return false;
+        }
 
 		if (!selectedCountry) {
             swal("Error", "Please select a country.", "error");
