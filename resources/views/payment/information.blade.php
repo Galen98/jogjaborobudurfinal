@@ -375,7 +375,7 @@
 		//validation email
 		var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 		if (!regex.test(email)) {
-            swal("Error", "Email format is invalid. Please enter a valid email.", "error");
+            swal("Error", "Please enter a valid email address.", "error");
             return false;
         }
 
