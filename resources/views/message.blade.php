@@ -118,7 +118,14 @@
         </button>
       </div>
       <div class="modal-body">
-        <textarea class="form-control" readonly="" id="idpesan" style="height:400px;"></textarea>
+        <textarea class="form-control" readonly="" id="idpesan" style="height:100px;"></textarea>
+        <h6 class="modal-title mt-4" id="exampleModalLongTitle">Reply</h6>
+        <form action="{{route('reply.email')}}" method="POST">
+          @csrf
+        <input type="hidden" id="emailto" name="emailto" value="">
+        <textarea class="form-control" id="mytextarea" name="emailreply" style="height:150px;"></textarea>
+        <button type="submit" class="mt-2 btn btn-primary">Submit</button>
+      </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="close btn btn-secondary" data-id="" data-dismiss="modal">Close</button>
@@ -179,6 +186,7 @@
                 url:"/showmessage/"+idpesan,
                 success:function(response){
                     $('#idpesan').val(response.Message.message);
+                    $('#emailto').val(response.Message.email);
                     $('.close').attr('data-id', response.Message.id);
                 }
             });          

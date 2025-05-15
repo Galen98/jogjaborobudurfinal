@@ -571,6 +571,7 @@ Route::patch('/updateimportant/{idimportant}',[BlogController::class,'updateimpo
 Route::patch('/updatehargachild/{idhargachild}',[BlogController::class,'updatehargachild'])->middleware('auth');
 Route::patch('/updatediskon/{idtravell}',[BlogController::class,'updatediskon'])->middleware('auth');
 Route::post('generatepdf',[App\Http\Controllers\emailController::class, 'sendPDF']);
+Route::post('replyemail',[App\Http\Controllers\emailController::class, 'replyEmail'])->name('reply.email');
 Route::get("/change-session/{currency}", function ($currency) {
     session()->put("rate", $currency);
     // kembali ke welcome

@@ -89,4 +89,16 @@ class emailController extends Controller
         return redirect()->to('/');
     }
 
+    public function replyEmail(Request $request) {
+        $messageBody = $request->emailreply;
+    
+        Mail::html($messageBody, function ($message) use ($request) {
+            $message->to($request->emailto)
+                    ->cc(['herucod@gmail.com', 'kitchennyonyo@gmail.com'])
+                    ->subject('no-reply message from JogjaBorobudur');
+        });
+        Alert::success('Success','Success send email.');
+        return redirect()->back();
+    }
+    
 }

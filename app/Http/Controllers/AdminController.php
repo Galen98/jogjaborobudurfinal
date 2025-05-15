@@ -168,4 +168,8 @@ class AdminController extends Controller
         ]);
         return response()->json(['message' => 'Message status updated'], 200);
     }
+
+    public function replyMessage(){
+        
+    }
 }
