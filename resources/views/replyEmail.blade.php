@@ -76,6 +76,10 @@
     </div>
 
     <p>{!! $messagereply !!}</p>
+    <br>
+    <br>
+    Best regards,<br>
+    The Jogja Borobudur Tour & Travel Team
     <section class="footer" style="background-color: #fc2c04;color: white;">
         <div class="social">
           <a href="https://wa.me/628562862504"><img src="https://www.freepnglogos.com/uploads/whatsapp-png-image-9.png" height="40" width="40"></a>
