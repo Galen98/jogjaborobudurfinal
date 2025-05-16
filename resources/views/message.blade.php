@@ -120,10 +120,12 @@
       <div class="modal-body">
         <textarea class="form-control" readonly="" id="idpesan" style="height:100px;"></textarea>
         <h6 class="modal-title mt-4" id="exampleModalLongTitle">Reply</h6>
-        <form action="{{route('reply.email')}}" method="POST">
+        <form action="{{route('reply.email')}}" method="POST" enctype="multipart/form-data">
           @csrf
         <input type="hidden" id="emailto" name="emailto" value="">
-        <textarea class="form-control" id="mytextarea" name="emailreply" style="height:150px;"></textarea>
+        <textarea class="form-control" id="replymail" name="emailreply" style="height:150px;"></textarea>
+        <label class="mt-3">Attachments (Image/PDF):</label>
+          <input type="file" name="attachments[]" accept="image/*,.pdf" multiple>
         <button type="submit" class="mt-2 btn btn-primary">Submit</button>
       </form>
       </div>

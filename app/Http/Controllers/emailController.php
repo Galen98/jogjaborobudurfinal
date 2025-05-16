@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 class emailController extends Controller
 {
@@ -90,15 +92,41 @@ class emailController extends Controller
     }
 
     public function replyEmail(Request $request) {
-        $messageBody = $request->emailreply;
+    try{
+        $validator = Validator::make($request->all(), [
+            'emailto' => 'required|email',
+            'emailreply' => 'required|string',
+            'attachments.*' => 'nullable|file|mimes:jpg,jpeg,png,webp,gif,pdf|max:2048'
+        ]);
+
+        if($validator->fails()){
+            $errorMassage = implode("\n", $validator->errors()->all());
+        }
+        
+        $to = $request->emailto;
+        $message = $request->emailreply;
     
-        Mail::html($messageBody, function ($message) use ($request) {
-            $message->to($request->emailto)
-                    ->cc(['herucod@gmail.com', 'kitchennyonyo@gmail.com'])
-                    ->subject('no-reply message from JogjaBorobudur');
+        Mail::send([], [], function ($mail) use ($to, $message, $request) {
+            $mail->to($to)
+                 ->subject('No-reply message from JogjaBorobudur')
+                 ->html($message);
+    
+            if ($request->hasFile('attachments')) {
+                foreach ($request->file('attachments') as $file) {
+                    $mail->attach($file->getRealPath(), [
+                        'as' => $file->getClientOriginalName(),
+                        'mime' => $file->getMimeType(),
+                    ]);
+                }
+            }
         });
+    
         Alert::success('Success','Success send email.');
         return redirect()->back();
-    }
-    
+    } 
+     catch(\Exception $e) {
+        Alert::error('Error', 'Something went wrong: ' . $e->getMessage());
+        return redirect()->back()->withInput();
+    }   
+}
 }

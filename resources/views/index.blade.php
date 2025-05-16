@@ -23,7 +23,14 @@
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> -->
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" ></script>
   <link rel="stylesheet" href="{{asset('traveler')}}/css/bootstrap-datepicker.min.css">
-  
+  <script>
+    tinymce.init({
+      selector: '#replymail',
+      plugins: 'link code lists',
+      toolbar: 'undo redo | bold italic | alignleft aligncenter | link | code',
+      height: 300
+    });
+  </script>
   <script>
 	tinymce.init({
   selector: 'textarea#mytextarea',
