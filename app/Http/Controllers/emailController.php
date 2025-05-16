@@ -103,15 +103,18 @@ class emailController extends Controller
             $errorMassage = implode("\n", $validator->errors()->all());
         }
         
-        $to = $request->emailto;
-        $message = $request->emailreply;
+        $data = [
+        'to' => $request->emailto,
+        'visitorMessage' => $request->usermessage,
+        'date' => $request->createdAt,
+        'name' => $request->name,
+        'messagereply' => $request->emailreply
+        ];
     
-        Mail::send([], [], function ($mail) use ($to, $message, $request) {
-            $mail->to($to)
-                 ->cc('herucod@gmail.com','kitchennyonyo@gmail.com')
-                 ->subject('No-reply message from JogjaBorobudur')
-                 ->html($message);
-    
+        Mail::send('replyEmail', $data, function ($mail) use ($request) {
+            $mail->to($request->emailto)
+                 ->subject('Message from Jogja Borobudur Tour & Travel')
+                 ->cc('herucod@gmail.com','kitchennyonyo@gmail.com', 'care@jogjaborobudur.com');
             if ($request->hasFile('attachments')) {
                 foreach ($request->file('attachments') as $file) {
                     $mail->attach($file->getRealPath(), [

@@ -140,7 +140,7 @@
 						<ul>
 							<li class="address"><h2 class="activity-card__title" data-v-a1084d9e>Yogyakarta, Indonesia</h2></li>
 							<li class="phone"><h2 class="activity-card__title" data-v-a1084d9e>+62 856 2862 504</h2></li>
-							<li class="email"><h2 class="activity-card__title" data-v-a1084d9e>herucod@gmail.com</h2></li>
+							<li class="email"><h2 class="activity-card__title" data-v-a1084d9e>care@jogjaborobudur.com</h2></li>
 						</ul>
 					</div>
 

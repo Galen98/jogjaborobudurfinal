@@ -122,6 +122,9 @@
         <h6 class="modal-title mt-4" id="exampleModalLongTitle">Reply</h6>
         <form action="{{route('reply.email')}}" method="POST" enctype="multipart/form-data">
           @csrf
+        <input type="hidden" name="createdAt" id="createdAt">
+        <input type="hidden" name="name" id="name">
+        <input type="hidden" name="usermessage" id="usermessage">
         <input type="hidden" id="emailto" name="emailto" value="">
         <textarea class="form-control" id="replymail" name="emailreply" style="height:150px;"></textarea>
         <label class="mt-3">Attachments (Image/PDF):</label>
@@ -187,7 +190,16 @@
                 type: "GET",
                 url:"/showmessage/"+idpesan,
                 success:function(response){
+                    let createdAtRaw = response.Message.created_at;
+                    let date = new Date(createdAtRaw + ' UTC'); 
+
+                    let options = { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true, timeZone: 'UTC' };
+                    let formatted = new Intl.DateTimeFormat('en-US', options).format(date);
+                    let finalText = `${formatted.replace(',', '')} UTC`;
                     $('#idpesan').val(response.Message.message);
+                    $('#createdAt').val(finalText);
+                    $('#name').val(response.Message.nama);
+                    $('#usermessage').val(response.Message.message);
                     $('#emailto').val(response.Message.email);
                     $('.close').attr('data-id', response.Message.id);
                 }
