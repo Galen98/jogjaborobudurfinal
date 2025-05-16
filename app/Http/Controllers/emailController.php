@@ -108,6 +108,7 @@ class emailController extends Controller
     
         Mail::send([], [], function ($mail) use ($to, $message, $request) {
             $mail->to($to)
+                 ->cc('herucod@gmail.com','kitchennyonyo@gmail.com')
                  ->subject('No-reply message from JogjaBorobudur')
                  ->html($message);
     
