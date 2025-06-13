@@ -1209,30 +1209,30 @@ style="margin-top:5px;height:46px;margin-right:-20px;margin-left:-17px;margin-to
                 <div class="d-none d-sm-block">
                 @if($values->image !== null)
                 <a href="{{ url('public/img/review/'.$values->image) }}" data-lightbox="mygallery{{$values->id}}" data-title="">
-                <img src="{{ url('public/img/review/'.$values->image) }}" style="min-width:250px;min-height:180px;max-width:250px;max-height:180px;border-radius:15px;margin-right:5px;" />
+                <img src="{{ url('public/img/review/'.$values->image) }}" style="width: 250px; height: 180px; object-fit: cover; border-radius: 15px; opacity: 0.5;" />
                 </a>
                 @endif
                
                 @if($values->image2 !== null)
                 <a href="{{ url('public/img/review/'.$values->image2) }}" data-lightbox="mygallery{{$values->id}}" data-title="">
-                <img src="{{ url('public/img/review/'.$values->image2) }}" style="min-width:250px;min-height:180px;max-width:250px;max-height:180px;border-radius:15px;margin-right:5px;" />
+                <img src="{{ url('public/img/review/'.$values->image2) }}" style="width: 250px; height: 180px; object-fit: cover; border-radius: 15px; opacity: 0.5;" />
               </a>
                 @endif
                 <div style="position: relative; display: inline-block;">
                 @if($values->image3 !== null)
                 <a href="{{ url('public/img/review/'.$values->image3) }}" data-lightbox="mygallery{{$values->id}}" data-title="">
-                <img src="{{ url('public/img/review/'.$values->image3) }}" style="min-width:250px;min-height:180px;max-width:250px;max-height:180px;border-radius:15px; opacity: 0.5;" />
+                <img src="{{ url('public/img/review/'.$values->image3) }}" style="width: 250px; height: 180px; object-fit: cover; border-radius: 15px; opacity: 0.5;" />
                 <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 20px; color: white;">Click to see all images</span>
                 </a>
                 @endif
                 @if($values->image4 !== null)
                 <a href="{{ url('public/img/review/'.$values->image4) }}" data-lightbox="mygallery{{$values->id}}" data-title="" style="display:none;">
-                <img src="{{ url('public/img/review/'.$values->image4) }}" style="min-width:250px;min-height:180px;max-width:250px;max-height:180px;border-radius:15px; opacity: 0.5;" />
+                <img src="{{ url('public/img/review/'.$values->image4) }}" style="width: 250px; height: 180px; object-fit: cover; border-radius: 15px; opacity: 0.5;" />
                 </a>
                 @endif
                 @if($values->image5 !== null)
                 <a href="{{ url('public/img/review/'.$values->image5) }}" data-lightbox="mygallery{{$values->id}}" data-title="" style="display:none;">
-                <img src="{{ url('public/img/review/'.$values->image5) }}" style="min-width:250px;min-height:180px;max-width:250px;max-height:180px;border-radius:15px; opacity: 0.5;" />
+                <img src="{{ url('public/img/review/'.$values->image5) }}" style="width: 250px; height: 180px; object-fit: cover; border-radius: 15px; opacity: 0.5;" />
                 </a>
                 @endif
             </div>

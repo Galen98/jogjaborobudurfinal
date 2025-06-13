@@ -60,9 +60,9 @@ Route::get("/change-bahasa/{bahasa}", function ($bahasa) {
     return back();
 });
 
-Route::get('/foo', function () {
-    Artisan::call('storage:link');
-});
+// Route::get('/foo', function () {
+//     Artisan::call('storage:link');
+// });
 
 Route::get('/', function (Request $request) {
     $lang=Request::server('HTTP_ACCEPT_LANGUAGE');

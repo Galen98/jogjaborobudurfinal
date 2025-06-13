@@ -28,7 +28,7 @@
     <p>Error: Unable to retrieve email</p>
 @endif -->
 <center>
-<p>Please check this link, dont forget to login in admin dashboard.</p>
+<p>Please check this link.</p>
 <a href="https://jogjaborobudur.com/message/{{ $link['link'] }}"> 
 <button class="awesome-button">Check now!</button>
 </a>

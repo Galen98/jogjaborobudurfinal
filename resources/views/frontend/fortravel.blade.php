@@ -290,10 +290,10 @@ $("#dialogs").css("display","none");
 
     $("#cekharga").click(function(){
       let date=$("#date-start").val()
-      let group=$("#group").val()
-      let person=$("#adult").val()
-      let personchild=$("#child").val()      
-      let dates= $("#tanggal{{$p->id}}").val()
+      let group = parseInt($("#group").val()) || 0;
+      let person = parseInt($("#adult").val()) || 0;
+      let personchild = parseInt($("#child").val()) || 0;
+      let dates = $("#tanggal{{$p->id}}").val();
       @foreach($travel as $item)
       @if($item->kategories == 'Per Person')
       if($("#adult").val() === "0" ){
@@ -307,11 +307,10 @@ $("#dialogs").css("display","none");
     }
     @endif
     @endforeach
-    else if($("#date-start").val().length === 0 ){
+    if($("#date-start").val().length === 0 ){
         // $( "#dialog" ).dialog();
         $("#date-start").focus();
-    }
-    else{
+    } else{
       @foreach($pilihan as $p) $("#totals{{$p->id}}").slideDown("fast"); 
      let subid{{$p->id}}=$("#subid{{$p->id}}").val()
      let hargaanak{{$p->id}}=0
@@ -347,10 +346,10 @@ $("#dialogs").css("display","none");
 
         })
       }else{
-            $("#dewasa{{$p->id}}").val("")
+            $("#dewasa{{$p->id}}").val(0)
             $("#jumlahdewasa{{$p->id}}").text("")
             $("#hargadewasa{{$p->id}}").text("")
-          }
+      }
           @endforeach
 
           @foreach($pilihan as $p)
@@ -369,7 +368,7 @@ $("#dialogs").css("display","none");
 
         })
       }else{
-            $("#group{{$p->id}}").val("")
+            $("#group{{$p->id}}").val(0)
             $("#amount{{$p->id}}").val("")
             $("#jumlahgroup{{$p->id}}").text("")
             $("#hargagroup{{$p->id}}").text("")
@@ -387,7 +386,7 @@ $("#dialogs").css("display","none");
           }
         })
       }else{
-        $("#anak{{$p->id}}").val("")
+        $("#anak{{$p->id}}").val(0)
         $("#jumlahchild{{$p->id}}").text("")
         $("#hargachild{{$p->id}}").text("")
       }
@@ -400,9 +399,8 @@ $("#dialogs").css("display","none");
         $("#totharga{{$p->id}}").val(convertrate(hargadewasa{{$p->id}}  + hargaanak{{$p->id}} ))
         $("#amount{{$p->id}}").val(amount(hargadewasa{{$p->id}}  + hargaanak{{$p->id}} ))
         $("#totharganoconvert{{$p->id}}").val((hargadewasa{{$p->id}}  + hargaanak{{$p->id}} ))
-      }
-      else{
-        $("#harga{{$p->id}}").text(" ")
+      } else {
+        $("#harga{{$p->id}}").text("")
         $("#totharga{{$p->id}}").val("")
         $("#amount{{$p->id}}").val("")
       }
@@ -412,24 +410,25 @@ $("#dialogs").css("display","none");
 
 $("input[data-code]").change(function(){
       let date=$("#date-start").val()
-      let group=$("#group").val()
-      let person=$("#adult").val()
-      let personchild=$("#child").val()      
-      let dates= $("#tanggal{{$p->id}}").val()
+      let group = parseInt($("#group").val()) || 0;
+      let person = parseInt($("#adult").val()) || 0;
+      let personchild = parseInt($("#child").val()) || 0;
+      let dates = $("#tanggal{{$p->id}}").val();
+      console.log("Person value: ", $("#adult").val(), " as int: ", person);
       @foreach($travel as $item)
       @if($item->kategories == 'Per Person')
-      if($("#adult").val() === "0" ){
+      if(parseInt($("#adult").val()) === 0 ){
         // $( "#dialogs" ).dialog();
         $('.participants-control').next().toggle();
     }
     @else
-    if($("#group").val() === "0" ){
+    if(parseInt($("#group").val()) === 0 ){
         // $( "#dialogs" ).dialog();
         $('.participants-control').next().toggle();
     }
     @endif
     @endforeach
-    else if($("#date-start").val().length === 0 ){
+    if($("#date-start").val().length === 0 ){
         // $( "#dialog" ).dialog();
         $("#date-start").focus();
     }
@@ -440,16 +439,15 @@ $("input[data-code]").change(function(){
      let hargadewasa{{$p->id}}=0
      let hargagroup{{$p->id}}=0
      @endforeach
-      
       @foreach($pilihan as $p)
       if (date) {
         $("#tanggal{{$p->id}}").text("Travel Date: " + date)
         $("#tanggaltravel{{$p->id}}").val(date)
       }
       @endforeach
-
+      
       @foreach($pilihan as $p)
-      if (person > 0){
+      if (person){
         harganew.forEach(function(item){
           if (item.kategories == 'Per Person' && person >= item.min && person <= item.maks && item.subwisata_id == subid{{$p->id}}){
             hargadewasa{{$p->id}} = item.harga * person 
@@ -457,9 +455,7 @@ $("input[data-code]").change(function(){
             $("#jumlahdewasa{{$p->id}}").text("Adult: " + person + " x" + ' ' + convertrate(item.harga)) 
             $("#hargadewasa{{$p->id}}").text("Price: " + convertrate(item.harga))
             $("#dewasa{{$p->id}}").val(person)
-          }
-
-          else if (item.kategories == 'Per Group' && person >= item.min && person <= item.maks && item.subwisata_id == subid{{$p->id}}){
+          } else if (item.kategories == 'Per Group' && person >= item.min && person <= item.maks && item.subwisata_id == subid{{$p->id}}){
             hargadewasa{{$p->id}} = item.harga 
             // const hargs = item.harga.toFixed(2)
             $("#jumlahdewasa{{$p->id}}").text("Participants: " + person+ ' ' + convertrate(item.harga))
@@ -468,15 +464,15 @@ $("input[data-code]").change(function(){
           }
 
         })
-      }else{
-            $("#dewasa{{$p->id}}").val("")
+      }else if (person < 1){
+            $("#dewasa{{$p->id}}").val(0)
             $("#jumlahdewasa{{$p->id}}").text("")
             $("#hargadewasa{{$p->id}}").text("")
           }
           @endforeach
 
           @foreach($pilihan as $p)
-      if (group > 0){
+      if(group > 0){
         harganew.forEach(function(item){
           if (item.kategories == 'Per Group' && group >= item.min && group <= item.maks && item.subwisata_id == subid{{$p->id}}){
             hargagroup{{$p->id}} = item.harga 
@@ -488,10 +484,9 @@ $("input[data-code]").change(function(){
             $("#amount{{$p->id}}").val(amount(hargagroup{{$p->id}}))
             $("#tothargagroupnoconvert{{$p->id}}").val((hargagroup{{$p->id}}))
           }
-
         })
-      }else{
-            $("#group{{$p->id}}").val("")
+      }else if(group < 1){
+            $("#group{{$p->id}}").val(0)
             $("#amount{{$p->id}}").val("")
             $("#jumlahgroup{{$p->id}}").text("")
             $("#hargagroup{{$p->id}}").text("")
@@ -499,7 +494,7 @@ $("input[data-code]").change(function(){
           @endforeach
 
           @foreach($pilihan as $p)
-      if (personchild > 0) {
+      if(personchild > 0){
         hargachildnew.forEach(function(item){
           if (personchild >= item.min && personchild <= item.maks && item.subwisata_id == subid{{$p->id}}) {
             hargaanak{{$p->id}} = item.harga * personchild 
@@ -508,8 +503,8 @@ $("input[data-code]").change(function(){
             $("#hargachild{{$p->id}}").text("Price (Child): "+convertrate(item.harga))
           }
         })
-      }else{
-        $("#anak{{$p->id}}").val("")
+      }else if(personchild < 1){
+        $("#anak{{$p->id}}").val(0)
         $("#jumlahchild{{$p->id}}").text("")
         $("#hargachild{{$p->id}}").text("")
       }
@@ -524,7 +519,7 @@ $("input[data-code]").change(function(){
         $("#totharganoconvert{{$p->id}}").val((hargadewasa{{$p->id}}  + hargaanak{{$p->id}} ))
       }
       else{
-        $("#harga{{$p->id}}").text(" ")
+        $("#harga{{$p->id}}").text("")
         $("#totharga{{$p->id}}").val("")
         $("#amount{{$p->id}}").val("")
       }
@@ -763,7 +758,15 @@ function validateAvailable(id) {
 $('#{{$p->id}}').submit(function(event) {
     event.preventDefault();
     var formId = $(this).attr('id');
+    var harga = $("#harga{{ $p->id }}").text()
 
+    if(harga === "0" || harga === ""){
+      Swal.fire({
+          title: "",
+          html: "<div style='text-align: center;'>Participants are not available or must be at least 1.</div>",
+          icon: "error"
+      });
+    } else {
     if (validateForm()) {
         validateAvailable(formId).then(function(isAvailable) {
             if (isAvailable) {
@@ -784,6 +787,7 @@ $('#{{$p->id}}').submit(function(event) {
             alert('Error checking availability.');
         });
     }
+  }
 });
 
     });

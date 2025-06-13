@@ -92,7 +92,7 @@
 <body>
     <h2 style="font-weight: bolder;">Tour Booking</h2>
     <a href="">
-    <img src="https://i.ibb.co/hBbrrfw/logojogjaborobudur.png" alt="logo" height="52" width="68">
+    <img src="https://jogjaborobudur.com/public/1682857946_logojogjaborobudur.png" alt="logo" height="52" width="68">
     </a>
 
 

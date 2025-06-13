@@ -482,7 +482,9 @@
     <section data-test-id="activity-picks" class="collection-container container activities__cards" data-v-76e871e0 data-v-680034d2 style="margin-top:-80px; ">
     <div class="collection-header" data-v-76e871e0><div class="collection-header--title-container" data-v-76e871e0>
     <span data-test-id="collection-title" class="" data-v-76e871e0>
-        {{$seasons->links()}}
+        <div class="d-flex flex-wrap justify-content-center mt-3">
+          {{ $seasons->links('pagination::bootstrap-5') }}
+        </div>
       </span> 
     </div> 
     </div> 

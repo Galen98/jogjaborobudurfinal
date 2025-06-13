@@ -7,7 +7,7 @@
 </head>
 <body>
 <a href="www.jogjaborobudur.com">
-    <img src="https://i.ibb.co/hBbrrfw/logojogjaborobudur.png" alt="logo" height="52" width="68" 
+    <img src="https://jogjaborobudur.com/public/1682857946_logojogjaborobudur.png" alt="logo" height="52" width="68" 
     style="margin-bottom:5px;">
     </a>
 <p>Hi, {!! $body->name !!}</p>
