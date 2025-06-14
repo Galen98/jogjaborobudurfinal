@@ -2367,11 +2367,11 @@ form label {
   overflow-x: hidden;
   scroll-behavior: smooth;
 } */
-.tabs-box {
+/* .tabs-box {
   display: flex;
   list-style: none;
   padding: 0;
-  overflow-x: auto; /* Allow horizontal scrolling on smaller screens */
+  overflow-x: auto; 
 }
 
 .tabs-box li {
@@ -2380,8 +2380,8 @@ form label {
   padding: 0;
   display: flex;
   align-items: center;
-  white-space: nowrap; /* Prevent text from wrapping */
-}
+  white-space: nowrap; 
+} */
 .tabs-box.dragging {
   scroll-behavior: auto;
   cursor: grab;
