@@ -33,11 +33,16 @@
             <h5 class="mb-4 fw-bolder">Total Amount: {!! $bookingData->total !!}</h5>
             <div class="border-0">
             <label for="proffPay" class="form-label text-muted">Proof of payment</label>
-            <input accept="image/*" name="proffPay" onchange="showFiles(this)" class="form-control border-0 text-black" type="file" id="proffPay" required>
+            <input accept="image/*" name="proffPay" onchange="showFiles(this)" class="form-control border-0 text-black" type="file" id="proffPay">
             </div>
             <div class="mt-3"> 
                 <div class="row" id="imagePreviews"></div> 
-            </div> 
+            </div>
+            @error('proffPay')
+            <div class="text-danger mt-1 mb-1">
+                {{ $message }}
+            </div>
+            @enderror 
             <button class="btnpay c-button c-button--medium filbtn billing-form__validate-billing-details-and-sri__button" 
             type="submit">
             <p id="txtconfirm">Confirm</p>

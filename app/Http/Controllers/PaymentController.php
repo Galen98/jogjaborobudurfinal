@@ -237,6 +237,15 @@ class PaymentController extends Controller
     public function transferBankProcess(Request $request) {
         $bookingId = $request->bookingId;
         if($bookingId) {
+            $request->validate([
+                'proffPay' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            ], [
+                'proffPay.required' => 'Please upload your proof of payment.',
+                'proffPay.image' => 'The uploaded file must be an image.',
+                'proffPay.mimes' => 'Only JPEG and PNG files are allowed.',
+                'proffPay.uploaded' => 'Maximum file size is 2MB.',
+            ]);
+            
         $proffPay = $request->file('proffPay');
         $bookingData = booking::where('id', $bookingId)->first();
         $image = Image::make($proffPay->getRealPath());
