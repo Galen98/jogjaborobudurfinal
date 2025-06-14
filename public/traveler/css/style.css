@@ -2367,7 +2367,7 @@ form label {
   overflow-x: hidden;
   scroll-behavior: smooth;
 } */
-/* .tabs-box {
+.tabs-box {
   display: flex;
   list-style: none;
   padding: 0;
@@ -2381,7 +2381,7 @@ form label {
   display: flex;
   align-items: center;
   white-space: nowrap; 
-} */
+}
 .tabs-box.dragging {
   scroll-behavior: auto;
   cursor: grab;
