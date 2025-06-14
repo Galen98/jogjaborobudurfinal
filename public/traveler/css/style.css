@@ -2360,12 +2360,27 @@ form label {
 .icon:last-child i {
   margin-right: 15px;
 } 
-.wrapper .tabs-box {
+/* .wrapper .tabs-box {
   display: flex;
   gap: 12px;
   list-style: none;
   overflow-x: hidden;
   scroll-behavior: smooth;
+} */
+.tabs-box {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  overflow-x: auto; /* Allow horizontal scrolling on smaller screens */
+}
+
+.tabs-box li {
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  white-space: nowrap; /* Prevent text from wrapping */
 }
 .tabs-box.dragging {
   scroll-behavior: auto;
